@@ -1,46 +1,84 @@
-""
-"" Basic Setup
-""
+set nocompatible        " be iMproved
+filetype off            " required!
 
-set nocompatible                " Use vim, no vi defaults
-set number                      " Show line numbers
-set ruler                       " Show line and column number
-syntax enable                   " Turn on syntax highlighting allowing local overrides
-set encoding=utf-8              " Set default encoding to UTF-8
+" :::::::::: Vundle - Vim Plugins :::::::::::::
 
-""
-"" Whitespace
-""
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-set nowrap                      " Don't wrap lines
-set tabstop=2                   " Tab is two spaces
-set shiftwidth=2                " Autoindent (with <<) is two spaces
-set expandtab                   " Convert tabs to spaces
-set backspace=indent,eol,start  " Backspace through everything in insert mode
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
 
-" List chars
-set list                        " Show invisible characters
-set listchars=""                " Reset the listchars
-set listchars=tab:\ \           " Show tab as "  "
-set listchars+=trail:.          " Show trailing spaces as dots
-set listchars+=extends:>        " Show when line continues offscreen
-set listchars+=precedes:<       " Show when line precedes offscreen
+" my bundles here:
+" original repos on github
+Bundle 'scrooloose/nerdtree'
+" vim-scripts repos
+"Bundle 'FuzzyFinder'
+" non-GitHub repos
+"Bundle 'git://git.wincent.com/command-t.git'
 
-""
-"" Searching
-""
+filetype plugin indent on       " required!
 
-set hlsearch      " Highlight matches
-set incsearch     " Incremental searching
-set ignorecase    " Searches are case insensitive...
-set smartcase      " ...unless they contain a capital letter
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install (update) bundles
+" :BundleSearch(!) foo - search (or refresh cache first) for foo
+" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle commands are not allowed.
 
-""
-"" Appearance
-""
+" :::::::::::::: Basic Setup ::::::::::::::::::
+
+set number                " line numbers
+set ruler                 " line and column number
+syntax enable             " syntax highlighting allowing local overrides
+set encoding=utf-8        " default encoding to UTF-8
+
+" ::::::::::::::: Whitespace ::::::::::::::::::
+
+set nowrap                      " don't wrap lines
+set tabstop=2                   " tab is two spaces
+set shiftwidth=2                " autoindent (with <<) is two spaces
+set expandtab                   " convert tabs to spaces
+set backspace=indent,eol,start  " backspace through everything in insert mode
+
+" list chars
+set list                        " show invisible characters
+set listchars=""                " reset the listchars
+set listchars=tab:\ \           " tab as "  "
+set listchars+=trail:.          " trailing spaces as dots
+set listchars+=extends:>        " when line continues offscreen
+set listchars+=precedes:<       " when line precedes offscreen
+
+" :::::::::::::: Customization ::::::::::::::::
+
+set timeoutlen=200        " timeout on mappings and key codes
+let mapleader="\\"
+
+" edit/reload vimrc
+nnoremap <Leader>er :e $MYVIMRC<CR>
+nnoremap <Leader>re :so $MYVIMRC<CR>
+
+" toggle NERDTree
+nnoremap <Leader>n :NERDTreeToggle<CR>
+
+" :::::::::::::::: Searching ::::::::::::::::::
+
+set hlsearch          " highlight matches
+set incsearch         " incremental searching
+set ignorecase        " searches are case insensitive...
+set smartcase         " ...unless they contain a capital letter
+
+" clear search hilights
+nnoremap <Leader>h :nohlsearch<CR>
+
+" ::::::::::::::: Appearance ::::::::::::::::::
 
 colorscheme smyck
 
+" hilight line number
 set cursorline
 hi clear CursorLine
 augroup CLClear
@@ -49,286 +87,165 @@ augroup END
 
 set laststatus=2
 
+" build statusline
 set statusline=
-set statusline+=%<\         " Cut at start
+set statusline+=%<\            " cut at start
 set statusline+=%#normal#
-set statusline+=(%n)       " Buffer
+set statusline+=(%n)           " buffer
 set statusline+=%*\ 
-set statusline+=%f\         " Path
-
-set statusline+=%m          " Modified
-set statusline+=%y\         " Filetype
-
-set statusline+=%=\         " Left/right separator
-
-set statusline+=[%c]        " Column
-set statusline+=[%l/%L]\    " Line/total
+set statusline+=%f\            " path
+set statusline+=%m             " modified
+set statusline+=%y\            " filetype
+set statusline+=%=\            " left/right separator
+set statusline+=[%c]           " column
+set statusline+=[%l/%L]\       " line/total
 set statusline+=%#normal#
-set statusline+=%P        " Percent through file
+set statusline+=%P             " percent through file
 set statusline+=%*\ 
 
+" default font
 set guifont=Source\ Code\ Pro:h16
 
-set backup                      " keep a backup file
-set backupdir=~/.vim/backup     " all backup files
-set directory=~/.vim/tmp        " all temp files
-set history=50                  " keep history 50-deep
+" ::::::::::: Backup and Swap Files :::::::::::
 
-"let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
-"if &term == "screen"
-"  set t_ts=^[k
-"  set t_fs=^[\
-"endif
-"if &term == "screen" || &term == "xterm"
-"  set title
-"endif
+set backup                      " backup files...
+set backupdir=~/.vim/backup     " ...here
+set directory=~/.vim/tmp        " all temp files
+set history=50                  " history 50-deep
+
+" :::::::::::::::::: Splits :::::::::::::::::::
 
 set splitbelow                  " open new splits below
 set splitright                  " open new splits on right
 
-execute pathogen#infect()
+" previous / next
+nnoremap wh <C-w>W
+nnoremap wl <C-w><C-w>
+" switch to vertical / horizontal
+nnoremap <Leader>df <C-W>t<C-W>H
+nnoremap <Leader>dc <C-W>t<C-W>K
+" open in vertical / horizontal
+nnoremap <Leader>fg :vsp<Space>
+nnoremap <Leader>fv :sp<Space>
+" add vertical / horizontal
+nnoremap fgn :vsp<CR>
+nnoremap fvn :sp<CR>
 
-"*-------------------------------------------------------*"
-" KEY MAPS
+" ::::::::::::: Buffers and Tabs ::::::::::::::
 
-set timeoutlen=200              " timeout on mappings and key codes
+" previous / next
+nnoremap bp :bprevious<CR>
+nnoremap bn :bnext<CR>
 
-" Set leader
-  let mapleader="\\"
+" list
+nnoremap bl :ls<CR>
 
+" open / save / quit / save and quit
+nnoremap <Leader>ef :edit<Space>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>wq :wq<CR>
 
-" Quickly edit/reload vimrc
-  nnoremap <Leader>er :e $MYVIMRC<CR>
-  nnoremap <Leader>re :so $MYVIMRC<CR>
+" close
+nnoremap bd :bd<CR>
+" close, keep window
+nnoremap bc :bp<CR>:bd#<CR>
 
-"*-------------------------------------------------------*"
+" pwd / cd
+nnoremap pwd :pwd<CR>
+nnoremap cd :cd<Space>
 
-"                         k
-" Navigation:         j <-+-> l
-"                        Spc
-"
-"  nnoremap j h
-"  nnoremap <Space> j
-"  nnoremap m j
-"
-" Navigate soft line-breaks
-  nnoremap <Up> gk
-  nnoremap <Down> gj
-  inoremap <Up> <C-o>gk
-  inoremap <Down> <C-o>gj
+" open in new tab
+nnoremap <Leader>t :tabe<Space>
 
-" Go to start of line
-  nnoremap <C-h> 0
-  inoremap <C-h> <Esc>0i
-" Go to end of line
-  nnoremap <C-l> $
-  inoremap <C-l> <Esc>$a
+" ::::::::::::::::: Navigate ::::::::::::::::::
 
-" Goto first character in line
-  nnoremap hw ^
-  inoremap hw <Esc>^i
+" soft line-breaks
+nnoremap <Up> gk
+inoremap <Up> <C-o>gk
+nnoremap <Down> gj
+inoremap <Down> <C-o>gj
 
-" Go to next word
-"  nnoremap <C-l> w
-"  inoremap <C-l> <Esc>lwi
-" Go to previous word
-"  nnoremap <C-j> b
-"  inoremap <C-j> <Esc>bi
+" beginning of line
+nnoremap <C-h> 0
+inoremap <C-h> <Esc>0i
+" end of line
+nnoremap <C-l> $
+inoremap <C-l> <Esc>$a
+" first character in line
+nnoremap hw ^
+inoremap hw <Esc>^i
 
-" Go to first line
-  nnoremap jkk gg
-" Go to last line
-  nnoremap kjj G
+" first / last line
+nnoremap jkk gg
+nnoremap kjj G
+" page up / down
+nnoremap <C-u> <C-b>
+nnoremap <C-n> <C-f>
+" scroll up / down
+nnoremap <C-k> <C-y>
+nnoremap <C-j> <C-e>
 
-" Page up
-  nnoremap <C-u> <C-b>
-" Page down
-  nnoremap <C-n> <C-f>
+" ::::::::::::::::: Editing :::::::::::::::::::
 
-" Half-page up
-"  nnoremap <Space>jk <C-u>
-" Half-page down
-"  nnoremap kj<Space> <C-d>
+" pastetoggle on / off
+nnoremap vi :set paste paste?<CR>i
+nnoremap vk :set nopaste<CR>
 
-" Scroll up 1 line
-  nnoremap <C-k> <C-y>
-" Scroll down 1 line
-  nnoremap <C-j> <C-e>
+" autocomplete parens, brackets, braces
+inoremap (<CR> (<CR>)<Esc>O<Tab>
+inoremap [<CR> [<CR>]<Esc>O<Tab>
+inoremap {<CR> {<CR>}<Esc>O<Tab>
 
-" Clear search results
-  nnoremap <Leader>h :nohlsearch<CR>
+" exit insert mode
+inoremap jk <Esc>
 
-"*-------------------------------------------------------*"
-" Editing:          i | jk   U | Y
-"
+" delete to start / end of line
+nnoremap dh d0
+nnoremap dl d$
 
-" Use pastetoggle
-  nnoremap vi :set paste paste?<CR>i
-  nnoremap vk :set nopaste<CR>
+" lines
+" open above / below current line
+inoremap <S-Return> <C-o>O
+inoremap <C-Return> <C-o>o
+" insert above / below current line
+nnoremap <S-Space> O<Esc>j
+nnoremap <Space> o<Esc>k
+" delete above / below current line
+nnoremap d<Space>; kdd
+nnoremap d<S-Space> jdd
 
-" Autocomplete parens, brackets, braces, quotes
-  inoremap ( ()<Esc>i
-  inoremap [ []<Esc>i
-  inoremap { {}<Esc>i
-  inoremap (<CR> (<CR>)<Esc>O<Tab>
-  inoremap [<CR> [<CR>]<Esc>O<Tab>
-  inoremap {<CR> {<CR>}<Esc>O<Tab>
-"  inoremap " ""<Esc>i
+" :::::::::::::: Colorswitching :::::::::::::::
 
-" Smarter braces from the wikia
-" don't totally understand this
-  inoremap ) <c-r>=ClosePair(')')<CR>
-  inoremap ] <c-r>=ClosePair(']')<CR>
-"  inoremap } <c-r>=ClosePair('}')<CR>
-"  inoremap } <c-r>=CloseBracket()<CR>
-"  inoremap " <c-r>=QuoteDelim('"')<CR>
-"  inoremap ' <c-r>=QuoteDelim("'")<CR>
+nnoremap <Leader>c1 :colo<Space>vylight<CR>
+nnoremap <Leader>c2 :colo<Space>blueshift<CR>
+nnoremap <Leader>c3 :colo<Space>github<CR>
+nnoremap <Leader>c4 :colo<Space>pyte<CR>
+nnoremap <Leader>c5 :colo<Space>mayansmoke<CR>
+nnoremap <Leader>c6 :colo<Space>slate<CR>
+nnoremap <Leader>c7 :colo<Space>mustang<CR>
+nnoremap <Leader>c8 :colo<Space>smyck<CR>
 
-  function! ClosePair(char)
-   if getline('.')[col('.') - 1] == a:char
-   return "\<Right>"
-   else
-   return a:char
-   endif
-  endf
+" :::::::::::::: Wild Settings ::::::::::::::::
 
-  function! CloseBracket()
-   if match(getline(line('.') + 1), '\s*}') < 0
-   return "\<CR>}"
-   else
-   return "\<Esc>j0f}a"
-   endif
-  endf
+" TODO: Investigate the precise meaning of these settings
+" set wildmode=list:longest,list:full
 
-  function! QuoteDelim(char)
-   let line = getline('.')
-   let col = col('.')
-   if line[col - 2] == "\\"
-   "Inserting a quoted quotation mark into the string
-   return a:char
-   elseif line[col - 1] == a:char
-   "Escaping out of the string
-   return "\<Right>"
-   else
-   "Starting a string
-   return a:char.a:char."\<Esc>i"
-   endif
-  endf
+" Disable output and VCS files
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 
-" Exit insert mode
-  inoremap jk <Esc>
+" Disable archive files
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 
-" Delete previous word
-"  inoremap lkj <Esc>xdbi
-" Delete next word
-"  inoremap LKJ <Esc>ldwi
+" Ignore bundler and sass cache
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 
-" Open newline above current line with no indent
-"  nnoremap <Space>oj O<Esc>d0i
-" Open newline below current line with no indent
-"  nnoremap oj o<Esc>d0i
+" Ignore librarian-chef, vagrant, test-kitchen and Berkshelf cache
+set wildignore+=*/tmp/librarian/*,*/.vagrant/*,*/.kitchen/*,*/vendor/cookbooks/*
 
-" Delete to end of line
-  nnoremap dl d$
-  inoremap <Leader>dl <Esc>d$i
-" Delete to start of line
-  nnoremap dh d0
-  inoremap <Leader>dh <Esc>ld0i
+" Ignore rails temporary asset caches
+set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
 
-" Clear and replace to end of line
-"  nnoremap cjl c$
-" Clear and replace to beginning of line
-"  nnoremap clj c0
-" Yank to end of line
-"  nnoremap yjl y$
-" Yank to beggining of line
-"  nnoremap ylj y0
-
-" Open new line above current line
-"  nnoremap <Space>o O
-  inoremap <S-Return> <C-o>O
-" Open new line below current line
-  inoremap <C-Return> <C-o>o
-
-" Insert newline above current line
-  nnoremap <S-Space> O<Esc>j
-" Insert newline below current line
-  nnoremap <Space> o<Esc>k
-
-" Delete line above current line
-  nnoremap d<Space>; kdd
-" Delete line below current line
-  nnoremap d<S-Space> jdd
-
-" Undo
-"  nnoremap U u
-" Redo
-"  nnoremap Y <C-r>
-
-"*-------------------------------------------------------*"
-" Buffer/SplitOperations:
-"
-
-" NERDTreeToggle
-  nnoremap <Leader>n :NERDTreeToggle<CR>
-
-" List buffers
-  nnoremap bl :ls<CR>
-" Close current buffer
-  nnoremap bd :bd<CR>
-" Close buffer, keep window
-  nnoremap bc :bp<CR>:bd#<CR>
-
-" Next buffer
-  nnoremap bn :bnext<CR>
-" Previous buffer
-  nnoremap bp :bprevious<CR>
-" Go right one split (cycle)
-  nnoremap wl <C-w><C-w>
-" Go left one split (cycle)
-  nnoremap wh <C-w>W
-
-" Switch horizontal split to vertical
-  nnoremap <Leader>df <C-W>t<C-W>H
-" Switch vertical split to horizontal
-  nnoremap <Leader>dc <C-W>t<C-W>K
-
-" Edit file in new tab
-  nnoremap <Leader>t :tabe<Space>
-
-" Edit file in vertical split
-  nnoremap <Leader>fg :vsp<Space>
-" Open blank vertical split
-  nnoremap fgn :vsp<CR>
-" Edit file in horizontal split
-  nnoremap <Leader>fv :sp<Space>
-" Open blank horizontal split
-  nnoremap fvn :sp<CR>
-
-" Save
-  nnoremap <Leader>w :w<CR>
-" Save and quit
-  nnoremap <Leader>wq :wq<CR>
-" Quit
-  nnoremap <Leader>q :q<CR>
-
-" Print working directory
-  nnoremap pwd :pwd<CR>
-" Change directory
-  nnoremap cd :cd<Space>
-" Edit file
-  nnoremap ef :edit<Space>
-
-"*-------------------------------------------------------*"
-" Colorswitching
-"
-
-  nnoremap <Leader>c1 :colo<Space>vylight<CR>
-  nnoremap <Leader>c2 :colo<Space>blueshift<CR>
-  nnoremap <Leader>c3 :colo<Space>github<CR>
-  nnoremap <Leader>c4 :colo<Space>pyte<CR>
-  nnoremap <Leader>c5 :colo<Space>mayansmoke<CR>
-  nnoremap <Leader>c6 :colo<Space>slate<CR>
-  nnoremap <Leader>c7 :colo<Space>mustang<CR>
-  nnoremap <Leader>c8 :colo<Space>smyck<CR>
+" Disable temp and backup files
+set wildignore+=*.swp,*~,._*
 
