@@ -16,7 +16,7 @@ Bundle 'scrooloose/nerdtree'
 " vim-scripts repos
 "Bundle 'FuzzyFinder'
 " non-GitHub repos
-Bundle 'git://git.wincent.com/command-t.git'
+"Bundle 'git://git.wincent.com/command-t.git'
 
 filetype plugin indent on       " required!
 
