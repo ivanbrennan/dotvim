@@ -9,14 +9,11 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
-
-" my bundles here:
 " original repos on github
 Bundle 'scrooloose/nerdtree'
 " vim-scripts repos
 "Bundle 'FuzzyFinder'
 " non-GitHub repos
-"Bundle 'git://git.wincent.com/command-t.git'
 
 filetype plugin indent on       " required!
 
