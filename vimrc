@@ -6,25 +6,11 @@ filetype off            " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required!
+" NOTE: comments after Bundle commands are not allowed.
 Bundle 'gmarik/vundle'
-" original repos on github
 Bundle 'scrooloose/nerdtree'
-" vim-scripts repos
-"Bundle 'FuzzyFinder'
-" non-GitHub repos
 
 filetype plugin indent on       " required!
-
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install (update) bundles
-" :BundleSearch(!) foo - search (or refresh cache first) for foo
-" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle commands are not allowed.
 
 " :::::::::::::: Basic Setup ::::::::::::::::::
 
@@ -32,6 +18,15 @@ set number                " line numbers
 set ruler                 " line and column number
 syntax enable             " syntax highlighting allowing local overrides
 set encoding=utf-8        " default encoding to UTF-8
+
+set guifont=Source\ Code\ Pro:h16
+
+" ::::::::::: Backup and Swap Files :::::::::::
+
+set backup                      " backup files...
+set backupdir=~/.vim/backup     " ...here
+set directory=~/.vim/tmp        " all temp files
+set history=50                  " history 50-deep
 
 " ::::::::::::::: Whitespace ::::::::::::::::::
 
@@ -49,7 +44,7 @@ set listchars+=trail:.          " trailing spaces as dots
 set listchars+=extends:>        " when line continues offscreen
 set listchars+=precedes:<       " when line precedes offscreen
 
-" :::::::::::::: Customization ::::::::::::::::
+" ::::::::::::::: Mapleader :::::::::::::::::::
 
 set timeoutlen=200        " timeout on mappings and key codes
 let mapleader="\\"
@@ -58,7 +53,7 @@ let mapleader="\\"
 nnoremap <Leader>er :e $MYVIMRC<CR>
 nnoremap <Leader>re :so $MYVIMRC<CR>
 
-" toggle NERDTree
+" NERDTree
 nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " :::::::::::::::: Searching ::::::::::::::::::
@@ -71,44 +66,58 @@ set smartcase         " ...unless they contain a capital letter
 " clear search hilights
 nnoremap <Leader>h :nohlsearch<CR>
 
-" ::::::::::::::: Appearance ::::::::::::::::::
+" ::::::::::::::::: Colors ::::::::::::::::::::
 
 colorscheme smyck
 
-" hilight line number
+nnoremap <Leader>c1 :colo<Space>vylight<CR>
+nnoremap <Leader>c2 :colo<Space>blueshift<CR>
+nnoremap <Leader>c3 :colo<Space>github<CR>
+nnoremap <Leader>c4 :colo<Space>pyte<CR>
+nnoremap <Leader>c5 :colo<Space>mayansmoke<CR>
+nnoremap <Leader>c6 :colo<Space>slate<CR>
+nnoremap <Leader>c7 :colo<Space>mustang<CR>
+nnoremap <Leader>c8 :colo<Space>smyck<CR>
+
+" ::::::::::::::: Line Numbers ::::::::::::::::
+
 set cursorline
-hi clear CursorLine
+
+hi clear CursorLine       " hilight line number
 augroup CLClear
     autocmd! ColorScheme * hi clear CursorLine
 augroup END
 
-set laststatus=2
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
 
-" build statusline
+" relative numbers
+nnoremap <C-n> :call NumberToggle()<CR>
+autocmd InsertEnter * :set norelativenumber
+
+" :::::::::::::::: Dividers :::::::::::::::::::
+
+set fillchars+=vert:\             " vertsplit
+
+set laststatus=2                  " statusline
+
 set statusline=
-set statusline+=%<\            " cut at start
-set statusline+=%#normal#
-set statusline+=(%n)           " buffer
-set statusline+=%*\ 
-set statusline+=%f\            " path
-set statusline+=%m             " modified
-set statusline+=%y\            " filetype
-set statusline+=%=\            " left/right separator
-set statusline+=[%c]           " column
-set statusline+=[%l/%L]\       " line/total
-set statusline+=%#normal#
-set statusline+=%P             " percent through file
-set statusline+=%*\ 
+set statusline+=%<                " cut at start
+set statusline+=\ %f\             " path
 
-" default font
-set guifont=Source\ Code\ Pro:h16
+set statusline+=%#vertsplit#
+set statusline+=%y                " filetype
+set statusline+=%m                " modified
+set statusline+=%=\               " left/right separator
+set statusline+=%5.P\             " percent through file
+set statusline+=%*
 
-" ::::::::::: Backup and Swap Files :::::::::::
-
-set backup                      " backup files...
-set backupdir=~/.vim/backup     " ...here
-set directory=~/.vim/tmp        " all temp files
-set history=50                  " history 50-deep
+set statusline+=\ %4l:%-3c        " column
 
 " :::::::::::::::::: Splits :::::::::::::::::::
 
@@ -155,7 +164,7 @@ nnoremap cd :cd<Space>
 " open in new tab
 nnoremap <Leader>t :tabe<Space>
 
-" ::::::::::::::::: Navigate ::::::::::::::::::
+" ::::::::::::::: Navigation ::::::::::::::::::
 
 " soft line-breaks
 nnoremap <Up> gk
@@ -178,7 +187,7 @@ nnoremap jkk gg
 nnoremap kjj G
 " page up / down
 nnoremap <C-u> <C-b>
-nnoremap <C-n> <C-f>
+nnoremap <C-d> <C-f>
 " scroll up / down
 nnoremap <C-k> <C-y>
 nnoremap <C-j> <C-e>
@@ -211,17 +220,6 @@ nnoremap <Space> o<Esc>k
 " delete above / below current line
 nnoremap d<Space>; kdd
 nnoremap d<S-Space> jdd
-
-" :::::::::::::: Colorswitching :::::::::::::::
-
-nnoremap <Leader>c1 :colo<Space>vylight<CR>
-nnoremap <Leader>c2 :colo<Space>blueshift<CR>
-nnoremap <Leader>c3 :colo<Space>github<CR>
-nnoremap <Leader>c4 :colo<Space>pyte<CR>
-nnoremap <Leader>c5 :colo<Space>mayansmoke<CR>
-nnoremap <Leader>c6 :colo<Space>slate<CR>
-nnoremap <Leader>c7 :colo<Space>mustang<CR>
-nnoremap <Leader>c8 :colo<Space>smyck<CR>
 
 " :::::::::::::: Wild Settings ::::::::::::::::
 
