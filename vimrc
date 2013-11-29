@@ -6,9 +6,10 @@ filetype off                    " required for Vundle!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" note: comments after Bundle commands are not allowed
+" original repos on Github
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
+Bundle 'vim-scripts/hexHighlight.vim'
 
 filetype plugin indent on       " required!
 
@@ -69,14 +70,27 @@ nnoremap <Leader>c :nohlsearch<CR>
 
 " ::::::::::::::::: Colors ::::::::::::::::::::
 
-colorscheme blackboard
-
 nnoremap <Leader>1 :colo<Space>vylight<CR>
 nnoremap <Leader>2 :colo<Space>blueshift<CR>
 nnoremap <Leader>3 :colo<Space>github<CR>
 nnoremap <Leader>4 :colo<Space>blackboard<CR>
-nnoremap <Leader>5 :colo<Space>smyck<CR>
-nnoremap <Leader>6 :colo<Space>mustang<CR>
+nnoremap <Leader>5 :colo<Space>bboard<CR>
+nnoremap <Leader>6 :colo<Space>smyck<CR>
+nnoremap <Leader>7 :colo<Space>mustang<CR>
+
+colorscheme crayon
+
+" show highlighting groups for current word
+nnoremap <Leader>y :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+" toggle HexHighlight()
+nnoremap <Leader>h :call HexHighlight()<CR>
 
 " ::::::::::::::: Line Numbers ::::::::::::::::
 
@@ -163,7 +177,7 @@ nnoremap bn :bnext<CR>
 nnoremap bl :ls<CR>
 
 " open / save / quit / save and quit
-nnoremap <Leader>ew :e<Space>
+nnoremap <Leader>e :e<Space>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>

@@ -1,18 +1,18 @@
 " Vim color scheme
 "
-" Name:         bboard.vim
-" Maintainer:   Ivan Brennan <ivan.brennan@gmail.com>
-" Last Change:  29 November 2013
+" Name:         blackboard.vim
+" Maintainer:   Ben Wyrosdick <ben.wyrosdick@gmail.com>
+" Last Change:  20 August 2009
 " License:      public domain
-" Version:      0.1
+" Version:      1.4
 
 set background=dark
-highlight clear
+hi clear
 if exists("syntax_on")
    syntax reset
 endif
 
-let g:colors_name = "bboard"
+let g:colors_name = "blackboard"
 
 " Colours in use
 " --------------
