@@ -1,12 +1,12 @@
-set nocompatible        " be iMproved
-filetype off            " required!
+set nocompatible                " be iMproved
+filetype off                    " required for Vundle!
 
 " :::::::::: Vundle - Vim Plugins :::::::::::::
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" NOTE: comments after Bundle commands are not allowed.
+" note: comments after Bundle commands are not allowed
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 
@@ -14,18 +14,18 @@ filetype plugin indent on       " required!
 
 " :::::::::::::: Basic Setup ::::::::::::::::::
 
-set number                " line numbers
-set ruler                 " line and column number
-syntax enable             " syntax highlighting allowing local overrides
-set encoding=utf-8        " default encoding to UTF-8
+set number                      " line numbers
+set ruler                       " line and column number
+syntax enable                   " syntax highlighting allowing local overrides
+set encoding=utf-8              " default encoding to UTF-8
 
 set guifont=Source\ Code\ Pro:h16
 
 " ::::::::::: Backup and Swap Files :::::::::::
 
 set backup                      " backup files...
-set backupdir=~/.vim/backup     " ...here
-set directory=~/.vim/tmp        " all temp files
+set backupdir=~/.vim/backup     " ...to here
+set directory=~/.vim/tmp        " all temp files here
 set history=50                  " history 50-deep
 
 " ::::::::::::::: Whitespace ::::::::::::::::::
@@ -46,44 +46,43 @@ set listchars+=precedes:<       " when line precedes offscreen
 
 " ::::::::::::::: Mapleader :::::::::::::::::::
 
-set timeoutlen=200        " timeout on mappings and key codes
+set timeout timeoutlen=200 ttimeoutlen=100
+
 let mapleader="\\"
 
 " edit/reload vimrc
 nnoremap <Leader>er :e $MYVIMRC<CR>
-nnoremap <Leader>re :so $MYVIMRC<CR>
+nnoremap <Leader>r :so $MYVIMRC<CR>
 
 " NERDTree
-nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>t :NERDTreeToggle<CR>
 
 " :::::::::::::::: Searching ::::::::::::::::::
 
-set hlsearch          " highlight matches
-set incsearch         " incremental searching
-set ignorecase        " searches are case insensitive...
-set smartcase         " ...unless they contain a capital letter
+set hlsearch                    " highlight matches
+set incsearch                   " incremental searching
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ...unless they contain a capital letter
 
 " clear search hilights
-nnoremap <Leader>h :nohlsearch<CR>
+nnoremap <Leader>c :nohlsearch<CR>
 
 " ::::::::::::::::: Colors ::::::::::::::::::::
 
-colorscheme smyck
+colorscheme blackboard
 
-nnoremap <Leader>c1 :colo<Space>vylight<CR>
-nnoremap <Leader>c2 :colo<Space>blueshift<CR>
-nnoremap <Leader>c3 :colo<Space>github<CR>
-nnoremap <Leader>c4 :colo<Space>pyte<CR>
-nnoremap <Leader>c5 :colo<Space>mayansmoke<CR>
-nnoremap <Leader>c6 :colo<Space>slate<CR>
-nnoremap <Leader>c7 :colo<Space>mustang<CR>
-nnoremap <Leader>c8 :colo<Space>smyck<CR>
+nnoremap <Leader>1 :colo<Space>vylight<CR>
+nnoremap <Leader>2 :colo<Space>blueshift<CR>
+nnoremap <Leader>3 :colo<Space>github<CR>
+nnoremap <Leader>4 :colo<Space>blackboard<CR>
+nnoremap <Leader>5 :colo<Space>smyck<CR>
+nnoremap <Leader>6 :colo<Space>mustang<CR>
 
 " ::::::::::::::: Line Numbers ::::::::::::::::
 
 set cursorline
 
-hi clear CursorLine       " hilight line number
+hi clear CursorLine             " hilight line number
 augroup CLClear
     autocmd! ColorScheme * hi clear CursorLine
 augroup END
@@ -97,45 +96,62 @@ function! NumberToggle()
 endfunc
 
 " relative numbers
-nnoremap <C-n> :call NumberToggle()<CR>
-autocmd InsertEnter * :set norelativenumber
+nnoremap <D-N> :call NumberToggle()<CR>
 
 " :::::::::::::::: Dividers :::::::::::::::::::
 
-set fillchars+=vert:\             " vertsplit
-
-set laststatus=2                  " statusline
+set fillchars+=vert:\           " clean dividers
+set laststatus=2                " show statusline
 
 set statusline=
-set statusline+=%<                " cut at start
-set statusline+=\ %f\             " path
+set statusline+=%<              " cut at start
+set statusline+=\ %f\           " path
 
 set statusline+=%#vertsplit#
-set statusline+=%y                " filetype
-set statusline+=%m                " modified
-set statusline+=%=\               " left/right separator
-set statusline+=%5.P\             " percent through file
+set statusline+=%y              " filetype
+set statusline+=%m              " modified
+set statusline+=%=\             " left/right separator
+set statusline+=%5.P\           " percent through file
 set statusline+=%*
 
-set statusline+=\ %4l:%-3c        " column
+set statusline+=\ %4l:%-3c      " column
 
 " :::::::::::::::::: Splits :::::::::::::::::::
 
 set splitbelow                  " open new splits below
 set splitright                  " open new splits on right
 
+" implement this when you know how
+"function! SwitchSplit()
+"endfunc
+
+" split horizontal / vertical
+nnoremap <Leader>s :sp<CR>
+nnoremap <Leader>v :vsp<CR>
+" edit horizontal / vertical
+nnoremap <Leader>es :sp<Space>
+nnoremap <Leader>ev :vsp<Space>
+" only current
+nnoremap <Leader>a :on<CR>
+
+" navigate splits
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 " previous / next
-nnoremap wh <C-w>W
-nnoremap wl <C-w><C-w>
-" switch to vertical / horizontal
-nnoremap <Leader>df <C-W>t<C-W>H
-nnoremap <Leader>dc <C-W>t<C-W>K
-" open in vertical / horizontal
-nnoremap <Leader>fg :vsp<Space>
-nnoremap <Leader>fv :sp<Space>
-" add vertical / horizontal
-nnoremap fgn :vsp<CR>
-nnoremap fvn :sp<CR>
+nnoremap <S-Tab> <C-w>W
+nnoremap <Tab> <C-w><C-w>
+
+" switch to vertical / horizontal...
+" ...replace this with SwitchSplit()
+nnoremap <Leader>xs <C-W>t<C-W>K
+nnoremap <Leader>xv <C-W>t<C-W>H
+" maximize horizontal / vertical
+nnoremap _ <C-W>_
+nnoremap <bar> <C-W><bar>
+" equalize
+nnoremap + <C-W>=
 
 " ::::::::::::: Buffers and Tabs ::::::::::::::
 
@@ -147,7 +163,7 @@ nnoremap bn :bnext<CR>
 nnoremap bl :ls<CR>
 
 " open / save / quit / save and quit
-nnoremap <Leader>ef :edit<Space>
+nnoremap <Leader>ew :e<Space>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
@@ -162,7 +178,7 @@ nnoremap pwd :pwd<CR>
 nnoremap cd :cd<Space>
 
 " open in new tab
-nnoremap <Leader>t :tabe<Space>
+nnoremap <Leader>et :tabe<Space>
 
 " ::::::::::::::: Navigation ::::::::::::::::::
 
@@ -173,30 +189,29 @@ nnoremap <Down> gj
 inoremap <Down> <C-o>gj
 
 " beginning of line
-nnoremap <C-h> 0
-inoremap <C-h> <Esc>0i
+"nnoremap <C-h> 0
+"inoremap <C-h> <Esc>0i
 " end of line
-nnoremap <C-l> $
-inoremap <C-l> <Esc>$a
+"nnoremap <C-l> $
+"inoremap <C-l> <Esc>$a
 " first character in line
 nnoremap hw ^
 inoremap hw <Esc>^i
 
 " first / last line
-nnoremap jkk gg
-nnoremap kjj G
-" page up / down
-nnoremap <C-u> <C-b>
-nnoremap <C-d> <C-f>
+"nnoremap jkk gg
+"nnoremap kjj G
 " scroll up / down
-nnoremap <C-k> <C-y>
-nnoremap <C-j> <C-e>
+nnoremap <D-k> <C-y>
+vnoremap <D-k> <C-y>
+nnoremap <D-j> <C-e>
+vnoremap <D-j> <C-e>
 
 " ::::::::::::::::: Editing :::::::::::::::::::
 
 " pastetoggle on / off
-nnoremap vi :set paste paste?<CR>i
-nnoremap vk :set nopaste<CR>
+nnoremap ip :set paste paste?<CR>i
+nnoremap np :set nopaste<CR>
 
 " autocomplete parens, brackets, braces
 inoremap (<CR> (<CR>)<Esc>O<Tab>
@@ -204,13 +219,15 @@ inoremap [<CR> [<CR>]<Esc>O<Tab>
 inoremap {<CR> {<CR>}<Esc>O<Tab>
 
 " exit insert mode
-inoremap jk <Esc>
+inoremap <Tab> <Esc>`^
+vnoremap <Tab> <Esc>gV
+" insert Tab character
+inoremap <Leader><Tab> <Tab>
 
 " delete to start / end of line
 nnoremap dh d0
 nnoremap dl d$
 
-" lines
 " open above / below current line
 inoremap <S-Return> <C-o>O
 inoremap <C-Return> <C-o>o
@@ -220,6 +237,14 @@ nnoremap <Space> o<Esc>k
 " delete above / below current line
 nnoremap d<Space>; kdd
 nnoremap d<S-Space> jdd
+
+" move line up / down
+nnoremap <D-J> :m .+1<CR>==
+inoremap <D-J> <Esc>:m .+1<CR>==gi
+vnoremap <D-J> :m '>+1<CR>gv=gv
+nnoremap <D-K> :m .-2<CR>==
+inoremap <D-K> <Esc>:m .-2<CR>==gi
+vnoremap <D-K> :m '<-2<CR>gv=gv
 
 " :::::::::::::: Wild Settings ::::::::::::::::
 
