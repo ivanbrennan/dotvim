@@ -10,6 +10,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/hexHighlight.vim'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'guns/xterm-color-table.vim'
 
 filetype plugin indent on       " required!
 
@@ -20,6 +22,7 @@ set ruler                       " line and column number
 syntax enable                   " syntax highlighting allowing local overrides
 set encoding=utf-8              " default encoding to UTF-8
 
+"set guifont=Monaco:h16
 set guifont=Source\ Code\ Pro:h16
 
 " ::::::::::: Backup and Swap Files :::::::::::
@@ -36,11 +39,12 @@ set tabstop=2                   " tab is two spaces
 set shiftwidth=2                " autoindent (with <<) is two spaces
 set expandtab                   " convert tabs to spaces
 set backspace=indent,eol,start  " backspace through everything in insert mode
+set textwidth=0                 " no autowrap
 
 " list chars
 set list                        " show invisible characters
 set listchars=""                " reset the listchars
-set listchars=tab:\ \           " tab as "  "
+set listchars=tab:@-            " tab as "  "
 set listchars+=trail:.          " trailing spaces as dots
 set listchars+=extends:>        " when line continues offscreen
 set listchars+=precedes:<       " when line precedes offscreen
@@ -66,19 +70,26 @@ set ignorecase                  " searches are case insensitive...
 set smartcase                   " ...unless they contain a capital letter
 
 " clear search hilights
-nnoremap <Leader>c :nohlsearch<CR>
+nnoremap <Leader>/ :nohlsearch<CR>
 
 " ::::::::::::::::: Colors ::::::::::::::::::::
 
-nnoremap <Leader>1 :colo<Space>vylight<CR>
-nnoremap <Leader>2 :colo<Space>blueshift<CR>
-nnoremap <Leader>3 :colo<Space>github<CR>
-nnoremap <Leader>4 :colo<Space>blackboard<CR>
-nnoremap <Leader>5 :colo<Space>bboard<CR>
-nnoremap <Leader>6 :colo<Space>smyck<CR>
-nnoremap <Leader>7 :colo<Space>mustang<CR>
+"nnoremap <Leader>1 :colo<Space>vylight<CR>
+"nnoremap <Leader>2 :colo<Space>blueshift<CR>
+"nnoremap <Leader>3 :colo<Space>github<CR>
+"nnoremap <Leader>4 :colo<Space>blackboard<CR>
+"nnoremap <Leader>5 :colo<Space>bboard<CR>
+"nnoremap <Leader>6 :colo<Space>smyck<CR>
+"nnoremap <Leader>7 :colo<Space>mustang<CR>
 
-colorscheme crayon
+nnoremap <Leader>1 :colo<Space>blueboard<CR>
+nnoremap <Leader>2 :colo<Space>blueboard2<CR>
+nnoremap <Leader>3 :colo<Space>blueboard3<CR>
+nnoremap <Leader>4 :colo<Space>blueboard4<CR>
+nnoremap <Leader>5 :colo<Space>blueboard5<CR>
+nnoremap <Leader>6 :colo<Space>blueboard6<CR>
+
+colorscheme blueboardreborn
 
 " show highlighting groups for current word
 nnoremap <Leader>y :call <SID>SynStack()<CR>
@@ -90,7 +101,7 @@ function! <SID>SynStack()
 endfunc
 
 " toggle HexHighlight()
-nnoremap <Leader>h :call HexHighlight()<CR>
+nnoremap <Leader>i :call HexHighlight()<CR>
 
 " ::::::::::::::: Line Numbers ::::::::::::::::
 
@@ -110,7 +121,17 @@ function! NumberToggle()
 endfunc
 
 " relative numbers
-nnoremap <D-N> :call NumberToggle()<CR>
+nnoremap <Leader>n :call NumberToggle()<CR>
+inoremap <Leader>n <Esc>:call NumberToggle()<CR>gi
+
+" ::::::::::::::::: Cursor ::::::::::::::::::::
+
+set guicursor=n-v-c:block-blinkon0
+set guicursor+=ve:ver35
+set guicursor+=o:hor50
+set guicursor+=i-ci:ver25
+set guicursor+=r-cr:hor20
+set guicursor+=sm:block-blinkon0
 
 " :::::::::::::::: Dividers :::::::::::::::::::
 
@@ -121,12 +142,16 @@ set statusline=
 set statusline+=%<              " cut at start
 set statusline+=\ %f\           " path
 
-set statusline+=%#vertsplit#
+"set statusline+=%#vertsplit#
 set statusline+=%y              " filetype
 set statusline+=%m              " modified
+"set statusline+=%*
+
 set statusline+=%=\             " left/right separator
-set statusline+=%5.P\           " percent through file
-set statusline+=%*
+
+"set statusline+=%#vertsplit#
+set statusline+=%4.P\           " percent through file
+"set statusline+=%*
 
 set statusline+=\ %4l:%-3c      " column
 
@@ -170,26 +195,27 @@ nnoremap + <C-W>=
 " ::::::::::::: Buffers and Tabs ::::::::::::::
 
 " previous / next
-nnoremap bp :bprevious<CR>
-nnoremap bn :bnext<CR>
+nnoremap <Leader>[ :bprevious<CR>
+nnoremap <Leader>] :bnext<CR>
 
 " list
-nnoremap bl :ls<CR>
+nnoremap <Leader>b :ls<CR>
 
 " open / save / quit / save and quit
 nnoremap <Leader>e :e<Space>
+nnoremap <Leader>h :e<Space>~/
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
 
 " close
-nnoremap bd :bd<CR>
+nnoremap <Leader>d :bd<CR>
 " close, keep window
-nnoremap bc :bp<CR>:bd#<CR>
+nnoremap <Leader>c :bp<CR>:bd#<CR>
 
 " pwd / cd
-nnoremap pwd :pwd<CR>
-nnoremap cd :cd<Space>
+nnoremap <Leader>p :pwd<CR>
+nnoremap <Leader>cd :cd<Space>
 
 " open in new tab
 nnoremap <Leader>et :tabe<Space>
@@ -253,14 +279,14 @@ nnoremap d<Space>; kdd
 nnoremap d<S-Space> jdd
 
 " move line up / down
-nnoremap <D-J> :m .+1<CR>==
-inoremap <D-J> <Esc>:m .+1<CR>==gi
-vnoremap <D-J> :m '>+1<CR>gv=gv
-nnoremap <D-K> :m .-2<CR>==
-inoremap <D-K> <Esc>:m .-2<CR>==gi
-vnoremap <D-K> :m '<-2<CR>gv=gv
+nnoremap <D-J> :m .+1<CR>==:<Esc>
+inoremap <D-J> <Esc>:m .+1<CR>==gi:<Esc>
+vnoremap <D-J> :m '>+1<CR>gv=gv:<Esc>
+nnoremap <D-K> :m .-2<CR>==:<Esc>
+inoremap <D-K> <Esc>:m .-2<CR>==gi:<Esc>
+vnoremap <D-K> :m '<-2<CR>gv=gv:<Esc>
 
-" :::::::::::::: Wild Settings ::::::::::::::::
+::" :::::::::::::: Wild Settings ::::::::::::::::
 
 " TODO: Investigate the precise meaning of these settings
 " set wildmode=list:longest,list:full

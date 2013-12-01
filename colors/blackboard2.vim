@@ -1,22 +1,17 @@
 " Vim color scheme
 "
 " Name:         bboard.vim
-" Maintainer:   Ben Wyrosdick <ben.wyrosdick@gmail.com>
+" Maintainer:   Ivan Brennan <ivan.brennan@gmail.com>
 " Last Change:  29 November 2013
 " License:      public domain
 " Version:      0.1
 
-hi clear
-
 set background=dark
-if version > 580
-    " no guarantees for version 5.8 and below, but this makes it stop
-    " complaining
-    hi clear
-    if exists("syntax_on")
-        syntax reset
-    endif
+highlight clear
+if exists("syntax_on")
+   syntax reset
 endif
+
 let g:colors_name = "bboard"
 
 " Colours in use
@@ -30,10 +25,9 @@ let g:colors_name = "bboard"
 
 if has("gui_running")
   "GUI Colors
-  highlight Normal guifg=#EAEAEA   guibg=#0B1022
-  highlight Cursor guifg=Black   guibg=#C4D6FF
+  highlight Normal guifg=White   guibg=#0B1022
+  highlight Cursor guifg=Black   guibg=Yellow
   highlight CursorLine guibg=#191E2F
-  highlight CursorLineNr guifg=#C4D6FF   guibg=#0B1022
   highlight LineNr guibg=#323232 guifg=#888888
   highlight Folded guifg=#1d2652 guibg=#070a15
   highlight Pmenu guibg=#84A7C1
@@ -41,18 +35,18 @@ if has("gui_running")
 
   "General Colors
   highlight Comment guifg=#AEAEAE
-  highlight Constant guifg=#5D9EFC
-  highlight Keyword guifg=#92A8E3
-  highlight String guifg=#00826F
-  highlight Type guifg=#EAEAEA
-  highlight Identifier guifg=#7AE80C gui=NONE
-  highlight Function guifg=#A6E22E gui=NONE
+  highlight Constant guifg=#D8FA3C
+  highlight Keyword guifg=#FFDE00
+  highlight String guifg=#61CE3C
+  highlight Type guifg=#84A7C1
+  highlight Identifier guifg=#61CE3C gui=NONE
+  highlight Function guifg=#FF5600 gui=NONE
   highlight clear Search
   highlight Search guibg=#1C3B79
   highlight PreProc guifg=#FF5600
 
   " StatusLine
-  highlight StatusLine  guifg=#000000 guibg=#D8FA3C gui=italic
+  highlight StatusLine  guifg=#000000 guibg=#ffffaf gui=italic
   highlight StatusLineNC  guifg=#000000 guibg=#ffffff gui=NONE
 
   "Invisible character colors
@@ -99,7 +93,7 @@ if has("gui_running")
   highlight gitcommitSelectedFile guifg=#61CE3C
   highlight gitcommitDiscardedFile guifg=#C23621
   highlight gitcommitWarning guifg=#C23621
-  highlight gitcommitBranch guifg=#D8FA3C
+  highlight gitcommitBranch guifg=#FFDE00
   highlight gitcommitHeader guifg=#84A7C1
 
 end
