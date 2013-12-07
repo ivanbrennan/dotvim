@@ -77,14 +77,14 @@ nnoremap <Leader>/ :nohlsearch<CR>
 " ::::::::::::::::: Colors ::::::::::::::::::::
 
 nnoremap <Leader>1 :colo<Space>ivisu<CR>
-nnoremap <Leader>1 :colo<Space>smyck<CR>
-nnoremap <Leader>2 :colo<Space>smyckblue<CR>
-nnoremap <Leader>3 :colo<Space>mustang<CR>
-nnoremap <Leader>4 :colo<Space>mustangblue<CR>
-nnoremap <Leader>5 :colo<Space>github<CR>
-nnoremap <Leader>6 :colo<Space>ivanized<CR>
-nnoremap <Leader>7 :colo<Space>hemisu<CR>
-nnoremap <Leader>8 :colo<Space>zenburn<CR>
+nnoremap <Leader>2 :colo<Space>smyck<CR>
+nnoremap <Leader>3 :colo<Space>smyckblue<CR>
+nnoremap <Leader>4 :colo<Space>mustang<CR>
+nnoremap <Leader>5 :colo<Space>mustangblue<CR>
+nnoremap <Leader>6 :colo<Space>github<CR>
+nnoremap <Leader>7 :colo<Space>ivanized<CR>
+nnoremap <Leader>8 :colo<Space>hemisu<CR>
+nnoremap <Leader>9 :colo<Space>zenburn<CR>
 
 colorscheme ivisu
 
