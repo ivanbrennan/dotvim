@@ -12,6 +12,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/hexHighlight.vim'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'guns/xterm-color-table.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'shawncplus/Vim-toCterm'
 
 filetype plugin indent on       " required!
 
@@ -74,22 +76,21 @@ nnoremap <Leader>/ :nohlsearch<CR>
 
 " ::::::::::::::::: Colors ::::::::::::::::::::
 
-"nnoremap <Leader>1 :colo<Space>vylight<CR>
-"nnoremap <Leader>2 :colo<Space>blueshift<CR>
-"nnoremap <Leader>3 :colo<Space>github<CR>
-"nnoremap <Leader>4 :colo<Space>blackboard<CR>
-"nnoremap <Leader>5 :colo<Space>bboard<CR>
-"nnoremap <Leader>6 :colo<Space>smyck<CR>
-"nnoremap <Leader>7 :colo<Space>mustang<CR>
+nnoremap <Leader>1 :colo<Space>ivisu<CR>
+nnoremap <Leader>1 :colo<Space>smyck<CR>
+nnoremap <Leader>2 :colo<Space>smyckblue<CR>
+nnoremap <Leader>3 :colo<Space>mustang<CR>
+nnoremap <Leader>4 :colo<Space>mustangblue<CR>
+nnoremap <Leader>5 :colo<Space>github<CR>
+nnoremap <Leader>6 :colo<Space>ivanized<CR>
+nnoremap <Leader>7 :colo<Space>hemisu<CR>
+nnoremap <Leader>8 :colo<Space>zenburn<CR>
 
-nnoremap <Leader>1 :colo<Space>blueboard<CR>
-nnoremap <Leader>2 :colo<Space>blueboard2<CR>
-nnoremap <Leader>3 :colo<Space>blueboard3<CR>
-nnoremap <Leader>4 :colo<Space>blueboard4<CR>
-nnoremap <Leader>5 :colo<Space>blueboard5<CR>
-nnoremap <Leader>6 :colo<Space>blueboard6<CR>
+colorscheme ivisu
 
-colorscheme blueboardreborn
+call togglebg#map("")
+
+nnoremap <Leader>g :ToggleBG<CR>
 
 " show highlighting groups for current word
 nnoremap <Leader>y :call <SID>SynStack()<CR>
@@ -195,8 +196,8 @@ nnoremap + <C-W>=
 " ::::::::::::: Buffers and Tabs ::::::::::::::
 
 " previous / next
-nnoremap <Leader>[ :bprevious<CR>
-nnoremap <Leader>] :bnext<CR>
+nnoremap <silent> <C-Left> :bprevious<CR>
+nnoremap <silent> <C-Right> :bnext<CR>
 
 " list
 nnoremap <Leader>b :ls<CR>
