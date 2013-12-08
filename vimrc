@@ -64,6 +64,10 @@ nnoremap <Leader>r :so $MYVIMRC<CR>
 " NERDTree
 nnoremap <Leader>t :NERDTreeToggle<CR>
 
+" keycodes for ctrl up / down
+set <F13>=[A
+set <F14>=[B
+
 " :::::::::::::::: Searching ::::::::::::::::::
 
 set hlsearch                    " highlight matches
@@ -195,9 +199,11 @@ nnoremap + <C-W>=
 
 " ::::::::::::: Buffers and Tabs ::::::::::::::
 
-" previous / next
-nnoremap <silent> <C-Left> :bprevious<CR>
-nnoremap <silent> <C-Right> :bnext<CR>
+" previous / next buffer
+nmap <F14> <C-Down>
+nnoremap <C-Down> :bprevious<CR>
+nmap <F13> <C-Up>
+nnoremap <C-Up> :bnext<CR>
 
 " list
 nnoremap <Leader>b :ls<CR>
@@ -221,6 +227,10 @@ nnoremap <Leader>cd :cd<Space>
 " open in new tab
 nnoremap <Leader>et :tabe<Space>
 
+" previous / next tab
+nnoremap <S-Left> gT
+nnoremap <S-Right> gt
+
 " ::::::::::::::: Navigation ::::::::::::::::::
 
 " soft line-breaks
@@ -242,6 +252,7 @@ inoremap hw <Esc>^i
 " first / last line
 "nnoremap jkk gg
 "nnoremap kjj G
+
 " scroll up / down
 nnoremap <D-k> <C-y>
 vnoremap <D-k> <C-y>
