@@ -33,12 +33,14 @@ set backup                      " backup files...
 set backupdir=~/.vim/backup     " ...to here
 set directory=~/.vim/tmp        " all temp files here
 set history=50                  " history 50-deep
+set hidden                      " allow hidden buffers
 
 " ::::::::::::::: Whitespace ::::::::::::::::::
 
 set nowrap                      " don't wrap lines
 set tabstop=2                   " tab is two spaces
-set shiftwidth=2                " autoindent (with <<) is two spaces
+set softtabstop=2               " softtab is two spaces
+set shiftwidth=2                " autoindent is two spaces
 set expandtab                   " convert tabs to spaces
 set backspace=indent,eol,start  " backspace through everything in insert mode
 set textwidth=0                 " no autowrap
@@ -46,7 +48,7 @@ set textwidth=0                 " no autowrap
 " list chars
 set list                        " show invisible characters
 set listchars=""                " reset the listchars
-set listchars=tab:@-            " tab as "  "
+set listchars=tab:▸\            " tab as "  "
 set listchars+=trail:.          " trailing spaces as dots
 set listchars+=extends:>        " when line continues offscreen
 set listchars+=precedes:<       " when line precedes offscreen
@@ -76,7 +78,7 @@ set ignorecase                  " searches are case insensitive...
 set smartcase                   " ...unless they contain a capital letter
 
 " clear search hilights
-nnoremap <Leader>/ :nohlsearch<CR>
+nnoremap <Leader><Space> :nohlsearch<CR>
 
 " ::::::::::::::::: Colors ::::::::::::::::::::
 
@@ -113,9 +115,11 @@ nnoremap <Leader>i :call HexHighlight()<CR>
 set cursorline
 
 hi clear CursorLine             " hilight line number
-augroup CLClear
+if has("autocmd")
+  augroup CLClear
     autocmd! ColorScheme * hi clear CursorLine
-augroup END
+  augroup END
+endif
 
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -200,10 +204,12 @@ nnoremap + <C-W>=
 " ::::::::::::: Buffers and Tabs ::::::::::::::
 
 " previous / next buffer
+nnoremap      <D-[> :bprevious<CR>
+nnoremap   <C-Down> :bprevious<CR>
 nmap <F14> <C-Down>
-nnoremap <C-Down> :bprevious<CR>
-nmap <F13> <C-Up>
-nnoremap <C-Up> :bnext<CR>
+nnoremap      <D-]> :bnext<CR>
+nnoremap     <C-Up> :bnext<CR>
+nmap   <F13> <C-Up>
 
 " list
 nnoremap <Leader>b :ls<CR>
@@ -271,10 +277,12 @@ inoremap [<CR> [<CR>]<Esc>O<Tab>
 inoremap {<CR> {<CR>}<Esc>O<Tab>
 
 " exit insert mode
-inoremap <Tab> <Esc>`^
-vnoremap <Tab> <Esc>gV
-" insert Tab character
-inoremap <Leader><Tab> <Tab>
+inoremap kj <Esc>`^
+inoremap jk <Esc>`^
+inoremap <C-[> <Esc>`^
+
+" exit visual mode
+vnoremap <C-[> <Esc>gV
 
 " delete to start / end of line
 nnoremap dh d0
@@ -297,6 +305,10 @@ vnoremap <D-J> :m '>+1<CR>gv=gv:<Esc>
 nnoremap <D-K> :m .-2<CR>==:<Esc>
 inoremap <D-K> <Esc>:m .-2<CR>==gi:<Esc>
 vnoremap <D-K> :m '<-2<CR>gv=gv:<Esc>
+
+" indent in visual mode
+vnoremap < <gv
+vnoremap > >gv
 
 ::" :::::::::::::: Wild Settings ::::::::::::::::
 
