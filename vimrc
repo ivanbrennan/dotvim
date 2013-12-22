@@ -148,7 +148,10 @@ set ruler         " line and column number
 set nowrap        " don't wrap lines
 syntax enable     " syntax highlighting, local overrides
 set guifont=Source\ Code\ Pro:h16
-set transparency=5
+
+if has("gui_running")
+  set transparency=5
+endif
 
 " ········· Whitespace ······················· {{{
 
@@ -249,10 +252,6 @@ set smartcase     " ...unless they contain a capital letter
 
 " ::::::::: Navigation ::::::::::::::::::::::: {{{
 
-if has('mouse')
-  set mouse=a
-endif
-
 " soft line-breaks
 nnoremap   <Up> gk
 inoremap   <Up> <C-o>gk
@@ -312,17 +311,17 @@ vnoremap <Leader>' va'<Esc>`<i'<Esc>`<lv`>l
 nnoremap    <Bar>" mZviwva"<Esc>`<i"<Esc>`Zl
 vnoremap    <Bar>" va"<Esc>`<i"<Esc>`<lv`>l
 
-" ··················· Bubbling ·······························
+" bubble text up / down
+nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
+nnoremap <silent> <M-Down> mZ:move .+1<CR>==`Z
+inoremap          <M-Up> <Esc>:move .-2<CR>==gi
+inoremap          <M-Down> <Esc>:move .+1<CR>==gi
+vnoremap          <M-Up> :move '<-2<CR>gv=gv
+vnoremap          <M-Down> :move '>+1<CR>gv=gv
 
-nnoremap <silent> <C-Up> mZ:move .-2<CR>==`Z
-nnoremap <silent> <C-Down> mZ:move .+1<CR>==`Z
-inoremap          <C-Up> <Esc>:move .-2<CR>==gi
-inoremap          <C-Down> <Esc>:move .+1<CR>==gi
-vnoremap          <C-Up> :move '<-2<CR>gv=gv
-vnoremap          <C-Down> :move '>+1<CR>gv=gv
-
-vnoremap <C-S-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
-vnoremap <C-S-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
+" bubble text left / right
+vnoremap <M-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
+vnoremap <M-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 
 " visual indent
 vnoremap < <gv
@@ -336,7 +335,8 @@ vnoremap > >gv
 
 augroup filetype_vim
   autocmd!
-  autocmd FileType vim nnoremap <buffer> <F8> mZI"<Esc>`Zl
+  autocmd FileType vim nnoremap <buffer> <F8> mAI"<Esc>`Al
+  autocmd FileType vim vnoremap <buffer> <F8> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
@@ -347,7 +347,8 @@ augroup END
 augroup filetype_ruby
   autocmd!
   autocmd FileType ruby nnoremap <buffer> <F8> mZI#<Esc>`Zl
-  autocmd FileType ruby       :iabbrev <buffer> iff if<CR>end<Esc>kA
+  autocmd FileType ruby vnoremap <buffer> <F8> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
+  autocmd FileType ruby :iabbrev <buffer> iff if<CR>end<Esc>kA
 augroup END
 
 " }}}
@@ -356,10 +357,10 @@ augroup END
 
 augroup filetype_erb
   autocmd!
-  autocmd FileType erb        :iabbrev <buffer> erb <% %><Left><Left><Left>
-  autocmd FileType erb        :iabbrev <buffer> erp <%= %><Left><Left><Left>
-  autocmd FileType erb        :iabbrev <buffer> erc <%# %><Left><Left><Left>
-  autocmd FileType erb        :iabbrev <buffer> iff <% if %><% end %><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+  autocmd FileType erb :iabbrev <buffer> erb <% %><Left><Left><Left>
+  autocmd FileType erb :iabbrev <buffer> erp <%= %><Left><Left><Left>
+  autocmd FileType erb :iabbrev <buffer> erc <%# %><Left><Left><Left>
+  autocmd FileType erb :iabbrev <buffer> iff <% if %><% end %><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 augroup END
 
 " }}}
@@ -369,7 +370,8 @@ augroup END
 augroup filetype_python
   autocmd!
   autocmd FileType python nnoremap <buffer> <F8> mZI#<Esc>`Zl
-  autocmd FileType python     :iabbrev <buffer> iff if:<left>
+  autocmd FileType python vnoremap <buffer> <F8> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
+  autocmd FileType python :iabbrev <buffer> iff if:<left>
 augroup END
 
 " }}}
