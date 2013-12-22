@@ -2,10 +2,10 @@
 
 set nocompatible           " be iMproved
 set encoding=utf-8         " default encoding to UTF-8
-filetype off               " required for Vundle!
 
 " ::::::::: Vundle ::::::::::::::::::::::::::: {{{
 
+filetype off               " required for Vundle!
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -43,6 +43,48 @@ augroup vimrcgroup  " auto-reload vimrc when it's saved
   autocmd BufWritePost .vimrc source $MYVIMRC
 augroup END
 
+nnoremap ; :
+
+" }}}
+
+" ::::::::: Function Keys :::::::::::::::::::: {{{
+
+" <F1> Help
+
+" <F2> togglebg
+call togglebg#map("")
+nnoremap <F2> :ToggleBG<CR>
+
+" <F3> find merge conflicts
+nnoremap <silent> <F3> <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+
+" <F4> pastetoggle
+nnoremap <F4> :set invpaste paste?<CR>
+set pastetoggle=<F4>
+set showmode
+
+" <F5> SynStack
+nnoremap <F5> :call <SID>SynStack()<CR>
+
+" <F6> HexHighlight
+nnoremap   <F6> :call HexHighlight()<CR>
+
+" <F7> inverse f/t/F/T
+nnoremap <F7> ,
+
+" <F8>   Comment out (see FileType)
+
+" <F9> repeat f/t/F/T
+nnoremap <F9> ;
+
+" <F10> source vimrc
+nnoremap <F10> :source $MYVIMRC<CR>
+
+" <F11> edit vimrc
+nnoremap <F11> :vsplit $MYVIMRC<CR>
+
+" <F12>
+
 " }}}
 
 " ::::::::: Buffers :::::::::::::::::::::::::: {{{
@@ -52,9 +94,6 @@ set hidden          " allow hidden buffers
 nnoremap  <Leader>t :NERDTreeToggle<CR>
 nnoremap  <Leader>p :pwd<CR>
 nnoremap <Leader>cd :lcd<Space>
-
-nnoremap  <Leader>` :source $MYVIMRC<CR>
-nnoremap <Leader>`` :vsplit $MYVIMRC<CR>
 
 nnoremap  <Leader>b :buffers<CR>
 nnoremap      <C-p> :bprevious<CR>
@@ -109,8 +148,9 @@ set ruler         " line and column number
 set nowrap        " don't wrap lines
 syntax enable     " syntax highlighting, local overrides
 set guifont=Source\ Code\ Pro:h16
+set transparency=5
 
-" ·············· Whitespace ·················· {{{
+" ········· Whitespace ······················· {{{
 
 set tabstop=2                   " tab is two spaces
 set softtabstop=2               " softtab is two spaces
@@ -128,19 +168,21 @@ set listchars+=precedes:«       " precedes offscreen
 
 " }}}
 
-" ······················ Colors ·············· {{{
+" ········· Colors ··························· {{{
 
 colorscheme ivisu
 
-nnoremap <Leader>1 :colo<Space>ivisu<CR>
-nnoremap <Leader>2 :colo<Space>smyck<CR>
-nnoremap <Leader>3 :colo<Space>smyckblue<CR>
-nnoremap <Leader>4 :colo<Space>mustang<CR>
-nnoremap <Leader>5 :colo<Space>mustangblue<CR>
-nnoremap <Leader>6 :colo<Space>github<CR>
-nnoremap <Leader>7 :colo<Space>ivanized<CR>
-nnoremap <Leader>8 :colo<Space>hemisu<CR>
-nnoremap <Leader>9 :colo<Space>muon<CR>
+nnoremap  <Leader>1 :colo<Space>ivisu<CR>
+nnoremap <Leader>11 :colo<Space>hemisu<CR>
+nnoremap  <Leader>2 :colo<Space>smyck<CR>
+nnoremap <Leader>22 :colo<Space>smyckblue<CR>
+nnoremap  <Leader>3 :colo<Space>mustang<CR>
+nnoremap <Leader>33 :colo<Space>mustangblue<CR>
+nnoremap  <Leader>4 :colo<Space>github<CR>
+nnoremap  <Leader>5 :colo<Space>ivanized<CR>
+nnoremap  <Leader>6 :colo<Space>muon<CR>
+nnoremap  <Leader>7 :colo<Space>tir_black<CR>
+nnoremap <Leader>77 :colo<Space>ir_black<CR>
 
 function! <SID>SynStack()
   if !exists("*synstack")
@@ -149,14 +191,9 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
-call togglebg#map("")
-nnoremap <Leader>g :ToggleBG<CR>
-nnoremap <Leader>h :call HexHighlight()<CR>
-nnoremap <Leader>y :call <SID>SynStack()<CR>
-
 " }}}
 
-" ·················· Line Numbers ············ {{{
+" ········· Line Numbers ····················· {{{
 
 nnoremap <LocalLeader>n :set number!<CR>
 nnoremap <LocalLeader>r :set relativenumber!<CR>
@@ -171,7 +208,7 @@ augroup END
 
 " }}}
 
-" ····················· Cursor ··············· {{{
+" ········· Cursor ··························· {{{
 
 set guicursor=n-v-c:block-blinkon0
 set guicursor+=ve:ver35
@@ -182,7 +219,7 @@ set guicursor+=sm:block-blinkon0
 
 " }}}
 
-" ···················· Dividers ·············· {{{
+" ········· Dividers ························· {{{
 
 set fillchars+=vert:\           " clean dividers
 set laststatus=2                " show statusline
@@ -202,7 +239,7 @@ set statusline+=%4.P\           " percent through file
 
 " ::::::::: Searching :::::::::::::::::::::::: {{{
 
-nnoremap <LocalLeader>h :set hlsearch!<CR>
+nnoremap <Leader><Space> :set hlsearch!<CR>
 
 set incsearch     " incremental searching
 set ignorecase    " searches are case insensitive...
@@ -240,8 +277,6 @@ nnoremap <C-l> $
 
 " ::::::::: Editing :::::::::::::::::::::::::: {{{
 
-set pastetoggle=<LocalLeader>p
-
 " autocomplete parens, brackets, braces
 inoremap (<CR> (<CR>)<Esc>O<Tab>
 inoremap [<CR> [<CR>]<Esc>O<Tab>
@@ -266,7 +301,7 @@ inoremap <C-U> <Esc>viwg~gi
 inoremap <C-BS> <C-U>
 
 " select current word
-nnoremap <Space> viw
+nnoremap <LocalLeader><Space> viw
 
 " delete line
 nnoremap <LocalLeader>d dd
@@ -295,19 +330,13 @@ vnoremap > >gv
 
 " }}}
 
-" ::::::::: Abbreviations :::::::::::::::::::::::::::: {{{
-
-iabbrev @@ ivan.brennan@gmail.com
-
-" }}}
-
-" ::::::::: Filetype ::::::::::::::::::::::::::::::::: {{{
+" ::::::::: FileType ::::::::::::::::::::::::: {{{
 
 " vim {{{
 
 augroup filetype_vim
   autocmd!
-  autocmd FileType vim nnoremap <buffer> <LocalLeader><LocalLeader> mZI"<Esc>`Zl
+  autocmd FileType vim nnoremap <buffer> <F8> mZI"<Esc>`Zl
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
@@ -317,7 +346,7 @@ augroup END
 
 augroup filetype_ruby
   autocmd!
-  autocmd FileType ruby nnoremap <buffer> <LocalLeader><LocalLeader> mZI#<Esc>`Zl
+  autocmd FileType ruby nnoremap <buffer> <F8> mZI#<Esc>`Zl
   autocmd FileType ruby       :iabbrev <buffer> iff if<CR>end<Esc>kA
 augroup END
 
@@ -339,7 +368,7 @@ augroup END
 
 augroup filetype_python
   autocmd!
-  autocmd FileType python nnoremap <buffer> <LocalLeader><LocalLeader> mZI#<Esc>`Zl
+  autocmd FileType python nnoremap <buffer> <F8> mZI#<Esc>`Zl
   autocmd FileType python     :iabbrev <buffer> iff if:<left>
 augroup END
 
@@ -351,6 +380,7 @@ augroup filetype_javascript
   autocmd!
   autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
 augroup END
+
 " }}}
 
 " markdown {{{
@@ -365,7 +395,7 @@ augroup END
 
 " }}}
 
-" ::::::::: Operator Pending ::::::::::::::::::::::::: {{{
+" ::::::::: Operator Pending ::::::::::::::::: {{{
 
 " in last / next braces
 onoremap il( :<C-u>normal! F)vi(<CR>
@@ -385,7 +415,7 @@ onoremap an{ :<C-u>normal! f{va{<CR>
 
 " }}}
 
-" ::::::::: Wild Settings :::::::::::::::::::::::::::: {{{
+" ::::::::: Wild Settings :::::::::::::::::::: {{{
 
 " TODO: Investigate the precise meaning of these settings
 " set wildmode=list:longest,list:full
