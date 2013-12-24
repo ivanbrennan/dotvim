@@ -103,7 +103,7 @@ nnoremap   <F6> :call HexHighlight()<CR>
 set hidden        " allow hidden buffers
 
 " navigators
-noremap <Leader><CR> :buffers<CR>:buffer<Space>
+noremap <S-CR> :buffers<CR>:buffer<Space>
 noremap <C-CR> :NERDTreeToggle<CR>
 
 " current directory
