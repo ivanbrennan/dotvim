@@ -9,9 +9,12 @@ filetype off               " required for Vundle!
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" original repos on Github
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'tpope/vim-surround'
+Bundle 'kien/ctrlp.vim'
+
 Bundle 'vim-scripts/hexHighlight.vim'
 Bundle 'guns/xterm-color-table.vim'
 Bundle 'shawncplus/Vim-toCterm'
@@ -28,22 +31,35 @@ filetype plugin indent on       " required!
 set backup                      " backup files...
 set backupdir=~/.vim/backup     " ...to here
 set directory=~/.vim/tmp        " all temp files here
-set history=50                  " history 50-deep
+set history=500                 " history 500-deep
 
 " }}}
 
 " ::::::::: Mappings ::::::::::::::::::::::::: {{{
 
-let mapleader="\\"
-let maplocalleader="-"
-set timeout timeoutlen=300 ttimeoutlen=100
+set timeout timeoutlen=250 ttimeoutlen=100
+
+let mapleader=" "
+
+" vimrc
+noremap \sv :source $MYVIMRC<CR>
+noremap \ev :edit $MYVIMRC<CR>
 
 augroup vimrcgroup  " auto-reload vimrc when it's saved
   autocmd!
   autocmd BufWritePost .vimrc source $MYVIMRC
 augroup END
 
-nnoremap ; :
+" easier commands
+noremap ; :
+
+" replace overwritten mappings
+noremap + ;
+noremap _ ,
+
+" easier marks
+noremap ` '
+noremap ' `
 
 " }}}
 
@@ -61,7 +77,6 @@ nnoremap <silent> <F3> <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 " <F4> pastetoggle
 nnoremap <F4> :set invpaste paste?<CR>
 set pastetoggle=<F4>
-set showmode
 
 " <F5> SynStack
 nnoremap <F5> :call <SID>SynStack()<CR>
@@ -69,19 +84,15 @@ nnoremap <F5> :call <SID>SynStack()<CR>
 " <F6> HexHighlight
 nnoremap   <F6> :call HexHighlight()<CR>
 
-" <F7> inverse f/t/F/T
-nnoremap <F7> ,
+" <F7>
 
-" <F8>   Comment out (see FileType)
+" <F8>
 
-" <F9> repeat f/t/F/T
-nnoremap <F9> ;
+" <F9>
 
-" <F10> source vimrc
-nnoremap <F10> :source $MYVIMRC<CR>
+" <F10>
 
-" <F11> edit vimrc
-nnoremap <F11> :vsplit $MYVIMRC<CR>
+" <F11>
 
 " <F12>
 
@@ -89,55 +100,57 @@ nnoremap <F11> :vsplit $MYVIMRC<CR>
 
 " ::::::::: Buffers :::::::::::::::::::::::::: {{{
 
-set hidden          " allow hidden buffers
+set hidden        " allow hidden buffers
 
-nnoremap  <Leader>t :NERDTreeToggle<CR>
-nnoremap  <Leader>p :pwd<CR>
-nnoremap <Leader>cd :lcd<Space>
+" navigators
+noremap <Leader><CR> :buffers<CR>:buffer<Space>
+noremap <C-CR> :NERDTreeToggle<CR>
 
-nnoremap  <Leader>b :buffers<CR>
-nnoremap      <C-p> :bprevious<CR>
-nnoremap      <C-n> :bnext<CR>
+" current directory
+noremap <Leader>wd :pwd<CR>
+noremap <Leader>cd :lcd %:h<CR>
 
-nnoremap <Leader>ee :edit<Space>~/
-nnoremap  <Leader>e :edit<Space>
-nnoremap  <Leader>w :write<CR>
-nnoremap  <Leader>q :quit<CR>
+" edit
+noremap <Leader>eh :edit ~/
+noremap <Leader>ew :edit <C-r>=expand('%:h').'/'<CR>
+noremap <Leader>es :split <C-r>=expand('%:h').'/'<CR>
+noremap <Leader>ev :vsplit <C-r>=expand('%:h').'/'<CR>
+noremap <Leader>et :tabedit <C-r>=expand('%:h').'/'<CR>
 
-nnoremap  <Leader>d :bdelete<CR>
-nnoremap  <Leader>c :bprevious<CR>:bdelete#<CR>
+" close
+noremap  <Leader>d :bdelete<CR>
+noremap  <Leader>c :bprevious<CR>:bdelete#<CR>
 
+" split {{{
+  noremap <Leader>s :split<CR>
+  noremap <Leader>v :vsplit<CR>
+  noremap <Leader>o :only<CR>
+  " resize
+  noremap <Leader>- <C-W>_
+  noremap <Leader>\ <C-W><bar>
+  noremap <Leader>= <C-W>=
+  "function! SwitchSplit()
+  "endfunc
+  " replace this with SwitchSplit()
+  noremap <Leader><Leader>s <C-W>t<C-W>K
+  noremap <Leader><Leader>v <C-W>t<C-W>H
 " }}}
 
-" ::::::::: Tabs & Splits :::::::::::::::::::: {{{
+" navigate {{{
+  " buffers / tabs
+  noremap  <Leader>j :bprevious<CR>
+  noremap  <Leader>k :bnext<CR>
+  noremap  <Leader>h :tabprevious<CR>
+  noremap  <Leader>l :tabnext<CR>
 
-nnoremap tt :tabnew<CR>
-nnoremap tn :tabnew<Space>
-nnoremap th :tabprevious<CR>
-nnoremap tl :tabnext<CR>
-
-"function! SwitchSplit()
-"endfunc
-
-nnoremap  <Leader>s :split<CR>
-nnoremap <Leader>es :split<Space>
-nnoremap  <Leader>v :vsplit<CR>
-nnoremap <Leader>ev :vsplit<Space>
-
-nnoremap  <Leader>a :only<CR>
-
-" previous / next
-nnoremap <S-Tab> <C-w>W
-nnoremap   <Tab> <C-w><C-w>
-
-" replace this with SwitchSplit()
-nnoremap <Leader>xs <C-W>t<C-W>K
-nnoremap <Leader>xv <C-W>t<C-W>H
-
-" resize
-nnoremap         __ <C-W>_
-nnoremap <bar><bar> <C-W><bar>
-nnoremap         ++ <C-W>=
+  " splits
+  noremap <C-j> <C-w>j
+  noremap <C-k> <C-w>k
+  noremap <C-h> <C-w>h
+  noremap <C-l> <C-w>l
+  noremap <S-Tab> <C-w>W
+  noremap   <Tab> <C-w><C-w>
+" }}}
 
 " }}}
 
@@ -152,6 +165,8 @@ set guifont=Source\ Code\ Pro:h16
 if has("gui_running")
   set transparency=5
 endif
+
+nnoremap <Leader>ww :set invwrap wrap?<CR>
 
 " ········· Whitespace ······················· {{{
 
@@ -186,6 +201,7 @@ nnoremap  <Leader>5 :colo<Space>ivanized<CR>
 nnoremap  <Leader>6 :colo<Space>muon<CR>
 nnoremap  <Leader>7 :colo<Space>tir_black<CR>
 nnoremap <Leader>77 :colo<Space>ir_black<CR>
+nnoremap  <Leader>8 :colo<Space>xoria256<CR>
 
 function! <SID>SynStack()
   if !exists("*synstack")
@@ -198,8 +214,8 @@ endfunc
 
 " ········· Line Numbers ····················· {{{
 
-nnoremap <LocalLeader>n :set number!<CR>
-nnoremap <LocalLeader>r :set relativenumber!<CR>
+nnoremap <Leader>n :set number!<CR>
+nnoremap <Leader>r :set relativenumber!<CR>
 
 set cursorline
 
@@ -242,7 +258,7 @@ set statusline+=%4.P\           " percent through file
 
 " ::::::::: Searching :::::::::::::::::::::::: {{{
 
-nnoremap <Leader><Space> :set hlsearch!<CR>
+nnoremap \<Space> :set hlsearch!<CR>
 
 set incsearch     " incremental searching
 set ignorecase    " searches are case insensitive...
@@ -252,25 +268,13 @@ set smartcase     " ...unless they contain a capital letter
 
 " ::::::::: Navigation ::::::::::::::::::::::: {{{
 
+set foldmethod=marker
+
 " soft line-breaks
 nnoremap   <Up> gk
 inoremap   <Up> <C-o>gk
 nnoremap <Down> gj
 inoremap <Down> <C-o>gj
-
-" page up / down
-nnoremap <S-Space> <C-b>
-nnoremap   <Space> <C-f>
-
-" scroll up / down
-nnoremap <C-k> <C-y>
-vnoremap <C-k> <C-y>
-nnoremap <C-j> <C-e>
-vnoremap <C-j> <C-e>
-
-" start / end of line
-nnoremap <C-h> 0
-nnoremap <C-l> $
 
 " }}}
 
@@ -290,20 +294,14 @@ inoremap <C-[> <Esc>`^
 inoremap <S-CR> <C-o>O
 inoremap <C-CR> <C-o>o
 " insert above / below current line
-nnoremap <S-CR> mzO<Esc>j`z
-nnoremap <C-CR> mzo<Esc>k`z
+nnoremap <S-Space> mzO<Esc>j`z
+nnoremap <C-Space> mzo<Esc>k`z
 
 " toggle case
-inoremap <C-U> <Esc>viwg~gi
+inoremap <Leader>` <Esc>viwg~gi
 
 " delete to start of line
 inoremap <C-BS> <C-U>
-
-" select current word
-nnoremap <LocalLeader><Space> viw
-
-" delete line
-nnoremap <LocalLeader>d dd
 
 " surround in quotes
 nnoremap <Leader>' mZviwva'<Esc>`<i'<Esc>`Zl
@@ -335,8 +333,8 @@ vnoremap > >gv
 
 augroup filetype_vim
   autocmd!
-  autocmd FileType vim nnoremap <buffer> <F8> mAI"<Esc>`Al
-  autocmd FileType vim vnoremap <buffer> <F8> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
+  autocmd FileType vim nnoremap <buffer> <C-_> mAI"<Esc>`Al
+  autocmd FileType vim vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
@@ -346,8 +344,8 @@ augroup END
 
 augroup filetype_ruby
   autocmd!
-  autocmd FileType ruby nnoremap <buffer> <F8> mZI#<Esc>`Zl
-  autocmd FileType ruby vnoremap <buffer> <F8> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
+  autocmd FileType ruby nnoremap <buffer> <C-_> mZI#<Esc>`Zl
+  autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
   autocmd FileType ruby :iabbrev <buffer> iff if<CR>end<Esc>kA
 augroup END
 
@@ -369,8 +367,8 @@ augroup END
 
 augroup filetype_python
   autocmd!
-  autocmd FileType python nnoremap <buffer> <F8> mZI#<Esc>`Zl
-  autocmd FileType python vnoremap <buffer> <F8> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
+  autocmd FileType python nnoremap <buffer> <C-_> mZI#<Esc>`Zl
+  autocmd FileType python vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
   autocmd FileType python :iabbrev <buffer> iff if:<left>
 augroup END
 
@@ -418,6 +416,8 @@ onoremap an{ :<C-u>normal! f{va{<CR>
 " }}}
 
 " ::::::::: Wild Settings :::::::::::::::::::: {{{
+
+set wildmenu
 
 " TODO: Investigate the precise meaning of these settings
 " set wildmode=list:longest,list:full

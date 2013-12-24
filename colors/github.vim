@@ -46,7 +46,7 @@ hi Folded		guifg=#808080 guibg=#ECECEC gui=bold
 hi FoldeColumn  guifg=#808080 guibg=#ECECEC gui=bold
 
 hi VertSplit	guibg=#bbbbbb guifg=#bbbbbb gui=none
-hi StatusLine   guibg=#bbbbbb guifg=#404040 gui=underline
+hi StatusLine   guibg=#bbbbbb guifg=#404040 gui=bold
 hi StatusLineNC guibg=#d4d4d4 guifg=#404040 gui=italic
 " }}}
 

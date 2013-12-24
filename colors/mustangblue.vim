@@ -29,7 +29,7 @@ hi Normal guifg=#F9F9FF guibg=#0E101F guisp=#0E101F gui=NONE ctermfg=189 ctermbg
 hi NonText 		guifg=#808080 guibg=#303030 gui=none ctermfg=244 ctermbg=235
 hi LineNr 		guifg=#808080 guibg=#0F0F0F gui=none ctermfg=244 ctermbg=233
 "hi LineNr 		guifg=#808080 guibg=#000000 gui=none ctermfg=244 ctermbg=232
-hi StatusLine 	guifg=#d3d3d5 guibg=#444444 gui=underline ctermfg=253 ctermbg=238 cterm=underline
+hi StatusLine 	guifg=#d3d3d5 guibg=#444444 gui=bold ctermfg=253 ctermbg=238 cterm=bold
 hi StatusLineNC guifg=#939395 guibg=#242424 gui=none ctermfg=246 ctermbg=235
 hi VertSplit 	guifg=#444444 guibg=#242424 gui=none ctermfg=238 ctermbg=235
 hi Folded 		guibg=#384048 guifg=#a0a8b0 gui=none ctermbg=4 ctermfg=248
