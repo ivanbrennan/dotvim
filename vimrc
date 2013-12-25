@@ -3,7 +3,7 @@
 set nocompatible           " be iMproved
 set encoding=utf-8         " default encoding to UTF-8
 
-" ::::::::: Vundle ::::::::::::::::::::::::::: {{{
+" ::::::::: Vundle & Plugins ::::::::::::::::: {{{
 
 filetype off               " required for Vundle!
 set runtimepath+=~/.vim/bundle/vundle/
@@ -35,29 +35,38 @@ set history=500                 " history 500-deep
 
 " }}}
 
+" ::::::::: Options :::::::::::::::::::::::::: {{{
+
+set visualbell
+
+" }}}
+
 " ::::::::: Mappings ::::::::::::::::::::::::: {{{
 
 set timeout timeoutlen=250 ttimeoutlen=100
 
+" spacebar leader
 let mapleader=" "
+let maplocalleader=","
 
-" vimrc
-noremap \sv :source $MYVIMRC<CR>
-noremap \ev :edit $MYVIMRC<CR>
+" source / edit vimrc
+noremap ,sv :source $MYVIMRC<CR>
+noremap ,ev :edit $MYVIMRC<CR>
 
 augroup vimrcgroup  " auto-reload vimrc when it's saved
   autocmd!
   autocmd BufWritePost .vimrc source $MYVIMRC
 augroup END
 
-" easier commands
+" lazy finger
 noremap ; :
+noremap - $
 
-" replace overwritten mappings
+" replace ; and ,
 noremap + ;
 noremap _ ,
 
-" easier marks
+" sensible marks
 noremap ` '
 noremap ' `
 
@@ -110,65 +119,78 @@ noremap <C-CR> :NERDTreeToggle<CR>
 noremap <Leader>wd :pwd<CR>
 noremap <Leader>cd :lcd %:h<CR>
 
-" edit
+" close
+noremap  <Leader>d :bdelete<CR>
+noremap  <Leader>c :bprevious<CR>:bdelete#<CR>
+
+" ··········· edit ··························· {{{
+
 noremap <Leader>eh :edit ~/
 noremap <Leader>ew :edit <C-r>=expand('%:h').'/'<CR>
 noremap <Leader>es :split <C-r>=expand('%:h').'/'<CR>
 noremap <Leader>ev :vsplit <C-r>=expand('%:h').'/'<CR>
 noremap <Leader>et :tabedit <C-r>=expand('%:h').'/'<CR>
 
-" close
-noremap  <Leader>d :bdelete<CR>
-noremap  <Leader>c :bprevious<CR>:bdelete#<CR>
-
-" split {{{
-  noremap <Leader>s :split<CR>
-  noremap <Leader>v :vsplit<CR>
-  noremap <Leader>o :only<CR>
-  " resize
-  noremap <Leader>- <C-W>_
-  noremap <Leader>\ <C-W><bar>
-  noremap <Leader>= <C-W>=
-  "function! SwitchSplit()
-  "endfunc
-  " replace this with SwitchSplit()
-  noremap <Leader><Leader>s <C-W>t<C-W>K
-  noremap <Leader><Leader>v <C-W>t<C-W>H
 " }}}
 
-" navigate {{{
-  " buffers / tabs
-  noremap  <Leader>j :bprevious<CR>
-  noremap  <Leader>k :bnext<CR>
-  noremap  <Leader>h :tabprevious<CR>
-  noremap  <Leader>l :tabnext<CR>
+" ··········· split ·························· {{{
 
-  " splits
-  noremap <C-j> <C-w>j
-  noremap <C-k> <C-w>k
-  noremap <C-h> <C-w>h
-  noremap <C-l> <C-w>l
-  noremap <S-Tab> <C-w>W
-  noremap   <Tab> <C-w><C-w>
+" open / close
+noremap <Leader>s :split<CR>
+noremap <Leader>v :vsplit<CR>
+noremap <Leader>o :only<CR>
+
+" resize
+noremap <Leader>- <C-W>_
+noremap <Leader>\ <C-W><bar>
+noremap <Leader>= <C-W>=
+
+"function! SwitchSplit()
+"endfunc
+
+" replace this with SwitchSplit()
+noremap <Leader><Leader>s <C-W>t<C-W>K
+noremap <Leader><Leader>v <C-W>t<C-W>H
+
+" }}}
+
+" ··········· navigate ······················· {{{
+
+" buffers / tabs
+noremap  <Leader>j :bprevious<CR>
+noremap  <Leader>k :bnext<CR>
+noremap  <Leader>h :tabprevious<CR>
+noremap  <Leader>l :tabnext<CR>
+
+" splits
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-h> <C-w>h
+noremap <C-l> <C-w>l
+
+" cycle splits
+noremap <S-Tab> <C-w>W
+noremap   <Tab> <C-w><C-w>
+
 " }}}
 
 " }}}
 
 " ::::::::: Appearance ::::::::::::::::::::::: {{{
 
+set title         " xterm title
 set number        " line numbers
-set ruler         " line and column number
 set nowrap        " don't wrap lines
 syntax enable     " syntax highlighting, local overrides
-set guifont=Source\ Code\ Pro:h16
+set guifont=Source\ Code\ Pro:h15
 
 if has("gui_running")
   set transparency=5
 endif
 
-nnoremap <Leader>ww :set invwrap wrap?<CR>
+noremap <Leader>ww :set invwrap wrap?<CR>
 
-" ········· Whitespace ······················· {{{
+" ··········· whitespace ····················· {{{
 
 set tabstop=2                   " tab is two spaces
 set softtabstop=2               " softtab is two spaces
@@ -186,7 +208,7 @@ set listchars+=precedes:«       " precedes offscreen
 
 " }}}
 
-" ········· Colors ··························· {{{
+" ··········· colors ························· {{{
 
 colorscheme ivisu
 
@@ -212,10 +234,7 @@ endfunc
 
 " }}}
 
-" ········· Line Numbers ····················· {{{
-
-nnoremap <Leader>n :set number!<CR>
-nnoremap <Leader>r :set relativenumber!<CR>
+" ··········· line numbers ··················· {{{
 
 set cursorline
 
@@ -225,9 +244,12 @@ augroup CLClear
   autocmd! ColorScheme * highlight clear CursorLine
 augroup END
 
+noremap <Leader>n :set number!<CR>
+noremap <Leader>r :set relativenumber!<CR>
+
 " }}}
 
-" ········· Cursor ··························· {{{
+" ··········· cursor ························· {{{
 
 set guicursor=n-v-c:block-blinkon0
 set guicursor+=ve:ver35
@@ -238,7 +260,7 @@ set guicursor+=sm:block-blinkon0
 
 " }}}
 
-" ········· Dividers ························· {{{
+" ··········· dividers ······················· {{{
 
 set fillchars+=vert:\           " clean dividers
 set laststatus=2                " show statusline
@@ -258,22 +280,23 @@ set statusline+=%4.P\           " percent through file
 
 " ::::::::: Searching :::::::::::::::::::::::: {{{
 
-nnoremap \<Space> :set hlsearch!<CR>
-
 set incsearch     " incremental searching
 set ignorecase    " searches are case insensitive...
 set smartcase     " ...unless they contain a capital letter
+
+noremap \<Space> :set hlsearch!<CR>
 
 " }}}
 
 " ::::::::: Navigation ::::::::::::::::::::::: {{{
 
 set foldmethod=marker
+set scrolloff=3
 
 " soft line-breaks
-nnoremap   <Up> gk
+noremap    <Up> gk
+noremap  <Down> gj
 inoremap   <Up> <C-o>gk
-nnoremap <Down> gj
 inoremap <Down> <C-o>gj
 
 " }}}
@@ -294,65 +317,47 @@ inoremap <C-[> <Esc>`^
 inoremap <S-CR> <C-o>O
 inoremap <C-CR> <C-o>o
 " insert above / below current line
-nnoremap <S-Space> mzO<Esc>j`z
-nnoremap <C-Space> mzo<Esc>k`z
+noremap <S-Space> mzO<Esc>j`z
+noremap <C-Space> mzo<Esc>k`z
 
 " toggle case
-inoremap <Leader>` <Esc>viwg~gi
-
-" delete to start of line
-inoremap <C-BS> <C-U>
-
-" surround in quotes
-nnoremap <Leader>' mZviwva'<Esc>`<i'<Esc>`Zl
-vnoremap <Leader>' va'<Esc>`<i'<Esc>`<lv`>l
-nnoremap    <Bar>" mZviwva"<Esc>`<i"<Esc>`Zl
-vnoremap    <Bar>" va"<Esc>`<i"<Esc>`<lv`>l
+inoremap \` <Esc>viwg~gi
 
 " bubble text up / down
 nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
-nnoremap <silent> <M-Down> mZ:move .+1<CR>==`Z
-inoremap          <M-Up> <Esc>:move .-2<CR>==gi
-inoremap          <M-Down> <Esc>:move .+1<CR>==gi
 vnoremap          <M-Up> :move '<-2<CR>gv=gv
+inoremap          <M-Up> <Esc>:move .-2<CR>==gi
+nnoremap <silent> <M-Down> mZ:move .+1<CR>==`Z
 vnoremap          <M-Down> :move '>+1<CR>gv=gv
+inoremap          <M-Down> <Esc>:move .+1<CR>==gi
 
 " bubble text left / right
-vnoremap <M-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
+vnoremap  <M-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
 vnoremap <M-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
-
-" visual indent
-vnoremap < <gv
-vnoremap > >gv
 
 " }}}
 
 " ::::::::: FileType ::::::::::::::::::::::::: {{{
 
-" vim {{{
-
+" ··········· vim ···························· {{{
 augroup filetype_vim
   autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+  " comments
   autocmd FileType vim nnoremap <buffer> <C-_> mAI"<Esc>`Al
   autocmd FileType vim vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
-  autocmd FileType vim setlocal foldmethod=marker
 augroup END
-
 " }}}
-
-" ruby {{{
-
+" ··········· ruby ··························· {{{
 augroup filetype_ruby
   autocmd!
+  autocmd FileType ruby :iabbrev <buffer> iff if<CR>end<Esc>kA
+  " comments
   autocmd FileType ruby nnoremap <buffer> <C-_> mZI#<Esc>`Zl
   autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
-  autocmd FileType ruby :iabbrev <buffer> iff if<CR>end<Esc>kA
 augroup END
-
 " }}}
-
-" erb {{{
-
+" ··········· erb ···························· {{{
 augroup filetype_erb
   autocmd!
   autocmd FileType erb :iabbrev <buffer> erb <% %><Left><Left><Left>
@@ -360,37 +365,28 @@ augroup filetype_erb
   autocmd FileType erb :iabbrev <buffer> erc <%# %><Left><Left><Left>
   autocmd FileType erb :iabbrev <buffer> iff <% if %><% end %><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 augroup END
-
 " }}}
-
-" python {{{
-
+" ··········· python ························· {{{
 augroup filetype_python
   autocmd!
+  autocmd FileType python :iabbrev <buffer> iff if:<left>
+  " comments
   autocmd FileType python nnoremap <buffer> <C-_> mZI#<Esc>`Zl
   autocmd FileType python vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
-  autocmd FileType python :iabbrev <buffer> iff if:<left>
 augroup END
-
 " }}}
-
-" javascript {{{
-
+" ··········· javascript ····················· {{{
 augroup filetype_javascript
   autocmd!
   autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
 augroup END
-
 " }}}
-
-" markdown {{{
-
+" ··········· markdown ······················· {{{
 augroup filetype_markdown
   autocmd!
   autocmd FileType markdown :onoremap <buffer> ih :<C-u>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:nohlsearch\rkvg_"<CR>
   autocmd FileType markdown :onoremap <buffer> ah :<C-u>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:nohlsearch\rVk"<CR>
 augroup END
-
 " }}}
 
 " }}}
