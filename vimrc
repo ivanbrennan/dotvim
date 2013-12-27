@@ -42,6 +42,10 @@ set visualbell
 " use this if 'i' flag slows down ins-completion
 "set complete=.,w,b,u,t
 
+" }}}
+
+" ::::::::: Common Typos ::::::::::::::::::::: {{{
+
 cnoreabbrev verison version
 
 " }}}
@@ -50,13 +54,13 @@ cnoreabbrev verison version
 
 set timeout timeoutlen=250 ttimeoutlen=100
 
-" spacebar leader
+" leader keys
 let mapleader=" "
 let maplocalleader=","
 
 " source / edit vimrc
-noremap \sv :source $MYVIMRC<CR>
-noremap \ev :edit $MYVIMRC<CR>
+noremap <LocalLeader>sv :source $MYVIMRC<CR>
+noremap <LocalLeader>ev :edit $MYVIMRC<CR>
 
 augroup vimrcgroup  " auto-reload vimrc when it's saved
   autocmd!
@@ -85,16 +89,14 @@ noremap ' `
 call togglebg#map("")
 noremap <F2> :ToggleBG<CR>
 
-" <F3> find merge conflicts
-noremap <silent> <F3> <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+" <F3>
 
 " <F4>
+" pastetoggle (see editing)
 
-" <F5> SynStack
-noremap \y :call <SID>SynStack()<CR>
+" <F5>
 
-" <F6> HexHighlight
-noremap   <F6> :call HexHighlight()<CR>
+" <F6>
 
 " <F7>
 
@@ -190,7 +192,11 @@ if has("gui_running")
   set transparency=5
 endif
 
+" toggle wrapping
 noremap <Leader>ww :set invwrap wrap?<CR>
+
+" hex highlight
+noremap <LocalLeader>h :call HexHighlight()<CR>
 
 " ··········· whitespace ····················· {{{
 
@@ -226,6 +232,8 @@ nnoremap  <Leader>6 :colo<Space>muon<CR>
 nnoremap  <Leader>7 :colo<Space>tir_black<CR>
 nnoremap <Leader>77 :colo<Space>ir_black<CR>
 nnoremap  <Leader>8 :colo<Space>xoria256<CR>
+
+noremap <LocalLeader>y :call <SID>SynStack()<CR>
 
 function! <SID>SynStack()
   if !exists("*synstack")
@@ -286,7 +294,11 @@ set incsearch     " incremental searching
 set ignorecase    " searches are case insensitive...
 set smartcase     " ...unless they contain a capital letter
 
-noremap \<Space> :set hlsearch!<CR>
+" toggle search highlighting
+noremap <LocalLeader><Space> :set hlsearch!<CR>
+
+" find merge conflicts
+noremap <silent> <LocalLeader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " }}}
 
@@ -305,7 +317,7 @@ inoremap <Down> <C-O>gj
 
 " ::::::::: Editing :::::::::::::::::::::::::: {{{
 
-" complete whole line
+" whole line completion
 inoremap <C-L> <C-X><C-L>
 
 " autocomplete parens, brackets, braces
@@ -326,11 +338,12 @@ noremap <S-Space> mzO<Esc>j`z
 noremap <C-Space> mzo<Esc>k`z
 
 " toggle case
-inoremap \` <Esc>viwg~gi
+inoremap <LocalLeader>` <Esc>viwg~gi
 
 " paste toggle
-noremap <Bslash>p :set invpaste paste?<CR>
-set pastetoggle="\\p"
+noremap <LocalLeader>t :set invpaste paste?<CR>
+noremap           <F4> :set invpaste paste?<CR>
+set pastetoggle=<F4>
 
 " bubble text up / down
 nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
