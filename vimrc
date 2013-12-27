@@ -39,6 +39,11 @@ set history=500                 " history 500-deep
 
 set visualbell
 
+" use this if 'i' flag slows down ins-completion
+"set complete=.,w,b,u,t
+
+cnoreabbrev verison version
+
 " }}}
 
 " ::::::::: Mappings ::::::::::::::::::::::::: {{{
@@ -50,8 +55,8 @@ let mapleader=" "
 let maplocalleader=","
 
 " source / edit vimrc
-noremap ,sv :source $MYVIMRC<CR>
-noremap ,ev :edit $MYVIMRC<CR>
+noremap \sv :source $MYVIMRC<CR>
+noremap \ev :edit $MYVIMRC<CR>
 
 augroup vimrcgroup  " auto-reload vimrc when it's saved
   autocmd!
@@ -70,6 +75,8 @@ noremap _ ,
 noremap ` '
 noremap ' `
 
+noremap <Leader>xx ddu<C-r>.
+
 " }}}
 
 " ::::::::: Function Keys :::::::::::::::::::: {{{
@@ -78,20 +85,18 @@ noremap ' `
 
 " <F2> togglebg
 call togglebg#map("")
-nnoremap <F2> :ToggleBG<CR>
+noremap <F2> :ToggleBG<CR>
 
 " <F3> find merge conflicts
-nnoremap <silent> <F3> <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+noremap <silent> <F3> <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" <F4> pastetoggle
-nnoremap <F4> :set invpaste paste?<CR>
-set pastetoggle=<F4>
+" <F4>
 
 " <F5> SynStack
-nnoremap <F5> :call <SID>SynStack()<CR>
+noremap \y :call <SID>SynStack()<CR>
 
 " <F6> HexHighlight
-nnoremap   <F6> :call HexHighlight()<CR>
+noremap   <F6> :call HexHighlight()<CR>
 
 " <F7>
 
@@ -168,20 +173,18 @@ noremap <C-k> <C-w>k
 noremap <C-h> <C-w>h
 noremap <C-l> <C-w>l
 
-" cycle splits
-noremap <S-Tab> <C-w>W
-noremap   <Tab> <C-w><C-w>
-
 " }}}
 
 " }}}
 
 " ::::::::: Appearance ::::::::::::::::::::::: {{{
 
-set title         " xterm title
-set number        " line numbers
-set nowrap        " don't wrap lines
-syntax enable     " syntax highlighting, local overrides
+set title           " xterm title
+set number          " line numbers
+set nowrap          " don't wrap lines
+set sidescroll=1    " smooth sidescroll
+set showbreak=\ \   " indent wrapped lines
+syntax enable       " syntax highlighting, local overrides
 set guifont=Source\ Code\ Pro:h15
 
 if has("gui_running")
@@ -323,6 +326,10 @@ noremap <C-Space> mzo<Esc>k`z
 " toggle case
 inoremap \` <Esc>viwg~gi
 
+" paste toggle
+noremap <Bslash>p :set invpaste paste?<CR>
+set pastetoggle="\\p"
+
 " bubble text up / down
 nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
 vnoremap          <M-Up> :move '<-2<CR>gv=gv
@@ -351,7 +358,7 @@ augroup END
 " ··········· ruby ··························· {{{
 augroup filetype_ruby
   autocmd!
-  autocmd FileType ruby :iabbrev <buffer> iff if<CR>end<Esc>kA
+  autocmd FileType ruby :inoreabbrev <buffer> iff if<CR>end<Esc>kA
   " comments
   autocmd FileType ruby nnoremap <buffer> <C-_> mZI#<Esc>`Zl
   autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
@@ -360,16 +367,16 @@ augroup END
 " ··········· erb ···························· {{{
 augroup filetype_erb
   autocmd!
-  autocmd FileType erb :iabbrev <buffer> erb <% %><Left><Left><Left>
-  autocmd FileType erb :iabbrev <buffer> erp <%= %><Left><Left><Left>
-  autocmd FileType erb :iabbrev <buffer> erc <%# %><Left><Left><Left>
-  autocmd FileType erb :iabbrev <buffer> iff <% if %><% end %><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+  autocmd FileType erb :inoreabbrev <buffer> erb <% %><Left><Left><Left>
+  autocmd FileType erb :inoreabbrev <buffer> erp <%= %><Left><Left><Left>
+  autocmd FileType erb :inoreabbrev <buffer> erc <%# %><Left><Left><Left>
+  autocmd FileType erb :inoreabbrev <buffer> iff <% if %><% end %><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 augroup END
 " }}}
 " ··········· python ························· {{{
 augroup filetype_python
   autocmd!
-  autocmd FileType python :iabbrev <buffer> iff if:<left>
+  autocmd FileType python :inoreabbrev <buffer> iff if:<left>
   " comments
   autocmd FileType python nnoremap <buffer> <C-_> mZI#<Esc>`Zl
   autocmd FileType python vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
@@ -378,7 +385,10 @@ augroup END
 " ··········· javascript ····················· {{{
 augroup filetype_javascript
   autocmd!
-  autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
+  " if statement
+  autocmd FileType javascript :inoreabbrev <buffer> iff if ()<left>
+  " add semicolon
+  autocmd FileType javascript noremap <buffer> <Leader>; mZA;<Esc>`Z
 augroup END
 " }}}
 " ··········· markdown ······················· {{{
