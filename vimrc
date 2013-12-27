@@ -44,12 +44,6 @@ set visualbell
 
 " }}}
 
-" ::::::::: Common Typos ::::::::::::::::::::: {{{
-
-cnoreabbrev verison version
-
-" }}}
-
 " ::::::::: Mappings ::::::::::::::::::::::::: {{{
 
 set timeout timeoutlen=250 ttimeoutlen=100
@@ -84,31 +78,7 @@ noremap ' `
 " ::::::::: Function Keys :::::::::::::::::::: {{{
 
 " <F1> Help
-
-" <F2> togglebg
-call togglebg#map("")
-noremap <F2> :ToggleBG<CR>
-
-" <F3>
-
-" <F4>
-" pastetoggle (see editing)
-
-" <F5>
-
-" <F6>
-
-" <F7>
-
-" <F8>
-
-" <F9>
-
-" <F10>
-
-" <F11>
-
-" <F12>
+" <F4> pastetoggle (see editing)
 
 " }}}
 
@@ -126,8 +96,8 @@ noremap <Leader>wd :pwd<CR>
 noremap <Leader>cd :lcd %:h<CR>
 
 " close
-noremap  <Leader>d :bdelete<CR>
-noremap  <Leader>c :bprevious<CR>:bdelete#<CR>
+noremap  <Leader>bd :bdelete<CR>
+noremap  <Leader>bc :bprevious<CR>:bdelete#<CR>
 
 " ··········· edit ··························· {{{
 
@@ -217,6 +187,10 @@ set listchars+=precedes:«       " precedes offscreen
 " }}}
 
 " ··········· colors ························· {{{
+
+" toggle background
+call togglebg#map("")
+noremap <LocalLeader>b :ToggleBG<CR>
 
 colorscheme ivisu
 
@@ -310,8 +284,6 @@ set scrolloff=3
 " soft line-breaks
 noremap    <Up> gk
 noremap  <Down> gj
-inoremap   <Up> <C-O>gk
-inoremap <Down> <C-O>gj
 
 " }}}
 
@@ -413,6 +385,12 @@ augroup filetype_markdown
   autocmd FileType markdown :onoremap <buffer> ah :<C-U>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:nohlsearch\rVk"<CR>
 augroup END
 " }}}
+
+" }}}
+
+" ::::::::: Common Typos ::::::::::::::::::::: {{{
+
+cnoreabbrev verison version
 
 " }}}
 
