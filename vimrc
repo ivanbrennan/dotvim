@@ -348,6 +348,11 @@ augroup END
 " ··········· ruby ··························· {{{
 augroup filetype_ruby
   autocmd!
+  autocmd FileType ruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby let g:rubycomplete_buffer_loading=1
+  autocmd FileType ruby let g:rubycomplete_classes_in_global=1
+  autocmd FileType ruby let g:rubycomplete_rails = 1
+  " if snippet
   autocmd FileType ruby :inoreabbrev <buffer> iff if<CR>end<Esc>kA
   " comments
   autocmd FileType ruby nnoremap <buffer> <C-_> mZI#<Esc>`Zl
@@ -355,12 +360,16 @@ augroup filetype_ruby
 augroup END
 " }}}
 " ··········· erb ···························· {{{
-augroup filetype_erb
+augroup filetype_eruby
   autocmd!
-  autocmd FileType erb :inoreabbrev <buffer> erb <% %><Left><Left><Left>
-  autocmd FileType erb :inoreabbrev <buffer> erp <%= %><Left><Left><Left>
-  autocmd FileType erb :inoreabbrev <buffer> erc <%# %><Left><Left><Left>
-  autocmd FileType erb :inoreabbrev <buffer> iff <% if %><% end %><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+  autocmd FileType eruby set omnifunc=rubycomplete#Complete
+  autocmd FileType eruby let g:rubycomplete_buffer_loading=1
+  autocmd FileType eruby let g:rubycomplete_classes_in_global=1
+  autocmd FileType eruby let g:rubycomplete_rails = 1
+  autocmd FileType eruby :inoreabbrev <buffer> erb <% %><Left><Left><Left>
+  autocmd FileType eruby :inoreabbrev <buffer> erp <%= %><Left><Left><Left>
+  autocmd FileType eruby :inoreabbrev <buffer> erc <%# %><Left><Left><Left>
+  autocmd FileType eruby :inoreabbrev <buffer> iff <% if %><% end %><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 augroup END
 " }}}
 " ··········· python ························· {{{
