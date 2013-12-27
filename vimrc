@@ -284,6 +284,9 @@ set scrolloff=3
 " soft line-breaks
 noremap    <Up> gk
 noremap  <Down> gj
+" behave normally if popup-menu visible
+inoremap   <Up> <C-R>=pumvisible() ? "\<lt>Up>" : "\<lt>C-O>gk"<CR>
+inoremap <Down> <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"<CR>
 
 " }}}
 
