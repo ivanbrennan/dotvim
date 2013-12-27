@@ -75,8 +75,6 @@ noremap _ ,
 noremap ` '
 noremap ' `
 
-noremap <Leader>xx ddu<C-r>.
-
 " }}}
 
 " ::::::::: Function Keys :::::::::::::::::::: {{{
@@ -119,6 +117,7 @@ set hidden        " allow hidden buffers
 " navigators
 noremap <S-CR> :buffers<CR>:buffer<Space>
 noremap <C-CR> :NERDTreeToggle<CR>
+noremap <Leader><Tab> :NERDTreeToggle<CR>
 
 " current directory
 noremap <Leader>wd :pwd<CR>
@@ -131,10 +130,10 @@ noremap  <Leader>c :bprevious<CR>:bdelete#<CR>
 " ··········· edit ··························· {{{
 
 noremap <Leader>eh :edit ~/
-noremap <Leader>ew :edit <C-r>=expand('%:h').'/'<CR>
-noremap <Leader>es :split <C-r>=expand('%:h').'/'<CR>
-noremap <Leader>ev :vsplit <C-r>=expand('%:h').'/'<CR>
-noremap <Leader>et :tabedit <C-r>=expand('%:h').'/'<CR>
+noremap <Leader>ew :edit <C-R>=expand('%:h').'/'<CR>
+noremap <Leader>es :split <C-R>=expand('%:h').'/'<CR>
+noremap <Leader>ev :vsplit <C-R>=expand('%:h').'/'<CR>
+noremap <Leader>et :tabedit <C-R>=expand('%:h').'/'<CR>
 
 " }}}
 
@@ -147,7 +146,7 @@ noremap <Leader>o :only<CR>
 
 " resize
 noremap <Leader>- <C-W>_
-noremap <Leader>\ <C-W><bar>
+noremap <Leader>\ <C-W><Bar>
 noremap <Leader>= <C-W>=
 
 "function! SwitchSplit()
@@ -168,10 +167,10 @@ noremap  <Leader>h :tabprevious<CR>
 noremap  <Leader>l :tabnext<CR>
 
 " splits
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-h> <C-w>h
-noremap <C-l> <C-w>l
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
 
 " }}}
 
@@ -299,12 +298,15 @@ set scrolloff=3
 " soft line-breaks
 noremap    <Up> gk
 noremap  <Down> gj
-inoremap   <Up> <C-o>gk
-inoremap <Down> <C-o>gj
+inoremap   <Up> <C-O>gk
+inoremap <Down> <C-O>gj
 
 " }}}
 
 " ::::::::: Editing :::::::::::::::::::::::::: {{{
+
+" complete whole line
+inoremap <C-L> <C-X><C-L>
 
 " autocomplete parens, brackets, braces
 inoremap (<CR> (<CR>)<Esc>O<Tab>
@@ -317,8 +319,8 @@ inoremap    jk <Esc>`^
 inoremap <C-[> <Esc>`^
 
 " open above / below current line
-inoremap <S-CR> <C-o>O
-inoremap <C-CR> <C-o>o
+inoremap <S-CR> <C-O>O
+inoremap <C-CR> <C-O>o
 " insert above / below current line
 noremap <S-Space> mzO<Esc>j`z
 noremap <C-Space> mzo<Esc>k`z
@@ -352,7 +354,7 @@ augroup filetype_vim
   autocmd FileType vim setlocal foldmethod=marker
   " comments
   autocmd FileType vim nnoremap <buffer> <C-_> mAI"<Esc>`Al
-  autocmd FileType vim vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
+  autocmd FileType vim vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
 " }}}
 " ··········· ruby ··························· {{{
@@ -361,7 +363,7 @@ augroup filetype_ruby
   autocmd FileType ruby :inoreabbrev <buffer> iff if<CR>end<Esc>kA
   " comments
   autocmd FileType ruby nnoremap <buffer> <C-_> mZI#<Esc>`Zl
-  autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
+  autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
 " }}}
 " ··········· erb ···························· {{{
@@ -379,14 +381,14 @@ augroup filetype_python
   autocmd FileType python :inoreabbrev <buffer> iff if:<left>
   " comments
   autocmd FileType python nnoremap <buffer> <C-_> mZI#<Esc>`Zl
-  autocmd FileType python vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-v>'>I"<Esc>g`Alvg`Zl
+  autocmd FileType python vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
 " }}}
 " ··········· javascript ····················· {{{
 augroup filetype_javascript
   autocmd!
   " if statement
-  autocmd FileType javascript :inoreabbrev <buffer> iff if ()<left>
+  autocmd FileType javascript :inoreabbrev <buffer> iff if ()<Left>
   " add semicolon
   autocmd FileType javascript noremap <buffer> <Leader>; mZA;<Esc>`Z
 augroup END
@@ -394,8 +396,8 @@ augroup END
 " ··········· markdown ······················· {{{
 augroup filetype_markdown
   autocmd!
-  autocmd FileType markdown :onoremap <buffer> ih :<C-u>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:nohlsearch\rkvg_"<CR>
-  autocmd FileType markdown :onoremap <buffer> ah :<C-u>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:nohlsearch\rVk"<CR>
+  autocmd FileType markdown :onoremap <buffer> ih :<C-U>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:nohlsearch\rkvg_"<CR>
+  autocmd FileType markdown :onoremap <buffer> ah :<C-U>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:nohlsearch\rVk"<CR>
 augroup END
 " }}}
 
@@ -404,20 +406,20 @@ augroup END
 " ::::::::: Operator Pending ::::::::::::::::: {{{
 
 " in last / next braces
-onoremap il( :<C-u>normal! F)vi(<CR>
-onoremap in( :<C-u>normal! f(vi(<CR>
-onoremap il[ :<C-u>normal! F]vi[<CR>
-onoremap in[ :<C-u>normal! f[vi[<CR>
-onoremap il{ :<C-u>normal! F}vi{<CR>
-onoremap in{ :<C-u>normal! f{vi{<CR>
+onoremap il( :<C-U>normal! F)vi(<CR>
+onoremap in( :<C-U>normal! f(vi(<CR>
+onoremap il[ :<C-U>normal! F]vi[<CR>
+onoremap in[ :<C-U>normal! f[vi[<CR>
+onoremap il{ :<C-U>normal! F}vi{<CR>
+onoremap in{ :<C-U>normal! f{vi{<CR>
 
 " around last / next braces
-onoremap al( :<C-u>normal! F)va(<CR>
-onoremap an( :<C-u>normal! f(va(<CR>
-onoremap al[ :<C-u>normal! F]va[<CR>
-onoremap an[ :<C-u>normal! f[va[<CR>
-onoremap al{ :<C-u>normal! F}va{<CR>
-onoremap an{ :<C-u>normal! f{va{<CR>
+onoremap al( :<C-U>normal! F)va(<CR>
+onoremap an( :<C-U>normal! f(va(<CR>
+onoremap al[ :<C-U>normal! F]va[<CR>
+onoremap an[ :<C-U>normal! f[va[<CR>
+onoremap al{ :<C-U>normal! F}va{<CR>
+onoremap an{ :<C-U>normal! f{va{<CR>
 
 " }}}
 
