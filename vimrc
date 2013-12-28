@@ -37,6 +37,10 @@ set history=500                 " history 500-deep
 
 " ::::::::: Options :::::::::::::::::::::::::: {{{
 
+" disable intro message
+set shortmess+=I
+
+" turn off error bell
 set visualbell
 
 " use this if 'i' flag slows down ins-completion
@@ -93,7 +97,7 @@ noremap <Leader><Tab> :NERDTreeToggle<CR>
 
 " current directory
 noremap <Leader>wd :pwd<CR>
-noremap <Leader>cd :lcd %:h<CR>
+noremap <silent> <Leader>cd :lcd %:h<CR>
 
 " close
 noremap  <Leader>bd :bdelete<CR>
@@ -349,6 +353,8 @@ augroup END
 augroup filetype_ruby
   autocmd!
   autocmd FileType ruby set omnifunc=rubycomplete#Complete
+  " complete buffer loading can cause code execution
+  " turn this off if it's a concern
   autocmd FileType ruby let g:rubycomplete_buffer_loading=1
   autocmd FileType ruby let g:rubycomplete_classes_in_global=1
   autocmd FileType ruby let g:rubycomplete_rails = 1
@@ -359,10 +365,12 @@ augroup filetype_ruby
   autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
 " }}}
-" ··········· erb ···························· {{{
+" ··········· eruby ·························· {{{
 augroup filetype_eruby
   autocmd!
   autocmd FileType eruby set omnifunc=rubycomplete#Complete
+  " complete buffer loading can cause code execution
+  " turn this off if it's a concern
   autocmd FileType eruby let g:rubycomplete_buffer_loading=1
   autocmd FileType eruby let g:rubycomplete_classes_in_global=1
   autocmd FileType eruby let g:rubycomplete_rails = 1
