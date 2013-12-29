@@ -40,16 +40,20 @@ set history=500                 " history 500-deep
 " disable intro message
 set shortmess+=I
 
+" show commands (disable if this slows things down)
+set showcmd
+
 " turn off error bell
 set visualbell
 
 " don't auto-comment with o or O
 set formatoptions-=o
+
 " let J handle comments intelligently
 set formatoptions+=j
 
 " use this if 'i' flag slows down ins-completion
-"set complete=.,w,b,u,t
+"set complete-=i
 
 " }}}
 
@@ -57,15 +61,18 @@ set formatoptions+=j
 
 set timeout timeoutlen=250 ttimeoutlen=100
 
+" virtual leader
+map <Space> <Leader>
+
 " leader keys
-let mapleader=" "
+let mapleader="\\"
 let maplocalleader=","
 
 " source / edit vimrc
 noremap <LocalLeader>sv :source $MYVIMRC<CR>
 noremap <LocalLeader>ev :edit $MYVIMRC<CR>
 
-augroup vimrcgroup  " auto-reload vimrc when it's saved
+augroup vimrcgroup    " auto-reload vimrc when it's saved
   autocmd!
   autocmd BufWritePost .vimrc source $MYVIMRC
 augroup END
@@ -105,8 +112,8 @@ noremap <Leader>wd :pwd<CR>
 noremap <silent> <Leader>cd :lcd %:h<CR>
 
 " close
-noremap  <Leader>bd :bdelete<CR>
-noremap  <Leader>bc :bprevious<CR>:bdelete#<CR>
+noremap <Leader>bd :bdelete<CR>
+noremap <Leader>bc :bprevious<CR>:bdelete#<CR>
 
 " ··········· edit ··························· {{{
 
@@ -142,10 +149,10 @@ noremap <Leader><Leader>v <C-W>t<C-W>H
 " ··········· navigate ······················· {{{
 
 " buffers / tabs
-noremap  <Leader>j :bprevious<CR>
-noremap  <Leader>k :bnext<CR>
-noremap  <Leader>h :tabprevious<CR>
-noremap  <Leader>l :tabnext<CR>
+noremap <Leader>j :bprevious<CR>
+noremap <Leader>k :bnext<CR>
+noremap <Leader>h :tabprevious<CR>
+noremap <Leader>l :tabnext<CR>
 
 " splits
 noremap <C-J> <C-W>j
