@@ -103,9 +103,11 @@ noremap ' `
 set hidden        " allow hidden buffers
 
 " navigators
-noremap <S-CR> :buffers<CR>:buffer<Space>
-noremap <C-CR> :NERDTreeToggle<CR>
-noremap <Leader><Tab> :NERDTreeToggle<CR>
+noremap          <S-CR> :buffers<CR>:b
+noremap          <C-CR> :NERDTreeToggle<CR>
+noremap   <Leader><Tab> :NERDTreeToggle<CR>
+noremap        <S-C-CR> :NERDTreeClose<CR>
+noremap <Leader><S-Tab> :NERDTreeClose<CR>
 
 " current directory
 noremap <Leader>wd :pwd<CR>
@@ -171,6 +173,7 @@ set number          " line numbers
 set nowrap          " don't wrap lines
 set sidescroll=1    " smooth sidescroll
 set showbreak=\ \   " indent wrapped lines
+set linebreak       " break at word boundaries
 syntax enable       " syntax highlighting, local overrides
 set guifont=Source\ Code\ Pro:h15
 
@@ -179,7 +182,7 @@ if has("gui_running")
 endif
 
 " toggle wrapping
-noremap <Leader>ww :set invwrap wrap?<CR>
+noremap <Leader>ww :set wrap! list! wrap?<CR>
 
 " hex highlight
 noremap <LocalLeader>h :call HexHighlight()<CR>
@@ -308,6 +311,9 @@ inoremap <Down> <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"<CR>
 
 " ::::::::: Editing :::::::::::::::::::::::::: {{{
 
+" format entire file
+noremap <LocalLeader>fef :normal! gg=G``<CR>
+
 " whole line completion
 inoremap <C-L> <C-X><C-L>
 
@@ -332,8 +338,8 @@ noremap <C-Space> mzo<Esc>k`z
 inoremap <LocalLeader>` <Esc>viwg~gi
 
 " paste toggle
-noremap <LocalLeader>t :set invpaste paste?<CR>
-noremap           <F4> :set invpaste paste?<CR>
+noremap <LocalLeader>t :set paste! paste?<CR>
+noremap           <F4> :set paste! paste?<CR>
 set pastetoggle=<F4>
 
 " bubble text up / down
@@ -423,6 +429,10 @@ augroup END
 " ::::::::: Common Typos ::::::::::::::::::::: {{{
 
 cnoreabbrev verison version
+inoreabbrev funiction function
+inoreabbrev funcition function
+inoreabbrev funciotn function
+inoreabbrev funciton function
 
 " }}}
 
