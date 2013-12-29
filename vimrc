@@ -43,6 +43,11 @@ set shortmess+=I
 " turn off error bell
 set visualbell
 
+" don't auto-comment with o or O
+set formatoptions-=o
+" let J handle comments intelligently
+set formatoptions+=j
+
 " use this if 'i' flag slows down ins-completion
 "set complete=.,w,b,u,t
 
