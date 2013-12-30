@@ -1,4 +1,4 @@
-" ::::::::: Vimrc ::::::::::::::::::::::::::::::::::::::::
+" ::::::::: vimrc ::::::::::::::::::::::::::::::::::::::::
 
 set nocompatible           " be iMproved
 set encoding=utf-8         " default encoding to UTF-8
@@ -342,17 +342,20 @@ noremap <LocalLeader>t :set paste! paste?<CR>
 noremap           <F4> :set paste! paste?<CR>
 set pastetoggle=<F4>
 
-" bubble text up / down
-nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
-vnoremap          <M-Up> :move '<-2<CR>gv=gv
-inoremap          <M-Up> <Esc>:move .-2<CR>==gi
-nnoremap <silent> <M-Down> mZ:move .+1<CR>==`Z
-vnoremap          <M-Down> :move '>+1<CR>gv=gv
-inoremap          <M-Down> <Esc>:move .+1<CR>==gi
-
-" bubble text left / right
-vnoremap  <M-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
-vnoremap <M-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
+" force these mappings after gvimrc has run
+augroup gui_group
+  autocmd!
+  " bubble text up / down
+  autocmd GUIEnter * nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
+  autocmd GUIEnter * vnoremap          <M-Up> :move '<-2<CR>gv=gv
+  autocmd GUIEnter * inoremap          <M-Up> <Esc>:move .-2<CR>==gi
+  autocmd GUIEnter * nnoremap <silent> <M-Down> mZ:move .+1<CR>==`Z
+  autocmd GUIEnter * vnoremap          <M-Down> :move '>+1<CR>gv=gv
+  autocmd GUIEnter * inoremap          <M-Down> <Esc>:move .+1<CR>==gi
+  " bubble text left / right
+  autocmd GUIEnter * vnoremap  <M-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
+  autocmd GUIEnter * vnoremap <M-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
+augroup END
 
 " }}}
 
