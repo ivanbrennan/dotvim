@@ -342,6 +342,19 @@ noremap <LocalLeader>t :set paste! paste?<CR>
 noremap           <F4> :set paste! paste?<CR>
 set pastetoggle=<F4>
 
+" bubble text up / down
+nnoremap <silent> <Leader><Up> mZ:move .-2<CR>==`Z
+vnoremap          <Leader><Up> :move '<-2<CR>gv=gv
+nnoremap <silent> <Leader><Down> mZ:move .+1<CR>==`Z
+vnoremap          <Leader><Down> :move '>+1<CR>gv=gv
+" bubble text left / right
+vnoremap  <Leader><Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
+vnoremap <Leader><Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
+
+" }}}
+
+" ::::::::: Gui Settings ::::::::::::::::::::: {{{
+
 " force these mappings after gvimrc has run
 augroup gui_group
   autocmd!
