@@ -293,6 +293,9 @@ noremap <LocalLeader><Space> :set hlsearch!<CR>
 " find merge conflicts
 noremap <silent> <LocalLeader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
+" grep
+:nnoremap <Leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
+
 " }}}
 
 " ::::::::: Navigation ::::::::::::::::::::::: {{{
