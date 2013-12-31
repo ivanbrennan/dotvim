@@ -82,6 +82,7 @@ augroup vimrcgroup    " auto-reload vimrc when it's saved
 augroup END
 
 " lazy finger
+noremap <Leader><Space> :
 noremap ; :
 noremap - $
 
@@ -133,15 +134,15 @@ noremap <Leader>o :only<CR>
 
 " resize
 noremap <Leader>- <C-W>_
-noremap <Leader>\ <C-W><Bar>
+"noremap <Leader>\ <C-W><Bar>
 noremap <Leader>= <C-W>=
 
 "function! SwitchSplit()
 "endfunc
 
 " replace this with SwitchSplit()
-noremap <Leader><Leader>s <C-W>t<C-W>K
-noremap <Leader><Leader>v <C-W>t<C-W>H
+"noremap <Leader><Leader>s <C-W>t<C-W>K
+"noremap <Leader><Leader>v <C-W>t<C-W>H
 
 " }}}
 
