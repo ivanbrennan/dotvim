@@ -441,11 +441,11 @@ augroup END
 
 " ::::::::: Common Typos ::::::::::::::::::::: {{{
 
-cnoreabbrev verison version
-inoreabbrev funiction function
-inoreabbrev funcition function
-inoreabbrev funciotn function
-inoreabbrev funciton function
+noreabbrev verison version
+noreabbrev funiction function
+noreabbrev funcition function
+noreabbrev funciotn function
+noreabbrev funciton function
 
 " }}}
 
