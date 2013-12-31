@@ -16,6 +16,7 @@ Bundle 'tsaleh/vim-matchit'
 Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ivanbrennan/grep-operator'
+Bundle 'ivanbrennan/quickfix-toggle'
 
 " github repos: colors
 Bundle 'vim-scripts/hexHighlight.vim'
@@ -91,13 +92,6 @@ noremap _ ,
 " sensible marks
 noremap ` '
 noremap ' `
-
-" }}}
-
-" ::::::::: Function Keys :::::::::::::::::::: {{{
-
-" <F1> Help
-" <F4> pastetoggle (see editing)
 
 " }}}
 
@@ -184,6 +178,15 @@ if has("gui_running")
   set guifont=Source\ Code\ Pro:h15
 endif
 
+noremap <LocalLeader>y :call SynStack()<CR>
+function! SynStack() " {{{
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+" }}}
+
 " toggle wrapping
 noremap <Leader>ww :set wrap! list! wrap?<CR>
 
@@ -229,15 +232,6 @@ nnoremap  <Leader>7 :colo<Space>tir_black<CR>
 nnoremap <Leader>77 :colo<Space>ir_black<CR>
 nnoremap  <Leader>8 :colo<Space>xoria256<CR>
 
-noremap <LocalLeader>y :call <SID>SynStack()<CR>
-
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
 " }}}
 
 " ··········· line numbers ··················· {{{
@@ -250,8 +244,8 @@ augroup CLClear
   autocmd! ColorScheme * highlight clear CursorLine
 augroup END
 
-noremap <Leader>n :set number!<CR>
-noremap <Leader>r :set relativenumber!<CR>
+noremap <Leader>n :set number! number?<CR>
+noremap <Leader>r :set relativenumber! relativenumber?<CR>
 
 " }}}
 
@@ -284,20 +278,21 @@ set statusline+=%4.P\           " percent through file
 
 " }}}
 
-" ::::::::: Searching :::::::::::::::::::::::: {{{
+" ::::::::: Gui Settings ::::::::::::::::::::: {{{
 
-set incsearch     " incremental searching
-set ignorecase    " searches are case insensitive...
-set smartcase     " ...unless they contain a capital letter
-
-" toggle search highlighting
-noremap <LocalLeader><Space> :set hlsearch!<CR>
-
-" find merge conflicts
-noremap <silent> <LocalLeader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
-
-" grep
-":nnoremap <Leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
+" force these mappings after gvimrc has run
+augroup gui_group
+  autocmd!
+  autocmd GUIEnter * nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
+  autocmd GUIEnter * vnoremap          <M-Up> :move '<-2<CR>gv=gv
+  autocmd GUIEnter * inoremap          <M-Up> <Esc>:move .-2<CR>==gi
+  autocmd GUIEnter * nnoremap <silent> <M-Down> mZ:move .+1<CR>==`Z
+  autocmd GUIEnter * vnoremap          <M-Down> :move '>+1<CR>gv=gv
+  autocmd GUIEnter * inoremap          <M-Down> <Esc>:move .+1<CR>==gi
+  " bubble text left / right
+  autocmd GUIEnter * vnoremap  <M-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
+  autocmd GUIEnter * vnoremap <M-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
+augroup END
 
 " }}}
 
@@ -359,21 +354,17 @@ vnoremap <Leader><Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 
 " }}}
 
-" ::::::::: Gui Settings ::::::::::::::::::::: {{{
+" ::::::::: Searching :::::::::::::::::::::::: {{{
 
-" force these mappings after gvimrc has run
-augroup gui_group
-  autocmd!
-  autocmd GUIEnter * nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
-  autocmd GUIEnter * vnoremap          <M-Up> :move '<-2<CR>gv=gv
-  autocmd GUIEnter * inoremap          <M-Up> <Esc>:move .-2<CR>==gi
-  autocmd GUIEnter * nnoremap <silent> <M-Down> mZ:move .+1<CR>==`Z
-  autocmd GUIEnter * vnoremap          <M-Down> :move '>+1<CR>gv=gv
-  autocmd GUIEnter * inoremap          <M-Down> <Esc>:move .+1<CR>==gi
-  " bubble text left / right
-  autocmd GUIEnter * vnoremap  <M-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
-  autocmd GUIEnter * vnoremap <M-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
-augroup END
+set incsearch     " incremental searching
+set ignorecase    " searches are case insensitive...
+set smartcase     " ...unless they contain a capital letter
+
+" toggle search highlighting
+noremap <LocalLeader><Space> :set hlsearch! hlsearch?<CR>
+
+" find merge conflicts
+noremap <silent> <LocalLeader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " }}}
 
@@ -474,6 +465,13 @@ onoremap al[ :<C-U>normal! F]va[<CR>
 onoremap an[ :<C-U>normal! f[va[<CR>
 onoremap al{ :<C-U>normal! F}va{<CR>
 onoremap an{ :<C-U>normal! f{va{<CR>
+
+" }}}
+
+" ::::::::: Function Keys :::::::::::::::::::: {{{
+
+" <F1> Help
+" <F4> pastetoggle (see editing)
 
 " }}}
 
