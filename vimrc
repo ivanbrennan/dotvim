@@ -266,7 +266,7 @@ set guicursor+=sm:block-blinkon0
 
 " }}}
 
-" ··········· dividers ······················· {{{
+" ··········· status line ····················· {{{
 
 set fillchars+=vert:\           " clean dividers
 set laststatus=2                " show statusline
@@ -277,7 +277,7 @@ set statusline+=\ %f\           " path
 set statusline+=%y              " filetype
 set statusline+=%m              " modified
 set statusline+=%=\             " left/right separator
-set statusline+=\ %4l:%-3v      " row:virtual-column
+set statusline+=(%l/%L):%-3v    " row:virtual-column
 set statusline+=%4.P\           " percent through file
 
 " }}}
