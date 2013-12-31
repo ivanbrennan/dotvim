@@ -9,12 +9,15 @@ filetype off               " required for Vundle!
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" github repos: general
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
+Bundle 'ivanbrennan/grep-operator'
 
+" github repos: colors
 Bundle 'vim-scripts/hexHighlight.vim'
 Bundle 'guns/xterm-color-table.vim'
 Bundle 'shawncplus/Vim-toCterm'
@@ -43,7 +46,7 @@ set shortmess+=I
 " show commands (disable if this slows things down)
 set showcmd
 
-" turn off error bell
+" don't beep
 set visualbell
 
 " don't auto-comment with o or O
@@ -175,10 +178,10 @@ set sidescroll=1    " smooth sidescroll
 set showbreak=\ \   " indent wrapped lines
 set linebreak       " break at word boundaries
 syntax enable       " syntax highlighting, local overrides
-set guifont=Source\ Code\ Pro:h15
 
 if has("gui_running")
   set transparency=5
+  set guifont=Source\ Code\ Pro:h15
 endif
 
 " toggle wrapping
@@ -294,7 +297,7 @@ noremap <LocalLeader><Space> :set hlsearch!<CR>
 noremap <silent> <LocalLeader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " grep
-:nnoremap <Leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
+":nnoremap <Leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
 
 " }}}
 
@@ -361,7 +364,6 @@ vnoremap <Leader><Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 " force these mappings after gvimrc has run
 augroup gui_group
   autocmd!
-  " bubble text up / down
   autocmd GUIEnter * nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
   autocmd GUIEnter * vnoremap          <M-Up> :move '<-2<CR>gv=gv
   autocmd GUIEnter * inoremap          <M-Up> <Esc>:move .-2<CR>==gi
