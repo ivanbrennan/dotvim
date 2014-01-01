@@ -28,6 +28,19 @@ Bundle 'gregsexton/Muon'
 
 filetype plugin indent on       " required!
 
+" ··········· plugin options ················· {{{2
+
+" NERDTree {{{3
+let NERDTreeChDirMode=2             " change CWD whenever root is changed
+let NERDTreeMinimalUI=1             " minimal UI
+" NERDTree cursorline
+augroup NerdCursor
+  autocmd!
+  autocmd BufEnter NERD_tree_* hi CursorLine gui=underline
+  autocmd BufLeave NERD_tree_* highlight clear CursorLine
+  autocmd BufAdd * highlight clear CursorLine
+augroup END
+
 " ::::::::: Backup and Swap Files :::::::::::: {{{1
 
 set backup                      " backup files...
@@ -202,31 +215,30 @@ noremap <LocalLeader>b :ToggleBG<CR>
 
 colorscheme ivisu
 
-nnoremap  <Leader>1 :colo<Space>ivisu<CR>
-nnoremap <Leader>11 :colo<Space>hemisu<CR>
-nnoremap  <Leader>2 :colo<Space>smyck<CR>
-nnoremap <Leader>22 :colo<Space>smyckblue<CR>
-nnoremap  <Leader>3 :colo<Space>mustang<CR>
-nnoremap <Leader>33 :colo<Space>mustangblue<CR>
-nnoremap  <Leader>4 :colo<Space>github<CR>
-nnoremap  <Leader>5 :colo<Space>ivanized<CR>
-nnoremap  <Leader>6 :colo<Space>muon<CR>
-nnoremap  <Leader>7 :colo<Space>tir_black<CR>
-nnoremap <Leader>77 :colo<Space>ir_black<CR>
-nnoremap  <Leader>8 :colo<Space>xoria256<CR>
+nnoremap  <Leader>1 :colo<Space>ivisu<CR>:colorscheme<CR>
+nnoremap <Leader>11 :colo<Space>hemisu<CR>:colorscheme<CR>
+nnoremap  <Leader>2 :colo<Space>smyck<CR>:colorscheme<CR>
+nnoremap <Leader>22 :colo<Space>smyckblue<CR>:colorscheme<CR>
+nnoremap  <Leader>3 :colo<Space>mustang<CR>:colorscheme<CR>
+nnoremap <Leader>33 :colo<Space>mustangblue<CR>:colorscheme<CR>
+nnoremap  <Leader>4 :colo<Space>github<CR>:colorscheme<CR>
+nnoremap  <Leader>5 :colo<Space>ivanized<CR>:colorscheme<CR>
+nnoremap  <Leader>6 :colo<Space>muon<CR>:colorscheme<CR>
+nnoremap  <Leader>7 :colo<Space>tir_black<CR>:colorscheme<CR>
+nnoremap <Leader>77 :colo<Space>ir_black<CR>:colorscheme<CR>
+nnoremap  <Leader>8 :colo<Space>xoria256<CR>:colorscheme<CR>
 
 " ··········· line numbers ··················· {{{2
 
-set cursorline
-
-" hilight line number
-highlight clear CursorLine
-augroup CLClear
-  autocmd! ColorScheme * highlight clear CursorLine
-augroup END
-
 noremap <Leader>n :set number! number?<CR>
 noremap <Leader>r :set relativenumber! relativenumber?<CR>
+
+" hilight line number
+set cursorline                " turn on cursorline
+highlight clear CursorLine    " highlight line-number only
+augroup cursorline
+  autocmd! ColorScheme * highlight clear CursorLine
+augroup END
 
 " ··········· cursor ························· {{{2
 
@@ -340,7 +352,7 @@ augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
   " comments
-  autocmd FileType vim nnoremap <buffer> <C-_> mAI"<Esc>`Al
+  autocmd FileType vim nnoremap <buffer> <C-_> mA0i"<Esc>`Al
   autocmd FileType vim vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
 " ··········· ruby ··························· {{{2
@@ -355,7 +367,7 @@ augroup filetype_ruby
   " if snippet
   autocmd FileType ruby :inoreabbrev <buffer> iff if<CR>end<Esc>kA
   " comments
-  autocmd FileType ruby nnoremap <buffer> <C-_> mZI#<Esc>`Zl
+  autocmd FileType ruby nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
   autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
 " ··········· eruby ·························· {{{2
@@ -377,7 +389,7 @@ augroup filetype_python
   autocmd!
   autocmd FileType python :inoreabbrev <buffer> iff if:<left>
   " comments
-  autocmd FileType python nnoremap <buffer> <C-_> mZI#<Esc>`Zl
+  autocmd FileType python nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
   autocmd FileType python vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
 " ··········· javascript ····················· {{{2
