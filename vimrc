@@ -439,8 +439,13 @@ augroup END
 
 " }}}
 
-" ::::::::: Common Typos ::::::::::::::::::::: {{{
+" ::::::::: Abbreviations :::::::::::::::::::: {{{
 
+" shortcuts
+noreabbrev fnn function
+noreabbrev fn! function!
+
+" common typos
 noreabbrev verison version
 noreabbrev funiction function
 noreabbrev funcition function
