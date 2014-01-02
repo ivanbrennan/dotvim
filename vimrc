@@ -172,7 +172,6 @@ set title           " xterm title
 set number          " line numbers
 set nowrap          " don't wrap lines
 set sidescroll=1    " smooth sidescroll
-set showbreak=\ \   " indent wrapped lines
 syntax enable       " syntax highlighting, local overrides
 
 if has("gui_running")
