@@ -17,6 +17,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ivanbrennan/grep-operator'
 Bundle 'ivanbrennan/quickfix-toggle'
+Bundle 'ivanbrennan/potion'
 
 " github repos: colors
 Bundle 'vim-scripts/hexHighlight.vim'
@@ -100,6 +101,10 @@ noremap _ ,
 " sensible marks
 noremap ` '
 noremap ' `
+
+" window size
+noremap <Leader>wh :set lines=21<CR>
+noremap <Leader>wf :set lines=38<CR>
 
 " ::::::::: Buffers :::::::::::::::::::::::::: {{{1
 
@@ -282,7 +287,7 @@ augroup END
 " ::::::::: Navigation ::::::::::::::::::::::: {{{1
 
 set foldmethod=marker
-set scrolloff=3
+set scrolloff=2
 
 " soft line-breaks
 noremap    <Up> gk
