@@ -25,7 +25,9 @@ let s:middleDarkerGrey = { "gui": "#1F1F1F", "cterm": "241" }
 let s:middleDarkGrey   = { "gui": "#777777", "cterm": "241" }
 let s:middleLightGrey  = { "gui": "#999999", "cterm": "246" }
 let s:lightGrey        = { "gui": "#BBBBBB", "cterm": "249" }
+let s:lighterGrey      = { "gui": "#DDDDDD", "cterm": "253" }
 let s:darkGrey         = { "gui": "#444444", "cterm": "238" }
+let s:darkerGrey       = { "gui": "#282828", "cterm": "235" }
 
 let s:darkPink         = { "gui": "#63001C", "cterm": "88"  }
 let s:middleDarkPink   = { "gui": "#FF0055", "cterm": "197" }
@@ -53,7 +55,8 @@ if &background == "dark"
   let s:comment    = s:middleDarkGrey
   let s:dimmed     = s:middleLightGrey
   let s:subtle     = s:darkGrey
-  let s:faint      = s:almostBlack
+  let s:faint      = s:darkerGrey
+  let s:subtler    = s:almostBlack
   let s:accent1    = s:middleLightBlue
   let s:accent2    = s:middleLightGreen
   let s:accent3    = s:lightGreen
@@ -71,6 +74,7 @@ else
   let s:comment    = s:middleLightGrey
   let s:dimmed     = s:middleDarkGrey
   let s:subtle     = s:lightGrey
+  let s:subtler    = s:lighterGrey
   let s:faint      = s:almostWhite
   let s:accent1    = s:middleDarkBlue
   let s:accent2    = s:middleDarkGreen
@@ -129,13 +133,13 @@ call s:h("Cursor",       { "fg": s:bg, "bg": s:accent3 })
 call s:h("Visual",       { "bg": s:faintBlue })
 call s:h("IncSearch",    { "bg": s:faintBlue })
 call s:h("Search",       { "bg": s:faintGreen })
-call s:h("StatusLine",   { "fg": s:norm, "bg": s:faint, "gui": "bold", "cterm": "bold" })
-call s:h("StatusLineNC", { "fg": s:dimmed, "bg": s:faint })
+call s:h("StatusLine",   { "fg": s:norm, "bg": s:subtler, "gui": "bold", "cterm": "bold" })
+call s:h("StatusLineNC", { "fg": s:dimmed, "bg": s:subtler })
 call s:h("SignColumn",   { "fg": s:norm })
-call s:h("VertSplit",    { "fg": s:subtle, "bg": s:faint })
+call s:h("VertSplit",    { "fg": s:subtle, "bg": s:subtler })
 call s:h("TabLine",      { "fg": s:dimmed, "bg": s:faint })
 call s:h("TabLineSel",   { "gui": "bold", "cterm": "bold" })
-call s:h("Folded",       { "fg": s:comment, "bg": s:faint })
+call s:h("Folded",       { "fg": s:comment, "bg": s:faint, "gui": "bold", "cterm": "bold" })
 call s:h("Directory",    { "fg": s:accent1 })
 call s:h("Title",        { "fg": s:accent4, "gui": "bold", "cterm": "bold" })
 call s:h("ErrorMsg",     { "bg": s:faintRed })
