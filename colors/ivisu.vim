@@ -27,6 +27,7 @@ let s:middleLightGrey  = { "gui": "#999999", "cterm": "246" }
 let s:lightGrey        = { "gui": "#BBBBBB", "cterm": "249" }
 let s:lighterGrey      = { "gui": "#DDDDDD", "cterm": "253" }
 let s:darkGrey         = { "gui": "#444444", "cterm": "238" }
+let s:darkerGrey       = { "gui": "#282828", "cterm": "235" }
 
 let s:darkPink         = { "gui": "#63001C", "cterm": "88"  }
 let s:middleDarkPink   = { "gui": "#FF0055", "cterm": "197" }
@@ -54,7 +55,8 @@ if &background == "dark"
   let s:comment    = s:middleDarkGrey
   let s:dimmed     = s:middleLightGrey
   let s:subtle     = s:darkGrey
-  let s:faint      = s:almostBlack
+  let s:faint      = s:darkerGrey
+  let s:subtler    = s:almostBlack
   let s:accent1    = s:middleLightBlue
   let s:accent2    = s:middleLightGreen
   let s:accent3    = s:lightGreen
