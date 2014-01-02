@@ -173,7 +173,6 @@ set number          " line numbers
 set nowrap          " don't wrap lines
 set sidescroll=1    " smooth sidescroll
 set showbreak=\ \   " indent wrapped lines
-set linebreak       " break at word boundaries
 syntax enable       " syntax highlighting, local overrides
 
 if has("gui_running")
@@ -191,7 +190,7 @@ endfunc
 " }}}
 
 " toggle wrapping
-noremap <Leader>ww :set wrap! list! wrap?<CR>
+noremap <Leader>ww :set wrap! linebreak! list! wrap?<CR>
 
 " hex highlight
 noremap <LocalLeader>h :call HexHighlight()<CR>
