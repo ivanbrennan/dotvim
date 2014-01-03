@@ -11,7 +11,6 @@ call vundle#rc()
 
 " github repos: general
 Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
@@ -27,20 +26,10 @@ Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'gregsexton/Muon'
 
+"" NERDTree or Netrw
+"Bundle 'scrooloose/nerdtree'
+
 filetype plugin indent on       " required!
-
-" ··········· plugin options ················· {{{2
-
-" NERDTree {{{3
-let NERDTreeChDirMode=2             " change CWD whenever root is changed
-let NERDTreeMinimalUI=1             " minimal UI
-" NERDTree cursorline
-augroup NerdCursor
-  autocmd!
-  autocmd BufEnter NERD_tree_* hi CursorLine gui=underline
-  autocmd BufLeave NERD_tree_* highlight clear CursorLine
-  autocmd BufAdd * highlight clear CursorLine
-augroup END
 
 " ::::::::: Backup and Swap Files :::::::::::: {{{1
 
@@ -90,7 +79,6 @@ augroup vimrcgroup    " auto-reload vimrc when it's saved
 augroup END
 
 " lazy finger
-noremap <Leader><Space> :
 noremap ; :
 noremap - $
 
@@ -106,14 +94,46 @@ noremap ' `
 noremap <Leader>wh :set lines=21<CR>
 noremap <Leader>wf :set lines=38<CR>
 
+" ::::::::: Plugin Options ::::::::::::::::::: {{{1
+
+"" NERDTree {{{2
+"let NERDTreeChDirMode=2             " change CWD whenever root is changed
+"let NERDTreeMinimalUI=1             " minimal UI
+"" NERDTree cursorline
+"augroup NerdCursor
+"  autocmd!
+"  autocmd BufEnter NERD_tree_* hi CursorLine gui=underline
+"  autocmd BufLeave NERD_tree_* highlight clear CursorLine
+"  autocmd BufAdd * highlight clear CursorLine
+"augroup END
+
+" Netrw {{{2
+let g:netrw_liststyle=3         " tree
+let g:netrw_banner=0            " hide banner
+let g:netrw_altv=1              " open files on right
+let g:netrw_winsize=20          " tree takes 20% width
+let g:netrw_preview=1           " open previews vertically
+let g:netrw_browse_split=4      " open files in previous window
+let g:netrw_hide=1              " hide hidden files
+let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+,^DS_Store$'
+
+" enable cursorline (underline)
+" 1: <Leader><Tab> -> mimic NERDTree
+  " space-tab --> toggle explorer on left without banner and g:netrw_browse_split=4
+noremap <Leader><Tab> :Vexplore<CR>
+" 2: open browser in current window with liststyle=0 (and then set liststyle back to 3)
+  " ctrl-enter -> full-window explorer with banner and g:netrw_browse_split=0
+noremap <silent> <LocalLeader>r :Rexplore<CR>
+
 " ::::::::: Buffers :::::::::::::::::::::::::: {{{1
 
 set hidden        " allow hidden buffers
 
 " navigators
+noremap <Leader><Space> :buffers<CR>
 noremap          <S-CR> :buffers<CR>:b
 noremap          <C-CR> :NERDTreeToggle<CR>
-noremap   <Leader><Tab> :NERDTreeToggle<CR>
+"noremap   <Leader><Tab> :NERDTreeToggle<CR>
 noremap        <S-C-CR> :NERDTreeClose<CR>
 noremap <Leader><S-Tab> :NERDTreeClose<CR>
 
