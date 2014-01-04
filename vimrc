@@ -108,21 +108,48 @@ noremap <Leader>wf :set lines=38<CR>
 "augroup END
 
 " Netrw {{{2
-let g:netrw_liststyle=3         " tree
-let g:netrw_banner=0            " hide banner
-let g:netrw_altv=1              " open files on right
-let g:netrw_winsize=20          " tree takes 20% width
-let g:netrw_preview=1           " open previews vertically
-let g:netrw_browse_split=4      " open files in previous window
-let g:netrw_hide=1              " hide hidden files
 let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+,^DS_Store$'
+let g:netrw_hide=1              " hide hidden files
+let g:netrw_altv=1              " open files on right
+let g:netrw_winsize=-25         " tree takes 25 cols
+let g:netrw_preview=1           " open previews vertically
+
+" Netrw behavior
+noremap <C-CR> :call NetEx()<CR>
+function! NetEx() " {{{
+  let g:netrw_banner=1            " banner
+  let g:netrw_liststyle=0         " thin
+  let g:netrw_browse_split=0      " open files in current window
+  Explore
+endfunc
+" }}}
+
+noremap <Leader><Tab> :call VexToggle()<CR>
+function! VexToggle() " {{{
+  if !exists( "t:expl_buf_num" )
+    let g:netrw_banner=0
+    let g:netrw_liststyle=3
+    let g:netrw_browse_split=4
+    Vexplore
+    wincmd H
+    execute 'vertical resize' . abs( g:netrw_winsize )
+    let t:expl_buf_num = bufnr( "%" )
+  else
+    if bufwinnr( t:expl_buf_num ) == -1
+      unlet t:expl_buf_num
+      call VexToggle()
+    else
+      let t:cur_win_nr = winnr()
+      1wincmd w
+      close
+      execute ( t:cur_win_nr - 1 ) . 'wincmd w'
+      unlet t:expl_buf_num
+    endif
+  endif
+endfunc
+" }}}
 
 " enable cursorline (underline)
-" 1: <Leader><Tab> -> mimic NERDTree
-  " space-tab --> toggle explorer on left without banner and g:netrw_browse_split=4
-noremap <Leader><Tab> :Vexplore<CR>
-" 2: open browser in current window with liststyle=0 (and then set liststyle back to 3)
-  " ctrl-enter -> full-window explorer with banner and g:netrw_browse_split=0
 noremap <silent> <LocalLeader>r :Rexplore<CR>
 
 " ::::::::: Buffers :::::::::::::::::::::::::: {{{1
@@ -132,7 +159,7 @@ set hidden        " allow hidden buffers
 " navigators
 noremap <Leader><Space> :buffers<CR>
 noremap          <S-CR> :buffers<CR>:b
-noremap          <C-CR> :NERDTreeToggle<CR>
+"noremap          <C-CR> :NERDTreeToggle<CR>
 "noremap   <Leader><Tab> :NERDTreeToggle<CR>
 noremap        <S-C-CR> :NERDTreeClose<CR>
 noremap <Leader><S-Tab> :NERDTreeClose<CR>
