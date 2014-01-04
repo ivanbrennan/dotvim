@@ -114,6 +114,23 @@ let g:netrw_altv=1              " open files on right
 let g:netrw_winsize=-25         " tree takes 25 cols
 let g:netrw_preview=1           " open previews vertically
 
+" from ~/.vim/after/ftplugin/netrw.vim
+"   nmap <buffer>         f <CR>
+"   nmap <buffer>         J <CR>
+"   nmap <buffer> <C-Space> <CR>
+"   nmap <buffer> <S-Space> <CR>
+
+" enable cursorline (underline)
+" enable (remap) refreshing view
+augroup NetrwCursor
+  autocmd!
+"  autocmd BufEnter NetrwTreeListing* hi CursorLine gui=underline
+  autocmd WinEnter * :echom 'Hi'
+  autocmd BufLeave NetrwTreeListing* highlight clear CursorLine
+"  autocmd BufAdd * highlight clear CursorLine
+augroup END
+
+
 " Netrw behavior
 noremap <C-CR> :call NetEx()<CR>
 function! NetEx() " {{{
@@ -149,7 +166,6 @@ function! VexToggle() " {{{
 endfunc
 " }}}
 
-" enable cursorline (underline)
 noremap <silent> <LocalLeader>r :Rexplore<CR>
 
 " ::::::::: Buffers :::::::::::::::::::::::::: {{{1
@@ -165,20 +181,24 @@ noremap        <S-C-CR> :NERDTreeClose<CR>
 noremap <Leader><S-Tab> :NERDTreeClose<CR>
 
 " current directory
-noremap <Leader>wd :pwd<CR>
-noremap <silent> <Leader>cd :lcd %:h<CR>
+noremap <LocalLeader>wd :pwd<CR>
+noremap <LocalLeader>cd :lcd %:h<CR>
 
 " close
-noremap <Leader>bd :bdelete<CR>
-noremap <Leader>bc :bprevious<CR>:bdelete#<CR>
+noremap <LocalLeader>d :bdelete<CR>
+noremap <LocalLeader>c :bprevious<CR>:bdelete#<CR>
 
 " ··········· edit ··························· {{{2
 
-noremap <Leader>eh :edit ~/
-noremap <Leader>ew :edit <C-R>=expand('%:h').'/'<CR>
-noremap <Leader>es :split <C-R>=expand('%:h').'/'<CR>
-noremap <Leader>ev :vsplit <C-R>=expand('%:h').'/'<CR>
-noremap <Leader>et :tabedit <C-R>=expand('%:h').'/'<CR>
+" in home directory
+noremap <LocalLeader>eh :edit ~/
+
+" in current file's directory (not PWD)
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
+nmap <LocalLeader>ew :edit %%
+nmap <LocalLeader>es :split %%
+nmap <LocalLeader>ev :vsplit %%
+nmap <LocalLeader>et :tabedit %%
 
 " ··········· split ·························· {{{2
 
@@ -189,7 +209,7 @@ noremap <Leader>o :only<CR>
 
 " resize
 noremap <Leader>- <C-W>_
-"noremap <Leader>\ <C-W><Bar>
+noremap <Leader>] <C-W><Bar>
 noremap <Leader>= <C-W>=
 
 "function! SwitchSplit()
@@ -287,7 +307,10 @@ noremap <Leader>r :set relativenumber! relativenumber?<CR>
 set cursorline                " turn on cursorline
 highlight clear CursorLine    " highlight line-number only
 augroup cursorline
-  autocmd! ColorScheme * highlight clear CursorLine
+  autocmd!
+  autocmd ColorScheme * highlight clear CursorLine
+  autocmd WinLeave * setlocal nocursorline
+  autocmd WinEnter,BufRead * setlocal cursorline
 augroup END
 
 " ··········· cursor ························· {{{2
