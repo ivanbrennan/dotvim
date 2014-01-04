@@ -125,7 +125,7 @@ noremap <LocalLeader>c :bprevious<CR>:bdelete#<CR>
 noremap <Leader><Space> :buffers<CR>
 noremap          <S-CR> :buffers<CR>:b
 
-"" NERDTree {{{3
+" NERDTree {{{3
 "let NERDTreeMinimalUI=1             " minimal UI
 "noremap          <C-CR> :NERDTreeToggle<CR>
 "noremap   <Leader><Tab> :NERDTreeToggle<CR>
@@ -171,7 +171,8 @@ endfunc
 
 " VexToggle {{{4
 noremap <Leader><Tab> :call VexToggle()<CR>
-function! VexToggle() " {{{
+
+function! VexToggle()
   if !exists( "t:expl_buf_num" )
     let g:netrw_banner=0
     let g:netrw_liststyle=3
