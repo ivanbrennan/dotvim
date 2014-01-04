@@ -108,20 +108,16 @@ noremap <Leader>wf :set lines=38<CR>
 "augroup END
 
 " Netrw {{{2
+" mappings ( ~/.vim/after/ftplugin/netrw.vim )
+" nmap <buffer> f <CR>
+
 let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+,^DS_Store$'
 let g:netrw_hide=1              " hide hidden files
 let g:netrw_altv=1              " open files on right
 let g:netrw_winsize=-25         " tree takes 25 cols
 let g:netrw_preview=1           " open previews vertically
 
-" from ~/.vim/after/ftplugin/netrw.vim
-"   nmap <buffer>         f <CR>
-"   nmap <buffer>         J <CR>
-"   nmap <buffer> <C-Space> <CR>
-"   nmap <buffer> <S-Space> <CR>
-
 " enable cursorline (underline)
-" enable (remap) refreshing view
 augroup NetrwCursor
   autocmd!
 "  autocmd BufEnter NetrwTreeListing* hi CursorLine gui=underline

@@ -1,3 +1,2 @@
-nmap <buffer>         f <CR>
-nmap <buffer>         J <CR>
-nmap <buffer> <C-Space> <CR>
+" more comfortable <CR>
+nmap <buffer> f <CR>
