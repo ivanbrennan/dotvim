@@ -26,7 +26,7 @@ Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'gregsexton/Muon'
 
-"" NERDTree or Netrw
+"" NERDTree or Netrw?
 "Bundle 'scrooloose/nerdtree'
 
 filetype plugin indent on       " required!
@@ -70,12 +70,11 @@ let mapleader="\\"
 let maplocalleader=","
 
 " source / edit vimrc
-noremap <LocalLeader>sv :source $MYVIMRC<CR>
-noremap <LocalLeader>ev :edit $MYVIMRC<CR>
+noremap <LocalLeader>ss :source $MYVIMRC<CR>
+noremap <LocalLeader>ee :edit $MYVIMRC<CR>
 
 augroup vimrcgroup    " auto-reload vimrc when it's saved
-  autocmd!
-  autocmd BufWritePost .vimrc source $MYVIMRC
+  autocmd! BufWritePost .vimrc source $MYVIMRC
 augroup END
 
 " lazy finger
@@ -94,49 +93,83 @@ noremap ' `
 noremap <Leader>wh :set lines=21<CR>
 noremap <Leader>wf :set lines=38<CR>
 
-" ::::::::: Plugin Options ::::::::::::::::::: {{{1
+" ::::::::: Buffers :::::::::::::::::::::::::: {{{1
 
-"" NERDTree {{{2
-"let NERDTreeChDirMode=2             " change CWD whenever root is changed
+set hidden        " allow hidden buffers
+
+" ··········· navigation ····················· {{{2
+
+" buffers / tabs
+noremap <Leader>j :bprevious<CR>
+noremap <Leader>k :bnext<CR>
+noremap <Leader>h :tabprevious<CR>
+noremap <Leader>l :tabnext<CR>
+
+" splits
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
+
+" current directory
+noremap <LocalLeader>wd :pwd<CR>
+noremap <LocalLeader>cd :lcd %:h<CR>
+
+" close
+noremap <LocalLeader>d :bdelete<CR>
+noremap <LocalLeader>c :bprevious<CR>:bdelete#<CR>
+
+" ········· navigators ······················· {{{2
+
+" navigators
+noremap <Leader><Space> :buffers<CR>
+noremap          <S-CR> :buffers<CR>:b
+
+"" NERDTree {{{3
 "let NERDTreeMinimalUI=1             " minimal UI
+"noremap          <C-CR> :NERDTreeToggle<CR>
+"noremap   <Leader><Tab> :NERDTreeToggle<CR>
+"noremap        <S-C-CR> :NERDTreeClose<CR>
+"noremap <Leader><S-Tab> :NERDTreeClose<CR>
+
 "" NERDTree cursorline
 "augroup NerdCursor
 "  autocmd!
-"  autocmd BufEnter NERD_tree_* hi CursorLine gui=underline
+"  autocmd BufEnter NERD_tree_* highlight CursorLine gui=underline
 "  autocmd BufLeave NERD_tree_* highlight clear CursorLine
 "  autocmd BufAdd * highlight clear CursorLine
 "augroup END
 
-" Netrw {{{2
-" mappings ( ~/.vim/after/ftplugin/netrw.vim )
-" nmap <buffer> f <CR>
-
+" Netrw {{{3
 let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+,^DS_Store$'
 let g:netrw_hide=1              " hide hidden files
 let g:netrw_altv=1              " open files on right
 let g:netrw_winsize=-25         " tree takes 25 cols
 let g:netrw_preview=1           " open previews vertically
 
-" enable cursorline (underline)
+noremap <silent> <LocalLeader>r :Rexplore<CR>
+
+" explorer mappings ( ~/.vim/after/ftplugin/netrw.vim )
+" nmap <buffer> f <CR>
+
+" enable cursorline (underline) {{{4
 augroup NetrwCursor
   autocmd!
-"  autocmd BufEnter NetrwTreeListing* hi CursorLine gui=underline
-  autocmd WinEnter * :echom 'Hi'
-  autocmd BufLeave NetrwTreeListing* highlight clear CursorLine
-"  autocmd BufAdd * highlight clear CursorLine
+  autocmd FileType netrw highlight CursorLine gui=underline
+  autocmd FileType netrw autocmd BufEnter <buffer> hi CursorLine gui=underline
+  autocmd FileType netrw autocmd BufLeave <buffer> hi clear CursorLine
 augroup END
 
-
-" Netrw behavior
+" Explorer {{{4
 noremap <C-CR> :call NetEx()<CR>
-function! NetEx() " {{{
+function! NetEx()
   let g:netrw_banner=1            " banner
   let g:netrw_liststyle=0         " thin
   let g:netrw_browse_split=0      " open files in current window
   Explore
 endfunc
-" }}}
 
+" VexToggle {{{4
 noremap <Leader><Tab> :call VexToggle()<CR>
 function! VexToggle() " {{{
   if !exists( "t:expl_buf_num" )
@@ -160,29 +193,6 @@ function! VexToggle() " {{{
     endif
   endif
 endfunc
-" }}}
-
-noremap <silent> <LocalLeader>r :Rexplore<CR>
-
-" ::::::::: Buffers :::::::::::::::::::::::::: {{{1
-
-set hidden        " allow hidden buffers
-
-" navigators
-noremap <Leader><Space> :buffers<CR>
-noremap          <S-CR> :buffers<CR>:b
-"noremap          <C-CR> :NERDTreeToggle<CR>
-"noremap   <Leader><Tab> :NERDTreeToggle<CR>
-noremap        <S-C-CR> :NERDTreeClose<CR>
-noremap <Leader><S-Tab> :NERDTreeClose<CR>
-
-" current directory
-noremap <LocalLeader>wd :pwd<CR>
-noremap <LocalLeader>cd :lcd %:h<CR>
-
-" close
-noremap <LocalLeader>d :bdelete<CR>
-noremap <LocalLeader>c :bprevious<CR>:bdelete#<CR>
 
 " ··········· edit ··························· {{{2
 
@@ -214,20 +224,6 @@ noremap <Leader>= <C-W>=
 " replace this with SwitchSplit()
 "noremap <Leader><Leader>s <C-W>t<C-W>K
 "noremap <Leader><Leader>v <C-W>t<C-W>H
-
-" ··········· navigate ······················· {{{2
-
-" buffers / tabs
-noremap <Leader>j :bprevious<CR>
-noremap <Leader>k :bnext<CR>
-noremap <Leader>h :tabprevious<CR>
-noremap <Leader>l :tabnext<CR>
-
-" splits
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-H> <C-W>h
-noremap <C-L> <C-W>l
 
 " ::::::::: Appearance ::::::::::::::::::::::: {{{1
 
