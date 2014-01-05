@@ -119,7 +119,7 @@ noremap <LocalLeader>cd :lcd %:h<CR>
 noremap <LocalLeader>d :bdelete<CR>
 noremap <LocalLeader>c :bprevious<CR>:bdelete#<CR>
 
-" ········· navigators ······················· {{{2
+" ··········· navigators ····················· {{{2
 
 " navigators
 noremap <Leader><Space> :buffers<CR>
