@@ -1,9 +1,9 @@
-" ::::::::: vimrc ::::::::::::::::::::::::::::::::::::::::
+" ::::::::: vimrc :::::::::::::::::::::::::::::::::::::
 
 set nocompatible           " be iMproved
 set encoding=utf-8         " default encoding to UTF-8
 
-" ::::::::: Vundle & Plugins ::::::::::::::::: {{{1
+" ::::::::: Vundle & Plugins :::::::::::::: {{{1
 
 filetype off               " required for Vundle!
 set runtimepath+=~/.vim/bundle/vundle/
@@ -31,14 +31,14 @@ Bundle 'gregsexton/Muon'
 
 filetype plugin indent on       " required!
 
-" ::::::::: Backup and Swap Files :::::::::::: {{{1
+" ::::::::: Backup and Swap Files ::::::::: {{{1
 
 set backup                      " backup files...
 set backupdir=~/.vim/backup     " ...to here
 set directory=~/.vim/tmp        " all temp files here
 set history=500                 " history 500-deep
 
-" ::::::::: Options :::::::::::::::::::::::::: {{{1
+" ::::::::: Options ::::::::::::::::::::::: {{{1
 
 " disable intro message
 set shortmess+=I
@@ -58,7 +58,7 @@ set formatoptions+=j
 " use this if 'i' flag slows down ins-completion
 "set complete-=i
 
-" ::::::::: Mappings ::::::::::::::::::::::::: {{{1
+" ::::::::: Mappings :::::::::::::::::::::: {{{1
 
 set timeout timeoutlen=250 ttimeoutlen=100
 
@@ -79,7 +79,7 @@ augroup END
 
 " lazy finger
 noremap ; :
-noremap - $
+noremap - g_
 
 " replace ; and ,
 noremap + ;
@@ -89,15 +89,18 @@ noremap _ ,
 noremap ` '
 noremap ' `
 
+" memo word under cursor
+noremap <silent> <Leader>m :silent! normal! #*<CR>
+
 " window size
 noremap <Leader>wh :set lines=21<CR>
 noremap <Leader>wf :set lines=38<CR>
 
-" ::::::::: Buffers :::::::::::::::::::::::::: {{{1
+" ::::::::: Buffers ::::::::::::::::::::::: {{{1
 
 set hidden        " allow hidden buffers
 
-" ··········· navigation ····················· {{{2
+" ··········· navigation ··············· {{{2
 
 " buffers / tabs
 noremap <Leader>j :bprevious<CR>
@@ -119,7 +122,7 @@ noremap <LocalLeader>cd :lcd %:h<CR>
 noremap <LocalLeader>d :bdelete<CR>
 noremap <LocalLeader>c :bprevious<CR>:bdelete#<CR>
 
-" ··········· navigators ····················· {{{2
+" ··········· navigators ··············· {{{2
 
 " navigators
 noremap <Leader><Space> :buffers<CR>
@@ -146,6 +149,7 @@ let g:netrw_hide=1              " hide hidden files
 let g:netrw_altv=1              " open files on right
 let g:netrw_winsize=-25         " tree takes 25 cols
 let g:netrw_preview=1           " open previews vertically
+let g:netrw_use_errorwindow=0   " suppress error window
 
 noremap <silent> <LocalLeader>r :Rexplore<CR>
 
@@ -203,7 +207,7 @@ function! VexToggle()
   endif
 endfunc
 
-" ··········· edit ··························· {{{2
+" ··········· edit ····················· {{{2
 
 " in home directory
 noremap <LocalLeader>eh :edit ~/
@@ -215,7 +219,7 @@ nmap <LocalLeader>es :split %%
 nmap <LocalLeader>ev :vsplit %%
 nmap <LocalLeader>et :tabedit %%
 
-" ··········· split ·························· {{{2
+" ··········· split ···················· {{{2
 
 " open / close
 noremap <Leader>s :split<CR>
@@ -234,18 +238,13 @@ noremap <Leader>= <C-W>=
 "noremap <Leader><Leader>s <C-W>t<C-W>K
 "noremap <Leader><Leader>v <C-W>t<C-W>H
 
-" ::::::::: Appearance ::::::::::::::::::::::: {{{1
+" ::::::::: Appearance :::::::::::::::::::: {{{1
 
 set title           " xterm title
 set number          " line numbers
 set nowrap          " don't wrap lines
 set sidescroll=1    " smooth sidescroll
 syntax enable       " syntax highlighting, local overrides
-
-if has("gui_running")
-  set transparency=5
-  set guifont=Source\ Code\ Pro:h15
-endif
 
 noremap <LocalLeader>y :call SynStack()<CR>
 function! SynStack() " {{{
@@ -262,7 +261,45 @@ noremap <Leader>ww :set wrap! linebreak! list! wrap?<CR>
 " hex highlight
 noremap <LocalLeader>h :call HexHighlight()<CR>
 
-" ··········· whitespace ····················· {{{2
+" ··········· fonts ···················· {{{2
+
+set guifont=Source\ Code\ Pro:h15
+noremap <LocalLeader>ff :call FontCycle()<CR>:echo getfontname()<CR>
+
+let g:font_dict =
+      \{
+      \"Anonymous Pro":   -3,
+      \"Inconsolata":     -1,
+      \"Menlo":            0,
+      \"Monaco":           2,
+      \"Source Code Pro":  1,
+      \}
+
+function! FontCycle()
+  let l:font_nams = sort( keys( g:font_dict ) )
+
+  " current info
+  let l:cur_parts = split( getfontname(), ':' )
+  let [ l:cur_nam, l:cur_hgt ] = [ l:cur_parts[0], l:cur_parts[1] ]
+  let l:cur_idx = index( l:font_nams, l:cur_nam )
+
+  " new name
+  let l:new_idx = ( l:cur_idx + 1 ) % len( l:font_nams )
+  let l:new_nam = l:font_nams[ l:new_idx ]
+
+  " new height
+  let l:cur_adj = get( g:font_dict, l:cur_nam, 0 )
+  let l:new_adj = g:font_dict[ l:new_nam ]
+  let l:hgt_dif = l:cur_adj - l:new_adj
+  let l:new_hgt = l:cur_hgt + l:hgt_dif
+
+  " prepare assignment
+  let l:new_font = join( [ l:new_nam, l:new_hgt ], ":h" )
+  let l:new_asgn = escape( l:new_font, " ")
+  execute "set guifont=" . l:new_asgn
+endfunc
+
+" ··········· whitespace ··············· {{{2
 
 set tabstop=2                   " tab is two spaces
 set softtabstop=2               " softtab is two spaces
@@ -278,7 +315,7 @@ set listchars+=trail:·          " trailing space
 set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
-" ··········· colors ························· {{{2
+" ··········· colors ··················· {{{2
 
 " toggle background
 call togglebg#map("")
@@ -299,7 +336,7 @@ nnoremap  <Leader>7 :colo<Space>tir_black<CR>:colorscheme<CR>
 nnoremap <Leader>77 :colo<Space>ir_black<CR>:colorscheme<CR>
 nnoremap  <Leader>8 :colo<Space>xoria256<CR>:colorscheme<CR>
 
-" ··········· line numbers ··················· {{{2
+" ··········· line numbers ············· {{{2
 
 noremap <Leader>n :set number! number?<CR>
 noremap <Leader>r :set relativenumber! relativenumber?<CR>
@@ -314,7 +351,7 @@ augroup cursorline
   autocmd WinEnter,BufRead * setlocal cursorline
 augroup END
 
-" ··········· cursor ························· {{{2
+" ··········· cursor ··················· {{{2
 
 set guicursor=n-v-c:block-blinkon0
 set guicursor+=ve:ver35
@@ -323,7 +360,7 @@ set guicursor+=i-ci:ver25
 set guicursor+=r-cr:hor20
 set guicursor+=sm:block-blinkon0
 
-" ··········· status line ····················· {{{2
+" ··········· status line ·············· {{{2
 
 set fillchars+=vert:\           " clean dividers
 set laststatus=2                " show statusline
@@ -334,26 +371,33 @@ set statusline+=\ %f\           " path
 set statusline+=%y              " filetype
 set statusline+=%m              " modified
 set statusline+=%=\             " left/right separator
+set statusline+=(%c):    " row:virtual-column
 set statusline+=(%l/%L):%-3v    " row:virtual-column
 set statusline+=%4.P\           " percent through file
 
-" ::::::::: Gui Settings ::::::::::::::::::::: {{{1
+" ::::::::: Gui Settings :::::::::::::::::: {{{1
+
+if has("gui_running")
+  set transparency=5
+endif
 
 " force these mappings after gvimrc has run
 augroup gui_group
   autocmd!
-  autocmd GUIEnter * nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
-  autocmd GUIEnter * vnoremap          <M-Up> :move '<-2<CR>gv=gv
-  autocmd GUIEnter * inoremap          <M-Up> <Esc>:move .-2<CR>==gi
-  autocmd GUIEnter * nnoremap <silent> <M-Down> mZ:move .+1<CR>==`Z
-  autocmd GUIEnter * vnoremap          <M-Down> :move '>+1<CR>gv=gv
-  autocmd GUIEnter * inoremap          <M-Down> <Esc>:move .+1<CR>==gi
+  au GUIEnter * nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
+  au GUIEnter * vnoremap          <M-Up> :move '<-2<CR>gv=gv
+  au GUIEnter * inoremap          <M-Up> <Esc>:move .-2<CR>==gi
+  au GUIEnter * nnoremap <silent> <M-Down> mZ:move .+1<CR>==`Z
+  au GUIEnter * vnoremap          <M-Down> :move '>+1<CR>gv=gv
+  au GUIEnter * inoremap          <M-Down> <Esc>:move .+1<CR>==gi
   " bubble text left / right
-  autocmd GUIEnter * vnoremap  <M-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
-  autocmd GUIEnter * vnoremap <M-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
+  au GUIEnter * vnoremap
+        \<M-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
+  au GUIEnter * vnoremap
+        \<M-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 augroup END
 
-" ::::::::: Navigation ::::::::::::::::::::::: {{{1
+" ::::::::: Navigation :::::::::::::::::::: {{{1
 
 set foldmethod=marker
 set scrolloff=2
@@ -365,7 +409,7 @@ noremap  <Down> gj
 inoremap   <Up> <C-R>=pumvisible() ? "\<lt>Up>" : "\<lt>C-O>gk"<CR>
 inoremap <Down> <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"<CR>
 
-" ::::::::: Editing :::::::::::::::::::::::::: {{{1
+" ::::::::: Editing ::::::::::::::::::::::: {{{1
 
 " format entire file
 noremap <LocalLeader>fef :normal! gg=G``<CR>
@@ -407,7 +451,7 @@ vnoremap          <Leader><Down> :move '>+1<CR>gv=gv
 vnoremap  <Leader><Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
 vnoremap <Leader><Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 
-" ::::::::: Searching :::::::::::::::::::::::: {{{1
+" ::::::::: Searching ::::::::::::::::::::: {{{1
 
 set incsearch     " incremental searching
 set ignorecase    " searches are case insensitive...
@@ -419,69 +463,79 @@ noremap <LocalLeader><Space> :set hlsearch! hlsearch?<CR>
 " find merge conflicts
 noremap <silent> <LocalLeader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" ::::::::: FileType ::::::::::::::::::::::::: {{{1
+" ::::::::: FileType :::::::::::::::::::::: {{{1
 
-" ··········· vim ···························· {{{2
+" ··········· vim ······················ {{{2
 augroup filetype_vim
   autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
+  au FileType vim setlocal foldmethod=marker
   " comments
-  autocmd FileType vim nnoremap <buffer> <C-_> mA0i"<Esc>`Al
-  autocmd FileType vim vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
+  au FileType vim nnoremap <buffer>
+        \<C-_> mA0i"<Esc>`Al
+  au FileType vim vnoremap <buffer>
+        \<C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
-" ··········· ruby ··························· {{{2
+" ··········· ruby ····················· {{{2
 augroup filetype_ruby
   autocmd!
-  autocmd FileType ruby set omnifunc=rubycomplete#Complete
+  au FileType ruby set omnifunc=rubycomplete#Complete
   " complete buffer loading can cause code execution
   " turn this off if it's a concern
-  autocmd FileType ruby let g:rubycomplete_buffer_loading=1
-  autocmd FileType ruby let g:rubycomplete_classes_in_global=1
-  autocmd FileType ruby let g:rubycomplete_rails = 1
+  au FileType ruby let g:rubycomplete_buffer_loading=1
+  au FileType ruby let g:rubycomplete_classes_in_global=1
+  au FileType ruby let g:rubycomplete_rails = 1
   " if snippet
-  autocmd FileType ruby :inoreabbrev <buffer> iff if<CR>end<Esc>kA
+  au FileType ruby :inoreabbrev <buffer>
+        \iff if<CR>end<Esc>kA
   " comments
-  autocmd FileType ruby nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
-  autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
+  au FileType ruby nnoremap <buffer>
+        \<C-_> mZ0i#<Esc>`Zl
+  au FileType ruby vnoremap <buffer>
+        \<C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
-" ··········· eruby ·························· {{{2
+" ··········· eruby ···················· {{{2
 augroup filetype_eruby
   autocmd!
-  autocmd FileType eruby set omnifunc=rubycomplete#Complete
+  au FileType eruby set omnifunc=rubycomplete#Complete
   " complete buffer loading can cause code execution
   " turn this off if it's a concern
-  autocmd FileType eruby let g:rubycomplete_buffer_loading=1
-  autocmd FileType eruby let g:rubycomplete_classes_in_global=1
-  autocmd FileType eruby let g:rubycomplete_rails = 1
-  autocmd FileType eruby :inoreabbrev <buffer> erb <% %><Left><Left><Left>
-  autocmd FileType eruby :inoreabbrev <buffer> erp <%= %><Left><Left><Left>
-  autocmd FileType eruby :inoreabbrev <buffer> erc <%# %><Left><Left><Left>
-  autocmd FileType eruby :inoreabbrev <buffer> iff <% if %><% end %><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+  au FileType eruby let g:rubycomplete_buffer_loading=1
+  au FileType eruby let g:rubycomplete_classes_in_global=1
+  au FileType eruby let g:rubycomplete_rails = 1
+  au FileType eruby :inoreabbrev <buffer> erb <% %><Left><Left><Left>
+  au FileType eruby :inoreabbrev <buffer> erp <%= %><Left><Left><Left>
+  au FileType eruby :inoreabbrev <buffer> erc <%# %><Left><Left><Left>
+  au FileType eruby :inoreabbrev <buffer>
+        \iff <% if %><% end %><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 augroup END
-" ··········· python ························· {{{2
+" ··········· python ··················· {{{2
 augroup filetype_python
   autocmd!
-  autocmd FileType python :inoreabbrev <buffer> iff if:<left>
+  au FileType python :inoreabbrev <buffer> iff if:<left>
   " comments
-  autocmd FileType python nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
-  autocmd FileType python vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
+  au FileType python nnoremap <buffer>
+        \<C-_> mZ0i#<Esc>`Zl
+  au FileType python vnoremap <buffer>
+        \<C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
-" ··········· javascript ····················· {{{2
+" ··········· javascript ··············· {{{2
 augroup filetype_javascript
   autocmd!
   " if statement
-  autocmd FileType javascript :inoreabbrev <buffer> iff if ()<Left>
+  au FileType javascript :inoreabbrev <buffer> iff if ()<Left>
   " add semicolon
-  autocmd FileType javascript noremap <buffer> <Leader>; mZA;<Esc>`Z
+  au FileType javascript noremap <buffer> <Leader>; mZA;<Esc>`Z
 augroup END
-" ··········· markdown ······················· {{{2
+" ··········· markdown ················· {{{2
 augroup filetype_markdown
   autocmd!
-  autocmd FileType markdown :onoremap <buffer> ih :<C-U>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:nohlsearch\rkvg_"<CR>
-  autocmd FileType markdown :onoremap <buffer> ah :<C-U>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:nohlsearch\rVk"<CR>
+  au FileType markdown :onoremap <buffer>
+        \ih :<C-U>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:noh\rkvg_"<CR>
+  au FileType markdown :onoremap <buffer>
+        \ah :<C-U>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:noh\rVk"<CR>
 augroup END
 
-" ::::::::: Abbreviations :::::::::::::::::::: {{{1
+" ::::::::: Abbreviations ::::::::::::::::: {{{1
 
 " shortcuts
 noreabbrev fnn function
@@ -494,7 +548,7 @@ noreabbrev funcition function
 noreabbrev funciotn function
 noreabbrev funciton function
 
-" ::::::::: Operator Pending ::::::::::::::::: {{{1
+" ::::::::: Operator Pending :::::::::::::: {{{1
 
 " in last / next braces
 onoremap il( :<C-U>normal! F)vi(<CR>
@@ -512,12 +566,12 @@ onoremap an[ :<C-U>normal! f[va[<CR>
 onoremap al{ :<C-U>normal! F}va{<CR>
 onoremap an{ :<C-U>normal! f{va{<CR>
 
-" ::::::::: Function Keys :::::::::::::::::::: {{{1
+" ::::::::: Function Keys ::::::::::::::::: {{{1
 
 " <F1> Help
 " <F4> pastetoggle (see editing)
 
-" ::::::::: Wild Settings :::::::::::::::::::: {{{1
+" ::::::::: Wild Settings ::::::::::::::::: {{{1
 
 set wildmenu
 
