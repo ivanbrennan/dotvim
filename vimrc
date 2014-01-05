@@ -155,10 +155,18 @@ noremap <silent> <LocalLeader>r :Rexplore<CR>
 " enable cursorline (underline) {{{4
 augroup NetrwCursor
   autocmd!
-  autocmd FileType netrw highlight CursorLine gui=underline
-  autocmd FileType netrw autocmd BufEnter <buffer> hi CursorLine gui=underline
-  autocmd FileType netrw autocmd BufLeave <buffer> hi clear CursorLine
+  autocmd FileType netrw call HighlightCursor()
+  autocmd FileType netrw autocmd BufEnter <buffer> call HighlightCursor()
+  autocmd FileType netrw autocmd BufLeave <buffer> highlight clear CursorLine
 augroup END
+
+function! HighlightCursor()
+  if &background == "light"
+    highlight CursorLine guibg=#CBE4EE ctermbg=195
+  else
+    highlight CursorLine guibg=#444444 ctermbg=238
+  end
+endfunc
 
 " Explorer {{{4
 noremap <C-CR> :call NetEx()<CR>
