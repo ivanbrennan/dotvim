@@ -14,7 +14,7 @@ endif
 set background=dark
 set linespace=3
 
-let g:colors_name = "smyck"
+let g:colors_name = "smyckblue"
 
 hi Normal               cterm=none ctermbg=none     ctermfg=15      gui=none        guibg=#11121F   guifg=#F7F7F7
 "hi Normal               cterm=none ctermbg=none     ctermfg=15      gui=none        guibg=#282828   guifg=#F7F7F7

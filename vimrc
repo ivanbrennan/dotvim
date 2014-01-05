@@ -268,35 +268,29 @@ noremap <LocalLeader>ff :call FontCycle()<CR>:echo getfontname()<CR>
 
 let g:font_dict =
       \{
-      \"Anonymous Pro":   -3,
-      \"Inconsolata":     -1,
+      \"Anonymous Pro":    3,
+      \"Inconsolata":      1,
       \"Menlo":            0,
-      \"Monaco":           2,
-      \"Source Code Pro":  1,
+      \"Monaco":          -2,
+      \"Source Code Pro": -1,
       \}
 
-function! FontCycle()
+function! FontCycle() " {{{3
   let l:font_nams = sort( keys( g:font_dict ) )
-
   " current info
   let l:cur_parts = split( getfontname(), ':' )
   let [ l:cur_nam, l:cur_hgt ] = [ l:cur_parts[0], l:cur_parts[1] ]
   let l:cur_idx = index( l:font_nams, l:cur_nam )
-
   " new name
   let l:new_idx = ( l:cur_idx + 1 ) % len( l:font_nams )
   let l:new_nam = l:font_nams[ l:new_idx ]
-
   " new height
   let l:cur_adj = get( g:font_dict, l:cur_nam, 0 )
   let l:new_adj = g:font_dict[ l:new_nam ]
-  let l:hgt_dif = l:cur_adj - l:new_adj
-  let l:new_hgt = l:cur_hgt + l:hgt_dif
+  let l:new_hgt = l:cur_hgt - l:cur_adj + l:new_adj
 
-  " prepare assignment
   let l:new_font = join( [ l:new_nam, l:new_hgt ], ":h" )
-  let l:new_asgn = escape( l:new_font, " ")
-  execute "set guifont=" . l:new_asgn
+  execute "set guifont=" . escape( l:new_font, " ")
 endfunc
 
 " ··········· whitespace ··············· {{{2
@@ -317,24 +311,36 @@ set listchars+=precedes:«       " precedes offscreen
 
 " ··········· colors ··················· {{{2
 
+colorscheme ivisu
+noremap <LocalLeader>` :call ColorCycle()<CR>:colorscheme<CR>
+
 " toggle background
 call togglebg#map("")
 noremap <LocalLeader>b :ToggleBG<CR>
 
-colorscheme ivisu
+" nice colorschemes {{{3
+let g:nice_schemes =
+      \[
+      \"github",
+      \"hemisu",
+      \"ivisu",
+      \"ivanized",
+      \"muon",
+      \"mustang",
+      \"mustangblue",
+      \"smyck",
+      \"smyckblue",
+      \"ir_black",
+      \"tir_black",
+      \"xoria256",
+      \]
 
-nnoremap  <Leader>1 :colo<Space>ivisu<CR>:colorscheme<CR>
-nnoremap <Leader>11 :colo<Space>hemisu<CR>:colorscheme<CR>
-nnoremap  <Leader>2 :colo<Space>smyck<CR>:colorscheme<CR>
-nnoremap <Leader>22 :colo<Space>smyckblue<CR>:colorscheme<CR>
-nnoremap  <Leader>3 :colo<Space>mustang<CR>:colorscheme<CR>
-nnoremap <Leader>33 :colo<Space>mustangblue<CR>:colorscheme<CR>
-nnoremap  <Leader>4 :colo<Space>github<CR>:colorscheme<CR>
-nnoremap  <Leader>5 :colo<Space>ivanized<CR>:colorscheme<CR>
-nnoremap  <Leader>6 :colo<Space>muon<CR>:colorscheme<CR>
-nnoremap  <Leader>7 :colo<Space>tir_black<CR>:colorscheme<CR>
-nnoremap <Leader>77 :colo<Space>ir_black<CR>:colorscheme<CR>
-nnoremap  <Leader>8 :colo<Space>xoria256<CR>:colorscheme<CR>
+function! ColorCycle() " {{{3
+  let l:cur_idx = index( g:nice_schemes, g:colors_name )
+  let l:new_idx = ( l:cur_idx + 1 ) % len( g:nice_schemes )
+  let l:new_nam = g:nice_schemes[ l:new_idx ]
+  execute "colorscheme " . l:new_nam
+endfunc
 
 " ··········· line numbers ············· {{{2
 
@@ -371,7 +377,6 @@ set statusline+=\ %f\           " path
 set statusline+=%y              " filetype
 set statusline+=%m              " modified
 set statusline+=%=\             " left/right separator
-set statusline+=(%c):    " row:virtual-column
 set statusline+=(%l/%L):%-3v    " row:virtual-column
 set statusline+=%4.P\           " percent through file
 
