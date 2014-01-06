@@ -320,11 +320,12 @@ set listchars+=precedes:«       " precedes offscreen
 
 " ··········· colors ··················· {{{2
 
+set background=dark
+
 if has("gui_running")
   set transparency=5
   colorscheme ivisu
 else
-  set background=dark
   colorscheme muon
 endif
 
@@ -333,7 +334,7 @@ noremap <silent> <LocalLeader>[ :call ColorCycle(-1)<CR>:colorscheme<CR>
 
 " toggle background
 call togglebg#map("")
-noremap <LocalLeader>b :ToggleBG<CR>
+noremap <LocalLeader>b :ToggleBG<CR>:echo &background<CR>
 
 " nice colorschemes {{{3
 let g:nice_schemes =
