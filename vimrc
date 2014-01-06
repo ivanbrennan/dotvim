@@ -53,7 +53,8 @@ set visualbell
 set formatoptions-=o
 
 " let J handle comments intelligently
-set formatoptions+=j
+" and don't complain if this isn't supported
+silent! set formatoptions+=j
 
 " use this if 'i' flag slows down ins-completion
 "set complete-=i
