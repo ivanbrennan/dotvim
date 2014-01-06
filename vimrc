@@ -288,7 +288,7 @@ function! FontCycle() " {{{3
   let l:cur_adj = get( g:font_dict, l:cur_nam, 0 )
   let l:new_adj = g:font_dict[ l:new_nam ]
   let l:new_hgt = l:cur_hgt - l:cur_adj + l:new_adj
-
+  " assign new font
   let l:new_font = join( [ l:new_nam, l:new_hgt ], ":h" )
   execute "set guifont=" . escape( l:new_font, " ")
 endfunc
