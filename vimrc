@@ -40,24 +40,13 @@ set history=500                 " history 500-deep
 
 " ::::::::: Options ::::::::::::::::::::::: {{{1
 
-" disable intro message
-set shortmess+=I
-
-" show commands (disable if this slows things down)
-set showcmd
-
-" don't beep
-set visualbell
-
-" don't auto-comment with o or O
-set formatoptions-=o
-
-" let J handle comments intelligently
-" and don't complain if this isn't supported
-silent! set formatoptions+=j
-
-" use this if 'i' flag slows down ins-completion
-"set complete-=i
+set shortmess+=I        " disable intro message
+set showcmd             " show commands (remove if slow)
+set visualbell          " don't beep
+set formatoptions-=o    " don't auto-comment with o or O
+silent! set formatoptions+=j " let J handle comments if supported
+"set complete-=i         " `i` flag might slow down ins-completion
+set formatprg=par       " gq -> par, gw -> internal
 
 " ::::::::: Mappings :::::::::::::::::::::: {{{1
 
@@ -72,13 +61,12 @@ let maplocalleader=","
 
 " source / edit vimrc
 noremap <LocalLeader>ss :source $MYVIMRC<CR>
-noremap <LocalLeader>ee :edit $MYVIMRC<CR>
+noremap <LocalLeader>ee :tabedit $MYVIMRC<CR>
 
 augroup vimrcgroup
   autocmd!
   " auto-reload vimrc when it's saved
   autocmd BufWritePost .vimrc source $MYVIMRC
-
   " restore last known cursor position
   autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
