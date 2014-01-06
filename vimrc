@@ -273,7 +273,8 @@ noremap <LocalLeader>h :call HexHighlight()<CR>
 " ··········· fonts ···················· {{{2
 
 set guifont=Source\ Code\ Pro:h15
-noremap <LocalLeader>ff :call FontCycle()<CR>:echo getfontname()<CR>
+noremap <silent> <LocalLeader>= :call FontCycle(1)<CR>:echo getfontname()<CR>
+noremap <silent> <LocalLeader>- :call FontCycle(-1)<CR>:echo getfontname()<CR>
 
 let g:font_dict =
       \{
@@ -282,16 +283,17 @@ let g:font_dict =
       \"Menlo":            0,
       \"Monaco":          -2,
       \"Source Code Pro": -1,
+      \"Ubuntu Mono":      3,
       \}
 
-function! FontCycle() " {{{3
+function! FontCycle(num) " {{{3
   let l:font_nams = sort( keys( g:font_dict ) )
   " current info
   let l:cur_parts = split( getfontname(), ':' )
   let [ l:cur_nam, l:cur_hgt ] = [ l:cur_parts[0], l:cur_parts[1] ]
   let l:cur_idx = index( l:font_nams, l:cur_nam )
   " new name
-  let l:new_idx = ( l:cur_idx + 1 ) % len( l:font_nams )
+  let l:new_idx = ( l:cur_idx + a:num ) % len( l:font_nams )
   let l:new_nam = l:font_nams[ l:new_idx ]
   " new height
   let l:cur_adj = get( g:font_dict, l:cur_nam, 0 )
