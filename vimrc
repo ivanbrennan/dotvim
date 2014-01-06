@@ -73,8 +73,16 @@ let maplocalleader=","
 noremap <LocalLeader>ss :source $MYVIMRC<CR>
 noremap <LocalLeader>ee :edit $MYVIMRC<CR>
 
-augroup vimrcgroup    " auto-reload vimrc when it's saved
-  autocmd! BufWritePost .vimrc source $MYVIMRC
+augroup vimrcgroup
+  autocmd!
+  " auto-reload vimrc when it's saved
+  autocmd BufWritePost .vimrc source $MYVIMRC
+
+  " restore last known cursor position
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   execute "normal! g`\"" |
+    \ endif
 augroup END
 
 " lazy finger
