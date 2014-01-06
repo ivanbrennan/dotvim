@@ -328,8 +328,8 @@ else
   colorscheme muon
 endif
 
-noremap <LocalLeader>] :call ColorCycle(1)<CR>:colorscheme<CR>
-noremap <LocalLeader>[ :call ColorCycle(-1)<CR>:colorscheme<CR>
+noremap <silent> <LocalLeader>] :call ColorCycle(1)<CR>:colorscheme<CR>
+noremap <silent> <LocalLeader>[ :call ColorCycle(-1)<CR>:colorscheme<CR>
 
 " toggle background
 call togglebg#map("")
