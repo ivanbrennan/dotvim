@@ -320,8 +320,16 @@ set listchars+=precedes:«       " precedes offscreen
 
 " ··········· colors ··················· {{{2
 
-colorscheme ivisu
-noremap <LocalLeader>` :call ColorCycle()<CR>:colorscheme<CR>
+if has("gui_running")
+  set transparency=5
+  colorscheme ivisu
+else
+  set background=dark
+  colorscheme muon
+endif
+
+noremap <LocalLeader>] :call ColorCycle(1)<CR>:colorscheme<CR>
+noremap <LocalLeader>[ :call ColorCycle(-1)<CR>:colorscheme<CR>
 
 " toggle background
 call togglebg#map("")
@@ -344,9 +352,9 @@ let g:nice_schemes =
       \"xoria256",
       \]
 
-function! ColorCycle() " {{{3
+function! ColorCycle(num) " {{{3
   let l:cur_idx = index( g:nice_schemes, g:colors_name )
-  let l:new_idx = ( l:cur_idx + 1 ) % len( g:nice_schemes )
+  let l:new_idx = ( l:cur_idx + a:num ) % len( g:nice_schemes )
   let l:new_nam = g:nice_schemes[ l:new_idx ]
   execute "colorscheme " . l:new_nam
 endfunc
@@ -390,10 +398,6 @@ set statusline+=(%l/%L):%-3v    " row:virtual-column
 set statusline+=%4.P\           " percent through file
 
 " ::::::::: Gui Settings :::::::::::::::::: {{{1
-
-if has("gui_running")
-  set transparency=5
-endif
 
 " force these mappings after gvimrc has run
 augroup gui_group
