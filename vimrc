@@ -148,14 +148,24 @@ noremap <silent> <LocalLeader>r :Rexplore<CR>
 " explorer mappings ( ~/.vim/after/ftplugin/netrw.vim )
 " nmap <buffer> f <CR>
 
-" enable cursorline (underline) {{{4
-augroup NetrwCursor
+" cursorline {{{4
+augroup NetrwBrowser
   autocmd!
-  autocmd FileType * autocmd BufEnter <buffer> highlight clear CursorLine
-  autocmd FileType netrw call HiCrsrLn()
-  autocmd FileType netrw autocmd BufEnter <buffer> call HiCrsrLn()
-  autocmd FileType netrw autocmd BufLeave <buffer> highlight clear CursorLine
+  autocmd FileType * call NetrwCrsrLn()
+  autocmd BufEnter * call NetrwCrsrLn()
+"  autocmd BufWinEnter * call HiCrsrLn()
+"  autocmd FileType netrw call HiCrsrLn()
+  "autocmd FileType netrw autocmd BufEnter <buffer> call HiCrsrLn()
+  "autocmd FileType netrw autocmd BufLeave <buffer> highlight clear CursorLine
 augroup END
+
+function! NetrwCrsrLn()
+  if &filetype ==# 'netrw'
+    call HiCrsrLn()
+  else
+    highlight clear CursorLine
+  endif
+endfunc
 
 " Explorer {{{4
 noremap <C-CR> :call NetEx()<CR>
