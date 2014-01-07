@@ -474,8 +474,9 @@ set ignorecase    " searches are case insensitive...
 set smartcase     " ...unless they contain a capital letter
 
 " quick search and replace
-noremap ;; :%s:::g<Left><Left><Left>
-noremap ;' :%s:::cg<Left><Left><Left>
+noremap  ;; :%s:::g<Left><Left><Left>
+noremap  ;' :%s:::cg<Left><Left><Left>
+cnoremap ;/ \(\)<Left><Left>
 
 " toggle search highlighting
 noremap <LocalLeader><Space> :set hlsearch! hlsearch?<CR>
