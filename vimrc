@@ -43,10 +43,11 @@ set history=500                 " history 500-deep
 set shortmess+=I        " disable intro message
 set showcmd             " show commands (remove if slow)
 set visualbell          " don't beep
+"set complete-=i         " `i` flag could slow down ins-completion
+
+set formatprg=par       " gq -> par, gw -> internal
 set formatoptions-=o    " don't auto-comment with o or O
 silent! set formatoptions+=j " let J handle comments if supported
-"set complete-=i         " `i` flag might slow down ins-completion
-set formatprg=par       " gq -> par, gw -> internal
 
 " ::::::::: Mappings :::::::::::::::::::::: {{{1
 
@@ -104,12 +105,6 @@ noremap <Leader>j :bprevious<CR>
 noremap <Leader>k :bnext<CR>
 noremap <Leader>h :tabprevious<CR>
 noremap <Leader>l :tabnext<CR>
-
-" splits
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-H> <C-W>h
-noremap <C-L> <C-W>l
 
 " current directory
 noremap <LocalLeader>wd :pwd<CR>
