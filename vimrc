@@ -156,18 +156,11 @@ noremap <silent> <LocalLeader>r :Rexplore<CR>
 " enable cursorline (underline) {{{4
 augroup NetrwCursor
   autocmd!
-  autocmd FileType netrw call HighlightCursor()
-  autocmd FileType netrw autocmd BufEnter <buffer> call HighlightCursor()
+  autocmd FileType * autocmd BufEnter <buffer> highlight clear CursorLine
+  autocmd FileType netrw call HiCrsrLn()
+  autocmd FileType netrw autocmd BufEnter <buffer> call HiCrsrLn()
   autocmd FileType netrw autocmd BufLeave <buffer> highlight clear CursorLine
 augroup END
-
-function! HighlightCursor()
-  if &background == "light"
-    highlight CursorLine guibg=#CBE4EE ctermbg=195
-  else
-    highlight CursorLine guibg=#444444 ctermbg=238
-  end
-endfunc
 
 " Explorer {{{4
 noremap <C-CR> :call NetEx()<CR>
@@ -373,6 +366,25 @@ set guicursor+=o:hor50
 set guicursor+=i-ci:ver25
 set guicursor+=r-cr:hor20
 set guicursor+=sm:block-blinkon0
+
+noremap <silent> <Leader>c :call ToggleHiCrsrLn()<CR>
+
+function! ToggleHiCrsrLn()
+  let l:cur_hi = synIDattr(synIDtrans(hlID("CursorLine")), "bg")
+  if len(l:cur_hi) == 0
+    call HiCrsrLn()
+  else
+    highlight clear CursorLine
+  endif
+endfunc
+
+function! HiCrsrLn()
+  if &background == "light"
+    highlight CursorLine guibg=#CBE4EE ctermbg=195
+  else
+    highlight CursorLine guibg=#444444 ctermbg=238
+  endif
+endfunc
 
 " ··········· status line ·············· {{{2
 
