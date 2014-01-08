@@ -358,8 +358,8 @@ noremap <C-L> <C-W>l
 noremap <Leader>ww :set wrap! linebreak! list! wrap?<CR>
 
 " window size
-noremap <Leader>wh :set lines=21<CR>
-noremap <Leader>wf :set lines=38<CR>
+noremap <Leader>wh :set lines=24<CR>
+noremap <Leader>wf :set lines=50<CR>
 
 " fonts
 noremap <silent> <LocalLeader>= :call FontCycle(1)<CR>:echo getfontname()<CR>
