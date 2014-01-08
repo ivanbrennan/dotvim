@@ -370,7 +370,7 @@ noremap <silent> <LocalLeader>] :call ColorCycle(1)<CR>:colorscheme<CR>
 noremap <silent> <LocalLeader>[ :call ColorCycle(-1)<CR>:colorscheme<CR>
 
 " background
-noremap <LocalLeader>b :ToggleBG<CR>:echo &background<CR>
+noremap <LocalLeader>b :call ToggleBG()<CR>:echo &background<CR>
 
 " info
 noremap <LocalLeader>h :call HexHighlight()<CR>
@@ -379,6 +379,9 @@ noremap <LocalLeader>y :call SynStack()<CR>
 " line numbers
 noremap <Leader>n :set number! number?<CR>
 noremap <Leader>r :set relativenumber! relativenumber?<CR>
+
+" foldcolumn
+noremap <silent> <LocalLeader><Tab> :call FoldColToggle()<CR>
 
 " cursor
 noremap <silent> <Leader>c :call ToggleHiCrsrLn()<CR>
@@ -416,6 +419,7 @@ augroup END
 " ··········· netrw ···················· {{{2
 augroup NetrwGroup
   autocmd! FileType,BufEnter * call NetrwCrsrLn()
+  autocmd FileType netrw set foldcolumn=1
 augroup END
 
 " ··········· ruby ····················· {{{2
@@ -522,6 +526,19 @@ endfunc
 "function! SwitchSplit()
 "endfunc
 
+" ··········· foldcolumn ··············· {{{2
+function! FoldColToggle()
+  if &foldcolumn==0
+    let g:num_use = &number==1
+    let g:rel_num_use = &relativenumber==1
+    set foldcolumn=4 nonumber norelativenumber
+  else
+    set foldcolumn=0
+    if g:rel_num_use==1 | set relativenumber | endif
+    if g:num_use==1 | set number | endif
+  endif
+endfunc
+
 " ··········· syntax ··················· {{{2
 function! SynStack()
   if !exists("*synstack")
@@ -559,6 +576,11 @@ function! NewFontHt( cur_hgt, cur_nam, new_nam )
 endfunc
 
 " ··········· colors ··················· {{{2
+function! ToggleBG()
+  if &background=='light' | set background=dark
+  else | set background=light | endif
+endfunc
+
 function! ColorCycle(num)
   let l:cur_idx = index( g:nice_schemes, g:colors_name )
   let l:new_idx = ( l:cur_idx + a:num ) % len( g:nice_schemes )
