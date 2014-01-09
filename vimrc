@@ -347,7 +347,6 @@ noremap <Leader>] <C-W><Bar>
 noremap <Leader>= <C-W>=
 
 " navigate
-noremap <LocalLeader>ww :call NavToggle()<CR>
 noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
@@ -521,11 +520,6 @@ function! VexToggle()
 endfunc
 
 " ··········· splits ··················· {{{2
-function! NavToggle()
-  " map/unmap split navigators
-  echo "implement this"
-endfunc
-
 "function! SwitchSplit()
 "endfunc
 
