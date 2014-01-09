@@ -508,7 +508,7 @@ function! VexToggle()
     execute 'vertical resize' . abs( g:netrw_winsize )
     let t:expl_buf_num = bufnr( "%" )
   else
-    if bufwinnr( t:expl_buf_num ) == -1
+    if bufwinnr( bufname( "t:expl_buf_num" ) ) == -1
       unlet t:expl_buf_num | call VexToggle()
     else
       let t:cur_win_nr = winnr()
