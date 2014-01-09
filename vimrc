@@ -206,6 +206,9 @@ inoremap <C-[> <Esc>`^
 " netrw
 noremap <C-CR> :call NetEx()<CR>
 noremap <Leader><Tab> :call VexToggle()<CR>
+" from ./vim/after/ftplugin/netrw.vim
+"   noremap <buffer> f <CR>
+"   noremap <buffer> Y :Ntree<CR>
 
 " list
 noremap <S-CR> :buffers<CR>:b
