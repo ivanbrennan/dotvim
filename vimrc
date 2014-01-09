@@ -64,7 +64,6 @@ set formatoptions-=o            " don't auto-comment with o or O
 silent! set formatoptions+=j    " let J handle comments if supported
 
 " ··········· navigation ··············· {{{2
-set foldmethod=marker
 set scrolloff=2
 set sidescroll=1                " smooth sidescroll
 
@@ -80,6 +79,7 @@ set nowrap                      " don't wrap lines
 set fillchars+=vert:\           " clean dividers
 set cursorline                  " cursorline on
 set number                      " line numbers
+set foldcolumn=0                " hide foldcolumn
 augroup cursorline              " clear cursorline highlight
   autocmd!
   autocmd ColorScheme * highlight clear CursorLine
@@ -119,6 +119,7 @@ highlight clear CursorLine
 " nice colorschemes {{{
 let g:nice_schemes =
       \[
+      \"badwolf",
       \"github",
       \"hemisu",
       \"ivisu",
