@@ -490,8 +490,10 @@ augroup END
 
 " ··········· netrw ···················· {{{2
 function! NetrwCrsrLn()
-  if &filetype ==# 'netrw'| call HiCrsrLn()
-  else | highlight clear CursorLine
+  if &filetype ==# 'netrw'
+    call HiCrsrLn()
+  else
+    highlight clear CursorLine
   endif
 endfunc
 
@@ -504,21 +506,26 @@ endfunc
 
 function! VexToggle()
   if !exists( "t:vexpl_buf_num" )
-    let g:netrw_banner=0        " no banner
-    let g:netrw_browse_split=4  " open files in previous window
-    Vexplore | wincmd H
-    execute 'vertical resize' . abs( g:netrw_winsize )
-    let t:vexpl_buf_num = bufnr( "%" )
+    call VexOpen()
   else
-    if bufwinnr( bufname( "t:vexpl_buf_num" ) ) == -1
-      unlet t:vexpl_buf_num | call VexToggle()
-    else
-      let t:cur_win_nr = winnr()
-      1wincmd w | close
-      execute ( t:cur_win_nr - 1 ) . 'wincmd w'
-      unlet t:vexpl_buf_num
-    endif
+    call VexClose()
   endif
+endfunc
+
+function! VexOpen()
+  let g:netrw_banner=0          " no banner
+  let g:netrw_browse_split=4    " open files in previous window
+  Vexplore | wincmd H
+  let t:vexpl_buf_num = bufnr( "%" )
+  execute 'vertical resize' . abs( g:netrw_winsize )
+endfunc
+
+function! VexClose()
+  unlet t:vexpl_buf_num
+  let t:cur_win_nr = winnr()
+  1wincmd w
+  close
+  execute ( t:cur_win_nr - 1 ) . 'wincmd w'
 endfunc
 
 function! VexSize()
@@ -598,7 +605,8 @@ endfunc
 " ··········· colors ··················· {{{2
 function! ToggleBG()
   if &background=='light' | set background=dark
-  else | set background=light | endif
+  else | set background=light
+  endif
 endfunc
 
 function! ColorCycle(num)
