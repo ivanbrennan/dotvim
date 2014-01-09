@@ -46,6 +46,7 @@ set history=500                 " history 500-deep
 " ··········· netrw ···················· {{{2
 let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+,^DS_Store$'
 let g:netrw_hide=1              " hide hidden files
+let g:netrw_liststyle=0         " thin
 let g:netrw_altv=1              " open files on right
 let g:netrw_winsize=-25         " tree takes 25 cols
 let g:netrw_preview=1           " open previews vertically
@@ -502,7 +503,6 @@ endfunc
 function! VexToggle()
   if !exists( "t:expl_buf_num" )
     let g:netrw_banner=0        " no banner
-    let g:netrw_liststyle=3     " tree
     let g:netrw_browse_split=4  " open files in previous window
     Vexplore | wincmd H
     execute 'vertical resize' . abs( g:netrw_winsize )
