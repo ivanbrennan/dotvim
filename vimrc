@@ -530,15 +530,27 @@ endfunc
 "endfunc
 
 " ··········· foldcolumn ··············· {{{2
+function! RestoreNumLn()
+    if exists( "w:use_rel" ) && w:use_rel==1
+      set relativenumber
+    else
+      set norelativenumber
+    endif
+    if exists( "w:use_num" ) && w:use_num==0
+      set nonumber
+    else
+      set number
+    endif
+endfunc
+
 function! FoldColToggle()
   if &foldcolumn==0
-    let g:num_use = &number==1
-    let g:rel_num_use = &relativenumber==1
+    let w:use_num = &number==1
+    let w:use_rel = &relativenumber==1
     set foldcolumn=4 nonumber norelativenumber
   else
     set foldcolumn=0
-    if g:rel_num_use==1 | set relativenumber | endif
-    if g:num_use==1 | set number | endif
+    call RestoreNumLn()
   endif
 endfunc
 
