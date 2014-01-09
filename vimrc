@@ -421,8 +421,10 @@ augroup END
 
 " ··········· netrw ···················· {{{2
 augroup NetrwGroup
-  autocmd! FileType,BufEnter * call NetrwCrsrLn()
+  autocmd!
+  autocmd FileType,BufEnter * call NetrwCrsrLn()
   autocmd FileType netrw set foldcolumn=1
+  autocmd WinEnter * call VexSize()
 augroup END
 
 " ··········· ruby ····················· {{{2
@@ -501,21 +503,30 @@ function! NetEx()
 endfunc
 
 function! VexToggle()
-  if !exists( "t:expl_buf_num" )
+  if !exists( "t:vexpl_buf_num" )
     let g:netrw_banner=0        " no banner
     let g:netrw_browse_split=4  " open files in previous window
     Vexplore | wincmd H
     execute 'vertical resize' . abs( g:netrw_winsize )
-    let t:expl_buf_num = bufnr( "%" )
+    let t:vexpl_buf_num = bufnr( "%" )
   else
-    if bufwinnr( bufname( "t:expl_buf_num" ) ) == -1
-      unlet t:expl_buf_num | call VexToggle()
+    if bufwinnr( bufname( "t:vexpl_buf_num" ) ) == -1
+      unlet t:vexpl_buf_num | call VexToggle()
     else
       let t:cur_win_nr = winnr()
       1wincmd w | close
       execute ( t:cur_win_nr - 1 ) . 'wincmd w'
-      unlet t:expl_buf_num
+      unlet t:vexpl_buf_num
     endif
+  endif
+endfunc
+
+function! VexSize()
+  if exists( "t:vexpl_buf_num" )
+    let t:cur_win_nr = winnr()
+    1wincmd w
+    execute 'vertical resize' . abs( g:netrw_winsize )
+    execute ( t:cur_win_nr ) . 'wincmd w'
   endif
 endfunc
 
