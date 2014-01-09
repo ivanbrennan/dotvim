@@ -109,7 +109,6 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " colors
-set background=dark
 if has("gui_running")
   colorscheme ivisu | set transparency=5
 else
