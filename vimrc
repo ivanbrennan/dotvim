@@ -161,27 +161,22 @@ set statusline+=%4.P\           " percent through file
 
 " ··········· wild settings ············ {{{2
 set wildmenu
+set wildmode=list:longest
 
-" TODO: Investigate the precise meaning of these settings
-" set wildmode=list:longest,list:full
-
-" Disable output and VCS files
+" output and VCS
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-
-" Disable archive files
+" archives
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-
-" Ignore bundler and sass cache
+" bundler and sass
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
-
-" Ignore librarian-chef, vagrant, test-kitchen and Berkshelf cache
+" librarian-chef, vagrant, test-kitchen and Berkshelf
 set wildignore+=*/tmp/librarian/*,*/.vagrant/*,*/.kitchen/*,*/vendor/cookbooks/*
-
-" Ignore rails temporary asset caches
+" rails temporary asset caches
 set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
-
-" Disable temp and backup files
+" temp and backup files
 set wildignore+=*.swp,*~,._*
+" OSX bullshit
+set wildignore+=*.DS_Store
 
 " ::::::::: Mappings :::::::::::::::::::::: {{{1
 
@@ -236,8 +231,6 @@ noremap <LocalLeader>5 :lcd %:h<CR>
 " cycle
 noremap <Leader>j :bprevious<CR>
 noremap <Leader>k :bnext<CR>
-noremap <Leader>h :tabprevious<CR>
-noremap <Leader>l :tabnext<CR>
 
 " ··········· editing ·················· {{{2
 " open above / below current line
@@ -337,12 +330,14 @@ noremap <Leader>ff :set hlsearch! hlsearch?<CR>
 " find merge conflicts
 noremap <silent> <LocalLeader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" ··········· splits ··················· {{{2
+" ··········· windows ·················· {{{2
+" splits
 noremap <Leader>s :split<CR>
 noremap <Leader>v :vsplit<CR>
 noremap <Leader>o :only<CR>
+noremap K :q<CR>
 
-" resize
+"resize
 noremap <Leader>- <C-W>_
 noremap <Leader>] <C-W><Bar>
 noremap <Leader>= <C-W>=
@@ -352,6 +347,10 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
+
+" tabs
+noremap <Leader>9 :tabprevious<CR>
+noremap <Leader>0 :tabnext<CR>
 
 " replace this with SwitchSplit()
 "noremap <Leader><Leader>s <C-W>t<C-W>K
