@@ -17,7 +17,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ivanbrennan/grep-operator'
 Bundle 'ivanbrennan/quickfix-toggle'
-Bundle 'ivanbrennan/potion'
 
 " github repos: colors
 Bundle 'vim-scripts/hexHighlight.vim'
@@ -161,7 +160,6 @@ set statusline+=%4.P\           " percent through file
 
 " ··········· wild settings ············ {{{2
 set wildmenu
-set wildmode=list:longest
 
 " output and VCS
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -203,8 +201,8 @@ inoremap <C-[> <Esc>`^
 noremap <C-CR> :call NetEx()<CR>
 noremap <Leader><Tab> :call VexToggle()<CR>
 " from ./vim/after/ftplugin/netrw.vim
-"   noremap <buffer> f <CR>
-"   noremap <buffer> Y :Ntree<CR>
+"  noremap <buffer> f <CR>
+"  noremap <buffer> Y :Ntree<CR>
 
 " list
 noremap <S-CR> :buffers<CR>:b
@@ -229,8 +227,8 @@ noremap <LocalLeader>w :pwd<CR>
 noremap <LocalLeader>5 :lcd %:h<CR>
 
 " cycle
-noremap <Leader>j :bprevious<CR>
-noremap <Leader>k :bnext<CR>
+noremap <Leader>, :bprevious<CR>
+noremap <Leader>. :bnext<CR>
 
 " ··········· editing ·················· {{{2
 " open above / below current line
