@@ -30,7 +30,7 @@ filetype plugin indent on       " required for Vundle!
 
 " ::::::::: Settings :::::::::::::::::::::: {{{1
 
-" ··········· misc ····················· {{{2
+" ··········· options ·················· {{{2
 " notifications
 set shortmess+=I                " disable intro message
 set showcmd                     " show commands (remove if slow)
@@ -79,6 +79,7 @@ set fillchars+=vert:\           " clean dividers
 set cursorline                  " cursorline on
 set number                      " line numbers
 set foldcolumn=0                " hide foldcolumn
+set foldmethod=marker           " fold markers
 augroup cursorline              " clear cursorline highlight
   autocmd!
   autocmd ColorScheme * highlight clear CursorLine
@@ -320,7 +321,8 @@ noremap  ;' :%s:::cg<Left><Left><Left>
 cnoremap ;/ \(\)<Left><Left>
 
 " find word under cursor
-noremap <silent> <Leader>f :silent! normal! #*<CR>
+noremap <silent> <Leader>f
+      \:let stay_str = winsaveview()<CR>*<C-o>:call winrestview(stay_str)<cr>
 
 " toggle search highlighting
 noremap <Leader>ff :set hlsearch! hlsearch?<CR>
@@ -410,10 +412,9 @@ augroup END
 " ··········· vim ······················ {{{2
 augroup filetype_vim
   autocmd!
-  au FileType vim setlocal foldmethod=marker
   " comments
-  au FileType vim nnoremap <buffer> <C-_> mA0i"<Esc>`Al
-  au FileType vim vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
+  autocmd FileType vim nnoremap <buffer> <C-_> mA0i"<Esc>`Al
+  autocmd FileType vim vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
 
 " ··········· netrw ···················· {{{2
