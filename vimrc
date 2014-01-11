@@ -45,6 +45,7 @@ set history=500                 " history 500-deep
 " ··········· netrw ···················· {{{2
 let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+,^DS_Store$'
 let g:netrw_hide=1              " hide hidden files
+let g:netrw_dirhistmax=100      " keep more history
 let g:netrw_liststyle=0         " thin
 let g:netrw_altv=1              " open files on right
 let g:netrw_winsize=-25         " tree takes 25 cols
@@ -203,8 +204,9 @@ noremap <C-CR> :call NetEx()<CR>
 noremap <Leader><Tab> :call VexToggle("")<CR>
 noremap <Leader>` :call VexToggle(getcwd())<CR>
 " from ./vim/after/ftplugin/netrw.vim
-  "  noremap <buffer> f <CR>
-  "  noremap <buffer> Y :Ntree<CR>
+  "  Select file/dir:  f
+  "  Refresh listing: <Leader>l
+  "  Set treetop dir: <Leader>t
 
 " list
 noremap <S-CR> :buffers<CR>:b
