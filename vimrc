@@ -200,10 +200,11 @@ inoremap <C-[> <Esc>`^
 " ··········· buffers ·················· {{{2
 " netrw
 noremap <C-CR> :call NetEx()<CR>
-noremap <Leader><Tab> :call VexToggle(fnameescape(expand('%:h')).'/')<CR>
+noremap <Leader><Tab> :call VexToggle("")<CR>
+noremap <Leader>` :call VexToggle(getcwd())<CR>
 " from ./vim/after/ftplugin/netrw.vim
-"  noremap <buffer> f <CR>
-"  noremap <buffer> Y :Ntree<CR>
+  "  noremap <buffer> f <CR>
+  "  noremap <buffer> Y :Ntree<CR>
 
 " list
 noremap <S-CR> :buffers<CR>:b
@@ -504,16 +505,17 @@ endfunc
 
 function! VexToggle(dir)
   if !exists( "t:vexpl_buf_num" )
-    call VexOpen()
+    call VexOpen(a:dir)
   else
     call VexClose()
   endif
 endfunc
 
-function! VexOpen()
+function! VexOpen(dir)
   let g:netrw_banner=0          " no banner
   let g:netrw_browse_split=4    " open files in previous window
-  Vexplore | wincmd H
+  execute "Vexplore " . a:dir
+  wincmd H
   let t:vexpl_buf_num = bufnr( "%" )
   execute 'vertical resize' . abs( g:netrw_winsize )
 endfunc
