@@ -186,7 +186,7 @@ set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
 noremap <LocalLeader>v :source $MYVIMRC<CR>
-noremap <LocalLeader>v, :tabedit $MYVIMRC<CR>
+noremap <LocalLeader>v, :edit $MYVIMRC<CR>
 
 " ··········· modes ···················· {{{2
 " enter command mode
@@ -200,7 +200,7 @@ inoremap <C-[> <Esc>`^
 " ··········· buffers ·················· {{{2
 " netrw
 noremap <C-CR> :call NetEx()<CR>
-noremap <Leader><Tab> :call VexToggle()<CR>
+noremap <Leader><Tab> :call VexToggle(fnameescape(expand('%:h')).'/')<CR>
 " from ./vim/after/ftplugin/netrw.vim
 "  noremap <buffer> f <CR>
 "  noremap <buffer> Y :Ntree<CR>
@@ -502,7 +502,7 @@ function! NetEx()
   Explore
 endfunc
 
-function! VexToggle()
+function! VexToggle(dir)
   if !exists( "t:vexpl_buf_num" )
     call VexOpen()
   else
