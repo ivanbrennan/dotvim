@@ -319,8 +319,10 @@ noremap + ;
 noremap _ ,
 
 " search and replace
-noremap  ;; :%s:::g<Left><Left><Left>
-noremap  ;' :%s:::cg<Left><Left><Left>
+nnoremap  ;; :%s:::g<Left><Left><Left>
+vnoremap  ;; :s:::g<Left><Left><Left>
+nnoremap  ;' :%s:::cg<Left><Left><Left>
+nnoremap  ;' :s:::cg<Left><Left><Left>
 cnoremap ;/ \(\)<Left><Left>
 
 " find word under cursor
@@ -431,59 +433,75 @@ augroup END
 " ··········· ruby ····················· {{{2
 augroup filetype_ruby
   autocmd!
-  au FileType ruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby set omnifunc=rubycomplete#Complete
   " complete buffer loading can cause code execution
   " turn this off if it's a concern
-  au FileType ruby let g:rubycomplete_buffer_loading=1
-  au FileType ruby let g:rubycomplete_classes_in_global=1
-  au FileType ruby let g:rubycomplete_rails = 1
+  autocmd FileType ruby let g:rubycomplete_buffer_loading=1
+  autocmd FileType ruby let g:rubycomplete_classes_in_global=1
+  autocmd FileType ruby let g:rubycomplete_rails = 1
   " if snippet
-  au FileType ruby :inoreabbrev <buffer> iff if<CR>end<Esc>kA
+  autocmd FileType ruby :inoreabbrev <buffer> iff if<CR>end<Esc>kA
   " comments
-  au FileType ruby nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
-  au FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
+  autocmd FileType ruby nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
+  autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
+augroup END
+
+" ··········· html ····················· {{{2
+augroup filetype_html
+  autocmd!
+  autocmd FileType html,eruby :inoreabbrev <buffer> divv <div></div><C-O>F<
+  autocmd FileType html,eruby :inoreabbrev <buffer> aa <a href=""></a><C-O>F<
+  autocmd FileType html,eruby :inoreabbrev <buffer> h1h <h1></h1><C-O>F<
+  autocmd FileType html,eruby :inoreabbrev <buffer> h2h <h2></h2><C-O>F<
+  autocmd FileType html,eruby :inoreabbrev <buffer> h3h <h3></h3><C-O>F<
+  autocmd FileType html,eruby :inoreabbrev <buffer> h4h <h4></h4><C-O>F<
+  autocmd FileType html,eruby :inoreabbrev <buffer> h5h <h5></h5><C-O>F<
+  autocmd FileType html,eruby :inoreabbrev <buffer>
+        \tbl <table><CR><thead><CR><tr><CR><th></th><CR></tr><CR></thead><CR><CR>
+        \<tbody><CR><tr><CR><td></td><CR></tr><CR></tbody><CR></table><C-O>9k<C-O>f<
 augroup END
 
 " ··········· eruby ···················· {{{2
 augroup filetype_eruby
   autocmd!
-  au FileType eruby set omnifunc=rubycomplete#Complete
+  autocmd FileType eruby set omnifunc=rubycomplete#Complete
   " complete buffer loading can cause code execution
   " turn this off if it's a concern
-  au FileType eruby let g:rubycomplete_buffer_loading=1
-  au FileType eruby let g:rubycomplete_classes_in_global=1
-  au FileType eruby let g:rubycomplete_rails = 1
-  au FileType eruby :inoreabbrev <buffer> erb <% %><Left><Left><Left>
-  au FileType eruby :inoreabbrev <buffer> erp <%= %><Left><Left><Left>
-  au FileType eruby :inoreabbrev <buffer> erc <%# %><Left><Left><Left>
-  au FileType eruby :inoreabbrev <buffer>
-        \iff <% if %><% end %><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+  autocmd FileType eruby let g:rubycomplete_buffer_loading=1
+  autocmd FileType eruby let g:rubycomplete_classes_in_global=1
+  autocmd FileType eruby let g:rubycomplete_rails = 1
+  autocmd FileType eruby :inoreabbrev <buffer> erb <% %><C-O>F<Space>
+  autocmd FileType eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
+  autocmd FileType eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
+  autocmd FileType eruby :inoreabbrev <buffer> lkt <%= link_to %><C-O>F<Space>
+  autocmd FileType eruby :inoreabbrev <buffer>
+        \iff <% if %> <% end %><C-O>3F<Space>
 augroup END
 
 " ··········· python ··················· {{{2
 augroup filetype_python
   autocmd!
-  au FileType python :inoreabbrev <buffer> iff if:<left>
+  autocmd FileType python :inoreabbrev <buffer> iff if:<left>
   " comments
-  au FileType python nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
-  au FileType python vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
+  autocmd FileType python nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
+  autocmd FileType python vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
 
 " ··········· javascript ··············· {{{2
 augroup filetype_javascript
   autocmd!
   " if statement
-  au FileType javascript :inoreabbrev <buffer> iff if ()<Left>
+  autocmd FileType javascript :inoreabbrev <buffer> iff if ()<Left>
   " add semicolon
-  au FileType javascript noremap <buffer> <Leader>; mZA;<Esc>`Z
+  autocmd FileType javascript noremap <buffer> <Leader>; mZA;<Esc>`Z
 augroup END
 
 " ··········· markdown ················· {{{2
 augroup filetype_markdown
   autocmd!
-  au FileType markdown :onoremap <buffer>
+  autocmd FileType markdown :onoremap <buffer>
         \ih :<C-U>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:noh\rkvg_"<CR>
-  au FileType markdown :onoremap <buffer>
+  autocmd FileType markdown :onoremap <buffer>
         \ah :<C-U>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:noh\rVk"<CR>
 augroup END
 
