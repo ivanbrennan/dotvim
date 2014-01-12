@@ -12,6 +12,7 @@ call vundle#rc()
 
 " github repos: general
 Bundle 'gmarik/vundle'
+Bundle 'SirVer/ultisnips'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
@@ -439,8 +440,8 @@ augroup filetype_ruby
   autocmd FileType ruby let g:rubycomplete_buffer_loading=1
   autocmd FileType ruby let g:rubycomplete_classes_in_global=1
   autocmd FileType ruby let g:rubycomplete_rails = 1
-  " if snippet
-  autocmd FileType ruby :inoreabbrev <buffer> iff if<CR>end<Up>
+  "" if snippet
+  "autocmd FileType ruby :inoreabbrev <buffer> iff if<CR>end<Up>
   " comments
   autocmd FileType ruby nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
   autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
@@ -455,41 +456,41 @@ augroup filetype_eruby
   autocmd FileType eruby let g:rubycomplete_buffer_loading=1
   autocmd FileType eruby let g:rubycomplete_classes_in_global=1
   autocmd FileType eruby let g:rubycomplete_rails = 1
-  autocmd FileType eruby :inoreabbrev <buffer> erb <% %><C-O>F<Space>
-  autocmd FileType eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
-  autocmd FileType eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
-  autocmd FileType eruby :inoreabbrev <buffer> ennd <% end %><C-O>
-  autocmd FileType eruby :inoreabbrev <buffer>
-        \lkt <%= link_to %><C-O>F<Space>
-  autocmd FileType eruby :inoreabbrev <buffer>
-        \iff <% if  %><CR><% end %><Esc>k$Ffa<C-O>
-  autocmd FileType eruby :inoreabbrev <buffer>
-        \formf <% form_for  do <Bar>f<Bar> %><CR><p><CR>
-        \<%= f.label :content %><br><CR>
-        \<%= f.text_area :content %><CR>
-        \</p><CR><p><%= f.submit "Submit" %></p><CR>
-        \<% end %><C-O>6k<C-O>$<C-O>4F<Space><C-O>
+  "autocmd FileType eruby :inoreabbrev <buffer> erb <% %><C-O>F<Space>
+  "autocmd FileType eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
+  "autocmd FileType eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
+  "autocmd FileType eruby :inoreabbrev <buffer> ennd <% end %><C-O>
+  "autocmd FileType eruby :inoreabbrev <buffer>
+  "      \lkt <%= link_to %><C-O>F<Space>
+  "autocmd FileType eruby :inoreabbrev <buffer>
+  "      \iff <% if  %><CR><% end %><Esc>k$Ffa<C-O>
+  "autocmd FileType eruby :inoreabbrev <buffer>
+  "      \formf <% form_for  do <Bar>f<Bar> %><CR><p><CR>
+  "      \<%= f.label :content %><br><CR>
+  "      \<%= f.text_area :content %><CR>
+  "      \</p><CR><p><%= f.submit "Submit" %></p><CR>
+  "      \<% end %><C-O>6k<C-O>$<C-O>4F<Space><C-O>
 augroup END
 
 " ··········· html ····················· {{{2
-augroup filetype_html
-  autocmd!
-  autocmd FileType html,eruby :inoreabbrev <buffer> divv <div></div><C-O>F><C-O>
-  autocmd FileType html,eruby :inoreabbrev <buffer> aa <a href=""></a><C-O>2F"<C-O>
-  autocmd FileType html,eruby :inoreabbrev <buffer> h1h <h1></h1><C-O>F><C-O>
-  autocmd FileType html,eruby :inoreabbrev <buffer> h2h <h2></h2><C-O>F><C-O>
-  autocmd FileType html,eruby :inoreabbrev <buffer> h3h <h3></h3><C-O>F><C-O>
-  autocmd FileType html,eruby :inoreabbrev <buffer> h4h <h4></h4><C-O>F><C-O>
-  autocmd FileType html,eruby :inoreabbrev <buffer> h5h <h5></h5><C-O>F><C-O>
-  autocmd FileType html,eruby :inoreabbrev <buffer>
-        \tbl <table><CR><thead><CR><tr><CR><th></th><CR></tr><CR></thead><CR><CR>
-        \<tbody><CR><tr><CR><td></td><CR></tr><CR></tbody><CR></table><CR><C-O>
-augroup END
+"augroup filetype_html
+"  autocmd!
+"  autocmd FileType html,eruby :inoreabbrev <buffer> divv <div></div><C-O>F><C-O>
+"  autocmd FileType html,eruby :inoreabbrev <buffer> aa <a href=""></a><C-O>2F"<C-O>
+"  autocmd FileType html,eruby :inoreabbrev <buffer> h1h <h1></h1><C-O>F><C-O>
+"  autocmd FileType html,eruby :inoreabbrev <buffer> h2h <h2></h2><C-O>F><C-O>
+"  autocmd FileType html,eruby :inoreabbrev <buffer> h3h <h3></h3><C-O>F><C-O>
+"  autocmd FileType html,eruby :inoreabbrev <buffer> h4h <h4></h4><C-O>F><C-O>
+"  autocmd FileType html,eruby :inoreabbrev <buffer> h5h <h5></h5><C-O>F><C-O>
+"  autocmd FileType html,eruby :inoreabbrev <buffer>
+"        \tbl <table><CR><thead><CR><tr><CR><th></th><CR></tr><CR></thead><CR><CR>
+"        \<tbody><CR><tr><CR><td></td><CR></tr><CR></tbody><CR></table><CR><C-O>
+"augroup END
 
 " ··········· python ··················· {{{2
 augroup filetype_python
   autocmd!
-  autocmd FileType python :inoreabbrev <buffer> iff if:<left>
+  "autocmd FileType python :inoreabbrev <buffer> iff if:<left>
   " comments
   autocmd FileType python nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
   autocmd FileType python vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
@@ -499,7 +500,7 @@ augroup END
 augroup filetype_javascript
   autocmd!
   " if statement
-  autocmd FileType javascript :inoreabbrev <buffer> iff if ()<Left>
+  "autocmd FileType javascript :inoreabbrev <buffer> iff if ()<Left>
   " add semicolon
   autocmd FileType javascript noremap <buffer> <Leader>; mZA;<Esc>`Z
 augroup END
