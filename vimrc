@@ -440,25 +440,10 @@ augroup filetype_ruby
   autocmd FileType ruby let g:rubycomplete_classes_in_global=1
   autocmd FileType ruby let g:rubycomplete_rails = 1
   " if snippet
-  autocmd FileType ruby :inoreabbrev <buffer> iff if<CR>end<Esc>kA
+  autocmd FileType ruby :inoreabbrev <buffer> iff if<CR>end<Up>
   " comments
   autocmd FileType ruby nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
   autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
-augroup END
-
-" ··········· html ····················· {{{2
-augroup filetype_html
-  autocmd!
-  autocmd FileType html,eruby :inoreabbrev <buffer> divv <div></div><C-O>F<
-  autocmd FileType html,eruby :inoreabbrev <buffer> aa <a href=""></a><C-O>F<
-  autocmd FileType html,eruby :inoreabbrev <buffer> h1h <h1></h1><C-O>F<
-  autocmd FileType html,eruby :inoreabbrev <buffer> h2h <h2></h2><C-O>F<
-  autocmd FileType html,eruby :inoreabbrev <buffer> h3h <h3></h3><C-O>F<
-  autocmd FileType html,eruby :inoreabbrev <buffer> h4h <h4></h4><C-O>F<
-  autocmd FileType html,eruby :inoreabbrev <buffer> h5h <h5></h5><C-O>F<
-  autocmd FileType html,eruby :inoreabbrev <buffer>
-        \tbl <table><CR><thead><CR><tr><CR><th></th><CR></tr><CR></thead><CR><CR>
-        \<tbody><CR><tr><CR><td></td><CR></tr><CR></tbody><CR></table><C-O>9k<C-O>f<
 augroup END
 
 " ··········· eruby ···················· {{{2
@@ -473,9 +458,26 @@ augroup filetype_eruby
   autocmd FileType eruby :inoreabbrev <buffer> erb <% %><C-O>F<Space>
   autocmd FileType eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
   autocmd FileType eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
+  autocmd FileType eruby :inoreabbrev <buffer> ennd <% end %><C-O>
   autocmd FileType eruby :inoreabbrev <buffer> lkt <%= link_to %><C-O>F<Space>
+  autocmd FileType eruby :inoreabbrev <buffer> formf <% form_for  do <Bar>f<Bar> %><C-O>4F <C-O>
   autocmd FileType eruby :inoreabbrev <buffer>
-        \iff <% if %> <% end %><C-O>3F<Space>
+        \iff <% if  %><CR><% end %><Esc>k$Ffa<C-O>
+augroup END
+
+" ··········· html ····················· {{{2
+augroup filetype_html
+  autocmd!
+  autocmd FileType html,eruby :inoreabbrev <buffer> divv <div></div><C-O>F><C-O>
+  autocmd FileType html,eruby :inoreabbrev <buffer> aa <a href=""></a><C-O>2F"<C-O>
+  autocmd FileType html,eruby :inoreabbrev <buffer> h1h <h1></h1><C-O>F><C-O>
+  autocmd FileType html,eruby :inoreabbrev <buffer> h2h <h2></h2><C-O>F><C-O>
+  autocmd FileType html,eruby :inoreabbrev <buffer> h3h <h3></h3><C-O>F><C-O>
+  autocmd FileType html,eruby :inoreabbrev <buffer> h4h <h4></h4><C-O>F><C-O>
+  autocmd FileType html,eruby :inoreabbrev <buffer> h5h <h5></h5><C-O>F><C-O>
+  autocmd FileType html,eruby :inoreabbrev <buffer>
+        \tbl <table><CR><thead><CR><tr><CR><th></th><CR></tr><CR></thead><CR><CR>
+        \<tbody><CR><tr><CR><td></td><CR></tr><CR></tbody><CR></table><CR><C-O>
 augroup END
 
 " ··········· python ··················· {{{2
