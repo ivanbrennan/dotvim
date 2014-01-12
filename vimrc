@@ -459,10 +459,16 @@ augroup filetype_eruby
   autocmd FileType eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
   autocmd FileType eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
   autocmd FileType eruby :inoreabbrev <buffer> ennd <% end %><C-O>
-  autocmd FileType eruby :inoreabbrev <buffer> lkt <%= link_to %><C-O>F<Space>
-  autocmd FileType eruby :inoreabbrev <buffer> formf <% form_for  do <Bar>f<Bar> %><C-O>4F <C-O>
+  autocmd FileType eruby :inoreabbrev <buffer>
+        \lkt <%= link_to %><C-O>F<Space>
   autocmd FileType eruby :inoreabbrev <buffer>
         \iff <% if  %><CR><% end %><Esc>k$Ffa<C-O>
+  autocmd FileType eruby :inoreabbrev <buffer>
+        \formf <% form_for  do <Bar>f<Bar> %><CR><p><CR>
+        \<%= f.label :content %><br><CR>
+        \<%= f.text_area :content %><CR>
+        \</p><CR><p><%= f.submit "Submit" %></p><CR>
+        \<% end %><C-O>6k<C-O>$<C-O>4F<Space><C-O>
 augroup END
 
 " ··········· html ····················· {{{2
