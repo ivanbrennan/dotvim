@@ -328,7 +328,7 @@ cnoremap ;/ \(\)<Left><Left>
 
 " find word under cursor
 noremap <silent> <Leader>f
-      \:let stay_str = winsaveview()<CR>*<C-o>:call winrestview(stay_str)<cr>
+      \:let stay_str=winsaveview()<CR>*<C-o>:call winrestview(stay_str)<cr>
 
 " toggle search highlighting
 noremap <Leader>ff :set hlsearch! hlsearch?<CR>
