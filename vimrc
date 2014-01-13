@@ -192,7 +192,8 @@ noremap <LocalLeader>v, :edit $MYVIMRC<CR>
 
 " ··········· modes ···················· {{{2
 " enter command mode
-noremap ; :
+noremap  ; :
+noremap q; q:
 
 " exit insert mode
 inoremap    kj <Esc>`^
@@ -505,7 +506,7 @@ fun! NetEx()
 endf
 
 fun! VexToggle(dir)
-  if !exists( "t:vexpl_buf_num" )
+  if !exists("t:vexpl_buf_num")
     call VexOpen(a:dir)
   else
     call VexClose()
@@ -517,24 +518,25 @@ fun! VexOpen(dir)
   let g:netrw_browse_split=4    " open files in previous window
   execute "Vexplore " . a:dir
   wincmd H
-  let t:vexpl_buf_num = bufnr( "%" )
-  execute 'vertical resize' . abs( g:netrw_winsize )
+  let t:vexpl_buf_num = bufnr("%")
+  execute 'vertical resize' . abs(g:netrw_winsize)
 endf
 
 fun! VexClose()
   unlet t:vexpl_buf_num
-  let t:cur_win_nr = winnr()
+  let cur_win_nr = winnr()
+  let target_nr = ( cur_win_nr == 1 ? winnr('#') : cur_win_nr )
   1wincmd w
   close
-  execute ( t:cur_win_nr - 1 ) . 'wincmd w'
+  execute (target_nr - 1) . 'wincmd w'
 endf
 
 fun! VexSize()
-  if exists( "t:vexpl_buf_num" )
-    let t:cur_win_nr = winnr()
+  if exists("t:vexpl_buf_num")
+    let cur_win_nr = winnr()
     1wincmd w
-    execute 'vertical resize' . abs( g:netrw_winsize )
-    execute ( t:cur_win_nr ) . 'wincmd w'
+    execute 'vertical resize' . abs(g:netrw_winsize)
+    execute (cur_win_nr) . 'wincmd w'
   endif
 endf
 
@@ -556,12 +558,12 @@ endf
 
 " ··········· foldcolumn ··············· {{{2
 fun! RestoreNumLn()
-    if exists( "w:use_rel" ) && w:use_rel==1
+    if exists("w:use_rel") && w:use_rel==1
       set relativenumber
     else
       set norelativenumber
     endif
-    if exists( "w:use_num" ) && w:use_num==0
+    if exists("w:use_num") && w:use_num==0
       set nonumber
     else
       set number
@@ -589,30 +591,30 @@ endf
 
 " ··········· fonts ···················· {{{2
 fun! FontCycle(num)
-  let l:font_nams = sort( keys( g:font_dict ) )
-  let [ l:cur_nam, l:cur_hgt, l:cur_idx ] = CurFont( l:font_nams )
-  let l:new_nam = NewFontNm( l:cur_idx, a:num, l:font_nams )
-  let l:new_hgt = NewFontHt( l:cur_hgt, l:cur_nam, l:new_nam )
+  let font_nams = sort(keys(g:font_dict))
+  let [ cur_nam, cur_hgt, cur_idx ] = CurFont(font_nams)
+  let new_nam = NewFontNm(cur_idx, a:num, font_nams)
+  let new_hgt = NewFontHt(cur_hgt, cur_nam, new_nam)
 
-  let l:new_font = join( [ l:new_nam, l:new_hgt ], ":h" )
-  execute "set guifont=" . escape( l:new_font, " ")
+  let new_font = join([ new_nam, new_hgt ], ":h")
+  execute "set guifont=" . escape(new_font, " ")
 endf
 
-fun! CurFont( font_nams )
-  let [ l:cur_nam, l:cur_hgt ] = split( getfontname(), ':' )
-  let l:cur_idx = index( a:font_nams, l:cur_nam )
-  return [ l:cur_nam, l:cur_hgt, l:cur_idx ]
+fun! CurFont(font_nams)
+  let [cur_nam, cur_hgt] = split(getfontname(), ':')
+  let cur_idx = index(a:font_nams, cur_nam)
+  return [cur_nam, cur_hgt, cur_idx]
 endf
 
-fun! NewFontNm( cur_idx, num, font_nams )
-  let l:new_idx = ( a:cur_idx + a:num ) % len( a:font_nams )
-  return a:font_nams[ l:new_idx ]
+fun! NewFontNm(cur_idx, num, font_nams)
+  let new_idx = (a:cur_idx + a:num) % len(a:font_nams)
+  return a:font_nams[new_idx]
 endf
 
-fun! NewFontHt( cur_hgt, cur_nam, new_nam )
-  let l:cur_adj = get( g:font_dict, a:cur_nam, 0 )
-  let l:new_adj = g:font_dict[ a:new_nam ]
-  return a:cur_hgt - l:cur_adj + l:new_adj
+fun! NewFontHt(cur_hgt, cur_nam, new_nam)
+  let cur_adj = get(g:font_dict, a:cur_nam, 0)
+  let new_adj = g:font_dict[a:new_nam]
+  return a:cur_hgt - cur_adj + new_adj
 endf
 
 " ··········· colors ··················· {{{2
@@ -623,16 +625,16 @@ fun! ToggleBG()
 endf
 
 fun! ColorCycle(num)
-  let l:cur_idx = index( g:nice_schemes, g:colors_name )
-  let l:new_idx = ( l:cur_idx + a:num ) % len( g:nice_schemes )
-  let l:new_nam = g:nice_schemes[ l:new_idx ]
-  execute "colorscheme " . l:new_nam
+  let cur_idx = index( g:nice_schemes, g:colors_name )
+  let new_idx = (cur_idx + a:num) % len(g:nice_schemes)
+  let new_nam = g:nice_schemes[new_idx]
+  execute "colorscheme " . new_nam
 endf
 
 " ··········· cursor ··················· {{{2
 fun! ToggleHiCrsrLn()
-  let l:cur_hi = synIDattr(synIDtrans(hlID("CursorLine")), "bg")
-  if len(l:cur_hi) == 0
+  let cur_hi = synIDattr(synIDtrans(hlID("CursorLine")), "bg")
+  if len(cur_hi) == 0
     call HiCrsrLn()
   else
     highlight clear CursorLine
