@@ -280,6 +280,10 @@ set pastetoggle=<F4>
 " toggle case
 inoremap <LocalLeader>` <Esc>viwg~gi
 
+" toggle filetype
+noremap <LocalLeader>f, :call FileTypeToggle("")<Left><Left>
+noremap <LocalLeader>f :call FileTypeToggle()<CR>
+
 " format entire file
 noremap <LocalLeader>fef :normal! gg=G``<CR>
 
@@ -395,10 +399,6 @@ noremap <silent> <LocalLeader><Tab> :call FoldColToggle()<CR>
 noremap <silent> <Leader>c :call ToggleHiCrsrLn()<CR>
 
 " ::::::::: Abbreviations ::::::::::::::::: {{{1
-" shortcuts
-noreabbrev fnn function
-noreabbrev fn! function!
-
 " common typos
 noreabbrev verison version
 noreabbrev funiction function
@@ -406,7 +406,7 @@ noreabbrev funcition function
 noreabbrev funciotn function
 noreabbrev funciton function
 
-" ::::::::: FileType :::::::::::::::::::::: {{{1
+" ::::::::: Autocommands :::::::::::::::::: {{{1
 
 " ··········· vimrc ···················· {{{2
 augroup vimrcgroup
@@ -440,8 +440,6 @@ augroup filetype_ruby
   autocmd FileType ruby let g:rubycomplete_buffer_loading=1
   autocmd FileType ruby let g:rubycomplete_classes_in_global=1
   autocmd FileType ruby let g:rubycomplete_rails = 1
-  "" if snippet
-  "autocmd FileType ruby :inoreabbrev <buffer> iff if<CR>end<Up>
   " comments
   autocmd FileType ruby nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
   autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
@@ -456,36 +454,10 @@ augroup filetype_eruby
   autocmd FileType eruby let g:rubycomplete_buffer_loading=1
   autocmd FileType eruby let g:rubycomplete_classes_in_global=1
   autocmd FileType eruby let g:rubycomplete_rails = 1
-  "autocmd FileType eruby :inoreabbrev <buffer> erb <% %><C-O>F<Space>
-  "autocmd FileType eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
-  "autocmd FileType eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
-  "autocmd FileType eruby :inoreabbrev <buffer> ennd <% end %><C-O>
-  "autocmd FileType eruby :inoreabbrev <buffer>
-  "      \lkt <%= link_to %><C-O>F<Space>
-  "autocmd FileType eruby :inoreabbrev <buffer>
-  "      \iff <% if  %><CR><% end %><Esc>k$Ffa<C-O>
-  "autocmd FileType eruby :inoreabbrev <buffer>
-  "      \formf <% form_for  do <Bar>f<Bar> %><CR><p><CR>
-  "      \<%= f.label :content %><br><CR>
-  "      \<%= f.text_area :content %><CR>
-  "      \</p><CR><p><%= f.submit "Submit" %></p><CR>
-  "      \<% end %><C-O>6k<C-O>$<C-O>4F<Space><C-O>
+  autocmd FileType eruby :inoreabbrev <buffer> erb <% %><C-O>F<Space>
+  autocmd FileType eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
+  autocmd FileType eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
 augroup END
-
-" ··········· html ····················· {{{2
-"augroup filetype_html
-"  autocmd!
-"  autocmd FileType html,eruby :inoreabbrev <buffer> divv <div></div><C-O>F><C-O>
-"  autocmd FileType html,eruby :inoreabbrev <buffer> aa <a href=""></a><C-O>2F"<C-O>
-"  autocmd FileType html,eruby :inoreabbrev <buffer> h1h <h1></h1><C-O>F><C-O>
-"  autocmd FileType html,eruby :inoreabbrev <buffer> h2h <h2></h2><C-O>F><C-O>
-"  autocmd FileType html,eruby :inoreabbrev <buffer> h3h <h3></h3><C-O>F><C-O>
-"  autocmd FileType html,eruby :inoreabbrev <buffer> h4h <h4></h4><C-O>F><C-O>
-"  autocmd FileType html,eruby :inoreabbrev <buffer> h5h <h5></h5><C-O>F><C-O>
-"  autocmd FileType html,eruby :inoreabbrev <buffer>
-"        \tbl <table><CR><thead><CR><tr><CR><th></th><CR></tr><CR></thead><CR><CR>
-"        \<tbody><CR><tr><CR><td></td><CR></tr><CR></tbody><CR></table><CR><C-O>
-"augroup END
 
 " ··········· python ··················· {{{2
 augroup filetype_python
@@ -517,61 +489,73 @@ augroup END
 " ::::::::: Functions ::::::::::::::::::::: {{{1
 
 " ··········· netrw ···················· {{{2
-function! NetrwCrsrLn()
+fun! NetrwCrsrLn()
   if &filetype ==# 'netrw'
     call HiCrsrLn()
   else
     highlight clear CursorLine
   endif
-endfunc
+endf
 
-function! NetEx()
+fun! NetEx()
   let g:netrw_banner=1          " banner
   let g:netrw_liststyle=0       " thin
   let g:netrw_browse_split=0    " open files in current window
   Explore
-endfunc
+endf
 
-function! VexToggle(dir)
+fun! VexToggle(dir)
   if !exists( "t:vexpl_buf_num" )
     call VexOpen(a:dir)
   else
     call VexClose()
   endif
-endfunc
+endf
 
-function! VexOpen(dir)
+fun! VexOpen(dir)
   let g:netrw_banner=0          " no banner
   let g:netrw_browse_split=4    " open files in previous window
   execute "Vexplore " . a:dir
   wincmd H
   let t:vexpl_buf_num = bufnr( "%" )
   execute 'vertical resize' . abs( g:netrw_winsize )
-endfunc
+endf
 
-function! VexClose()
+fun! VexClose()
   unlet t:vexpl_buf_num
   let t:cur_win_nr = winnr()
   1wincmd w
   close
   execute ( t:cur_win_nr - 1 ) . 'wincmd w'
-endfunc
+endf
 
-function! VexSize()
+fun! VexSize()
   if exists( "t:vexpl_buf_num" )
     let t:cur_win_nr = winnr()
     1wincmd w
     execute 'vertical resize' . abs( g:netrw_winsize )
     execute ( t:cur_win_nr ) . 'wincmd w'
   endif
-endfunc
+endf
+
+" ··········· filetype ················· {{{2
+fun! FileTypeToggle(...)
+  if a:0 > 0
+    let b:alt_ftype = &filetype
+    let   &filetype = a:1
+  else
+    let     new_alt = &filetype
+    let   &filetype = b:alt_ftype
+    let b:alt_ftype = new_alt
+  endif
+endf
 
 " ··········· splits ··················· {{{2
-"function! SwitchSplit()
-"endfunc
+"fun! SwitchSplit()
+"endf
 
 " ··········· foldcolumn ··············· {{{2
-function! RestoreNumLn()
+fun! RestoreNumLn()
     if exists( "w:use_rel" ) && w:use_rel==1
       set relativenumber
     else
@@ -582,9 +566,9 @@ function! RestoreNumLn()
     else
       set number
     endif
-endfunc
+endf
 
-function! FoldColToggle()
+fun! FoldColToggle()
   if &foldcolumn==0
     let w:use_num = &number==1
     let w:use_rel = &relativenumber==1
@@ -593,18 +577,18 @@ function! FoldColToggle()
     set foldcolumn=0
     call RestoreNumLn()
   endif
-endfunc
+endf
 
 " ··········· syntax ··················· {{{2
-function! SynStack()
+fun! SynStack()
   if !exists("*synstack")
     return
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+endf
 
 " ··········· fonts ···················· {{{2
-function! FontCycle(num)
+fun! FontCycle(num)
   let l:font_nams = sort( keys( g:font_dict ) )
   let [ l:cur_nam, l:cur_hgt, l:cur_idx ] = CurFont( l:font_nams )
   let l:new_nam = NewFontNm( l:cur_idx, a:num, l:font_nams )
@@ -612,59 +596,59 @@ function! FontCycle(num)
 
   let l:new_font = join( [ l:new_nam, l:new_hgt ], ":h" )
   execute "set guifont=" . escape( l:new_font, " ")
-endfunc
+endf
 
-function! CurFont( font_nams )
+fun! CurFont( font_nams )
   let [ l:cur_nam, l:cur_hgt ] = split( getfontname(), ':' )
   let l:cur_idx = index( a:font_nams, l:cur_nam )
   return [ l:cur_nam, l:cur_hgt, l:cur_idx ]
-endfunc
+endf
 
-function! NewFontNm( cur_idx, num, font_nams )
+fun! NewFontNm( cur_idx, num, font_nams )
   let l:new_idx = ( a:cur_idx + a:num ) % len( a:font_nams )
   return a:font_nams[ l:new_idx ]
-endfunc
+endf
 
-function! NewFontHt( cur_hgt, cur_nam, new_nam )
+fun! NewFontHt( cur_hgt, cur_nam, new_nam )
   let l:cur_adj = get( g:font_dict, a:cur_nam, 0 )
   let l:new_adj = g:font_dict[ a:new_nam ]
   return a:cur_hgt - l:cur_adj + l:new_adj
-endfunc
+endf
 
 " ··········· colors ··················· {{{2
-function! ToggleBG()
+fun! ToggleBG()
   if &background=='light' | set background=dark
   else | set background=light
   endif
-endfunc
+endf
 
-function! ColorCycle(num)
+fun! ColorCycle(num)
   let l:cur_idx = index( g:nice_schemes, g:colors_name )
   let l:new_idx = ( l:cur_idx + a:num ) % len( g:nice_schemes )
   let l:new_nam = g:nice_schemes[ l:new_idx ]
   execute "colorscheme " . l:new_nam
-endfunc
+endf
 
 " ··········· cursor ··················· {{{2
-function! ToggleHiCrsrLn()
+fun! ToggleHiCrsrLn()
   let l:cur_hi = synIDattr(synIDtrans(hlID("CursorLine")), "bg")
   if len(l:cur_hi) == 0
     call HiCrsrLn()
   else
     highlight clear CursorLine
   endif
-endfunc
+endf
 
-function! HiCrsrLn()
+fun! HiCrsrLn()
   if &background == "light"
     highlight CursorLine guibg=#CBE4EE ctermbg=195
   else
     highlight CursorLine guibg=#444444 ctermbg=238
   endif
-endfunc
+endf
 
-function! RestoreCrsr()
+fun! RestoreCrsr()
   if line("'\"") > 1 && line("'\"") <= line("$")
     execute "normal! g`\""
   endif
-endfunc
+endf
