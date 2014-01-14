@@ -282,8 +282,8 @@ set pastetoggle=<F4>
 inoremap <LocalLeader>` <Esc>viwg~gi
 
 " toggle filetype
-noremap          <LocalLeader>f, :call FileTypeToggle("")<Left><Left>
-noremap <silent> <LocalLeader>f :call FileTypeToggle()<CR>
+noremap <silent> <LocalLeader>f, :call FileTypeToggle(1)<CR>
+noremap <silent>  <LocalLeader>f :call FileTypeToggle(0)<CR>
 
 " format entire file
 noremap <LocalLeader>fef :normal! gg=G``<CR>
@@ -541,18 +541,15 @@ fun! VexSize()
 endf
 
 " ··········· filetype ················· {{{2
-fun! FileTypeToggle(...)
-  if a:0 > 0
+fun! FileTypeToggle(num)
+  if a:num > 0 || !exists("b:alt_ftype")
     let b:alt_ftype = &filetype
-    let   &filetype = a:1
-  elseif !exists("b:alt_ftype")
-    let cmd = input("", "call FileTypeToggle(\"\")\<left>\<left>")
-    exe cmd
+    let   &filetype = input("enter FileType: ")
   else
     let     new_alt = &filetype
     let   &filetype = b:alt_ftype
     let b:alt_ftype = new_alt
-  endif
+  end
 endf
 
 " ··········· splits ··················· {{{2
