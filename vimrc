@@ -368,7 +368,7 @@ noremap <Leader>0 :tabnext<CR>
 "noremap <Leader><Leader>v <C-W>t<C-W>H
 
 " ··········· appearance ··············· {{{2
-noremap <Leader>ww :set wrap! linebreak! list! wrap?<CR>
+noremap <Leader>ww :setlocal wrap! linebreak! list! wrap?<CR>
 
 " window size
 noremap <Leader>wh :set lines=24<CR>
