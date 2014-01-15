@@ -82,7 +82,6 @@ set cursorline                  " cursorline on
 set number                      " line numbers
 set foldcolumn=0                " hide foldcolumn
 set foldmethod=marker           " fold markers
-set eadirection=hor             " equalalways width only
 augroup cursorline              " clear cursorline highlight
   autocmd!
   autocmd ColorScheme * highlight clear CursorLine
@@ -515,6 +514,7 @@ endf
 
 fun! VexOpen(dir)
   let g:netrw_banner=0          " no banner
+  let g:netrw_liststyle=3       " tree
   let g:netrw_browse_split=4    " open files in previous window
   let vex_width = 28
 
@@ -534,12 +534,18 @@ fun! VexClose()
   unlet t:vex_buf_nr
 
   execute (target_nr - 1) . "wincmd w"
+  call NormalizeWidths()
 endf
 
 fun! VexSize(vex_width)
   execute "vertical resize" . a:vex_width
   set winfixwidth
-  wincmd =
+  call NormalizeWidths()
+endf
+
+fun! NormalizeWidths()
+  set eadirection=hor
+  set equalalways! equalalways!
 endf
 
 " ··········· filetype ················· {{{2
