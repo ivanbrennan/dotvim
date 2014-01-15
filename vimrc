@@ -49,7 +49,7 @@ let g:netrw_hide=1              " hide hidden files
 let g:netrw_dirhistmax=100      " keep more history
 let g:netrw_liststyle=0         " thin
 let g:netrw_altv=1              " open files on right
-let g:netrw_winsize=-25         " tree takes 25 cols
+let g:netrw_winsize=-25         " 25-column splits
 let g:netrw_preview=1           " open previews vertically
 let g:netrw_use_errorwindow=0   " suppress error window
 
