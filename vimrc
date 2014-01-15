@@ -82,6 +82,7 @@ set cursorline                  " cursorline on
 set number                      " line numbers
 set foldcolumn=0                " hide foldcolumn
 set foldmethod=marker           " fold markers
+set eadirection=hor             " equalalways width only
 augroup cursorline              " clear cursorline highlight
   autocmd!
   autocmd ColorScheme * highlight clear CursorLine
@@ -203,8 +204,8 @@ inoremap <C-[> <Esc>`^
 " ··········· buffers ·················· {{{2
 " netrw
 noremap <C-CR> :call NetEx()<CR>
-noremap <Leader><Tab> :call VexToggle("")<CR>
-noremap <Leader>` :call VexToggle(getcwd())<CR>
+noremap <Leader><Tab> :call VexToggle(getcwd())<CR>
+noremap <Leader>` :call VexToggle("")<CR>
 " from ./vim/after/ftplugin/netrw.vim
   "  Select file/dir:  f
   "  Refresh listing: <Leader>l
@@ -429,7 +430,6 @@ augroup NetrwGroup
   autocmd!
   autocmd FileType,BufEnter * call NetrwCrsrLn()
   autocmd FileType netrw set foldcolumn=1
-  autocmd WinEnter * call VexSize()
 augroup END
 
 " ··········· ruby ····················· {{{2
@@ -491,7 +491,7 @@ augroup END
 
 " ··········· netrw ···················· {{{2
 fun! NetrwCrsrLn()
-  if &filetype ==# 'netrw'
+  if &filetype ==# "netrw"
     call HiCrsrLn()
   else
     highlight clear CursorLine
@@ -516,28 +516,30 @@ endf
 fun! VexOpen(dir)
   let g:netrw_banner=0          " no banner
   let g:netrw_browse_split=4    " open files in previous window
+  let vex_width = 28
+
   execute "Vexplore " . a:dir
-  wincmd H
   let t:vex_buf_nr = bufnr("%")
-  execute 'vertical resize' . abs(g:netrw_winsize)
+  wincmd H
+
+  call VexSize(vex_width)
 endf
 
 fun! VexClose()
-  unlet t:vex_buf_nr
   let cur_win_nr = winnr()
-  let target_nr = ( cur_win_nr == 1 ? winnr('#') : cur_win_nr )
+  let target_nr = ( cur_win_nr == 1 ? winnr("#") : cur_win_nr )
+
   1wincmd w
   close
-  execute (target_nr - 1) . 'wincmd w'
+  unlet t:vex_buf_nr
+
+  execute (target_nr - 1) . "wincmd w"
 endf
 
-fun! VexSize()
-  if exists("t:vex_buf_nr")
-    let cur_win_nr = winnr()
-    1wincmd w
-    execute 'vertical resize' . abs(g:netrw_winsize)
-    execute (cur_win_nr) . 'wincmd w'
-  endif
+fun! VexSize(vex_width)
+  execute "vertical resize" . a:vex_width
+  set winfixwidth
+  wincmd =
 endf
 
 " ··········· filetype ················· {{{2
