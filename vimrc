@@ -506,10 +506,10 @@ fun! NetEx()
 endf
 
 fun! VexToggle(dir)
-  if !exists("t:vexpl_buf_num")
-    call VexOpen(a:dir)
-  else
+  if exists("t:vex_buf_nr")
     call VexClose()
+  else
+    call VexOpen(a:dir)
   endif
 endf
 
@@ -518,12 +518,12 @@ fun! VexOpen(dir)
   let g:netrw_browse_split=4    " open files in previous window
   execute "Vexplore " . a:dir
   wincmd H
-  let t:vexpl_buf_num = bufnr("%")
+  let t:vex_buf_nr = bufnr("%")
   execute 'vertical resize' . abs(g:netrw_winsize)
 endf
 
 fun! VexClose()
-  unlet t:vexpl_buf_num
+  unlet t:vex_buf_nr
   let cur_win_nr = winnr()
   let target_nr = ( cur_win_nr == 1 ? winnr('#') : cur_win_nr )
   1wincmd w
@@ -532,7 +532,7 @@ fun! VexClose()
 endf
 
 fun! VexSize()
-  if exists("t:vexpl_buf_num")
+  if exists("t:vex_buf_nr")
     let cur_win_nr = winnr()
     1wincmd w
     execute 'vertical resize' . abs(g:netrw_winsize)
