@@ -48,6 +48,7 @@ let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+,^DS_Store$'
 let g:netrw_hide=1              " hide hidden files
 let g:netrw_dirhistmax=100      " keep more history
 let g:netrw_liststyle=0         " thin
+let g:netrw_banner=0            " no banner
 let g:netrw_altv=1              " open files on right
 let g:netrw_winsize=-25         " 25-column splits
 let g:netrw_preview=1           " open previews vertically
@@ -499,7 +500,6 @@ fun! NetrwCrsrLn()
 endf
 
 fun! NetEx()
-  let g:netrw_banner=1          " banner
   let g:netrw_browse_split=0    " open files in current window
   Explore
 endf
@@ -513,9 +513,8 @@ fun! VexToggle(dir)
 endf
 
 fun! VexOpen(dir)
-  let g:netrw_banner=0          " no banner
   let g:netrw_browse_split=4    " open files in previous window
-  let vex_width = 25
+  let vex_width = 27
 
   execute "Vexplore " . a:dir
   let t:vex_buf_nr = bufnr("%")
