@@ -50,7 +50,6 @@ let g:netrw_dirhistmax=100      " keep more history
 let g:netrw_liststyle=0         " thin
 let g:netrw_banner=0            " no banner
 let g:netrw_altv=1              " open files on right
-let g:netrw_winsize=-25         " 25-column splits
 let g:netrw_preview=1           " open previews vertically
 let g:netrw_use_errorwindow=0   " suppress error window
 
@@ -188,8 +187,8 @@ let maplocalleader=","
 set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
-noremap <LocalLeader>v :source $MYVIMRC<CR>
-noremap <LocalLeader>v, :edit $MYVIMRC<CR>
+noremap <LocalLeader>r :source $MYVIMRC<CR>
+noremap <LocalLeader>r, :edit $MYVIMRC<CR>
 
 " ··········· modes ···················· {{{2
 " enter command mode
@@ -203,17 +202,18 @@ inoremap <C-[> <Esc>`^
 
 " ··········· buffers ·················· {{{2
 " netrw
-noremap <C-CR> :call NetEx()<CR>
-noremap <Leader><Tab> :call VexToggle(getcwd())<CR>
-noremap <Leader>` :call VexToggle("")<CR>
+noremap <Leader><Tab> :call ExToggle("")<CR>
+noremap <Leader>` :call ExToggle(getcwd())<CR>
+noremap <Leader><Leader><Tab> :call VexToggle(getcwd())<CR>
+noremap <Leader><Leader>` :call VexToggle("")<CR>
 " from ./vim/after/ftplugin/netrw.vim
   "  Select file/dir:  f
   "  Refresh listing: <Leader>l
   "  Set treetop dir: <Leader>t
 
 " list
+noremap <Leader>l :buffers<CR>
 noremap <S-CR> :buffers<CR>:b
-noremap <Leader><Space> :buffers<CR>
 
 " open from ~
 noremap <LocalLeader>e, :edit ~/
@@ -227,7 +227,7 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
 
 " close
 noremap <LocalLeader>d :bdelete<CR>
-noremap <LocalLeader>c :bprevious<CR>:bdelete#<CR>
+noremap <LocalLeader>c :call BClose()<CR>
 
 " current directory
 noremap <LocalLeader>w :pwd<CR>
@@ -342,11 +342,12 @@ noremap <Leader>ff :set hlsearch! hlsearch?<CR>
 " find merge conflicts
 noremap <silent> <LocalLeader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" ··········· windows ·················· {{{2
+" ··········· splits & tabs ············ {{{2
 " splits
-noremap <Leader>s :split<CR>
-noremap <Leader>v :vsplit<CR>
-noremap <Leader>o :only<CR>
+noremap <LocalLeader>s :split<CR>
+noremap <LocalLeader>v :vsplit<CR>
+noremap <LocalLeader>q :quit<CR>
+noremap <LocalLeader>a :only<CR>
 noremap K :q<CR>
 
 "resize
@@ -499,9 +500,22 @@ fun! NetrwCrsrLn()
   endif
 endf
 
-fun! NetEx()
-  let g:netrw_browse_split=0    " open files in current window
-  Explore
+fun! ExToggle(dir)
+  if &filetype == "netrw"
+    call BClose()
+  else
+    execute "Rexplore " . a:dir
+  endif
+endf
+
+fun! BClose()
+  let prev_buf = bufnr("#")
+  if  prev_buf > 0 && buflisted(prev_buf)
+    buffer #
+  else
+    bprevious
+  endif
+  bdelete #
 endf
 
 fun! VexToggle(dir)
@@ -542,8 +556,10 @@ fun! VexSize(vex_width)
 endf
 
 fun! NormalizeWidths()
+  let eadir_pref = &eadirection
   set eadirection=hor
   set equalalways! equalalways!
+  let &eadirection = eadir_pref
 endf
 
 " ··········· filetype ················· {{{2
