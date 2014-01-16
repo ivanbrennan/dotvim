@@ -499,7 +499,6 @@ endf
 
 fun! NetEx()
   let g:netrw_banner=1          " banner
-  let g:netrw_liststyle=0       " thin
   let g:netrw_browse_split=0    " open files in current window
   Explore
 endf
@@ -514,9 +513,8 @@ endf
 
 fun! VexOpen(dir)
   let g:netrw_banner=0          " no banner
-  let g:netrw_liststyle=3       " tree
   let g:netrw_browse_split=4    " open files in previous window
-  let vex_width = 28
+  let vex_width = 27
 
   execute "Vexplore " . a:dir
   let t:vex_buf_nr = bufnr("%")
