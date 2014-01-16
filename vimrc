@@ -428,6 +428,7 @@ augroup END
 augroup NetrwGroup
   autocmd!
   autocmd FileType,BufEnter * call NetrwCrsrLn()
+  autocmd BufEnter * call NormalizeWidths()
   autocmd FileType netrw set foldcolumn=1
 augroup END
 
@@ -514,7 +515,7 @@ endf
 fun! VexOpen(dir)
   let g:netrw_banner=0          " no banner
   let g:netrw_browse_split=4    " open files in previous window
-  let vex_width = 27
+  let vex_width = 25
 
   execute "Vexplore " . a:dir
   let t:vex_buf_nr = bufnr("%")
