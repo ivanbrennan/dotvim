@@ -186,8 +186,8 @@ let maplocalleader=","
 set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
-noremap <LocalLeader>r :source $MYVIMRC<CR>
-noremap <LocalLeader>r, :edit $MYVIMRC<CR>
+noremap <Leader>` :source $MYVIMRC<CR>
+noremap <Leader>`<Space> :edit $MYVIMRC<CR>
 
 " ··········· modes ···················· {{{2
 " enter command mode
@@ -201,10 +201,11 @@ inoremap <C-[> <Esc>`^
 
 " ··········· buffers ·················· {{{2
 " netrw
-noremap <silent> <Leader><Tab> :call ExToggle("")<CR>
-noremap <silent> <Leader>` :call ExToggle(getcwd())<CR>
-noremap <silent> <LocalLeader><Tab> :call VexToggle(getcwd())<CR>
-noremap <silent> <LocalLeader>` :call VexToggle("")<CR>
+noremap <silent> <Leader>e :call ExToggle("")<CR>
+noremap <silent> <Leader>w :call ExToggle(getcwd())<CR>
+noremap <silent> <LocalLeader>e :call VexToggle(getcwd())<CR>
+noremap <silent> <LocalLeader>w :call VexToggle("")<CR>
+
 " from ./vim/after/ftplugin/netrw.vim
   "  Select file/dir:  f
   "  Refresh listing: <LocalLeader>l
@@ -215,7 +216,7 @@ noremap <Leader>l :buffers<CR>
 noremap <Leader>b :buffers<CR>:b
 
 " open from ~
-noremap <LocalLeader>e, :edit ~/
+noremap <LocalLeader>eh, :edit ~/
 
 " open from %
 nmap <LocalLeader>ew :edit %%
@@ -229,12 +230,12 @@ noremap <LocalLeader>d :bdelete<CR>
 noremap <LocalLeader>c :call BClose()<CR>
 
 " current directory
-noremap <Leader>w :pwd<CR>
+noremap <Leader><Space> :pwd<CR>
 noremap <LocalLeader>t :lcd %:h<CR>
 
 " cycle
-noremap <Leader>, :bprevious<CR>
-noremap <Leader>. :bnext<CR>
+noremap <S-CR> :bprevious<CR>
+noremap <C-CR> :bnext<CR>
 
 " ··········· editing ·················· {{{2
 " open above / below current line
@@ -332,22 +333,22 @@ nnoremap  ;' :s:::cg<Left><Left><Left>
 cnoremap ;/ \(\)<Left><Left>
 
 " find word under cursor
-noremap <silent> <Leader>f
-      \:let stay_str=winsaveview()<CR>*<C-o>:call winrestview(stay_str)<cr>
+noremap <silent> <Leader>f :set foldenable!<CR>
+      \:let view=winsaveview()<CR>#*
+      \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " toggle search highlighting
-noremap <Leader>ff :set hlsearch! hlsearch?<CR>
+noremap <Leader><Tab> :set hlsearch! hlsearch?<CR>
 
 " find merge conflicts
-noremap <silent> <LocalLeader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+noremap <silent> <Leader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " ··········· splits & tabs ············ {{{2
 " splits
-noremap <LocalLeader>s :split<CR>
-noremap <LocalLeader>v :vsplit<CR>
-noremap <LocalLeader>q :quit<CR>
-noremap <LocalLeader>a :only<CR>
-noremap K :q<CR>
+noremap <Leader>s :split<CR>
+noremap <Leader>v :vsplit<CR>
+noremap K :quit<CR>
+noremap <Leader>k :only<CR>
 
 "resize
 noremap <Leader>- <C-W>_
@@ -360,20 +361,18 @@ noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
 
+" rearrange
+noremap <C-W><C-J> <C-W>J
+noremap <C-W><C-K> <C-W>K
+noremap <C-W><C-H> <C-W>H
+noremap <C-W><C-L> <C-W>L
+
 " tabs
 noremap <Leader>9 :tabprevious<CR>
 noremap <Leader>0 :tabnext<CR>
 
-" replace this with SwitchSplit()
-"noremap <Leader><Leader>s <C-W>t<C-W>K
-"noremap <Leader><Leader>v <C-W>t<C-W>H
-
 " ··········· appearance ··············· {{{2
-noremap <Leader>ww :setlocal wrap! linebreak! list! wrap?<CR>
-
-" window size
-noremap <Leader>wh :set lines=24<CR>
-noremap <Leader>wf :set lines=50<CR>
+noremap <LocalLeader>w :setlocal wrap! linebreak! list! wrap?<CR>
 
 " fonts
 noremap <silent> <LocalLeader>= :call FontCycle(1)<CR>:echo getfontname()<CR>
@@ -508,7 +507,8 @@ fun! ExToggle(dir)
 endf
 
 fun! BClose()
-  silent! bp | sp | silent! bn | bd
+  silent! bprevious | split
+  silent! bnext     | bdelete
 endf
 
 fun! VexToggle(dir)
