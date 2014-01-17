@@ -80,7 +80,6 @@ set nowrap                      " don't wrap lines
 set fillchars+=vert:\           " clean dividers
 set cursorline                  " cursorline on
 set number                      " line numbers
-set foldcolumn=0                " hide foldcolumn
 set foldmethod=marker           " fold markers
 augroup cursorline              " clear cursorline highlight
   autocmd!
@@ -202,18 +201,18 @@ inoremap <C-[> <Esc>`^
 
 " ··········· buffers ·················· {{{2
 " netrw
-noremap <Leader><Tab> :call ExToggle("")<CR>
-noremap <Leader>` :call ExToggle(getcwd())<CR>
-noremap <Leader><Leader><Tab> :call VexToggle(getcwd())<CR>
-noremap <Leader><Leader>` :call VexToggle("")<CR>
+noremap <silent> <Leader><Tab> :call ExToggle("")<CR>
+noremap <silent> <Leader>` :call ExToggle(getcwd())<CR>
+noremap <silent> <LocalLeader><Tab> :call VexToggle(getcwd())<CR>
+noremap <silent> <LocalLeader>` :call VexToggle("")<CR>
 " from ./vim/after/ftplugin/netrw.vim
   "  Select file/dir:  f
-  "  Refresh listing: <Leader>l
-  "  Set treetop dir: <Leader>t
+  "  Refresh listing: <LocalLeader>l
+  "  Set treetop dir: <LocalLeader>t
 
 " list
 noremap <Leader>l :buffers<CR>
-noremap <S-CR> :buffers<CR>:b
+noremap <Leader>b :buffers<CR>:b
 
 " open from ~
 noremap <LocalLeader>e, :edit ~/
@@ -230,8 +229,8 @@ noremap <LocalLeader>d :bdelete<CR>
 noremap <LocalLeader>c :call BClose()<CR>
 
 " current directory
-noremap <LocalLeader>w :pwd<CR>
-noremap <LocalLeader>5 :lcd %:h<CR>
+noremap <Leader>w :pwd<CR>
+noremap <LocalLeader>t :lcd %:h<CR>
 
 " cycle
 noremap <Leader>, :bprevious<CR>
@@ -275,7 +274,7 @@ inoremap [<CR> [<CR>]<Esc>O<Tab>
 inoremap {<CR> {<CR>}<Esc>O<Tab>
 
 " paste toggle
-noremap <LocalLeader>t :set paste! paste?<CR>
+noremap <LocalLeader>p :set paste! paste?<CR>
 noremap           <F4> :set paste! paste?<CR>
 set pastetoggle=<F4>
 
@@ -392,11 +391,11 @@ noremap <LocalLeader>h :call HexHighlight()<CR>
 noremap <LocalLeader>y :call SynStack()<CR>
 
 " line numbers
-noremap <Leader>n :set number! number?<CR>
+noremap <Leader>n :call NumberToggle()<CR>
 noremap <Leader>r :set relativenumber! relativenumber?<CR>
 
 " foldcolumn
-noremap <silent> <LocalLeader><Tab> :call FoldColToggle()<CR>
+noremap <silent> <Leader>z :call FoldColToggle(4)<CR>
 
 " cursor
 noremap <silent> <Leader>c :call ToggleHiCrsrLn()<CR>
@@ -431,7 +430,6 @@ augroup NetrwGroup
   autocmd!
   autocmd FileType,BufEnter * call NetrwCrsrLn()
   autocmd BufEnter * call NormalizeWidths()
-  autocmd FileType netrw set foldcolumn=1
 augroup END
 
 " ··········· ruby ····················· {{{2
@@ -484,9 +482,9 @@ augroup END
 augroup filetype_markdown
   autocmd!
   autocmd FileType markdown :onoremap <buffer>
-        \ih :<C-U>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:noh\rkvg_"<CR>
+        \ih :<C-U>exe "normal! ?^\\(==\\+\\\|--\\+\\)$\r:noh\rkvg_"<CR>
   autocmd FileType markdown :onoremap <buffer>
-        \ah :<C-U>execute "normal! ?^\\(==\\+\\\|--\\+\\)$\r:noh\rVk"<CR>
+        \ah :<C-U>exe "normal! ?^\\(==\\+\\\|--\\+\\)$\r:noh\rVk"<CR>
 augroup END
 
 " ::::::::: Functions ::::::::::::::::::::: {{{1
@@ -501,10 +499,11 @@ fun! NetrwCrsrLn()
 endf
 
 fun! ExToggle(dir)
-  if &filetype == "netrw"
-    call BClose()
+  if &filetype != "netrw"
+    let g:netrw_browse_split=0  " open files in current window
+    exe "Explore " . a:dir
   else
-    execute "Rexplore " . a:dir
+    call BClose()
   endif
 endf
 
@@ -512,10 +511,10 @@ fun! BClose()
   let prev_buf = bufnr("#")
   if  prev_buf > 0 && buflisted(prev_buf)
     buffer #
+    bdelete #
   else
-    bprevious
+    bdelete
   endif
-  bdelete #
 endf
 
 fun! VexToggle(dir)
@@ -530,7 +529,7 @@ fun! VexOpen(dir)
   let g:netrw_browse_split=4    " open files in previous window
   let vex_width = 27
 
-  execute "Vexplore " . a:dir
+  exe "Vexplore " . a:dir
   let t:vex_buf_nr = bufnr("%")
   wincmd H
 
@@ -545,12 +544,12 @@ fun! VexClose()
   close
   unlet t:vex_buf_nr
 
-  execute (target_nr - 1) . "wincmd w"
+  exe (target_nr - 1) . "wincmd w"
   call NormalizeWidths()
 endf
 
 fun! VexSize(vex_width)
-  execute "vertical resize" . a:vex_width
+  exe "vertical resize" . a:vex_width
   set winfixwidth
   call NormalizeWidths()
 endf
@@ -578,29 +577,36 @@ endf
 "fun! SwitchSplit()
 "endf
 
-" ··········· foldcolumn ··············· {{{2
-fun! RestoreNumLn()
-    if exists("w:use_rel") && w:use_rel==1
-      set relativenumber
-    else
-      set norelativenumber
-    endif
-    if exists("w:use_num") && w:use_num==0
-      set nonumber
-    else
-      set number
-    endif
+" ··········· line numbers ············· {{{2
+fun! NumberToggle()
+  if &number == 0
+    set foldcolumn=0 number number?
+  else
+    set foldcolumn=1 nonumber number?
+  end
 endf
 
-fun! FoldColToggle()
-  if &foldcolumn==0
-    let w:use_num = &number==1
-    let w:use_rel = &relativenumber==1
-    set foldcolumn=4 nonumber norelativenumber
+" ··········· foldcolumn ··············· {{{2
+fun! FoldColToggle(fold_max)
+  if &foldcolumn < a:fold_max
+    call FoldColOn(a:fold_max)
   else
-    set foldcolumn=0
-    call RestoreNumLn()
+    call FoldColOff()
   endif
+endf
+
+fun! FoldColOn(fold_max)
+  let w:use_num  = &number==1
+  let w:use_rel  = &relativenumber==1
+  let w:fold_min = &foldcolumn
+
+  set nonumber norelativenumber
+  let &foldcolumn = a:fold_max
+endf
+
+fun! FoldColOff()
+  let [ &number, &relativenumber ] = [ w:use_num, w:use_rel ]
+  let &foldcolumn = w:fold_min
 endf
 
 " ··········· syntax ··················· {{{2
@@ -619,7 +625,7 @@ fun! FontCycle(num)
   let new_hgt = NewFontHt(cur_hgt, cur_nam, new_nam)
 
   let new_font = join([ new_nam, new_hgt ], ":h")
-  execute "set guifont=" . escape(new_font, " ")
+  exe "set guifont=" . escape(new_font, " ")
 endf
 
 fun! CurFont(font_nams)
@@ -650,7 +656,7 @@ fun! ColorCycle(num)
   let cur_idx = index( g:nice_schemes, g:colors_name )
   let new_idx = (cur_idx + a:num) % len(g:nice_schemes)
   let new_nam = g:nice_schemes[new_idx]
-  execute "colorscheme " . new_nam
+  exe "colorscheme " . new_nam
 endf
 
 " ··········· cursor ··················· {{{2
@@ -673,6 +679,6 @@ endf
 
 fun! RestoreCrsr()
   if line("'\"") > 1 && line("'\"") <= line("$")
-    execute "normal! g`\""
+    exe "normal! g`\""
   endif
 endf
