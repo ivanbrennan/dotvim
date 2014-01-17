@@ -47,6 +47,7 @@ set history=500                 " history 500-deep
 let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+,^DS_Store$'
 let g:netrw_hide=1              " hide hidden files
 let g:netrw_dirhistmax=100      " keep more history
+let g:netrw_altfile=1           " last edited file '#'
 let g:netrw_liststyle=0         " thin
 let g:netrw_banner=0            " no banner
 let g:netrw_altv=1              " open files on right
@@ -348,7 +349,12 @@ noremap <silent> <Leader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 noremap <Leader>s :split<CR>
 noremap <Leader>v :vsplit<CR>
 noremap K :quit<CR>
-noremap <Leader>k :only<CR>
+
+noremap <silent> <LocalLeader>1 :only<CR>
+noremap <LocalLeader>2 <C-W>H
+noremap <LocalLeader>3 <C-W>L
+noremap <LocalLeader>4 <C-W>K
+noremap <LocalLeader>5 <C-W>J
 
 "resize
 noremap <Leader>- <C-W>_
@@ -499,12 +505,21 @@ endf
 
 fun! ExToggle(dir)
   if &filetype != "netrw"
-    let w:tog_buf_nr = bufwinnr("%")
-    let g:netrw_browse_split=0  " open files in current window
-    exe "Explore " . a:dir
+    call ExOpen(a:dir)
   else
-    exe "buffer " . w:tog_buf_nr
+    call ExClose()
   endif
+endf
+
+fun! ExOpen(dir)
+  exe "Explore " . a:dir
+  let g:netrw_browse_split=0  " open files in current window
+endf
+
+fun! ExClose()
+  while &filetype == "netrw"
+    exe "normal! \<C-O>"
+  endw
 endf
 
 fun! VexToggle(dir)
