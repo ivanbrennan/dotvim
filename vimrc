@@ -499,16 +499,12 @@ endf
 
 fun! ExToggle(dir)
   if &filetype != "netrw"
+    let w:tog_buf_nr = bufwinnr("%")
     let g:netrw_browse_split=0  " open files in current window
     exe "Explore " . a:dir
   else
-    call BClose()
+    exe "buffer " . w:tog_buf_nr
   endif
-endf
-
-fun! BClose()
-  silent! bprevious | split
-  silent! bnext     | bdelete
 endf
 
 fun! VexToggle(dir)
@@ -568,8 +564,10 @@ fun! FileTypeToggle(num)
 endf
 
 " ··········· splits ··················· {{{2
-"fun! SwitchSplit()
-"endf
+fun! BClose()
+  silent! bprevious | split
+  silent! bnext     | bdelete
+endf
 
 " ··········· line numbers ············· {{{2
 fun! NumberToggle()
