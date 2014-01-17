@@ -508,13 +508,7 @@ fun! ExToggle(dir)
 endf
 
 fun! BClose()
-  let prev_buf = bufnr("#")
-  if  prev_buf > 0 && buflisted(prev_buf)
-    buffer #
-    bdelete #
-  else
-    bdelete
-  endif
+  silent! bp | sp | silent! bn | bd
 endf
 
 fun! VexToggle(dir)
