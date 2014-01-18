@@ -206,9 +206,9 @@ inoremap <C-[> <Esc>`^
 " ··········· buffers ·················· {{{2
 " netrw
 noremap <silent> <Leader>e :call ExToggle("")<CR>
-noremap <silent> <Leader>w :call ExToggle(getcwd())<CR>
-noremap <silent> <LocalLeader>e :call VexToggle(getcwd())<CR>
-noremap <silent> <LocalLeader>w :call VexToggle("")<CR>
+noremap <silent> <LocalLeader>,e :call ExToggle(getcwd())<CR>
+noremap <silent> <Leader><Tab> :call VexToggle(getcwd())<CR>
+noremap <silent> <LocalLeader>,<Tab> :call VexToggle("")<CR>
 
 " from ./vim/after/ftplugin/netrw.vim
   "  Select file/dir:  f
@@ -220,7 +220,7 @@ noremap <Leader>b :buffers<CR>
 noremap <Leader>p :CtrlPBuffer<CR>
 
 " open from ~
-noremap <LocalLeader>eh, :edit ~/
+noremap <LocalLeader>e, :edit ~/
 
 " open from %
 nmap <LocalLeader>ew :edit %%
@@ -348,7 +348,7 @@ noremap <silent> <Leader>f :set foldenable!<CR>
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " toggle search highlighting
-noremap <Leader><Tab> :set hlsearch! hlsearch?<CR>
+noremap <LocalLeader><Tab> :set hlsearch! hlsearch?<CR>
 
 " find merge conflicts
 noremap <silent> <Leader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
@@ -512,7 +512,7 @@ fun! NetrwCrsrLn()
   if &filetype ==# "netrw"
     call HiCrsrLn()
   else
-    highlight clear CursorLine
+    highlight link CursorLine NONE
   endif
 endf
 
@@ -685,20 +685,17 @@ endf
 
 " ··········· cursor ··················· {{{2
 fun! ToggleHiCrsrLn()
-  let cur_hi = synIDattr(synIDtrans(hlID("CursorLine")), "bg")
-  if len(cur_hi) == 0
+  if !exists("w:hi_crsrln")
     call HiCrsrLn()
   else
-    highlight clear CursorLine
+    highlight link CursorLine NONE
+    unlet w:hi_crsrln
   endif
 endf
 
 fun! HiCrsrLn()
-  if &background == "light"
-    highlight CursorLine guibg=#CBE4EE ctermbg=195
-  else
-    highlight CursorLine guibg=#444444 ctermbg=238
-  endif
+  highlight link CursorLine StatusLine
+  let w:hi_crsrln = 1
 endf
 
 fun! RestoreCrsr()
