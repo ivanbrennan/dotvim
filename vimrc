@@ -12,20 +12,19 @@ call vundle#rc()
 
 " github repos: general
 Bundle 'gmarik/vundle'
-Bundle 'SirVer/ultisnips'
-Bundle 'tsaleh/vim-matchit'
-Bundle 'tpope/vim-surround'
-Bundle 'kien/ctrlp.vim'
-Bundle 'ivanbrennan/grep-operator'
 Bundle 'ivanbrennan/quickfix-toggle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-commentary'
+Bundle 'tsaleh/vim-matchit'
 
 " github repos: colors
-Bundle 'vim-scripts/hexHighlight.vim'
-Bundle 'guns/xterm-color-table.vim'
-Bundle 'shawncplus/Vim-toCterm'
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'gregsexton/Muon'
+Bundle 'guns/xterm-color-table.vim'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'shawncplus/Vim-toCterm'
+Bundle 'vim-scripts/hexHighlight.vim'
 
 filetype plugin indent on       " required for Vundle!
 
@@ -53,6 +52,10 @@ let g:netrw_banner=0            " no banner
 let g:netrw_altv=1              " open files on right
 let g:netrw_preview=1           " open previews vertically
 let g:netrw_use_errorwindow=0   " suppress error window
+
+" ··········· ctrlp ···················· {{{2
+let g:ctrlp_show_hidden = 1     " include hidden files
+let g:ctrlp_match_window = 'max:12'
 
 " ··········· editing ·················· {{{2
 set hidden                      " allow hidden buffers
@@ -213,8 +216,8 @@ noremap <silent> <LocalLeader>w :call VexToggle("")<CR>
   "  Set treetop dir: <LocalLeader>t
 
 " list
-noremap <Leader>l :buffers<CR>
-noremap <Leader>b :buffers<CR>:b
+noremap <Leader>b :buffers<CR>
+noremap <Leader>p :CtrlPBuffer<CR>
 
 " open from ~
 noremap <LocalLeader>eh, :edit ~/
@@ -229,19 +232,25 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
 " close
 noremap <LocalLeader>d :bdelete<CR>
 noremap <LocalLeader>c :call BClose()<CR>
+noremap <LocalLeader>dd :bufdo bd<CR>
 
 " current directory
 noremap <Leader><Space> :pwd<CR>
 noremap <LocalLeader>t :lcd %:h<CR>
 
 " cycle
-noremap <S-CR> :bprevious<CR>
-noremap <C-CR> :bnext<CR>
+noremap <Leader>h :bprevious<CR>
+noremap <Leader>l :bnext<CR>
+"noremap <S-CR> :bprevious<CR>
+"noremap <C-CR> :bnext<CR>
 
 " ··········· editing ·················· {{{2
 " open above / below current line
 inoremap <S-CR> <C-O>O
 inoremap <C-CR> <C-O>o
+
+" double backspace
+inoremap <C-BS> <BS><BS>
 
 " insert above / below current line
 noremap <S-Space> mzO<Esc>j`z
@@ -344,6 +353,9 @@ noremap <Leader><Tab> :set hlsearch! hlsearch?<CR>
 " find merge conflicts
 noremap <silent> <Leader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
+" toggle diff
+noremap <silent> <Leader>d :call DiffToggle()<CR>
+
 " ··········· splits & tabs ············ {{{2
 " splits
 noremap <Leader>s :split<CR>
@@ -378,7 +390,7 @@ noremap <Leader>9 :tabprevious<CR>
 noremap <Leader>0 :tabnext<CR>
 
 " ··········· appearance ··············· {{{2
-noremap <LocalLeader>w :setlocal wrap! linebreak! list! wrap?<CR>
+noremap <LocalLeader>ww :setlocal wrap! linebreak! list! wrap?<CR>
 
 " fonts
 noremap <silent> <LocalLeader>= :call FontCycle(1)<CR>:echo getfontname()<CR>
@@ -486,6 +498,7 @@ augroup END
 " ··········· markdown ················· {{{2
 augroup filetype_markdown
   autocmd!
+  autocmd Bufread,BufNewFile *.md set filetype=markdown
   autocmd FileType markdown :onoremap <buffer>
         \ih :<C-U>exe "normal! ?^\\(==\\+\\\|--\\+\\)$\r:noh\rkvg_"<CR>
   autocmd FileType markdown :onoremap <buffer>
@@ -582,6 +595,10 @@ endf
 fun! BClose()
   silent! bprevious | split
   silent! bnext     | bdelete
+endf
+
+fun! DiffToggle()
+  echo "Implement DiffToggle()"
 endf
 
 " ··········· line numbers ············· {{{2
