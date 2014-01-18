@@ -390,7 +390,7 @@ noremap <Leader>9 :tabprevious<CR>
 noremap <Leader>0 :tabnext<CR>
 
 " ··········· appearance ··············· {{{2
-noremap <LocalLeader>ww :setlocal wrap! linebreak! list! wrap?<CR>
+noremap <LocalLeader>,w :setlocal wrap! linebreak! list! wrap?<CR>
 
 " fonts
 noremap <silent> <LocalLeader>= :call FontCycle(1)<CR>:echo getfontname()<CR>
