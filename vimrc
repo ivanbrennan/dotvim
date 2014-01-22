@@ -194,6 +194,7 @@ set timeout timeoutlen=250 ttimeoutlen=100
 noremap <Leader>` :source $MYVIMRC<CR>
 noremap <Leader>`<Space> :edit $MYVIMRC<CR>
 
+" ··········· terminal key codes ······· {{{2
 " hack to fix arrow keys in terminal
 if &term =~ "xterm"
   imap <Esc>[A <Up>
@@ -202,7 +203,6 @@ if &term =~ "xterm"
   imap <Esc>[D <Left>
 endif
 
-" ··········· special keys ············· {{{2
 " use some unused function key codes to
 " make special key combos work in terminal
 set  <F13>=O2P
