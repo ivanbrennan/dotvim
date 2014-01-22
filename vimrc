@@ -194,6 +194,35 @@ set timeout timeoutlen=250 ttimeoutlen=100
 noremap <Leader>` :source $MYVIMRC<CR>
 noremap <Leader>`<Space> :edit $MYVIMRC<CR>
 
+" hack to fix arrow keys in terminal
+if &term =~ "xterm"
+  imap <Esc>[A <Up>
+  imap <Esc>[B <Down>
+  imap <Esc>[C <Right>
+  imap <Esc>[D <Left>
+endif
+
+" ··········· special keys ············· {{{2
+" use some unused function key codes to
+" make special key combos work in terminal
+set  <F13>=O2P
+map  <F13> <C-CR>
+map! <F13> <C-CR>
+set  <F14>=O2Q
+map  <F14> <S-CR>
+map! <F14> <S-CR>
+
+set  <F15>=O2R
+map  <F15> <C-Space>
+map! <F15> <C-Space>
+set  <F16>=O2S
+map  <F16> <S-Space>
+map! <F16> <S-Space>
+
+set  <F17>=[15;2~
+map  <F17> <C-BS>
+map! <F17> <C-BS>
+
 " ··········· modes ···················· {{{2
 " enter command mode
 noremap  ; :
@@ -207,9 +236,9 @@ inoremap <C-[> <Esc>`^
 " ··········· buffers ·················· {{{2
 " netrw
 noremap <silent> <Leader>e :call ExToggle("")<CR>
-noremap <silent> <LocalLeader>,e :call ExToggle(getcwd())<CR>
+noremap <silent> <Leader>,e :call ExToggle(getcwd())<CR>
 noremap <silent> <Leader><Tab> :call VexToggle(getcwd())<CR>
-noremap <silent> <LocalLeader>,<Tab> :call VexToggle("")<CR>
+noremap <silent> <Leader>,<Tab> :call VexToggle("")<CR>
 
 " from ./vim/after/ftplugin/netrw.vim
   "  Select file/dir:  f
@@ -233,7 +262,7 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
 " close
 noremap <LocalLeader>d :bdelete<CR>
 noremap <silent> <LocalLeader>c :call BClose()<CR>
-noremap <LocalLeader>dd :bufdo bd<CR>
+noremap <LocalLeader>o :bufdo bd<CR>
 
 " current directory
 noremap <Leader><Space> :pwd<CR>
@@ -242,8 +271,6 @@ noremap <LocalLeader>t :lcd %:h<CR>
 " cycle
 noremap <Leader>h :bprevious<CR>
 noremap <Leader>l :bnext<CR>
-"noremap <S-CR> :bprevious<CR>
-"noremap <C-CR> :bnext<CR>
 
 " ··········· editing ·················· {{{2
 " open above / below current line
@@ -258,24 +285,15 @@ noremap <S-Space> mzO<Esc>j`z
 noremap <C-Space> mzo<Esc>k`z
 
 " bubble text
-nnoremap <silent> <Leader><Up> mZ:move .-2<CR>==`Z
-vnoremap          <Leader><Up> :move '<-2<CR>gv=gv
-nnoremap <silent> <Leader><Down> mZ:move .+1<CR>==`Z
-vnoremap          <Leader><Down> :move '>+1<CR>gv=gv
-vnoremap          <Leader><Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
-vnoremap          <Leader><Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
+nnoremap <silent> <C-Up> mZ:move .-2<CR>==`Z
+vnoremap          <C-Up> :move '<-2<CR>gv=gv
+inoremap          <C-Up> <Esc>:move .-2<CR>==gi
+nnoremap <silent> <C-Down> mZ:move .+1<CR>==`Z
+vnoremap          <C-Down> :move '>+1<CR>gv=gv
+inoremap          <C-Down> <Esc>:move .+1<CR>==gi
 
-augroup guioverrides            " override gvimrc mappings
-  autocmd!
-  autocmd GUIEnter * nnoremap <silent> <M-Up> mZ:move .-2<CR>==`Z
-  autocmd GUIEnter * vnoremap          <M-Up> :move '<-2<CR>gv=gv
-  autocmd GUIEnter * inoremap          <M-Up> <Esc>:move .-2<CR>==gi
-  autocmd GUIEnter * nnoremap <silent> <M-Down> mZ:move .+1<CR>==`Z
-  autocmd GUIEnter * vnoremap          <M-Down> :move '>+1<CR>gv=gv
-  autocmd GUIEnter * inoremap          <M-Down> <Esc>:move .+1<CR>==gi
-  autocmd GUIEnter * vnoremap <M-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
-  autocmd GUIEnter * vnoremap <M-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
-augroup END
+vnoremap <C-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
+vnoremap <C-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 
 " whole line completion
 inoremap <C-L> <C-X><C-L>
@@ -294,7 +312,7 @@ set pastetoggle=<F4>
 inoremap <LocalLeader>` <Esc>viwg~gi
 
 " add semicolon to end of line
-noremap <buffer> <Leader>; mZA;<Esc>`Z
+noremap <Leader>; mZA;<Esc>`Z
 
 " toggle filetype
 noremap <silent> <LocalLeader>f, :call FileTypeToggle(1)<CR>
@@ -366,7 +384,7 @@ noremap <Leader>s :split<CR>
 noremap <Leader>v :vsplit<CR>
 noremap K :quit<CR>
 
-noremap <silent> <LocalLeader>1 :only<CR>
+noremap <silent> <Leader>o :only<CR>
 noremap <LocalLeader>2 <C-W>H
 noremap <LocalLeader>3 <C-W>L
 noremap <LocalLeader>4 <C-W>K
