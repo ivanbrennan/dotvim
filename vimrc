@@ -22,7 +22,6 @@ Bundle 'tsaleh/vim-matchit'
 " github repos: colors
 Bundle 'gregsexton/Muon'
 Bundle 'guns/xterm-color-table.vim'
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'shawncplus/Vim-toCterm'
 Bundle 'vim-scripts/hexHighlight.vim'
 
@@ -85,11 +84,13 @@ set fillchars+=vert:\           " clean dividers
 set cursorline                  " cursorline on
 set number                      " line numbers
 set foldmethod=marker           " fold markers
-augroup cursorline              " clear cursorline highlight
+augroup CursorGroup             " clear cursorline highlight
   autocmd!
+  autocmd WinEnter,BufRead,BufWinEnter |
+                     \* setlocal  cursorline
+  autocmd WinLeave    * setlocal  nocursorline
   autocmd ColorScheme * highlight clear CursorLine
-  autocmd WinEnter,BufRead,BufWinEnter * setlocal cursorline
-  autocmd WinLeave * setlocal nocursorline
+  autocmd BufReadPost * call      RestoreCrsr()
 augroup END
 
 " cursor
@@ -115,10 +116,11 @@ set listchars+=precedes:«       " precedes offscreen
 
 " colors
 if has("gui_running")
-  colorscheme ivisu | set transparency=5
-else
-  colorscheme muon
+  set transparency=5
 endif
+
+set background=dark
+colorscheme ivisu
 highlight clear CursorLine
 
 " nice colorschemes {{{
@@ -139,7 +141,6 @@ let g:nice_schemes =
       \"xoria256",
       \]
 " }}}
-
 " fonts {{{
 set guifont=Source\ Code\ Pro:h15
 let g:font_dict =
@@ -231,7 +232,7 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
 
 " close
 noremap <LocalLeader>d :bdelete<CR>
-noremap <LocalLeader>c :call BClose()<CR>
+noremap <silent> <LocalLeader>c :call BClose()<CR>
 noremap <LocalLeader>dd :bufdo bd<CR>
 
 " current directory
@@ -292,6 +293,9 @@ set pastetoggle=<F4>
 " toggle case
 inoremap <LocalLeader>` <Esc>viwg~gi
 
+" add semicolon to end of line
+noremap <buffer> <Leader>; mZA;<Esc>`Z
+
 " toggle filetype
 noremap <silent> <LocalLeader>f, :call FileTypeToggle(1)<CR>
 noremap <silent>  <LocalLeader>f :call FileTypeToggle(0)<CR>
@@ -351,7 +355,7 @@ noremap <silent> <Leader>f :set foldenable!<CR>
 noremap <LocalLeader><Tab> :set hlsearch! hlsearch?<CR>
 
 " find merge conflicts
-noremap <silent> <Leader>cc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+noremap <silent> <LocalLeader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " toggle diff
 noremap <silent> <Leader>d :call DiffToggle()<CR>
@@ -424,85 +428,42 @@ noreabbrev funiction function
 noreabbrev funcition function
 noreabbrev funciotn function
 noreabbrev funciton function
+noreabbrev docuemt document
+noreabbrev docuemtn document
 
 " ::::::::: Autocommands :::::::::::::::::: {{{1
 
 " ··········· vimrc ···················· {{{2
-augroup vimrcgroup
+augroup VimrcGroup
   autocmd!
   autocmd BufWritePost .vimrc source $MYVIMRC
-  autocmd BufReadPost * call RestoreCrsr()
-augroup END
-
-" ··········· vim ······················ {{{2
-augroup filetype_vim
-  autocmd!
-  " comments
-  autocmd FileType vim nnoremap <buffer> <C-_> mA0i"<Esc>`Al
-  autocmd FileType vim vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
 augroup END
 
 " ··········· netrw ···················· {{{2
 augroup NetrwGroup
   autocmd!
   autocmd FileType,BufEnter * call NetrwCrsrLn()
-  autocmd BufEnter * call NormalizeWidths()
+  autocmd BufEnter          * call NormalizeWidths()
 augroup END
 
 " ··········· ruby ····················· {{{2
-augroup filetype_ruby
+augroup RubyGroup
   autocmd!
-  autocmd FileType ruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
   " complete buffer loading can cause code execution
   " turn this off if it's a concern
-  autocmd FileType ruby let g:rubycomplete_buffer_loading=1
-  autocmd FileType ruby let g:rubycomplete_classes_in_global=1
-  autocmd FileType ruby let g:rubycomplete_rails = 1
-  " comments
-  autocmd FileType ruby nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
-  autocmd FileType ruby vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
-augroup END
-
-" ··········· eruby ···················· {{{2
-augroup filetype_eruby
-  autocmd!
-  autocmd FileType eruby set omnifunc=rubycomplete#Complete
-  " complete buffer loading can cause code execution
-  " turn this off if it's a concern
-  autocmd FileType eruby let g:rubycomplete_buffer_loading=1
-  autocmd FileType eruby let g:rubycomplete_classes_in_global=1
-  autocmd FileType eruby let g:rubycomplete_rails = 1
-  autocmd FileType eruby :inoreabbrev <buffer> erb <% %><C-O>F<Space>
-  autocmd FileType eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
-  autocmd FileType eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
-augroup END
-
-" ··········· python ··················· {{{2
-augroup filetype_python
-  autocmd!
-  "autocmd FileType python :inoreabbrev <buffer> iff if:<left>
-  " comments
-  autocmd FileType python nnoremap <buffer> <C-_> mZ0i#<Esc>`Zl
-  autocmd FileType python vnoremap <buffer> <C-_> <Esc>`<mA`>mZ'<<C-V>'>I"<Esc>g`Alvg`Zl
-augroup END
-
-" ··········· javascript ··············· {{{2
-augroup filetype_javascript
-  autocmd!
-  " if statement
-  "autocmd FileType javascript :inoreabbrev <buffer> iff if ()<Left>
-  " add semicolon
-  autocmd FileType javascript noremap <buffer> <Leader>; mZA;<Esc>`Z
+  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
+  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
+  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+  autocmd FileType ruby,eruby :inoreabbrev <buffer> erb <% %><C-O>F<Space>
+  autocmd FileType ruby,eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
+  autocmd FileType ruby,eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
 augroup END
 
 " ··········· markdown ················· {{{2
-augroup filetype_markdown
+augroup MarkdownGroup
   autocmd!
   autocmd Bufread,BufNewFile *.md set filetype=markdown
-  autocmd FileType markdown :onoremap <buffer>
-        \ih :<C-U>exe "normal! ?^\\(==\\+\\\|--\\+\\)$\r:noh\rkvg_"<CR>
-  autocmd FileType markdown :onoremap <buffer>
-        \ah :<C-U>exe "normal! ?^\\(==\\+\\\|--\\+\\)$\r:noh\rVk"<CR>
 augroup END
 
 " ::::::::: Functions ::::::::::::::::::::: {{{1
@@ -671,8 +632,13 @@ endf
 
 " ··········· colors ··················· {{{2
 fun! ToggleBG()
-  if &background=='light' | set background=dark
-  else | set background=light
+  if  exists("g:colors_name") | let cur_colo = g:colors_name | endif
+
+  if &background=='dark' | set background=light
+  else                   | set background=dark | endif
+
+  if !exists("g:colors_name") && exists("cur_colo")
+    let g:colors_name = cur_colo
   endif
 endf
 
