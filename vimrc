@@ -241,12 +241,13 @@ noremap <silent> <Leader><Tab> :call VexToggle(getcwd())<CR>
 noremap <silent> <Leader>,<Tab> :call VexToggle("")<CR>
 
 " from ./vim/after/ftplugin/netrw.vim
-  "  Select file/dir:  f
-  "  Refresh listing: <LocalLeader>l
-  "  Set treetop dir: <LocalLeader>t
+"   Select file/dir:  f
+"   Refresh listing: <LocalLeader>l
+"   Set treetop dir: <LocalLeader>t
 
 " list
-noremap <Leader>b :buffers<CR>
+noremap <Leader>l :buffers<CR>
+noremap <Leader>b :buffers<CR>:b
 noremap <Leader>p :CtrlPBuffer<CR>
 
 " open from ~
@@ -269,8 +270,10 @@ noremap <Leader><Space> :pwd<CR>
 noremap <LocalLeader>t :lcd %:h<CR>
 
 " cycle
-noremap <Leader>h :bprevious<CR>
-noremap <Leader>l :bnext<CR>
+noremap <Leader>k :bprevious<CR>
+noremap    <Left> :bprevious<CR>
+noremap <Leader>j :bnext<CR>
+noremap   <Right> :bnext<CR>
 
 " ··········· editing ·················· {{{2
 " open above / below current line
@@ -298,6 +301,9 @@ vnoremap <C-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 " whole line completion
 inoremap <C-L> <C-X><C-L>
 
+" jump back a word in insert mode
+inoremap <C-B> <C-O>b
+
 " autocomplete parens, brackets, braces
 inoremap (<CR> (<CR>)<Esc>O<Tab>
 inoremap [<CR> [<CR>]<Esc>O<Tab>
@@ -317,6 +323,8 @@ noremap <Leader>; mZA;<Esc>`Z
 " toggle filetype
 noremap <silent> <LocalLeader>f, :call FileTypeToggle(1)<CR>
 noremap <silent>  <LocalLeader>f :call FileTypeToggle(0)<CR>
+" toggle html
+noremap <silent> <Leader>h :call HTMLTypeToggle()<CR>
 
 " format entire file
 noremap <LocalLeader>fef :normal! gg=G``<CR>
@@ -448,6 +456,7 @@ noreabbrev funciotn function
 noreabbrev funciton function
 noreabbrev docuemt document
 noreabbrev docuemtn document
+noreabbrev hte the
 
 " ::::::::: Autocommands :::::::::::::::::: {{{1
 
@@ -567,6 +576,16 @@ fun! FileTypeToggle(num)
     let     new_alt = &filetype
     let   &filetype = b:alt_ftype
     let b:alt_ftype = new_alt
+  end
+endf
+
+fun! HTMLTypeToggle()
+  if exists("b:alt_ftype")
+    let &filetype = b:alt_ftype
+    unlet b:alt_ftype
+  else
+    let b:alt_ftype = &filetype
+    set filetype=html
   end
 endf
 
