@@ -18,6 +18,7 @@ Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
 Bundle 'tsaleh/vim-matchit'
+Bundle 'sjl/gundo.vim'
 
 " github repos: colors
 Bundle 'gregsexton/Muon'
@@ -344,6 +345,9 @@ onoremap al[ :<C-U>normal! F]va[<CR>
 onoremap an[ :<C-U>normal! f[va[<CR>
 onoremap al{ :<C-U>normal! F}va{<CR>
 onoremap an{ :<C-U>normal! f{va{<CR>
+
+" toggle Gundo
+noremap <Leader>g :GundoToggle<CR>
 
 " ··········· navigation ··············· {{{2
 " sensible marks
