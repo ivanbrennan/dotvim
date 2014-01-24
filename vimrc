@@ -85,7 +85,6 @@ set title                       " xterm title
 set nowrap                      " don't wrap lines
 set fillchars+=vert:\           " clean dividers
 set cursorline                  " cursorline on
-set nonumber                    " no line numbers
 set foldcolumn=1                " minimal foldcolumn
 set foldmethod=marker           " fold markers
 augroup CursorGroup             " clear cursorline highlight
