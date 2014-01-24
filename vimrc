@@ -19,6 +19,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'sjl/gundo.vim'
+Bundle 'vim-ruby/vim-ruby'
 
 " github repos: colors
 Bundle 'gregsexton/Muon'
@@ -129,6 +130,7 @@ highlight clear CursorLine
 let g:nice_schemes =
       \[
       \"badwolf",
+      \"eivel",
       \"github",
       \"hemisu",
       \"ivisu",
@@ -144,7 +146,7 @@ let g:nice_schemes =
       \]
 " }}}
 " fonts {{{
-set guifont=Source\ Code\ Pro:h15
+set guifont=Source\ Code\ Pro:h19
 let g:font_dict =
       \{
       \"Anonymous Pro":    3,
@@ -193,8 +195,8 @@ let maplocalleader=","
 set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
-noremap <Leader>` :source $MYVIMRC<CR>
-noremap <Leader>`<Space> :edit $MYVIMRC<CR>
+noremap <LocalLeader>` :source $MYVIMRC<CR>
+noremap <LocalLeader>`, :edit $MYVIMRC<CR>
 
 " ··········· terminal key codes ······· {{{2
 " hack to fix arrow keys in terminal
@@ -317,7 +319,7 @@ noremap           <F4> :set paste! paste?<CR>
 set pastetoggle=<F4>
 
 " toggle case
-inoremap <LocalLeader>` <Esc>viwg~gi
+inoremap _+ <Esc>viwg~gi
 
 " add semicolon to end of line
 noremap <Leader>; mZA;<Esc>`Z
@@ -426,6 +428,10 @@ noremap <Leader>0 :tabnext<CR>
 
 " ··········· appearance ··············· {{{2
 noremap <LocalLeader>,w :setlocal wrap! linebreak! list! wrap?<CR>
+
+if has("gui_running")
+  noremap <LocalLeader>,t :call TransparencyToggle()<CR>
+end
 
 " fonts
 noremap <silent> <LocalLeader>= :call FontCycle(1)<CR>:echo getfontname()<CR>
@@ -689,6 +695,16 @@ fun! ColorCycle(num)
   let new_idx = (cur_idx + a:num) % len(g:nice_schemes)
   let new_nam = g:nice_schemes[new_idx]
   exe "colorscheme " . new_nam
+endf
+
+fun! TransparencyToggle()
+  if exists("g:transparency_memo")
+    let &transparency = g:transparency_memo
+    unlet g:transparency_memo
+  else
+    let g:transparency_memo = &transparency
+    set transparency=0
+  end
 endf
 
 " ··········· cursor ··················· {{{2
