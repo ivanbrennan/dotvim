@@ -20,6 +20,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'sjl/gundo.vim'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'thoughtbot/vim-rspec'
 
 " github repos: colors
 Bundle 'gregsexton/Muon'
@@ -122,7 +123,6 @@ if has("gui_running")
   set transparency=5
 endif
 
-set background=dark
 colorscheme ivisu
 highlight clear CursorLine
 
@@ -223,7 +223,7 @@ set  <F16>=O2S
 map  <F16> <S-Space>
 map! <F16> <S-Space>
 
-set  <F17>=[15;2~
+set  <F17>=O5P
 map  <F17> <C-BS>
 map! <F17> <C-BS>
 
@@ -457,6 +457,13 @@ noremap <silent> <Leader>z :call FoldColToggle(4)<CR>
 
 " cursor
 noremap <silent> <Leader>c :call ToggleHiCrsrLn()<CR>
+
+" ··········· evaluation ··············· {{{2
+" RSpec
+noremap <Leader>tt :call RunCurrentSpecFile()<CR>
+noremap <Leader>t<Space> :call RunNearestSpec()<CR>
+noremap <Leader>tl :call RunLastSpec()<CR>
+noremap <Leader>ta :call RunAllSpecs()<CR>
 
 " ::::::::: Abbreviations ::::::::::::::::: {{{1
 " common typos

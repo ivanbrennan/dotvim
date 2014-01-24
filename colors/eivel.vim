@@ -22,18 +22,19 @@ let s:white            = { "gui": "#FFFFFF", "cterm": "231" }
 let s:almostWhite      = { "gui": "#EEEEEE", "cterm": "255" }
 let s:almostBlack      = { "gui": "#111111", "cterm": "233" }
 let s:middleDarkerGrey = { "gui": "#2B2B2B", "cterm": "234" }
-let s:middleDarkGrey   = { "gui": "#5F5F5F", "cterm": "243" }
-let s:middleLightGrey  = { "gui": "#999999", "cterm": "246" }
+let s:middleDarkGrey   = { "gui": "#5F5F5F", "cterm": "240" }
+let s:middleLightGrey  = { "gui": "#999999", "cterm": "245" }
 let s:lightGrey        = { "gui": "#BBBBBB", "cterm": "249" }
 let s:lighterGrey      = { "gui": "#DDDDDD", "cterm": "253" }
 let s:darkGrey         = { "gui": "#444444", "cterm": "238" }
 let s:darkerGrey       = { "gui": "#282828", "cterm": "235" }
 
 let s:darkPink         = { "gui": "#63001C", "cterm": "52"  }
-let s:middleDarkPink   = { "gui": "#D90000", "cterm": "160" }
+let s:middleDarkPink   = { "gui": "#C50000", "cterm": "124" }
 let s:middleLightPink  = { "gui": "#D65E76", "cterm": "167" }
 let s:lightPink        = { "gui": "#FFAFAF", "cterm": "217" }
 
+let s:darkerBlue       = { "gui": "#0000A2", "cterm": "19"  }
 let s:darkBlue         = { "gui": "#005F87", "cterm": "24"  }
 let s:middleDarkBlue   = { "gui": "#538192", "cterm": "31"  }
 let s:middleLightBlue  = { "gui": "#9FD3E6", "cterm": "116" }
@@ -45,7 +46,7 @@ let s:middleLightGreen = { "gui": "#B1D631", "cterm": "148" }
 let s:lightGreen       = { "gui": "#BBFFAA", "cterm": "157" }
 
 let s:darkTan          = { "gui": "#503D15", "cterm": "52"  }
-let s:lightTan         = { "gui": "#FDFEFA", "cterm": "230" }
+let s:lightTan         = { "gui": "#FDFEFA", "cterm": "231" }
 
 " Assign to semantic categories based on background color
 if &background == "dark"
@@ -76,7 +77,7 @@ else
   let s:subtle     = s:middleLightGrey
   let s:subtler    = s:middleDarkGrey
   let s:faint      = s:almostWhite
-  let s:accent1    = s:middleDarkBlue
+  let s:accent1    = s:darkBlue
   let s:accent2    = s:middleDarkGreen
   let s:accent3    = s:middleDarkPink
   let s:accent4    = s:darkTan
