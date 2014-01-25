@@ -25,7 +25,7 @@ let s:middleDarkerGrey = { "gui": "#2B2B2B", "cterm": "234" }
 let s:middleDarkGrey   = { "gui": "#5F5F5F", "cterm": "240" }
 let s:middleLightGrey  = { "gui": "#999999", "cterm": "245" }
 let s:lightGrey        = { "gui": "#BBBBBB", "cterm": "249" }
-let s:lighterGrey      = { "gui": "#DDDDDD", "cterm": "253" }
+let s:lighterGrey      = { "gui": "#E4E4E4", "cterm": "253" }
 let s:darkGrey         = { "gui": "#444444", "cterm": "238" }
 let s:darkerGrey       = { "gui": "#282828", "cterm": "235" }
 
@@ -76,7 +76,8 @@ else
   let s:dimmed     = s:middleDarkerGrey
   let s:subtle     = s:middleLightGrey
   let s:subtler    = s:middleDarkGrey
-  let s:faint      = s:almostWhite
+  let s:faint      = s:lighterGrey
+  let s:fainter    = s:almostWhite
   let s:accent1    = s:darkBlue
   let s:accent2    = s:middleDarkGreen
   let s:accent3    = s:middleDarkPink
@@ -106,7 +107,7 @@ endfunction
 "}}}
 " Highlights - Vim >= 7 ------------------------------------{{{
 if version >= 700
-  call s:h("CursorLine",  { "bg": s:faint })
+  call s:h("CursorLine",  { "bg": s:fainter })
   call s:h("MatchParen",  { "fg": s:accent1, "bg": s:faint, "gui": "bold" })
   call s:h("Pmenu",       { "bg": s:faint })
   call s:h("PmenuThumb",  { "bg": s:norm })
