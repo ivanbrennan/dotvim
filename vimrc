@@ -63,7 +63,6 @@ let g:ctrlp_match_window = 'max:12'
 set hidden                      " allow hidden buffers
 set backspace=indent,eol,start  " backspace through everything
 set textwidth=0                 " no autowrap
-"set complete-=i                " speed up ins-completion
 
 " formatting
 set formatprg=par               " gq -> par, gw -> internal
@@ -92,7 +91,6 @@ augroup CursorGroup             " clear cursorline highlight
   autocmd WinEnter,BufRead,BufWinEnter |
                      \* setlocal  cursorline
   autocmd WinLeave    * setlocal  nocursorline
-  autocmd ColorScheme * highlight clear CursorLine
   autocmd BufReadPost * call      RestoreCrsr()
 augroup END
 
@@ -122,18 +120,15 @@ if has("gui_running")
   set transparency=5
 endif
 
-colorscheme ivisu
-highlight clear CursorLine
+colorscheme eivel
 
 " nice colorschemes {{{
 let g:nice_schemes =
       \[
-      \"badwolf",
       \"eivel",
       \"github",
       \"hemisu",
       \"ivisu",
-      \"ivanized",
       \"muon",
       \"mustang",
       \"mustangblue",
@@ -332,22 +327,6 @@ noremap <silent> <Leader>h :call HTMLTypeToggle()<CR>
 " format entire file
 noremap <LocalLeader>fef :normal! gg=G``<CR>
 
-" in last / next braces
-onoremap il( :<C-U>normal! F)vi(<CR>
-onoremap in( :<C-U>normal! f(vi(<CR>
-onoremap il[ :<C-U>normal! F]vi[<CR>
-onoremap in[ :<C-U>normal! f[vi[<CR>
-onoremap il{ :<C-U>normal! F}vi{<CR>
-onoremap in{ :<C-U>normal! f{vi{<CR>
-
-" around last / next braces
-onoremap al( :<C-U>normal! F)va(<CR>
-onoremap an( :<C-U>normal! f(va(<CR>
-onoremap al[ :<C-U>normal! F]va[<CR>
-onoremap an[ :<C-U>normal! f[va[<CR>
-onoremap al{ :<C-U>normal! F}va{<CR>
-onoremap an{ :<C-U>normal! f{va{<CR>
-
 " toggle Gundo
 noremap <Leader>g :GundoToggle<CR>
 
@@ -396,13 +375,8 @@ noremap <silent> <Leader>d :call DiffToggle()<CR>
 " splits
 noremap <Leader>s :split<CR>
 noremap <Leader>v :vsplit<CR>
-noremap K :quit<CR>
-
 noremap <silent> <Leader>o :only<CR>
-noremap <LocalLeader>2 <C-W>H
-noremap <LocalLeader>3 <C-W>L
-noremap <LocalLeader>4 <C-W>K
-noremap <LocalLeader>5 <C-W>J
+noremap K :quit<CR>
 
 "resize
 noremap <Leader>- <C-W>_
@@ -455,7 +429,7 @@ noremap <Leader>r :set relativenumber! relativenumber?<CR>
 noremap <silent> <Leader>z :call FoldColToggle(4)<CR>
 
 " cursor
-noremap <silent> <Leader>c :call ToggleHiCrsrLn()<CR>
+noremap <silent> <Leader>c :set cursorline!<CR>
 
 " ··········· evaluation ··············· {{{2
 " RSpec
@@ -486,7 +460,6 @@ augroup END
 " ··········· netrw ···················· {{{2
 augroup NetrwGroup
   autocmd!
-  autocmd FileType,BufEnter * call NetrwCrsrLn()
   autocmd BufEnter          * call NormalizeWidths()
 augroup END
 
@@ -513,14 +486,6 @@ augroup END
 " ::::::::: Functions ::::::::::::::::::::: {{{1
 
 " ··········· netrw ···················· {{{2
-fun! NetrwCrsrLn()
-  if &filetype ==# "netrw"
-    call HiCrsrLn()
-  else
-    highlight link CursorLine NONE
-  endif
-endf
-
 fun! ExToggle(dir)
   if &filetype != "netrw"
     call ExOpen(a:dir)
@@ -531,7 +496,7 @@ endf
 
 fun! ExOpen(dir)
   exe "Explore " . a:dir
-  let g:netrw_browse_split=0  " open files in current window
+  let g:netrw_browse_split=0    " open files in current window
 endf
 
 fun! ExClose()
@@ -714,20 +679,6 @@ fun! TransparencyToggle()
 endf
 
 " ··········· cursor ··················· {{{2
-fun! ToggleHiCrsrLn()
-  if !exists("w:hi_crsrln")
-    call HiCrsrLn()
-  else
-    highlight link CursorLine NONE
-    unlet w:hi_crsrln
-  endif
-endf
-
-fun! HiCrsrLn()
-  highlight link CursorLine StatusLine
-  let w:hi_crsrln = 1
-endf
-
 fun! RestoreCrsr()
   if line("'\"") > 1 && line("'\"") <= line("$")
     exe "normal! g`\""
