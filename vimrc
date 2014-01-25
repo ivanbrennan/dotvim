@@ -429,7 +429,7 @@ noremap <Leader>r :set relativenumber! relativenumber?<CR>
 noremap <silent> <Leader>z :call FoldColToggle(4)<CR>
 
 " cursor
-noremap <silent> <Leader>c :set cursorline!<CR>
+noremap <silent> <Leader>c :call CursorLineToggle()<CR>
 
 " ··········· evaluation ··············· {{{2
 " RSpec
@@ -683,4 +683,15 @@ fun! RestoreCrsr()
   if line("'\"") > 1 && line("'\"") <= line("$")
     exe "normal! g`\""
   endif
+endf
+
+fun! CursorLineToggle()
+  highlight! CursorLineClear guibg=NONE guifg=NONE gui=NONE ctermbg=NONE ctermfg=NONE cterm=NONE
+  if exists("w:cursorline_memo")
+    highlight! link CursorLine CursorLine
+    unlet w:cursorline_memo
+  else
+    highlight! link CursorLine CursorLineClear
+    let w:cursorline_memo = 1
+  end
 endf
