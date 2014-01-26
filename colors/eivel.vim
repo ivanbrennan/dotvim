@@ -16,82 +16,115 @@ let g:colors_name = "eivel"
 
 "}}}
 " The Colors -----------------------------------------------{{{
-" Define reusable colors
-let s:black            = { "gui": "#000000", "cterm": "16"  }
-let s:white            = { "gui": "#FFFFFF", "cterm": "231" }
-let s:almostWhite      = { "gui": "#EEEEEE", "cterm": "255" }
-let s:almostBlack      = { "gui": "#111111", "cterm": "233" }
-let s:middleDarkerGrey = { "gui": "#282A2B", "cterm": "234" }
-let s:middleDarkGrey   = { "gui": "#5F5F5F", "cterm": "240" }
-let s:middleLightGrey  = { "gui": "#8F969E", "cterm": "245" }
-let s:lightGrey        = { "gui": "#BBBBBB", "cterm": "249" }
-let s:lighterGrey      = { "gui": "#D1D1D1", "cterm": "253" }
-let s:darkGrey         = { "gui": "#444444", "cterm": "238" }
-let s:darkerGrey       = { "gui": "#282C2E", "cterm": "235" }
-let s:darkestGrey      = { "gui": "#232628", "cterm": "235" }
+" Define reusable colors for Dark
+let s:d_black            = { "gui": "#000000", "cterm": "16"  }
+let s:d_white            = { "gui": "#FFFFFF", "cterm": "231" }
+let s:d_almostWhite      = { "gui": "#EEEEEE", "cterm": "255" }
+let s:d_almostBlack      = { "gui": "#111111", "cterm": "233" }
+let s:d_middleDarkerGrey = { "gui": "#232629", "cterm": "234" }
+let s:d_middleDarkGrey   = { "gui": "#5F5F5F", "cterm": "240" }
+let s:d_middleLightGrey  = { "gui": "#8F969E", "cterm": "245" }
+let s:d_lightGrey        = { "gui": "#BBBBBB", "cterm": "249" }
+let s:d_lighterGrey      = { "gui": "#D1D1D1", "cterm": "253" }
+let s:d_darkGrey         = { "gui": "#444444", "cterm": "238" }
+let s:d_darkerGrey       = { "gui": "#282C2E", "cterm": "235" }
+let s:d_darkestGrey      = { "gui": "#1F2124", "cterm": "235" }
 
-let s:darkPink         = { "gui": "#63001C", "cterm": "52"  }
-let s:middleDarkPink   = { "gui": "#C50000", "cterm": "124" }
-let s:middleLightPink  = { "gui": "#D65E76", "cterm": "167" }
-let s:lightPink        = { "gui": "#FFAFAF", "cterm": "217" }
+let s:d_darkPink         = { "gui": "#63001C", "cterm": "52"  }
+let s:d_middleDarkPink   = { "gui": "#C50000", "cterm": "124" }
+let s:d_middleLightPink  = { "gui": "#D65E76", "cterm": "167" }
+let s:d_lightPink        = { "gui": "#FFAFAF", "cterm": "217" }
 
-let s:darkerBlue       = { "gui": "#388BF6", "cterm": "19"  }
-let s:darkBlue         = { "gui": "#005F87", "cterm": "24"  }
-let s:middleDarkBlue   = { "gui": "#538192", "cterm": "31"  }
-let s:middleLightBlue  = { "gui": "#9FD3E6", "cterm": "116" }
-let s:lightBlue        = { "gui": "#D5EBF7", "cterm": "195" }
+let s:d_darkerBlue       = { "gui": "#388BF6", "cterm": "19"  }
+let s:d_darkBlue         = { "gui": "#005F87", "cterm": "24"  }
+let s:d_middleDarkBlue   = { "gui": "#538192", "cterm": "31"  }
+let s:d_middleLightBlue  = { "gui": "#9FD3E6", "cterm": "116" }
+let s:d_lightBlue        = { "gui": "#DAF0FC", "cterm": "195" }
 
-let s:darkGreen        = { "gui": "#5F5F00", "cterm": "58"  }
-let s:middleDarkGreen  = { "gui": "#739200", "cterm": "64"  }
-let s:middleLightGreen = { "gui": "#B8D977", "cterm": "148" }
-let s:lightGreen       = { "gui": "#BBFFAA", "cterm": "157" }
+let s:d_darkGreen        = { "gui": "#5F5F00", "cterm": "58"  }
+let s:d_middleDarkGreen  = { "gui": "#739200", "cterm": "64"  }
+let s:d_middleLightGreen = { "gui": "#B8D977", "cterm": "148" }
+let s:d_lightGreen       = { "gui": "#BBFFAA", "cterm": "157" }
 
-let s:darkTan          = { "gui": "#503D15", "cterm": "52"  }
-let s:lightTan         = { "gui": "#FDFEFA", "cterm": "231" }
+let s:d_darkTan          = { "gui": "#503D15", "cterm": "52"  }
+let s:d_lightTan         = { "gui": "#FDFEFA", "cterm": "231" }
+
+" Define reusable colors for Light
+let s:l_black            = { "gui": "#000000", "cterm": "16"  }
+let s:l_white            = { "gui": "#FFFFFF", "cterm": "231" }
+let s:l_almostWhite      = { "gui": "#EEEEEE", "cterm": "255" }
+let s:l_almostBlack      = { "gui": "#111111", "cterm": "233" }
+let s:l_middleDarkerGrey = { "gui": "#282A2B", "cterm": "234" }
+let s:l_middleDarkGrey   = { "gui": "#5F5F5F", "cterm": "240" }
+let s:l_middleLightGrey  = { "gui": "#8F969E", "cterm": "245" }
+let s:l_lightGrey        = { "gui": "#BBBBBB", "cterm": "249" }
+let s:l_lighterGrey      = { "gui": "#D1D1D1", "cterm": "253" }
+let s:l_darkGrey         = { "gui": "#444444", "cterm": "238" }
+let s:l_darkerGrey       = { "gui": "#282C2E", "cterm": "235" }
+let s:l_darkestGrey      = { "gui": "#232628", "cterm": "235" }
+
+let s:l_darkPink         = { "gui": "#63001C", "cterm": "52"  }
+let s:l_middleDarkPink   = { "gui": "#C50000", "cterm": "124" }
+let s:l_middleLightPink  = { "gui": "#D65E76", "cterm": "167" }
+let s:l_lightPink        = { "gui": "#FFAFAF", "cterm": "217" }
+
+let s:l_darkerBlue       = { "gui": "#388BF6", "cterm": "19"  }
+let s:l_darkBlue         = { "gui": "#005F87", "cterm": "24"  }
+let s:l_middleDarkBlue   = { "gui": "#538192", "cterm": "31"  }
+let s:l_middleLightBlue  = { "gui": "#9FD3E6", "cterm": "116" }
+let s:l_lightBlue        = { "gui": "#D5EBF7", "cterm": "195" }
+
+let s:l_darkGreen        = { "gui": "#5F5F00", "cterm": "58"  }
+let s:l_middleDarkGreen  = { "gui": "#739200", "cterm": "64"  }
+let s:l_middleLightGreen = { "gui": "#B8D977", "cterm": "148" }
+let s:l_lightGreen       = { "gui": "#BBFFAA", "cterm": "157" }
+
+let s:l_darkTan          = { "gui": "#503D15", "cterm": "52"  }
+let s:l_lightTan         = { "gui": "#FDFEFA", "cterm": "231" }
 
 " Assign to semantic categories based on background color
 if &background == "dark"
   " Dark theme
-  let s:bg         = s:middleDarkerGrey
-  let s:norm       = s:lightBlue
-  let s:comment    = s:middleDarkGrey
-  let s:dimmed     = s:middleLightGrey
-  let s:subtle     = s:darkGrey
-  let s:faint      = s:darkerGrey
-  let s:fainter    = s:darkestGrey
-  let s:subtler    = s:almostBlack
-  let s:accent1    = s:middleLightBlue
-  let s:accent2    = s:lightGreen
-  let s:accent3    = s:middleLightGreen
-  let s:accent4    = s:lightTan
-  let s:accent5    = s:darkerBlue
-  let s:normRed    = s:middleLightPink
-  let s:normGreen  = s:middleLightGreen
-  let s:normBlue   = s:middleLightBlue
-  let s:faintRed   = s:darkPink
-  let s:faintGreen = s:darkGreen
-  let s:faintBlue  = s:darkBlue
+  let s:bg         = s:d_middleDarkerGrey
+  let s:norm       = s:d_lightBlue
+  let s:comment    = s:d_middleDarkGrey
+  let s:dimmed     = s:d_middleLightGrey
+  let s:subtle     = s:d_darkGrey
+  let s:faint      = s:d_darkerGrey
+  let s:fainter    = s:d_darkestGrey
+  let s:subtler    = s:d_almostBlack
+  let s:accent1    = s:d_middleLightBlue
+  let s:accent2    = s:d_lightGreen
+  let s:accent3    = s:d_middleLightGreen
+  let s:accent4    = s:d_lightTan
+  let s:accent5    = s:d_darkerBlue
+  let s:normRed    = s:d_middleLightPink
+  let s:normGreen  = s:d_middleLightGreen
+  let s:normBlue   = s:d_middleLightBlue
+  let s:faintRed   = s:d_darkPink
+  let s:faintGreen = s:d_darkGreen
+  let s:faintBlue  = s:d_darkBlue
 else
   " Light theme
-  let s:bg         = s:lightTan
-  let s:norm       = s:almostBlack
-  let s:comment    = s:middleLightGrey
-  let s:dimmed     = s:middleDarkerGrey
-  let s:subtle     = s:lighterGrey
-  let s:subtler    = s:middleDarkGrey
-  let s:faint      = s:lighterGrey
-  let s:fainter    = s:almostWhite
-  let s:accent1    = s:darkBlue
-  let s:accent2    = s:middleDarkGreen
-  let s:accent3    = s:middleDarkPink
-  let s:accent4    = s:darkTan
-  let s:accent5    = s:middleLightGrey
-  let s:normRed    = s:middleDarkPink
-  let s:normGreen  = s:middleDarkGreen
-  let s:normBlue   = s:middleDarkBlue
-  let s:faintRed   = s:lightPink
-  let s:faintGreen = s:lightGreen
-  let s:faintBlue  = s:lightBlue
+  let s:bg         = s:l_lightTan
+  let s:norm       = s:l_almostBlack
+  let s:comment    = s:l_middleLightGrey
+  let s:dimmed     = s:l_middleDarkGrey
+  let s:subtle     = s:l_lighterGrey
+  let s:subtler    = s:l_middleDarkGrey
+  let s:faint      = s:l_lighterGrey
+  let s:fainter    = s:l_almostWhite
+  let s:accent1    = s:l_darkBlue
+  let s:accent2    = s:l_middleDarkGreen
+  let s:accent3    = s:l_middleDarkPink
+  let s:accent4    = s:l_darkTan
+  let s:accent5    = s:l_middleLightGrey
+  let s:normRed    = s:l_middleDarkPink
+  let s:normGreen  = s:l_middleDarkGreen
+  let s:normBlue   = s:l_middleDarkBlue
+  let s:faintRed   = s:l_lightPink
+  let s:faintGreen = s:l_lightGreen
+  let s:faintBlue  = s:l_lightBlue
 endif
 
 
@@ -135,7 +168,7 @@ endif
 " Highlights - UI ------------------------------------------{{{
 call s:h("Normal",       { "fg": s:norm, "bg": s:bg })
 call s:h("NonText",      { "fg": s:subtle })
-call s:h("Cursor",       { "fg": s:norm, "bg": s:accent5 })
+call s:h("Cursor",       { "fg": s:bg, "bg": s:normBlue })
 call s:h("Visual",       { "bg": s:faintBlue })
 call s:h("IncSearch",    { "bg": s:faintBlue })
 call s:h("Search",       { "bg": s:faintGreen })

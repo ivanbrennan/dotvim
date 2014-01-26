@@ -88,9 +88,6 @@ set foldcolumn=1                " minimal foldcolumn
 set foldmethod=marker           " fold markers
 augroup CursorGroup             " clear cursorline highlight
   autocmd!
-  autocmd WinEnter,BufRead,BufWinEnter |
-                     \* setlocal  cursorline
-  autocmd WinLeave    * setlocal  nocursorline
   autocmd BufReadPost * call      RestoreCrsr()
 augroup END
 
@@ -116,16 +113,14 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " colors
-if has("gui_running")
-  set transparency=5
-endif
-
-colorscheme eivel
+colorscheme eivel_dark
 
 " nice colorschemes {{{
 let g:nice_schemes =
       \[
       \"eivel",
+      \"eivel_dark",
+      \"eivel_light",
       \"github",
       \"hemisu",
       \"ivisu",
@@ -140,7 +135,7 @@ let g:nice_schemes =
       \]
 " }}}
 " fonts {{{
-set guifont=Source\ Code\ Pro:h19
+set guifont=Source\ Code\ Pro:h17
 let g:font_dict =
       \{
       \"Anonymous Pro":    3,
@@ -353,8 +348,8 @@ noremap _ ,
 " search and replace
 nnoremap  :: :%s:::g<Left><Left><Left>
 vnoremap  :: :s:::g<Left><Left><Left>
-nnoremap  :C :%s:::cg<Left><Left><Left>
-vnoremap  :C :s:::cg<Left><Left><Left>
+nnoremap  :C :%s:::cg<Left><Left><Left><Left>
+vnoremap  :C :s:::cg<Left><Left><Left><Left>
 cnoremap ;/ \(\)<Left><Left>
 
 " find word under cursor
@@ -403,7 +398,7 @@ noremap <Leader>0 :tabnext<CR>
 noremap <LocalLeader>,w :setlocal wrap! linebreak! list! wrap?<CR>
 
 if has("gui_running")
-  noremap <LocalLeader>,t :call TransparencyToggle()<CR>
+  noremap <LocalLeader>,t :call TransparencyToggle(5)<CR>
 end
 
 " fonts
@@ -668,13 +663,13 @@ fun! ColorCycle(num)
   exe "colorscheme " . new_nam
 endf
 
-fun! TransparencyToggle()
+fun! TransparencyToggle(transpr)
   if exists("g:transparency_memo")
     let &transparency = g:transparency_memo
     unlet g:transparency_memo
   else
     let g:transparency_memo = &transparency
-    set transparency=0
+    set transparency=a:transpr
   end
 endf
 
