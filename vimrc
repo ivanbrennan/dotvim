@@ -351,10 +351,10 @@ noremap + ;
 noremap _ ,
 
 " search and replace
-nnoremap  ;; :%s:::g<Left><Left><Left>
-vnoremap  ;; :s:::g<Left><Left><Left>
-nnoremap  ;' :%s:::cg<Left><Left><Left>
-nnoremap  ;' :s:::cg<Left><Left><Left>
+nnoremap  :: :%s:::g<Left><Left><Left>
+vnoremap  :: :s:::g<Left><Left><Left>
+nnoremap  :C :%s:::cg<Left><Left><Left>
+vnoremap  :C :s:::cg<Left><Left><Left>
 cnoremap ;/ \(\)<Left><Left>
 
 " find word under cursor
