@@ -17,29 +17,29 @@ let g:colors_name = "eivel_dark"
 "}}}
 " The Colors -----------------------------------------------{{{
 " Define reusable colors
-let s:black            = { "gui": "#1A1C1F", "cterm": "16"  }
-let s:greyDarkest      = { "gui": "#1D1F22", "cterm": "16"  }
-let s:greyDarker       = { "gui": "#222427", "cterm": "233" }
-let s:greyDark         = { "gui": "#333538", "cterm": "241" }
-let s:grey             = { "gui": "#444649", "cterm": "246" }
-let s:greyLight        = { "gui": "#66686B", "cterm": "249" }
-let s:greyLighter      = { "gui": "#EEEEEE", "cterm": "238" }
-let s:white            = { "gui": "#FFFFFF", "cterm": "231" }
+let s:black            = { "gui": "#1A1C1F", "cterm": "233"  }
+let s:greyDarkest      = { "gui": "#1D1F22", "cterm": "234"  }
+let s:greyDarker       = { "gui": "#222427", "cterm": "235" }
+let s:greyDark         = { "gui": "#333538", "cterm": "236" }
+let s:grey             = { "gui": "#444649", "cterm": "237" }
+let s:greyLight        = { "gui": "#66686B", "cterm": "238" }
+let s:greyLighter      = { "gui": "#EEEEEE", "cterm": "255" }
+let s:white            = { "gui": "#FFFFFF", "cterm": "15" }
 
 let s:redDark          = { "gui": "#9d261d", "cterm": "88"  }
-let s:red              = { "gui": "#BD362F", "cterm": "197" }
-let s:pink             = { "gui": "#EE5F5B", "cterm": "167" }
-let s:pinkLight        = { "gui": "#F79A97", "cterm": "217" }
+let s:red              = { "gui": "#BD362F", "cterm": "160" }
+let s:pink             = { "gui": "#EE5F5B", "cterm": "203" }
+let s:pinkLight        = { "gui": "#F79A97", "cterm": "223" }
 
-let s:blueDarker       = { "gui": "#335170", "cterm": "58"  }
+let s:blueDarker       = { "gui": "#335170", "cterm": "25"  }
 let s:blueDark         = { "gui": "#005F87", "cterm": "24"  }
-let s:blue             = { "gui": "#3A87AD", "cterm": "24"  }
-let s:blueLight        = { "gui": "#9FD3E6", "cterm": "116" }
+let s:blue             = { "gui": "#3A87AD", "cterm": "31"  }
+let s:blueLight        = { "gui": "#9FD3E6", "cterm": "159" }
 let s:blueLighter      = { "gui": "#D9EDF7", "cterm": "195" }
 
 let s:greenDark        = { "gui": "#5F5F00", "cterm": "58"  }
 let s:green            = { "gui": "#739200", "cterm": "64"  }
-let s:greenLight       = { "gui": "#7FC476", "cterm": "149" }
+let s:greenLight       = { "gui": "#7FC476", "cterm": "71" }
 let s:greenLighter     = { "gui": "#BBFFAA", "cterm": "157" }
 
 let s:tanDark          = { "gui": "#503D15", "cterm": "52"  }
@@ -149,13 +149,14 @@ call s:h("Delimiter",  { "fg": s:base1 })
 call s:h("Comment",    { "fg": s:blue3, "gui": "italic" })
 call s:h("Underlined", { "fg": s:accent1, "gui": "underline", "cterm": "underline" })
 call s:h("Type",       { "fg": s:accent3 })
-call s:h("String",     { "fg": s:accent2 })
-call s:h("Keyword",    { "fg": s:accent2, "gui": "bold", "cterm": "bold" })
+call s:h("String",     { "fg": s:accent3 })
+call s:h("Keyword",    { "fg": s:accent1, "gui": "bold", "cterm": "bold" })
 call s:h("Todo",       { "fg": s:red1, "gui": "bold", "cterm": "bold" })
 call s:h("Function",   { "gui": "bold", "cterm": "bold" })
 hi! link Identifier  Function
 hi! link Statement   Type
 hi! link Constant    Directory
+hi! link Symbol      Directory
 hi! link Number      Constant
 hi! link Special     Constant
 hi! link PreProc     Constant
@@ -181,6 +182,30 @@ hi! link mkdListItem  mkdDelimiter
 " Highlights - Shell ---------------------------------------{{{
 hi! link shOperator  Delimiter
 hi! link shCaseBar   Delimiter
+
+"}}}
+" Highlights - Ruby ----------------------------------------{{{
+hi link rubyBeginend                Keyword
+hi link rubyClass                   Keyword
+hi link rubyModule                  Keyword
+hi link rubyKeyword                 Keyword
+hi link rubyOperator                Constant
+hi link rubyIdentifier              Keyword
+hi link rubyClassVariable           Symbol
+hi link rubyInstanceVariable        Constant
+hi link rubyGlobalVariable          Constant
+hi link rubyClassVariable           Constant
+hi link rubyConstant                Constant
+hi link rubySymbol                  Symbol
+hi link rubyFunction                Constant
+hi link rubyControl                 Keyword
+hi link rubyDoBlock                 Keyword
+hi link rubyLocalVariableOrMethod   Keyword
+hi link rubyConditional             Keyword
+hi link rubyInterpolation           Interpolation
+hi link rubyInterpolationDelimiter  Interpolation
+hi link rubyRailsMethod             Constant
+hi link rubyString                  String
 
 "}}}
 " Highlights - JavaScript ----------------------------------{{{

@@ -59,6 +59,9 @@ let g:netrw_use_errorwindow=0   " suppress error window
 let g:ctrlp_show_hidden = 1     " include hidden files
 let g:ctrlp_match_window = 'max:12'
 
+" ··········· vim-rspec ················ {{{2
+let g:rspec_command_launcher = "iterm"
+
 " ··········· editing ·················· {{{2
 set hidden                      " allow hidden buffers
 set backspace=indent,eol,start  " backspace through everything
