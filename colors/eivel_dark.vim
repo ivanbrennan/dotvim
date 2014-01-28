@@ -150,7 +150,7 @@ call s:h("Comment",    { "fg": s:blue3, "gui": "italic" })
 call s:h("Underlined", { "fg": s:accent1, "gui": "underline", "cterm": "underline" })
 call s:h("Type",       { "fg": s:accent3 })
 call s:h("String",     { "fg": s:accent3 })
-call s:h("Keyword",    { "fg": s:blue1, "gui": "bold", "cterm": "bold" })
+call s:h("Keyword",    { "fg": s:blue1 })
 call s:h("Todo",       { "fg": s:red1, "gui": "bold", "cterm": "bold" })
 call s:h("Function",   { "gui": "bold", "cterm": "bold" })
 hi! link Identifier  Function
@@ -189,6 +189,10 @@ hi link rubyBeginend                Keyword
 hi link rubyClass                   Keyword
 hi link rubyModule                  Keyword
 hi link rubyKeyword                 Keyword
+hi link rubyLocalVariableOrMethod   Keyword
+hi link rubyConditional             Keyword
+hi link rubyControl                 Keyword
+hi link rubyDoBlock                 Keyword
 hi link rubyOperator                Constant
 hi link rubyIdentifier              Keyword
 hi link rubyClassVariable           Symbol
@@ -198,12 +202,8 @@ hi link rubyClassVariable           Constant
 hi link rubyConstant                Constant
 hi link rubySymbol                  Symbol
 hi link rubyFunction                Constant
-hi link rubyControl                 Keyword
-hi link rubyDoBlock                 Keyword
 hi link rubyCurlyBlockDelimiter     Delimiter
 hi link rubyArrayDelimiter          Delimiter
-hi link rubyLocalVariableOrMethod   Keyword
-hi link rubyConditional             Keyword
 hi link rubyInterpolation           Interpolation
 hi link rubyInterpolationDelimiter  Interpolation
 hi link rubyRailsMethod             Constant
