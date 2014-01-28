@@ -34,7 +34,7 @@ let s:pinkLight        = { "gui": "#F79A97", "cterm": "223" }
 let s:blueDarker       = { "gui": "#446282", "cterm": "242"  }
 let s:blueDark         = { "gui": "#005F87", "cterm": "24"  }
 let s:blue             = { "gui": "#3A87AD", "cterm": "31"  }
-let s:blueLight        = { "gui": "#5D87C2", "cterm": "38" }
+let s:blueLight        = { "gui": "#1584EB", "cterm": "33" }
 let s:blueLighter      = { "gui": "#D9EDF7", "cterm": "195" }
 
 let s:greenDark        = { "gui": "#5F5F00", "cterm": "58"  }
@@ -153,12 +153,12 @@ call s:h("Underlined", { "fg": s:accent1, "gui": "underline", "cterm": "underlin
 call s:h("Type",       { "fg": s:accent3 })
 call s:h("String",     { "fg": s:accent3 })
 call s:h("Keyword",    { "fg": s:blue1 })
+call s:h("Constant",   { "fg": s:accent1 })
 call s:h("Todo",       { "fg": s:red1, "gui": "bold", "cterm": "bold" })
 call s:h("Function",   { "gui": "bold", "cterm": "bold" })
 call s:h("Symbol",     { "fg": s:accent2 })
 hi! link Identifier  Function
 hi! link Statement   Type
-hi! link Constant    Directory
 hi! link Number      Constant
 hi! link Special     Constant
 hi! link PreProc     Constant
