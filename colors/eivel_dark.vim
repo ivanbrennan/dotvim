@@ -23,7 +23,7 @@ let s:greyDarker       = { "gui": "#222427", "cterm": "234" }
 let s:greyDark         = { "gui": "#333538", "cterm": "235" }
 let s:grey             = { "gui": "#444649", "cterm": "236" }
 let s:greyLight        = { "gui": "#66686B", "cterm": "237" }
-let s:greyLighter      = { "gui": "#EEEEEE", "cterm": "255" }
+let s:greyLighter      = { "gui": "#B1B5BA", "cterm": "249" }
 let s:white            = { "gui": "#FFFFFF", "cterm": "15" }
 
 let s:redDark          = { "gui": "#9d261d", "cterm": "88"  }
@@ -145,7 +145,7 @@ hi! link SpecialKey   NonText
 
 "}}}
 " Highlights - Generic Syntax ------------------------------{{{
-call s:h("Delimiter",  { "fg": s:base1 })
+call s:h("Delimiter",  { "fg": s:base2 })
 call s:h("Comment",    { "fg": s:blue3, "gui": "italic" })
 call s:h("Underlined", { "fg": s:accent1, "gui": "underline", "cterm": "underline" })
 call s:h("Type",       { "fg": s:accent3 })
@@ -200,6 +200,8 @@ hi link rubySymbol                  Symbol
 hi link rubyFunction                Constant
 hi link rubyControl                 Keyword
 hi link rubyDoBlock                 Keyword
+hi link rubyCurlyBlockDelimiter     Delimiter
+hi link rubyArrayDelimiter          Delimiter
 hi link rubyLocalVariableOrMethod   Keyword
 hi link rubyConditional             Keyword
 hi link rubyInterpolation           Interpolation
