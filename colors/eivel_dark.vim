@@ -26,7 +26,7 @@ let s:greyLight        = { "gui": "#66686B", "cterm": "237" }
 let s:greyLighter      = { "gui": "#B1B5BA", "cterm": "249" }
 let s:white            = { "gui": "#FFFFFF", "cterm": "15" }
 
-let s:redDark          = { "gui": "#9d261d", "cterm": "88"  }
+let s:redDark          = { "gui": "#9d261d", "cterm": "124"  }
 let s:red              = { "gui": "#BD362F", "cterm": "160" }
 let s:pink             = { "gui": "#EE5F5B", "cterm": "203" }
 let s:pinkLight        = { "gui": "#F79A97", "cterm": "223" }
@@ -45,6 +45,8 @@ let s:greenLighter     = { "gui": "#BBFFAA", "cterm": "157" }
 let s:tanDark          = { "gui": "#503D15", "cterm": "52"  }
 let s:tanLight         = { "gui": "#F3EDD2", "cterm": "230" }
 
+let s:gold             = { "gui": "#ffdf00", "cterm": "220" }
+
 " Assign to semantic categories based on background color
 set background=dark
 if &background == "dark"
@@ -61,7 +63,7 @@ if &background == "dark"
   let s:norm        = s:blueLighter
 
   let s:accent1     = s:blueLight
-  let s:accent2     = s:greenLight
+  let s:accent2     = s:gold
   let s:accent3     = s:greenLighter
   let s:accent4     = s:tanLight
 
@@ -153,10 +155,10 @@ call s:h("String",     { "fg": s:accent3 })
 call s:h("Keyword",    { "fg": s:blue1 })
 call s:h("Todo",       { "fg": s:red1, "gui": "bold", "cterm": "bold" })
 call s:h("Function",   { "gui": "bold", "cterm": "bold" })
+call s:h("Symbol",     { "fg": s:accent2 })
 hi! link Identifier  Function
 hi! link Statement   Type
 hi! link Constant    Directory
-hi! link Symbol      Directory
 hi! link Number      Constant
 hi! link Special     Constant
 hi! link PreProc     Constant
@@ -198,7 +200,6 @@ hi link rubyIdentifier              Keyword
 hi link rubyClassVariable           Symbol
 hi link rubyInstanceVariable        Constant
 hi link rubyGlobalVariable          Constant
-hi link rubyClassVariable           Constant
 hi link rubyConstant                Constant
 hi link rubySymbol                  Symbol
 hi link rubyFunction                Constant
