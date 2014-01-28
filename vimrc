@@ -233,8 +233,8 @@ inoremap <C-[> <Esc>`^
 " netrw
 noremap <silent> <Leader>e :call ExToggle("")<CR>
 noremap <silent> <Leader>,e :call ExToggle(getcwd())<CR>
-noremap <silent> <Leader><Tab> :call VexToggle(getcwd())<CR>
-noremap <silent> <Leader>,<Tab> :call VexToggle("")<CR>
+noremap <silent> <Leader><Tab> :call VexToggle("")<CR>
+noremap <silent> <Leader>,<Tab> :call VexToggle(getcwd())<CR>
 
 " from ./vim/after/ftplugin/netrw.vim
 "   Select file/dir:  f
@@ -242,7 +242,7 @@ noremap <silent> <Leader>,<Tab> :call VexToggle("")<CR>
 "   Set treetop dir: <LocalLeader>t
 
 " list
-noremap <Leader>l :buffers<CR>
+noremap <LocalLeader><Space> :buffers<CR>
 noremap <Leader>b :buffers<CR>:b
 noremap <Leader>p :CtrlPBuffer<CR>
 
