@@ -17,12 +17,12 @@ let g:colors_name = "eivel_dark"
 "}}}
 " The Colors -----------------------------------------------{{{
 " Define reusable colors
-let s:black            = { "gui": "#1A1C1F", "cterm": "233"  }
-let s:greyDarkest      = { "gui": "#1D1F22", "cterm": "234"  }
-let s:greyDarker       = { "gui": "#222427", "cterm": "235" }
-let s:greyDark         = { "gui": "#333538", "cterm": "236" }
-let s:grey             = { "gui": "#444649", "cterm": "237" }
-let s:greyLight        = { "gui": "#66686B", "cterm": "238" }
+let s:black            = { "gui": "#1A1C1F", "cterm": "232"  }
+let s:greyDarkest      = { "gui": "#1D1F22", "cterm": "233"  }
+let s:greyDarker       = { "gui": "#222427", "cterm": "234" }
+let s:greyDark         = { "gui": "#333538", "cterm": "235" }
+let s:grey             = { "gui": "#444649", "cterm": "236" }
+let s:greyLight        = { "gui": "#66686B", "cterm": "237" }
 let s:greyLighter      = { "gui": "#EEEEEE", "cterm": "255" }
 let s:white            = { "gui": "#FFFFFF", "cterm": "15" }
 
@@ -125,7 +125,7 @@ call s:h("SignColumn",   { "fg": s:norm })
 call s:h("TabLine",      { "fg": s:base2, "bg": s:base0 })
 call s:h("TabLineSel",   { "gui": "bold", "cterm": "bold" })
 call s:h("Folded",       { "fg": s:blueDarker, "bg": s:base03 })
-call s:h("Directory",    { "fg": s:accent1 })
+call s:h("Directory",    { "fg": s:blue1 })
 call s:h("Title",        { "fg": s:accent4, "gui": "bold", "cterm": "bold" })
 call s:h("ErrorMsg",     { "bg": s:red2 })
 call s:h("DiffAdd",      { "bg": s:green2 })
@@ -150,7 +150,7 @@ call s:h("Comment",    { "fg": s:blue3, "gui": "italic" })
 call s:h("Underlined", { "fg": s:accent1, "gui": "underline", "cterm": "underline" })
 call s:h("Type",       { "fg": s:accent3 })
 call s:h("String",     { "fg": s:accent3 })
-call s:h("Keyword",    { "fg": s:accent1, "gui": "bold", "cterm": "bold" })
+call s:h("Keyword",    { "fg": s:blue1, "gui": "bold", "cterm": "bold" })
 call s:h("Todo",       { "fg": s:red1, "gui": "bold", "cterm": "bold" })
 call s:h("Function",   { "gui": "bold", "cterm": "bold" })
 hi! link Identifier  Function
