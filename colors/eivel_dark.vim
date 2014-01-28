@@ -34,7 +34,7 @@ let s:pinkLight        = { "gui": "#F79A97", "cterm": "223" }
 let s:blueDarker       = { "gui": "#335170", "cterm": "25"  }
 let s:blueDark         = { "gui": "#005F87", "cterm": "24"  }
 let s:blue             = { "gui": "#3A87AD", "cterm": "31"  }
-let s:blueLight        = { "gui": "#9FD3E6", "cterm": "159" }
+let s:blueLight        = { "gui": "#5D87C2", "cterm": "38" }
 let s:blueLighter      = { "gui": "#D9EDF7", "cterm": "195" }
 
 let s:greenDark        = { "gui": "#5F5F00", "cterm": "58"  }
@@ -92,7 +92,7 @@ endfunction
 if version >= 700
   call s:h("CursorLine",       { "bg": s:base02 })
   call s:h("CursorLineNr",     { "fg": s:base1, "bg": s:base02 })
-  call s:h("MatchParen",       { "fg": s:accent1, "bg": s:base02, "gui": "bold" })
+  call s:h("MatchParen",       { "fg": s:base02, "bg": s:base1 })
   call s:h("Pmenu",            { "bg": s:base02 })
   call s:h("PmenuThumb",       { "bg": s:norm })
   call s:h("PmenuSBar",        { "bg": s:base0 })
@@ -115,7 +115,7 @@ endif
 " Highlights - UI ------------------------------------------{{{
 call s:h("Normal",       { "fg": s:norm, "bg": s:base01 })
 call s:h("NonText",      { "fg": s:base00 })
-call s:h("Cursor",       { "fg": s:base01, "bg": s:blueLighter })
+call s:h("Cursor",       { "fg": s:blue3, "bg": s:norm })
 call s:h("Visual",       { "bg": s:blue2 })
 call s:h("Search",       { "bg": s:green2 })
 call s:h("StatusLine",   { "fg": s:norm, "bg": s:base00 })
