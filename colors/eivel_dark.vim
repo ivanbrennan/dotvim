@@ -31,7 +31,7 @@ let s:red              = { "gui": "#BD362F", "cterm": "160" }
 let s:pink             = { "gui": "#EE5F5B", "cterm": "203" }
 let s:pinkLight        = { "gui": "#F79A97", "cterm": "223" }
 
-let s:blueDarker       = { "gui": "#335170", "cterm": "25"  }
+let s:blueDarker       = { "gui": "#446282", "cterm": "242"  }
 let s:blueDark         = { "gui": "#005F87", "cterm": "24"  }
 let s:blue             = { "gui": "#3A87AD", "cterm": "31"  }
 let s:blueLight        = { "gui": "#5D87C2", "cterm": "38" }
