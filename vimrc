@@ -328,6 +328,12 @@ noremap <LocalLeader>fef :normal! gg=G``<CR>
 " toggle Gundo
 noremap <Leader>g :GundoToggle<CR>
 
+" previous / next braces
+onoremap in :<C-U>call NextTextObject('i')<CR>
+xnoremap in :<C-U>call NextTextObject('i')<CR>
+onoremap an :<C-U>call NextTextObject('a')<CR>
+xnoremap an :<C-U>call NextTextObject('a')<CR>
+
 " ··········· navigation ··············· {{{2
 " sensible marks
 noremap ` '
@@ -693,3 +699,10 @@ fun! CursorLineToggle()
     let w:cursorline_memo = 1
   end
 endf
+
+" ··········· braces ··················· {{{2
+function! NextTextObject(motion)
+  echo
+  let c = nr2char(getchar())
+  execute "normal! f" . c . "v" . a:motion . c
+endfunction
