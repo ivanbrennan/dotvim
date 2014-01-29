@@ -94,7 +94,7 @@ endfunction
 if version >= 700
   call s:h("CursorLine",       { "bg": s:base02 })
   call s:h("CursorLineNr",     { "fg": s:base1, "bg": s:base02 })
-  call s:h("MatchParen",       { "fg": s:base02, "bg": s:base1 })
+  call s:h("MatchParen",       { "fg": s:base2, "bg": s:base1 })
   call s:h("Pmenu",            { "bg": s:base02 })
   call s:h("PmenuThumb",       { "bg": s:norm })
   call s:h("PmenuSBar",        { "bg": s:base0 })
