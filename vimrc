@@ -219,6 +219,13 @@ set  <F17>=O5P
 map  <F17> <C-BS>
 map! <F17> <C-BS>
 
+set  <F18>=O5Q
+map  <F18> <M-Tab>
+map! <F18> <M-Tab>
+set  <F19>=O5R
+map  <F19> <M-S-Tab>
+map! <F19> <M-S-Tab>
+
 " ··········· modes ···················· {{{2
 " enter command mode
 noremap  ; :
@@ -266,9 +273,8 @@ noremap <Leader><Space> :pwd<CR>
 noremap <LocalLeader>t :lcd %:h<CR>
 
 " cycle
-noremap <M-o> :bprevious<CR>
-noremap <M-i> :bnext<CR>
-noremap ø :echo "Alt!"
+noremap   <M-Tab> :bnext<CR>
+noremap <M-S-Tab> :bprevious<CR>
 
 " ··········· editing ·················· {{{2
 " open above / below current line
