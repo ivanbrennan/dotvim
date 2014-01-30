@@ -266,10 +266,9 @@ noremap <Leader><Space> :pwd<CR>
 noremap <LocalLeader>t :lcd %:h<CR>
 
 " cycle
-noremap <Leader>k :bprevious<CR>
-noremap    <Left> :bprevious<CR>
-noremap <Leader>j :bnext<CR>
-noremap   <Right> :bnext<CR>
+noremap <M-o> :bprevious<CR>
+noremap <M-i> :bnext<CR>
+noremap ø :echo "Alt!"
 
 " ··········· editing ·················· {{{2
 " open above / below current line
@@ -311,7 +310,7 @@ noremap           <F4> :set paste! paste?<CR>
 set pastetoggle=<F4>
 
 " toggle case
-inoremap _+ <Esc>viwg~gi
+inoremap `` <Esc>viwg~gi
 
 " add semicolon to end of line
 noremap <Leader>; mZA;<Esc>`Z
@@ -320,7 +319,7 @@ noremap <Leader>; mZA;<Esc>`Z
 noremap <silent> <LocalLeader>f, :call FileTypeToggle(1)<CR>
 noremap <silent>  <LocalLeader>f :call FileTypeToggle(0)<CR>
 " toggle html
-noremap <silent> <Leader>h :call HTMLTypeToggle()<CR>
+noremap <silent> <LocalLeader>h :call HTMLTypeToggle()<CR>
 
 " format entire file
 noremap <LocalLeader>fef :normal! gg=G``<CR>
@@ -348,6 +347,10 @@ noremap  <Down> gj
 " behave normally if popup-menu visible
 inoremap   <Up> <C-R>=pumvisible() ? "\<lt>Up>" : "\<lt>C-O>gk"<CR>
 inoremap <Down> <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"<CR>
+
+" side-scroll
+noremap <Left> zh
+noremap <Right> zl
 
 " ··········· searching ················ {{{2
 " repeat last char search
@@ -422,8 +425,8 @@ noremap <silent> <LocalLeader>[ :call ColorCycle(-1)<CR>:colorscheme<CR>
 noremap <LocalLeader>b :call ToggleBG()<CR>:echo &background<CR>
 
 " info
-noremap <LocalLeader>h :call HexHighlight()<CR>
-noremap <LocalLeader>y :call SynStack()<CR>
+noremap <LocalLeader>hh :call HexHighlight()<CR>
+noremap  <LocalLeader>y :call SynStack()<CR>
 
 " line numbers
 noremap <Leader>n :call NumberToggle()<CR>
