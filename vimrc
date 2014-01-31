@@ -325,7 +325,7 @@ noremap <Leader>; mZA;<Esc>`Z
 noremap <silent> <LocalLeader>f, :call FileTypeToggle(1)<CR>
 noremap <silent>  <LocalLeader>f :call FileTypeToggle(0)<CR>
 " toggle html
-noremap <silent> <LocalLeader>h :call HTMLTypeToggle()<CR>
+inoremap <silent> `h <C-O>:call HTMLTypeToggle()<CR>
 
 " format entire file
 noremap <LocalLeader>fef :normal! gg=G``<CR>
