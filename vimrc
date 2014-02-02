@@ -325,7 +325,7 @@ noremap <Leader>; mZA;<Esc>`Z
 noremap <silent> <LocalLeader>f, :call FileTypeToggle(1)<CR>
 noremap <silent>  <LocalLeader>f :call FileTypeToggle(0)<CR>
 " toggle html
-inoremap <silent> `h <C-O>:call HTMLTypeToggle()<CR>
+inoremap <silent> ``h <C-O>:call HTMLTypeToggle()<CR>
 
 " format entire file
 noremap <LocalLeader>fef :normal! gg=G``<CR>
@@ -431,8 +431,8 @@ noremap <silent> <LocalLeader>[ :call ColorCycle(-1)<CR>:colorscheme<CR>
 noremap <LocalLeader>b :call ToggleBG()<CR>:echo &background<CR>
 
 " info
-noremap <LocalLeader>hh :call HexHighlight()<CR>
-noremap  <LocalLeader>y :call SynStack()<CR>
+noremap <LocalLeader>h :call HexHighlight()<CR>
+noremap <LocalLeader>y :call SynStack()<CR>
 
 " line numbers
 noremap <Leader>n :call NumberToggle()<CR>
