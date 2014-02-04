@@ -84,10 +84,10 @@ set smartcase                   " ...unless they contain a capital letter
 " ··········· appearance ··············· {{{2
 syntax enable                   " syntax highlighting, local overrides
 set title                       " xterm title
+set number                      " line numbering
 set nowrap                      " don't wrap lines
 set fillchars+=vert:\           " clean dividers
 set cursorline                  " cursorline on
-set foldcolumn=1                " minimal foldcolumn
 set foldmethod=marker           " fold markers
 augroup CursorGroup             " clear cursorline highlight
   autocmd!
@@ -442,7 +442,7 @@ noremap <Leader>r :set relativenumber! relativenumber?<CR>
 noremap <silent> <Leader>z :call FoldColToggle(4)<CR>
 
 " cursor
-noremap <silent> <Leader>c :call CursorLineToggle()<CR>
+noremap <silent> <Leader>c :set cursorcolumn!<CR>
 
 " ··········· evaluation ··············· {{{2
 " RSpec
