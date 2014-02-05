@@ -33,8 +33,8 @@ let s:pinkLight        = { "gui": "#F79A97", "cterm": "223" }
 
 let s:blueDarker       = { "gui": "#455C75", "cterm": "240"  }
 let s:blueDark         = { "gui": "#005F87", "cterm": "24"  }
-let s:blue             = { "gui": "#3A87AD", "cterm": "31"  }
-let s:blueLight        = { "gui": "#1584EB", "cterm": "33" }
+let s:blue             = { "gui": "#3E7BB8", "cterm": "31"  }
+let s:blueLight        = { "gui": "#70A5FF", "cterm": "33" }
 let s:blueLighter      = { "gui": "#D9EDF7", "cterm": "195" }
 
 let s:greenDark        = { "gui": "#5F5F00", "cterm": "58"  }
@@ -202,6 +202,7 @@ hi link rubyInstanceVariable        Constant
 hi link rubyGlobalVariable          Constant
 hi link rubyConstant                Constant
 hi link rubySymbol                  Symbol
+hi link rubyBoolean                 Symbol
 hi link rubyFunction                Constant
 hi link rubyCurlyBlockDelimiter     Delimiter
 hi link rubyArrayDelimiter          Delimiter
