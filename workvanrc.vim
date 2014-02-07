@@ -181,10 +181,6 @@ set wildignore+=*.DS_Store
 
 " ::::::::: Mappings :::::::::::::::::::::: {{{1
 
-" keylayouts
-source ~/.vim/qwertyrc.vim
-" source workvan.vim
-
 " leaders
 map <Space> <Leader>
 let maplocalleader=","
@@ -417,7 +413,7 @@ noremap <Leader>9 :tabprevious<CR>
 noremap <Leader>0 :tabnext<CR>
 
 " ··········· appearance ··············· {{{2
-noremap <LocalLeader>w :setlocal wrap! linebreak! list! wrap?<CR>
+noremap <LocalLeader>,w :setlocal wrap! linebreak! list! wrap?<CR>
 
 if has("gui_running")
   noremap <LocalLeader>,t :call TransparencyToggle(5)<CR>
@@ -465,7 +461,6 @@ noreabbrev funciton function
 noreabbrev docuemt document
 noreabbrev docuemtn document
 noreabbrev hte the
-noreabbrev edn end
 
 " ::::::::: Autocommands :::::::::::::::::: {{{1
 
@@ -692,7 +687,7 @@ fun! TransparencyToggle(transpr)
     unlet g:transparency_memo
   else
     let g:transparency_memo = &transparency
-    let &transparency=a:transpr
+    set transparency=a:transpr
   end
 endf
 
@@ -724,13 +719,57 @@ endfunction
 " ··········· keyboard ················· {{{2
 function! Keyboard(type)
    if a:type == "workvan"
-     call QWERTYUnmaps()
-     call WorkVanMaps()
-   else
-     call WorkVanUnmaps()
-     call QWERTYMaps()
+      "(O)pen line -> (L)ine
+      noremap l o
+      noremap o l
+      noremap L O
+      noremap O L
+      "Search (N)ext -> (J)ump
+      noremap j n
+      noremap n j
+      noremap J N
+      noremap N J
+      "(E)nd of word -> brea(K) of word
+      noremap k e
+      noremap e k
+      noremap K E
+      noremap E K
+      "(Y)ank -> (H)aul
+      noremap h y
+      noremap y h
+      noremap H Y
+      noremap Y H
+      "(Esc) insert mode -> (Q)uit insert mo(D)e
+      inoremap qw <Esc>`^
+      inoremap wq <Esc>`^
+   else " qwerty
+      call UnmapWorkvan()
    endif
 endfunction
 
-noremap <LocalLeader>,w :call Keyboard("workvan")<CR>:echom "WorkVan Keyboard Layout"<CR>
-noremap <LocalLeader>,q :call Keyboard("")<CR>:echom "Qwerty Keyboard Layout"<CR>
+function! UnmapWorkvan()
+    "Unmaps WorkVan keys
+    silent! unmap h
+    silent! unmap j
+    silent! unmap k
+    silent! unmap l
+    silent! unmap y
+    silent! unmap n
+    silent! unmap e
+    silent! unmap o
+    silent! unmap H
+    silent! unmap J
+    silent! unmap K
+    silent! unmap L
+    silent! unmap Y
+    silent! unmap N
+    silent! unmap E
+    silent! unmap O
+    silent! iunmap qw
+    silent! iunmap wq
+endfunction
+
+autocmd VimEnter * call Keyboard($keyboard)
+
+noremap <LocalLeader>kq :call Keyboard("qwerty")<CR>:echom "Qwerty Keyboard Layout"<CR>
+noremap <LocalLeader>kw :call Keyboard("workvan")<CR>:echom "WorkVan Keyboard Layout"<CR>
