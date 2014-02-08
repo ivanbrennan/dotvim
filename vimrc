@@ -190,9 +190,7 @@ set timeout timeoutlen=250 ttimeoutlen=100
 noremap <LocalLeader>` :source $MYVIMRC<CR>
 noremap <LocalLeader>`, :edit $MYVIMRC<CR>
 
-" ··········· keyboaard layouts ········ {{{2
-call QWERTYMaps()
-
+" ··········· keyboard layouts ········· {{{2
 noremap <LocalLeader>kq :call Keyboard()<CR>
 noremap <LocalLeader>kw :call Keyboard("workvan")<CR>
 
@@ -202,8 +200,8 @@ function! QWERTYMaps() " {{{3
   noremap q; q:
 
   " exit insert mode
-  inoremap    kj <Esc>`^
-  inoremap    jk <Esc>`^
+  inoremap kj <Esc>`^
+  inoremap jk <Esc>`^
 
   " navigate
   noremap <C-J> <C-W>j
@@ -332,6 +330,9 @@ function! WorkVanUnmaps() " {{{3
   unmap <Leader>(
   unmap <Leader>)
 endfunction
+
+" initialize {{{3
+call QWERTYMaps()
 
 " ··········· terminal key codes ······· {{{2
 " hack to fix arrow keys in terminal
