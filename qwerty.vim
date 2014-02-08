@@ -1,4 +1,4 @@
-" ::::::::: workvan :::::::::::::::::::::::::::::::::::
+" ::::::::: qwertyrc ::::::::::::::::::::::::::::::::::
 
 " leaders
 map <Space> <Leader>
@@ -6,87 +6,61 @@ let maplocalleader=','
 
 " ::::::::: Mappings ::::::::::::::::::::::
 
-function! WorkVanMaps() " {{{1
-  " (E)xit insert mode
-  inoremap <C-E> <Esc>`^
-  inoremap <C-K> <C-E>
+function! QWERTYMaps() " {{{1
+  " ··········· modes ····················
+  " enter command mode
+  noremap  ; :
+  noremap q; q:
 
-  "(O)pen line -> (L)ine
-  noremap l o
-  noremap o l
-  noremap L O
-  noremap O L
-  "Search (N)ext -> (J)ump
-  noremap j n
-  noremap n j
-  noremap J N
-  noremap N J
-  "(E)nd of word -> brea(K) of word
-  noremap k e
-  noremap e k
-  noremap K E
-  noremap E K
-  "(Y)ank -> (H)aul
-  noremap h y
-  noremap y h
-  noremap H Y
-  noremap Y H
+  " exit insert mode
+  inoremap    kj <Esc>`^
+  inoremap    jk <Esc>`^
 
+  " ··········· splits & tabs ············
   " navigate
-  noremap <C-O> <C-W>l
-  noremap <C-L> <C-O>
-  noremap <C-N> <C-W>j
-  noremap <C-J> <C-N>
-  noremap <C-E> <C-W>k
-  noremap <C-K> <C-E>
-  noremap <C-Y> <C-W>h
-  noremap <C-H> <C-Y>
+  noremap <C-J> <C-W>j
+  noremap <C-K> <C-W>k
+  noremap <C-H> <C-W>h
+  noremap <C-L> <C-W>l
+
+  " rearrange
+  noremap <C-W><C-J> <C-W>J
+  noremap <C-W><C-K> <C-W>K
+  noremap <C-W><C-H> <C-W>H
+  noremap <C-W><C-L> <C-W>L
 
   " tabs
-  noremap <Leader>( :tabprevious<CR>
-  noremap <Leader>) :tabnext<CR>
+  noremap <Leader>9 :tabprevious<CR>
+  noremap <Leader>0 :tabnext<CR>
 
-  echo "WorkVan mappings enabled"
+  echo "QWERTY mappings enabled"
 endfunction
 
-function! WorkVanUnmaps() " {{{1
-  " (E)xit insert mode
-  iunmap <C-E>
-  iunmap <C-K>
+function! QWERTYUnmaps() " {{{1
+  " ··········· modes ····················
+  " enter command mode
+  unmap  ;
+  unmap q;
 
-  "(O)pen line -> (L)ine
-  unmap l
-  unmap o
-  unmap L
-  unmap O
-  "Search (N)ext -> (J)ump
-  unmap j
-  unmap n
-  unmap J
-  unmap N
-  "(E)nd of word -> brea(K) of word
-  unmap k
-  unmap e
-  unmap K
-  unmap E
-  "(Y)ank -> (H)aul
-  unmap h
-  unmap y
-  unmap H
-  unmap Y
+  " exit insert mode
+  iunmap    kj
+  iunmap    jk
 
+  " ··········· splits & tabs ············
   " navigate
-  unmap <C-O>
-  unmap <C-L>
-  unmap <C-N>
   unmap <C-J>
-  unmap <C-E>
   unmap <C-K>
-  unmap <C-Y>
   unmap <C-H>
+  unmap <C-L>
+
+  " rearrange
+  unmap <C-W><C-J>
+  unmap <C-W><C-K>
+  unmap <C-W><C-H>
+  unmap <C-W><C-L>
 
   " tabs
-  unmap <Leader>(
-  unmap <Leader>)
+  unmap <Leader>9
+  unmap <Leader>0
 
 endfunction
