@@ -104,7 +104,8 @@ if version >= 700
   call s:h("SpellCap",         { "sp": s:accent1, "gui": "undercurl" })
   call s:h("SpellRare",        { "sp": s:green1, "gui": "undercurl" })
   call s:h("SpellLocal",       { "sp": s:accent4, "gui": "undercurl" })
-  hi! link CursorColumn	CursorLine
+  hi! link CursorColumn CursorLine
+  hi! link ColorColumn CursorLine
 
   " Use background for cterm Spell*, which does not support undercurl
   execute "hi! SpellBad   ctermbg=" s:red2.cterm

@@ -89,6 +89,7 @@ set nowrap                      " don't wrap lines
 set fillchars+=vert:\           " clean dividers
 set cursorline                  " cursorline on
 set foldmethod=marker           " fold markers
+set colorcolumn=80              " 80 char ruler
 augroup CursorGroup             " clear cursorline highlight
   autocmd!
   autocmd BufReadPost * call      RestoreCrsr()
