@@ -181,14 +181,6 @@ set wildignore+=*.DS_Store
 
 " ::::::::: Mappings :::::::::::::::::::::: {{{1
 
-" keylayouts
-source ~/.vim/qwerty.vim
-source ~/.vim/workvan.vim
-call QWERTYMaps()
-
-noremap <LocalLeader>kq :call WorkVanUnmaps()<CR>:call QWERTYMaps()<CR>
-noremap <LocalLeader>kw :call QWERTYUnmaps()<CR>:call WorkVanMaps()<CR>
-
 " leaders
 map <Space> <Leader>
 let maplocalleader=','
@@ -197,6 +189,149 @@ set timeout timeoutlen=250 ttimeoutlen=100
 " source / edit vimrc
 noremap <LocalLeader>` :source $MYVIMRC<CR>
 noremap <LocalLeader>`, :edit $MYVIMRC<CR>
+
+" ··········· keyboaard layouts ········ {{{2
+call QWERTYMaps()
+
+noremap <LocalLeader>kq :call Keyboard()<CR>
+noremap <LocalLeader>kw :call Keyboard("workvan")<CR>
+
+function! QWERTYMaps() " {{{3
+  " enter command mode
+  noremap  ; :
+  noremap q; q:
+
+  " exit insert mode
+  inoremap    kj <Esc>`^
+  inoremap    jk <Esc>`^
+
+  " navigate
+  noremap <C-J> <C-W>j
+  noremap <C-K> <C-W>k
+  noremap <C-H> <C-W>h
+  noremap <C-L> <C-W>l
+
+  " rearrange
+  noremap <C-W><C-J> <C-W>J
+  noremap <C-W><C-K> <C-W>K
+  noremap <C-W><C-H> <C-W>H
+  noremap <C-W><C-L> <C-W>L
+
+  " tabs
+  noremap <Leader>9 :tabprevious<CR>
+  noremap <Leader>0 :tabnext<CR>
+endfunction
+
+function! QWERTYUnmaps() " {{{3
+  " enter command mode
+  unmap  ;
+  unmap q;
+
+  " exit insert mode
+  iunmap    kj
+  iunmap    jk
+
+  " navigate
+  unmap <C-J>
+  unmap <C-K>
+  unmap <C-H>
+  unmap <C-L>
+
+  " rearrange
+  unmap <C-W><C-J>
+  unmap <C-W><C-K>
+  unmap <C-W><C-H>
+  unmap <C-W><C-L>
+
+  " tabs
+  unmap <Leader>9
+  unmap <Leader>0
+endfunction
+
+function! WorkVanMaps() " {{{3
+  " (E)xit insert mode
+  inoremap <C-E> <Esc>`^
+  inoremap <C-K> <C-E>
+
+  " (O)pen line -> (L)ine
+  noremap l o
+  noremap o l
+  noremap L O
+  noremap O L
+  " Search (N)ext -> (J)ump
+  noremap j n
+  noremap n j
+  noremap J N
+  noremap N J
+  " (E)nd of word -> brea(K) of word
+  noremap k e
+  noremap e k
+  noremap K E
+  noremap E K
+  " (Y)ank -> (H)aul
+  noremap h y
+  noremap y h
+  noremap H Y
+  noremap Y H
+
+  " navigate
+  noremap <C-O> <C-W>l
+  noremap <C-L> <C-O>
+  noremap <C-N> <C-W>j
+  noremap <C-J> <C-N>
+  noremap <C-E> <C-W>k
+  noremap <C-K> <C-E>
+  noremap <C-Y> <C-W>h
+  noremap <C-H> <C-Y>
+
+  " tabs
+  noremap <Leader>( :tabprevious<CR>
+  noremap <Leader>) :tabnext<CR>
+
+  " beginning of line
+  noremap ) 0
+endfunction
+
+function! WorkVanUnmaps() " {{{3
+  " (E)xit insert mode
+  iunmap <C-E>
+  iunmap <C-K>
+
+  " (O)pen line -> (L)ine
+  unmap l
+  unmap o
+  unmap L
+  unmap O
+  " Search (N)ext -> (J)ump
+  unmap j
+  unmap n
+  unmap J
+  unmap N
+  " (E)nd of word -> brea(K) of word
+  unmap k
+  unmap e
+  unmap K
+  unmap E
+  " (Y)ank -> (H)aul
+  unmap h
+  unmap y
+  unmap H
+  unmap Y
+
+  " navigate
+  unmap <C-O>
+  unmap <C-L>
+  unmap <C-N>
+  unmap <C-J>
+  unmap <C-E>
+  unmap <C-K>
+  unmap <C-Y>
+  unmap <C-H>
+
+  " tabs
+  unmap <Leader>(
+  unmap <Leader>)
+endfunction
 
 " ··········· terminal key codes ······· {{{2
 " hack to fix arrow keys in terminal
@@ -702,11 +837,10 @@ function! Keyboard(type)
    if a:type == "workvan"
      call QWERTYUnmaps()
      call WorkVanMaps()
+     echo "WorkVan mappings enabled"
    else
      call WorkVanUnmaps()
      call QWERTYMaps()
+     echo "QWERTY mappings enabled"
    endif
 endfunction
-
-noremap <LocalLeader>,w :call Keyboard("workvan")<CR>:echom "WorkVan Keyboard Layout"<CR>
-noremap <LocalLeader>,q :call Keyboard("")<CR>:echom "Qwerty Keyboard Layout"<CR>
