@@ -182,12 +182,16 @@ set wildignore+=*.DS_Store
 " ::::::::: Mappings :::::::::::::::::::::: {{{1
 
 " keylayouts
-source ~/.vim/qwertyrc.vim
-" source workvan.vim
+source ~/.vim/qwerty.vim
+source ~/.vim/workvan.vim
+call QWERTYMaps()
+
+noremap <LocalLeader>kq :call WorkVanUnmaps()<CR>:call QWERTYMaps()<CR>
+noremap <LocalLeader>kw :call QWERTYUnmaps()<CR>:call WorkVanMaps()<CR>
 
 " leaders
 map <Space> <Leader>
-let maplocalleader=","
+let maplocalleader=','
 set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
@@ -230,16 +234,6 @@ set  <F19>=O5R
 map  <F19> <M-S-Tab>
 map! <F19> <M-S-Tab>
 
-" ··········· modes ···················· {{{2
-" " enter command mode
-" noremap  ; :
-" noremap q; q:
-
-" exit insert mode
-inoremap    kj <Esc>`^
-inoremap    jk <Esc>`^
-inoremap <C-[> <Esc>`^
-
 " ··········· buffers ·················· {{{2
 " netrw
 noremap <silent> <Leader>e :call ExToggle("")<CR>
@@ -254,23 +248,21 @@ noremap <silent> <Leader>,<Tab> :call VexToggle(getcwd())<CR>
 
 " list
 noremap <LocalLeader><Space> :buffers<CR>
-noremap <Leader>b :buffers<CR>:b
 noremap <Leader>p :CtrlPBuffer<CR>
 
 " open from ~
-noremap <LocalLeader>e, :edit ~/
+noremap <Leader>eh :edit ~/
 
 " open from %
-nmap <LocalLeader>ew :edit %%
-nmap <LocalLeader>es :split %%
-nmap <LocalLeader>ev :vsplit %%
-nmap <LocalLeader>et :tabedit %%
+nmap <Leader>ew :edit %%
+nmap <Leader>es :split %%
+nmap <Leader>ev :vsplit %%
+nmap <Leader>et :tabedit %%
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
 
 " close
 noremap <LocalLeader>d :bdelete<CR>
 noremap <silent> <LocalLeader>c :call BClose()<CR>
-noremap <LocalLeader>o :bufdo bd<CR>
 
 " current directory
 noremap <Leader><Space> :pwd<CR>
@@ -329,7 +321,7 @@ noremap <Leader>; mZA;<Esc>`Z
 noremap <silent> <LocalLeader>f, :call FileTypeToggle(1)<CR>
 noremap <silent>  <LocalLeader>f :call FileTypeToggle(0)<CR>
 " toggle html
-inoremap <silent> ``h X<C-O>:call HTMLTypeToggle()<CR><BS>
+inoremap <silent> `h X<C-O>:call HTMLTypeToggle()<CR><BS>
 
 " format entire file
 noremap <LocalLeader>fef :normal! gg=G``<CR>
@@ -400,22 +392,6 @@ noremap <Leader>- <C-W>_
 noremap <Leader>] <C-W><Bar>
 noremap <Leader>= <C-W>=
 
-" navigate
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-H> <C-W>h
-noremap <C-L> <C-W>l
-
-" rearrange
-noremap <C-W><C-J> <C-W>J
-noremap <C-W><C-K> <C-W>K
-noremap <C-W><C-H> <C-W>H
-noremap <C-W><C-L> <C-W>L
-
-" tabs
-noremap <Leader>9 :tabprevious<CR>
-noremap <Leader>0 :tabnext<CR>
-
 " ··········· appearance ··············· {{{2
 noremap <LocalLeader>w :setlocal wrap! linebreak! list! wrap?<CR>
 
@@ -478,7 +454,7 @@ augroup END
 " ··········· netrw ···················· {{{2
 augroup NetrwGroup
   autocmd!
-  autocmd BufEnter          * call NormalizeWidths()
+  autocmd BufEnter * call NormalizeWidths()
 augroup END
 
 " ··········· ruby ····················· {{{2
