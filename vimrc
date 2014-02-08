@@ -561,6 +561,9 @@ noremap <silent> <Leader>z :call FoldColToggle(4)<CR>
 " cursor
 noremap <silent> <Leader>c :set cursorcolumn!<CR>
 
+" colorcolumn
+noremap <silent> <Leader>8 :call ColorColToggle()<CR>
+
 " ··········· evaluation ··············· {{{2
 " RSpec
 noremap <Leader>tt :call RunCurrentSpecFile()<CR>
@@ -807,6 +810,14 @@ fun! TransparencyToggle(transpr)
     let g:transparency_memo = &transparency
     let &transparency=a:transpr
   end
+endf
+
+fun! ColorColToggle()
+  if &colorcolumn == ""
+    set colorcolumn=80
+  else
+    set colorcolumn=
+  endif
 endf
 
 " ··········· cursor ··················· {{{2
