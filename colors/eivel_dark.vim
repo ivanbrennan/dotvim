@@ -33,8 +33,8 @@ let s:pinkLight        = { "gui": "#F79A97", "cterm": "223" }
 
 let s:blueDarker       = { "gui": "#455C75", "cterm": "240"  }
 let s:blueDark         = { "gui": "#005F87", "cterm": "24"  }
-let s:blue             = { "gui": "#3E7BB8", "cterm": "31"  }
-let s:blueLight        = { "gui": "#70A5FF", "cterm": "33" }
+let s:blue             = { "gui": "#3E7BA3", "cterm": "31"  }
+let s:blueLight        = { "gui": "#628FCF", "cterm": "33" }
 let s:blueLighter      = { "gui": "#D9EDF7", "cterm": "195" }
 
 let s:greenDark        = { "gui": "#5F5F00", "cterm": "58"  }
@@ -46,6 +46,7 @@ let s:tanDark          = { "gui": "#503D15", "cterm": "52"  }
 let s:tanLight         = { "gui": "#F3EDD2", "cterm": "230" }
 
 let s:gold             = { "gui": "#ffdf00", "cterm": "220" }
+let s:yellow           = { "gui": "#EDE67A", "cterm": "220" }
 
 " Assign to semantic categories based on background color
 set background=dark
@@ -66,6 +67,7 @@ if &background == "dark"
   let s:accent2     = s:gold
   let s:accent3     = s:greenLighter
   let s:accent4     = s:tanLight
+  let s:accent5     = s:yellow
 
   let s:red1        = s:red
   let s:red2        = s:redDark
@@ -120,7 +122,7 @@ call s:h("Normal",       { "fg": s:norm, "bg": s:base01 })
 call s:h("NonText",      { "fg": s:base00 })
 call s:h("Cursor",       { "fg": s:blue3, "bg": s:norm })
 call s:h("Visual",       { "bg": s:blue2 })
-call s:h("Search",       { "bg": s:green2 })
+call s:h("Search",       { "fg": s:base00, "bg": s:accent1 })
 call s:h("StatusLine",   { "fg": s:norm, "bg": s:base00 })
 call s:h("StatusLineNC", { "fg": s:base02, "bg": s:base00 })
 call s:h("VertSplit",    { "fg": s:base00, "bg": s:base00 })
@@ -158,6 +160,7 @@ call s:h("Constant",   { "fg": s:accent1 })
 call s:h("Todo",       { "fg": s:red1, "gui": "bold", "cterm": "bold" })
 call s:h("Function",   { "gui": "bold", "cterm": "bold" })
 call s:h("Symbol",     { "fg": s:accent2 })
+call s:h("Custom1",    { "fg": s:accent5 })
 hi! link Identifier  Function
 hi! link Statement   Type
 hi! link Number      Constant
@@ -168,8 +171,10 @@ hi! link Error       ErrorMsg
 "}}}
 " Highlights - HTML ----------------------------------------{{{
 hi! link htmlLink    Underlined
-hi! link htmlTag     Type
+hi! link htmlTag     Constant
+hi! link htmlTagName Type
 hi! link htmlEndTag  htmlTag
+hi! link htmlArg     Custom1
 
 "}}}
 " Highlights - CSS -----------------------------------------{{{
@@ -190,6 +195,7 @@ hi! link shCaseBar   Delimiter
 " Highlights - Ruby ----------------------------------------{{{
 hi link rubyBeginend                Keyword
 hi link rubyClass                   Keyword
+hi link rubyDefine                  Keyword
 hi link rubyModule                  Keyword
 hi link rubyKeyword                 Keyword
 hi link rubyLocalVariableOrMethod   Keyword
