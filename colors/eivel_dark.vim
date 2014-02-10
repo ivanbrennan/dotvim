@@ -217,6 +217,7 @@ hi link rubyInterpolation           Interpolation
 hi link rubyInterpolationDelimiter  Interpolation
 hi link rubyRailsMethod             Constant
 hi link rubyString                  String
+hi link erubyDelimiter              Delimiter
 
 "}}}
 " Highlights - JavaScript ----------------------------------{{{
