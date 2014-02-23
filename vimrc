@@ -50,7 +50,6 @@ let g:netrw_hide=1              " hide hidden files
 let g:netrw_dirhistmax=100      " keep more history
 let g:netrw_altfile=1           " last edited file '#'
 let g:netrw_liststyle=0         " thin
-let g:netrw_banner=0            " no banner
 let g:netrw_altv=1              " open files on right
 let g:netrw_preview=1           " open previews vertically
 let g:netrw_use_errorwindow=0   " suppress error window
@@ -73,7 +72,7 @@ set formatoptions-=o            " don't auto-comment with o or O
 silent! set formatoptions+=j    " let J handle comments if supported
 
 " ··········· navigation ··············· {{{2
-set scrolloff=2
+set scrolloff=1
 set sidescroll=1                " smooth sidescroll
 
 " ··········· searching ················ {{{2
@@ -89,7 +88,6 @@ set nowrap                      " don't wrap lines
 set fillchars+=vert:\           " clean dividers
 set cursorline                  " cursorline on
 set foldmethod=marker           " fold markers
-set colorcolumn=80              " 80 char ruler
 augroup CursorGroup             " clear cursorline highlight
   autocmd!
   autocmd BufReadPost * call      RestoreCrsr()
@@ -192,7 +190,7 @@ noremap <LocalLeader>` :source $MYVIMRC<CR>
 noremap <LocalLeader>`, :edit $MYVIMRC<CR>
 
 " ··········· keyboard layouts ········· {{{2
-noremap <LocalLeader>kq :call Keyboard()<CR>
+noremap <LocalLeader>kq :call Keyboard("qwerty")<CR>
 noremap <LocalLeader>kw :call Keyboard("workvan")<CR>
 
 function! QWERTYMaps() " {{{3
@@ -215,10 +213,6 @@ function! QWERTYMaps() " {{{3
   noremap <C-W><C-K> <C-W>K
   noremap <C-W><C-H> <C-W>H
   noremap <C-W><C-L> <C-W>L
-
-  " tabs
-  noremap <Leader>9 :tabprevious<CR>
-  noremap <Leader>0 :tabnext<CR>
 endfunction
 
 function! QWERTYUnmaps() " {{{3
@@ -241,10 +235,6 @@ function! QWERTYUnmaps() " {{{3
   unmap <C-W><C-K>
   unmap <C-W><C-H>
   unmap <C-W><C-L>
-
-  " tabs
-  unmap <Leader>9
-  unmap <Leader>0
 endfunction
 
 function! WorkVanMaps() " {{{3
@@ -282,10 +272,6 @@ function! WorkVanMaps() " {{{3
   noremap <C-K> <C-E>
   noremap <C-Y> <C-W>h
   noremap <C-H> <C-Y>
-
-  " tabs
-  noremap <Leader>( :tabprevious<CR>
-  noremap <Leader>) :tabnext<CR>
 
   " beginning of line
   noremap ) 0
@@ -326,10 +312,6 @@ function! WorkVanUnmaps() " {{{3
   unmap <C-K>
   unmap <C-Y>
   unmap <C-H>
-
-  " tabs
-  unmap <Leader>(
-  unmap <Leader>)
 endfunction
 
 " initialize {{{3
@@ -526,8 +508,12 @@ noremap <Leader>k :quit<CR>
 
 "resize
 noremap <Leader>- <C-W>_
-noremap <Leader>] <C-W><Bar>
+noremap <Leader>0 <C-W><Bar>
 noremap <Leader>= <C-W>=
+
+  " tabs
+  noremap <Leader>[ :tabprevious<CR>
+  noremap <Leader>] :tabnext<CR>
 
 " ··········· appearance ··············· {{{2
 noremap <LocalLeader>w :setlocal wrap! linebreak! list! wrap?<CR>
@@ -594,7 +580,7 @@ augroup END
 " ··········· netrw ···················· {{{2
 augroup NetrwGroup
   autocmd!
-  autocmd BufEnter * call NormalizeWidths()
+  " autocmd BufEnter * call NormalizeWidths()
 augroup END
 
 " ··········· ruby ····················· {{{2
@@ -629,8 +615,9 @@ fun! ExToggle(dir)
 endf
 
 fun! ExOpen(dir)
-  exe "Explore " . a:dir
   let g:netrw_browse_split=0    " open files in current window
+  let g:netrw_banner=1          " banner
+  exe "Explore " . a:dir
 endf
 
 fun! ExClose()
@@ -649,6 +636,7 @@ endf
 
 fun! VexOpen(dir)
   let g:netrw_browse_split=4    " open files in previous window
+  let g:netrw_banner=0          " no banner
   let vex_width = 27
 
   exe "Vexplore " . a:dir

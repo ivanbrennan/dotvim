@@ -31,6 +31,7 @@ let s:red              = { "gui": "#BD362F", "cterm": "160" }
 let s:pink             = { "gui": "#EE5F5B", "cterm": "203" }
 let s:pinkLight        = { "gui": "#F79A97", "cterm": "223" }
 
+let s:blueDarkest      = { "gui": "#202327", "cterm": "240"  }
 let s:blueDarker       = { "gui": "#455C75", "cterm": "240"  }
 let s:blueDark         = { "gui": "#005F87", "cterm": "24"  }
 let s:blue             = { "gui": "#3E7BA3", "cterm": "31"  }
@@ -101,13 +102,12 @@ if version >= 700
   call s:h("PmenuThumb",       { "bg": s:norm })
   call s:h("PmenuSBar",        { "bg": s:base0 })
   call s:h("PmenuSel",         { "bg": s:blue2 })
-  call s:h("ColorColumn",      { "bg": s:red2 })
+  call s:h("ColorColumn",      { "bg": s:blueDarkest })
   call s:h("SpellBad",         { "sp": s:red1, "gui": "undercurl" })
   call s:h("SpellCap",         { "sp": s:accent1, "gui": "undercurl" })
   call s:h("SpellRare",        { "sp": s:green1, "gui": "undercurl" })
   call s:h("SpellLocal",       { "sp": s:accent4, "gui": "undercurl" })
   hi! link CursorColumn CursorLine
-  hi! link ColorColumn CursorLine
 
   " Use background for cterm Spell*, which does not support undercurl
   execute "hi! SpellBad   ctermbg=" s:red2.cterm
@@ -151,7 +151,7 @@ hi! link SpecialKey   NonText
 "}}}
 " Highlights - Generic Syntax ------------------------------{{{
 call s:h("Delimiter",  { "fg": s:base2 })
-call s:h("Comment",    { "fg": s:blue3, "gui": "italic" })
+call s:h("Comment",    { "fg": s:base1, "gui": "italic" })
 call s:h("Underlined", { "fg": s:accent1, "gui": "underline", "cterm": "underline" })
 call s:h("Type",       { "fg": s:accent3 })
 call s:h("String",     { "fg": s:accent3 })

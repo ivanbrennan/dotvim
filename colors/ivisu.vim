@@ -38,6 +38,7 @@ let s:darkBlue         = { "gui": "#005F87", "cterm": "24"  }
 let s:middleDarkBlue   = { "gui": "#538192", "cterm": "31"  }
 let s:middleLightBlue  = { "gui": "#9FD3E6", "cterm": "116" }
 let s:lightBlue        = { "gui": "#CBE4EE", "cterm": "195" }
+let s:lighterBlue      = { "gui": "#FCFEFF", "cterm": "195" }
 
 let s:darkGreen        = { "gui": "#5F5F00", "cterm": "58"  }
 let s:middleDarkGreen  = { "gui": "#739200", "cterm": "64"  }
@@ -111,7 +112,7 @@ if version >= 700
   call s:h("PmenuThumb",       { "bg": s:norm })
   call s:h("PmenuSBar",        { "bg": s:subtle })
   call s:h("PmenuSel",         { "bg": s:faintBlue })
-  call s:h("ColorColumn",      { "bg": s:faintRed })
+  call s:h("ColorColumn",      { "bg": s:lighterBlue })
   call s:h("SpellBad",         { "sp": s:normRed, "gui": "undercurl" })
   call s:h("SpellCap",         { "sp": s:accent1, "gui": "undercurl" })
   call s:h("SpellRare",        { "sp": s:normGreen, "gui": "undercurl" })
