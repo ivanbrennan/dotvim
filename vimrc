@@ -14,13 +14,14 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'ivanbrennan/quickfix-toggle'
 Bundle 'kien/ctrlp.vim'
-Bundle 'SirVer/ultisnips'
+" Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'sjl/gundo.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'thoughtbot/vim-rspec'
+Bundle 'kchmck/vim-coffee-script'
 
 " github repos: colors
 Bundle 'gregsexton/Muon'
@@ -82,8 +83,8 @@ set smartcase                   " ...unless they contain a capital letter
 
 " ··········· appearance ··············· {{{2
 syntax enable                   " syntax highlighting, local overrides
+set number                      " line numbers
 set title                       " xterm title
-set number                      " line numbering
 set nowrap                      " don't wrap lines
 set fillchars+=vert:\           " clean dividers
 set cursorline                  " cursorline on
@@ -115,7 +116,7 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " colors
-colorscheme eivel_dark
+colorscheme ivisu
 
 " nice colorschemes {{{
 let g:nice_schemes =
@@ -151,17 +152,10 @@ let g:font_dict =
 
 " status line
 set laststatus=2                " show statusline
-set statusline=
-set statusline+=%<              " cut at start
-set statusline+=\ %f\           " path
-set statusline+=%y              " filetype
-set statusline+=%m              " modified
-set statusline+=%=\             " left/right separator
-set statusline+=(%l/%L):%-3v    " row:virtual-column
-set statusline+=%4.P\           " percent through file
 
 " ··········· wild settings ············ {{{2
 set wildmenu
+set wildmode=longest:full
 
 " output and VCS
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -187,7 +181,7 @@ set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
 noremap <LocalLeader>` :source $MYVIMRC<CR>
-noremap <LocalLeader>`, :edit $MYVIMRC<CR>
+noremap <LocalLeader>`, :tabedit $MYVIMRC<CR>
 
 " ··········· keyboard layouts ········· {{{2
 noremap <LocalLeader>kq :call Keyboard("qwerty")<CR>
@@ -201,6 +195,9 @@ function! QWERTYMaps() " {{{3
   " exit insert mode
   inoremap kj <Esc>`^
   inoremap jk <Esc>`^
+
+  " shell command
+  noremap <Leader>1 :!
 
   " navigate
   noremap <C-J> <C-W>j
@@ -223,6 +220,9 @@ function! QWERTYUnmaps() " {{{3
   " exit insert mode
   iunmap    kj
   iunmap    jk
+
+  " shell command
+  unmap <Leader>1
 
   " navigate
   unmap <C-J>
@@ -368,6 +368,7 @@ noremap <silent> <Leader>,<Tab> :call VexToggle(getcwd())<CR>
 " list
 noremap <LocalLeader><Space> :buffers<CR>
 noremap <Leader>p :CtrlPBuffer<CR>
+noremap <Leader>b :echo bufnr('%')<CR>
 
 " open from ~
 noremap <Leader>eh :edit ~/
@@ -521,6 +522,11 @@ noremap <LocalLeader>w :setlocal wrap! linebreak! list! wrap?<CR>
 if has("gui_running")
   noremap <LocalLeader>,t :call TransparencyToggle(5)<CR>
 end
+
+" statusline
+noremap <silent> <LocalLeader>sp :call ToggleStatusLnElement("tail")<CR>:call BuildStatusLn()<CR>
+noremap <silent> <LocalLeader>sg :call ToggleStatusLnElement("git")<CR>:call BuildStatusLn()<CR>
+noremap <silent> <LocalLeader>sb :call CycleStatusLnBufColor()<CR>:call BuildStatusLn()<CR>
 
 " fonts
 noremap <silent> <LocalLeader>= :call FontCycle(1)<CR>:echo getfontname()<CR>
@@ -771,6 +777,80 @@ fun! NewFontHt(cur_hgt, cur_nam, new_nam)
   return a:cur_hgt - cur_adj + new_adj
 endf
 
+" ··········· statusline ··············· {{{2
+fun! BuildStatusLn()
+  call InitializeStatusLn()
+  call StatusLnLeft()
+  set statusline+=%=
+  call StatusLnRight()
+endf
+
+fun! ToggleStatusLnElement(el)
+  exec exists("w:".a:el) ? "unlet w:".a:el : "let w:".a:el."=1"
+endf
+
+fun! CycleStatusLnElement(el, opts)
+  exec "let w:".a:el." = (w:".a:el." + 1) % ".len(a:opts)
+endf
+
+fun! CycleStatusLnBufColor()
+  let opts = StatusLnColors()
+  call CycleStatusLnElement("buf_color", opts)
+endf
+
+fun! InitializeStatusLn()
+  if a:0 > 0
+    call ToggleStatusLnElement(a:1)
+  endif
+  set statusline=
+  set statusline+=%<
+endf
+
+fun! StatusLnColors()
+  let  status = 'set statusline+=%*'
+  let  wildmu = 'set statusline+=%#wildmenu#'
+  let  statnc = 'set statusline+=%#statuslinenc#'
+  let  matchp = 'set statusline+=%#matchparen#'
+  return [ status, wildmu, statnc, matchp ]
+endf
+
+fun! StatusLnLeft()
+  if !exists('w:buf_color')
+    let w:buf_color = 3
+  end
+  call StatusLnColor(w:buf_color)
+  set  statusline+=%n
+  call StatusLnColor(0)
+  call StatusLnGit()
+  call StatusLnPath()
+endf
+
+fun! StatusLnRight()
+  set statusline+=%l:%v\ 
+  set statusline+=%y
+  set statusline+=%m
+endf
+
+fun! StatusLnColor(i)
+  exec StatusLnColors()[a:i]
+endf
+
+fun! StatusLnPath()
+  let  full  = 'set statusline+=\ %f\ '
+  let  tail  = 'set statusline+=\ %t\ '
+  let  paths = [ full, tail ]
+  let  i = exists('w:tail') ? 1 : 0
+  exec paths[i]
+endf
+
+fun! StatusLnGit()
+  if exists('w:git')
+    set statusline+=\ %{GitBranch()}
+  end
+endf
+
+call BuildStatusLn()
+
 " ··········· colors ··················· {{{2
 fun! ToggleBG()
   if  exists("g:colors_name") | let cur_colo = g:colors_name | endif
@@ -831,6 +911,16 @@ function! NextTextObject(motion)
   echo
   let c = nr2char(getchar())
   execute "normal! f" . c . "v" . a:motion . c
+endfunction
+
+" ··········· git ······················ {{{2
+"Git branch
+function! GitBranch()
+    let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
+    if branch != ''
+      return '(' . substitute(branch, '\n', '', 'g') . ')'
+    endif
+    return ''
 endfunction
 
 " ··········· keyboard ················· {{{2
