@@ -116,7 +116,7 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " colors
-colorscheme ivisu
+colorscheme github
 
 " nice colorschemes {{{
 let g:nice_schemes =
@@ -155,7 +155,7 @@ set laststatus=2                " show statusline
 
 " ··········· wild settings ············ {{{2
 set wildmenu
-set wildmode=longest:full
+set wildmode=longest,full
 
 " output and VCS
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -823,12 +823,12 @@ fun! StatusLnLeft()
   call StatusLnColor(0)
   call StatusLnGit()
   call StatusLnPath()
+  set statusline+=%m
 endf
 
 fun! StatusLnRight()
   set statusline+=%l:%v\ 
   set statusline+=%y
-  set statusline+=%m
 endf
 
 fun! StatusLnColor(i)
