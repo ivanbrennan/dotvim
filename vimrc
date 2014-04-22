@@ -14,6 +14,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'ivanbrennan/quickfix-toggle'
 Bundle 'kien/ctrlp.vim'
+Bundle 'rking/ag.vim'
 " Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
@@ -116,7 +117,7 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " colors
-colorscheme github
+colorscheme solarized
 
 " nice colorschemes {{{
 let g:nice_schemes =
@@ -132,13 +133,14 @@ let g:nice_schemes =
       \"mustangblue",
       \"smyck",
       \"smyckblue",
+      \"solarized",
       \"ir_black",
       \"tir_black",
       \"xoria256",
       \]
 " }}}
 " fonts {{{
-set guifont=Source\ Code\ Pro:h17
+set guifont=Source\ Code\ Pro:h15
 let g:font_dict =
       \{
       \"Anonymous Pro":    3,
@@ -155,7 +157,7 @@ set laststatus=2                " show statusline
 
 " ··········· wild settings ············ {{{2
 set wildmenu
-set wildmode=longest,full
+set wildmode=longest:full,full
 
 " output and VCS
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -275,6 +277,13 @@ function! WorkVanMaps() " {{{3
 
   " beginning of line
   noremap ) 0
+
+  " unmap conflicting Surround keymaps
+  nunmap ySS
+  nunmap ySs
+  nunmap yS
+  nunmap ys
+  nunmap yss
 endfunction
 
 function! WorkVanUnmaps() " {{{3
@@ -365,6 +374,9 @@ noremap <silent> <Leader>,<Tab> :call VexToggle(getcwd())<CR>
 "   Refresh listing: <LocalLeader>l
 "   Set treetop dir: <LocalLeader>t
 
+" search
+noremap <Leader>a :Ag 
+
 " list
 noremap <LocalLeader><Space> :buffers<CR>
 noremap <Leader>p :CtrlPBuffer<CR>
@@ -373,12 +385,21 @@ noremap <Leader>b :echo bufnr('%')<CR>
 " open from ~
 noremap <Leader>eh :edit ~/
 
+" open from /
+nmap <Leader>ew :edit 
+nmap <Leader>es :split 
+nmap <Leader>ev :vsplit 
+nmap <Leader>et :tabedit 
+
 " open from %
-nmap <Leader>ew :edit %%
-nmap <Leader>es :split %%
-nmap <Leader>ev :vsplit %%
-nmap <Leader>et :tabedit %%
+nmap <LocalLeader>ew :edit %%
+nmap <LocalLeader>es :split %%
+nmap <LocalLeader>ev :vsplit %%
+nmap <LocalLeader>et :tabedit %%
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
+
+" write
+noremap <LocalLeader>w :write<CR>
 
 " close
 noremap <LocalLeader>d :bdelete<CR>
@@ -512,12 +533,12 @@ noremap <Leader>- <C-W>_
 noremap <Leader>0 <C-W><Bar>
 noremap <Leader>= <C-W>=
 
-  " tabs
-  noremap <Leader>[ :tabprevious<CR>
-  noremap <Leader>] :tabnext<CR>
+" tabs
+noremap <Leader>[ :tabprevious<CR>
+noremap <Leader>] :tabnext<CR>
 
 " ··········· appearance ··············· {{{2
-noremap <LocalLeader>w :setlocal wrap! linebreak! list! wrap?<CR>
+noremap <LocalLeader>,w :setlocal wrap! linebreak! list! wrap?<CR>
 
 if has("gui_running")
   noremap <LocalLeader>,t :call TransparencyToggle(5)<CR>
@@ -581,6 +602,9 @@ noreabbrev edn end
 augroup VimrcGroup
   autocmd!
   autocmd BufWritePost .vimrc source $MYVIMRC
+  for scheme in g:nice_schemes
+    execute 'autocmd BufWritePost ~/.vim/colors/'. scheme . '.vim source $MYVIMRC'
+  endfor
 augroup END
 
 " ··········· netrw ···················· {{{2
@@ -807,16 +831,18 @@ fun! InitializeStatusLn()
 endf
 
 fun! StatusLnColors()
-  let  status = 'set statusline+=%*'
-  let  wildmu = 'set statusline+=%#wildmenu#'
-  let  statnc = 'set statusline+=%#statuslinenc#'
-  let  matchp = 'set statusline+=%#matchparen#'
-  return [ status, wildmu, statnc, matchp ]
+  return
+        \[
+        \'set statusline+=%*',
+        \'set statusline+=%#wildmenu#',
+        \'set statusline+=%#statuslinenc#',
+        \'set statusline+=%#matchparen#',
+        \]
 endf
 
 fun! StatusLnLeft()
   if !exists('w:buf_color')
-    let w:buf_color = 3
+    let w:buf_color = 0
   end
   call StatusLnColor(w:buf_color)
   set  statusline+=%n

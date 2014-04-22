@@ -20,11 +20,12 @@ if version > 580
 endif
 let g:colors_name="github"
 
-hi Normal       guifg=#000000 guibg=#F8F8FF
+hi Normal       guifg=#000000 guibg=#FEFEFE
 
 " {{{ Cursor
 hi Cursor		    guibg=#444454 guifg=#F8F8FF
-hi CursorLine	    guibg=#D8D8DD
+hi CursorLine	    guibg=#ECECEC
+hi CursorLineNr     guibg=#ECECEC guifg=#003300
 hi CursorColumn	guibg=#E8E8EE
 " }}}
 
@@ -74,7 +75,7 @@ hi Search		guibg=#cdcdfd guifg=#000000 gui=italic
 hi Ignore		guifg=#808080
 hi Identifier	guifg=#0086B3
 hi PreProc		guifg=#A0A0A0 gui=bold
-hi Comment		guifg=#999988
+hi Comment		guifg=#708D8F
 hi Constant		guifg=#177F80 gui=none
 hi String		guifg=#D81745
 hi Function		guifg=#990000 gui=bold
