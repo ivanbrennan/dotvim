@@ -18,8 +18,8 @@ let g:colors_name = "eivel_dark"
 " The Colors -----------------------------------------------{{{
 " Define reusable colors
 let s:black            = { "gui": "#1A1C1F", "cterm": "232"  }
-let s:greyDarkest      = { "gui": "#1D1F21", "cterm": "233"  }
-let s:greyDarker       = { "gui": "#26292C", "cterm": "234" }
+let s:greyDarkest      = { "gui": "#1D2836", "cterm": "233"  }
+let s:greyDarker       = { "gui": "#1A2430", "cterm": "234" }
 let s:greyDark         = { "gui": "#333538", "cterm": "235" }
 let s:grey             = { "gui": "#444649", "cterm": "236" }
 let s:greyLight        = { "gui": "#66686B", "cterm": "237" }
@@ -37,7 +37,7 @@ let s:blueDark         = { "gui": "#005F87", "cterm": "24"  }
 let s:blue             = { "gui": "#3E7BA3", "cterm": "31"  }
 let s:blueLight        = { "gui": "#628FCF", "cterm": "33" }
 let s:blueLighter      = { "gui": "#388BF6", "cterm": "195" }
-let s:blueLightest     = { "gui": "#D9EDF7", "cterm": "195" }
+let s:blueLightest     = { "gui": "#B4E1F7", "cterm": "195" }
 
 let s:greenDark        = { "gui": "#5F5F00", "cterm": "58"  }
 let s:green            = { "gui": "#739200", "cterm": "64"  }

@@ -15,6 +15,7 @@ Bundle 'gmarik/vundle'
 Bundle 'ivanbrennan/quickfix-toggle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
+Bundle 'bling/vim-airline'
 " Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
@@ -76,6 +77,7 @@ silent! set formatoptions+=j    " let J handle comments if supported
 " ··········· navigation ··············· {{{2
 set scrolloff=1
 set sidescroll=1                " smooth sidescroll
+set mouse=a
 
 " ··········· searching ················ {{{2
 set incsearch                   " incremental searching
@@ -117,7 +119,7 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " colors
-colorscheme solarized
+colorscheme eivel_dark
 
 " nice colorschemes {{{
 let g:nice_schemes =
@@ -140,7 +142,7 @@ let g:nice_schemes =
       \]
 " }}}
 " fonts {{{
-set guifont=Source\ Code\ Pro:h15
+set guifont=Source\ Code\ Pro:h14
 let g:font_dict =
       \{
       \"Anonymous Pro":    3,
