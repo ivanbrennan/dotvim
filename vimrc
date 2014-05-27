@@ -7,20 +7,22 @@ set encoding=utf-8              " default encoding to UTF-8
 
 filetype off                    " required for Vundle!
 
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
 
 " github repos: general
-Bundle 'gmarik/vundle'
 Bundle 'ivanbrennan/quickfix-toggle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
 Bundle 'bling/vim-airline'
 " Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
-Bundle 'tsaleh/vim-matchit'
-Bundle 'sjl/gundo.vim'
+Plugin 'jwhitley/vim-matchit'
+Plugin 'sjl/gundo.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'kchmck/vim-coffee-script'
@@ -31,6 +33,7 @@ Bundle 'guns/xterm-color-table.vim'
 Bundle 'shawncplus/Vim-toCterm'
 Bundle 'vim-scripts/hexHighlight.vim'
 
+call vundle#end()
 filetype plugin indent on       " required for Vundle!
 
 " ::::::::: Settings :::::::::::::::::::::: {{{1
@@ -119,7 +122,7 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " colors
-colorscheme eivel_dark
+colorscheme ivisu
 
 " nice colorschemes {{{
 let g:nice_schemes =
@@ -145,12 +148,13 @@ let g:nice_schemes =
 set guifont=Source\ Code\ Pro:h14
 let g:font_dict =
       \{
-      \"Anonymous Pro":    3,
-      \"Inconsolata":      1,
-      \"Menlo":            0,
-      \"Monaco":          -2,
-      \"Source Code Pro": -1,
-      \"Ubuntu Mono":      3,
+      \"Anonymous Pro":         3,
+      \"Inconsolata":           1,
+      \"Menlo":                 0,
+      \"Monaco":               -2,
+      \"Source Code Pro":      -1,
+      \"Sauce Code Powerline": -1,
+      \"Ubuntu Mono":           3,
       \}
 " }}}
 
@@ -159,7 +163,7 @@ set laststatus=2                " show statusline
 
 " ··········· wild settings ············ {{{2
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=longest,list
 
 " output and VCS
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -415,6 +419,9 @@ noremap <LocalLeader>t :lcd %:h<CR>
 noremap   <M-Tab> :bnext<CR>
 noremap <M-S-Tab> :bprevious<CR>
 
+" reload
+noremap <Leader>l<Space> :call ReLoadBuffers()<CR>
+
 " ··········· editing ·················· {{{2
 " open above / below current line
 inoremap <S-CR> <C-O>O
@@ -482,9 +489,6 @@ xnoremap an :<C-U>call NextTextObject('a')<CR>
 " sensible marks
 noremap ` '
 noremap ' `
-
-" last non-blank char
-noremap - g_
 
 " soft line-breaks
 noremap    <Up> gk
@@ -603,7 +607,7 @@ noreabbrev edn end
 " ··········· vimrc ···················· {{{2
 augroup VimrcGroup
   autocmd!
-  autocmd BufWritePost .vimrc source $MYVIMRC
+  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
   for scheme in g:nice_schemes
     execute 'autocmd BufWritePost ~/.vim/colors/'. scheme . '.vim source $MYVIMRC'
   endfor
@@ -804,6 +808,24 @@ fun! NewFontHt(cur_hgt, cur_nam, new_nam)
 endf
 
 " ··········· statusline ··············· {{{2
+function! AirlineInit()
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline_detect_whitespace=0
+  let g:airline_section_z = '%v : %l/%L (%n)'
+  " let g:airline_theme='luna'
+  " let g:airline_theme='molokai'
+  " let g:airline_theme='laederon'
+  " let g:airline_theme='ubaryd'
+  let g:airline_theme='tomorrow'
+  " let g:airline_theme='murmur'
+endfunction
+
 fun! BuildStatusLn()
   call InitializeStatusLn()
   call StatusLnLeft()
@@ -855,7 +877,7 @@ fun! StatusLnLeft()
 endf
 
 fun! StatusLnRight()
-  set statusline+=%l:%v\ 
+  set statusline+=%v:%l\ 
   set statusline+=%y
 endf
 
@@ -877,6 +899,7 @@ fun! StatusLnGit()
   end
 endf
 
+call AirlineInit()
 call BuildStatusLn()
 
 " ··········· colors ··················· {{{2
@@ -949,6 +972,12 @@ function! GitBranch()
       return '(' . substitute(branch, '\n', '', 'g') . ')'
     endif
     return ''
+endfunction
+
+function! ReLoadBuffers()
+  set autoread
+  checktime
+  set noautoread
 endfunction
 
 " ··········· keyboard ················· {{{2
