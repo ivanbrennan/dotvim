@@ -27,6 +27,7 @@ Plugin 'sjl/gundo.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'eiginn/netrw'
 
 " github repos: colors
 Bundle 'gregsexton/Muon'
