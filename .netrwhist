@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =100
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/ivan/Development/flatiron/code/sinatra-students-ruby-003/app/controllers'
-let g:netrw_dirhist_2='/Users/ivan/Development/flatiron/code/javascript-for-ruby-003/04_lab_1_jquery_exploring_selectors_and_methods/lab_1_jquery exploring selectors_and_methods_source'
-let g:netrw_dirhist_3='/Users/ivan/Development/code/handybook/app/controllers'
-let g:netrw_dirhist_4='/Users/ivan/Development/code/handybook/app/models/strategies'
-let g:netrw_dirhist_5='/Users/ivan/Development/code/handybook'
-let g:netrw_dirhist_6='/Users/ivan/Development/code/handybook/config'

@@ -2,6 +2,7 @@
 
 set nocompatible                " be iMproved
 set encoding=utf-8              " default encoding to UTF-8
+set t_Co=256                    " 256 color terminal
 
 " ::::::::: Plugins ::::::::::::::::::::::: {{{1
 
@@ -64,6 +65,9 @@ let g:netrw_use_errorwindow=0   " suppress error window
 let g:ctrlp_show_hidden = 1     " include hidden files
 let g:ctrlp_match_window = 'max:12'
 
+" ··········· Ag ······················· {{{2
+let g:aghighlight=1
+
 " ··········· vim-rspec ················ {{{2
 let g:rspec_command_launcher = "iterm"
 
@@ -80,7 +84,10 @@ silent! set formatoptions+=j    " let J handle comments if supported
 " ··········· navigation ··············· {{{2
 set scrolloff=1
 set sidescroll=1                " smooth sidescroll
-set mouse=a
+set mouse+=a
+if &term =~ '^screen'           " extended mouse mode
+  set ttymouse=xterm2
+endif
 
 " ··········· searching ················ {{{2
 set incsearch                   " incremental searching
@@ -145,7 +152,7 @@ let g:nice_schemes =
       \]
 " }}}
 " fonts {{{
-set guifont=Source\ Code\ Pro:h14
+set guifont=Sauce\ Code\ Powerline:h14
 let g:font_dict =
       \{
       \"Anonymous Pro":         3,
@@ -368,6 +375,13 @@ set  <F19>=O5R
 map  <F19> <M-S-Tab>
 map! <F19> <M-S-Tab>
 
+set  <F20>=[1;5A
+map  <F20> <C-Up>
+map! <F20> <C-Up>
+set  <F21>=[1;5B
+map  <F21> <C-Down>
+map! <F21> <C-Down>
+
 " ··········· buffers ·················· {{{2
 " netrw
 noremap <silent> <Leader>e :call ExToggle("")<CR>
@@ -518,6 +532,9 @@ noremap <silent> <Leader>f :set foldenable!<CR>
       \:let view=winsaveview()<CR>#*
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
+" code-search word under cursor
+noremap <silent> <Leader>;f yiw:Ag <C-R>"<CR>
+
 " toggle search highlighting
 noremap <LocalLeader><Tab> :set hlsearch! hlsearch?<CR>
 
@@ -631,6 +648,7 @@ augroup RubyGroup
   autocmd FileType ruby,eruby :inoreabbrev <buffer> erb <% %><C-O>F<Space>
   autocmd FileType ruby,eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
   autocmd FileType ruby,eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
+  autocmd FileType ruby,eruby noremap <silent> <Leader>;d yiw:Ag def\ <C-R>"<CR>
 augroup END
 
 " ··········· markdown ················· {{{2
@@ -819,10 +837,10 @@ function! AirlineInit()
   let g:airline_detect_whitespace=0
   let g:airline_section_z = '%v : %l/%L (%n)'
   " let g:airline_theme='luna'
-  " let g:airline_theme='molokai'
+  let g:airline_theme='molokai'
   " let g:airline_theme='laederon'
   " let g:airline_theme='ubaryd'
-  let g:airline_theme='tomorrow'
+  " let g:airline_theme='tomorrow'
   " let g:airline_theme='murmur'
 endfunction
 
@@ -933,7 +951,7 @@ endf
 
 fun! ColorColToggle()
   if &colorcolumn == ""
-    set colorcolumn=80
+    set colorcolumn=100
   else
     set colorcolumn=
   endif
