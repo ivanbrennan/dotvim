@@ -67,7 +67,11 @@ let g:ctrlp_show_hidden = 1     " include hidden files
 let g:ctrlp_match_window = 'max:12'
 
 " ··········· Ag ······················· {{{2
-let g:aghighlight=1
+if executable('ag')
+  let g:aghighlight=1
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
+endif
 
 " ··········· vim-rspec ················ {{{2
 let g:rspec_command_launcher = "iterm"
@@ -198,6 +202,9 @@ set timeout timeoutlen=250 ttimeoutlen=100
 " source / edit vimrc
 noremap <LocalLeader>` :source $MYVIMRC<CR>
 noremap <LocalLeader>`, :tabedit $MYVIMRC<CR>
+
+" help
+noremap <Leader>h :help 
 
 " ··········· keyboard layouts ········· {{{2
 noremap <LocalLeader>kq :call Keyboard("qwerty")<CR>
@@ -396,7 +403,7 @@ noremap <silent> <Leader>,<Tab> :call VexToggle(getcwd())<CR>
 "   Set treetop dir: <LocalLeader>t
 
 " search
-noremap <Leader>a :Ag 
+noremap <Leader>a :Ag! 
 
 " list
 noremap <LocalLeader><Space> :buffers<CR>
@@ -412,15 +419,13 @@ nmap <Leader>es :split
 nmap <Leader>ev :vsplit 
 nmap <Leader>et :tabedit 
 
-" open from %
+" edit from %
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
 nmap <LocalLeader>ew :edit %%
 nmap <LocalLeader>es :split %%
 nmap <LocalLeader>ev :vsplit %%
 nmap <LocalLeader>et :tabedit %%
-cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
-
-" write
-noremap <LocalLeader>w :write<CR>
+nmap <LocalLeader>ww :write %%
 
 " close
 noremap <LocalLeader>d :bdelete<CR>
@@ -479,9 +484,6 @@ set pastetoggle=<F4>
 " toggle case
 inoremap `` <Esc>viwg~gi
 
-" add semicolon to end of line
-noremap <Leader>; mZA;<Esc>`Z
-
 " toggle filetype
 noremap <silent> <LocalLeader>f, :call FileTypeToggle(1)<CR>
 noremap <silent>  <LocalLeader>f :call FileTypeToggle(0)<CR>
@@ -512,21 +514,10 @@ noremap  <Down> gj
 inoremap   <Up> <C-R>=pumvisible() ? "\<lt>Up>" : "\<lt>C-O>gk"<CR>
 inoremap <Down> <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"<CR>
 
-" side-scroll
-noremap <Left> zh
-noremap <Right> zl
-
 " ··········· searching ················ {{{2
 " repeat last char search
 noremap + ;
 noremap _ ,
-
-" " search and replace
-" nnoremap  :: :%s:::g<Left><Left><Left>
-" vnoremap  :: :s:::g<Left><Left><Left>
-" nnoremap  :C :%s:::cg<Left><Left><Left><Left>
-" vnoremap  :C :s:::cg<Left><Left><Left><Left>
-" cnoremap ;/ \(\)<Left><Left>
 
 " find word under cursor
 noremap <silent> <Leader>f :set foldenable!<CR>
@@ -534,7 +525,7 @@ noremap <silent> <Leader>f :set foldenable!<CR>
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " code-search word under cursor
-noremap <silent> <Leader>;f yiw:Ag <C-R>"<CR>
+nnoremap K :Ag!<CR>
 
 " toggle search highlighting
 noremap <LocalLeader><Tab> :set hlsearch! hlsearch?<CR>
@@ -649,7 +640,13 @@ augroup RubyGroup
   autocmd FileType ruby,eruby :inoreabbrev <buffer> erb <% %><C-O>F<Space>
   autocmd FileType ruby,eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
   autocmd FileType ruby,eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
-  autocmd FileType ruby,eruby noremap <silent> <Leader>;d yiw:Ag def\ <C-R>"<CR>
+augroup END
+
+" ··········· javascript ··············· {{{2
+augroup JavascriptGroup
+  autocmd!
+  " add semicolon to end of line
+  autocmd FileType javascript :noremap <buffer> <Leader>; mZA;<Esc>`Z
 augroup END
 
 " ··········· markdown ················· {{{2
