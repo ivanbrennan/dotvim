@@ -429,7 +429,7 @@ nmap <LocalLeader>ww :write %%
 
 " close
 noremap <LocalLeader>d :bdelete<CR>
-noremap <silent> <LocalLeader>c :call BClose()<CR>
+" noremap <silent> <LocalLeader>c :call BClose()<CR>
 
 " current directory
 noremap <Leader><Space> :pwd<CR>
@@ -454,6 +454,10 @@ inoremap <C-BS> <BS><BS>
 noremap <S-Space> mzO<Esc>j`z
 noremap <C-Space> mzo<Esc>k`z
 
+" commentary
+" nnoremap <Leader>/ <Plug>CommentaryLine
+" vnoremap <Leader>/ <Plug>CommentaryLine
+
 " bubble text
 nnoremap <silent> <C-Up> mZ:move .-2<CR>==`Z
 vnoremap          <C-Up> :move '<-2<CR>gv=gv
@@ -475,6 +479,12 @@ inoremap <C-B> <C-O>b
 inoremap (<CR> (<CR>)<Esc>O<Tab>
 inoremap [<CR> [<CR>]<Esc>O<Tab>
 inoremap {<CR> {<CR>}<Esc>O<Tab>
+
+" clipboard
+noremap <Leader>8 "*
+
+" copy to end of line
+noremap <Leader>c "*yg_
 
 " paste toggle
 noremap <LocalLeader>p :set paste! paste?<CR>
@@ -587,10 +597,10 @@ noremap <Leader>r :set relativenumber! relativenumber?<CR>
 noremap <silent> <Leader>z :call FoldColToggle(4)<CR>
 
 " cursor
-noremap <silent> <Leader>c :set cursorcolumn!<CR>
+noremap <silent> <LocalLeader>c :set cursorcolumn!<CR>
 
 " colorcolumn
-noremap <silent> <Leader>8 :call ColorColToggle()<CR>
+noremap <silent> <LocalLeader>1 :call ColorColToggle()<CR>
 
 " ··········· evaluation ··············· {{{2
 " RSpec
@@ -835,10 +845,10 @@ function! AirlineInit()
   let g:airline_detect_whitespace=0
   let g:airline_section_z = '%v : %l/%L (%n)'
   " let g:airline_theme='luna'
-  let g:airline_theme='molokai'
+  " let g:airline_theme='molokai'
   " let g:airline_theme='laederon'
   " let g:airline_theme='ubaryd'
-  " let g:airline_theme='tomorrow'
+  let g:airline_theme='tomorrow'
   " let g:airline_theme='murmur'
 endfunction
 
@@ -949,7 +959,7 @@ endf
 
 fun! ColorColToggle()
   if &colorcolumn == ""
-    set colorcolumn=100
+    set colorcolumn=80
   else
     set colorcolumn=
   endif
