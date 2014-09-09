@@ -348,45 +348,51 @@ endfunction
 call QWERTYMaps()
 
 " ··········· terminal key codes ······· {{{2
-" hack to fix arrow keys in terminal
-if &term =~ "xterm"
-  imap <Esc>[A <Up>
-  imap <Esc>[B <Down>
-  imap <Esc>[C <Right>
-  imap <Esc>[D <Left>
+" Add tmux's higher F-key capabilities
+if &term == "screen-256color"
+  set  <F13>=[1;2P
+  set  <F14>=[1;2Q
+  set  <F15>=[1;2R
+  set  <F16>=[1;2S
+  set  <F17>=[1;5P
+  set  <F18>=[1;5Q
+  set  <F19>=[1;5R
+  set  <F20>=[1;5A
+  set  <F21>=[1;5B
+else
+  set  <F13>=O2P
+  set  <F14>=O2Q
+  set  <F15>=O2R
+  set  <F16>=O2S
+  set  <F17>=O5P
+  set  <F18>=O5Q
+  set  <F19>=O5R
+  set  <F20>=[1;5A
+  set  <F21>=[1;5B
 endif
 
 " use some unused function key codes to
 " make special key combos work in terminal
-set  <F13>=O2P
 map  <F13> <C-CR>
 map! <F13> <C-CR>
-set  <F14>=O2Q
 map  <F14> <S-CR>
 map! <F14> <S-CR>
 
-set  <F15>=O2R
 map  <F15> <C-Space>
 map! <F15> <C-Space>
-set  <F16>=O2S
 map  <F16> <S-Space>
 map! <F16> <S-Space>
 
-set  <F17>=O5P
 map  <F17> <C-BS>
 map! <F17> <C-BS>
 
-set  <F18>=O5Q
 map  <F18> <M-Tab>
 map! <F18> <M-Tab>
-set  <F19>=O5R
 map  <F19> <M-S-Tab>
 map! <F19> <M-S-Tab>
 
-set  <F20>=[1;5A
 map  <F20> <C-Up>
 map! <F20> <C-Up>
-set  <F21>=[1;5B
 map  <F21> <C-Down>
 map! <F21> <C-Down>
 
@@ -848,7 +854,7 @@ function! AirlineInit()
   " let g:airline_theme='molokai'
   " let g:airline_theme='laederon'
   " let g:airline_theme='ubaryd'
-  let g:airline_theme='tomorrow'
+  let g:airline_theme='today'
   " let g:airline_theme='murmur'
 endfunction
 
