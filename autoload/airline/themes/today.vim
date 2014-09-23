@@ -10,7 +10,7 @@ function! airline#themes#today#refresh()
   let s:N3 = airline#themes#get_highlight2(['Normal', 'bg'], ['TabLine', 'bg'])
   let g:airline#themes#today#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 
-  let group = airline#themes#get_highlight('vimCommand')
+  let group = airline#themes#get_highlight('Type')
   let g:airline#themes#today#palette.normal_modified = {
         \ 'airline_c': [ group[0], '', group[2], '', '' ]
         \ }

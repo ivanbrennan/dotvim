@@ -22,6 +22,11 @@ Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
+" Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-unimpaired'
+" Bundle 'tpope/vim-rails'
+" Bundle 'tpope/vim-bundler'
+Bundle 'AndrewRadev/splitjoin.vim'
 Plugin 'jwhitley/vim-matchit'
 Plugin 'sjl/gundo.vim'
 Bundle 'vim-ruby/vim-ruby'
@@ -42,14 +47,21 @@ filetype plugin indent on       " required for Vundle!
 " ::::::::: Settings :::::::::::::::::::::: {{{1
 
 " ··········· options ·················· {{{2
+
+set nrformats=
+set complete-=i                 " don't bog completion down
+set guioptions-=L
+set guioptions-=r
+
 " notifications
 set shortmess+=I                " disable intro message
-set showcmd                     " show commands (remove if slow)
 set visualbell                  " don't beep
 
 " posterity
 set backup                      " backup files
+set undofile                    " persistent undo
 set backupdir=~/.vim/backup     " backups here
+set undodir=~/.vim/undo         " undo files here
 set directory=~/.vim/tmp        " temp files here
 set history=500                 " history 500-deep
 
@@ -75,7 +87,7 @@ if executable('ag')
 endif
 
 " ··········· vim-rspec ················ {{{2
-let g:rspec_command_launcher = "iterm"
+let g:rspec_runner = "os_x_iterm"
 
 " ··········· editing ·················· {{{2
 set hidden                      " allow hidden buffers
@@ -205,12 +217,9 @@ set timeout timeoutlen=250 ttimeoutlen=100
 noremap <LocalLeader>` :source $MYVIMRC<CR>
 noremap <LocalLeader>`, :tabedit $MYVIMRC<CR>
 
-" help
-noremap <Leader>h :help 
-
 " ··········· keyboard layouts ········· {{{2
 noremap <LocalLeader>kq :call Keyboard("qwerty")<CR>
-noremap <LocalLeader>kw :call Keyboard("workvan")<CR>
+noremap <LocalLeader>kw :call Keyboard("workman")<CR>
 
 function! QWERTYMaps() " {{{3
   " enter command mode
@@ -226,10 +235,10 @@ function! QWERTYMaps() " {{{3
   noremap <Leader>1 :!
 
   " navigate
-  noremap <C-J> <C-W>j
-  noremap <C-K> <C-W>k
-  noremap <C-H> <C-W>h
-  noremap <C-L> <C-W>l
+  nnoremap <C-J> <C-W>j
+  nnoremap <C-K> <C-W>k
+  nnoremap <C-H> <C-W>h
+  nnoremap <C-L> <C-W>l
 
   " rearrange
   noremap <C-W><C-J> <C-W>J
@@ -263,7 +272,7 @@ function! QWERTYUnmaps() " {{{3
   unmap <C-W><C-L>
 endfunction
 
-function! WorkVanMaps() " {{{3
+function! WorkmanMaps() " {{{3
   " (E)xit insert mode
   inoremap <C-E> <Esc>`^
   inoremap <C-K> <C-E>
@@ -299,9 +308,6 @@ function! WorkVanMaps() " {{{3
   noremap <C-Y> <C-W>h
   noremap <C-H> <C-Y>
 
-  " beginning of line
-  noremap ) 0
-
   " unmap conflicting Surround keymaps
   nunmap ySS
   nunmap ySs
@@ -310,7 +316,7 @@ function! WorkVanMaps() " {{{3
   nunmap yss
 endfunction
 
-function! WorkVanUnmaps() " {{{3
+function! WorkmanUnmaps() " {{{3
   " (E)xit insert mode
   iunmap <C-E>
   iunmap <C-K>
@@ -362,6 +368,8 @@ if &term =~ "screen"
   set  <F19>=[1;5R
   set  <F20>=[1;5A
   set  <F21>=[1;5B
+  set  <F22>=[1;5C
+  set  <F23>=[1;5D
 elseif &term =~ "xterm"
   set  <F13>=O2P
   set  <F14>=O2Q
@@ -372,6 +380,8 @@ elseif &term =~ "xterm"
   set  <F19>=O5R
   set  <F20>=[1;5A
   set  <F21>=[1;5B
+  set  <F22>=[1;5C
+  set  <F23>=[1;5D
 endif
 
 " use some unused function key codes to
@@ -399,6 +409,11 @@ map! <F20> <C-Up>
 map  <F21> <C-Down>
 map! <F21> <C-Down>
 
+map  <F22> <C-Tab>
+map! <F22> <C-Tab>
+map  <F23> <C-S-Tab>
+map! <F23> <C-S-Tab>
+
 " ··········· buffers ·················· {{{2
 " netrw
 noremap <silent> <Leader>e :call ExToggle("")<CR>
@@ -412,6 +427,7 @@ noremap <silent> <Leader>,<Tab> :call VexToggle(getcwd())<CR>
 "   Set treetop dir: <LocalLeader>t
 
 " search
+noremap <Leader><Space> /
 noremap <Leader>a :Ag! 
 
 " list
@@ -441,7 +457,7 @@ noremap <LocalLeader>d :bdelete<CR>
 " noremap <silent> <LocalLeader>c :call BClose()<CR>
 
 " current directory
-noremap <Leader><Space> :pwd<CR>
+noremap <Leader>/ :pwd<CR>
 noremap <LocalLeader>t :lcd %:h<CR>
 
 " cycle
@@ -449,7 +465,7 @@ noremap   <M-Tab> :bnext<CR>
 noremap <M-S-Tab> :bprevious<CR>
 
 " reload
-noremap <Leader>l<Space> :call ReLoadBuffers()<CR>
+noremap <LocalLeader>l :call ReLoadBuffers()<CR>
 
 " ··········· editing ·················· {{{2
 " open above / below current line
@@ -460,12 +476,14 @@ inoremap <C-CR> <C-O>o
 inoremap <C-BS> <BS><BS>
 
 " insert above / below current line
-noremap <S-Space> mzO<Esc>j`z
-noremap <C-Space> mzo<Esc>k`z
+noremap <S-CR> mzO<Esc>j`z
+noremap <C-CR> mzo<Esc>k`z
 
 " commentary
-" nnoremap <Leader>/ <Plug>CommentaryLine
-" vnoremap <Leader>/ <Plug>CommentaryLine
+xmap <Leader>c  <Plug>Commentary
+nmap <Leader>c  <Plug>Commentary
+omap <Leader>c  <Plug>Commentary
+nmap <Leader>cc <Plug>CommentaryLine
 
 " bubble text
 nnoremap <silent> <C-Up> mZ:move .-2<CR>==`Z
@@ -479,6 +497,17 @@ vnoremap <C-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
 vnoremap <C-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 
 " whole line completion
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<TAB>"
+    else
+        return "\<C-P>"
+    endif
+endfunction
+inoremap <expr> <silent> <TAB> InsertTabWrapper()
+inoremap <S-TAB> <C-N>
+
 inoremap <C-L> <C-X><C-L>
 
 " jump back a word in insert mode
@@ -493,7 +522,7 @@ inoremap {<CR> {<CR>}<Esc>O<Tab>
 noremap <Leader>8 "*
 
 " copy to end of line
-noremap <Leader>c "*yg_
+noremap <LocalLeader>c "*yg_
 
 " paste toggle
 noremap <LocalLeader>p :set paste! paste?<CR>
@@ -534,6 +563,10 @@ inoremap   <Up> <C-R>=pumvisible() ? "\<lt>Up>" : "\<lt>C-O>gk"<CR>
 inoremap <Down> <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"<CR>
 
 " ··········· searching ················ {{{2
+" slash
+nnoremap <C-Space> /
+nnoremap <S-Space> ?
+
 " repeat last char search
 noremap + ;
 noremap _ ,
@@ -547,7 +580,8 @@ noremap <silent> <Leader>f :set foldenable!<CR>
 nnoremap K :Ag!<CR>
 
 " toggle search highlighting
-noremap <LocalLeader><Tab> :set hlsearch! hlsearch?<CR>
+noremap <Leader>l :nohlsearch<CR><C-L>
+noremap <Leader>h :set hlsearch! hlsearch?<CR>
 
 " find merge conflicts
 noremap <silent> <LocalLeader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
@@ -568,8 +602,8 @@ noremap <Leader>0 <C-W><Bar>
 noremap <Leader>= <C-W>=
 
 " tabs
-noremap <Leader>[ :tabprevious<CR>
-noremap <Leader>] :tabnext<CR>
+noremap <C-S-Tab> :tabprevious<CR>
+noremap   <C-Tab> :tabnext<CR>
 
 " ··········· appearance ··············· {{{2
 noremap <LocalLeader>,w :setlocal wrap! linebreak! list! wrap?<CR>
@@ -601,7 +635,8 @@ noremap <Leader>r :set relativenumber! relativenumber?<CR>
 noremap <silent> <Leader>z :call FoldColToggle(4)<CR>
 
 " cursor
-noremap <silent> <LocalLeader>c :set cursorcolumn!<CR>
+noremap <silent> <LocalLeader>cc :set cursorcolumn!<CR>
+noremap <silent> <LocalLeader>cl :call CursorLineToggle()<CR>
 
 " colorcolumn
 noremap <silent> <LocalLeader>1 :call ColorColToggle()<CR>
@@ -660,13 +695,6 @@ augroup RubyGroup
   autocmd FileType ruby,eruby :inoreabbrev <buffer> erb <% %><C-O>F<Space>
   autocmd FileType ruby,eruby :inoreabbrev <buffer> erp <%= %><C-O>F<Space>
   autocmd FileType ruby,eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
-augroup END
-
-" ··········· javascript ··············· {{{2
-augroup JavascriptGroup
-  autocmd!
-  " add semicolon to end of line
-  autocmd FileType javascript :noremap <buffer> <Leader>; mZA;<Esc>`Z
 augroup END
 
 " ··········· markdown ················· {{{2
@@ -944,12 +972,12 @@ endfunction
 
 " ··········· keyboard ················· {{{2
 function! Keyboard(type)
-   if a:type == "workvan"
+   if a:type == "workman"
      call QWERTYUnmaps()
-     call WorkVanMaps()
-     echo "WorkVan mappings enabled"
+     call WorkmanMaps()
+     echo "Workman mappings enabled"
    else
-     call WorkVanUnmaps()
+     call WorkmanUnmaps()
      call QWERTYMaps()
      echo "QWERTY mappings enabled"
    endif
