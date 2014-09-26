@@ -17,7 +17,7 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'ivanbrennan/quickfix-toggle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
-Bundle 'bling/vim-airline'
+" Bundle 'bling/vim-airline'
 " Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
@@ -149,7 +149,7 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " colors
-colorscheme ivisu
+colorscheme irb256
 
 " nice colorschemes {{{
 let g:nice_schemes =
