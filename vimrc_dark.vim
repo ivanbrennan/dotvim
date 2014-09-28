@@ -53,6 +53,7 @@ set showcmd
 set complete-=i                 " don't bog completion down
 set guioptions-=L
 set guioptions-=r
+set showtabline=2
 
 " notifications
 set shortmess+=I                " disable intro message
@@ -873,25 +874,80 @@ fun! NewFontHt(cur_hgt, cur_nam, new_nam)
 endf
 
 " ··········· statusline ··············· {{{2
-function! AirlineInit()
-  if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_detect_whitespace=0
-  let g:airline_section_z = '%v : %l/%L (%n)'
-  " let g:airline_theme='luna'
-  " let g:airline_theme='molokai'
-  " let g:airline_theme='laederon'
-  " let g:airline_theme='ubaryd'
-  let g:airline_theme='today'
-  " let g:airline_theme='murmur'
-endfunction
+fun! BuildStatusLn()
+  call InitializeStatusLn()
+  call StatusLnLeft()
+  set statusline+=%=
+  call StatusLnRight()
+endf
 
-call AirlineInit()
+" fun! ToggleStatusLnElement(el)
+"   exec exists("w:".a:el) ? "unlet w:".a:el : "let w:".a:el."=1"
+" endf
+
+" fun! CycleStatusLnElement(el, opts)
+"   exec "let w:".a:el." = (w:".a:el." + 1) % ".len(a:opts)
+" endf
+
+" fun! CycleStatusLnBufColor()
+"   let opts = StatusLnColors()
+"   call CycleStatusLnElement("buf_color", opts)
+" endf
+
+fun! InitializeStatusLn()
+  if a:0 > 0
+    call ToggleStatusLnElement(a:1)
+  endif
+  set statusline=
+  set statusline+=%<
+endf
+
+fun! StatusLnColors()
+  return
+        \[
+        \'set statusline+=%*',
+        \'set statusline+=%#wildmenu#',
+        \'set statusline+=%#statuslinenc#',
+        \'set statusline+=%#matchparen#',
+        \]
+endf
+
+fun! StatusLnLeft()
+  if !exists('w:buf_color')
+    let w:buf_color = 0
+  end
+  call StatusLnColor(w:buf_color)
+  set  statusline+=%n
+  call StatusLnColor(0)
+  call StatusLnGit()
+  call StatusLnPath()
+  set statusline+=%m
+endf
+
+fun! StatusLnRight()
+  set statusline+=%l:%v\ 
+  set statusline+=%y
+endf
+
+fun! StatusLnColor(i)
+  exec StatusLnColors()[a:i]
+endf
+
+fun! StatusLnPath()
+  let  full  = 'set statusline+=\ %f\ '
+  let  tail  = 'set statusline+=\ %t\ '
+  let  paths = [ full, tail ]
+  let  i = exists('w:tail') ? 1 : 0
+  exec paths[i]
+endf
+
+fun! StatusLnGit()
+  if exists('w:git')
+    set statusline+=\ %{GitBranch()}
+  end
+endf
+
+call BuildStatusLn()
 
 " ··········· colors ··················· {{{2
 fun! ToggleBG()
