@@ -17,7 +17,9 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'ivanbrennan/quickfix-toggle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
-Bundle 'bling/vim-airline'
+if $THEME != "dark"
+  Bundle 'bling/vim-airline'
+endif
 " Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
@@ -149,7 +151,12 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " colors
-colorscheme ivisu
+if $THEME == "dark"
+  colorscheme grb256
+  set background=dark
+else
+  colorscheme ivisu
+end
 
 " nice colorschemes {{{
 let g:nice_schemes = ["grb256", "ivisu"]
