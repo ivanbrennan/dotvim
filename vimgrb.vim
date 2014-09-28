@@ -17,7 +17,7 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'ivanbrennan/quickfix-toggle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
-Bundle 'bling/vim-airline'
+" Bundle 'bling/vim-airline'
 " Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
@@ -49,7 +49,6 @@ filetype plugin indent on       " required for Vundle!
 " ··········· options ·················· {{{2
 
 set nrformats=
-set showcmd
 set complete-=i                 " don't bog completion down
 set guioptions-=L
 set guioptions-=r
@@ -149,7 +148,8 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " colors
-colorscheme ivisu
+colorscheme grb256
+set background=dark
 
 " nice colorschemes {{{
 let g:nice_schemes = ["grb256", "ivisu"]
@@ -857,25 +857,25 @@ fun! NewFontHt(cur_hgt, cur_nam, new_nam)
 endf
 
 " ··········· statusline ··············· {{{2
-function! AirlineInit()
-  if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_detect_whitespace=0
-  let g:airline_section_z = '%v : %l/%L (%n)'
-  " let g:airline_theme='luna'
-  " let g:airline_theme='molokai'
-  let g:airline_theme='laederon'
-  " let g:airline_theme='ubaryd'
-  let g:airline_theme='today'
-  " let g:airline_theme='murmur'
-endfunction
-
-call AirlineInit()
+" function! AirlineInit()
+"   if !exists('g:airline_symbols')
+"     let g:airline_symbols = {}
+"   endif
+"   let g:airline_powerline_fonts = 1
+"   let g:airline#extensions#tabline#enabled = 1
+"   let g:airline#extensions#tabline#left_sep = ' '
+"   let g:airline#extensions#tabline#left_alt_sep = '|'
+"   let g:airline_detect_whitespace=0
+"   let g:airline_section_z = '%v : %l/%L (%n)'
+"   " let g:airline_theme='luna'
+"   " let g:airline_theme='molokai'
+"   let g:airline_theme='laederon'
+"   " let g:airline_theme='ubaryd'
+"   let g:airline_theme='today'
+"   " let g:airline_theme='murmur'
+" endfunction
+" 
+" call AirlineInit()
 
 " ··········· colors ··················· {{{2
 fun! ToggleBG()
