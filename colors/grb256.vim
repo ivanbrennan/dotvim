@@ -19,6 +19,7 @@ hi Error            guifg=NONE        guibg=NONE        gui=undercurl ctermfg=16
 hi ErrorMsg         guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=16         ctermbg=red    cterm=NONE
 hi WarningMsg       guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=16         ctermbg=red    cterm=NONE
 hi SpellBad         guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=16         ctermbg=160    cterm=NONE
+hi TabLineSel       guifg=white       guibg=black       gui=NONE      ctermfg=white      ctermbg=NONE   cterm=NONE
 
 " ir_black doesn't highlight operators for some reason
 hi Operator         guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=lightblue  ctermbg=NONE   cterm=NONE

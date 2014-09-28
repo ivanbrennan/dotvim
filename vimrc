@@ -120,6 +120,7 @@ syntax enable                   " syntax highlighting, local overrides
 set number                      " line numbers
 set title                       " xterm title
 set nowrap                      " don't wrap lines
+set showtabline=2
 " set fillchars+=vert:\           " clean dividers
 set fillchars=vert:\|,fold:-
 set cursorline                  " cursorline on
@@ -177,6 +178,7 @@ let g:font_dict =
 
 " status line
 set laststatus=2                " show statusline
+set statusline=%t\ %y
 
 " ··········· wild settings ············ {{{2
 set wildmenu
@@ -882,7 +884,9 @@ function! AirlineInit()
   " let g:airline_theme='murmur'
 endfunction
 
-call AirlineInit()
+if $THEME != "dark"
+  call AirlineInit()
+endif
 
 " ··········· colors ··················· {{{2
 fun! ToggleBG()

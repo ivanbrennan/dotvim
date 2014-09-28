@@ -82,6 +82,7 @@ hi SpecialKey       guifg=#808080     guibg=#343434     gui=NONE      ctermfg=NO
 
 hi WildMenu         guifg=green       guibg=yellow      gui=NONE      ctermfg=black       ctermbg=yellow      cterm=NONE
 hi PmenuSbar        guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=NONE
+hi TabLineSel       guifg=white       guibg=black       gui=NONE      ctermfg=white       ctermbg=black       cterm=NONE
 "hi Ignore           guifg=gray        guibg=black       gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
 hi Error            guifg=NONE        guibg=NONE        gui=undercurl ctermfg=white       ctermbg=red         cterm=NONE     guisp=#FF6C60 " undercurl color
