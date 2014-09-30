@@ -181,7 +181,6 @@ set laststatus=2                " show statusline
 set statusline=%t\ %y
 
 " ··········· wild settings ············ {{{2
-set wildmenu
 set wildmode=longest,list
 
 " output and VCS
