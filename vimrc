@@ -17,9 +17,7 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'ivanbrennan/quickfix-toggle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
-if $THEME != "dark"
-  Bundle 'bling/vim-airline'
-endif
+Bundle 'bling/vim-airline'
 " Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
@@ -178,7 +176,7 @@ let g:font_dict =
 
 " status line
 set laststatus=2                " show statusline
-set statusline=%t\ %y
+set statusline=%t\ %y%m
 
 " ··········· wild settings ············ {{{2
 set wildmode=longest,list
@@ -877,15 +875,13 @@ function! AirlineInit()
   let g:airline_section_z = '%v : %l/%L (%n)'
   " let g:airline_theme='luna'
   " let g:airline_theme='molokai'
-  let g:airline_theme='laederon'
   " let g:airline_theme='ubaryd'
+  let g:airline_theme='laederon'
   let g:airline_theme='today'
   " let g:airline_theme='murmur'
 endfunction
 
-if $THEME != "dark"
-  call AirlineInit()
-endif
+call AirlineInit()
 
 " ··········· colors ··················· {{{2
 fun! ToggleBG()
