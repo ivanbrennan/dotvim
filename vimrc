@@ -151,11 +151,9 @@ set listchars+=precedes:«       " precedes offscreen
 
 " colors
 if $THEME == "dark"
-  colorscheme grb256
   set background=dark
-else
-  colorscheme ivisu
 end
+colorscheme ivisu
 
 " nice colorschemes {{{
 let g:nice_schemes = ["grb256", "ivisu"]

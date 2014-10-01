@@ -31,7 +31,7 @@ let s:darkerGrey       = { "gui": "#282828", "cterm": "235" }
 
 let s:darkPink         = { "gui": "#63001C", "cterm": "52"  }
 let s:middleDarkPink   = { "gui": "#FF0055", "cterm": "160" }
-let s:middleLightPink  = { "gui": "#D65E76", "cterm": "167" }
+let s:middleLightPink  = { "gui": "#AF0000", "cterm": "124" }
 let s:lightPink        = { "gui": "#FFAFAF", "cterm": "217" }
 
 let s:darkBlue         = { "gui": "#005F87", "cterm": "24"  }
@@ -62,7 +62,7 @@ if &background == "dark"
   let s:accent2    = s:middleLightGreen
   let s:accent3    = s:lightGreen
   let s:accent4    = s:lightTan
-  let s:accent5    = s:darkPink
+  let s:accent5    = s:lightGreen
   let s:normRed    = s:middleLightPink
   let s:normGreen  = s:middleLightGreen
   let s:normBlue   = s:middleLightBlue
