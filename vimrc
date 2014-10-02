@@ -455,6 +455,11 @@ noremap <M-S-Tab> :bprevious<CR>
 " reload
 noremap <LocalLeader>l :call ReLoadBuffers()<CR>
 
+" ··········· ex commands ·············· {{{2
+" history
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+
 " ··········· editing ·················· {{{2
 " open above / below current line
 inoremap <S-CR> <C-O>O
