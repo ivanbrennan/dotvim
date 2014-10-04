@@ -51,7 +51,7 @@ let s:lightTan         = { "gui": "#ECE1C8", "cterm": "230" }
 " Assign to semantic categories based on background color
 if &background == "dark"
   " Dark theme
-  let s:bg         = s:black
+  let s:bg         = s:almostBlack
   let s:norm       = s:almostWhite
   let s:comment    = s:middleDarkGrey
   let s:dimmed     = s:middleLightGrey
