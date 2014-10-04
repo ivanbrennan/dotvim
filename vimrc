@@ -346,26 +346,14 @@ call QWERTYMaps()
 
 " ··········· terminal key codes ······· {{{2
 " Add tmux's higher F-key capabilities
-if &term =~ "screen"
-  set  <F13>=[1;2P
-  set  <F14>=[1;2Q
-  set  <F15>=[1;2R
-  set  <F16>=[1;2S
+if &term =~ "xterm" || &term =~ "screen"
+  set  <F13>=[25~
+  set  <F14>=[27~
+  set  <F15>=[29~
+  set  <F16>=[30~
   set  <F17>=[1;5P
   set  <F18>=[1;5Q
   set  <F19>=[1;5R
-  set  <F20>=[1;5A
-  set  <F21>=[1;5B
-  set  <F22>=[1;5C
-  set  <F23>=[1;5D
-elseif &term =~ "xterm"
-  set  <F13>=O2P
-  set  <F14>=O2Q
-  set  <F15>=O2R
-  set  <F16>=O2S
-  set  <F17>=[1;5P
-  set  <F18>=O5Q
-  set  <F19>=O5R
   set  <F20>=[1;5A
   set  <F21>=[1;5B
   set  <F22>=[1;5C
