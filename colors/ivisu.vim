@@ -142,11 +142,12 @@ call s:h("StatusLine",   { "fg": s:norm, "bg": s:faint, "gui": "bold", "cterm": 
 call s:h("StatusLineNC", { "bg": s:fainter })
 call s:h("SignColumn",   { "fg": s:comment, "bg": s:faint })
 call s:h("VertSplit",    { "fg": s:fainter, "bg": s:fainter })
-call s:h("TabLine",      { "fg": s:dimmed, "bg": s:subtler })
+call s:h("TabLine",      { "fg": s:subtle, "bg": s:faint })
+call s:h("TabLineSel",   { "fg": s:norm, "bg": s:bg })
 call s:h("TabLineFill",  { "bg": s:fainter })
 call s:h("Folded",       { "fg": s:accent1, "bg": s:bg, "gui": "bold", "cterm": "bold" })
 call s:h("Directory",    { "fg": s:accent1 })
-call s:h("Title",        { "fg": s:accent5, "gui": "bold", "cterm": "bold" })
+call s:h("Title",        { "fg": s:normBlue, "gui": "bold", "cterm": "bold" })
 call s:h("ErrorMsg",     { "bg": s:faintRed })
 call s:h("DiffAdd",      { "bg": s:faintGreen })
 call s:h("DiffChange",   { "bg": s:faintRed })
@@ -155,8 +156,8 @@ call s:h("DiffText",     { "bg": s:faintRed, "gui": "bold", "cterm": "bold" })
 call s:h("User1",        { "fg": s:bg, "bg": s:normGreen })
 call s:h("User2",        { "fg": s:bg, "bg": s:normRed })
 call s:h("User3",        { "fg": s:bg, "bg": s:normBlue })
+call s:h("FoldColumn",   { "fg": s:normBlue, "bg": s:faint })
 hi! link WildMenu     IncSearch
-hi! link FoldColumn   SignColumn
 hi! link WarningMsg   ErrorMsg
 hi! link MoreMsg      Title
 hi! link Question     MoreMsg

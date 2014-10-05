@@ -50,6 +50,7 @@ filetype plugin indent on       " required for Vundle!
 
 set nrformats=
 set showcmd
+set noshowmode
 set complete-=i                 " don't bog completion down
 set guioptions-=L
 set guioptions-=r
