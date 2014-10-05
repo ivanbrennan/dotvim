@@ -119,8 +119,8 @@ syntax enable                   " syntax highlighting, local overrides
 set number                      " line numbers
 set title                       " xterm title
 set nowrap                      " don't wrap lines
-set showtabline=2
-" set fillchars+=vert:\           " clean dividers
+set showtabline=1
+set fillchars+=vert:\           " clean dividers
 set fillchars=vert:\|,fold:-
 set cursorline                  " cursorline on
 set foldmethod=marker           " fold markers
