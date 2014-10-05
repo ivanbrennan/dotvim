@@ -65,7 +65,7 @@ if s:background == "dark"
   let s:accent2    = s:middleLightGreen
   let s:accent3    = s:lightGreen
   let s:accent4    = s:lightTan
-  let s:accent5    = s:lightGreen
+  let s:accent5    = s:lightBlue
   let s:normRed    = s:darkPink
   let s:normGreen  = s:middleLightGreen
   let s:normBlue   = s:middleLightBlue
@@ -86,7 +86,7 @@ else
   let s:accent2    = s:middleDarkGreen
   let s:accent3    = s:middleDarkPink
   let s:accent4    = s:darkTan
-  let s:accent5    = s:darkPink
+  let s:accent5    = s:darkBlue
   let s:normRed    = s:darkPink
   let s:normGreen  = s:middleDarkGreen
   let s:normBlue   = s:darkBlue
@@ -136,7 +136,7 @@ endif
 " Highlights - UI ------------------------------------------{{{
 call s:h("Normal",       { "fg": s:norm, "bg": s:bg })
 call s:h("NonText",      { "fg": s:subtle })
-call s:h("Cursor",       { "fg": s:bg, "bg": s:accent1 })
+call s:h("Cursor",       { "fg": s:bg, "bg": s:accent5 })
 call s:h("Visual",       { "bg": s:faintBlue })
 call s:h("IncSearch",    { "bg": s:faintBlue, "gui": "bold", "cterm": "bold" })
 call s:h("Search",       { "bg": s:faintBlue, "gui": "bold", "cterm": "bold" })

@@ -11,7 +11,7 @@ function! airline#themes#today#refresh()
   else
     let s:N1 = airline#themes#get_highlight2(['Normal', 'bg'], ['Delimiter', 'fg'], 'bold')
   endif
-  let s:N2 = airline#themes#get_highlight2(['Normal', 'fg'], ['CursorLine', 'bg'])
+  let s:N2 = airline#themes#get_highlight2(['Cursor', 'bg'], ['CursorLine', 'bg'])
   let s:N3 = airline#themes#get_highlight2(['Normal', 'fg'], ['TabLineFill', 'bg'])
   let g:airline#themes#today#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 
