@@ -153,6 +153,8 @@ set listchars+=precedes:«       " precedes offscreen
 " colors
 if $THEME == "dark"
   set background=dark
+else
+  set background=light
 end
 colorscheme ivisu
 
