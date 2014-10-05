@@ -56,8 +56,9 @@ if &background == "dark"
   let s:comment    = s:middleDarkGrey
   let s:dimmed     = s:middleLightGrey
   let s:subtle     = s:darkGrey
-  let s:faint      = s:almostBlack
-  let s:subtler    = s:almostBlack
+  let s:faint      = s:middleDarkerGrey
+  let s:fainter    = s:darkerGrey
+  let s:subtler    = s:black
   let s:accent1    = s:lighterBlue
   let s:accent2    = s:middleLightGreen
   let s:accent3    = s:lightGreen
@@ -78,6 +79,7 @@ else
   let s:subtle     = s:lightGrey
   let s:subtler    = s:lighterGrey
   let s:faint      = s:almostWhite
+  let s:fainter    = s:lighterGrey
   let s:accent1    = s:middleDarkBlue
   let s:accent2    = s:middleDarkGreen
   let s:accent3    = s:middleDarkPink
@@ -136,12 +138,12 @@ call s:h("Cursor",       { "fg": s:bg, "bg": s:accent1 })
 call s:h("Visual",       { "bg": s:faintBlue })
 call s:h("IncSearch",    { "bg": s:faintBlue, "gui": "bold", "cterm": "bold" })
 call s:h("Search",       { "bg": s:faintBlue, "gui": "bold", "cterm": "bold" })
-call s:h("StatusLine",   { "fg": s:norm, "bg": s:subtler, "gui": "bold", "cterm": "bold" })
-call s:h("StatusLineNC", { "bg": s:subtler })
+call s:h("StatusLine",   { "fg": s:norm, "bg": s:faint, "gui": "bold", "cterm": "bold" })
+call s:h("StatusLineNC", { "bg": s:fainter })
 call s:h("SignColumn",   { "fg": s:comment, "bg": s:faint })
-call s:h("VertSplit",    { "fg": s:subtler, "bg": s:subtler })
-call s:h("TabLine",      { "fg": s:dimmed, "bg": s:darkGrey })
-call s:h("TabLineSel",   { "gui": "bold", "cterm": "bold" })
+call s:h("VertSplit",    { "fg": s:fainter, "bg": s:fainter })
+call s:h("TabLine",      { "fg": s:dimmed, "bg": s:subtler })
+call s:h("TabLineFill",  { "bg": s:fainter })
 call s:h("Folded",       { "fg": s:accent1, "bg": s:bg, "gui": "bold", "cterm": "bold" })
 call s:h("Directory",    { "fg": s:accent1 })
 call s:h("Title",        { "fg": s:accent5, "gui": "bold", "cterm": "bold" })
@@ -159,7 +161,6 @@ hi! link WarningMsg   ErrorMsg
 hi! link MoreMsg      Title
 hi! link Question     MoreMsg
 hi! link ModeMsg      MoreMsg
-hi! link TabLineFill  StatusLineNC
 hi! link LineNr       NonText
 hi! link SpecialKey   NonText
 
