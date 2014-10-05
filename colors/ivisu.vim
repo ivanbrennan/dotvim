@@ -64,10 +64,10 @@ if &background == "dark"
   let s:accent3    = s:lightGreen
   let s:accent4    = s:lightTan
   let s:accent5    = s:lightGreen
-  let s:normRed    = s:middleLightPink
+  let s:normRed    = s:darkPink
   let s:normGreen  = s:middleLightGreen
   let s:normBlue   = s:middleLightBlue
-  let s:faintRed   = s:darkPink
+  let s:faintRed   = s:middleLightPink
   let s:faintGreen = s:darkGreen
   let s:faintBlue  = s:darkBlue
 else
@@ -117,14 +117,14 @@ if version >= 700
   call s:h("PmenuSBar",        { "bg": s:subtle })
   call s:h("PmenuSel",         { "bg": s:faintBlue })
   call s:h("ColorColumn",      { "bg": s:lighterBlue })
-  call s:h("SpellBad",         { "sp": s:normRed, "gui": "undercurl" })
+  call s:h("SpellBad",         { "sp": s:faintRed, "gui": "undercurl" })
   call s:h("SpellCap",         { "sp": s:accent1, "gui": "undercurl" })
   call s:h("SpellRare",        { "sp": s:normGreen, "gui": "undercurl" })
   call s:h("SpellLocal",       { "sp": s:accent4, "gui": "undercurl" })
   hi! link CursorColumn	CursorLine
 
   " Use background for cterm Spell*, which does not support undercurl
-  execute "hi! SpellBad   ctermbg=" s:faintRed.cterm
+  execute "hi! SpellBad   ctermbg=" s:normRed.cterm
   execute "hi! SpellCap   ctermbg=" s:faintBlue.cterm
   execute "hi! SpellRare  ctermbg=" s:faintGreen.cterm
   execute "hi! SpellLocal ctermbg=" s:faint.cterm
@@ -148,13 +148,13 @@ call s:h("TabLineFill",  { "bg": s:fainter })
 call s:h("Folded",       { "fg": s:accent1, "bg": s:bg, "gui": "bold", "cterm": "bold" })
 call s:h("Directory",    { "fg": s:accent1 })
 call s:h("Title",        { "fg": s:normBlue, "gui": "bold", "cterm": "bold" })
-call s:h("ErrorMsg",     { "bg": s:faintRed })
+call s:h("ErrorMsg",     { "bg": s:normRed })
 call s:h("DiffAdd",      { "bg": s:faintGreen })
-call s:h("DiffChange",   { "bg": s:faintRed })
-call s:h("DiffDelete",   { "fg": s:normRed, "bg": s:faintRed })
-call s:h("DiffText",     { "bg": s:faintRed, "gui": "bold", "cterm": "bold" })
+call s:h("DiffChange",   { "bg": s:normRed })
+call s:h("DiffDelete",   { "fg": s:faintRed, "bg": s:normRed })
+call s:h("DiffText",     { "bg": s:normRed, "gui": "bold", "cterm": "bold" })
 call s:h("User1",        { "fg": s:bg, "bg": s:normGreen })
-call s:h("User2",        { "fg": s:bg, "bg": s:normRed })
+call s:h("User2",        { "fg": s:bg, "bg": s:faintRed })
 call s:h("User3",        { "fg": s:bg, "bg": s:normBlue })
 call s:h("FoldColumn",   { "fg": s:normBlue, "bg": s:faint })
 hi! link WildMenu     IncSearch
@@ -173,7 +173,7 @@ call s:h("Underlined", { "fg": s:accent1, "gui": "underline", "cterm": "underlin
 call s:h("Type",       { "fg": s:accent3 })
 call s:h("String",     { "fg": s:accent2 })
 call s:h("Keyword",    { "fg": s:accent2, "gui": "bold", "cterm": "bold" })
-call s:h("Todo",       { "fg": s:normRed, "gui": "bold", "cterm": "bold" })
+call s:h("Todo",       { "fg": s:faintRed, "gui": "bold", "cterm": "bold" })
 call s:h("Function",   { "gui": "bold", "cterm": "bold" })
 hi! link Identifier  Function
 hi! link Statement   Type
