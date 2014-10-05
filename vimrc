@@ -156,11 +156,8 @@ if $THEME == "dark"
 else
   set background=light
 end
-colorscheme ivisu
+colorscheme ib
 
-" nice colorschemes {{{
-let g:nice_schemes = ["grb256", "ivisu"]
-" }}}
 " fonts {{{
 set guifont=Sauce\ Code\ Powerline:h14
 let g:font_dict =
@@ -600,11 +597,6 @@ end
 noremap <silent> <LocalLeader>= :call FontCycle(1)<CR>:echo getfontname()<CR>
 noremap <silent> <LocalLeader>- :call FontCycle(-1)<CR>:echo getfontname()<CR>
 
-" colors
-noremap <silent> <LocalLeader>gb :call ToggleGrb()<CR>:colorscheme<CR>
-noremap <silent> <LocalLeader>] :call ColorCycle(1)<CR>:colorscheme<CR>
-noremap <silent> <LocalLeader>[ :call ColorCycle(-1)<CR>:colorscheme<CR>
-
 " background
 noremap <LocalLeader>b :call ToggleBG()<CR>:echo &background<CR>
 
@@ -651,9 +643,6 @@ noreabbrev edn end
 augroup VimrcGroup
   autocmd!
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
-  for scheme in g:nice_schemes
-    execute 'autocmd BufWritePost ~/.vim/colors/'. scheme . '.vim source $MYVIMRC'
-  endfor
 augroup END
 
 " ··········· netrw ···················· {{{2
@@ -886,23 +875,6 @@ fun! ToggleBG()
   if !exists("g:colors_name") && exists("cur_colo")
     let g:colors_name = cur_colo
   endif
-endf
-
-fun! ToggleGrb()
-  if g:colors_name == 'grb256'
-    colorscheme ivisu
-    set background=light
-  elseif g:colors_name == 'ivisu'
-    colorscheme grb256
-    set background=dark
-  endif
-endf
-
-fun! ColorCycle(num)
-  let cur_idx = index( g:nice_schemes, g:colors_name )
-  let new_idx = (cur_idx + a:num) % len(g:nice_schemes)
-  let new_nam = g:nice_schemes[new_idx]
-  exe "colorscheme " . new_nam
 endf
 
 fun! TransparencyToggle(transpr)

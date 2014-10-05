@@ -1,4 +1,4 @@
-" ivisu.vim - Vim color scheme
+" ib.vim - Vim color scheme
 " ----------------------------------------------------------
 " Author:   Ivan Brennan (ivan.brennan@gmail.com)
 " Version:  0.1
@@ -12,7 +12,7 @@ if exists("syntax_on")
 endif
 
 " Declare theme name
-let g:colors_name = "ivisu"
+let g:colors_name = "ib"
 
 "}}}
 " The Colors -----------------------------------------------{{{
