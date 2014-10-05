@@ -5,7 +5,11 @@ function! airline#themes#today#refresh()
         \ 'red': airline#themes#get_highlight('Constant'),
         \ }
 
-  let s:N1 = airline#themes#get_highlight2(['Normal', 'fg'], ['NonText', 'fg'], 'bold')
+  if &background == "dark"
+    let s:N1 = airline#themes#get_highlight2(['Normal', 'fg'], ['NonText', 'fg'], 'bold')
+  else
+    let s:N1 = airline#themes#get_highlight2(['Normal', 'bg'], ['Delimiter', 'fg'], 'bold')
+  endif
   let s:N2 = airline#themes#get_highlight2(['Normal', 'fg'], ['CursorLine', 'bg'])
   let s:N3 = airline#themes#get_highlight2(['Normal', 'fg'], ['TabLineFill', 'bg'])
   let g:airline#themes#today#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
@@ -15,19 +19,31 @@ function! airline#themes#today#refresh()
         \ 'airline_c': [ group[0], '', group[2], '', '' ]
         \ }
 
-  let s:I1 = airline#themes#get_highlight2(['Normal', 'fg'], ['ErrorMsg', 'bg'])
+  if &background == "dark"
+    let s:I1 = airline#themes#get_highlight2(['Normal', 'fg'], ['DiffChange', 'bg'])
+  else
+    let s:I1 = airline#themes#get_highlight2(['Normal', 'bg'], ['DiffChange', 'bg'])
+  endif
   let s:I2 = airline#themes#get_highlight2(['Normal', 'fg'], ['TabLineFill', 'bg'])
   let s:I3 = airline#themes#get_highlight2(['Normal', 'fg'], ['CursorLine', 'bg'])
   let g:airline#themes#today#palette.insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3)
   let g:airline#themes#today#palette.insert_modified = g:airline#themes#today#palette.normal_modified
 
-  let s:R1 = airline#themes#get_highlight2(['Normal', 'bg'], ['Constant', 'fg'])
+  if &background == "dark"
+    let s:R1 = airline#themes#get_highlight2(['Normal', 'bg'], ['Constant', 'fg'])
+  else
+    let s:R1 = airline#themes#get_highlight2(['Visual', 'bg'], ['Normal', 'fg'])
+  endif
   let s:R2 = s:I2
   let s:R3 = s:I3
   let g:airline#themes#today#palette.replace = airline#themes#generate_color_map(s:R1, s:R2, s:R3)
   let g:airline#themes#today#palette.replace_modified = g:airline#themes#today#palette.normal_modified
 
-  let s:V1 = airline#themes#get_highlight2(['Normal', 'fg'], ['Visual', 'bg'], 'bold')
+  if &background == "dark"
+    let s:V1 = airline#themes#get_highlight2(['Normal', 'fg'], ['Visual', 'bg'], 'bold')
+  else
+    let s:V1 = airline#themes#get_highlight2(['Normal', 'bg'], ['Constant', 'fg'], 'bold')
+  endif
   let s:V2 = s:I2
   let s:V3 = s:I3
   let g:airline#themes#today#palette.visual = airline#themes#generate_color_map(s:V1, s:V2, s:V3)

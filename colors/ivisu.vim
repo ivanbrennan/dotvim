@@ -35,9 +35,8 @@ let s:middleLightPink  = { "gui": "#AF0000", "cterm": "124" }
 let s:lightPink        = { "gui": "#FFAFAF", "cterm": "217" }
 
 let s:darkBlue         = { "gui": "#005F87", "cterm": "24"  }
-let s:middleDarkBlue   = { "gui": "#538192", "cterm": "31"  }
 let s:middleLightBlue  = { "gui": "#9FD3E6", "cterm": "116" }
-let s:lightBlue        = { "gui": "#CBE4EE", "cterm": "195" }
+let s:lightBlue        = { "gui": "#E1F0F9", "cterm": "195" }
 let s:lighterBlue      = { "gui": "#FCFEFF", "cterm": "195" }
 
 let s:darkGreen        = { "gui": "#5F5F00", "cterm": "58"  }
@@ -75,19 +74,19 @@ else
   let s:bg         = s:white
   let s:norm       = s:almostBlack
   let s:comment    = s:middleLightGrey
-  let s:dimmed     = s:middleDarkGrey
+  let s:dimmed     = s:darkGrey
   let s:subtle     = s:lightGrey
   let s:subtler    = s:lighterGrey
   let s:faint      = s:almostWhite
   let s:fainter    = s:lighterGrey
-  let s:accent1    = s:middleDarkBlue
+  let s:accent1    = s:darkBlue
   let s:accent2    = s:middleDarkGreen
   let s:accent3    = s:middleDarkPink
   let s:accent4    = s:darkTan
   let s:accent5    = s:darkPink
-  let s:normRed    = s:middleDarkPink
+  let s:normRed    = s:darkPink
   let s:normGreen  = s:middleDarkGreen
-  let s:normBlue   = s:middleDarkBlue
+  let s:normBlue   = s:darkBlue
   let s:faintRed   = s:lightPink
   let s:faintGreen = s:lightGreen
   let s:faintBlue  = s:lightBlue
@@ -148,7 +147,7 @@ call s:h("TabLineFill",  { "bg": s:fainter })
 call s:h("Folded",       { "fg": s:accent1, "bg": s:bg, "gui": "bold", "cterm": "bold" })
 call s:h("Directory",    { "fg": s:accent1 })
 call s:h("Title",        { "fg": s:normBlue, "gui": "bold", "cterm": "bold" })
-call s:h("ErrorMsg",     { "bg": s:normRed })
+call s:h("ErrorMsg",     { "bg": s:faintRed })
 call s:h("DiffAdd",      { "bg": s:faintGreen })
 call s:h("DiffChange",   { "bg": s:normRed })
 call s:h("DiffDelete",   { "fg": s:faintRed, "bg": s:normRed })
