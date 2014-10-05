@@ -1,11 +1,12 @@
 let g:airline#themes#today#palette = {}
+let s:background = &background
 
 function! airline#themes#today#refresh()
   let g:airline#themes#today#palette.accents = {
         \ 'red': airline#themes#get_highlight('Constant'),
         \ }
 
-  if &background == "dark"
+  if s:background == "dark"
     let s:N1 = airline#themes#get_highlight2(['Normal', 'fg'], ['NonText', 'fg'], 'bold')
   else
     let s:N1 = airline#themes#get_highlight2(['Normal', 'bg'], ['Delimiter', 'fg'], 'bold')
@@ -19,7 +20,7 @@ function! airline#themes#today#refresh()
         \ 'airline_c': [ group[0], '', group[2], '', '' ]
         \ }
 
-  if &background == "dark"
+  if s:background == "dark"
     let s:I1 = airline#themes#get_highlight2(['Normal', 'fg'], ['DiffChange', 'bg'])
   else
     let s:I1 = airline#themes#get_highlight2(['Normal', 'bg'], ['DiffChange', 'bg'])
@@ -29,7 +30,7 @@ function! airline#themes#today#refresh()
   let g:airline#themes#today#palette.insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3)
   let g:airline#themes#today#palette.insert_modified = g:airline#themes#today#palette.normal_modified
 
-  if &background == "dark"
+  if s:background == "dark"
     let s:R1 = airline#themes#get_highlight2(['Normal', 'bg'], ['Constant', 'fg'])
   else
     let s:R1 = airline#themes#get_highlight2(['Visual', 'bg'], ['Normal', 'fg'])
@@ -39,7 +40,7 @@ function! airline#themes#today#refresh()
   let g:airline#themes#today#palette.replace = airline#themes#generate_color_map(s:R1, s:R2, s:R3)
   let g:airline#themes#today#palette.replace_modified = g:airline#themes#today#palette.normal_modified
 
-  if &background == "dark"
+  if s:background == "dark"
     let s:V1 = airline#themes#get_highlight2(['Normal', 'fg'], ['Visual', 'bg'], 'bold')
   else
     let s:V1 = airline#themes#get_highlight2(['Normal', 'bg'], ['Constant', 'fg'], 'bold')
