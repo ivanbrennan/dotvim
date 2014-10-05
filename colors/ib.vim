@@ -11,6 +11,9 @@ if exists("syntax_on")
   syntax reset
 endif
 
+" Store the background value
+let s:background = &background
+
 " Declare theme name
 let g:colors_name = "ib"
 
@@ -48,7 +51,7 @@ let s:darkTan          = { "gui": "#503D15", "cterm": "52"  }
 let s:lightTan         = { "gui": "#ECE1C8", "cterm": "230" }
 
 " Assign to semantic categories based on background color
-if &background == "dark"
+if s:background == "dark"
   " Dark theme
   let s:bg         = s:almostBlack
   let s:norm       = s:almostWhite
@@ -219,5 +222,9 @@ hi! link helpHyperTextJump   Underlined
 hi! link helpURL             Underlined
 
 "}}}
+
+" Cleanup - Background -------------------------------------{{{
+" Setting highlighting for the Normal group mucks things up
+execute "set background=" . s:background
 
 " vim: fdm=marker:sw=2:sts=2:et
