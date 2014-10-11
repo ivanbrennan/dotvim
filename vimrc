@@ -358,6 +358,8 @@ if &term =~ "xterm" || &term =~ "screen"
   set  <F21>=[1;5B
   set  <F22>=[1;5C
   set  <F23>=[1;5D
+  set  <F24>=[31~
+  set  <F25>=[32~
 endif
 
 " use some unused function key codes to
@@ -385,10 +387,15 @@ map! <F20> <C-Up>
 map  <F21> <C-Down>
 map! <F21> <C-Down>
 
-map  <F22> <C-Tab>
-map! <F22> <C-Tab>
-map  <F23> <C-S-Tab>
-map! <F23> <C-S-Tab>
+map  <F22> <C-Right>
+map! <F22> <C-Right>
+map  <F23> <C-Left>
+map! <F23> <C-Left>
+
+map  <F24> <C-Tab>
+map! <F24> <C-Tab>
+map  <F25> <C-S-Tab>
+map! <F25> <C-S-Tab>
 
 " ··········· buffers ·················· {{{2
 " netrw
@@ -447,6 +454,11 @@ noremap <LocalLeader>l :call ReLoadBuffers()<CR>
 " history
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
+
+" command-line editing
+cnoremap     <C-A> <Home>
+cnoremap  <C-Left> <S-Left>
+cnoremap <C-Right> <S-Right>
 
 " ··········· editing ·················· {{{2
 " open above / below current line
