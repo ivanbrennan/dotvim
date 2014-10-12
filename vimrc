@@ -712,34 +712,40 @@ endfunction
 
 " ··········· norman ··················· {{{3
 function! NormanMaps()
-  " noremap <C-I> k
-  " noremap <C-Y> h
-  " noremap <C-O> l
-  " noremap <C-H> <C-I>
-  " noremap <C-J> <C-Y>
-  " noremap <C-M> <C-O>
-
-  noremap <C-R> k
+  " ··· home ············ {{{4
   noremap <C-Y> h
-  noremap <C-L> l
-  noremap <C-U> <C-R>
+  noremap <C-I> k
+  noremap <C-O> l
+  noremap <C-H> <C-I>
   noremap <C-J> <C-Y>
-  noremap     l <C-L>
+  noremap <C-P> <C-O>
+  " }}}
+  " ··· arch ············ {{{4
+  " noremap <C-R> k
+  " noremap <C-Y> h
+  " noremap <C-L> l
+  " noremap <C-U> <C-R>
+  " noremap <C-J> <C-Y>
+  " noremap     l <C-L>
+  " }}}
 endfunction
 function! NormanUnmaps()
-  " silent! unmap <C-I>
-  " silent! unmap <C-Y>
-  " silent! unmap <C-O>
-  " silent! unmap <C-H>
-  " silent! unmap <C-J>
-  " silent! unmap <C-M>
-
-  silent! unmap <C-R>
+  " ··· home ············ {{{4
   silent! unmap <C-Y>
-  silent! unmap <C-L>
-  silent! unmap <C-U>
+  silent! unmap <C-I>
+  silent! unmap <C-O>
+  silent! unmap <C-H>
   silent! unmap <C-J>
-  silent! unmap l
+  silent! unmap <C-P>
+  " }}}
+  " ··· arch ············ {{{4
+  " silent! unmap <C-R>
+  " silent! unmap <C-Y>
+  " silent! unmap <C-L>
+  " silent! unmap <C-U>
+  " silent! unmap <C-J>
+  " silent! unmap l
+  " }}}
 endfunction
 
 " ··········· qwerty ··················· {{{3
@@ -750,31 +756,54 @@ endfunction
 
 " ··········· workman ·················· {{{3
 function! WorkmanMaps()
-  " noremap <C-E> k
-  " noremap <C-Y> h
-  " noremap <C-O> l
-  " noremap k <C-E>
-  " noremap j <C-Y>
-  " noremap l <C-O>
-
-  noremap <C-U> k
+  " ··· home ············ {{{4
+  noremap <C-E> k
   noremap <C-Y> h
-  noremap <C-P> l
-  noremap <C-J> <C-Y>
+  noremap <C-O> l
+  noremap k <C-E>
+  noremap j <C-Y>
+  noremap <C-K> <C-O>
+  " }}}
+  " ··· arch ············ {{{4
+  " noremap <C-U> k
+  " noremap <C-Y> h
+  " noremap <C-P> l
+  " noremap <C-J> <C-Y>
+  " }}}
+  " ··· swap ············ {{{4
+  " noremap j k
+  " noremap k j
+  " }}}
+  " ··· mix ············· {{{4
+  " noremap <C-E> k
+  " noremap <C-K> <C-E>
+  " }}}
 endfunction
 function! WorkmanUnmaps()
-  " silent! unmap <C-E>
-  " silent! unmap <C-Y>
-  " silent! unmap <C-O>
-  " silent! unmap k
-  " silent! unmap j
-  " silent! unmap l
-
-  silent! unmap <C-U>
+  " ··· home ············ {{{4
+  silent! unmap <C-E>
   silent! unmap <C-Y>
-  silent! unmap <C-P>
-  silent! unmap <C-J>
+  silent! unmap <C-O>
+  silent! unmap k
+  silent! unmap j
+  silent! unmap <C-K>
+  " }}}
+  " ··· arch ············ {{{4
+  " silent! unmap <C-U>
+  " silent! unmap <C-Y>
+  " silent! unmap <C-P>
+  " silent! unmap <C-J>
+  " }}}
+  " ··· swap ············ {{{4
+  " silent! unmap j
+  " silent! unmap k
+  " }}}
+  " ··· mix ············· {{{4
+  " silent! unmap <C-E>
+  " silent! unmap <C-K>
+  " }}}
 endfunction
 
-" initialize
+" ··········· initialize ··············· {{{3
 call QWERTYMaps()
+" call WorkmanMaps()
