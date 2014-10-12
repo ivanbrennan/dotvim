@@ -163,6 +163,7 @@ let g:netrw_use_errorwindow=0   " suppress error window
 " ctrlp
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_window = 'max:18'
+let g:ctrlp_map = '<C-Space>'
 
 " Ag
 if executable('ag')
@@ -191,24 +192,6 @@ noremap <LocalLeader>`, :tabedit $MYVIMRC<CR>
 noremap <LocalLeader>kq :call Keyboard("qwerty")<CR>
 noremap <LocalLeader>kw :call Keyboard("workman")<CR>
 noremap <LocalLeader>kn :call Keyboard("norman")<CR>
-
-function! NormanMaps()
-endfunction
-function! NormanUnmaps()
-endfunction
-
-function! QWERTYMaps()
-endfunction
-function! QWERTYUnmaps()
-endfunction
-
-function! WorkmanMaps()
-endfunction
-function! WorkmanUnmaps()
-endfunction
-
-" initialize {{{3
-call QWERTYMaps()
 
 " ··········· keys ····················· {{{2
 " enable special key combos
@@ -268,6 +251,10 @@ if &term =~ "xterm" || &term =~ "screen" || &term =~ "builtin_gui"
   set  <F26>=[33~
   map  <F26> <C-,>
   map! <F26> <C-,>
+
+  set  <F27>=[34~
+  map  <F27> <C-S-Space>
+  map! <F27> <C-S-Space>
 endif
 
 " ··········· buffers ·················· {{{2
@@ -302,7 +289,6 @@ noremap <LocalLeader>d :bdelete<CR>
 " ··········· ex commands ·············· {{{2
 " enter/exit ex mode
 noremap <Leader>; :
-noremap <C-Space> :
 
 " shell command
 noremap <Leader>1 :!
@@ -723,3 +709,72 @@ function! Keyboard(type)
      echo "QWERTY mappings enabled"
    endif
 endfunction
+
+" ··········· norman ··················· {{{3
+function! NormanMaps()
+  " noremap <C-I> k
+  " noremap <C-Y> h
+  " noremap <C-O> l
+  " noremap <C-H> <C-I>
+  " noremap <C-J> <C-Y>
+  " noremap <C-M> <C-O>
+
+  noremap <C-R> k
+  noremap <C-Y> h
+  noremap <C-L> l
+  noremap <C-U> <C-R>
+  noremap <C-J> <C-Y>
+  noremap     l <C-L>
+endfunction
+function! NormanUnmaps()
+  " silent! unmap <C-I>
+  " silent! unmap <C-Y>
+  " silent! unmap <C-O>
+  " silent! unmap <C-H>
+  " silent! unmap <C-J>
+  " silent! unmap <C-M>
+
+  silent! unmap <C-R>
+  silent! unmap <C-Y>
+  silent! unmap <C-L>
+  silent! unmap <C-U>
+  silent! unmap <C-J>
+  silent! unmap l
+endfunction
+
+" ··········· qwerty ··················· {{{3
+function! QWERTYMaps()
+endfunction
+function! QWERTYUnmaps()
+endfunction
+
+" ··········· workman ·················· {{{3
+function! WorkmanMaps()
+  " noremap <C-E> k
+  " noremap <C-Y> h
+  " noremap <C-O> l
+  " noremap k <C-E>
+  " noremap j <C-Y>
+  " noremap l <C-O>
+
+  noremap <C-U> k
+  noremap <C-Y> h
+  noremap <C-P> l
+  noremap <C-J> <C-Y>
+endfunction
+function! WorkmanUnmaps()
+  " silent! unmap <C-E>
+  " silent! unmap <C-Y>
+  " silent! unmap <C-O>
+  " silent! unmap k
+  " silent! unmap j
+  " silent! unmap l
+
+  silent! unmap <C-U>
+  silent! unmap <C-Y>
+  silent! unmap <C-P>
+  silent! unmap <C-J>
+endfunction
+
+" initialize
+call QWERTYMaps()
