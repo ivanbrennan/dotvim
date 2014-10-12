@@ -1,7 +1,7 @@
 " ::::::::: vimrc :::::::::::::::::::::::::::::::::::::
 
-set nocompatible                " be iMproved
-set encoding=utf-8              " default encoding to UTF-8
+set nocompatible                " iMproved
+set encoding=utf-8              " default UTF-8
 set t_Co=256                    " 256 color terminal
 
 " ::::::::: Plugins ::::::::::::::::::::::: {{{1
@@ -18,7 +18,6 @@ Bundle 'ivanbrennan/quickfix-toggle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
 Bundle 'bling/vim-airline'
-" Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
@@ -44,90 +43,55 @@ Bundle 'vim-scripts/hexHighlight.vim'
 call vundle#end()
 filetype plugin indent on       " required for Vundle!
 
-" ::::::::: Settings :::::::::::::::::::::: {{{1
+" ::::::::: Options ::::::::::::::::::::::: {{{1
 
-" ··········· options ·················· {{{2
+" ··········· core ····················· {{{2
+" persistence
+set directory=~/.vim/tmp
+set backup
+set backupdir=~/.vim/backup
+set undofile
+set undodir=~/.vim/undo
+set history=500
+set hidden
 
-set nrformats=
-set showcmd
-set noshowmode
-set complete-=i                 " don't bog completion down
-set guioptions-=L
-set guioptions-=r
-
-" notifications
-set shortmess+=I                " disable intro message
-set visualbell                  " don't beep
-
-" posterity
-set backup                      " backup files
-set undofile                    " persistent undo
-set backupdir=~/.vim/backup     " backups here
-set undodir=~/.vim/undo         " undo files here
-set directory=~/.vim/tmp        " temp files here
-set history=500                 " history 500-deep
-
-" ··········· netrw ···················· {{{2
-let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+,^DS_Store$'
-let g:netrw_hide=1              " hide hidden files
-let g:netrw_dirhistmax=100      " keep more history
-let g:netrw_altfile=1           " last edited file '#'
-let g:netrw_liststyle=0         " thin
-let g:netrw_altv=1              " open files on right
-let g:netrw_preview=1           " open previews vertically
-let g:netrw_use_errorwindow=0   " suppress error window
-
-" ··········· ctrlp ···················· {{{2
-let g:ctrlp_show_hidden = 1     " include hidden files
-let g:ctrlp_match_window = 'max:12'
-
-" ··········· Ag ······················· {{{2
-if executable('ag')
-  let g:aghighlight=1
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
-endif
-
-" ··········· vim-rspec ················ {{{2
-let g:rspec_runner = "os_x_iterm"
-
-" ··········· editing ·················· {{{2
-set hidden                      " allow hidden buffers
-set backspace=indent,eol,start  " backspace through everything
-set textwidth=0                 " no autowrap
-
-" formatting
-set formatprg=par               " gq -> par, gw -> internal
-set formatoptions-=o            " don't auto-comment with o or O
-silent! set formatoptions+=j    " let J handle comments if supported
-
-" ··········· navigation ··············· {{{2
+" navigation
+set incsearch
+set ignorecase
+set smartcase
 set scrolloff=1
-set sidescroll=1                " smooth sidescroll
+set sidescroll=2
 set mouse+=a
 if &term =~ '^screen'           " extended mouse mode
   set ttymouse=xterm2
 endif
+set guioptions-=L
+set guioptions-=r
 
-" ··········· searching ················ {{{2
-set incsearch                   " incremental searching
-set ignorecase                  " searches are case insensitive...
-set smartcase                   " ...unless they contain a capital letter
+" editing
+set backspace=indent,eol,start
+set textwidth=0
+set nrformats=
+set complete-=i
+set formatprg=par               " gq -> par, gw -> internal
+set formatoptions-=o            " don't auto-comment with o or O
+silent! set formatoptions+=j    " let J handle comments if supported
 
-" ··········· appearance ··············· {{{2
+" appearance
 syntax enable                   " syntax highlighting, local overrides
-set number                      " line numbers
-set title                       " xterm title
-set nowrap                      " don't wrap lines
+set number
+set title
+set nowrap
 set showtabline=1
-set fillchars+=vert:\           " clean dividers
-set fillchars=vert:\|,fold:-
-set cursorline                  " cursorline on
-set foldmethod=marker           " fold markers
-augroup CursorGroup             " clear cursorline highlight
-  autocmd!
-  autocmd BufReadPost * call      RestoreCrsr()
-augroup END
+set fillchars=vert:\ ,fold:-
+set cursorline
+set foldmethod=marker
+set showcmd
+set noshowmode
+
+" notifications
+set shortmess+=I
+set visualbell
 
 " cursor
 set guicursor=n-v-c:block-blinkon0
@@ -136,6 +100,10 @@ set guicursor+=o:hor50
 set guicursor+=i-ci:ver25
 set guicursor+=r-cr:hor20
 set guicursor+=sm:block-blinkon0
+augroup CursorGroup             " clear cursorline highlight
+  autocmd!
+  autocmd BufReadPost * call      RestoreCrsr()
+augroup END
 
 " whitespace
 set tabstop=2                   " tab is two spaces
@@ -143,6 +111,8 @@ set softtabstop=2               " softtab is two spaces
 set shiftwidth=2                " autoindent is two spaces
 set expandtab                   " convert tabs to spaces
 
+" characters
+set guifont=Sauce\ Code\ Powerline:h14
 set list                        " show invisible characters
 set listchars=""                " reset the listchars
 set listchars=tab:▸\            " tab
@@ -158,27 +128,12 @@ else
 end
 colorscheme ib
 
-" fonts {{{
-set guifont=Sauce\ Code\ Powerline:h14
-let g:font_dict =
-      \{
-      \"Anonymous Pro":         3,
-      \"Inconsolata":           1,
-      \"Menlo":                 0,
-      \"Monaco":               -2,
-      \"Source Code Pro":      -1,
-      \"Sauce Code Powerline": -1,
-      \"Ubuntu Mono":           3,
-      \}
-" }}}
-
-" status line
-set laststatus=2                " show statusline
+" statusline
+set laststatus=2
 set statusline=%t\ %y%m
 
-" ··········· wild settings ············ {{{2
+" wildmode
 set wildmode=longest,list
-
 " output and VCS
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 " archives
@@ -194,263 +149,164 @@ set wildignore+=*.swp,*~,._*
 " OSX bullshit
 set wildignore+=*.DS_Store
 
-" ::::::::: Mappings :::::::::::::::::::::: {{{1
+" ··········· plugins ·················· {{{2
+" netrw
+let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+,^DS_Store$'
+let g:netrw_hide=1              " hide hidden files
+let g:netrw_dirhistmax=100      " keep more history
+let g:netrw_altfile=1           " last edited file '#'
+let g:netrw_liststyle=0         " thin
+let g:netrw_altv=1              " open files on right
+let g:netrw_preview=1           " open previews vertically
+let g:netrw_use_errorwindow=0   " suppress error window
+
+" ctrlp
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_match_window = 'max:18'
+
+" Ag
+if executable('ag')
+  let g:aghighlight = 1
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
+endif
+
+" vim-rspec
+let g:rspec_runner = "os_x_iterm"
+
+" ::::::::: Keymaps ::::::::::::::::::::::: {{{1
 
 " leaders
 map <Space> <Leader>
 let maplocalleader=','
+noremap <C-,> ,
+
 set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
 noremap <LocalLeader>` :source $MYVIMRC<CR>
 noremap <LocalLeader>`, :tabedit $MYVIMRC<CR>
 
-" ··········· keyboard layouts ········· {{{2
+" ··········· layout ··················· {{{2
 noremap <LocalLeader>kq :call Keyboard("qwerty")<CR>
 noremap <LocalLeader>kw :call Keyboard("workman")<CR>
+noremap <LocalLeader>kn :call Keyboard("norman")<CR>
 
-function! QWERTYMaps() " {{{3
-  " enter command mode
-  " noremap  ; :
-  noremap <Leader>; :
-  noremap q; q:
-
-  " exit insert mode
-  inoremap kj <Esc>`^
-  inoremap jk <Esc>`^
-
-  " shell command
-  noremap <Leader>1 :!
-
-  " navigate
-  nnoremap <C-J> <C-W>j
-  nnoremap <C-K> <C-W>k
-  nnoremap <C-H> <C-W>h
-  nnoremap <C-L> <C-W>l
-
-  " rearrange
-  noremap <C-W><C-J> <C-W>J
-  noremap <C-W><C-K> <C-W>K
-  noremap <C-W><C-H> <C-W>H
-  noremap <C-W><C-L> <C-W>L
+function! NormanMaps()
+endfunction
+function! NormanUnmaps()
 endfunction
 
-function! QWERTYUnmaps() " {{{3
-  " enter command mode
-  unmap  ;
-  unmap q;
-
-  " exit insert mode
-  iunmap    kj
-  iunmap    jk
-
-  " shell command
-  unmap <Leader>1
-
-  " navigate
-  unmap <C-J>
-  unmap <C-K>
-  unmap <C-H>
-  unmap <C-L>
-
-  " rearrange
-  unmap <C-W><C-J>
-  unmap <C-W><C-K>
-  unmap <C-W><C-H>
-  unmap <C-W><C-L>
+function! QWERTYMaps()
+endfunction
+function! QWERTYUnmaps()
 endfunction
 
-function! WorkmanMaps() " {{{3
-  " (E)xit insert mode
-  inoremap <C-E> <Esc>`^
-  inoremap <C-K> <C-E>
-
-  " (O)pen line -> (L)ine
-  noremap l o
-  noremap o l
-  noremap L O
-  noremap O L
-  " Search (N)ext -> (J)ump
-  noremap j n
-  noremap n j
-  noremap J N
-  noremap N J
-  " (E)nd of word -> brea(K) of word
-  noremap k e
-  noremap e k
-  noremap K E
-  noremap E K
-  " (Y)ank -> (H)aul
-  noremap h y
-  noremap y h
-  noremap H Y
-  noremap Y H
-
-  " navigate
-  noremap <C-O> <C-W>l
-  noremap <C-L> <C-O>
-  noremap <C-N> <C-W>j
-  noremap <C-J> <C-N>
-  noremap <C-E> <C-W>k
-  noremap <C-K> <C-E>
-  noremap <C-Y> <C-W>h
-  noremap <C-H> <C-Y>
-
-  " unmap conflicting Surround keymaps
-  nunmap ySS
-  nunmap ySs
-  nunmap yS
-  nunmap ys
-  nunmap yss
+function! WorkmanMaps()
 endfunction
-
-function! WorkmanUnmaps() " {{{3
-  " (E)xit insert mode
-  iunmap <C-E>
-  iunmap <C-K>
-
-  " (O)pen line -> (L)ine
-  unmap l
-  unmap o
-  unmap L
-  unmap O
-  " Search (N)ext -> (J)ump
-  unmap j
-  unmap n
-  unmap J
-  unmap N
-  " (E)nd of word -> brea(K) of word
-  unmap k
-  unmap e
-  unmap K
-  unmap E
-  " (Y)ank -> (H)aul
-  unmap h
-  unmap y
-  unmap H
-  unmap Y
-
-  " navigate
-  unmap <C-O>
-  unmap <C-L>
-  unmap <C-N>
-  unmap <C-J>
-  unmap <C-E>
-  unmap <C-K>
-  unmap <C-Y>
-  unmap <C-H>
+function! WorkmanUnmaps()
 endfunction
 
 " initialize {{{3
 call QWERTYMaps()
 
-" ··········· terminal key codes ······· {{{2
-" Add tmux's higher F-key capabilities
-if &term =~ "xterm" || &term =~ "screen"
+" ··········· keys ····················· {{{2
+" enable special key combos
+if &term =~ "xterm" || &term =~ "screen" || &term =~ "builtin_gui"
   set  <F13>=[25~
+  map  <F13> <C-CR>
+  map! <F13> <C-CR>
+
   set  <F14>=[27~
+  map  <F14> <S-CR>
+  map! <F14> <S-CR>
+
   set  <F15>=[29~
+  map  <F15> <C-Space>
+  map! <F15> <C-Space>
+
   set  <F16>=[30~
+  map  <F16> <S-Space>
+  map! <F16> <S-Space>
+
   set  <F17>=[1;5P
+  map  <F17> <C-BS>
+  map! <F17> <C-BS>
+
   set  <F18>=[1;5Q
+  map  <F18> <M-Tab>
+  map! <F18> <M-Tab>
+
   set  <F19>=[1;5R
+  map  <F19> <M-S-Tab>
+  map! <F19> <M-S-Tab>
+
   set  <F20>=[1;5A
+  map  <F20> <C-Up>
+  map! <F20> <C-Up>
+
   set  <F21>=[1;5B
+  map  <F21> <C-Down>
+  map! <F21> <C-Down>
+
   set  <F22>=[1;5C
+  map  <F22> <C-Right>
+  map! <F22> <C-Right>
+
   set  <F23>=[1;5D
+  map  <F23> <C-Left>
+  map! <F23> <C-Left>
+
   set  <F24>=[31~
+  map  <F24> <C-Tab>
+  map! <F24> <C-Tab>
+
   set  <F25>=[32~
+  map  <F25> <C-S-Tab>
+  map! <F25> <C-S-Tab>
+
+  set  <F26>=[33~
+  map  <F26> <C-,>
+  map! <F26> <C-,>
 endif
 
-" use some unused function key codes to
-" make special key combos work in terminal
-map  <F13> <C-CR>
-map! <F13> <C-CR>
-map  <F14> <S-CR>
-map! <F14> <S-CR>
-
-map  <F15> <C-Space>
-map! <F15> <C-Space>
-map  <F16> <S-Space>
-map! <F16> <S-Space>
-
-map  <F17> <C-BS>
-map! <F17> <C-BS>
-
-map  <F18> <M-Tab>
-map! <F18> <M-Tab>
-map  <F19> <M-S-Tab>
-map! <F19> <M-S-Tab>
-
-map  <F20> <C-Up>
-map! <F20> <C-Up>
-map  <F21> <C-Down>
-map! <F21> <C-Down>
-
-map  <F22> <C-Right>
-map! <F22> <C-Right>
-map  <F23> <C-Left>
-map! <F23> <C-Left>
-
-map  <F24> <C-Tab>
-map! <F24> <C-Tab>
-map  <F25> <C-S-Tab>
-map! <F25> <C-S-Tab>
-
 " ··········· buffers ·················· {{{2
-" netrw
-noremap <silent> <Leader>e :call ExToggle("")<CR>
-noremap <silent> <Leader>,e :call ExToggle(getcwd())<CR>
+" edit
 noremap <silent> <Leader><Tab> :call VexToggle("")<CR>
-noremap <silent> <Leader>,<Tab> :call VexToggle(getcwd())<CR>
-
-" from ./vim/after/ftplugin/netrw.vim
-"   Select file/dir:  f
-"   Refresh listing: <LocalLeader>l
-"   Set treetop dir: <LocalLeader>t
-
-" search
-noremap <Leader><Space> /
-noremap <Leader>a :Ag! 
+noremap              <Leader>` :edit ~/
+nmap                <Leader>et :tabedit 
+cnoremap                    %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
+nmap           <LocalLeader>ew :edit %%
+nmap           <LocalLeader>et :tabedit %%
 
 " list
 noremap <LocalLeader><Space> :buffers<CR>
 noremap <Leader>p :CtrlPBuffer<CR>
-noremap <Leader>b :echo bufnr('%')<CR>
-
-" open from ~
-noremap <Leader>eh :edit ~/
-
-" open from /
-nmap <Leader>ew :edit 
-nmap <Leader>es :split 
-nmap <Leader>ev :vsplit 
-nmap <Leader>et :tabedit 
-
-" edit from %
-cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
-nmap <LocalLeader>ew :edit %%
-nmap <LocalLeader>es :split %%
-nmap <LocalLeader>ev :vsplit %%
-nmap <LocalLeader>et :tabedit %%
-nmap <LocalLeader>ww :write %%
-
-" close
-noremap <LocalLeader>d :bdelete<CR>
-" noremap <silent> <LocalLeader>c :call BClose()<CR>
-
-" current directory
-noremap <Leader>/ :pwd<CR>
-noremap <LocalLeader>t :lcd %:h<CR>
 
 " cycle
 noremap   <M-Tab> :bnext<CR>
 noremap <M-S-Tab> :bprevious<CR>
 
+" write
+nmap           <LocalLeader>ww :write %%
+
+" current directory
+noremap <Leader>/ :pwd<CR>
+
 " reload
-noremap <LocalLeader>l :call ReLoadBuffers()<CR>
+noremap <Leader><Space> :call ReLoadBuffers()<CR>
+
+" close
+noremap <LocalLeader>d :bdelete<CR>
 
 " ··········· ex commands ·············· {{{2
+" enter/exit ex mode
+noremap <Leader>; :
+noremap <C-Space> :
+
+" shell command
+noremap <Leader>1 :!
+
 " history
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
@@ -461,6 +317,9 @@ cnoremap  <C-Left> <S-Left>
 cnoremap <C-Right> <S-Right>
 
 " ··········· editing ·················· {{{2
+" exit insert mode
+inoremap <C-Space> <Esc>`^
+
 " open above / below current line
 inoremap <S-CR> <C-O>O
 inoremap <C-CR> <C-O>o
@@ -506,20 +365,14 @@ inoremap <C-L> <C-X><C-L>
 " jump back a word in insert mode
 inoremap <C-B> <C-O>b
 
-" autocomplete parens, brackets, braces
-inoremap (<CR> (<CR>)<Esc>O<Tab>
-inoremap [<CR> [<CR>]<Esc>O<Tab>
-inoremap {<CR> {<CR>}<Esc>O<Tab>
-
 " clipboard
-noremap <Leader>8 "*
+noremap <Leader>' "*
 
 " copy to end of line
-noremap <LocalLeader>c "*yg_
+noremap <LocalLeader>' "*yg_
 
 " paste toggle
-noremap <LocalLeader>p :set paste! paste?<CR>
-noremap           <F4> :set paste! paste?<CR>
+noremap <F4> :set paste! paste?<CR>
 set pastetoggle=<F4>
 
 " toggle case
@@ -530,9 +383,6 @@ noremap <silent> <LocalLeader>f, :call FileTypeToggle(1)<CR>
 noremap <silent>  <LocalLeader>f :call FileTypeToggle(0)<CR>
 " toggle html
 inoremap <silent> `h X<C-O>:call HTMLTypeToggle()<CR><BS>
-
-" format entire file
-noremap <LocalLeader>fef :normal! gg=G``<CR>
 
 " toggle Gundo
 noremap <Leader>g :GundoToggle<CR>
@@ -556,20 +406,13 @@ inoremap   <Up> <C-R>=pumvisible() ? "\<lt>Up>" : "\<lt>C-O>gk"<CR>
 inoremap <Down> <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"<CR>
 
 " ··········· searching ················ {{{2
-" slash
-nnoremap <C-Space> /
-nnoremap <S-Space> ?
-
-" repeat last char search
-noremap + ;
-noremap _ ,
-
 " find word under cursor
 noremap <silent> <Leader>f :set foldenable!<CR>
       \:let view=winsaveview()<CR>#*
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
-" code-search word under cursor
+" search
+noremap <Leader>a :Ag! 
 nnoremap K :Ag!<CR>
 
 " toggle search highlighting
@@ -579,15 +422,13 @@ noremap <Leader>h :set hlsearch! hlsearch?<CR>
 " find merge conflicts
 noremap <silent> <LocalLeader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" toggle diff
-noremap <silent> <Leader>d :call DiffToggle()<CR>
-
 " ··········· splits & tabs ············ {{{2
 " splits
 noremap <Leader>s :split<CR>
 noremap <Leader>v :vsplit<CR>
 noremap <silent> <Leader>o :only<CR>
-noremap <Leader>k :quit<CR>
+noremap <Leader>q :quit<CR>
+noremap <S-Space> <C-W>w
 
 "resize
 noremap <Leader>- <C-W>_
@@ -604,10 +445,6 @@ noremap <LocalLeader>,w :setlocal wrap! linebreak! list! wrap?<CR>
 if has("gui_running")
   noremap <LocalLeader>,t :call TransparencyToggle(5)<CR>
 end
-
-" fonts
-noremap <silent> <LocalLeader>= :call FontCycle(1)<CR>:echo getfontname()<CR>
-noremap <silent> <LocalLeader>- :call FontCycle(-1)<CR>:echo getfontname()<CR>
 
 " background
 noremap <LocalLeader>b :call ToggleBG()<CR>:echo &background<CR>
@@ -637,39 +474,21 @@ noremap <Leader>t<Space> :call RunNearestSpec()<CR>
 noremap <Leader>tl :call RunLastSpec()<CR>
 noremap <Leader>ta :call RunAllSpecs()<CR>
 
-" ::::::::: Abbreviations ::::::::::::::::: {{{1
-" common typos
-noreabbrev verison version
-noreabbrev funiction function
-noreabbrev funcition function
-noreabbrev funciotn function
-noreabbrev funciton function
-noreabbrev docuemt document
-noreabbrev docuemtn document
-noreabbrev hte the
-noreabbrev edn end
+" ::::::::: Filetype :::::::::::::::::::::: {{{1
 
-" ::::::::: Autocommands :::::::::::::::::: {{{1
-
-" ··········· vimrc ···················· {{{2
+" vimrc
 augroup VimrcGroup
   autocmd!
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
 
-" ··········· netrw ···················· {{{2
-augroup NetrwGroup
-  autocmd!
-  " autocmd BufEnter * call NormalizeWidths()
-augroup END
-
-" ··········· git ·· ··················· {{{2
+" git
 augroup GitGroup
   autocmd!
   au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 augroup END
 
-" ··········· ruby ····················· {{{2
+" ruby
 augroup RubyGroup
   autocmd!
   autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
@@ -683,7 +502,7 @@ augroup RubyGroup
   autocmd FileType ruby,eruby :inoreabbrev <buffer> erc <%# %><C-O>F<Space>
 augroup END
 
-" ··········· markdown ················· {{{2
+" markdown
 augroup MarkdownGroup
   autocmd!
   autocmd Bufread,BufNewFile *.md set filetype=markdown
@@ -692,26 +511,6 @@ augroup END
 " ::::::::: Functions ::::::::::::::::::::: {{{1
 
 " ··········· netrw ···················· {{{2
-fun! ExToggle(dir)
-  if &filetype != "netrw"
-    call ExOpen(a:dir)
-  else
-    call ExClose()
-  endif
-endf
-
-fun! ExOpen(dir)
-  let g:netrw_browse_split=0    " open files in current window
-  let g:netrw_banner=1          " banner
-  exe "Explore " . a:dir
-endf
-
-fun! ExClose()
-  while &filetype == "netrw"
-    exe "normal! \<C-O>"
-  endw
-endf
-
 fun! VexToggle(dir)
   if exists("t:vex_buf_nr")
     call VexClose()
@@ -779,16 +578,6 @@ fun! HTMLTypeToggle()
   end
 endf
 
-" ··········· splits ··················· {{{2
-fun! BClose()
-  silent! bprevious | split
-  silent! bnext     | bdelete
-endf
-
-fun! DiffToggle()
-  echo "Implement DiffToggle()"
-endf
-
 " ··········· line numbers ············· {{{2
 fun! NumberToggle()
   if &number == 0
@@ -829,34 +618,6 @@ fun! SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endf
 
-" ··········· fonts ···················· {{{2
-fun! FontCycle(num)
-  let font_nams = sort(keys(g:font_dict))
-  let [ cur_nam, cur_hgt, cur_idx ] = CurFont(font_nams)
-  let new_nam = NewFontNm(cur_idx, a:num, font_nams)
-  let new_hgt = NewFontHt(cur_hgt, cur_nam, new_nam)
-
-  let new_font = join([ new_nam, new_hgt ], ":h")
-  exe "set guifont=" . escape(new_font, " ")
-endf
-
-fun! CurFont(font_nams)
-  let [cur_nam, cur_hgt] = split(getfontname(), ':')
-  let cur_idx = index(a:font_nams, cur_nam)
-  return [cur_nam, cur_hgt, cur_idx]
-endf
-
-fun! NewFontNm(cur_idx, num, font_nams)
-  let new_idx = (a:cur_idx + a:num) % len(a:font_nams)
-  return a:font_nams[new_idx]
-endf
-
-fun! NewFontHt(cur_hgt, cur_nam, new_nam)
-  let cur_adj = get(g:font_dict, a:cur_nam, 0)
-  let new_adj = g:font_dict[a:new_nam]
-  return a:cur_hgt - cur_adj + new_adj
-endf
-
 " ··········· statusline ··············· {{{2
 function! AirlineInit()
   if !exists('g:airline_symbols')
@@ -867,12 +628,7 @@ function! AirlineInit()
   let g:airline#extensions#tabline#left_alt_sep = '|'
   let g:airline_detect_whitespace=0
   let g:airline_section_z = '%v : %l/%L (%n)'
-  " let g:airline_theme='luna'
-  " let g:airline_theme='molokai'
-  " let g:airline_theme='ubaryd'
-  let g:airline_theme='laederon'
   let g:airline_theme='today'
-  " let g:airline_theme='murmur'
 endfunction
 
 call AirlineInit()
@@ -951,10 +707,17 @@ endfunction
 " ··········· keyboard ················· {{{2
 function! Keyboard(type)
    if a:type == "workman"
+     call NormanUnmaps()
      call QWERTYUnmaps()
      call WorkmanMaps()
      echo "Workman mappings enabled"
+   elseif a:type == "norman"
+     call QWERTYUnmaps()
+     call WorkmanUnmaps()
+     call NormanMaps()
+     echo "Norman mappings enabled"
    else
+     call NormanUnmaps()
      call WorkmanUnmaps()
      call QWERTYMaps()
      echo "QWERTY mappings enabled"
