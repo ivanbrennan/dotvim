@@ -163,7 +163,6 @@ let g:netrw_use_errorwindow=0   " suppress error window
 " ctrlp
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_window = 'max:18'
-let g:ctrlp_map = '<C-Space>'
 
 " Ag
 if executable('ag')
