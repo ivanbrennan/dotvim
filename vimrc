@@ -302,9 +302,6 @@ cnoremap  <C-Left> <S-Left>
 cnoremap <C-Right> <S-Right>
 
 " ··········· editing ·················· {{{2
-" exit insert mode
-inoremap <C-Space> <Esc>`^
-
 " open above / below current line
 inoremap <S-CR> <C-O>O
 inoremap <C-CR> <C-O>o
@@ -382,13 +379,6 @@ xnoremap an :<C-U>call NextTextObject('a')<CR>
 " sensible marks
 noremap ` '
 noremap ' `
-
-" soft line-breaks
-noremap    <Up> gk
-noremap  <Down> gj
-" behave normally if popup-menu visible
-inoremap   <Up> <C-R>=pumvisible() ? "\<lt>Up>" : "\<lt>C-O>gk"<CR>
-inoremap <Down> <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>C-O>gj"<CR>
 
 " ··········· searching ················ {{{2
 " find word under cursor
