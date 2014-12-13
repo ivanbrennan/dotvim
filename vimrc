@@ -20,6 +20,7 @@ Bundle 'rking/ag.vim'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-commentary'
 " Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-unimpaired'
@@ -176,21 +177,15 @@ let g:rspec_runner = "os_x_iterm"
 
 " ::::::::: Keymaps ::::::::::::::::::::::: {{{1
 
+" ··········· config ··················· {{{2
 " leaders
 map <Space> <Leader>
-let maplocalleader=','
-noremap <C-,> ,
 
 set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
-noremap <LocalLeader>` :source $MYVIMRC<CR>
-noremap <LocalLeader>`, :tabedit $MYVIMRC<CR>
-
-" ··········· layout ··················· {{{2
-noremap <LocalLeader>kq :call Keyboard("qwerty")<CR>
-noremap <LocalLeader>kw :call Keyboard("workman")<CR>
-noremap <LocalLeader>kn :call Keyboard("norman")<CR>
+noremap <Leader>2 :source $MYVIMRC<CR>
+noremap <Leader>t2 :tabedit $MYVIMRC<CR>
 
 " ··········· keys ····················· {{{2
 " enable special key combos
@@ -257,67 +252,47 @@ if &term =~ "xterm" || &term =~ "screen" || &term =~ "builtin_gui"
 endif
 
 " ··········· buffers ·················· {{{2
-" edit
+cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 noremap <silent> <Leader><Tab> :call VexToggle("")<CR>
-noremap              <Leader>` :edit ~/
-nmap                <Leader>et :tabedit 
-cnoremap                    %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
-nmap           <LocalLeader>ew :edit %%
-nmap           <LocalLeader>et :tabedit %%
 
-" list
-noremap <LocalLeader><Space> :buffers<CR>
-noremap <Leader>p :CtrlPBuffer<CR>
+noremap     <Leader>` :edit ~/
+nmap       <Leader>et :tabedit 
+noremap     <Leader>d :bdelete<CR>
+nmap       <Leader>,w :write %%
 
-" cycle
 noremap   <M-Tab> :bnext<CR>
 noremap <M-S-Tab> :bprevious<CR>
+noremap <Leader>b :CtrlPBuffer<CR>
 
-" write
-nmap           <LocalLeader>ww :write %%
-
-" current directory
 noremap <Leader>/ :pwd<CR>
-
-" reload
 noremap <Leader><Space> :call ReLoadBuffers()<CR>
 
-" close
-noremap <LocalLeader>d :bdelete<CR>
-
 " ··········· ex commands ·············· {{{2
-" enter/exit ex mode
 noremap <Leader>; :
-
-" shell command
 noremap <Leader>1 :!
 
-" history
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
-
-" command-line editing
+cnoremap     <C-P> <Up>
+cnoremap     <C-N> <Down>
 cnoremap     <C-A> <Home>
 cnoremap  <C-Left> <S-Left>
 cnoremap <C-Right> <S-Right>
 
 " ··········· editing ·················· {{{2
-" open above / below current line
-inoremap <S-CR> <C-O>O
-inoremap <C-CR> <C-O>o
+" above / below current line
+inoremap   <S-CR> <C-O>O
+inoremap   <C-CR> <C-O>o
+noremap <S-Space> mzO<Esc>j`z
+noremap <C-Space> mzo<Esc>k`z
 
-" double backspace
-inoremap <C-BS> <BS><BS>
-
-" insert above / below current line
-noremap <S-CR> mzO<Esc>j`z
-noremap <C-CR> mzo<Esc>k`z
+" clipboard
+noremap <Leader>c "*
+noremap <Leader>4 "*yg_
 
 " commentary
-xmap <Leader>c  <Plug>Commentary
-nmap <Leader>c  <Plug>Commentary
-omap <Leader>c  <Plug>Commentary
-nmap <Leader>cc <Plug>CommentaryLine
+xmap <Leader>3 <Plug>Commentary
+nmap <Leader>3 <Plug>Commentary
+omap <Leader>3 <Plug>Commentary
+nmap <Leader>3<Space> <Plug>CommentaryLine
 
 " bubble text
 nnoremap <silent> <C-Up> mZ:move .-2<CR>==`Z
@@ -331,6 +306,9 @@ vnoremap <C-Left> <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
 vnoremap <C-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 
 " whole line completion
+inoremap <C-L> <C-X><C-L>
+
+" tab
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
@@ -342,38 +320,15 @@ endfunction
 inoremap <expr> <silent> <TAB> InsertTabWrapper()
 inoremap <S-TAB> <C-N>
 
-inoremap <C-L> <C-X><C-L>
-
 " jump back a word in insert mode
 inoremap <C-B> <C-O>b
-
-" clipboard
-noremap <Leader>' "*
-
-" copy to end of line
-noremap <LocalLeader>' "*yg_
 
 " paste toggle
 noremap <F4> :set paste! paste?<CR>
 set pastetoggle=<F4>
 
 " toggle case
-inoremap `` <Esc>viwg~gi
-
-" toggle filetype
-noremap <silent> <LocalLeader>f, :call FileTypeToggle(1)<CR>
-noremap <silent>  <LocalLeader>f :call FileTypeToggle(0)<CR>
-" toggle html
-inoremap <silent> `h X<C-O>:call HTMLTypeToggle()<CR><BS>
-
-" toggle Gundo
-noremap <Leader>g :GundoToggle<CR>
-
-" previous / next braces
-onoremap in :<C-U>call NextTextObject('i')<CR>
-xnoremap in :<C-U>call NextTextObject('i')<CR>
-onoremap an :<C-U>call NextTextObject('a')<CR>
-xnoremap an :<C-U>call NextTextObject('a')<CR>
+inoremap ~~ <Esc>viwg~gi
 
 " ··········· navigation ··············· {{{2
 " sensible marks
@@ -395,7 +350,7 @@ noremap <Leader>l :nohlsearch<CR><C-L>
 noremap <Leader>h :set hlsearch! hlsearch?<CR>
 
 " find merge conflicts
-noremap <silent> <LocalLeader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+noremap <silent> <Leader>k <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " ··········· splits & tabs ············ {{{2
 " splits
@@ -403,44 +358,32 @@ noremap <Leader>s :split<CR>
 noremap <Leader>v :vsplit<CR>
 noremap <silent> <Leader>o :only<CR>
 noremap <Leader>q :quit<CR>
-noremap <S-Space> <C-W>w
 
 "resize
 noremap <Leader>- <C-W>_
 noremap <Leader>0 <C-W><Bar>
 noremap <Leader>= <C-W>=
 
-" tabs
-noremap <C-S-Tab> :tabprevious<CR>
-noremap   <C-Tab> :tabnext<CR>
-
 " ··········· appearance ··············· {{{2
-noremap <LocalLeader>,w :setlocal wrap! linebreak! list! wrap?<CR>
+noremap <Leader>w :setlocal wrap! linebreak! list! wrap?<CR>
 
-if has("gui_running")
-  noremap <LocalLeader>,t :call TransparencyToggle(5)<CR>
-end
-
-" background
-noremap <LocalLeader>b :call ToggleBG()<CR>:echo &background<CR>
+noremap <Leader>,b :call ToggleBG()<CR>:echo &background<CR>
 
 " info
-noremap <LocalLeader>h :call HexHighlight()<CR>
-noremap <LocalLeader>y :call SynStack()<CR>
+noremap <Leader>,x :call HexHighlight()<CR>
+noremap <Leader>,y :call SynStack()<CR>
 
 " line numbers
 noremap <Leader>n :call NumberToggle()<CR>
 noremap <Leader>r :set relativenumber! relativenumber?<CR>
 
 " foldcolumn
-noremap <silent> <Leader>z :call FoldColToggle(4)<CR>
+noremap <silent> <Leader>,z :call FoldColToggle(4)<CR>
 
 " cursor
-noremap <silent> <LocalLeader>cc :set cursorcolumn!<CR>
-noremap <silent> <LocalLeader>cl :call CursorLineToggle()<CR>
-
-" colorcolumn
-noremap <silent> <LocalLeader>1 :call ColorColToggle()<CR>
+noremap <silent> <Leader>,c :set cursorcolumn!<CR>
+noremap <silent> <Leader>,l :call CursorLineToggle()<CR>
+noremap <silent> <Leader>,1 :call ColorColToggle()<CR>
 
 " ··········· evaluation ··············· {{{2
 " RSpec
