@@ -105,6 +105,8 @@ augroup CursorGroup             " clear cursorline highlight
   autocmd!
   autocmd BufReadPost * call      RestoreCrsr()
 augroup END
+set showmatch
+set matchtime=2
 
 " whitespace
 set tabstop=2                   " tab is two spaces
@@ -397,6 +399,7 @@ noremap <Leader>ta :call RunAllSpecs()<CR>
 " vimrc
 augroup VimrcGroup
   autocmd!
+  autocmd FileType vim set foldmethod=marker
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
 
@@ -409,7 +412,11 @@ augroup END
 " ruby
 augroup RubyGroup
   autocmd!
+  autocmd FileType ruby,eruby let ruby_fold = 1
+  autocmd FileType ruby,eruby set foldmethod=syntax
   autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby,eruby syn match parens /[(){}\[\]]/
+  autocmd FileType ruby,eruby hi def link parens Delimiter
   " complete buffer loading can cause code execution
   " turn this off if it's a concern
   autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
