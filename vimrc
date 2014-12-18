@@ -379,7 +379,8 @@ noremap <Leader>,y :call SynStack()<CR>
 noremap <Leader>n :call NumberToggle()<CR>
 noremap <Leader>r :set relativenumber! relativenumber?<CR>
 
-" foldcolumn
+" folding
+noremap   <expr> <Leader>,m FoldMethToggle()
 noremap <silent> <Leader>,z :call FoldColToggle(4)<CR>
 
 " cursor
@@ -399,7 +400,6 @@ noremap <Leader>ta :call RunAllSpecs()<CR>
 " vimrc
 augroup VimrcGroup
   autocmd!
-  autocmd FileType vim set foldmethod=marker
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
 
@@ -413,7 +413,6 @@ augroup END
 augroup RubyGroup
   autocmd!
   autocmd FileType ruby,eruby let ruby_fold = 1
-  autocmd FileType ruby,eruby set foldmethod=syntax
   autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
   autocmd FileType ruby,eruby syn match parens /[(){}\[\]]/
   autocmd FileType ruby,eruby hi def link parens Delimiter
@@ -512,7 +511,15 @@ fun! NumberToggle()
   end
 endf
 
-" ··········· foldcolumn ··············· {{{2
+" ··········· folding ·················· {{{2
+fun! FoldMethToggle()
+  if &foldmethod == 'marker'
+    set foldmethod=syntax
+  else
+    set foldmethod=marker
+  endif
+endf
+
 fun! FoldColToggle(fold_max)
   if &foldcolumn < a:fold_max
     call FoldColOn(a:fold_max)
