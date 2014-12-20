@@ -412,7 +412,6 @@ augroup END
 " ruby
 augroup RubyGroup
   autocmd!
-  autocmd FileType ruby,eruby let ruby_fold = 1
   autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
   autocmd FileType ruby,eruby syn match parens /[(){}\[\]]/
   autocmd FileType ruby,eruby hi def link parens Delimiter
@@ -515,8 +514,14 @@ endf
 fun! FoldMethToggle()
   if &foldmethod == 'marker'
     set foldmethod=syntax
+    if &filetype == 'ruby'
+      let ruby_fold = 1
+    endif
   else
     set foldmethod=marker
+    if exists('ruby_fold')
+      unlet ruby_fold
+    endif
   endif
 endf
 
