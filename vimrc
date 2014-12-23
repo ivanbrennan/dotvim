@@ -280,9 +280,10 @@ nmap       <Leader>,w :write %%
 noremap   <M-Tab> :bnext<CR>
 noremap <M-S-Tab> :bprevious<CR>
 noremap <Leader>p :CtrlPBuffer<CR>
+noremap <Leader><Space> <C-^>
 
 noremap <Leader>/ :pwd<CR>
-noremap <Leader><Space> :call ReLoadBuffers()<CR>
+noremap <Leader>,<Space> :call ReLoadBuffers()<CR>
 
 " ··········· ex commands ·············· {{{2
 noremap <Leader>; :
