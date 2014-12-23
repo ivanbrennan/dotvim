@@ -368,9 +368,6 @@ nnoremap K :Ag!<CR>
 noremap <Leader>l :nohlsearch<CR><C-L>
 noremap <Leader>h :set hlsearch! hlsearch?<CR>
 
-" find merge conflicts
-noremap <silent> <Leader>k <ESC>/\v^[<=>]{7}( .*\|$)<CR>
-
 " ··········· splits & tabs ············ {{{2
 " splits
 noremap <Leader>s :split<CR>
