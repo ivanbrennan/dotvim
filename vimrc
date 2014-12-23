@@ -338,8 +338,9 @@ endfunction
 inoremap <expr> <silent> <TAB> InsertTabWrapper()
 inoremap <S-TAB> <C-N>
 
-" jump back a word in insert mode
+" jump around
 inoremap <C-B> <C-O>b
+inoremap    JK <C-O>A
 
 " paste toggle
 noremap <F4> :set paste! paste?<CR>
