@@ -89,7 +89,8 @@ set cursorline
 set foldmethod=marker
 set showcmd
 set noshowmode
-set winwidth=79                 " active width soft-min
+set winwidth=79                 " soft active min
+set winminwidth=30              " hard inactive min
 
 fun! SetWinMinHts(inactive_min)
   if a:inactive_min > 0
@@ -97,8 +98,8 @@ fun! SetWinMinHts(inactive_min)
     let upper_bound = full_screen - a:inactive_min
 
     if upper_bound > a:inactive_min
-      let &winheight    = min( [upper_bound, 30] )  " active height soft-min
-      let &winminheight = a:inactive_min            " inactive height hard-min
+      let &winheight    = min( [upper_bound, 30] )  " soft active min
+      let &winminheight = a:inactive_min            " hard inactive min
     endif
   endif
 endf
