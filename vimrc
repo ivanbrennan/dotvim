@@ -376,8 +376,8 @@ noremap <silent> <Leader>o :only<CR>
 noremap <Leader>q :quit<CR>
 
 "resize
-noremap <Leader>- <C-W>_
-noremap <Leader>0 <C-W><Bar>
+noremap     <C-W>\ <C-W><Bar>
+noremap <C-W><C-\> <C-W><Bar>
 
 " ··········· appearance ··············· {{{2
 noremap <Leader>w :setlocal wrap! linebreak! list! wrap?<CR>
