@@ -303,8 +303,8 @@ noremap <S-Space> mzO<Esc>j`z
 noremap <C-Space> mzo<Esc>k`z
 
 " clipboard
-noremap <Leader>c "*
-noremap <Leader>4 "*yg_
+noremap <Leader>= "+
+noremap <Leader>4 g_
 
 " commentary
 xmap <Leader>3 <Plug>Commentary
@@ -378,7 +378,6 @@ noremap <Leader>q :quit<CR>
 "resize
 noremap <Leader>- <C-W>_
 noremap <Leader>0 <C-W><Bar>
-noremap <Leader>= <C-W>=
 
 " ··········· appearance ··············· {{{2
 noremap <Leader>w :setlocal wrap! linebreak! list! wrap?<CR>
