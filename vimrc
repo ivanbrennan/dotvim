@@ -300,6 +300,8 @@ noremap <Leader><Space> <C-^>
 noremap <Leader>/ :pwd<CR>
 noremap <Leader>,<Space> :call ReLoadBuffers()<CR>
 
+noremap <silent> <Leader>s :A<CR>
+
 " ··········· ex commands ·············· {{{2
 noremap <Leader>; :
 noremap <Leader>1 :!
@@ -384,10 +386,10 @@ noremap <Leader>h :set hlsearch! hlsearch?<CR>
 
 " ··········· splits & tabs ············ {{{2
 " splits
-noremap <Leader>s :split<CR>
-noremap <Leader>v :vsplit<CR>
+noremap <Leader>,s :split<CR>
+noremap <Leader>,v :vsplit<CR>
+noremap  <Leader>q :quit<CR>
 noremap <silent> <Leader>o :only<CR>
-noremap <Leader>q :quit<CR>
 
 "resize
 noremap     <C-W>\ <C-W><Bar>
