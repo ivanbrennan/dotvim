@@ -424,6 +424,9 @@ noremap <Leader>t<Space> :call RunNearestSpec()<CR>
 noremap <Leader>tl :call RunLastSpec()<CR>
 noremap <Leader>ta :call RunAllSpecs()<CR>
 
+" Fugitive
+noremap <silent> <Leader>b :Gblame<CR>
+
 " ::::::::: Filetype :::::::::::::::::::::: {{{1
 
 " vimrc
