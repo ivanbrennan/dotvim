@@ -290,7 +290,8 @@ nmap       <Leader>,w :write %%
 noremap   <M-Tab> :bnext<CR>
 noremap <M-S-Tab> :bprevious<CR>
 noremap <Leader>p :CtrlPBuffer<CR>
-noremap <Leader><Space> <C-^>
+noremap <Leader>l <C-^>
+noremap <Leader><Space> <C-Z>
 
 noremap <Leader>/ :pwd<CR>
 noremap <Leader>,<Space> :call ReLoadBuffers()<CR>
@@ -376,7 +377,7 @@ noremap <silent> <Leader>f :set foldenable!<CR>
 noremap <Leader>a :Ag! 
 
 " toggle search highlighting
-noremap <Leader>l :nohlsearch<CR><C-L>
+noremap <Leader>hh :nohlsearch<CR><C-L>
 noremap <Leader>h :set hlsearch! hlsearch?<CR>
 
 " ··········· splits & tabs ············ {{{2
