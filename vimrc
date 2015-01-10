@@ -377,8 +377,8 @@ noremap <silent> <Leader>f :set foldenable!<CR>
 noremap <Leader>a :Ag! 
 
 " toggle search highlighting
-noremap <Leader>hh :nohlsearch<CR><C-L>
-noremap <Leader>h :set hlsearch! hlsearch?<CR>
+noremap <silent> <C-L> :nohlsearch<CR><C-L>
+noremap <Leader>,n :set hlsearch! hlsearch?<CR>
 
 " ··········· splits & tabs ············ {{{2
 " splits
