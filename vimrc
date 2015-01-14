@@ -286,6 +286,7 @@ noremap <silent> <Leader><Tab> :call VexToggle("")<CR>
 noremap     <Leader>` :edit ~/
 nmap       <Leader>et :tabedit 
 noremap     <Leader>d :bdelete<CR>
+noremap    <Leader>,d :bdelete#<CR>
 nmap       <Leader>,w :write %%
 
 noremap   <M-Tab> :bnext<CR>
