@@ -34,6 +34,7 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'eiginn/netrw'
 Bundle 'nelstrom/vim-qargs'
+Bundle 'nelstrom/vim-visual-star-search'
 
 " github repos: colors
 Bundle 'gregsexton/Muon'
