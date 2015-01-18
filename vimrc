@@ -382,6 +382,10 @@ noremap <Leader>a :Ag!
 noremap <silent> <C-L> :nohlsearch<CR><C-L>
 noremap <Leader>,n :set hlsearch! hlsearch?<CR>
 
+" fix & to preserve flags
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
 " ··········· splits & tabs ············ {{{2
 " splits
 noremap <Leader>,s :split<CR>
