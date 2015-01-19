@@ -391,7 +391,6 @@ xnoremap & :&&<CR>
 noremap <Leader>,s :split<CR>
 noremap <Leader>,v :vsplit<CR>
 noremap  <Leader>q :quit<CR>
-noremap <silent> <Leader>o :only<CR>
 
 "resize
 noremap     <C-W>\ <C-W><Bar>
