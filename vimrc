@@ -385,7 +385,8 @@ inoremap <C-B>   <C-O>b
 inoremap JK      <C-O>A
 
 " paste toggle
-noremap <F4>     :set paste! paste?<CR>
+noremap  <silent> <Leader>jp  <F4>
+inoremap <silent> <Space>jp   <F4>
 set pastetoggle=<F4>
 
 " toggle case
