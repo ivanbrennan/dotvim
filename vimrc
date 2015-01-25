@@ -324,7 +324,7 @@ noremap <C-S-Space>        <C-Z>
 noremap <Leader>/          :pwd<CR>
 noremap <Leader>,<Space>   :call ReLoadBuffers()<CR>
 
-noremap <silent> <Leader>s :A<CR>
+noremap <silent> <Leader>ap :A<CR>
 
 " ··········· ex commands ·············· {{{2
 noremap  <Leader><Space> :!
@@ -404,7 +404,7 @@ noremap <silent> <Leader>f :set foldenable!<CR>
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " search
-noremap <Leader>a  :Ag! 
+noremap <Leader>ag  :Ag! 
 
 " toggle search highlighting
 noremap <silent> <C-L> :nohlsearch<CR><C-L>
