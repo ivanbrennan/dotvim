@@ -307,6 +307,7 @@ noremap <silent> <Leader><CR>  :Explore<CR>
 nmap    <Leader>ee         :edit %%
 noremap <Leader>et         :tabedit 
 noremap <Leader>e`         :edit ~/
+noremap <Leader>ec         :edit ~/Development/code/
 noremap <Leader>dd         :bdelete<CR>
 noremap <Leader>d3         :bdelete#<CR>
 nmap    <Leader>ww         :write %%
