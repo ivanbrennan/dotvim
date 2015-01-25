@@ -410,6 +410,10 @@ noremap <Leader>ag  :Ag!
 noremap <silent> <C-L> :nohlsearch<CR><C-L>
 noremap <Leader>,n :set hlsearch! hlsearch?<CR>
 
+" substitute
+nnoremap <leader>s  :%s/
+vnoremap <leader>s  :s/
+
 " fix & to preserve flags
 nnoremap &  :&&<CR>
 xnoremap &  :&&<CR>
