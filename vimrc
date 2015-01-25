@@ -297,6 +297,22 @@ if &term =~ "xterm" || &term =~ "screen" || &term =~ "builtin_gui"
   set  <F30>=[37~
   map  <F30> <C-S-CR>
   map! <F30> <C-S-CR>
+
+  set  <F31>=[1;6A
+  map  <F31> <C-S-Up>
+  map! <F31> <C-S-Up>
+
+  set  <F32>=[1;6B
+  map  <F32> <C-S-Down>
+  map! <F32> <C-S-Down>
+
+  set  <F33>=[1;6C
+  map  <F33> <C-S-Right>
+  map! <F33> <C-S-Right>
+
+  set  <F34>=[1;6D
+  map  <F34> <C-S-Left>
+  map! <F34> <C-S-Left>
 endif
 
 " ··········· buffers ·················· {{{2
@@ -313,8 +329,10 @@ noremap <Leader>d3          :bdelete#<CR>
 nmap    <Leader>ww          :write %%
 noremap <C-S-CR>            :write<CR>
 
-noremap <M-Tab>             :bnext<CR>
-noremap <M-S-Tab>           :bprevious<CR>
+noremap <C-S-Down>          :cnext<CR>
+noremap <C-S-Up>            :cprevious<CR>
+noremap <C-S-Right>         :bnext<CR>
+noremap <C-S-Left>          :bprevious<CR>
 noremap <Leader>p           :CtrlPBuffer<CR>
 noremap <Leader>l           <C-^>
 noremap <S-Space>           :buffers<CR>
