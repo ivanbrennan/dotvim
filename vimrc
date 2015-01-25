@@ -289,6 +289,10 @@ if &term =~ "xterm" || &term =~ "screen" || &term =~ "builtin_gui"
   set  <F28>=[35~
   map  <F28> <C-S-Space>
   map! <F28> <C-S-Space>
+
+  set  <F29>=[36~
+  map  <F29> <C-->
+  map! <F29> <C-->
 endif
 
 " ··········· buffers ·················· {{{2
@@ -426,9 +430,9 @@ noremap   <expr> <Leader>,m FoldMethToggle()
 noremap <silent> <Leader>,z :call FoldColToggle(4)<CR>
 
 " cursor
-noremap <silent> <Leader>,c :set cursorcolumn!<CR>
-noremap <silent> <Leader>,l :call CursorLineToggle()<CR>
-noremap <silent> <Leader>,1 :call ColorColToggle()<CR>
+noremap <silent> <C--> :call CursorLineToggle()<CR>
+noremap <silent> <C-Bslash> :set cursorcolumn!<CR>
+noremap <silent> <Leader>8 :call ColorColToggle()<CR>
 
 " ··········· testing ·················· {{{2
 nmap <Leader>tt <Plug>RunCurrentSpecFile
