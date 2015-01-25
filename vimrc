@@ -303,11 +303,12 @@ endif
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 noremap <silent> <Leader><Tab> :call VexToggle("")<CR>
 
-noremap <Leader>`          :edit ~/
-nmap    <Leader>et         :tabedit 
-noremap <Leader>d          :bdelete<CR>
-noremap <Leader>,d         :bdelete#<CR>
-nmap    <Leader>,w         :write %%
+nmap    <Leader>ee         :edit %%
+noremap <Leader>et         :tabedit 
+noremap <Leader>e`         :edit ~/
+noremap <Leader>dd         :bdelete<CR>
+noremap <Leader>d3         :bdelete#<CR>
+nmap    <Leader>ww         :write %%
 noremap <C-S-CR>           :write<CR>
 
 noremap <M-Tab>            :bnext<CR>
