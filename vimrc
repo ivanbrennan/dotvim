@@ -478,6 +478,7 @@ augroup RubyGroup
   autocmd!
   autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
   autocmd FileType ruby,eruby set foldlevel=99
+  autocmd FileType ruby,eruby let ruby_operators=1
   autocmd FileType ruby,eruby syn match parens /[(){}\[\]]/
   autocmd FileType ruby,eruby hi def link parens Delimiter
   " complete buffer loading can cause code execution
