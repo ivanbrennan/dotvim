@@ -329,6 +329,7 @@ noremap <silent> <Leader>ap :A<CR>
 " ··········· ex commands ·············· {{{2
 noremap  <Leader><Space> :!
 nnoremap <Leader>h       :help 
+nnoremap <Leader>x       :x
 
 cnoremap <C-P>           <Up>
 cnoremap <C-N>           <Down>
