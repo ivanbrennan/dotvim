@@ -326,13 +326,14 @@ noremap <Leader>,<Space>   :call ReLoadBuffers()<CR>
 noremap <silent> <Leader>s :A<CR>
 
 " ··········· ex commands ·············· {{{2
-noremap <Leader><Space> :!
+noremap  <Leader><Space> :!
+nnoremap <Leader>h       :help 
 
-cnoremap <C-P>          <Up>
-cnoremap <C-N>          <Down>
-cnoremap <C-A>          <Home>
-cnoremap <C-Left>       <S-Left>
-cnoremap <C-Right>      <S-Right>
+cnoremap <C-P>           <Up>
+cnoremap <C-N>           <Down>
+cnoremap <C-A>           <Home>
+cnoremap <C-Left>        <S-Left>
+cnoremap <C-Right>       <S-Right>
 
 " ··········· editing ·················· {{{2
 " above / below current line
