@@ -337,8 +337,8 @@ cnoremap <C-Right>      <S-Right>
 " above / below current line
 inoremap <S-CR>     <C-O>O
 inoremap <C-CR>     <C-O>o
-noremap  <S-Space>  mzO<Esc>j`z
-noremap  <C-Space>  mzo<Esc>k`z
+noremap  <S-CR>  mzO<Esc>j`z
+noremap  <C-CR>  mzo<Esc>k`z
 
 " clipboard
 noremap  <Leader>=  "+
