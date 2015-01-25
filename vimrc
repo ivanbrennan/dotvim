@@ -220,8 +220,8 @@ map <Space> <Leader>
 set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
-noremap <Leader>2 :source $MYVIMRC<CR>
-noremap <Leader>t2 :tabedit $MYVIMRC<CR>
+noremap <C-.> :source $MYVIMRC<CR>
+noremap <C-,> :tabedit $MYVIMRC<CR>
 
 " ··········· keys ····················· {{{2
 " enable special key combos
@@ -283,8 +283,12 @@ if &term =~ "xterm" || &term =~ "screen" || &term =~ "builtin_gui"
   map! <F26> <C-,>
 
   set  <F27>=[34~
-  map  <F27> <C-S-Space>
-  map! <F27> <C-S-Space>
+  map  <F27> <C-.>
+  map! <F27> <C-.>
+
+  set  <F28>=[35~
+  map  <F28> <C-S-Space>
+  map! <F28> <C-S-Space>
 endif
 
 " ··········· buffers ·················· {{{2
