@@ -316,7 +316,9 @@ noremap <M-Tab>            :bnext<CR>
 noremap <M-S-Tab>          :bprevious<CR>
 noremap <Leader>p          :CtrlPBuffer<CR>
 noremap <Leader>l          <C-^>
-noremap <Leader><Space>    <C-Z>
+noremap <S-Space>          :buffers<CR>
+map     <C-Space>          <Plug>QuickfixToggle
+noremap <C-S-Space>        <C-Z>
 
 noremap <Leader>/          :pwd<CR>
 noremap <Leader>,<Space>   :call ReLoadBuffers()<CR>
@@ -324,8 +326,7 @@ noremap <Leader>,<Space>   :call ReLoadBuffers()<CR>
 noremap <silent> <Leader>s :A<CR>
 
 " ··········· ex commands ·············· {{{2
-noremap <Leader>;   :
-noremap <Leader>1   :!
+noremap <Leader><Space> :!
 
 cnoremap <C-P>          <Up>
 cnoremap <C-N>          <Down>
