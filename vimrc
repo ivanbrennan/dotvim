@@ -484,7 +484,7 @@ noremap <Leader>,tl         :call RunLastSpec()<CR>
 noremap <Leader>,ta         :call RunAllSpecs()<CR>
 
 " Fugitive
-noremap <silent> <Leader>b  :Gblame<CR>
+noremap <silent> <Leader>g  :Gblame<CR>
 
 " ::::::::: Filetype :::::::::::::::::::::: {{{1
 
