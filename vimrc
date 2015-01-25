@@ -304,25 +304,25 @@ cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 noremap <silent> <Leader><Tab> :call VexToggle("")<CR>
 noremap <silent> <Leader><CR>  :Explore<CR>
 
-nmap    <Leader>ee         :edit %%
-noremap <Leader>et         :tabedit 
-noremap <Leader>e`         :edit ~/
-noremap <Leader>ec         :edit ~/Development/code/
-noremap <Leader>dd         :bdelete<CR>
-noremap <Leader>d3         :bdelete#<CR>
-nmap    <Leader>ww         :write %%
-noremap <C-S-CR>           :write<CR>
+nmap    <Leader>ee          :edit %%
+noremap <Leader>et          :tabedit 
+noremap <Leader>e`          :edit ~/
+noremap <Leader>ec          :edit ~/Development/code/
+noremap <Leader>dd          :bdelete<CR>
+noremap <Leader>d3          :bdelete#<CR>
+nmap    <Leader>ww          :write %%
+noremap <C-S-CR>            :write<CR>
 
-noremap <M-Tab>            :bnext<CR>
-noremap <M-S-Tab>          :bprevious<CR>
-noremap <Leader>p          :CtrlPBuffer<CR>
-noremap <Leader>l          <C-^>
-noremap <S-Space>          :buffers<CR>
-map     <C-Space>          <Plug>QuickfixToggle
-noremap <C-S-Space>        <C-Z>
+noremap <M-Tab>             :bnext<CR>
+noremap <M-S-Tab>           :bprevious<CR>
+noremap <Leader>p           :CtrlPBuffer<CR>
+noremap <Leader>l           <C-^>
+noremap <S-Space>           :buffers<CR>
+map     <C-Space>           <Plug>QuickfixToggle
+noremap <C-S-Space>         <C-Z>
 
-noremap <Leader>/          :pwd<CR>
-noremap <Leader>,<Space>   :call ReLoadBuffers()<CR>
+noremap <Leader>/           :pwd<CR>
+noremap <Leader>,<Space>    :call ReLoadBuffers()<CR>
 
 noremap <silent> <Leader>ap :A<CR>
 
