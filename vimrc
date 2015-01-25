@@ -344,8 +344,11 @@ noremap  <S-CR>  mzO<Esc>j`z
 noremap  <C-CR>  mzo<Esc>k`z
 
 " clipboard
-noremap  <Leader>=  "+
+noremap  <Leader>c  "+
 noremap  <Leader>4  g_
+
+" auto-indent whole file
+nnoremap <Leader>=  gg=G``
 
 " commentary
 xmap <Leader>3        <Plug>Commentary
