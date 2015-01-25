@@ -35,6 +35,8 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'eiginn/netrw'
 Bundle 'nelstrom/vim-qargs'
 Bundle 'nelstrom/vim-visual-star-search'
+Bundle 'gabebw/vim-spec-runner'
+Bundle 'christoomey/vim-tmux-runner'
 
 " github repos: colors
 Bundle 'gregsexton/Muon'
@@ -202,6 +204,12 @@ endif
 " vim-rspec
 let g:rspec_runner = "os_x_iterm"
 let g:rspec_command = "!rspec --drb {spec}"
+
+" vim-spec-runner
+let g:spec_runner_dispatcher = "VtrSendCommand! {command} --drb"
+let g:disable_write_on_spec_run = 1
+let g:VtrOrientation = "h"
+let g:VtrPercentage = 35
 
 " ::::::::: Keymaps ::::::::::::::::::::::: {{{1
 
@@ -418,12 +426,16 @@ noremap <silent> <Leader>,c :set cursorcolumn!<CR>
 noremap <silent> <Leader>,l :call CursorLineToggle()<CR>
 noremap <silent> <Leader>,1 :call ColorColToggle()<CR>
 
-" ··········· evaluation ··············· {{{2
-" RSpec
-noremap <Leader>tt :call RunCurrentSpecFile()<CR>
-noremap <Leader>t<Space> :call RunNearestSpec()<CR>
-noremap <Leader>tl :call RunLastSpec()<CR>
-noremap <Leader>ta :call RunAllSpecs()<CR>
+" ··········· testing ·················· {{{2
+nmap <Leader>tt <Plug>RunCurrentSpecFile
+nmap <Leader>t<Space> <Plug>RunFocusedSpec
+nmap <Leader>tl <Plug>RunMostRecentSpec
+noremap <Leader>k :VtrKillRunner<CR>
+
+noremap <Leader>,tt :call RunCurrentSpecFile()<CR>
+noremap <Leader>,t<Space> :call RunNearestSpec()<CR>
+noremap <Leader>,tl :call RunLastSpec()<CR>
+noremap <Leader>,ta :call RunAllSpecs()<CR>
 
 " Fugitive
 noremap <silent> <Leader>b :Gblame<CR>
