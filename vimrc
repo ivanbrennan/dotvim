@@ -302,6 +302,7 @@ endif
 " ··········· buffers ·················· {{{2
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 noremap <silent> <Leader><Tab> :call VexToggle("")<CR>
+noremap <silent> <Leader><CR>  :Explore<CR>
 
 nmap    <Leader>ee         :edit %%
 noremap <Leader>et         :tabedit 
