@@ -293,6 +293,10 @@ if &term =~ "xterm" || &term =~ "screen" || &term =~ "builtin_gui"
   set  <F29>=[36~
   map  <F29> <C-->
   map! <F29> <C-->
+
+  set  <F30>=[37~
+  map  <F30> <C-S-CR>
+  map! <F30> <C-S-CR>
 endif
 
 " ··········· buffers ·················· {{{2
@@ -304,6 +308,7 @@ nmap    <Leader>et         :tabedit
 noremap <Leader>d          :bdelete<CR>
 noremap <Leader>,d         :bdelete#<CR>
 nmap    <Leader>,w         :write %%
+noremap <C-S-CR>           :write<CR>
 
 noremap <M-Tab>            :bnext<CR>
 noremap <M-S-Tab>          :bprevious<CR>
