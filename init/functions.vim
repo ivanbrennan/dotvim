@@ -1,6 +1,6 @@
-" ::::::::: Functions ::::::::::::::::::::: {{{1
+" ::::::::: Functions :::::::::::::::::::::
 
-" ··········· filetype ················· {{{2
+" ··········· filetype ················· {{{1
 fun! FileTypeToggle(num)
   if a:num > 0 || !exists("b:alt_ftype")
     let b:alt_ftype = &filetype
@@ -22,7 +22,7 @@ fun! HTMLTypeToggle()
   end
 endf
 
-" ··········· line numbers ············· {{{2
+" ··········· line numbers ············· {{{1
 fun! NumberToggle()
   if &number == 0
     set foldcolumn=0 number number?
@@ -31,7 +31,7 @@ fun! NumberToggle()
   end
 endf
 
-" ··········· folding ·················· {{{2
+" ··········· folding ·················· {{{1
 fun! FoldMethToggle()
   if &foldmethod == 'marker'
     set foldmethod=syntax
@@ -68,7 +68,7 @@ fun! FoldColOff()
   let &foldcolumn = w:fold_min
 endf
 
-" ··········· syntax ··················· {{{2
+" ··········· syntax ··················· {{{1
 fun! SynStack()
   if !exists("*synstack")
     return
@@ -76,7 +76,7 @@ fun! SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endf
 
-" ··········· statusline ··············· {{{2
+" ··········· statusline ··············· {{{1
 function! AirlineInit()
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -91,7 +91,7 @@ endfunction
 
 call AirlineInit()
 
-" ··········· colors ··················· {{{2
+" ··········· colors ··················· {{{1
 fun! ToggleBG()
   if  exists("g:colors_name") | let cur_colo = g:colors_name | endif
 
@@ -121,7 +121,7 @@ fun! ColorColToggle()
   endif
 endf
 
-" ··········· cursor ··················· {{{2
+" ··········· cursor ··················· {{{1
 fun! RestoreCrsr()
   if line("'\"") > 1 && line("'\"") <= line("$")
     exe "normal! g`\""
@@ -139,14 +139,14 @@ fun! CursorLineToggle()
   end
 endf
 
-" ··········· braces ··················· {{{2
+" ··········· braces ··················· {{{1
 function! NextTextObject(motion)
   echo
   let c = nr2char(getchar())
   execute "normal! f" . c . "v" . a:motion . c
 endfunction
 
-" ··········· git ······················ {{{2
+" ··········· git ······················ {{{1
 "Git branch
 function! GitBranch()
     let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
@@ -162,7 +162,7 @@ function! ReLoadBuffers()
   set noautoread
 endfunction
 
-" ··········· keyboard ················· {{{2
+" ··········· keyboard ················· {{{1
 function! Keyboard(type)
    if a:type == "workman"
      call NormanUnmaps()
