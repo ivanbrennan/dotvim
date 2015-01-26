@@ -363,17 +363,17 @@ noremap  <S-CR>  mzO<Esc>j`z
 noremap  <C-CR>  mzo<Esc>k`z
 
 " clipboard
-noremap  <Leader>c  "+
+noremap  <Leader>'  "+
 noremap  <Leader>4  g_
 
 " auto-indent whole file
 nnoremap <Leader>=  gg=G``
 
 " commentary
-xmap <Leader>3        <Plug>Commentary
-nmap <Leader>3        <Plug>Commentary
-omap <Leader>3        <Plug>Commentary
-nmap <Leader>3<Space> <Plug>CommentaryLine
+xmap <Leader>c  <Plug>Commentary
+nmap <Leader>c  <Plug>Commentary
+omap <Leader>c  <Plug>Commentary
+nmap <Leader>C  <Plug>CommentaryLine
 
 " bubble text
 nnoremap <silent> <C-Up>    mZ:move .-2<CR>==`Z
