@@ -1,55 +1,55 @@
 " ::::::::: vimrc :::::::::::::::::::::::::::::::::::::
 
 set nocompatible                " iMproved
-set encoding=utf-8              " default UTF-8
-set t_Co=256                    " 256 color terminal
 
-" ::::::::: Plugins ::::::::::::::::::::::: {{{1
+" ::::::::: Vundle :::::::::::::::::::::::: {{{1
 
-filetype off                    " required for Vundle!
+filetype off
 
-set runtimepath+=~/.vim/bundle/Vundle.vim
+set  runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-" github repos: general
-Bundle 'ivanbrennan/quickfix-toggle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'rking/ag.vim'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-commentary'
-" Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-rails'
-" Bundle 'tpope/vim-bundler'
+" ··········· plugins ·················· {{{2
 Bundle 'AndrewRadev/splitjoin.vim'
-Plugin 'jwhitley/vim-matchit'
-Plugin 'sjl/gundo.vim'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'eiginn/netrw'
-Bundle 'nelstrom/vim-qargs'
-Bundle 'nelstrom/vim-visual-star-search'
-Bundle 'gabebw/vim-spec-runner'
+Bundle 'bling/vim-airline'
 Bundle 'christoomey/vim-tmux-runner'
-
-" github repos: colors
+Bundle 'eiginn/netrw'
+Bundle 'gabebw/vim-spec-runner'
 Bundle 'gregsexton/Muon'
 Bundle 'guns/xterm-color-table.vim'
+Bundle 'ivanbrennan/quickfix-toggle'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'nelstrom/vim-qargs'
+Bundle 'nelstrom/vim-visual-star-search'
+Bundle 'rking/ag.vim'
 Bundle 'shawncplus/Vim-toCterm'
+Bundle 'thoughtbot/vim-rspec'
+" Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-commentary'
+" Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/hexHighlight.vim'
+Plugin 'jwhitley/vim-matchit'
+Plugin 'sjl/gundo.vim'
+" ······································ }}}2
 
 call vundle#end()
-filetype plugin indent on       " required for Vundle!
+filetype plugin indent on
 
 " ::::::::: Options ::::::::::::::::::::::: {{{1
 
 " ··········· core ····················· {{{2
+set encoding=utf-8              " default UTF-8
+set t_Co=256                    " 256 color terminal
+
 " persistence
 set directory=~/.vim/tmp
 set backup
