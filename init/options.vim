@@ -73,17 +73,7 @@ noremap <silent> <Leader>0 :call ToggleWinMinHts(inactive_min)<CR>
 set shortmess+=I
 set visualbell
 
-" cursor
-set guicursor=n-v-c:block-blinkon0
-set guicursor+=ve:ver35
-set guicursor+=o:hor50
-set guicursor+=i-ci:ver25
-set guicursor+=r-cr:hor20
-set guicursor+=sm:block-blinkon0
-augroup CursorGroup             " clear cursorline highlight
-  autocmd!
-  autocmd BufReadPost * call      RestoreCrsr()
-augroup END
+" matching
 set showmatch
 set matchtime=2
 

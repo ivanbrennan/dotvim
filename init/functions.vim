@@ -121,24 +121,6 @@ fun! ColorColToggle()
   endif
 endf
 
-" ··········· cursor ··················· {{{1
-fun! RestoreCrsr()
-  if line("'\"") > 1 && line("'\"") <= line("$")
-    exe "normal! g`\""
-  endif
-endf
-
-fun! CursorLineToggle()
-  highlight! CursorLineClear guibg=NONE guifg=NONE gui=NONE ctermbg=NONE ctermfg=NONE cterm=NONE
-  if exists("w:cursorline_memo")
-    highlight! link CursorLine CursorLine
-    unlet w:cursorline_memo
-  else
-    highlight! link CursorLine CursorLineClear
-    let w:cursorline_memo = 1
-  end
-endf
-
 " ··········· braces ··················· {{{1
 function! NextTextObject(motion)
   echo
