@@ -26,22 +26,22 @@ vmap    <Leader>ww       :write %%
 noremap <C-S-CR>         :write<CR>
 
 noremap <Leader>dd       :bdelete<CR>
-noremap <Leader>d3       :bdelete#<CR>
+noremap <Leader>dl       :bdelete#<CR>
 
 " Buffer list
 noremap <S-Space>        :buffers<CR>
 noremap <Leader>p        :CtrlPBuffer<CR>
 noremap <M-Tab>          :bnext<CR>
 noremap <M-S-Tab>        :bprevious<CR>
-noremap <Leader>3        <C-^>
+noremap <Leader>l        <C-^>
 
 " Quickfix list
 map     <C-Space>        <Plug>QuickfixToggle
 noremap <C-S-Down>       :cnext<CR>
 noremap <C-S-Up>         :cprevious<CR>
 
-noremap <Leader>/        :pwd<CR>
-noremap <Leader>l        :call ReLoadBuffers()<CR>
+noremap <Leader>we       :pwd<CR>
+noremap <Leader>1        :call ReLoadBuffers()<CR>
 noremap <C-S-Space>      <C-Z>
 
 " ··········· ex commands ····· {{{1
@@ -106,9 +106,14 @@ inoremap JK         <C-O>A
 " toggle case
 inoremap ~~         <Esc>viwg~gi
 
-" ··········· searching ······· {{{1
-" search
-noremap  <Leader>ag :Ag! 
+" ··········· search ·········· {{{1
+" sensible marks
+noremap  `  '
+noremap  '  `
+
+" last search
+noremap  <Leader>/  /<Up>
+noremap  <Leader>?  ?<Up>
 
 " substitute
 nnoremap <leader>s  :%s/
@@ -118,18 +123,17 @@ vnoremap <leader>s  :s/
 nnoremap &  :&&<CR>
 xnoremap &  :&&<CR>
 
-" sensible marks
-noremap  `  '
-noremap  '  `
+" Ag
+noremap  <Leader>a  :Ag! 
 
 " word under cursor
-noremap <silent> <Leader>f :set foldenable!<CR>
+noremap <silent> <Leader>8 :set foldenable!<CR>
       \:let view=winsaveview()<CR>#*
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " toggle search highlighting
-noremap <silent> <C-L>      :nohlsearch<CR><C-L>
-noremap          <Leader>,n :set hlsearch! hlsearch?<CR>
+noremap <silent> <C-L>     :nohlsearch<CR><C-L>
+noremap          <Leader>L :set hlsearch! hlsearch?<CR>
 
 " ··········· splits ·········· {{{1
 noremap  <C-W>\     <C-W><Bar>
@@ -155,8 +159,8 @@ nnoremap <silent> <C-->      :call CursorLineToggle()<CR>
 vnoremap <silent> <C-->      :<C-U>call CursorLineToggle()<CR>gv
 nnoremap <silent> <C-Bslash> :set cursorcolumn!<CR>
 vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv
-nnoremap <silent> <Leader>8  :call ColorColToggle()<CR>
-vnoremap <silent> <Leader>8  :<C-U>call ColorColToggle()<CR>gv
+nnoremap <silent> <Leader>0  :call ColorColToggle()<CR>
+vnoremap <silent> <Leader>0  :<C-U>call ColorColToggle()<CR>gv
 
 " ··········· testing ········· {{{1
 nmap    <Leader>t           <Plug>RunFocusedSpec
