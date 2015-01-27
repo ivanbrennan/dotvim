@@ -1,7 +1,7 @@
 " ::::::::: Keybindings :::::::::::::::::::
 
 " ··········· config ·········· {{{1
-" Use Space as mapleader, but visible as '\'
+" Use Space as mapleader, visible as '\'
 map <Space> <Leader>
 
 " Timeout mappings fast and key codes faster
@@ -57,9 +57,11 @@ cnoremap <C-Left>        <S-Left>
 cnoremap <C-Right>       <S-Right>
 
 " ··········· editing ········· {{{1
-" above / below current line
+" jump newline
 inoremap <S-CR>     <C-O>O
 inoremap <C-CR>     <C-O>o
+
+" push newline
 noremap  <S-CR>  mzO<Esc>j`z
 noremap  <C-CR>  mzo<Esc>k`z
 
