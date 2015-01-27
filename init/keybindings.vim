@@ -83,7 +83,7 @@ inoremap <S-CR>     <C-O>O
 inoremap <C-CR>     <C-O>o
 
 " clear line
-nnoremap <Leader><Space> S<Esc>
+nnoremap <Leader><CR> S<Esc>
 
 " paste toggle
 noremap  <silent> <Leader>jp <F4>
