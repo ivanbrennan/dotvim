@@ -16,9 +16,6 @@ set smartcase
 set scrolloff=1
 set sidescroll=2
 set mouse+=a
-if &term =~ '^screen'           " extended mouse mode
-  set ttymouse=xterm2
-endif
 set guioptions-=L
 set guioptions-=r
 

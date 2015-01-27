@@ -40,3 +40,8 @@ if &term =~ 'xterm\|screen\|builtin_gui'
   unlet s:keycodes
 endif
 
+" extended mouse mode
+if &term =~ '^screen'
+  set ttymouse=xterm2
+endif
+
