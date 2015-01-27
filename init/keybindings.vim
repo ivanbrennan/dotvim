@@ -41,7 +41,8 @@ noremap <Leader>,<Space>    :call ReLoadBuffers()<CR>
 noremap <silent> <Leader>ap :A<CR>
 
 " ··········· ex commands ·············· {{{1
-noremap  <Leader>;       :!
+noremap  <Leader>:       :!
+noremap  <Leader>;       :<Up>
 nnoremap <Leader>h       :help 
 nnoremap <Leader>x       :x
 
