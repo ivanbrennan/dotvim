@@ -1,9 +1,10 @@
-" ::::::::: Keymaps :::::::::::::::::::::::
+" ::::::::: Keybindings :::::::::::::::::::
 
-" ··········· config ··················· {{{1
-" leaders
+" ··········· config ·········· {{{1
+" Use Space as mapleader, but visible as '\'
 map <Space> <Leader>
 
+" Timeout mappings fast and key codes faster
 set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
@@ -11,7 +12,8 @@ noremap <C-.>   :source  $MYVIMRC<CR>
 noremap <C-,>   :tabedit $MYVIMRC<CR>
 noremap <C-,>k  :tabedit ~/.vim/init/keybindings.vim<CR>
 noremap <C-,>o  :tabedit ~/.vim/init/options<CR>
-" ··········· buffers ·················· {{{1
+
+" ··········· buffers ········· {{{1
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 noremap <silent> <Leader><CR>  :Explore<CR>
 
@@ -40,7 +42,7 @@ noremap <Leader>,<Space>    :call ReLoadBuffers()<CR>
 
 noremap <silent> <Leader>ap :A<CR>
 
-" ··········· ex commands ·············· {{{1
+" ··········· ex commands ····· {{{1
 noremap  <Leader>:       :!
 noremap  <Leader>;       :<Up>
 nnoremap <Leader>h       :help 
@@ -52,7 +54,7 @@ cnoremap <C-A>           <Home>
 cnoremap <C-Left>        <S-Left>
 cnoremap <C-Right>       <S-Right>
 
-" ··········· editing ·················· {{{1
+" ··········· editing ········· {{{1
 " above / below current line
 inoremap <S-CR>     <C-O>O
 inoremap <C-CR>     <C-O>o
@@ -113,12 +115,12 @@ set pastetoggle=<F4>
 " toggle case
 inoremap ~~      <Esc>viwg~gi
 
-" ··········· navigation ··············· {{{1
+" ··········· navigation ······ {{{1
 " sensible marks
 noremap `  '
 noremap '  `
 
-" ··········· searching ················ {{{1
+" ··········· searching ······· {{{1
 " find word under cursor
 noremap <silent> <Leader>f :set foldenable!<CR>
       \:let view=winsaveview()<CR>#*
@@ -139,7 +141,7 @@ vnoremap <leader>s  :s/
 nnoremap &  :&&<CR>
 xnoremap &  :&&<CR>
 
-" ··········· splits & tabs ············ {{{1
+" ··········· splits & tabs ··· {{{1
 " splits
 noremap <Leader>,s  :split<CR>
 noremap <Leader>,v  :vsplit<CR>
@@ -149,7 +151,7 @@ noremap  <Leader>q  :quit<CR>
 noremap     <C-W>\  <C-W><Bar>
 noremap <C-W><C-\>  <C-W><Bar>
 
-" ··········· appearance ··············· {{{1
+" ··········· appearance ······ {{{1
 nnoremap <Leader>w   :setlocal wrap! linebreak! list! wrap?<CR>
 
 noremap <Leader>,b  :call ToggleBG()<CR>:echo &background<CR>
@@ -174,7 +176,7 @@ vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv
 nnoremap <silent> <Leader>8  :call ColorColToggle()<CR>
 vnoremap <silent> <Leader>8  :<C-U>call ColorColToggle()<CR>gv
 
-" ··········· testing ·················· {{{1
+" ··········· testing ········· {{{1
 nmap    <Leader>tt          <Plug>RunCurrentSpecFile
 nmap    <Leader>t<Space>    <Plug>RunFocusedSpec
 nmap    <Leader>tl          <Plug>RunMostRecentSpec
