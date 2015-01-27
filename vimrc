@@ -1,8 +1,8 @@
-" ::::::::: vimrc :::::::::::::::::::::::::::::::::::::
+" ::::::::: vimrc :::::::::::::::::::::::::
 
 set nocompatible
 
-" ::::::::: Vundle :::::::::::::::::::::::: {{{1
+" ::::::::: Vundle ::::::::::::::::::::::::
 
 filetype off
 
@@ -11,7 +11,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-" ··········· plugins ·················· {{{2
+" ··········· plugins ········· {{{1
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-runner'
@@ -40,12 +40,12 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/hexHighlight.vim'
 Plugin 'jwhitley/vim-matchit'
 Plugin 'sjl/gundo.vim'
-" ······································ }}}2
+" ······································ }}}1
 
 call vundle#end()
 filetype plugin indent on
 
-" ::::::::: Initialization :::::::::::::::: {{{1
+" ::::::::: Initialization ::::::::::::::::
 
 runtime! init/**.vim
 
