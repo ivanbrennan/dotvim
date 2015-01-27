@@ -7,8 +7,10 @@ map <Space> <Leader>
 set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
-noremap <C-.>  :source $MYVIMRC<CR>
-noremap <C-,>  :tabedit $MYVIMRC<CR>
+noremap <C-.>   :source  $MYVIMRC<CR>
+noremap <C-,>   :tabedit $MYVIMRC<CR>
+noremap <C-,>k  :tabedit ~/.vim/init/keybindings.vim<CR>
+noremap <C-,>o  :tabedit ~/.vim/init/options<CR>
 " ··········· buffers ·················· {{{1
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 noremap <silent> <Leader><CR>  :Explore<CR>
