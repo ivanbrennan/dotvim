@@ -1,0 +1,19 @@
+" ::::::::: Wild ::::::::::::::::::::::::::
+
+set wildmode=longest,list
+
+" output and VCS
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+" archives
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+" bundler and sass
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+" librarian-chef, vagrant, test-kitchen and Berkshelf
+set wildignore+=*/tmp/librarian/*,*/.vagrant/*,*/.kitchen/*,*/vendor/cookbooks/*
+" rails temporary asset caches
+set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
+" temp and backup files
+set wildignore+=*.swp,*~,._*
+" OSX bullshit
+set wildignore+=*.DS_Store
+
