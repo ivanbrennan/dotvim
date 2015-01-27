@@ -40,7 +40,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/hexHighlight.vim'
 Plugin 'jwhitley/vim-matchit'
 Plugin 'sjl/gundo.vim'
-" ······································ }}}1
+" ····························· }}}1
 
 call vundle#end()
 filetype plugin indent on
