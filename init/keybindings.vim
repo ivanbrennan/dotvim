@@ -15,32 +15,34 @@ noremap <C-,>o  :tabedit ~/.vim/init/options<CR>
 
 " ··········· buffers ········· {{{1
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
-noremap <silent> <Leader><CR>  :Explore<CR>
 
-nmap    <Leader>ee          :edit %%
-noremap <Leader>et          :tabedit 
-noremap <Leader>e`          :edit ~/
-noremap <Leader>ec          :edit ~/Development/code/
-noremap <Leader>dd          :bdelete<CR>
-noremap <Leader>d3          :bdelete#<CR>
-nmap    <Leader>ww          :write %%
-vmap    <Leader>ww          :write %%
-noremap <C-S-CR>            :write<CR>
+nmap    <Leader>ee       :edit %%
+noremap <Leader>et       :tabedit 
+noremap <Leader>e`       :edit ~/
+noremap <Leader>ec       :edit ~/Development/code/
 
-noremap <C-S-Down>          :cnext<CR>
-noremap <C-S-Up>            :cprevious<CR>
-noremap <C-S-Right>         :bnext<CR>
-noremap <C-S-Left>          :bprevious<CR>
-noremap <Leader>p           :CtrlPBuffer<CR>
-noremap <Leader>3           <C-^>
-noremap <S-Space>           :buffers<CR>
-map     <C-Space>           <Plug>QuickfixToggle
-noremap <C-S-Space>         <C-Z>
+nmap    <Leader>ww       :write %%
+vmap    <Leader>ww       :write %%
+noremap <C-S-CR>         :write<CR>
 
-noremap <Leader>/           :pwd<CR>
-noremap <Leader>,<Space>    :call ReLoadBuffers()<CR>
+noremap <Leader>dd       :bdelete<CR>
+noremap <Leader>d3       :bdelete#<CR>
 
-noremap <silent> <Leader>ap :A<CR>
+" Buffer list
+noremap <S-Space>        :buffers<CR>
+noremap <Leader>p        :CtrlPBuffer<CR>
+noremap <M-Tab>          :bnext<CR>
+noremap <M-S-Tab>        :bprevious<CR>
+noremap <Leader>3        <C-^>
+
+" Quickfix list
+map     <C-Space>        <Plug>QuickfixToggle
+noremap <C-S-Down>       :cnext<CR>
+noremap <C-S-Up>         :cprevious<CR>
+
+noremap <Leader>/        :pwd<CR>
+noremap <Leader>l        :call ReLoadBuffers()<CR>
+noremap <C-S-Space>      <C-Z>
 
 " ··········· ex commands ····· {{{1
 noremap  <Leader>:       :!
@@ -189,4 +191,7 @@ noremap <Leader>,ta         :call RunAllSpecs()<CR>
 
 " Fugitive
 noremap <silent> <Leader>g  :Gblame<CR>
+
+" ··········· rails ··········· {{{1
+noremap <silent> <Leader>ap :A<CR>
 
