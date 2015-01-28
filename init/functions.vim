@@ -77,6 +77,15 @@ fun! SynStack()
 endf
 
 " ··········· statusline ··············· {{{1
+function! RefreshUI()
+  if exists(':AirlineRefresh')
+    AirlineRefresh
+  else
+    redraw!
+    redrawstatus!
+  endif
+endfunction
+
 function! AirlineInit()
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}

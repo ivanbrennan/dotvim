@@ -1,8 +1,8 @@
 " vimrc
 augroup VimrcGroup
   autocmd!
-  autocmd BufWritePost $MYVIMRC,vimrc.local  source $MYVIMRC
-  autocmd BufWritePost ~/*{.,}vim/init/*.vim source $MYVIMRC
+  autocmd BufWritePost $MYVIMRC,vimrc.local  source $MYVIMRC | :call RefreshUI()
+  autocmd BufWritePost ~/*{.,}vim/init/*.vim source $MYVIMRC | :call RefreshUI()
 augroup END
 
 " git
