@@ -157,8 +157,8 @@ noremap  <expr>   <Leader>z  FoldMethToggle()
 noremap  <silent> <Leader>,z :call FoldColToggle(4)<CR>
 
 " cursor
-nnoremap <silent> <C-->      :call CursorLineToggle()<CR>
-vnoremap <silent> <C-->      :<C-U>call CursorLineToggle()<CR>gv
+nnoremap <silent> <C-_>      :call CursorLineToggle()<CR>
+vnoremap <silent> <C-_>      :<C-U>call CursorLineToggle()<CR>gv
 nnoremap <silent> <C-Bslash> :set cursorcolumn!<CR>
 vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv
 nnoremap <silent> <Leader>0  :call ColorColToggle()<CR>
