@@ -168,7 +168,7 @@ vnoremap <silent> <Leader>0  :<C-U>call ColorColToggle()<CR>gv
 nmap    <Leader>t           <Plug>RunFocusedSpec
 nmap    <Leader>,t          <Plug>RunCurrentSpecFile
 nmap    <Leader>,r          <Plug>RunMostRecentSpec
-noremap <Leader>K           :VtrKillRunner<CR>
+noremap <Leader>k           :VtrKillRunner<CR>
 
 " noremap <Leader>,tt         :call RunCurrentSpecFile()<CR>
 " noremap <Leader>,t<Space>   :call RunNearestSpec()<CR>
