@@ -140,11 +140,11 @@ endfunction
 " ··········· git ······················ {{{1
 "Git branch
 function! GitBranch()
-    let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
-    if branch != ''
-      return '(' . substitute(branch, '\n', '', 'g') . ')'
-    endif
-    return ''
+  let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
+  if branch != ''
+    return '(' . substitute(branch, '\n', '', 'g') . ')'
+  endif
+  return ''
 endfunction
 
 function! ReLoadBuffers()
@@ -155,27 +155,27 @@ endfunction
 
 " ··········· keyboard ················· {{{1
 function! Keyboard(type)
-   if a:type == "workman"
-     call NormanUnmaps()
-     call QWERTYUnmaps()
-     call WorkmanMaps()
-     echo "Workman mappings enabled"
-   elseif a:type == "norman"
-     call QWERTYUnmaps()
-     call WorkmanUnmaps()
-     call NormanMaps()
-     echo "Norman mappings enabled"
-   else
-     call NormanUnmaps()
-     call WorkmanUnmaps()
-     call QWERTYMaps()
-     echo "QWERTY mappings enabled"
-   endif
+  if a:type == "workman"
+    call NormanUnmaps()
+    call QWERTYUnmaps()
+    call WorkmanMaps()
+    echo "Workman mappings enabled"
+  elseif a:type == "norman"
+    call QWERTYUnmaps()
+    call WorkmanUnmaps()
+    call NormanMaps()
+    echo "Norman mappings enabled"
+  else
+    call NormanUnmaps()
+    call WorkmanUnmaps()
+    call QWERTYMaps()
+    echo "QWERTY mappings enabled"
+  endif
 endfunction
 
-" ··········· norman ··················· {{{3
+" ··········· norman ··················· {{{2
 function! NormanMaps()
-  " ··· home ············ {{{4
+  " ··· home ············ {{{3
   noremap <C-Y> h
   noremap <C-I> k
   noremap <C-O> l
@@ -183,7 +183,7 @@ function! NormanMaps()
   noremap <C-J> <C-Y>
   noremap <C-P> <C-O>
   " }}}
-  " ··· arch ············ {{{4
+  " ··· arch ············ {{{3
   " noremap <C-R> k
   " noremap <C-Y> h
   " noremap <C-L> l
@@ -193,7 +193,7 @@ function! NormanMaps()
   " }}}
 endfunction
 function! NormanUnmaps()
-  " ··· home ············ {{{4
+  " ··· home ············ {{{3
   silent! unmap <C-Y>
   silent! unmap <C-I>
   silent! unmap <C-O>
@@ -201,7 +201,7 @@ function! NormanUnmaps()
   silent! unmap <C-J>
   silent! unmap <C-P>
   " }}}
-  " ··· arch ············ {{{4
+  " ··· arch ············ {{{3
   " silent! unmap <C-R>
   " silent! unmap <C-Y>
   " silent! unmap <C-L>
@@ -211,15 +211,15 @@ function! NormanUnmaps()
   " }}}
 endfunction
 
-" ··········· qwerty ··················· {{{3
+" ··········· qwerty ··················· {{{2
 function! QWERTYMaps()
 endfunction
 function! QWERTYUnmaps()
 endfunction
 
-" ··········· workman ·················· {{{3
+" ··········· workman ·················· {{{2
 function! WorkmanMaps()
-  " ··· home ············ {{{4
+  " ··· home ············ {{{3
   noremap <C-E> k
   noremap <C-Y> h
   noremap <C-O> l
@@ -227,23 +227,23 @@ function! WorkmanMaps()
   noremap j <C-Y>
   noremap <C-K> <C-O>
   " }}}
-  " ··· arch ············ {{{4
+  " ··· arch ············ {{{3
   " noremap <C-U> k
   " noremap <C-Y> h
   " noremap <C-P> l
   " noremap <C-J> <C-Y>
   " }}}
-  " ··· swap ············ {{{4
+  " ··· swap ············ {{{3
   " noremap j k
   " noremap k j
   " }}}
-  " ··· mix ············· {{{4
+  " ··· mix ············· {{{3
   " noremap <C-E> k
   " noremap <C-K> <C-E>
   " }}}
 endfunction
 function! WorkmanUnmaps()
-  " ··· home ············ {{{4
+  " ··· home ············ {{{3
   silent! unmap <C-E>
   silent! unmap <C-Y>
   silent! unmap <C-O>
@@ -251,22 +251,22 @@ function! WorkmanUnmaps()
   silent! unmap j
   silent! unmap <C-K>
   " }}}
-  " ··· arch ············ {{{4
+  " ··· arch ············ {{{3
   " silent! unmap <C-U>
   " silent! unmap <C-Y>
   " silent! unmap <C-P>
   " silent! unmap <C-J>
   " }}}
-  " ··· swap ············ {{{4
+  " ··· swap ············ {{{3
   " silent! unmap j
   " silent! unmap k
   " }}}
-  " ··· mix ············· {{{4
+  " ··· mix ············· {{{3
   " silent! unmap <C-E>
   " silent! unmap <C-K>
   " }}}
 endfunction
 
-" ··········· initialize ··············· {{{3
+" ··········· initialize ··············· {{{2
 call QWERTYMaps()
 " call WorkmanMaps()
