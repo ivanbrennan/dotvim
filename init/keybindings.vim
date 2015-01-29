@@ -166,7 +166,7 @@ vnoremap <silent> <Leader>0  :<C-U>call ColorColToggle()<CR>gv
 
 " ··········· testing ········· {{{1
 nmap    <Leader>t           <Plug>RunFocusedSpec
-nmap    <Leader>,t          <Plug>RunCurrentSpecFile
+nmap    <Leader>T          <Plug>RunCurrentSpecFile
 nmap    <Leader>,r          <Plug>RunMostRecentSpec
 noremap <Leader>k           :VtrKillRunner<CR>
 
