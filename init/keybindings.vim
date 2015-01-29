@@ -39,8 +39,8 @@ noremap <Leader>l        <C-^>
 
 " Quickfix list
 map     <C-Space>        <Plug>QuickfixToggle
-noremap <C-S-Down>       :cnext<CR>
-noremap <C-S-Up>         :cprevious<CR>
+noremap <C-J>            :cnext<CR>
+noremap <C-K>            :cprevious<CR>
 
 noremap <Leader>we       :pwd<CR>
 noremap <Leader>1        :call ReLoadBuffers()<CR>
@@ -88,7 +88,7 @@ inoremap <C-CR>     <C-O>o
 nnoremap <Leader><CR> S<Esc>
 
 " paste toggle
-noremap  <silent> <Leader>jp <F4>
+noremap  <silent> <Leader>P <F4>
 set pastetoggle=<F4>
 
 " clipboard
@@ -168,7 +168,7 @@ vnoremap <silent> <Leader>0  :<C-U>call ColorColToggle()<CR>gv
 nmap    <Leader>t           <Plug>RunFocusedSpec
 nmap    <Leader>,t          <Plug>RunCurrentSpecFile
 nmap    <Leader>,r          <Plug>RunMostRecentSpec
-noremap <Leader>k           :VtrKillRunner<CR>
+noremap <Leader>K           :VtrKillRunner<CR>
 
 " noremap <Leader>,tt         :call RunCurrentSpecFile()<CR>
 " noremap <Leader>,t<Space>   :call RunNearestSpec()<CR>
