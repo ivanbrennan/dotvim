@@ -1,5 +1,6 @@
-bundle/
-.netrwhist
 backup/
+bundle/
 tmp/
 undo/
+.netrwhist
+vimrc.local
