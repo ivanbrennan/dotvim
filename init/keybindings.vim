@@ -164,11 +164,14 @@ vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv
 nnoremap <silent> <Leader>0  :call ColorColToggle()<CR>
 vnoremap <silent> <Leader>0  :<C-U>call ColorColToggle()<CR>gv
 
+" ··········· tags ············ {{{1
+nnoremap <F5> :!ctags -R<CR>
+
 " ··········· testing ········· {{{1
-nmap    <Leader>t           <Plug>RunFocusedSpec
-nmap    <Leader>T          <Plug>RunCurrentSpecFile
-nmap    <Leader>,r          <Plug>RunMostRecentSpec
-noremap <Leader>k           :VtrKillRunner<CR>
+nmap     <Leader>t           <Plug>RunFocusedSpec
+nmap     <Leader>T          <Plug>RunCurrentSpecFile
+nmap     <Leader>,r          <Plug>RunMostRecentSpec
+noremap  <Leader>k           :VtrKillRunner<CR>
 
 " noremap <Leader>,tt         :call RunCurrentSpecFile()<CR>
 " noremap <Leader>,t<Space>   :call RunNearestSpec()<CR>
