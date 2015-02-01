@@ -23,7 +23,7 @@ let s:grey_4           = { "gui": "#BBBBBB", "cterm": "249" }
 let s:grey_3           = { "gui": "#999999", "cterm": "246" }
 let s:grey_2           = { "gui": "#777777", "cterm": "243" }
 let s:grey_1           = { "gui": "#444444", "cterm": "238" }
-let s:grey_0           = { "gui": "#282828", "cterm": "235" }
+let s:grey_0           = { "gui": "#2e2d2a", "cterm": "235" }
 let s:black_2          = { "gui": "#1F1F1F", "cterm": "234" }
 let s:black_1          = { "gui": "#111111", "cterm": "233" }
 let s:black_0          = { "gui": "#000000", "cterm": "16"  }
@@ -109,10 +109,10 @@ call s:h("Cursor",       { "fg": s:white_2, "bg": s:blue_0 })
 call s:h("Visual",       { "bg": s:blue_2 })
 call s:h("IncSearch",    { "bg": s:blue_2, "gui": "bold", "cterm": "bold" })
 call s:h("Search",       { "bg": s:blue_2, "gui": "bold", "cterm": "bold" })
-call s:h("StatusLine",   { "fg": s:black_1, "bg": s:white_1, "gui": "bold", "cterm": "bold" })
-call s:h("StatusLineNC", { "bg": s:white_0 })
+call s:h("StatusLine",   { "fg": s:black_1, "bg": s:grey_0, "gui": "bold", "cterm": "bold" })
+call s:h("StatusLineNC", { "bg": s:grey_0 })
 call s:h("SignColumn",   { "fg": s:grey_3, "bg": s:white_1 })
-call s:h("VertSplit",    { "fg": s:white_0, "bg": s:white_0 })
+call s:h("VertSplit",    { "fg": s:grey_0, "bg": s:grey_0 })
 call s:h("TabLine",      { "fg": s:grey_4, "bg": s:white_1 })
 call s:h("TabLineSel",   { "fg": s:black_1, "bg": s:white_2 })
 call s:h("TabLineFill",  { "bg": s:white_0 })

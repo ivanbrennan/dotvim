@@ -95,7 +95,7 @@ function! AirlineInit()
   let g:airline#extensions#tabline#left_alt_sep = '|'
   let g:airline_detect_whitespace=0
   let g:airline_section_z = '%v : %l/%L (%n)'
-  let g:airline_theme='today'
+  let g:airline_theme='lateron'
 endfunction
 
 call AirlineInit()
