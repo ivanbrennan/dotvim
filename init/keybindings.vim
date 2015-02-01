@@ -169,7 +169,7 @@ nnoremap <F5> :!ctags -R<CR>
 
 " ··········· testing ········· {{{1
 nmap     <Leader>t           <Plug>RunFocusedSpec
-nmap     <Leader>T          <Plug>RunCurrentSpecFile
+nmap     <Leader>T           <Plug>RunCurrentSpecFile
 nmap     <Leader>,r          <Plug>RunMostRecentSpec
 noremap  <Leader>k           :VtrKillRunner<CR>
 
