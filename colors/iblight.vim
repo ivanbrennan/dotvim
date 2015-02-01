@@ -1,4 +1,4 @@
-" ib.vim - Vim color scheme
+" iblight.vim - Vim color scheme
 " ----------------------------------------------------------
 " Author:   Ivan Brennan (ivan.brennan@gmail.com)
 " Version:  0.1
@@ -12,7 +12,7 @@ if exists("syntax_on")
 endif
 
 let s:cached_background = &background
-let g:colors_name = "ib"
+let g:colors_name = "iblight"
 
 " Palette ----------------------------------------------{{{2
 " Colors -----------------------------------------------{{{3
@@ -47,49 +47,25 @@ let s:darkTan          = { "gui": "#503D15", "cterm": "52"  }
 let s:lightTan         = { "gui": "#ECE1C8", "cterm": "230" }
 
 " Semantics --------------------------------------------{{{3
-if s:background == "dark"
-  " Dark theme
-  let s:bg         = s:almostBlack
-  let s:norm       = s:almostWhite
-  let s:comment    = s:middleDarkGrey
-  let s:dimmed     = s:middleLightGrey
-  let s:subtle     = s:darkGrey
-  let s:faint      = s:middleDarkerGrey
-  let s:fainter    = s:darkerGrey
-  let s:subtler    = s:black
-  let s:accent1    = s:lighterBlue
-  let s:accent2    = s:middleLightGreen
-  let s:accent3    = s:lightGreen
-  let s:accent4    = s:lightTan
-  let s:accent5    = s:lightBlue
-  let s:normRed    = s:darkPink
-  let s:normGreen  = s:middleLightGreen
-  let s:normBlue   = s:middleLightBlue
-  let s:faintRed   = s:middleLightPink
-  let s:faintGreen = s:darkGreen
-  let s:faintBlue  = s:darkBlue
-else
-  " Light theme
-  let s:bg         = s:white
-  let s:norm       = s:almostBlack
-  let s:comment    = s:middleLightGrey
-  let s:dimmed     = s:darkGrey
-  let s:subtle     = s:lightGrey
-  let s:subtler    = s:lighterGrey
-  let s:faint      = s:almostWhite
-  let s:fainter    = s:lighterGrey
-  let s:accent1    = s:darkBlue
-  let s:accent2    = s:middleDarkGreen
-  let s:accent3    = s:middleDarkPink
-  let s:accent4    = s:darkTan
-  let s:accent5    = s:darkBlue
-  let s:normRed    = s:darkPink
-  let s:normGreen  = s:middleDarkGreen
-  let s:normBlue   = s:darkBlue
-  let s:faintRed   = s:lightPink
-  let s:faintGreen = s:lightGreen
-  let s:faintBlue  = s:lightBlue
-endif
+let s:bg         = s:white
+let s:norm       = s:almostBlack
+let s:comment    = s:middleLightGrey
+let s:dimmed     = s:darkGrey
+let s:subtle     = s:lightGrey
+let s:subtler    = s:lighterGrey
+let s:faint      = s:almostWhite
+let s:fainter    = s:lighterGrey
+let s:accent1    = s:darkBlue
+let s:accent2    = s:middleDarkGreen
+let s:accent3    = s:middleDarkPink
+let s:accent4    = s:darkTan
+let s:accent5    = s:darkBlue
+let s:normRed    = s:darkPink
+let s:normGreen  = s:middleDarkGreen
+let s:normBlue   = s:darkBlue
+let s:faintRed   = s:lightPink
+let s:faintGreen = s:lightGreen
+let s:faintBlue  = s:lightBlue
 
 " Utility Function -----------------------------------------{{{2
 function! s:h(group, style)

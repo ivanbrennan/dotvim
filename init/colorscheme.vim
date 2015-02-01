@@ -1,4 +1,4 @@
 " ::::::::: Colors ::::::::::::::::::::::::
 
-colorscheme ib
+colorscheme iblight
 
