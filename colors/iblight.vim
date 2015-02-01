@@ -82,52 +82,52 @@ endfunction
 " Highlights -----------------------------------------------{{{1
 " Highlights - Vim >= 7 ------------------------------------{{{2
 if version >= 700
-  call s:h("CursorLine",       { "bg": s:faint })
-  call s:h("MatchParen",       { "fg": s:normGreen, "bg": s:subtle, "gui": "bold" })
-  call s:h("Pmenu",            { "bg": s:faint })
-  call s:h("PmenuThumb",       { "bg": s:norm })
-  call s:h("PmenuSBar",        { "bg": s:subtle })
-  call s:h("PmenuSel",         { "bg": s:faintBlue })
+  call s:h("CursorLine",       { "bg": s:almostWhite })
+  call s:h("MatchParen",       { "fg": s:middleDarkGreen, "bg": s:lightGrey, "gui": "bold" })
+  call s:h("Pmenu",            { "bg": s:almostWhite })
+  call s:h("PmenuThumb",       { "bg": s:almostBlack })
+  call s:h("PmenuSBar",        { "bg": s:lightGrey })
+  call s:h("PmenuSel",         { "bg": s:lightBlue })
   call s:h("ColorColumn",      { "bg": s:lighterBlue })
-  call s:h("SpellBad",         { "sp": s:faintRed, "gui": "undercurl" })
-  call s:h("SpellCap",         { "sp": s:accent1, "gui": "undercurl" })
-  call s:h("SpellRare",        { "sp": s:normGreen, "gui": "undercurl" })
-  call s:h("SpellLocal",       { "sp": s:accent4, "gui": "undercurl" })
+  call s:h("SpellBad",         { "sp": s:lightPink, "gui": "undercurl" })
+  call s:h("SpellCap",         { "sp": s:darkBlue, "gui": "undercurl" })
+  call s:h("SpellRare",        { "sp": s:middleDarkGreen, "gui": "undercurl" })
+  call s:h("SpellLocal",       { "sp": s:darkTan, "gui": "undercurl" })
   hi! link CursorColumn	CursorLine
 
   " Use background for cterm Spell*, which does not support undercurl
-  execute "hi! SpellBad   ctermbg=" s:normRed.cterm
-  execute "hi! SpellCap   ctermbg=" s:faintBlue.cterm
-  execute "hi! SpellRare  ctermbg=" s:faintGreen.cterm
-  execute "hi! SpellLocal ctermbg=" s:faint.cterm
+  execute "hi! SpellBad   ctermbg=" s:darkPink.cterm
+  execute "hi! SpellCap   ctermbg=" s:lightBlue.cterm
+  execute "hi! SpellRare  ctermbg=" s:lightGreen.cterm
+  execute "hi! SpellLocal ctermbg=" s:almostWhite.cterm
 endif
 
 " Highlights - UI ------------------------------------------{{{2
-call s:h("Normal",       { "fg": s:norm, "bg": s:bg })
-call s:h("NonText",      { "fg": s:subtle })
-call s:h("Cursor",       { "fg": s:bg, "bg": s:accent5 })
-call s:h("Visual",       { "bg": s:faintBlue })
-call s:h("IncSearch",    { "bg": s:faintBlue, "gui": "bold", "cterm": "bold" })
-call s:h("Search",       { "bg": s:faintBlue, "gui": "bold", "cterm": "bold" })
-call s:h("StatusLine",   { "fg": s:norm, "bg": s:faint, "gui": "bold", "cterm": "bold" })
-call s:h("StatusLineNC", { "bg": s:fainter })
-call s:h("SignColumn",   { "fg": s:comment, "bg": s:faint })
-call s:h("VertSplit",    { "fg": s:fainter, "bg": s:fainter })
-call s:h("TabLine",      { "fg": s:subtle, "bg": s:faint })
-call s:h("TabLineSel",   { "fg": s:norm, "bg": s:bg })
-call s:h("TabLineFill",  { "bg": s:fainter })
-call s:h("Folded",       { "fg": s:dimmed, "bg": s:bg })
-call s:h("Directory",    { "fg": s:accent1 })
-call s:h("Title",        { "fg": s:normBlue, "gui": "bold", "cterm": "bold" })
-call s:h("ErrorMsg",     { "bg": s:faintRed })
-call s:h("DiffAdd",      { "bg": s:faintGreen })
-call s:h("DiffChange",   { "bg": s:normRed })
-call s:h("DiffDelete",   { "fg": s:faintRed, "bg": s:normRed })
-call s:h("DiffText",     { "bg": s:normRed, "gui": "bold", "cterm": "bold" })
-call s:h("User1",        { "fg": s:bg, "bg": s:normGreen })
-call s:h("User2",        { "fg": s:bg, "bg": s:faintRed })
-call s:h("User3",        { "fg": s:bg, "bg": s:normBlue })
-call s:h("FoldColumn",   { "fg": s:normBlue, "bg": s:faint })
+call s:h("Normal",       { "fg": s:almostBlack, "bg": s:white })
+call s:h("NonText",      { "fg": s:lightGrey })
+call s:h("Cursor",       { "fg": s:white, "bg": s:darkBlue })
+call s:h("Visual",       { "bg": s:lightBlue })
+call s:h("IncSearch",    { "bg": s:lightBlue, "gui": "bold", "cterm": "bold" })
+call s:h("Search",       { "bg": s:lightBlue, "gui": "bold", "cterm": "bold" })
+call s:h("StatusLine",   { "fg": s:almostBlack, "bg": s:almostWhite, "gui": "bold", "cterm": "bold" })
+call s:h("StatusLineNC", { "bg": s:lighterGrey })
+call s:h("SignColumn",   { "fg": s:middleLightGrey, "bg": s:almostWhite })
+call s:h("VertSplit",    { "fg": s:lighterGrey, "bg": s:lighterGrey })
+call s:h("TabLine",      { "fg": s:lightGrey, "bg": s:almostWhite })
+call s:h("TabLineSel",   { "fg": s:almostBlack, "bg": s:white })
+call s:h("TabLineFill",  { "bg": s:lighterGrey })
+call s:h("Folded",       { "fg": s:darkGrey, "bg": s:white })
+call s:h("Directory",    { "fg": s:darkBlue })
+call s:h("Title",        { "fg": s:darkBlue, "gui": "bold", "cterm": "bold" })
+call s:h("ErrorMsg",     { "bg": s:lightPink })
+call s:h("DiffAdd",      { "bg": s:lightGreen })
+call s:h("DiffChange",   { "bg": s:darkPink })
+call s:h("DiffDelete",   { "fg": s:lightPink, "bg": s:darkPink })
+call s:h("DiffText",     { "bg": s:darkPink, "gui": "bold", "cterm": "bold" })
+call s:h("User1",        { "fg": s:white, "bg": s:middleDarkGreen })
+call s:h("User2",        { "fg": s:white, "bg": s:lightPink })
+call s:h("User3",        { "fg": s:white, "bg": s:darkBlue })
+call s:h("FoldColumn",   { "fg": s:darkBlue, "bg": s:almostWhite })
 hi! link WildMenu     IncSearch
 hi! link WarningMsg   ErrorMsg
 hi! link MoreMsg      Title
@@ -137,13 +137,13 @@ hi! link LineNr       NonText
 hi! link SpecialKey   NonText
 
 " Highlights - Generic Syntax ------------------------------{{{2
-call s:h("Delimiter",  { "fg": s:dimmed })
-call s:h("Comment",    { "fg": s:comment, "gui": "italic" })
-call s:h("Underlined", { "fg": s:accent1, "gui": "underline", "cterm": "underline" })
-call s:h("Type",       { "fg": s:accent3 })
-call s:h("String",     { "fg": s:accent2 })
-call s:h("Keyword",    { "fg": s:accent2, "gui": "bold", "cterm": "bold" })
-call s:h("Todo",       { "fg": s:faintRed, "gui": "bold", "cterm": "bold" })
+call s:h("Delimiter",  { "fg": s:darkGrey })
+call s:h("Comment",    { "fg": s:middleLightGrey, "gui": "italic" })
+call s:h("Underlined", { "fg": s:darkBlue, "gui": "underline", "cterm": "underline" })
+call s:h("Type",       { "fg": s:middleDarkPink })
+call s:h("String",     { "fg": s:middleDarkGreen })
+call s:h("Keyword",    { "fg": s:middleDarkGreen, "gui": "bold", "cterm": "bold" })
+call s:h("Todo",       { "fg": s:lightPink, "gui": "bold", "cterm": "bold" })
 call s:h("Function",   { "gui": "bold", "cterm": "bold" })
 hi! link Identifier  Function
 hi! link Statement   Type
