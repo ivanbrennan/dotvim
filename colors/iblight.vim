@@ -16,56 +16,56 @@ let g:colors_name = "iblight"
 
 " Palette ----------------------------------------------{{{2
 " Colors -----------------------------------------------{{{3
-let s:white            = { "gui": "#FFFFFF", "cterm": "231" }
-let s:almostWhite      = { "gui": "#EEEEEE", "cterm": "255" }
-let s:lighterGrey      = { "gui": "#DDDDDD", "cterm": "253" }
-let s:lightGrey        = { "gui": "#BBBBBB", "cterm": "249" }
-let s:middleLightGrey  = { "gui": "#999999", "cterm": "246" }
-let s:middleDarkGrey   = { "gui": "#777777", "cterm": "243" }
-let s:darkGrey         = { "gui": "#444444", "cterm": "238" }
-let s:darkerGrey       = { "gui": "#282828", "cterm": "235" }
-let s:middleDarkerGrey = { "gui": "#1F1F1F", "cterm": "234" }
-let s:almostBlack      = { "gui": "#111111", "cterm": "233" }
-let s:black            = { "gui": "#000000", "cterm": "16"  }
+let s:white_2          = { "gui": "#FFFFFF", "cterm": "231" }
+let s:white_1          = { "gui": "#EEEEEE", "cterm": "255" }
+let s:white_0          = { "gui": "#DDDDDD", "cterm": "253" }
+let s:grey_4           = { "gui": "#BBBBBB", "cterm": "249" }
+let s:grey_3           = { "gui": "#999999", "cterm": "246" }
+let s:grey_2           = { "gui": "#777777", "cterm": "243" }
+let s:grey_1           = { "gui": "#444444", "cterm": "238" }
+let s:grey_0           = { "gui": "#282828", "cterm": "235" }
+let s:black_2          = { "gui": "#1F1F1F", "cterm": "234" }
+let s:black_1          = { "gui": "#111111", "cterm": "233" }
+let s:black_0          = { "gui": "#000000", "cterm": "16"  }
 
-let s:lightPink        = { "gui": "#FFAFAF", "cterm": "217" }
-let s:middleDarkPink   = { "gui": "#FF0055", "cterm": "160" }
-let s:middleLightPink  = { "gui": "#AF0000", "cterm": "124" }
-let s:darkPink         = { "gui": "#63001C", "cterm": "52"  }
+let s:red_3            = { "gui": "#FFAFAF", "cterm": "217" }
+let s:red_2            = { "gui": "#FF0055", "cterm": "160" }
+let s:red_1            = { "gui": "#AF0000", "cterm": "124" }
+let s:red_0            = { "gui": "#63001C", "cterm": "52"  }
 
-let s:lighterBlue      = { "gui": "#FCFEFF", "cterm": "195" }
-let s:lightBlue        = { "gui": "#E1F0F9", "cterm": "195" }
-let s:middleLightBlue  = { "gui": "#9FD3E6", "cterm": "116" }
-let s:darkBlue         = { "gui": "#005F87", "cterm": "24"  }
+let s:blue_3           = { "gui": "#FCFEFF", "cterm": "195" }
+let s:blue_2           = { "gui": "#E1F0F9", "cterm": "195" }
+let s:blue_1           = { "gui": "#9FD3E6", "cterm": "116" }
+let s:blue_0           = { "gui": "#005F87", "cterm": "24"  }
 
-let s:lightGreen       = { "gui": "#BBFFAA", "cterm": "157" }
-let s:middleLightGreen = { "gui": "#B1D631", "cterm": "148" }
-let s:middleDarkGreen  = { "gui": "#739200", "cterm": "64"  }
-let s:darkGreen        = { "gui": "#5F5F00", "cterm": "58"  }
+let s:green_3          = { "gui": "#BBFFAA", "cterm": "157" }
+let s:green_2          = { "gui": "#B1D631", "cterm": "148" }
+let s:green_1          = { "gui": "#739200", "cterm": "64"  }
+let s:green_0          = { "gui": "#5F5F00", "cterm": "58"  }
 
-let s:lightTan         = { "gui": "#ECE1C8", "cterm": "230" }
-let s:darkTan          = { "gui": "#503D15", "cterm": "52"  }
+let s:tan              = { "gui": "#ECE1C8", "cterm": "230" }
+let s:brown            = { "gui": "#503D15", "cterm": "52"  }
 
 " Semantics --------------------------------------------{{{3
-let s:bg         = s:white
-let s:norm       = s:almostBlack
-let s:comment    = s:middleLightGrey
-let s:dimmed     = s:darkGrey
-let s:subtle     = s:lightGrey
-let s:subtler    = s:lighterGrey
-let s:faint      = s:almostWhite
-let s:fainter    = s:lighterGrey
-let s:accent1    = s:darkBlue
-let s:accent2    = s:middleDarkGreen
-let s:accent3    = s:middleDarkPink
-let s:accent4    = s:darkTan
-let s:accent5    = s:darkBlue
-let s:normRed    = s:darkPink
-let s:normGreen  = s:middleDarkGreen
-let s:normBlue   = s:darkBlue
-let s:faintRed   = s:lightPink
-let s:faintGreen = s:lightGreen
-let s:faintBlue  = s:lightBlue
+let s:bg         = s:white_2
+let s:norm       = s:black_1
+let s:comment    = s:grey_3
+let s:dimmed     = s:grey_1
+let s:subtle     = s:grey_4
+let s:subtler    = s:white_0
+let s:faint      = s:white_1
+let s:fainter    = s:white_0
+let s:accent1    = s:blue_0
+let s:accent2    = s:green_1
+let s:accent3    = s:red_2
+let s:accent4    = s:brown
+let s:accent5    = s:blue_0
+let s:normRed    = s:red_0
+let s:normGreen  = s:green_1
+let s:normBlue   = s:blue_0
+let s:faintRed   = s:red_3
+let s:faintGreen = s:green_3
+let s:faintBlue  = s:blue_2
 
 " Utility Function -----------------------------------------{{{2
 function! s:h(group, style)
@@ -82,52 +82,52 @@ endfunction
 " Highlights -----------------------------------------------{{{1
 " Highlights - Vim >= 7 ------------------------------------{{{2
 if version >= 700
-  call s:h("CursorLine",       { "bg": s:almostWhite })
-  call s:h("MatchParen",       { "fg": s:middleDarkGreen, "bg": s:lightGrey, "gui": "bold" })
-  call s:h("Pmenu",            { "bg": s:almostWhite })
-  call s:h("PmenuThumb",       { "bg": s:almostBlack })
-  call s:h("PmenuSBar",        { "bg": s:lightGrey })
-  call s:h("PmenuSel",         { "bg": s:lightBlue })
-  call s:h("ColorColumn",      { "bg": s:lighterBlue })
-  call s:h("SpellBad",         { "sp": s:lightPink, "gui": "undercurl" })
-  call s:h("SpellCap",         { "sp": s:darkBlue, "gui": "undercurl" })
-  call s:h("SpellRare",        { "sp": s:middleDarkGreen, "gui": "undercurl" })
-  call s:h("SpellLocal",       { "sp": s:darkTan, "gui": "undercurl" })
+  call s:h("CursorLine",       { "bg": s:white_1 })
+  call s:h("MatchParen",       { "fg": s:green_1, "bg": s:grey_4, "gui": "bold" })
+  call s:h("Pmenu",            { "bg": s:white_1 })
+  call s:h("PmenuThumb",       { "bg": s:black_1 })
+  call s:h("PmenuSBar",        { "bg": s:grey_4 })
+  call s:h("PmenuSel",         { "bg": s:blue_2 })
+  call s:h("ColorColumn",      { "bg": s:blue_3 })
+  call s:h("SpellBad",         { "sp": s:red_3, "gui": "undercurl" })
+  call s:h("SpellCap",         { "sp": s:blue_0, "gui": "undercurl" })
+  call s:h("SpellRare",        { "sp": s:green_1, "gui": "undercurl" })
+  call s:h("SpellLocal",       { "sp": s:brown, "gui": "undercurl" })
   hi! link CursorColumn	CursorLine
 
   " Use background for cterm Spell*, which does not support undercurl
-  execute "hi! SpellBad   ctermbg=" s:darkPink.cterm
-  execute "hi! SpellCap   ctermbg=" s:lightBlue.cterm
-  execute "hi! SpellRare  ctermbg=" s:lightGreen.cterm
-  execute "hi! SpellLocal ctermbg=" s:almostWhite.cterm
+  execute "hi! SpellBad   ctermbg=" s:red_0.cterm
+  execute "hi! SpellCap   ctermbg=" s:blue_2.cterm
+  execute "hi! SpellRare  ctermbg=" s:green_3.cterm
+  execute "hi! SpellLocal ctermbg=" s:white_1.cterm
 endif
 
 " Highlights - UI ------------------------------------------{{{2
-call s:h("Normal",       { "fg": s:almostBlack, "bg": s:white })
-call s:h("NonText",      { "fg": s:lightGrey })
-call s:h("Cursor",       { "fg": s:white, "bg": s:darkBlue })
-call s:h("Visual",       { "bg": s:lightBlue })
-call s:h("IncSearch",    { "bg": s:lightBlue, "gui": "bold", "cterm": "bold" })
-call s:h("Search",       { "bg": s:lightBlue, "gui": "bold", "cterm": "bold" })
-call s:h("StatusLine",   { "fg": s:almostBlack, "bg": s:almostWhite, "gui": "bold", "cterm": "bold" })
-call s:h("StatusLineNC", { "bg": s:lighterGrey })
-call s:h("SignColumn",   { "fg": s:middleLightGrey, "bg": s:almostWhite })
-call s:h("VertSplit",    { "fg": s:lighterGrey, "bg": s:lighterGrey })
-call s:h("TabLine",      { "fg": s:lightGrey, "bg": s:almostWhite })
-call s:h("TabLineSel",   { "fg": s:almostBlack, "bg": s:white })
-call s:h("TabLineFill",  { "bg": s:lighterGrey })
-call s:h("Folded",       { "fg": s:darkGrey, "bg": s:white })
-call s:h("Directory",    { "fg": s:darkBlue })
-call s:h("Title",        { "fg": s:darkBlue, "gui": "bold", "cterm": "bold" })
-call s:h("ErrorMsg",     { "bg": s:lightPink })
-call s:h("DiffAdd",      { "bg": s:lightGreen })
-call s:h("DiffChange",   { "bg": s:darkPink })
-call s:h("DiffDelete",   { "fg": s:lightPink, "bg": s:darkPink })
-call s:h("DiffText",     { "bg": s:darkPink, "gui": "bold", "cterm": "bold" })
-call s:h("User1",        { "fg": s:white, "bg": s:middleDarkGreen })
-call s:h("User2",        { "fg": s:white, "bg": s:lightPink })
-call s:h("User3",        { "fg": s:white, "bg": s:darkBlue })
-call s:h("FoldColumn",   { "fg": s:darkBlue, "bg": s:almostWhite })
+call s:h("Normal",       { "fg": s:black_1, "bg": s:white_2 })
+call s:h("NonText",      { "fg": s:grey_4 })
+call s:h("Cursor",       { "fg": s:white_2, "bg": s:blue_0 })
+call s:h("Visual",       { "bg": s:blue_2 })
+call s:h("IncSearch",    { "bg": s:blue_2, "gui": "bold", "cterm": "bold" })
+call s:h("Search",       { "bg": s:blue_2, "gui": "bold", "cterm": "bold" })
+call s:h("StatusLine",   { "fg": s:black_1, "bg": s:white_1, "gui": "bold", "cterm": "bold" })
+call s:h("StatusLineNC", { "bg": s:white_0 })
+call s:h("SignColumn",   { "fg": s:grey_3, "bg": s:white_1 })
+call s:h("VertSplit",    { "fg": s:white_0, "bg": s:white_0 })
+call s:h("TabLine",      { "fg": s:grey_4, "bg": s:white_1 })
+call s:h("TabLineSel",   { "fg": s:black_1, "bg": s:white_2 })
+call s:h("TabLineFill",  { "bg": s:white_0 })
+call s:h("Folded",       { "fg": s:grey_1, "bg": s:white_2 })
+call s:h("Directory",    { "fg": s:blue_0 })
+call s:h("Title",        { "fg": s:blue_0, "gui": "bold", "cterm": "bold" })
+call s:h("ErrorMsg",     { "bg": s:red_3 })
+call s:h("DiffAdd",      { "bg": s:green_3 })
+call s:h("DiffChange",   { "bg": s:red_0 })
+call s:h("DiffDelete",   { "fg": s:red_3, "bg": s:red_0 })
+call s:h("DiffText",     { "bg": s:red_0, "gui": "bold", "cterm": "bold" })
+call s:h("User1",        { "fg": s:white_2, "bg": s:green_1 })
+call s:h("User2",        { "fg": s:white_2, "bg": s:red_3 })
+call s:h("User3",        { "fg": s:white_2, "bg": s:blue_0 })
+call s:h("FoldColumn",   { "fg": s:blue_0, "bg": s:white_1 })
 hi! link WildMenu     IncSearch
 hi! link WarningMsg   ErrorMsg
 hi! link MoreMsg      Title
@@ -137,13 +137,13 @@ hi! link LineNr       NonText
 hi! link SpecialKey   NonText
 
 " Highlights - Generic Syntax ------------------------------{{{2
-call s:h("Delimiter",  { "fg": s:darkGrey })
-call s:h("Comment",    { "fg": s:middleLightGrey, "gui": "italic" })
-call s:h("Underlined", { "fg": s:darkBlue, "gui": "underline", "cterm": "underline" })
-call s:h("Type",       { "fg": s:middleDarkPink })
-call s:h("String",     { "fg": s:middleDarkGreen })
-call s:h("Keyword",    { "fg": s:middleDarkGreen, "gui": "bold", "cterm": "bold" })
-call s:h("Todo",       { "fg": s:lightPink, "gui": "bold", "cterm": "bold" })
+call s:h("Delimiter",  { "fg": s:grey_1 })
+call s:h("Comment",    { "fg": s:grey_3, "gui": "italic" })
+call s:h("Underlined", { "fg": s:blue_0, "gui": "underline", "cterm": "underline" })
+call s:h("Type",       { "fg": s:red_2 })
+call s:h("String",     { "fg": s:green_1 })
+call s:h("Keyword",    { "fg": s:green_1, "gui": "bold", "cterm": "bold" })
+call s:h("Todo",       { "fg": s:red_3, "gui": "bold", "cterm": "bold" })
 call s:h("Function",   { "gui": "bold", "cterm": "bold" })
 hi! link Identifier  Function
 hi! link Statement   Type
