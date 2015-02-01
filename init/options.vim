@@ -40,6 +40,10 @@ set foldmethod=marker
 set showcmd
 set noshowmode
 
+" autosize
+set winwidth=95                 " soft active min
+set winminwidth=20              " hard inactive min
+
 " notifications
 set shortmess+=I
 set visualbell
