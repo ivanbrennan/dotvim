@@ -16,35 +16,35 @@ let g:colors_name = "ibdark"
 
 " Palette ----------------------------------------------{{{2
 " Colors -----------------------------------------------{{{3
-let s:black            = { "gui": "#000000", "cterm": "16"  }
 let s:white            = { "gui": "#FFFFFF", "cterm": "231" }
 let s:almostWhite      = { "gui": "#EEEEEE", "cterm": "255" }
-let s:almostBlack      = { "gui": "#111111", "cterm": "233" }
-let s:middleDarkerGrey = { "gui": "#1F1F1F", "cterm": "234" }
-let s:middleDarkGrey   = { "gui": "#777777", "cterm": "243" }
-let s:middleLightGrey  = { "gui": "#999999", "cterm": "246" }
-let s:lightGrey        = { "gui": "#BBBBBB", "cterm": "249" }
 let s:lighterGrey      = { "gui": "#DDDDDD", "cterm": "253" }
+let s:lightGrey        = { "gui": "#BBBBBB", "cterm": "249" }
+let s:middleLightGrey  = { "gui": "#999999", "cterm": "246" }
+let s:middleDarkGrey   = { "gui": "#777777", "cterm": "243" }
 let s:darkGrey         = { "gui": "#444444", "cterm": "238" }
 let s:darkerGrey       = { "gui": "#282828", "cterm": "235" }
+let s:middleDarkerGrey = { "gui": "#1F1F1F", "cterm": "234" }
+let s:almostBlack      = { "gui": "#111111", "cterm": "233" }
+let s:black            = { "gui": "#000000", "cterm": "16"  }
 
-let s:darkPink         = { "gui": "#63001C", "cterm": "52"  }
+let s:lightPink        = { "gui": "#FFAFAF", "cterm": "217" }
 let s:middleDarkPink   = { "gui": "#FF0055", "cterm": "160" }
 let s:middleLightPink  = { "gui": "#AF0000", "cterm": "124" }
-let s:lightPink        = { "gui": "#FFAFAF", "cterm": "217" }
+let s:darkPink         = { "gui": "#63001C", "cterm": "52"  }
 
-let s:darkBlue         = { "gui": "#005F87", "cterm": "24"  }
-let s:middleLightBlue  = { "gui": "#9FD3E6", "cterm": "116" }
-let s:lightBlue        = { "gui": "#E1F0F9", "cterm": "195" }
 let s:lighterBlue      = { "gui": "#FCFEFF", "cterm": "195" }
+let s:lightBlue        = { "gui": "#E1F0F9", "cterm": "195" }
+let s:middleLightBlue  = { "gui": "#9FD3E6", "cterm": "116" }
+let s:darkBlue         = { "gui": "#005F87", "cterm": "24"  }
 
-let s:darkGreen        = { "gui": "#5F5F00", "cterm": "58"  }
-let s:middleDarkGreen  = { "gui": "#739200", "cterm": "64"  }
-let s:middleLightGreen = { "gui": "#B1D631", "cterm": "148" }
 let s:lightGreen       = { "gui": "#BBFFAA", "cterm": "157" }
+let s:middleLightGreen = { "gui": "#B1D631", "cterm": "148" }
+let s:middleDarkGreen  = { "gui": "#739200", "cterm": "64"  }
+let s:darkGreen        = { "gui": "#5F5F00", "cterm": "58"  }
 
-let s:darkTan          = { "gui": "#503D15", "cterm": "52"  }
 let s:lightTan         = { "gui": "#ECE1C8", "cterm": "230" }
+let s:darkTan          = { "gui": "#503D15", "cterm": "52"  }
 
 " Semantics --------------------------------------------{{{3
 let s:bg         = s:almostBlack
