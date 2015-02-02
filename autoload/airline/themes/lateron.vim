@@ -13,12 +13,14 @@ let s:I3 = [ '#ffffff' , '#44403a' , 255 , 237 ]
 
 " Visual mode
 let s:V1 = [ '#ffffff' , '#005F87' , 255 , 24  ]
-let s:V2 = [ '#b5dfff' , '#2e2d2a' , 153 , 235 ]
-let s:V3 = [ '#ffffff' , '#44403a' , 255 , 237 ]
+let s:V2 = [ '#b5dfff' , '#44403a' , 153 , 237 ]
+let s:V3 = [ '#ffffff' , '#2e2d2a' , 255 , 235 ]
 let s:V4 = [ '#dddddd' ,             253       ]
 
 " Replace mode
-let s:RE = [ '#5faf00' , 24  ]
+let s:R1 = [ '#ffffff' , '#44403a' , 255 , 237 ]
+let s:R2 = [ '#b5dfff' , '#2e2d2a' , 153 , 235 ]
+let s:R3 = [ '#ffffff' , '#44403a' , 255 , 237 ]
 
 " Paste mode
 let s:PA = [ '#af0000' , 52 ]
@@ -45,9 +47,7 @@ let g:airline#themes#lateron#palette.insert_paste = {
       \ 'airline_a' : [ s:I1[0] , s:I1[1] , s:I1[2] , s:I1[3] , '' ] }
 
 
-let g:airline#themes#lateron#palette.replace = copy(airline#themes#laederon#palette.insert)
-let g:airline#themes#lateron#palette.replace.airline_a = [ s:I1[0] , s:RE[0] , s:I1[2] , s:RE[1] , '' ]
-let g:airline#themes#lateron#palette.replace_modified = g:airline#themes#laederon#palette.insert_modified
+let g:airline#themes#lateron#palette.replace = airline#themes#generate_color_map(s:R1, s:R2, s:R3)
 
 
 let g:airline#themes#lateron#palette.visual = airline#themes#generate_color_map(s:V1, s:V2, s:V3)
