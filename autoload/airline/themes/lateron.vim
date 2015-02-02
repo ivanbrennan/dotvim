@@ -13,8 +13,8 @@ let s:I3 = [ '#ffffff' , '#44403a' , 255 , 237 ]
 
 " Visual mode
 let s:V1 = [ '#ffffff' , '#005F87' , 255 , 24  ]
-let s:V2 = [ '#777470' , '#2e2d2a' , 240 , 235 ]
-let s:V3 = [ '#ffffff' , '#2e2d2a' , 255 , 235 ]
+let s:V2 = [ '#b5dfff' , '#2e2d2a' , 153 , 235 ]
+let s:V3 = [ '#ffffff' , '#44403a' , 255 , 237 ]
 let s:V4 = [ '#dddddd' ,             253       ]
 
 " Replace mode
