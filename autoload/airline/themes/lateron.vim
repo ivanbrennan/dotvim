@@ -6,16 +6,16 @@ let s:N2 = [ '#b5dfff' , '#44403a' , 153 , 237 ]
 let s:N3 = [ '#ffffff' , '#2e2d2a' , 255 , 235 ]
 let s:N4 = [ '#2e2d2a' ,             235       ]
 
+" Visual mode
+let s:V1 = [ '#ffffff' , '#005f87' , 255 , 25  ]
+let s:V2 = [ '#b5dfff' , '#44403a' , 153 , 237 ]
+let s:V3 = [ '#ffffff' , '#2e2d2a' , 255 , 235 ]
+let s:V4 = [ '#dddddd' ,             253       ]
+
 " Insert mode
 let s:I1 = [ '#ffffff' , '#63001C' , 255 , 52  ]
 let s:I2 = [ '#b5dfff' , '#2e2d2a' , 153 , 235 ]
 let s:I3 = [ '#ffffff' , '#44403a' , 255 , 237 ]
-
-" Visual mode
-let s:V1 = [ '#ffffff' , '#005F87' , 255 , 24  ]
-let s:V2 = [ '#b5dfff' , '#44403a' , 153 , 237 ]
-let s:V3 = [ '#ffffff' , '#2e2d2a' , 255 , 235 ]
-let s:V4 = [ '#dddddd' ,             253       ]
 
 " Replace mode
 let s:R1 = [ '#ffffff' , '#44403a' , 255 , 237 ]
