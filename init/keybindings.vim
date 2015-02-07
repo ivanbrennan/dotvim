@@ -18,38 +18,43 @@ noremap          <C-,><C-O> :tabedit ~/.vim/init/options<CR>
 " ··········· buffers ········· {{{1
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 
-nmap    <Leader>ee       :edit %%
-noremap <Leader>et       :tabedit 
-noremap <Leader>e`       :edit ~/
-noremap <Leader>ec       :edit ~/Development/code/
+nmap     <Leader>e        :edit 
+nmap     <Leader>ee       :edit %%
+noremap  <Leader>et       :tabedit 
+noremap  <Leader>e`       :edit ~/
+noremap  <Leader>ec       :edit ~/Development/code/
 
-nmap    <Leader>ww       :write %%
-vmap    <Leader>ww       :write %%
-noremap <C-S-CR>         :write<CR>
+nnoremap <Leader>w       :write
+vnoremap <Leader>w       :write
+nmap     <Leader>ww      :write %%
+vmap     <Leader>ww      :write %%
 
-noremap <Leader>dd       :bdelete<CR>
-noremap <Leader>dl       :bdelete#<CR>
+noremap  <Leader>dd      :bdelete<CR>
+noremap  <Leader>d3      :bdelete#<CR>
 
 " Buffer list
-noremap <S-Space>        :buffers<CR>
-noremap <Leader>p        :CtrlPBuffer<CR>
-noremap <M-Tab>          :bnext<CR>
-noremap <M-S-Tab>        :bprevious<CR>
-noremap <Leader>l        <C-^>
+noremap  <C-S-Space>     :buffers<CR>
+noremap  <Leader>p       :CtrlPBuffer<CR>
+noremap  <M-Tab>         :bnext<CR>
+noremap  <M-S-Tab>       :bprevious<CR>
+noremap  <Leader>3       <C-^>
 
 " Quickfix list
-map     <C-Space>        <Plug>QuickfixToggle
-noremap <C-J>            :cnext<CR>
-noremap <C-K>            :cprevious<CR>
+map      <C-Space>       <Plug>QfxListical
+map      <S-Space>       <Plug>LocListical
+noremap  <C-J>           :cnext<CR>
+noremap  <C-K>           :cprevious<CR>
+noremap  <Leader>j       :lnext<CR>
+noremap  <Leader>k       :lprevious<CR>
 
-noremap <Leader>we       :pwd<CR>
-noremap <Leader>1        :call ReLoadBuffers()<CR>
-noremap <C-S-Space>      <C-Z>
+noremap  <Leader><Space> :pwd<CR>
+noremap  <Leader>1       :call ReLoadBuffers()<CR>
+noremap  <Leader><Tab>   <C-Z>
 
 " ··········· ex commands ····· {{{1
 noremap  <Leader>:       :!
 noremap  <Leader>;       :<Up>
-nnoremap <Leader>h       :help 
+nnoremap <C-H>           :help 
 nnoremap <Leader>x       :x
 
 cnoremap <C-P>           <Up>
@@ -85,7 +90,7 @@ inoremap <S-CR>     <C-O>O
 inoremap <C-CR>     <C-O>o
 
 " clear line
-nnoremap <Leader><CR> S<Esc>
+nnoremap <Leader>L  S<Esc>
 
 " paste toggle
 noremap  <silent> <Leader>P <F4>
@@ -135,14 +140,14 @@ noremap <silent> <Leader>8 :set foldenable!<CR>
 
 " toggle search highlighting
 noremap <silent> <C-L>     :nohlsearch<CR><C-L>
-noremap          <Leader>L :set hlsearch! hlsearch?<CR>
+noremap          <Leader>l :set hlsearch! hlsearch?<CR>
 
 " ··········· splits ·········· {{{1
 noremap  <C-W>\     <C-W><Bar>
 noremap  <C-W><C-\> <C-W><Bar>
 
 " ··········· display ········· {{{1
-nnoremap <Leader>w  :setlocal wrap! linebreak! list! wrap?<CR>
+nnoremap <Leader>,w  :setlocal wrap! linebreak! list! wrap?<CR>
 noremap  <Leader>,b :call ToggleBG()<CR>:echo &background<CR>
 
 noremap  <Leader>,x :call HexHighlight()<CR>
@@ -171,7 +176,7 @@ nnoremap <F5> :!ctags -R<CR>
 nmap     <Leader>t           <Plug>RunFocusedSpec
 nmap     <Leader>T           <Plug>RunCurrentSpecFile
 nmap     <Leader>,r          <Plug>RunMostRecentSpec
-noremap  <Leader>k           :VtrKillRunner<CR>
+noremap  <Leader><CR>        :VtrKillRunner<CR>
 
 " noremap <Leader>,tt         :call RunCurrentSpecFile()<CR>
 " noremap <Leader>,t<Space>   :call RunNearestSpec()<CR>
