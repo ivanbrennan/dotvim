@@ -145,6 +145,7 @@ noremap          <Leader>l :set hlsearch! hlsearch?<CR>
 " ··········· splits ·········· {{{1
 noremap  <C-W>\     <C-W><Bar>
 noremap  <C-W><C-\> <C-W><Bar>
+nnoremap <Leader>q  <C-W>q
 
 " ··········· display ········· {{{1
 nnoremap <Leader>,w  :setlocal wrap! linebreak! list! wrap?<CR>
