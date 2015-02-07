@@ -44,8 +44,8 @@ map      <C-Space>       <Plug>QfxListical
 map      <S-Space>       <Plug>LocListical
 noremap  <C-J>           :cnext<CR>
 noremap  <C-K>           :cprevious<CR>
-noremap  <Leader>j       :lnext<CR>
-noremap  <Leader>k       :lprevious<CR>
+noremap  <M-J>           :lnext<CR>
+noremap  <M-K>           :lprevious<CR>
 
 noremap  <Leader><Space> :pwd<CR>
 noremap  <Leader>1       :call ReLoadBuffers()<CR>
