@@ -75,7 +75,7 @@ nnoremap <Leader>= gg=G``
 
 " push newline
 nnoremap <S-CR>   mzO<Esc>j`z
-nnoremap <CR>     mzo<Esc>k`z
+nnoremap <C-CR>   mzo<Esc>k`z
 
 " bubble text
 nnoremap <silent> <C-S-Up>    mZ:move .-2<CR>==`Z
