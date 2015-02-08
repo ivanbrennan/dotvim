@@ -41,11 +41,17 @@ noremap  <Leader>3       <C-^>
 
 " Quickfix list
 map      <C-Space>       <Plug>QfxListical
+noremap  <C-Down>        :cnext<CR>
+noremap  <C-Up>          :cprevious<CR>
+nnoremap <C-Left>        :colder<CR>
+nnoremap <C-Right>       :cnewer<CR>
+
+" Location List
 map      <S-Space>       <Plug>LocListical
-noremap  <C-J>           :cnext<CR>
-noremap  <C-K>           :cprevious<CR>
-noremap  <M-J>           :lnext<CR>
-noremap  <M-K>           :lprevious<CR>
+noremap  <S-Down>        :lnext<CR>
+noremap  <S-Up>          :lprevious<CR>
+nnoremap <S-Left>        :lolder<CR>
+nnoremap <S-Right>       :lnewer<CR>
 
 noremap  <Leader><Space> :pwd<CR>
 noremap  <Leader>1       :call ReLoadBuffers()<CR>
@@ -68,18 +74,18 @@ cnoremap <C-Right>       <S-Right>
 nnoremap <Leader>= gg=G``
 
 " push newline
-noremap  <S-CR>    mzO<Esc>j`z
-noremap  <C-CR>    mzo<Esc>k`z
+nnoremap <S-CR>   mzO<Esc>j`z
+nnoremap <CR>     mzo<Esc>k`z
 
 " bubble text
-nnoremap <silent> <C-Up>    mZ:move .-2<CR>==`Z
-vnoremap          <C-Up>    :move '<-2<CR>gv=gv
-inoremap          <C-Up>    <Esc>:move .-2<CR>==gi
-nnoremap <silent> <C-Down>  mZ:move .+1<CR>==`Z
-vnoremap          <C-Down>  :move '>+1<CR>gv=gv
-inoremap          <C-Down>  <Esc>:move .+1<CR>==gi
-vnoremap          <C-Left>  <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
-vnoremap          <C-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
+nnoremap <silent> <C-S-Up>    mZ:move .-2<CR>==`Z
+vnoremap          <C-S-Up>    :move '<-2<CR>gv=gv
+inoremap          <C-S-Up>    <Esc>:move .-2<CR>==gi
+nnoremap <silent> <C-S-Down>  mZ:move .+1<CR>==`Z
+vnoremap          <C-S-Down>  :move '>+1<CR>gv=gv
+inoremap          <C-S-Down>  <Esc>:move .+1<CR>==gi
+vnoremap          <C-S-Left>  <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
+vnoremap          <C-S-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 
 " ··········· editing ········· {{{1
 " line completion
@@ -123,8 +129,8 @@ noremap  <Leader>/  /<Up>
 noremap  <Leader>?  ?<Up>
 
 " substitute
-nnoremap <leader>s  :%s/
-vnoremap <leader>s  :s/
+nnoremap <Leader>s  :%s/
+vnoremap <Leader>s  :s/
 
 " preserve flags
 nnoremap &  :&&<CR>
