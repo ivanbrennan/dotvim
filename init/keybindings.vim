@@ -14,6 +14,8 @@ nnoremap          <C-,>k     :tabedit ~/.vim/init/keybindings.vim<CR>
 nnoremap          <C-,><C-K> :tabedit ~/.vim/init/keybindings.vim<CR>
 nnoremap          <C-,>o     :tabedit ~/.vim/init/options.vim<CR>
 nnoremap          <C-,><C-O> :tabedit ~/.vim/init/options.vim<CR>
+nnoremap          <C-,>f     :tabedit ~/.vim/init/functions.vim<CR>
+nnoremap          <C-,><C-F> :tabedit ~/.vim/init/functions.vim<CR>
 
 " ··········· buffers ········· {{{1
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
