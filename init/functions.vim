@@ -102,7 +102,7 @@ call AirlineInit()
 
 " ··········· colors ··················· {{{1
 fun! ToggleBG()
-  if  exists("g:colors_name") | let cur_colo = g:colors_name | endif
+  if exists("g:colors_name") | let cur_colo = g:colors_name | endif
 
   if &background=='dark' | set background=light
   else                   | set background=dark | endif
