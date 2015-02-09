@@ -194,7 +194,7 @@ noremap  <Leader><CR>        :VtrKillRunner<CR>
 " noremap <Leader>,ta         :call RunAllSpecs()<CR>
 
 " ··········· git ············· {{{1
-noremap <silent> <Leader>b  :Gblame<CR>
+noremap <silent> <Leader>gb  :Gblame<CR>
 
 " ··········· rails ··········· {{{1
 noremap <silent> <Leader>R  :A<CR>
