@@ -62,7 +62,7 @@ noremap  <Leader><Tab>   <C-Z>
 " ··········· ex commands ····· {{{1
 noremap  <Leader>1       :!
 noremap  <Leader>:       :<Up>
-nnoremap <C-H>           :help 
+nnoremap <Leader>h       :help 
 nnoremap <Leader>x       :x
 
 cnoremap <C-P>           <Up>
