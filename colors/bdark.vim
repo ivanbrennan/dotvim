@@ -1,4 +1,4 @@
-" ibdark.vim - Vim color scheme
+" bdark.vim - Vim color scheme
 " ----------------------------------------------------------
 " Author:   Ivan Brennan (ivan.brennan@gmail.com)
 " Version:  0.1
@@ -12,7 +12,7 @@ if exists("syntax_on")
 endif
 
 let s:cached_background = &background
-let g:colors_name = "ibdark"
+let g:colors_name = "bdark"
 
 " Palette ----------------------------------------------{{{2
 " Colors -----------------------------------------------{{{3

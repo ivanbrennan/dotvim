@@ -112,6 +112,12 @@ fun! ToggleBG()
   endif
 endf
 
+fun! ToggleColorscheme()
+  call ToggleBG()
+  if &background=='dark' | colorscheme bdark
+  else                   | colorscheme blight | endif
+endf
+
 fun! TransparencyToggle(transpr)
   if exists("g:transparency_memo")
     let &transparency = g:transparency_memo

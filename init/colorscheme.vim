@@ -1,4 +1,4 @@
 " ::::::::: Colors ::::::::::::::::::::::::
 
-colorscheme iblight
+colorscheme blight
 
