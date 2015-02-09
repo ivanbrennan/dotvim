@@ -176,8 +176,8 @@ nnoremap <silent> <C-_>      :call CursorLineToggle()<CR>
 vnoremap <silent> <C-_>      :<C-U>call CursorLineToggle()<CR>gv
 nnoremap <silent> <C-Bslash> :set cursorcolumn!<CR>
 vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv
-nnoremap <silent> <Leader>0  :call ColorColToggle()<CR>
-vnoremap <silent> <Leader>0  :<C-U>call ColorColToggle()<CR>gv
+nnoremap <silent> <Leader>]  :call ColorColToggle()<CR>
+vnoremap <silent> <Leader>]  :<C-U>call ColorColToggle()<CR>gv
 
 " ··········· tags ············ {{{1
 nnoremap <F5> :!ctags -R<CR>
