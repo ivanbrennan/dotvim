@@ -56,12 +56,12 @@ nnoremap <S-Left>        :lolder<CR>
 nnoremap <S-Right>       :lnewer<CR>
 
 noremap  <Leader><Space> :pwd<CR>
-noremap  <Leader>1       :call ReLoadBuffers()<CR>
+noremap  <Leader>.       :call ReLoadBuffers()<CR>
 noremap  <Leader><Tab>   <C-Z>
 
 " ··········· ex commands ····· {{{1
-noremap  <Leader>:       :!
-noremap  <Leader>;       :<Up>
+noremap  <Leader>1       :!
+noremap  <Leader>:       :<Up>
 nnoremap <C-H>           :help 
 nnoremap <Leader>x       :x
 
