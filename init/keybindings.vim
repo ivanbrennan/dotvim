@@ -140,6 +140,7 @@ xnoremap &  :&&<CR>
 
 " Ag
 noremap  <Leader>a  :Ag! 
+noremap  <Leader>l  :Ag! 
 
 " word under cursor
 noremap <silent> <Leader>8 :set foldenable!<CR>
@@ -147,8 +148,8 @@ noremap <silent> <Leader>8 :set foldenable!<CR>
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " toggle search highlighting
-noremap <silent> <C-L>     :nohlsearch<CR><C-L>
-noremap          <Leader>l :set hlsearch! hlsearch?<CR>
+noremap <silent> <C-L>      :nohlsearch<CR><C-L>
+noremap          <C-L><C-L> :set hlsearch! hlsearch?<CR>
 
 " ··········· splits ·········· {{{1
 noremap  <C-W>\     <C-W><Bar>
