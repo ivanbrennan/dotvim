@@ -12,8 +12,8 @@ noremap <silent> <C-.>      :source  $MYVIMRC<CR>:call RefreshUI()<CR>
 noremap          <C-,>      :tabedit $MYVIMRC<CR>
 noremap          <C-,>k     :tabedit ~/.vim/init/keybindings.vim<CR>
 noremap          <C-,><C-K> :tabedit ~/.vim/init/keybindings.vim<CR>
-noremap          <C-,>o     :tabedit ~/.vim/init/options<CR>
-noremap          <C-,><C-O> :tabedit ~/.vim/init/options<CR>
+noremap          <C-,>o     :tabedit ~/.vim/init/options.vim<CR>
+noremap          <C-,><C-O> :tabedit ~/.vim/init/options.vim<CR>
 
 " ··········· buffers ········· {{{1
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
