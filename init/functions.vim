@@ -159,6 +159,17 @@ function! ReLoadBuffers()
   set noautoread
 endfunction
 
+" ··········· dispatch ················· {{{1
+function! Spatch()
+  if g:spec_runner_dispatcher == "VtrSendCommand! {command}"
+    let g:spec_runner_dispatcher = "Dispatch {command}"
+    echo "Testing with Dispatch"
+  else
+    let g:spec_runner_dispatcher = "VtrSendCommand! {command}"
+    echo "Testing with Vtr"
+  endif
+endfunction
+
 " ··········· keyboard ················· {{{1
 function! Keyboard(type)
   if a:type == "workman"
