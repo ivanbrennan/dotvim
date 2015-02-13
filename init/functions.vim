@@ -31,6 +31,15 @@ fun! NumberToggle()
   end
 endf
 
+" ··········· tab key ·················· {{{1
+function! CleverTab()
+  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+    return "\<Tab>"
+  else
+    return "\<C-N>"
+  endif
+endfunction
+
 " ··········· folding ·················· {{{1
 fun! FoldMethToggle()
   if &foldmethod == 'marker'

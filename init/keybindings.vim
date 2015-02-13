@@ -90,9 +90,6 @@ vnoremap          <C-S-Left>  <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
 vnoremap          <C-S-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 
 " ··········· editing ········· {{{1
-" line completion
-inoremap <C-L>      <C-X><C-L>
-
 " spawn newline
 inoremap <S-CR>     <C-O>O
 inoremap <C-CR>     <C-O>o
@@ -120,6 +117,12 @@ inoremap JK         <C-O>A
 
 " toggle case
 inoremap ~~         <Esc>viwg~gi
+
+" ··········· autocompletion ·· {{{1
+
+inoremap <Tab>      <C-R>=CleverTab()<CR>
+inoremap <C-L>      <C-X><C-L>
+inoremap <C-]>      <C-X><C-]>
 
 " ··········· search ·········· {{{1
 " sensible marks
