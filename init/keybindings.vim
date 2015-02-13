@@ -194,4 +194,5 @@ noremap <silent> <Leader>gb  :Gblame<CR>
 
 " ··········· rails ··········· {{{1
 nnoremap <silent> <Leader>R  :A<CR>
+nnoremap          <Leader>es :Eschema 
 
