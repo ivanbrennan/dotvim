@@ -193,5 +193,5 @@ nnoremap <silent> <Leader>b  :call Spatch()<CR>
 noremap <silent> <Leader>gb  :Gblame<CR>
 
 " ··········· rails ··········· {{{1
-noremap <silent> <Leader>R  :A<CR>
+nnoremap <silent> <Leader>R  :A<CR>
 
