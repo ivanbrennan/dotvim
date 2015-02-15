@@ -89,17 +89,17 @@ if version >= 700
   call s:h("PmenuSBar",        { "bg": s:grey_4 })
   call s:h("PmenuSel",         { "bg": s:blue_2 })
   call s:h("ColorColumn",      { "bg": s:blue_3 })
-  call s:h("SpellBad",         { "sp": s:red_3, "gui": "undercurl" })
+  call s:h("SpellBad",         { "sp": s:red_2, "gui": "undercurl" })
   call s:h("SpellCap",         { "sp": s:blue_0, "gui": "undercurl" })
   call s:h("SpellRare",        { "sp": s:green_1, "gui": "undercurl" })
   call s:h("SpellLocal",       { "sp": s:brown, "gui": "undercurl" })
   hi! link CursorColumn	CursorLine
 
-  " Use background for cterm Spell*, which does not support undercurl
-  execute "hi! SpellBad   ctermbg=" s:red_0.cterm
-  execute "hi! SpellCap   ctermbg=" s:blue_2.cterm
-  execute "hi! SpellRare  ctermbg=" s:green_3.cterm
-  execute "hi! SpellLocal ctermbg=" s:white_1.cterm
+  " Use foreground for cterm Spell*, which does not support undercurl
+  execute "hi! SpellBad   ctermfg=" s:red_2.cterm
+  execute "hi! SpellCap   ctermfg=" s:blue_2.cterm
+  execute "hi! SpellRare  ctermfg=" s:green_3.cterm
+  execute "hi! SpellLocal ctermfg=" s:grey_3.cterm
 endif
 
 " Highlights - UI ------------------------------------------{{{2
