@@ -98,8 +98,8 @@ inoremap <C-CR>     <C-O>o
 nnoremap <Leader>L  S<Esc>
 
 " paste toggle
-noremap  <silent> <Leader>P <F4>
-set pastetoggle=<F4>
+noremap  <silent> <Leader>P <F8>
+set pastetoggle=<F8>
 
 " clipboard
 noremap  <Leader>c  "+
