@@ -129,6 +129,9 @@ inoremap <C-]>      <C-X><C-]>
 noremap  `  '
 noremap  '  `
 
+" matchit
+map      <Leader>o  %
+
 " last search
 noremap  <Leader>/  /<Up>
 noremap  <Leader>?  ?<Up>
