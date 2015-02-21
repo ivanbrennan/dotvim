@@ -1,3 +1,3 @@
-setlocal ts=4 sts=4 sw=4 noet
-compiler nodelint
+" setlocal ts=4 sts=4 sw=4
+" compiler nodelint
 
