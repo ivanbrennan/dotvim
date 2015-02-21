@@ -39,7 +39,7 @@ noremap  <C-S-Space>     :buffers<CR>
 noremap  <Leader>p       :CtrlPBuffer<CR>
 noremap  <M-Tab>         :bnext<CR>
 noremap  <M-S-Tab>       :bprevious<CR>
-noremap  <Leader>3       <C-^>
+noremap  <Leader>l       <C-^>
 
 " Quickfix list
 map      <C-Space>       <Plug>QfxListical
@@ -143,7 +143,7 @@ xnoremap &  :&&<CR>
 
 " Ag
 noremap  <Leader>a  :Ag! 
-noremap  <Leader>l  :LAg! 
+noremap  <Leader>A  :LAg! 
 
 " word under cursor
 noremap <silent> <Leader>8 :set foldenable!<CR>
