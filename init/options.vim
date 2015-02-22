@@ -1,5 +1,9 @@
 " ::::::::: Options :::::::::::::::::::::::
 
+" startup
+set exrc           " enable local .vimrc files
+set secure         " disable unsafe commands in local .vimrc files
+
 " persistence
 set directory=~/.vim/tmp
 set backup
