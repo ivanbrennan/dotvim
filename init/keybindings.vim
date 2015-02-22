@@ -158,10 +158,11 @@ noremap <silent> <C-N>      :nohlsearch<CR><C-L>
 noremap          <C-N><C-N> :set hlsearch! hlsearch?<CR>
 
 " ··········· splits ·········· {{{1
-noremap  <C-H>      <C-W>h
-noremap  <C-J>      <C-W>j
-noremap  <C-K>      <C-W>k
-noremap  <C-L>      <C-W>l
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
 
 noremap  <C-W>\     <C-W><Bar>
 noremap  <C-W><C-\> <C-W><Bar>
