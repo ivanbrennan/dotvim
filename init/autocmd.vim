@@ -1,6 +1,7 @@
 " vimrc
 augroup VimrcGroup
   autocmd!
+  autocmd VimResized * :wincmd =
   autocmd BufWritePost $MYVIMRC,vimrc.local  source $MYVIMRC | :call RefreshUI()
   autocmd BufWritePost ~/*{.,}vim/init/*.vim source $MYVIMRC | :call RefreshUI()
 augroup END
