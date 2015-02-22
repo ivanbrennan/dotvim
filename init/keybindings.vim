@@ -154,10 +154,15 @@ noremap <silent> <Leader>8 :set foldenable!<CR>
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " toggle search highlighting
-noremap <silent> <C-L>      :nohlsearch<CR><C-L>
-noremap          <C-L><C-L> :set hlsearch! hlsearch?<CR>
+noremap <silent> <C-N>      :nohlsearch<CR><C-L>
+noremap          <C-N><C-N> :set hlsearch! hlsearch?<CR>
 
 " ··········· splits ·········· {{{1
+noremap  <C-H>      <C-W>h
+noremap  <C-J>      <C-W>j
+noremap  <C-K>      <C-W>k
+noremap  <C-L>      <C-W>l
+
 noremap  <C-W>\     <C-W><Bar>
 noremap  <C-W><C-\> <C-W><Bar>
 nnoremap <Leader>q  <C-W>q
