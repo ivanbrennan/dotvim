@@ -164,6 +164,7 @@ nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
 
+nmap     <Leader>i  <Plug>ZoomWin
 noremap  <C-W>\     <C-W><Bar>
 noremap  <C-W><C-\> <C-W><Bar>
 nnoremap <Leader>q  <C-W>q
