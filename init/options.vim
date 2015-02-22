@@ -1,4 +1,4 @@
-" ::::::::: Options ::::::::::::::::::::::: {{{1
+" ::::::::: Options :::::::::::::::::::::::
 
 " persistence
 set directory=~/.vim/tmp
