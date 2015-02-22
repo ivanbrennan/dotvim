@@ -30,6 +30,7 @@ nnoremap <Leader>w       :write
 vnoremap <Leader>w       :write
 nmap     <Leader>ww      :write %%
 vmap     <Leader>ww      :write %%
+nnoremap <Leader>wq      :wq 
 
 noremap  <Leader>dd      :bdelete<CR>
 noremap  <Leader>d3      :bdelete#<CR>
@@ -63,7 +64,6 @@ noremap  <Leader><Tab>   <C-Z>
 noremap  <Leader>1       :!
 noremap  <Leader>:       :<Up>
 nnoremap <Leader>h       :help 
-nnoremap <Leader>x       :x
 
 cnoremap <C-P>           <Up>
 cnoremap <C-N>           <Down>
