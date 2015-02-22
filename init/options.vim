@@ -18,6 +18,8 @@ set sidescroll=2
 set mouse+=a
 set guioptions-=L
 set guioptions-=r
+set splitright
+set splitbelow
 
 " editing
 set backspace=indent,eol,start
