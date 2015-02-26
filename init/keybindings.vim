@@ -60,6 +60,10 @@ noremap  <Leader><Space> :pwd<CR>
 noremap  <Leader>.       :call ReLoadBuffers()<CR>
 noremap  <Leader><Tab>   <C-Z>
 
+" Vinegar
+nnoremap - -
+nmap     <Leader>-       <Plug>VinegarUp
+
 " ··········· ex commands ····· {{{1
 noremap  <Leader>1       :!
 noremap  <Leader>:       :<Up>
