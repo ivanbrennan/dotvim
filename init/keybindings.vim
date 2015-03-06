@@ -24,7 +24,7 @@ nmap     <Leader>e        :edit
 nmap     <Leader>ee       :edit %%
 noremap  <Leader>et       :tabedit 
 noremap  <Leader>e`       :edit ~/
-noremap  <Leader>ec       :edit ~/Development/code/
+noremap  <Leader>ed       :edit ~/Development/code/
 
 nnoremap <Leader>w       :write
 vnoremap <Leader>w       :write
@@ -213,4 +213,8 @@ noremap <silent> <Leader>gb  :Gblame<CR>
 " ··········· rails ··········· {{{1
 nnoremap <silent> <Leader>R  :A<CR>
 nnoremap          <Leader>es :Eschema 
+nnoremap          <Leader>ec :Econtroller 
+nnoremap          <Leader>em :Emodel 
+nnoremap          <Leader>ev :Eview 
+nnoremap          <Leader>eh :Ehelper 
 
