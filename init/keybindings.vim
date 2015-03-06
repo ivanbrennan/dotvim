@@ -40,7 +40,7 @@ noremap  <C-S-Space>     :buffers<CR>
 noremap  <Leader>p       :CtrlPBuffer<CR>
 noremap  <M-Tab>         :bnext<CR>
 noremap  <M-S-Tab>       :bprevious<CR>
-noremap  <Leader>l       <C-^>
+noremap  <Leader><Tab>   <C-^>
 
 " Quickfix list
 map      <C-Space>       <Plug>QfxListical
@@ -58,7 +58,7 @@ nnoremap <S-Right>       :lnewer<CR>
 
 noremap  <Leader><Space> :pwd<CR>
 noremap  <Leader>.       :call ReLoadBuffers()<CR>
-noremap  <Leader><Tab>   <C-Z>
+noremap  <Leader>k       <C-Z>
 
 " Vinegar
 nnoremap - -
@@ -158,8 +158,8 @@ noremap <silent> <Leader>8 :set foldenable!<CR>
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " toggle search highlighting
-noremap <silent> <C-N>      :nohlsearch<CR><C-L>
-noremap          <C-N><C-N> :set hlsearch! hlsearch?<CR>
+noremap <silent> <C-L>      :nohlsearch<CR><C-L>
+noremap          <C-L><C-L> :set hlsearch! hlsearch?<CR>
 
 " ··········· splits ·········· {{{1
 let g:tmux_navigator_no_mappings = 1
