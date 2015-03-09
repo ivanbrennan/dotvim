@@ -67,7 +67,7 @@ nmap     <Leader>-       <Plug>VinegarUp
 " ··········· ex commands ····· {{{1
 noremap  <Leader>1       :!
 noremap  <Leader>:       :<Up>
-nnoremap <Leader>h       :help 
+nnoremap <Leader>H       :help 
 
 cnoremap <C-P>           <Up>
 cnoremap <C-N>           <Down>
@@ -163,7 +163,7 @@ noremap <silent> <C-L>      :nohlsearch<CR><C-L>
 noremap          <C-L><C-L> :set hlsearch! hlsearch?<CR>
 
 " ··········· splits ·········· {{{1
-nmap     <Leader>i  <Plug>ZoomWin
+nmap     <Leader>h  <Plug>ZoomWin
 noremap  <C-W>\     <C-W><Bar>
 noremap  <C-W><C-\> <C-W><Bar>
 nnoremap <Leader>q  <C-W>q
