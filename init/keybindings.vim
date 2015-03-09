@@ -40,7 +40,7 @@ noremap  <C-S-Space>     :buffers<CR>
 noremap  <Leader>p       :CtrlPBuffer<CR>
 noremap  <M-Tab>         :bnext<CR>
 noremap  <M-S-Tab>       :bprevious<CR>
-noremap  <Leader><Tab>   <C-^>
+noremap  <Leader>l       <C-^>
 
 " Quickfix list
 map      <C-Space>       <Plug>QfxListical
@@ -58,7 +58,7 @@ nnoremap <S-Right>       :lnewer<CR>
 
 noremap  <Leader><Space> :pwd<CR>
 noremap  <Leader>.       :call ReLoadBuffers()<CR>
-noremap  <Leader>k       <C-Z>
+noremap  <Leader><Tab>   <C-Z>
 
 " Vinegar
 nnoremap - -
