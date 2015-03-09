@@ -13,7 +13,6 @@ Plugin 'gmarik/Vundle.vim'
 
 " ··········· plugins ········· {{{1
 Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'eiginn/netrw'
