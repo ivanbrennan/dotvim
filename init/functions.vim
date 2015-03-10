@@ -122,9 +122,10 @@ fun! ToggleBG()
 endf
 
 fun! ToggleColorscheme()
-  call ToggleBG()
-  if &background=='dark' | colorscheme bdark
-  else                   | colorscheme blight | endif
+  if exists("g:colors_name")
+    if g:colors_name == 'muon' | colorscheme blight
+    else                       | colorscheme muon | endif
+  endif
 endf
 
 fun! TransparencyToggle(transpr)
