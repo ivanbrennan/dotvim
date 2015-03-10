@@ -36,6 +36,7 @@ silent! set formatoptions+=j    " let J handle comments if supported
 
 " appearance
 syntax enable                   " syntax highlighting, local overrides
+set synmaxcol=256
 set number
 set title
 set nowrap
