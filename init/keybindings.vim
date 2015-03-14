@@ -199,7 +199,7 @@ noremap  <silent> <Leader>'  :VtrKillRunner<CR>
 nnoremap <silent> <Leader>`  :call Spatch()<CR>
 
 " ··········· git ············· {{{1
-noremap <silent> <Leader>gb  :Gblame<CR>
+noremap <silent> <Leader>g   :Gblame<CR>
 
 " ··········· rails ··········· {{{1
 nnoremap <silent> <Leader>R  :A<CR>
