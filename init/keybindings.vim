@@ -58,7 +58,7 @@ nnoremap <S-Right>       :lnewer<CR>
 
 noremap  <Leader><Space> :pwd<CR>
 noremap  <Leader>.       :call ReLoadBuffers()<CR>
-noremap  <Leader><Tab>   <C-Z>
+noremap  <Leader>b       <C-Z>
 
 " Vinegar
 nnoremap - -
