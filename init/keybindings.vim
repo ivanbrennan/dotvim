@@ -170,7 +170,7 @@ nnoremap <Leader>q  <C-W>q
 
 " ··········· display ········· {{{1
 nnoremap <Leader>,w  :setlocal wrap! linebreak! list! wrap?<CR>
-noremap  <silent> <Leader>,b :call ToggleColorscheme()<CR>
+noremap  <silent> <Leader>,m :call ToggleColorscheme()<CR>
 
 noremap  <Leader>,x :call HexHighlight()<CR>
 noremap  <Leader>,y :call SynStack()<CR>
