@@ -163,10 +163,12 @@ noremap <silent> <C-L>      :nohlsearch<CR><C-L>
 noremap          <C-L><C-L> :set hlsearch! hlsearch?<CR>
 
 " ··········· splits ·········· {{{1
-nmap     <Leader>h  <Plug>ZoomWin
-noremap  <C-W>\     <C-W><Bar>
-noremap  <C-W><C-\> <C-W><Bar>
-nnoremap <Leader>q  <C-W>q
+nmap              <Leader>h  <Plug>ZoomWin
+noremap           <C-W>\     <C-W><Bar>
+noremap           <C-W><C-\> <C-W><Bar>
+noremap  <silent> <C-W>n     :vnew<CR>
+noremap  <silent> <C-W><C-N> :vnew<CR>
+nnoremap          <Leader>q  <C-W>q
 
 " ··········· display ········· {{{1
 nnoremap <Leader>,w  :setlocal wrap! linebreak! list! wrap?<CR>
