@@ -72,8 +72,6 @@ nnoremap <Leader>H       :help
 cnoremap <C-P>           <Up>
 cnoremap <C-N>           <Down>
 cnoremap <C-A>           <Home>
-cnoremap <C-Left>        <S-Left>
-cnoremap <C-Right>       <S-Right>
 
 " ··········· positioning ····· {{{1
 " auto-indent whole file
