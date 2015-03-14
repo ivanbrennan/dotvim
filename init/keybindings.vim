@@ -96,9 +96,6 @@ vnoremap          <C-S-Right> <Esc>`><Right>gvxpgv<Right>o<Right>o
 inoremap <S-CR>     <C-O>O
 inoremap <C-CR>     <C-O>o
 
-" clear line
-nnoremap <Leader>L  S<Esc>
-
 " paste toggle
 noremap  <silent> <Leader>P <F8>
 set pastetoggle=<F8>
