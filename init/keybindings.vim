@@ -116,7 +116,7 @@ inoremap JK         <C-O>A
 inoremap KJ         <C-O>I
 
 " toggle case
-inoremap ~~         <Esc>viwg~gi
+inoremap <C-_>      <Esc>viwg~gi
 
 " ··········· autocompletion ·· {{{1
 
