@@ -120,7 +120,6 @@ inoremap <C-_>      <Esc>viwg~gi
 
 " ··········· autocompletion ·· {{{1
 
-inoremap <Tab>      <C-R>=CleverTab()<CR>
 inoremap <C-L>      <C-X><C-L>
 inoremap <C-]>      <C-X><C-]>
 
