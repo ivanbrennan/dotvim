@@ -36,7 +36,7 @@ noremap  <Leader>dd      :bdelete<CR>
 noremap  <Leader>d3      :bdelete#<CR>
 
 " Buffer list
-noremap  <C-S-Space>     :buffers<CR>
+noremap  <S-Space>       :buffers<CR>
 noremap  <Leader>p       :CtrlPBuffer<CR>
 noremap  <M-Tab>         :bnext<CR>
 noremap  <M-S-Tab>       :bprevious<CR>
@@ -50,7 +50,7 @@ nnoremap <C-Left>        :colder<CR>
 nnoremap <C-Right>       :cnewer<CR>
 
 " Location List
-map      <S-Space>       <Plug>LocListical
+map      <C-S-Space>     <Plug>LocListical
 noremap  <S-Down>        :lnext<CR>
 noremap  <S-Up>          :lprevious<CR>
 nnoremap <S-Left>        :lolder<CR>
