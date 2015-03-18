@@ -1,4 +1,4 @@
 " ::::::::: Colors ::::::::::::::::::::::::
 
-colorscheme blight
+colorscheme muon
 
