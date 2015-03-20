@@ -105,10 +105,10 @@ noremap  <Leader>v  "+
 noremap  <Leader>V  "+yg_
 
 " commentary
-xmap     <Leader>c  <Plug>Commentary
-nmap     <Leader>c  <Plug>Commentary
-omap     <Leader>c  <Plug>Commentary
-nmap     <Leader>C  <Plug>CommentaryLine
+xmap     <Leader>3  <Plug>Commentary
+nmap     <Leader>3  <Plug>Commentary
+omap     <Leader>3  <Plug>Commentary
+nmap     <Leader>33 <Plug>CommentaryLine
 
 " jump around insert mode
 inoremap <C-B>      <C-O>b
