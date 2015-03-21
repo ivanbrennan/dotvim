@@ -148,7 +148,7 @@ noremap  <Leader>a  :Ag!
 noremap  <Leader>A  :LAg! 
 
 " word under cursor
-noremap <silent> <Leader>F :set foldenable!<CR>
+noremap <silent> <Leader>* :set foldenable!<CR>
       \:let view=winsaveview()<CR>#*
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
