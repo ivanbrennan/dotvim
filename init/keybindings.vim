@@ -36,7 +36,7 @@ noremap  <Leader>dd      :bdelete<CR>
 noremap  <Leader>d3      :bdelete#<CR>
 
 " Buffer list
-noremap  <S-Space>       :buffers<CR>
+noremap  <Leader>b       :buffers<CR>
 noremap  <Leader>p       :CtrlPBuffer<CR>
 noremap  <M-Tab>         :bnext<CR>
 noremap  <M-S-Tab>       :bprevious<CR>
@@ -200,7 +200,7 @@ noremap  <silent> <Leader>'  :VtrKillRunner<CR>
 nnoremap <silent> <Leader>`  :call Spatch()<CR>
 
 " ··········· git ············· {{{1
-noremap <silent> <Leader>g   :Gblame<CR>
+noremap <silent> <Leader>B   :Gblame<CR>
 
 " ··········· rails ··········· {{{1
 nnoremap <silent> <Leader>R  :A<CR>
