@@ -26,8 +26,8 @@ noremap  <Leader>et       :tabedit
 noremap  <Leader>e`       :edit ~/
 noremap  <Leader>ed       :edit ~/Development/code/
 
-nnoremap <Leader>w       :write
-vnoremap <Leader>w       :write
+nnoremap <Leader>w       :write 
+vnoremap <Leader>w       :write 
 nmap     <Leader>ww      :write %%
 vmap     <Leader>ww      :write %%
 nnoremap <Leader>wq      :wq 
