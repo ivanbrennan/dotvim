@@ -58,11 +58,11 @@ nnoremap <S-Right>       :lnewer<CR>
 
 noremap  <Leader><Space> :pwd<CR>
 noremap  <Leader>.       :call ReLoadBuffers()<CR>
-noremap  <Leader>m       <C-Z>
+noremap  <Leader>z       <C-Z>
 
 " Vinegar
 nnoremap - -
-nmap     <Leader>-       <Plug>VinegarUp
+nmap     _               <Plug>VinegarUp
 
 " ··········· ex commands ····· {{{1
 noremap  <Leader>1       :!
@@ -159,10 +159,16 @@ noremap          <C-L><C-L> :set hlsearch! hlsearch?<CR>
 
 " ··········· splits ·········· {{{1
 nmap              <Leader>h  <Plug>ZoomWin
-noremap           <C-W>\     <C-W><Bar>
-noremap           <C-W><C-\> <C-W><Bar>
+noremap           <C-W>p     <C-W><Bar>
+noremap           <C-W><C-P> <C-W><Bar>
+noremap           <C-W>u     <C-W>_
+noremap           <C-W><C-U> <C-W>_
+noremap           <C-W>m     <C-W>=
+noremap           <C-W><C-M> <C-W>=
 noremap  <silent> <C-W>n     :vnew<CR>
 noremap  <silent> <C-W><C-N> :vnew<CR>
+noremap  <silent> <C-W>]     :vertical stag<CR>
+noremap  <silent> <C-W><C-]> :vertical stag<CR>
 nnoremap          <Leader>q  <C-W>q
 
 " ··········· display ········· {{{1
@@ -177,7 +183,7 @@ noremap  <Leader>n  :call NumberToggle()<CR>
 noremap  <Leader>r  :set relativenumber! relativenumber?<CR>
 
 " folding
-noremap  <expr>   <Leader>z  FoldMethToggle()
+noremap  <expr>   <Leader>Z  FoldMethToggle()
 noremap  <silent> <Leader>,z :call FoldColToggle(4)<CR>
 
 " cursor
