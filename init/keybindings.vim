@@ -101,9 +101,8 @@ noremap  <silent> <Leader>P <F8>
 set pastetoggle=<F8>
 
 " clipboard
-noremap  <Leader>8  "*
-noremap  <Leader>8y "+yg_
-noremap  <Leader>88 "+p
+noremap  <Leader>c  "*
+noremap  <Leader>cy "+yg_
 
 " commentary
 xmap     <Leader>3  <Plug>Commentary
