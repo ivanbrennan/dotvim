@@ -178,8 +178,8 @@ noremap  <Leader>,x :call HexHighlight()<CR>
 noremap  <Leader>,y :call SynStack()<CR>
 
 " line numbers
-noremap  <Leader>n  :call NumberToggle()<CR>
-noremap  <Leader>r  :set relativenumber! relativenumber?<CR>
+noremap  <Leader>N  :call NumberToggle()<CR>
+noremap  <Leader>R  :set relativenumber! relativenumber?<CR>
 
 " folding
 noremap  <expr>   <Leader>Z  FoldMethToggle()
@@ -208,7 +208,7 @@ nnoremap <silent> <Leader>`  :call Spatch()<CR>
 noremap <silent> <Leader>B   :Gblame<CR>
 
 " ··········· rails ··········· {{{1
-nnoremap <silent> <Leader>R  :A<CR>
+nnoremap <silent> <Leader>j  :A<CR>
 nnoremap          <Leader>E  :Eschema 
 nnoremap          <Leader>es :Espec 
 nnoremap          <Leader>ec :Econtroller 
