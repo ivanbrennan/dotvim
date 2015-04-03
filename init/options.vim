@@ -27,11 +27,13 @@ set splitbelow
 
 " editing
 set backspace=indent,eol,start
-set textwidth=0
+set textwidth=80
 set nrformats=
 set complete-=i
 set formatprg=par               " gq -> par, gw -> internal
+set formatoptions-=t            " don't auto-wrap non-commented text
 set formatoptions-=o            " don't auto-comment with o or O
+set formatoptions+=r            " auto-comment with Enter
 silent! set formatoptions+=j    " let J handle comments if supported
 
 " appearance
