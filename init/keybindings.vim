@@ -208,11 +208,11 @@ nnoremap <silent> <Leader>`  :call Spatch()<CR>
 noremap <silent> <Leader>B   :Gblame<CR>
 
 " ··········· rails ··········· {{{1
-nnoremap <silent> <Leader>j  :A<CR>
-nnoremap          <Leader>E  :Eschema 
-nnoremap          <Leader>es :Espec 
-nnoremap          <Leader>ec :Econtroller 
-nnoremap          <Leader>em :Emodel 
-nnoremap          <Leader>ev :Eview 
-nnoremap          <Leader>eh :Ehelper 
+nnoremap <silent> <Leader><Tab> :A<CR>
+nnoremap          <Leader>E     :Eschema 
+nnoremap          <Leader>es    :Espec 
+nnoremap          <Leader>ec    :Econtroller 
+nnoremap          <Leader>em    :Emodel 
+nnoremap          <Leader>ev    :Eview 
+nnoremap          <Leader>eh    :Ehelper 
 
