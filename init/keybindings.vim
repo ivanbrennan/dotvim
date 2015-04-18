@@ -104,6 +104,9 @@ set pastetoggle=<F8>
 noremap  <Leader>c  "*
 noremap  <Leader>cy "+yg_
 
+" yank
+nnoremap Y y$
+
 " commentary
 xmap     <Leader>3  <Plug>Commentary
 nmap     <Leader>3  <Plug>Commentary
