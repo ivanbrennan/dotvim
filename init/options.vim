@@ -31,6 +31,7 @@ set splitbelow
 
 " editing
 set backspace=indent,eol,start
+set nojoinspaces
 set textwidth=80
 set nrformats=
 set complete-=i
