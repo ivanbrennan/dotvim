@@ -2,49 +2,43 @@
 
 set nocompatible
 
-" ::::::::: Vundle ::::::::::::::::::::::::
+" ::::::::: vim-plug ::::::::::::::::::::::
 
-filetype off
-
-set  runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " ··········· plugins ········· {{{1
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'bling/vim-airline'
-Plugin 'christoomey/vim-tmux-runner'
-Plugin 'eiginn/netrw'
-Plugin 'gabebw/vim-spec-runner'
-Plugin 'guns/xterm-color-table.vim'
-Plugin 'ivanbrennan/listical'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'kien/ctrlp.vim'
-Plugin 'nelstrom/vim-qargs'
-Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'regedarek/ZoomWin'
-Plugin 'rking/ag.vim'
-Plugin 'shawncplus/Vim-toCterm'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rbenv'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-vinegar'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-scripts/hexHighlight.vim'
-Plugin 'jwhitley/vim-matchit'
-Plugin 'sjl/gundo.vim'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'bling/vim-airline'
+Plug 'christoomey/vim-tmux-runner'
+Plug 'eiginn/netrw'
+Plug 'gabebw/vim-spec-runner'
+Plug 'guns/xterm-color-table.vim'
+Plug 'ivanbrennan/listical'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kien/ctrlp.vim'
+Plug 'nelstrom/vim-qargs'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'regedarek/ZoomWin'
+Plug 'rking/ag.vim'
+Plug 'shawncplus/Vim-toCterm'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/hexHighlight.vim'
+Plug 'jwhitley/vim-matchit'
+Plug 'sjl/gundo.vim'
 " ····························· }}}1
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 " ::::::::: Initialization ::::::::::::::::
 
