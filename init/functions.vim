@@ -114,8 +114,8 @@ endf
 
 fun! ToggleColorscheme()
   if exists("g:colors_name")
-    if g:colors_name == 'muon' | colorscheme blight
-    else                       | colorscheme muon | endif
+    if g:colors_name == 'ion' | colorscheme blight
+    else                      | colorscheme ion | endif
   endif
 endf
 

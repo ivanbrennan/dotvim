@@ -1,4 +1,4 @@
 " ::::::::: Colors ::::::::::::::::::::::::
 
-colorscheme muon
+colorscheme ion
 
