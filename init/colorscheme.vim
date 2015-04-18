@@ -1,4 +1,6 @@
 " ::::::::: Colors ::::::::::::::::::::::::
 
-colorscheme ion
+if !exists('g:colors_name')
+  colorscheme ion
+endif
 
