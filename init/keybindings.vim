@@ -123,8 +123,11 @@ inoremap <C-_>      <Esc>viwg~gi
 
 " ··········· autocompletion ·· {{{1
 
-inoremap <C-L>      <C-X><C-L>
-inoremap <C-]>      <C-X><C-]>
+inoremap        <C-L>  <C-X><C-L>
+inoremap        <C-]>  <C-X><C-]>
+
+inoremap <expr> <Tab>   SuperTab("\<C-N>", "\<Tab>")
+inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<S-Tab>")
 
 " ··········· search ·········· {{{1
 " sensible marks

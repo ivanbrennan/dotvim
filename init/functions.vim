@@ -144,6 +144,36 @@ function! NextTextObject(motion)
   execute "normal! f" . c . "v" . a:motion . c
 endfunction
 
+" ··········· tab key ·················· {{{1
+function! SuperTab(complete, tab)
+  " complete if popup-menu displayed
+  if pumvisible() | return a:complete | endif
+
+  let line = getline('.')  " current line
+  let col  = col('.') - 2  " previous character's col index
+
+  " tab if not finishing a word/filename
+  if empty(line) || line[col] !~ '\k\|[/~.]' || line[col + 1] =~ '\k'
+    " on empty line
+    " OR not following part of a word/filename
+    " OR within a word/filename
+    return a:tab
+  endif
+
+  " group of non-whitespace characters before cursor
+  let prefix = expand(matchstr(line[0:col], '\S*$'))
+
+  " complete filename if finishing a path
+  if prefix =~ '^[~/.]' | return "\<c-x>\<c-f>" | endif
+
+  " perform custom completion if possible
+  if !empty(&completefunc) && call(&completefunc, [1, prefix]) >= 0
+    return "\<c-x>\<c-u>"
+  endif
+
+  return a:complete
+endfunction
+
 " ··········· git ······················ {{{1
 "Git branch
 function! GitBranch()
