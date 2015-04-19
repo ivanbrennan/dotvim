@@ -117,8 +117,8 @@ nmap     <Leader>33 <Plug>CommentaryLine
 
 " jump around insert mode
 inoremap <C-B>      <C-O>b
-inoremap JK         <C-O>A
-inoremap KJ         <C-O>I
+inoremap jkl        <C-O>A
+inoremap lkj        <C-O>I
 
 " toggle case
 inoremap <C-_>      <Esc>viwg~gi
