@@ -81,12 +81,18 @@ nnoremap <Leader>= gg=G``
 nnoremap <S-CR>   mzO<Esc>j`z
 nnoremap <C-CR>   mzo<Esc>k`z
 
-" bubble up
-vnoremap          <C-K>       :move '<-2<CR>gv=gv
-inoremap          <C-G><C-K>  <Esc>:move .-2<CR>==gi
-" bubble down
-vnoremap          <C-J>       :move '>+1<CR>gv=gv
-inoremap          <C-G><C-J>  <Esc>:move .+1<CR>==gi
+" bubble up <M-K>
+nnoremap <silent> ˚ mZ:move .-2<CR>==`Z
+vnoremap          ˚ :move '<-2<CR>gv=gv
+inoremap          ˚ <Esc>:move .-2<CR>==gi
+" bubble down <M-J>
+nnoremap <silent> ∆ mZ:move .+1<CR>==`Z
+vnoremap          ∆ :move '>+1<CR>gv=gv
+inoremap          ∆ <Esc>:move .+1<CR>==gi
+" bubble left <M-H>
+vnoremap          ˙ <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
+" bubble right <M-L>
+vnoremap          ¬ <Esc>`><Right>gvxpgv<Right>o<Right>o
 
 " ··········· editing ········· {{{1
 " spawn newline
