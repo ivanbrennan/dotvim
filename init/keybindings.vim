@@ -40,16 +40,18 @@ nnoremap <M-S-Tab>       :bprevious<CR>
 nnoremap <Leader>l       <C-^>
 
 " Quickfix list
-map      <C-Space>       <Plug>QfxListical
-noremap  <C-Down>        :cnext<CR>
-noremap  <C-Up>          :cprevious<CR>
+nmap     <C-Space>       <Plug>QfxListical
+nnoremap <C-Down>        :cnext<CR>
+nnoremap <C-J>           :cnext<CR>
+nnoremap <C-Up>          :cprevious<CR>
+nnoremap <C-K>           :cprevious<CR>
 nnoremap <C-Left>        :colder<CR>
 nnoremap <C-Right>       :cnewer<CR>
 
 " Location List
-map      <C-S-Space>     <Plug>LocListical
-noremap  <S-Down>        :lnext<CR>
-noremap  <S-Up>          :lprevious<CR>
+nmap     <C-S-Space>     <Plug>LocListical
+nnoremap <S-Down>        :lnext<CR>
+nnoremap <S-Up>          :lprevious<CR>
 nnoremap <S-Left>        :lolder<CR>
 nnoremap <S-Right>       :lnewer<CR>
 
@@ -80,11 +82,9 @@ nnoremap <S-CR>   mzO<Esc>j`z
 nnoremap <C-CR>   mzo<Esc>k`z
 
 " bubble up
-nnoremap <silent> <C-K>       mZ:move .-2<CR>==`Z
 vnoremap          <C-K>       :move '<-2<CR>gv=gv
 inoremap          <C-G><C-K>  <Esc>:move .-2<CR>==gi
 " bubble down
-nnoremap <silent> <C-J>       mZ:move .+1<CR>==`Z
 vnoremap          <C-J>       :move '>+1<CR>gv=gv
 inoremap          <C-G><C-J>  <Esc>:move .+1<CR>==gi
 
