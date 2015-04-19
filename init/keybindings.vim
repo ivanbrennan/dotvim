@@ -135,7 +135,7 @@ noremap  `  '
 noremap  '  `
 
 " matchit
-map      <Leader>o  %
+map      <Leader>5  %
 
 " last search
 noremap  <Leader>/  /<Up>
@@ -163,7 +163,7 @@ noremap <silent> <C-L>      :nohlsearch<CR><C-L>
 noremap          <C-L><C-L> :set hlsearch! hlsearch?<CR>
 
 " ··········· splits ·········· {{{1
-nmap              <Leader>h  <Plug>ZoomWin
+nmap              <Leader>o  <Plug>ZoomWin
 noremap           <C-W>p     <C-W><Bar>
 noremap           <C-W><C-P> <C-W><Bar>
 noremap           <C-W>u     <C-W>_
