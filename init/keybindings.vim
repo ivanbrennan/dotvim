@@ -64,7 +64,7 @@ nnoremap - -
 nmap     _               <Plug>VinegarUp
 
 " ··········· ex commands ····· {{{1
-noremap  <Leader>1       :!
+nnoremap <Leader>1       :!
 noremap  <Leader>:       :<Up>
 nnoremap <Leader>H       :help 
 
