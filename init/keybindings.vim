@@ -16,7 +16,9 @@ nnoremap          <C-,>o     :edit   ~/.vim/init/options.vim<CR>
 nnoremap          <C-,><C-O> :edit   ~/.vim/init/options.vim<CR>
 
 " ··········· buffers ········· {{{1
-cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+cnoremap <expr>   %%     getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+
+nmap <silent> <Leader>-  :tabedit %%<cr>
 
 nnoremap <Leader>e       :edit 
 nmap     <Leader>ee      :edit %%
