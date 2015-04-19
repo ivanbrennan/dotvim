@@ -8,14 +8,12 @@ map <Space> <Leader>
 set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
-nnoremap <silent> <C-.>      :source  $MYVIMRC<CR>:call RefreshUI()<CR>
-nnoremap          <C-,>      :tabedit $MYVIMRC<CR>
-nnoremap          <C-,>k     :tabedit ~/.vim/init/keybindings.vim<CR>
-nnoremap          <C-,><C-K> :tabedit ~/.vim/init/keybindings.vim<CR>
-nnoremap          <C-,>o     :tabedit ~/.vim/init/options.vim<CR>
-nnoremap          <C-,><C-O> :tabedit ~/.vim/init/options.vim<CR>
-nnoremap          <C-,>f     :tabedit ~/.vim/init/functions.vim<CR>
-nnoremap          <C-,><C-F> :tabedit ~/.vim/init/functions.vim<CR>
+nnoremap <silent> <C-.>      :source $MYVIMRC<CR>
+nnoremap          <C-,>      :edit   $MYVIMRC<CR>
+nnoremap          <C-,>k     :edit   ~/.vim/init/keybindings.vim<CR>
+nnoremap          <C-,><C-K> :edit   ~/.vim/init/keybindings.vim<CR>
+nnoremap          <C-,>o     :edit   ~/.vim/init/options.vim<CR>
+nnoremap          <C-,><C-O> :edit   ~/.vim/init/options.vim<CR>
 
 " ··········· buffers ········· {{{1
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
