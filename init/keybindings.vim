@@ -18,11 +18,10 @@ nnoremap          <C-,><C-O> :edit   ~/.vim/init/options.vim<CR>
 " ··········· buffers ········· {{{1
 cnoremap <expr> %% getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 
-nmap     <Leader>e        :edit 
-nmap     <Leader>ee       :edit %%
-noremap  <Leader>et       :tabedit 
-noremap  <Leader>e`       :edit ~/
-noremap  <Leader>ed       :edit ~/Development/code/
+nnoremap <Leader>e       :edit 
+nmap     <Leader>ee      :edit %%
+nnoremap <Leader>et      :tabedit 
+nnoremap <Leader>eh      :edit ~/
 
 nnoremap <Leader>w       :write 
 vnoremap <Leader>w       :write 
@@ -30,15 +29,15 @@ nmap     <Leader>ww      :write %%
 vmap     <Leader>ww      :write %%
 nnoremap <Leader>wq      :wq 
 
-noremap  <Leader>dd      :bdelete<CR>
-noremap  <Leader>d3      :bdelete#<CR>
+nnoremap  <Leader>dd     :bdelete<CR>
+nnoremap  <Leader>dl     :bdelete#<CR>
 
 " Buffer list
-noremap  <Leader>b       :buffers<CR>
-noremap  <Leader>p       :CtrlPBuffer<CR>
-noremap  <M-Tab>         :bnext<CR>
-noremap  <M-S-Tab>       :bprevious<CR>
-noremap  <Leader>l       <C-^>
+nnoremap <Leader>b       :buffers<CR>
+nnoremap <Leader>p       :CtrlPBuffer<CR>
+nnoremap <M-Tab>         :bnext<CR>
+nnoremap <M-S-Tab>       :bprevious<CR>
+nnoremap <Leader>l       <C-^>
 
 " Quickfix list
 map      <C-Space>       <Plug>QfxListical
