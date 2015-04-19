@@ -1,7 +1,7 @@
 " ::::::::: Functions :::::::::::::::::::::
 
 " ··········· filetype ················· {{{1
-fun! FileTypeToggle(num)
+function! FileTypeToggle(num)
   if a:num > 0 || !exists("b:alt_ftype")
     let b:alt_ftype = &filetype
     let   &filetype = input("enter FileType: ")
@@ -10,9 +10,9 @@ fun! FileTypeToggle(num)
     let   &filetype = b:alt_ftype
     let b:alt_ftype = new_alt
   end
-endf
+endfunction
 
-fun! HTMLTypeToggle()
+function! HTMLTypeToggle()
   if exists("b:alt_ftype")
     let &filetype = b:alt_ftype
     unlet b:alt_ftype
@@ -20,19 +20,19 @@ fun! HTMLTypeToggle()
     let b:alt_ftype = &filetype
     set filetype=html
   end
-endf
+endfunction
 
 " ··········· line numbers ············· {{{1
-fun! NumberToggle()
+function! NumberToggle()
   if &number == 0
     set foldcolumn=0 number number?
   else
     set foldcolumn=1 nonumber number?
   end
-endf
+endfunction
 
 " ··········· folding ·················· {{{1
-fun! FoldMethToggle()
+function! FoldMethToggle()
   if &foldmethod == 'marker'
     set foldmethod=syntax
     if &filetype == 'ruby'
@@ -44,37 +44,37 @@ fun! FoldMethToggle()
       unlet ruby_fold
     endif
   endif
-endf
+endfunction
 
-fun! FoldColToggle(fold_max)
+function! FoldColToggle(fold_max)
   if &foldcolumn < a:fold_max
     call FoldColOn(a:fold_max)
   else
     call FoldColOff()
   endif
-endf
+endfunction
 
-fun! FoldColOn(fold_max)
+function! FoldColOn(fold_max)
   let w:use_num  = &number==1
   let w:use_rel  = &relativenumber==1
   let w:fold_min = &foldcolumn
 
   set nonumber norelativenumber
   let &foldcolumn = a:fold_max
-endf
+endfunction
 
-fun! FoldColOff()
+function! FoldColOff()
   let [ &number, &relativenumber ] = [ w:use_num, w:use_rel ]
   let &foldcolumn = w:fold_min
-endf
+endfunction
 
 " ··········· syntax ··················· {{{1
-fun! SynStack()
+function! SynStack()
   if !exists("*synstack")
     return
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endf
+endfunction
 
 " ··········· statusline ··············· {{{1
 function! RefreshUI()
@@ -101,7 +101,7 @@ endfunction
 call AirlineInit()
 
 " ··········· colors ··················· {{{1
-fun! ToggleBG()
+function! ToggleBG()
   if exists("g:colors_name") | let cur_colo = g:colors_name | endif
 
   if &background=='dark' | set background=light
@@ -110,16 +110,16 @@ fun! ToggleBG()
   if !exists("g:colors_name") && exists("cur_colo")
     let g:colors_name = cur_colo
   endif
-endf
+endfunction
 
-fun! ToggleColorscheme()
+function! ToggleColorscheme()
   if exists("g:colors_name")
     if g:colors_name == 'ion' | colorscheme blight
     else                      | colorscheme ion | endif
   endif
-endf
+endfunction
 
-fun! TransparencyToggle(transpr)
+function! TransparencyToggle(transpr)
   if exists("g:transparency_memo")
     let &transparency = g:transparency_memo
     unlet g:transparency_memo
@@ -127,15 +127,15 @@ fun! TransparencyToggle(transpr)
     let g:transparency_memo = &transparency
     let &transparency=a:transpr
   end
-endf
+endfunction
 
-fun! ColorColToggle()
+function! ColorColToggle()
   if &colorcolumn == ""
     set colorcolumn=80
   else
     set colorcolumn=
   endif
-endf
+endfunction
 
 " ··········· braces ··················· {{{1
 function! NextTextObject(motion)
