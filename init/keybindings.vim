@@ -145,6 +145,7 @@ noremap  <Leader>?  ?<Up>
 
 " substitute
 nnoremap <Leader>s  :%s/
+nnoremap <Leader>,s :s/
 vnoremap <Leader>s  :s/
 
 " preserve flags
@@ -152,8 +153,8 @@ nnoremap &  :&&<CR>
 xnoremap &  :&&<CR>
 
 " Ag
-noremap  <Leader>a  :Ag! 
-noremap  <Leader>A  :LAg! 
+nnoremap <Leader>g  :Ag! 
+nnoremap <Leader>,g :LAg! 
 
 " word under cursor
 noremap <silent> <Leader>* :set foldenable!<CR>
