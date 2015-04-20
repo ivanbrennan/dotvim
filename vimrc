@@ -47,6 +47,8 @@ call plug#end()
 
 " ::::::::: Initialization ::::::::::::::::
 
+syntax enable
+
 runtime! init/**.vim
 
 silent! source ~/.vimrc.local

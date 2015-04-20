@@ -42,7 +42,6 @@ set formatoptions+=r            " auto-comment with Enter
 silent! set formatoptions+=j    " let J handle comments if supported
 
 " appearance
-syntax enable                   " syntax highlighting, local overrides
 set synmaxcol=256
 set number
 set title
@@ -52,11 +51,6 @@ set fillchars=vert:\ ,fold:-
 set foldmethod=marker
 set showcmd
 set noshowmode
-
-" cursorline
-set cursorline
-highlight! link CursorLine CursorLineClear
-let w:cursorline_on = 0
 
 " notifications
 set shortmess+=I

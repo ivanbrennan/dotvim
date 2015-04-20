@@ -4,9 +4,7 @@
 highlight! CursorLineClear guibg=NONE guifg=NONE gui=NONE ctermbg=NONE ctermfg=NONE cterm=NONE
 
 function! CursorLineToggle()
-  if !exists("w:cursorline_on")
-    let w:cursorline_on = &cursorline
-  endif
+  call InitCursorVars()
 
   if w:cursorline_on
     highlight! link CursorLine CursorLineClear
@@ -17,11 +15,17 @@ function! CursorLineToggle()
   endif
 endfunction
 
+function! InitCursorVars()
+  if !exists("w:cursorline_on")
+    let w:cursorline_on = 0
+  endif
+endfunction
+
 function! RestoreCrsr()
   if line("'\"") > 1 && line("'\"") <= line("$")
     exe "normal! g`\""
   endif
-endf
+endfunction
 " ····························· }}}1
 
 " Gui cursor
@@ -41,8 +45,14 @@ elseif &term =~ 'screen'
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 endif
 
+" cursorline
+set cursorline
+highlight! link CursorLine CursorLineClear
+let w:cursorline_on = 0
+
 augroup CursorGroup
   autocmd!
-  autocmd BufReadPost * call RestoreCrsr()
+  autocmd BufReadPost            * call RestoreCrsr()
+  autocmd BufReadPost,BufNewFile * call InitCursorVars()
 augroup END
 
