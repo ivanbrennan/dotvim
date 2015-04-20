@@ -49,10 +49,14 @@ set title
 set nowrap
 set showtabline=1
 set fillchars=vert:\ ,fold:-
-set cursorline
 set foldmethod=marker
 set showcmd
 set noshowmode
+
+" cursorline
+set cursorline
+highlight! link CursorLine CursorLineClear
+let w:cursorline_on = 0
 
 " notifications
 set shortmess+=I

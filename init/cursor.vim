@@ -3,17 +3,21 @@
 " ··········· helpers ········· {{{1
 highlight! CursorLineClear guibg=NONE guifg=NONE gui=NONE ctermbg=NONE ctermfg=NONE cterm=NONE
 
-fun! CursorLineToggle()
-  if exists("w:cursorline_memo")
-    highlight! link CursorLine CursorLine
-    unlet w:cursorline_memo
-  else
-    highlight! link CursorLine CursorLineClear
-    let w:cursorline_memo = 1
-  end
-endf
+function! CursorLineToggle()
+  if !exists("w:cursorline_on")
+    let w:cursorline_on = &cursorline
+  endif
 
-fun! RestoreCrsr()
+  if w:cursorline_on
+    highlight! link CursorLine CursorLineClear
+    let w:cursorline_on = 0
+  else
+    highlight! link CursorLine CursorLine
+    let w:cursorline_on = 1
+  endif
+endfunction
+
+function! RestoreCrsr()
   if line("'\"") > 1 && line("'\"") <= line("$")
     exe "normal! g`\""
   endif
@@ -28,7 +32,15 @@ set guicursor+=i-ci:ver25
 set guicursor+=r-cr:hor20
 set guicursor+=sm:block-blinkon0
 
-" Clear cursorline highlight
+" cursor shape
+if &term =~ 'xterm'
+  let &t_SI="\<Esc>]50;CursorShape=1\x7"
+  let &t_EI="\<Esc>]50;CursorShape=0\x7"
+elseif &term =~ 'screen'
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+endif
+
 augroup CursorGroup
   autocmd!
   autocmd BufReadPost * call RestoreCrsr()
