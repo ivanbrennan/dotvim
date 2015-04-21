@@ -8,7 +8,7 @@ map <Space> <Leader>
 set timeout timeoutlen=250 ttimeoutlen=100
 
 " source / edit vimrc
-nnoremap <silent> <C-.>      :source $MYVIMRC<CR>
+nnoremap <silent> <C-.>      :source $MYVIMRC \| call RefreshUI()<CR>
 nnoremap          <C-,>      :edit   $MYVIMRC<CR>
 nnoremap          <C-,>k     :edit   ~/.vim/init/keybindings.vim<CR>
 nnoremap          <C-,><C-K> :edit   ~/.vim/init/keybindings.vim<CR>
