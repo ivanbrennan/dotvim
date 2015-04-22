@@ -220,6 +220,7 @@ noremap <silent> <Leader>B   :Gblame<CR>
 nnoremap <silent> <Leader><Tab> :A<CR>
 nnoremap          <Leader>E     :Eschema 
 nnoremap          <Leader>es    :Espec 
+nnoremap          <Leader>ef    :edit spec/factories/
 nnoremap          <Leader>ec    :Econtroller 
 nnoremap          <Leader>em    :Emodel 
 nnoremap          <Leader>ev    :Eview 
