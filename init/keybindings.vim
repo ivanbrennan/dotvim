@@ -153,7 +153,7 @@ nnoremap &  :&&<CR>
 xnoremap &  :&&<CR>
 
 " Ag
-nnoremap <Leader>g  :Ag! 
+nnoremap <Leader>f  :Ag! 
 nnoremap <Leader>,g :LAg! 
 
 " word under cursor
