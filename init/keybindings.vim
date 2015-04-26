@@ -211,7 +211,7 @@ nmap     <Leader>T           <Plug>RunCurrentSpecFile
 nmap     <Leader>,t          <Plug>RunMostRecentSpec
 noremap  <silent> <Leader>;  :VtrFocusRunner<CR>
 noremap  <silent> <Leader>'  :VtrKillRunner<CR>
-nnoremap <silent> <Leader>`  :call Spatch()<CR>
+nnoremap <expr>   <Leader>x  Spatch()
 
 " ··········· git ············· {{{1
 noremap <silent> <Leader>B   :Gblame<CR>

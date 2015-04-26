@@ -191,14 +191,17 @@ function! ReLoadBuffers()
   echo 'reloaded!'
 endfunction
 
-" ··········· dispatch ················· {{{1
+" ··········· spatch ··················· {{{1
 function! Spatch()
-  if g:spec_runner_dispatcher == "VtrSendCommand! {command}"
-    let g:spec_runner_dispatcher = "Dispatch {command}"
-    echo "Testing with Dispatch"
+  let sessions = system("tmux list-sessions -F '#{session_name}'")
+
+  let target = input('Enter target: ')
+  let target_session = matchstr(target, '[[:alnum:]_-]\+')
+
+  if (sessions =~ target_session) && (target_session != '')
+    let g:spec_runner_dispatcher = "call system(\"tmux send -t ".target." '{command}' ENTER\")"
   else
     let g:spec_runner_dispatcher = "VtrSendCommand! {command}"
-    echo "Testing with Vtr"
   endif
 endfunction
 
