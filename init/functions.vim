@@ -194,12 +194,13 @@ endfunction
 " ··········· spatch ··················· {{{1
 function! Spatch()
   let sessions = system("tmux list-sessions -F '#{session_name}'")
-
-  let target = input('Enter target: ')
+  let target   = input('Enter target: ')
   let target_session = matchstr(target, '[[:alnum:]_-]\+')
 
   if (sessions =~ target_session) && (target_session != '')
-    let g:spec_runner_dispatcher = "call system(\"tmux send -t ".target." '{command}' ENTER\")"
+    let g:spec_runner_dispatcher = "call system(\"tmux send -t "
+          \                        . target .
+          \                        " C-L '{command}' ENTER\")"
   else
     let g:spec_runner_dispatcher = "VtrSendCommand! {command}"
   endif
