@@ -41,21 +41,19 @@ nnoremap <M-Tab>          :bnext<CR>
 nnoremap <M-S-Tab>        :bprevious<CR>
 nnoremap <Leader>l        <C-^>
 
-" Quickfix list
+" Quickfix list (alt h/j/k/l)
 nmap     <C-Space>        <Plug>QfxListical
-nnoremap <C-Down>         :cnext<CR>
-nnoremap <C-J>            :cnext<CR>
-nnoremap <C-Up>           :cprevious<CR>
-nnoremap <C-K>            :cprevious<CR>
-nnoremap <C-Left>         :colder<CR>
-nnoremap <C-Right>        :cnewer<CR>
+nnoremap ∆                :cnext<CR>
+nnoremap ˚                :cprevious<CR>
+nnoremap ˙                :colder<CR>
+nnoremap ¬                :cnewer<CR>
 
-" Location List
+" Location List (alt H/J/K/L)
 nmap     <C-S-Space>      <Plug>LocListical
-nnoremap <S-Down>         :lnext<CR>
-nnoremap <S-Up>           :lprevious<CR>
-nnoremap <S-Left>         :lolder<CR>
-nnoremap <S-Right>        :lnewer<CR>
+nnoremap Ô                :lnext<CR>
+nnoremap                 :lprevious<CR>
+nnoremap Ó                :lolder<CR>
+nnoremap Ò                :lnewer<CR>
 
 noremap  <Leader><Space>  :pwd<CR>
 noremap  <expr> <Leader>. ReLoadBuffers()
@@ -83,18 +81,14 @@ nnoremap <Leader>= gg=G``
 nnoremap <S-CR>   mzO<Esc>j`z
 nnoremap <C-CR>   mzo<Esc>k`z
 
-" bubble up <M-K>
-nnoremap <silent> ˚ mZ:move .-2<CR>==`Z
-vnoremap          ˚ :move '<-2<CR>gv=gv
-inoremap          ˚ <Esc>:move .-2<CR>==gi
-" bubble down <M-J>
-nnoremap <silent> ∆ mZ:move .+1<CR>==`Z
-vnoremap          ∆ :move '>+1<CR>gv=gv
-inoremap          ∆ <Esc>:move .+1<CR>==gi
-" bubble left <M-H>
-vnoremap          ˙ <Esc>`<<Left>i_<Esc>mz"_xgvx`zPgv<Left>o<Left>o
-" bubble right <M-L>
-vnoremap          ¬ <Esc>`><Right>gvxpgv<Right>o<Right>o
+" bubble up
+nnoremap <silent> <C-K>    mZ:silent! move .-2<CR>==`Z
+vnoremap <silent> <C-K>    :<C-U>silent! '<,'>move '<-2<CR>gv=gv
+inoremap <silent> <C-Up>   <Esc>:silent! move .-2<CR>==gi
+" bubble down
+nnoremap <silent> <C-J>    mZ:silent! move .+1<CR>==`Z
+vnoremap <silent> <C-J>    :<C-U>silent! '<,'>move '>+1<CR>gv=gv
+inoremap <silent> <C-Down> <Esc>:silent! move .+1<CR>==gi
 
 " ··········· editing ········· {{{1
 " spawn newline
