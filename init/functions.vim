@@ -186,8 +186,9 @@ endfunction
 
 function! ReLoadBuffers()
   set autoread
-  checktime
+  silent! checktime
   set noautoread
+  echo 'reloaded!'
 endfunction
 
 " ··········· dispatch ················· {{{1
