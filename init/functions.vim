@@ -184,7 +184,7 @@ function! GitBranch()
   return ''
 endfunction
 
-function! ReLoadBuffers()
+function! ReloadBuffers()
   set autoread
   silent! checktime
   set noautoread

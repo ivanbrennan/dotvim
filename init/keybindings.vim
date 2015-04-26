@@ -56,7 +56,7 @@ nnoremap Ó                :lolder<CR>
 nnoremap Ò                :lnewer<CR>
 
 noremap  <Leader><Space>  :pwd<CR>
-noremap  <expr> <Leader>. ReLoadBuffers()
+noremap  <expr> <Leader>. ReloadBuffers()
 noremap  <Leader>h        <C-Z>
 
 " Vinegar
