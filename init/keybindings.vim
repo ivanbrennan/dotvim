@@ -207,8 +207,8 @@ nnoremap <F5> :!ctags -R<CR>
 nmap     <Leader>t           <Plug>RunFocusedSpec
 nmap     <Leader>T           <Plug>RunCurrentSpecFile
 nmap     <Leader>,t          <Plug>RunMostRecentSpec
-noremap  <silent> <Leader>;  :VtrFocusRunner<CR>
-noremap  <silent> <Leader>'  :VtrKillRunner<CR>
+noremap  <silent> <Leader>,f :VtrFocusRunner<CR>
+noremap  <silent> <Leader>,k :VtrKillRunner<CR>
 nnoremap <expr>   <Leader>x  Spatch()
 
 " ··········· git ············· {{{1
