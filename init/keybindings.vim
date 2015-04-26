@@ -16,64 +16,64 @@ nnoremap          <C-,>o     :edit   ~/.vim/init/options.vim<CR>
 nnoremap          <C-,><C-O> :edit   ~/.vim/init/options.vim<CR>
 
 " ··········· buffers ········· {{{1
-cnoremap <expr>   %%     getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+cnoremap <expr>   %%      getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 
-nmap <silent> <Leader>-  :tabedit %%<cr>
+nmap <silent> <Leader>-   :tabedit %%<cr>
 
-nnoremap <Leader>e       :edit 
-nmap     <Leader>ee      :edit %%
-nnoremap <Leader>et      :tabedit 
-nnoremap <Leader>eh      :edit ~/
+nnoremap <Leader>e        :edit 
+nmap     <Leader>ee       :edit %%
+nnoremap <Leader>et       :tabedit 
+nnoremap <Leader>eh       :edit ~/
 
-nnoremap <Leader>w       :write 
-vnoremap <Leader>w       :write 
-nmap     <Leader>ww      :write %%
-vmap     <Leader>ww      :write %%
-nnoremap <Leader>wq      :wq 
+nnoremap <Leader>w        :write 
+vnoremap <Leader>w        :write 
+nmap     <Leader>ww       :write %%
+vmap     <Leader>ww       :write %%
+nnoremap <Leader>wq       :wq 
 
-nnoremap  <Leader>dd     :bdelete<CR>
-nnoremap  <Leader>dl     :bdelete#<CR>
+nnoremap  <Leader>dd      :bdelete<CR>
+nnoremap  <Leader>dl      :bdelete#<CR>
 
 " Buffer list
-nnoremap <Leader>b       :buffers<CR>
-nnoremap <Leader>p       :CtrlPBuffer<CR>
-nnoremap <M-Tab>         :bnext<CR>
-nnoremap <M-S-Tab>       :bprevious<CR>
-nnoremap <Leader>l       <C-^>
+nnoremap <Leader>b        :buffers<CR>
+nnoremap <Leader>p        :CtrlPBuffer<CR>
+nnoremap <M-Tab>          :bnext<CR>
+nnoremap <M-S-Tab>        :bprevious<CR>
+nnoremap <Leader>l        <C-^>
 
 " Quickfix list
-nmap     <C-Space>       <Plug>QfxListical
-nnoremap <C-Down>        :cnext<CR>
-nnoremap <C-J>           :cnext<CR>
-nnoremap <C-Up>          :cprevious<CR>
-nnoremap <C-K>           :cprevious<CR>
-nnoremap <C-Left>        :colder<CR>
-nnoremap <C-Right>       :cnewer<CR>
+nmap     <C-Space>        <Plug>QfxListical
+nnoremap <C-Down>         :cnext<CR>
+nnoremap <C-J>            :cnext<CR>
+nnoremap <C-Up>           :cprevious<CR>
+nnoremap <C-K>            :cprevious<CR>
+nnoremap <C-Left>         :colder<CR>
+nnoremap <C-Right>        :cnewer<CR>
 
 " Location List
-nmap     <C-S-Space>     <Plug>LocListical
-nnoremap <S-Down>        :lnext<CR>
-nnoremap <S-Up>          :lprevious<CR>
-nnoremap <S-Left>        :lolder<CR>
-nnoremap <S-Right>       :lnewer<CR>
+nmap     <C-S-Space>      <Plug>LocListical
+nnoremap <S-Down>         :lnext<CR>
+nnoremap <S-Up>           :lprevious<CR>
+nnoremap <S-Left>         :lolder<CR>
+nnoremap <S-Right>        :lnewer<CR>
 
-noremap  <Leader><Space> :pwd<CR>
-noremap  <Leader>.       :call ReLoadBuffers()<CR>
-noremap  <Leader>h       <C-Z>
+noremap  <Leader><Space>  :pwd<CR>
+noremap  <expr> <Leader>. ReLoadBuffers()
+noremap  <Leader>h        <C-Z>
 
 " Vinegar
 nnoremap - -
-nmap     _               <Plug>VinegarUp
+nmap     _ <Plug>VinegarUp
 
 " ··········· ex commands ····· {{{1
-nnoremap <Leader>1       :!
-noremap  <Leader>:       :<Up>
-nnoremap <Leader>H       :help 
+nnoremap <Leader>1        :!
+noremap  <Leader>:        :<Up>
+nnoremap <Leader>H        :help 
 
-cnoremap <C-P>           <Up>
-cnoremap <C-N>           <Down>
-cnoremap <C-A>           <Home>
-cnoremap <C-B>           <Left>
+cnoremap <C-P>            <Up>
+cnoremap <C-N>            <Down>
+cnoremap <C-A>            <Home>
+cnoremap <C-B>            <Left>
 
 " ··········· positioning ····· {{{1
 " auto-indent whole file
@@ -180,27 +180,25 @@ noremap  <silent> <C-W><C-]> :vertical stag<CR>
 nnoremap          <Leader>q  <C-W>q
 
 " ··········· display ········· {{{1
-nnoremap <Leader>,w  :setlocal wrap! linebreak! list! wrap?<CR>
-noremap  <silent> <Leader>,m :call ToggleColorscheme()<CR>
+nnoremap        <Leader>,w  :setlocal wrap! linebreak! list! wrap?<CR>
+noremap  <expr> <Leader>,m ToggleColorscheme()
 
-noremap  <Leader>,x :call HexHighlight()<CR>
-noremap  <Leader>,y :call SynStack()<CR>
+noremap  <expr> <Leader>,x HexHighlight()
+noremap  <expr> <Leader>,y SynStack()
 
 " line numbers
-noremap  <Leader>N  :call NumberToggle()<CR>
-noremap  <Leader>R  :set relativenumber! relativenumber?<CR>
+noremap  <expr> <Leader>N  NumberToggle()
+noremap         <Leader>R  :set relativenumber! relativenumber?<CR>
 
 " folding
-noremap  <expr>   <Leader>Z  FoldMethToggle()
-noremap  <silent> <Leader>,z :call FoldColToggle(4)<CR>
+noremap  <expr> <Leader>Z  FoldMethToggle()
+noremap  <expr> <Leader>,z FoldColToggle(4)
 
 " cursor
-nnoremap <silent> <C-_>      :call CursorLineToggle()<CR>
-vnoremap <silent> <C-_>      :<C-U>call CursorLineToggle()<CR>gv
+nnoremap   <expr> <C-_>      CursorLineToggle()
 nnoremap <silent> <C-Bslash> :set cursorcolumn!<CR>
 vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv
-nnoremap <silent> <Leader>]  :call ColorColToggle()<CR>
-vnoremap <silent> <Leader>]  :<C-U>call ColorColToggle()<CR>gv
+nnoremap   <expr> <Leader>]  ColorColToggle()
 
 " ··········· tags ············ {{{1
 nnoremap <F5> :!ctags -R<CR>
