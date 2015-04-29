@@ -47,7 +47,6 @@ endif
 
 " cursorline
 set cursorline
-highlight! link CursorLine CursorLineClear
 let w:cursorline_on = 0
 
 augroup CursorGroup
