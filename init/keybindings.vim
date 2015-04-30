@@ -57,7 +57,7 @@ nnoremap Ò                :lnewer<CR>
 
 noremap  <Leader><Space>  :pwd<CR>
 noremap  <expr> <Leader>. ReloadBuffers()
-noremap  <Leader>h        <C-Z>
+noremap  <C-H>            <C-Z>
 
 " Vinegar
 nnoremap - -
@@ -66,7 +66,7 @@ nmap     _ <Plug>VinegarUp
 " ··········· ex commands ····· {{{1
 nnoremap <Leader>1        :!
 noremap  <Leader>:        :<Up>
-nnoremap <Leader>H        :help 
+nnoremap <Leader>h        :help 
 
 cnoremap <C-P>            <Up>
 cnoremap <C-N>            <Down>
