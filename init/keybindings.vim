@@ -5,7 +5,7 @@
 map <Space> <Leader>
 
 " Timeout mappings fast and key codes faster
-set timeout timeoutlen=250 ttimeoutlen=100
+set timeout timeoutlen=300 ttimeoutlen=100
 
 " source / edit vimrc
 nnoremap <silent> <C-.>      :source $MYVIMRC \| call RefreshUI()<CR>
@@ -198,9 +198,9 @@ nnoremap   <expr> <Leader>]  ColorColToggle()
 nnoremap <F5> :!ctags -R<CR>
 
 " ··········· testing ········· {{{1
-nmap     <Leader>t           <Plug>RunFocusedSpec
-nmap     <Leader>T           <Plug>RunCurrentSpecFile
-nmap     <Leader>,t          <Plug>RunMostRecentSpec
+nmap     <Leader>r           <Plug>RunFocusedSpec
+nmap     <Leader>t           <Plug>RunCurrentSpecFile
+nmap     <Leader>,r          <Plug>RunMostRecentSpec
 noremap  <silent> <Leader>,f :VtrFocusRunner<CR>
 noremap  <silent> <Leader>,k :VtrKillRunner<CR>
 nnoremap <expr>   <Leader>x  Spatch()
