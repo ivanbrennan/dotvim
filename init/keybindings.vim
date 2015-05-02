@@ -174,15 +174,10 @@ noremap  <silent> <C-W><C-]> :vertical stag<CR>
 nnoremap          <Leader>q  <C-W>q
 
 " ··········· display ········· {{{1
-nnoremap        <Leader>,w  :setlocal wrap! linebreak! list! wrap?<CR>
 noremap  <expr> <Leader>,m ToggleColorscheme()
 
 noremap  <expr> <Leader>,x HexHighlight()
 noremap  <expr> <Leader>,y SynStack()
-
-" line numbers
-noremap  <expr> <Leader>N  NumberToggle()
-noremap         <Leader>R  :set relativenumber! relativenumber?<CR>
 
 " folding
 noremap  <expr> <Leader>Z  FoldMethToggle()
