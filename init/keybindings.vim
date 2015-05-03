@@ -55,9 +55,9 @@ nnoremap                 :lprevious<CR>
 nnoremap Ó                :lolder<CR>
 nnoremap Ò                :lnewer<CR>
 
-noremap  <Leader><Space>  :pwd<CR>
-noremap  <expr> <Leader>. ReloadBuffers()
-noremap  <C-H>            <C-Z>
+noremap  <Leader><Space>    :pwd<CR>
+noremap  <silent> <Leader>. :call ReloadBuffers()<CR>
+noremap  <C-H>              <C-Z>
 
 " Vinegar
 nnoremap - -
@@ -174,18 +174,18 @@ noremap  <silent> <C-W><C-]> :vertical stag<CR>
 nnoremap          <Leader>q  <C-W>q
 
 " ··········· display ········· {{{1
-noremap  <expr> <Leader>,m ToggleColorscheme()
-noremap  <expr> <Leader>,y SynStack()
+noremap  <silent> <Leader>,m :call ToggleColorscheme()<CR>
+noremap           <Leader>[  :call SynStack()<CR>
 
 " folding
-noremap  <expr> <Leader>Z  FoldMethToggle()
-noremap  <expr> <Leader>,z FoldColToggle(4)
+noremap  <silent> <Leader>Z  :call FoldMethToggle()<CR>
+noremap  <silent> <Leader>,z :call FoldColToggle(4)<CR>
 
 " cursor
-nnoremap   <expr> <C-_>      CursorLineToggle()
+nnoremap <silent> <C-_>      :call CursorLineToggle()<CR>
 nnoremap <silent> <C-Bslash> :set cursorcolumn!<CR>
 vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv
-nnoremap   <expr> <Leader>]  ColorColToggle()
+nnoremap <silent> <Leader>]  :call ColorColToggle()<CR>
 
 " ··········· tags ············ {{{1
 nnoremap <F5> :!ctags -R<CR>
@@ -196,7 +196,7 @@ nmap     <Leader>t           <Plug>RunCurrentSpecFile
 nmap     <Leader>,r          <Plug>RunMostRecentSpec
 noremap  <silent> <Leader>,f :VtrFocusRunner<CR>
 noremap  <silent> <Leader>,k :VtrKillRunner<CR>
-nnoremap <expr>   <Leader>x  Spatch()
+nnoremap <silent> <Leader>x  :call Spatch()<CR>
 
 " ··········· git ············· {{{1
 noremap <silent> <Leader>B   :Gblame<CR>
