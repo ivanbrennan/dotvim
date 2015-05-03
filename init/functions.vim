@@ -70,10 +70,9 @@ endfunction
 
 " ··········· syntax ··················· {{{1
 function! SynStack()
-  if !exists("*synstack")
-    return
+  if exists("*synstack")
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
   endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
 
 " ··········· statusline ··············· {{{1
