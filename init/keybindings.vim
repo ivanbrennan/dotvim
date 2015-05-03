@@ -175,8 +175,6 @@ nnoremap          <Leader>q  <C-W>q
 
 " ··········· display ········· {{{1
 noremap  <expr> <Leader>,m ToggleColorscheme()
-
-noremap  <expr> <Leader>,x HexHighlight()
 noremap  <expr> <Leader>,y SynStack()
 
 " folding
