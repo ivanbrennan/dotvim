@@ -204,6 +204,7 @@ noremap <silent> <Leader>B   :Gblame<CR>
 " ··········· rails ··········· {{{1
 nnoremap <silent> <Leader><Tab> :A<CR>
 nnoremap          <Leader>E     :Eschema 
+nnoremap          <Leader>M     :Emigration 
 nnoremap          <Leader>es    :Espec 
 nnoremap          <Leader>ef    :edit spec/factories/
 nnoremap          <Leader>ec    :Econtroller 
