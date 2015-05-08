@@ -10,10 +10,14 @@ set timeout timeoutlen=300 ttimeoutlen=100
 " source / edit vimrc
 nnoremap <silent> <C-.>      :source $MYVIMRC \| call RefreshUI()<CR>
 nnoremap          <C-,>      :edit   $MYVIMRC<CR>
+nnoremap          <C-,>f     :edit   ~/.vim/init/functions.vim<CR>
+nnoremap          <C-,><C-F> :edit   ~/.vim/init/functions.vim<CR>
 nnoremap          <C-,>k     :edit   ~/.vim/init/keybindings.vim<CR>
 nnoremap          <C-,><C-K> :edit   ~/.vim/init/keybindings.vim<CR>
 nnoremap          <C-,>o     :edit   ~/.vim/init/options.vim<CR>
 nnoremap          <C-,><C-O> :edit   ~/.vim/init/options.vim<CR>
+nnoremap          <C-,>w     :edit   ~/.vim/init/wild.vim<CR>
+nnoremap          <C-,><C-W> :edit   ~/.vim/init/wild.vim<CR>
 
 " ··········· buffers ········· {{{1
 cnoremap <expr>   %%      getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
@@ -196,7 +200,8 @@ nmap     <Leader>t           <Plug>RunCurrentSpecFile
 nmap     <Leader>,r          <Plug>RunMostRecentSpec
 noremap  <silent> <Leader>,f :VtrFocusRunner<CR>
 noremap  <silent> <Leader>,k :VtrKillRunner<CR>
-nnoremap <silent> <Leader>x  :call Spatch()<CR>
+nnoremap <silent> <Leader>x  :call Vmux()<CR>
+nnoremap <silent> <Leader>,x :call Vtux()<CR>
 
 " ··········· git ············· {{{1
 noremap <silent> <Leader>B   :Gblame<CR>

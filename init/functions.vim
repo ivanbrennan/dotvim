@@ -190,19 +190,14 @@ function! ReloadBuffers()
   echo 'reloaded!'
 endfunction
 
-" ··········· spatch ··················· {{{1
-function! Spatch()
-  let sessions = system("tmux list-sessions -F '#{session_name}'")
-  let target   = input('Enter target: ')
-  let target_session = matchstr(target, '[[:alnum:]_-]\+')
+" ··········· vmux ····················· {{{1
+function! Vmux()
+  VmuxPrimary
+  let g:spec_runner_dispatcher = "call system(\"tmux send -t " . g:vmux_primary . " C-L '{command}' ENTER\")"
+endfunction
 
-  if (sessions =~ target_session) && (target_session != '')
-    let g:spec_runner_dispatcher = "call system(\"tmux send -t "
-          \                        . target .
-          \                        " C-L '{command}' ENTER\")"
-  else
-    let g:spec_runner_dispatcher = "VtrSendCommand! {command}"
-  endif
+function! Vtux()
+  let g:spec_runner_dispatcher = "VtrSendCommand! {command}"
 endfunction
 
 " ··········· keyboard ················· {{{1
