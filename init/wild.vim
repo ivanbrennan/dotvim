@@ -1,6 +1,6 @@
 " ::::::::: Wild ::::::::::::::::::::::::::
 
-set wildmode=longest,list
+set wildmode=list:longest,full
 
 " output and VCS
 set wildignore+=*.o,*.out,*.obj,*.rbc,*.rbo,*.class,.svn,*.gem
