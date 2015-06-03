@@ -82,7 +82,7 @@ cnoremap <C-B>            <Left>
 nnoremap <Leader>= gg=G``
 
 " push newline
-nnoremap <CR>     mzO<Esc>`z
+nnoremap <S-CR>   mzO<Esc>`z
 nnoremap <C-CR>   mzo<Esc>`z
 
 " bubble up
