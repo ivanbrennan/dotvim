@@ -164,7 +164,7 @@ noremap <silent> <C-L>      :nohlsearch<CR><C-L>
 noremap          <C-L><C-L> :set hlsearch! hlsearch?<CR>
 
 " ··········· splits ·········· {{{1
-nmap              <Leader>o  <Plug>ZoomWin
+nmap              <Leader>m  <Plug>ZoomWin
 noremap           <C-W>p     <C-W><Bar>
 noremap           <C-W><C-P> <C-W><Bar>
 noremap           <C-W>u     <C-W>_
