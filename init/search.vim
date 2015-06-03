@@ -1,6 +1,5 @@
 " CtrlP & Ag
 let g:ctrlp_map          = '<Leader>o'
-let g:ctrlp_show_hidden  = 1
 let g:ctrlp_match_window = 'max:18'
 
 if executable('ag')
