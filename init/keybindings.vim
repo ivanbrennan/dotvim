@@ -82,8 +82,8 @@ cnoremap <C-B>            <Left>
 nnoremap <Leader>= gg=G``
 
 " push newline
-nnoremap <S-CR>   mzO<Esc>j`z
-nnoremap <C-CR>   mzo<Esc>k`z
+nnoremap <CR>     mzO<Esc>`z
+nnoremap <C-CR>   mzo<Esc>`z
 
 " bubble up
 nnoremap <silent> <C-K>    mZ:silent! move .-2<CR>==`Z
