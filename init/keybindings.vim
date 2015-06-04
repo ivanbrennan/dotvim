@@ -40,7 +40,6 @@ nnoremap  <Leader>dl      :bdelete#<CR>
 
 " Buffer list
 nnoremap <Leader>b        :buffers<CR>
-nnoremap <Leader>p        :CtrlPBuffer<CR>
 nnoremap <M-Tab>          :bnext<CR>
 nnoremap <M-S-Tab>        :bprevious<CR>
 nnoremap <Leader>l        <C-^>
@@ -204,7 +203,7 @@ nnoremap <silent> <Leader>x  :call Vmux()<CR>
 nnoremap <silent> <Leader>,x :call Vtux()<CR>
 
 " ··········· git ············· {{{1
-noremap <silent> <Leader>B   :Gblame<CR>
+noremap <silent> <Leader>g   :Gblame<CR>
 
 " ··········· rails ··········· {{{1
 nnoremap <silent> <Leader><Tab> :A<CR>
