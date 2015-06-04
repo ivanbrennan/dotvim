@@ -137,10 +137,6 @@ noremap  '  `
 " matchit
 map      <Leader>5  %
 
-" center on matches
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
 " sane regexes
 nnoremap  <Leader>/  /\v
 vnoremap  <Leader>/  /\v
