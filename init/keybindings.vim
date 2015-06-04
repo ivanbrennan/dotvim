@@ -124,6 +124,7 @@ inoremap <C-_>      <Esc>viwg~gi
 
 inoremap        <C-L>  <C-X><C-L>
 inoremap        <C-]>  <C-X><C-]>
+inoremap    <C-Space>  <C-X><C-O>
 
 inoremap <expr> <Tab>   SuperTab("\<C-N>", "\<Tab>")
 inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<S-Tab>")
@@ -136,9 +137,15 @@ noremap  '  `
 " matchit
 map      <Leader>5  %
 
-" last search
-noremap  <Leader>/  /<Up>
-noremap  <Leader>?  ?<Up>
+" center on matches
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" sane regexes
+nnoremap  <Leader>/  /\v
+vnoremap  <Leader>/  /\v
+nnoremap  <Leader>?  ?\v
+vnoremap  <Leader>?  ?\v
 
 " substitute
 nnoremap <Leader>s  :%s/
