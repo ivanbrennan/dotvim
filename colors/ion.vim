@@ -42,7 +42,7 @@ hi WarningMsg   ctermfg=122 ctermbg=234 cterm=none                  gui=None    
 hi ErrorMsg     ctermfg=255 ctermbg=160 cterm=none                  gui=None        guifg=#eeeeee       guibg=#df0000
 hi Error        ctermfg=196 ctermbg=234 cterm=none                  gui=None        guifg=#ff0000       guibg=#1c1c1c
 
-hi SpecialKey   ctermfg=214 ctermbg=234                             gui=None        guifg=#ffaf00       guibg=#1c1c1c
+hi SpecialKey   ctermfg=237 ctermbg=234                             gui=None        guifg=#ffaf00       guibg=#1c1c1c
 hi Title        ctermfg=075 ctermbg=234 cterm=bold                  gui=bold        guifg=#5fafff       guibg=#1c1c1c
 hi Directory    ctermfg=117 ctermbg=234 cterm=bold                  gui=bold        guifg=#87dfff       guibg=#1c1c1c
 
