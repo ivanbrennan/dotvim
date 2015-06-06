@@ -161,10 +161,6 @@ noremap <silent> <Leader>* :set foldenable!<CR>
       \:let view=winsaveview()<CR>#*
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
-" toggle search highlighting
-noremap <silent> <C-L>      :nohlsearch<CR><C-L>
-noremap          <C-L><C-L> :set hlsearch! hlsearch?<CR>
-
 " ··········· splits ·········· {{{1
 noremap           <C-W>0     <C-W>o
 nmap              <C-W>o     <Plug>ZoomWin
@@ -194,6 +190,10 @@ nnoremap <silent> <C-_>      :call CursorLineToggle()<CR>
 nnoremap <silent> <C-Bslash> :set cursorcolumn!<CR>
 vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv
 nnoremap <silent> <Leader>]  :call ColorColToggle()<CR>
+
+" emacs redraws
+nnoremap <C-L>           zz<C-L>
+nnoremap <Leader><C-L>   zt<C-L>
 
 " ··········· tags ············ {{{1
 nnoremap <F5> :!ctags -R<CR>
