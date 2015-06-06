@@ -39,13 +39,13 @@ nnoremap  <Leader>dd      :bdelete<CR>
 nnoremap  <Leader>dl      :bdelete#<CR>
 
 " Buffer list
-nnoremap <Leader>b        :buffers<CR>
+nnoremap <C-Space>        :buffers<CR>
 nnoremap <M-Tab>          :bnext<CR>
 nnoremap <M-S-Tab>        :bprevious<CR>
 nnoremap <Leader>l        <C-^>
 
 " Quickfix list (alt h/j/k/l)
-nmap     <C-Space>        <Plug>QfxListical
+nmap     K                <Plug>QfxListical
 nnoremap ∆                :cnext<CR>
 nnoremap ˚                :cprevious<CR>
 nnoremap ˙                :colder<CR>

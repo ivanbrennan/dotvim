@@ -1,8 +1,8 @@
 " CtrlP
 let g:ctrlp_map             = '<Leader>o'
-nnoremap   <Leader>p        :CtrlPBuffer<CR>
-nnoremap   <Leader>i        :CtrlPQuickfix<CR>
-nnoremap   <Leader>y        :CtrlPTag<CR>
+nnoremap   <Leader>b        :CtrlPBuffer<CR>
+nnoremap   <Leader>k        :CtrlPQuickfix<CR>
+nnoremap   <Leader>i        :CtrlPTag<CR>
 nnoremap   <Leader>u        :CtrlPMRU<CR>
 let g:ctrlp_match_window    = 'max:18'
 let g:ctrlp_by_filename     = 1
