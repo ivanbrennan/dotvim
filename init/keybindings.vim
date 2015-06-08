@@ -107,10 +107,10 @@ noremap  <Leader>c  "*
 noremap  <Leader>cy "+yg_
 
 " commentary
-xmap     <Leader>3  <Plug>Commentary
-nmap     <Leader>3  <Plug>Commentary
-omap     <Leader>3  <Plug>Commentary
-nmap     <Leader>33 <Plug>CommentaryLine
+xmap     <Leader>;  <Plug>Commentary
+nmap     <Leader>;  <Plug>Commentary
+omap     <Leader>;  <Plug>Commentary
+nmap     <Leader>;; <Plug>CommentaryLine
 
 " jump around insert mode
 inoremap <C-B>      <C-O>b
