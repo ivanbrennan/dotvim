@@ -162,19 +162,19 @@ noremap <silent> <Leader>* :set foldenable!<CR>
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " ··········· splits ·········· {{{1
-nmap              <C-W><CR>   <Plug>ZoomWin
-nmap              <C-W><C-CR> <Plug>ZoomWin
-noremap           <C-W>p      <C-W><Bar>
-noremap           <C-W><C-P>  <C-W><Bar>
-noremap           <C-W>u      <C-W>_
-noremap           <C-W><C-U>  <C-W>_
-noremap           <C-W>m      <C-W>=
-noremap           <C-W><C-M>  <C-W>=
-noremap  <silent> <C-W>n      :vnew<CR>
-noremap  <silent> <C-W><C-N>  :vnew<CR>
-noremap  <silent> <C-W>]      :vertical stag<CR>
-noremap  <silent> <C-W><C-]>  :vertical stag<CR>
-nnoremap          <C-Q>       <C-W>q
+nmap              <C-W><CR>      <Plug>ZoomWin
+nmap              <C-W><C-CR>    <Plug>ZoomWin
+noremap           <C-W>p         <C-W><Bar>
+noremap           <C-W><C-P>     <C-W><Bar>
+noremap           <C-W>u         <C-W>_
+noremap           <C-W><C-U>     <C-W>_
+noremap           <C-W><Space>   <C-W>=
+noremap           <C-W><C-Space> <C-W>=
+noremap  <silent> <C-W>n         :vnew<CR>
+noremap  <silent> <C-W><C-N>     :vnew<CR>
+noremap  <silent> <C-W>]         :vertical stag<CR>
+noremap  <silent> <C-W><C-]>     :vertical stag<CR>
+nnoremap          <C-Q>          <C-W>q
 
 " ··········· display ········· {{{1
 noremap  <silent> <Leader>,m :call ToggleColorscheme()<CR>
