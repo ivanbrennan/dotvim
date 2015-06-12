@@ -1,6 +1,6 @@
 " CtrlP
 let g:ctrlp_map             = '<Leader>o'
-nnoremap   <Leader>b        :CtrlPBuffer<CR>
+nnoremap   <S-Space>        :CtrlPBuffer<CR>
 nnoremap   <Leader>k        :CtrlPQuickfix<CR>
 nnoremap   <Leader>i        :CtrlPTag<CR>
 nnoremap   <Leader>u        :CtrlPMRU<CR>
