@@ -60,7 +60,6 @@ nnoremap Ò                :lnewer<CR>
 
 noremap  <Leader><Space>    :pwd<CR>
 noremap  <silent> <Leader>. :call ReloadBuffers()<CR>
-noremap  <C-H>              <C-Z>
 
 " Vinegar
 nnoremap - -
@@ -134,8 +133,14 @@ inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<S-Tab>")
 noremap  `  '
 noremap  '  `
 
-" matchit
+" :nohlsearch
+noremap  <silent> <C-H> :nohlsearch<CR>
+" lazy matchit
 map      <Leader>5  %
+
+" emacs inspired
+noremap         <C-S> /
+cnoremap <expr> <C-S> getcmdtype() ==# '/' ? '<CR>/<Up>' : '<C-S>'
 
 " sane regexes
 nnoremap  <Leader>/  /\v
