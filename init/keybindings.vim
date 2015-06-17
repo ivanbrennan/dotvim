@@ -138,9 +138,23 @@ noremap  <silent> <C-H> :nohlsearch<CR>
 " lazy matchit
 map      <Leader>5  %
 
-" emacs inspired
-noremap         <C-S> /
-cnoremap <expr> <C-S> getcmdtype() ==# '/' ? '<CR>/<Up>' : '<C-S>'
+function! CustomSearch(fsearch, bsearch, standard)
+  if getcmdtype() ==# '/'
+    return a:fsearch
+  elseif getcmdtype() ==# '?'
+    return a:bsearch
+  else
+    return a:standard
+  endif
+endfunction
+
+" emacs search
+noremap             / ms/
+noremap             ? ms?
+map             <C-S> /
+cnoremap <expr> <C-S> CustomSearch('<CR>/<Up>', '<CR>?<Up>', '<C-S>')
+cnoremap <expr>  <BS> CustomSearch('<CR>NN/<Up>', '<CR>NN?<Up>', '<BS>')
+cnoremap <expr> <Esc> CustomSearch('<Esc>`s', '<Esc>`s', '<Esc>')
 
 " sane regexes
 nnoremap  <Leader>/  /\v
