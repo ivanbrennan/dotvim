@@ -20,43 +20,43 @@ nnoremap          <C-,>w     :edit   ~/.vim/init/wild.vim<CR>
 nnoremap          <C-,><C-W> :edit   ~/.vim/init/wild.vim<CR>
 
 " ··········· buffers ········· {{{1
-cnoremap <expr>   %%      getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+cnoremap <expr>   %%    getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 
-nmap <silent> <Leader>-   :tabedit %%<cr>
+nmap <silent> <Leader>- :tabedit %%<cr>
 
-nnoremap <Leader>e        :edit 
-nmap     <Leader>ee       :edit %%
-nnoremap <Leader>et       :tabedit 
-nnoremap <Leader>eh       :edit ~/
+nnoremap <Leader>e      :edit 
+nmap     <Leader>ee     :edit %%
+nnoremap <Leader>et     :tabedit 
+nnoremap <Leader>eh     :edit ~/
 
-nnoremap <Leader>w        :write 
-vnoremap <Leader>w        :write 
-nmap     <Leader>ww       :write %%
-vmap     <Leader>ww       :write %%
-nnoremap <Leader>wq       :wq 
+nnoremap <Leader>w      :write 
+vnoremap <Leader>w      :write 
+nmap     <Leader>ww     :write %%
+vmap     <Leader>ww     :write %%
+nnoremap <Leader>wq     :wq 
 
-nnoremap  <Leader>dd      :bdelete<CR>
-nnoremap  <Leader>dl      :bdelete#<CR>
+nnoremap  <Leader>dd    :bdelete<CR>
+nnoremap  <Leader>dl    :bdelete#<CR>
 
 " Buffer list
-nnoremap <S-Space>        :buffers<CR>
-nnoremap <M-Tab>          :bnext<CR>
-nnoremap <M-S-Tab>        :bprevious<CR>
-nnoremap <Leader>l        <C-^>
+nnoremap <S-Space>      :buffers<CR>
+nnoremap <M-Tab>        :bnext<CR>
+nnoremap <M-S-Tab>      :bprevious<CR>
+nnoremap <Leader>l      <C-^>
 
 " Quickfix list (alt h/j/k/l)
 nmap     <C-@>          <Plug>QfxListical
-nnoremap ∆                :cnext<CR>
-nnoremap ˚                :cprevious<CR>
-nnoremap ˙                :colder<CR>
-nnoremap ¬                :cnewer<CR>
+nnoremap ∆              :cnext<CR>
+nnoremap ˚              :cprevious<CR>
+nnoremap ˙              :colder<CR>
+nnoremap ¬              :cnewer<CR>
 
 " Location List (alt H/J/K/L)
-nmap     <C-S-Space>      <Plug>LocListical
-nnoremap Ô                :lnext<CR>
-nnoremap                 :lprevious<CR>
-nnoremap Ó                :lolder<CR>
-nnoremap Ò                :lnewer<CR>
+nmap     <C-S-Space>    <Plug>LocListical
+nnoremap Ô              :lnext<CR>
+nnoremap               :lprevious<CR>
+nnoremap Ó              :lolder<CR>
+nnoremap Ò              :lnewer<CR>
 
 noremap  <Leader><Space>    :pwd<CR>
 noremap  <silent> <Leader>. :call ReloadBuffers()<CR>
@@ -163,20 +163,20 @@ noremap <silent> <Leader>* :set foldenable!<CR>
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " ··········· splits ·········· {{{1
-noremap           <C-W>O         <C-W>o
-nmap              <C-W>o         <Plug>ZoomWin
-nmap              <C-W><C-O>     <Plug>ZoomWin
-noremap           <C-W>p         <C-W><Bar>
-noremap           <C-W><C-P>     <C-W><Bar>
-noremap           <C-W>u         <C-W>_
-noremap           <C-W><C-U>     <C-W>_
-noremap           <C-W><Space>   <C-W>=
+noremap           <C-W>O       <C-W>o
+nmap              <C-W>o       <Plug>ZoomWin
+nmap              <C-W><C-O>   <Plug>ZoomWin
+noremap           <C-W>p       <C-W><Bar>
+noremap           <C-W><C-P>   <C-W><Bar>
+noremap           <C-W>u       <C-W>_
+noremap           <C-W><C-U>   <C-W>_
+noremap           <C-W><Space> <C-W>=
 noremap           <C-W><C-@>   <C-W>=
-noremap  <silent> <C-W>n         :vnew<CR>
-noremap  <silent> <C-W><C-N>     :vnew<CR>
-noremap  <silent> <C-W>]         :vertical stag<CR>
-noremap  <silent> <C-W><C-]>     :vertical stag<CR>
-nnoremap          <C-Q>          <C-W>q
+noremap  <silent> <C-W>n       :vnew<CR>
+noremap  <silent> <C-W><C-N>   :vnew<CR>
+noremap  <silent> <C-W>]       :vertical stag<CR>
+noremap  <silent> <C-W><C-]>   :vertical stag<CR>
+nnoremap          <C-Q>        <C-W>q
 
 " ··········· display ········· {{{1
 noremap  <silent> <Leader>,m :call ToggleColorscheme()<CR>
