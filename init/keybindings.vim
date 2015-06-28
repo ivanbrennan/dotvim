@@ -45,7 +45,7 @@ nnoremap <M-S-Tab>        :bprevious<CR>
 nnoremap <Leader>l        <C-^>
 
 " Quickfix list (alt h/j/k/l)
-nmap     <C-Space>        <Plug>QfxListical
+nmap     <C-@>          <Plug>QfxListical
 nnoremap ∆                :cnext<CR>
 nnoremap ˚                :cprevious<CR>
 nnoremap ˙                :colder<CR>
@@ -123,7 +123,7 @@ inoremap <C-_>      <Esc>viwg~gi
 
 inoremap        <C-L>  <C-X><C-L>
 inoremap        <C-]>  <C-X><C-]>
-inoremap    <C-Space>  <C-X><C-O>
+inoremap        <C-@>  <C-X><C-O>
 
 inoremap <expr> <Tab>   SuperTab("\<C-N>", "\<Tab>")
 inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<S-Tab>")
@@ -171,7 +171,7 @@ noremap           <C-W><C-P>     <C-W><Bar>
 noremap           <C-W>u         <C-W>_
 noremap           <C-W><C-U>     <C-W>_
 noremap           <C-W><Space>   <C-W>=
-noremap           <C-W><C-Space> <C-W>=
+noremap           <C-W><C-@>   <C-W>=
 noremap  <silent> <C-W>n         :vnew<CR>
 noremap  <silent> <C-W><C-N>     :vnew<CR>
 noremap  <silent> <C-W>]         :vertical stag<CR>
