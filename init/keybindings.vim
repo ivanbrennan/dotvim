@@ -222,3 +222,5 @@ nnoremap          <Leader>em    :Emodel
 nnoremap          <Leader>ev    :Eview 
 nnoremap          <Leader>eh    :Ehelper 
 
+nnoremap <Leader>P Orequire 'pry'; binding.pry<Esc>0
+
