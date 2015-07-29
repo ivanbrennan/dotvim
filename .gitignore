@@ -4,4 +4,5 @@ tmp/
 undo/
 view/
 .netrwhist
+info
 vimrc.local
