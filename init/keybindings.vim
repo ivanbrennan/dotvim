@@ -119,6 +119,9 @@ inoremap KJ         <C-O>I
 " toggle case
 inoremap <C-_>      <Esc>viwg~gi
 
+" end of line
+noremap <Leader>4   $
+
 " ··········· autocompletion ·· {{{1
 
 inoremap        <C-L>  <C-X><C-L>
