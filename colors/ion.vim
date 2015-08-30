@@ -27,7 +27,7 @@ hi DiffText     ctermfg=161 ctermbg=234 cterm=underline             gui=underlin
 
 hi Cursor       ctermfg=234 ctermbg=250                             gui=None        guifg=#1c1c1c       guibg=#bcbcbc
 
-hi Visual                   ctermbg=25                              gui=None                            guibg=#0074BE
+hi Visual                   ctermbg=236                             gui=None                            guibg=#3f3f3f
 
 hi Folded       ctermfg=244 ctermbg=235                             gui=None        guifg=#808080       guibg=#262626
 hi FoldColumn   ctermfg=244 ctermbg=234                             gui=None        guifg=#808080       guibg=#1c1c1c
