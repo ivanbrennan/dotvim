@@ -189,10 +189,7 @@ noremap           <Leader>[  :call SynStack()<CR>
 noremap  <silent> <Leader>Z  :call FoldMethToggle()<CR>
 noremap  <silent> <Leader>,z :call FoldColToggle(4)<CR>
 
-" cursor
-nnoremap <silent> <C-_>      :call CursorLineToggle()<CR>
-nnoremap <silent> <C-Bslash> :set cursorcolumn!<CR>
-vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv
+" colour column
 nnoremap <silent> <Leader>]  :call ColorColToggle()<CR>
 
 " emacs redraws

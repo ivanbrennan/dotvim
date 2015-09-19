@@ -3,18 +3,6 @@
 " ··········· helpers ········· {{{1
 highlight! CursorLineClear guibg=NONE guifg=NONE gui=NONE ctermbg=NONE ctermfg=NONE cterm=NONE
 
-function! CursorLineToggle()
-  call InitCursorVars()
-
-  if w:cursorline_on
-    highlight! link CursorLine CursorLineClear
-    let w:cursorline_on = 0
-  else
-    highlight! link CursorLine CursorLine
-    let w:cursorline_on = 1
-  endif
-endfunction
-
 function! InitCursorVars()
   if !exists("w:cursorline_on")
     let w:cursorline_on = 0
