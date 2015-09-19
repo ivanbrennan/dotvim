@@ -152,10 +152,11 @@ function! SuperTab(complete, tab)
   let col  = col('.') - 2  " previous character's col index
 
   " tab if not finishing a word/filename
-  if empty(line) || line[col] !~ '\k\|[/~.]' || line[col + 1] =~ '\k'
+  if empty(line) || line[col] !~ '\k\|[/~.]' || line[col + 1] =~ '\k' || &expandtab == 0
     " on empty line
     " OR not following part of a word/filename
     " OR within a word/filename
+    " OR using tabs, not spaces
     return a:tab
   endif
 
