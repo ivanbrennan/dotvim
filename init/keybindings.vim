@@ -196,6 +196,9 @@ nnoremap <silent> <Leader>]  :call ColorColToggle()<CR>
 nnoremap <C-L>           zz<C-L>
 nnoremap <Leader><C-L>   zt<C-L>
 
+" reposition
+noremap <silent> zz      :call Reposition()<CR>
+
 " ··········· testing ········· {{{1
 nmap     <Leader>r           <Plug>RunFocusedSpec
 nmap     <Leader>t           <Plug>RunCurrentSpecFile

@@ -31,6 +31,18 @@ function! NumberToggle()
   end
 endfunction
 
+" ··········· repositioning ············ {{{1
+function! Reposition()
+  let target = float2nr(round(winheight(0) / 3.0))
+  let diff   = winline() - target
+  if diff > 0
+    let movement = diff . ''
+  else
+    let movement = -diff . ''
+  endif
+  execute 'normal ' . movement
+endfunction
+
 " ··········· folding ·················· {{{1
 function! FoldMethToggle()
   if &foldmethod == 'marker'
