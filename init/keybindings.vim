@@ -102,8 +102,7 @@ noremap  <silent> <Leader>P <F8>
 set pastetoggle=<F8>
 
 " clipboard
-noremap  <Leader>c  "*
-noremap  <Leader>cy "+yg_
+noremap  <Leader>i  "*
 
 " commentary
 xmap     <Leader>;  <Plug>Commentary
@@ -157,8 +156,8 @@ nnoremap &  :&&<CR>
 xnoremap &  :&&<CR>
 
 " Ag
-nnoremap <Leader>f  :Ag! 
-nnoremap <Leader>,g :LAg! 
+nnoremap <Leader>a  :Ag! 
+nnoremap <Leader>,a :LAg! 
 
 " word under cursor
 noremap <silent> <Leader>* :set foldenable!<CR>
