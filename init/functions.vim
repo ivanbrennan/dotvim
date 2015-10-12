@@ -142,7 +142,8 @@ endfunction
 
 function! ColorColToggle()
   if &colorcolumn == ""
-    set colorcolumn=80
+    let width = (&textwidth > 0) ? &textwidth : 80
+    let &colorcolumn=join(range(width+1, width+256),',')
   else
     set colorcolumn=
   endif
