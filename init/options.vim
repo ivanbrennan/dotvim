@@ -34,7 +34,7 @@ set splitbelow
 " editing
 set backspace=indent,eol,start
 set nojoinspaces
-set textwidth=80
+set textwidth=100
 set nrformats=
 set complete-=i
 set formatprg=par               " gq -> par, gw -> internal
