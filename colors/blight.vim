@@ -28,19 +28,19 @@ let s:black_2          = { "gui": "#1F1F1F", "cterm": "234" }
 let s:black_1          = { "gui": "#111111", "cterm": "233" }
 let s:black_0          = { "gui": "#000000", "cterm": "16"  }
 
-let s:red_3            = { "gui": "#FFAFAF", "cterm": "217" }
-let s:red_2            = { "gui": "#FF0055", "cterm": "160" }
+let s:red_3            = { "gui": "#0FAFAF", "cterm": "217" }
+let s:red_2            = { "gui": "#ff002b", "cterm": "196" }
 let s:red_1            = { "gui": "#AF0000", "cterm": "124" }
 let s:red_0            = { "gui": "#63001C", "cterm": "52"  }
 
 let s:blue_3           = { "gui": "#FCFEFF", "cterm": "195" }
 let s:blue_2           = { "gui": "#E1F0F9", "cterm": "195" }
-let s:blue_1           = { "gui": "#9FD3E6", "cterm": "116" }
+let s:blue_1           = { "gui": "#1370f3", "cterm": "27" }
 let s:blue_0           = { "gui": "#005F87", "cterm": "24"  }
 
 let s:green_3          = { "gui": "#BBFFAA", "cterm": "157" }
 let s:green_2          = { "gui": "#B1D631", "cterm": "148" }
-let s:green_1          = { "gui": "#739200", "cterm": "64"  }
+let s:green_1          = { "gui": "#296B18", "cterm": "22"  }
 let s:green_0          = { "gui": "#5F5F00", "cterm": "58"  }
 
 let s:tan              = { "gui": "#ECE1C8", "cterm": "230" }
@@ -83,6 +83,7 @@ endfunction
 " Highlights - Vim >= 7 ------------------------------------{{{2
 if version >= 700
   call s:h("CursorLine",       { "bg": s:white_1 })
+  call s:h("CursorLineNr",     { "fg": s:black_1 })
   call s:h("MatchParen",       { "fg": s:green_1, "bg": s:grey_4, "gui": "bold" })
   call s:h("Pmenu",            { "bg": s:white_1 })
   call s:h("PmenuThumb",       { "bg": s:black_1 })
@@ -152,6 +153,11 @@ hi! link Number      Constant
 hi! link Special     Constant
 hi! link PreProc     Constant
 hi! link Error       ErrorMsg
+
+" Highlights - C -------------------------------------------{{{2
+call s:h("cInclude",  { "fg": s:blue_1 })
+call s:h("cIncluded", { "fg": s:red_2 })
+call s:h("cType",     { "fg": s:blue_1 })
 
 " Highlights - HTML ----------------------------------------{{{2
 hi! link htmlLink    Underlined
