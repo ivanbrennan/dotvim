@@ -12,7 +12,7 @@ let g:ctrlp_extensions      = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript'
 
 " Ag
 if executable('ag')
-  let g:aghighlight        = 1
+  let g:ag_highlight       = 1
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
