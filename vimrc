@@ -26,6 +26,7 @@ Plug 'kchmck/vim-coffee-script',       { 'for': 'coffee' }
 Plug 'kien/ctrlp.vim'
 Plug 'nelstrom/vim-qargs',             { 'on': 'Qargs' }
 Plug 'nelstrom/vim-visual-star-search'
+Plug 'ngmy/vim-rubocop'
 Plug 'regedarek/ZoomWin'
 Plug 'rking/ag.vim'
 Plug 'sjl/gundo.vim'
