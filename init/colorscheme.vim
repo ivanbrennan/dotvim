@@ -1,6 +1,10 @@
 " ::::::::: Colors ::::::::::::::::::::::::
 
 if !exists('g:colors_name')
-  colorscheme ion
+  if $THEME == 'light'
+    colorscheme blight
+  else
+    colorscheme ion
+  endif
 endif
 
