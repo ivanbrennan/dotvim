@@ -1,15 +1,12 @@
-"Maintainer:    Ivan Brennan <ivan.brennan@gmail.com>
-"Last Change:   2015-03-09
-"Version:       1.0
+" Maintainer: Ivan Brennan <ivan.brennan@gmail.com>
 
 set background=dark
+
 if version > 580
-    "no guarantees for version 5.8 and below, but this makes it stop complaining
-    hi clear
-    if exists("syntax_on")
-    syntax reset
-    endif
+  hi clear
+  if exists("syntax_on") | syntax reset | endif
 endif
+
 let g:colors_name="ion"
 
 hi Normal       ctermfg=250 ctermbg=234                             gui=None        guifg=#bcbcbc       guibg=#1c1c1c
@@ -51,28 +48,28 @@ hi SignColumn   ctermfg=214 ctermbg=235                             gui=None    
 hi WildMenu     ctermfg=075 ctermbg=235 cterm=bold                  gui=bold        guifg=#5fafff       guibg=#262626
 
 if version >= 700 " Vim 7.x specific colors
-    hi CursorLine   ctermbg=235 cterm=none                          gui=None        guibg=#262626
-    hi CursorColumn ctermbg=235 cterm=none                          gui=None        guibg=#262626
+  hi CursorLine   ctermbg=235 cterm=none                          gui=None        guibg=#262626
+  hi CursorColumn ctermbg=235 cterm=none                          gui=None        guibg=#262626
 
-    hi MatchParen   ctermfg=069 ctermbg=234 cterm=bold,reverse      gui=bold,reverse    guifg=#7194ff       guibg=#1c1c1c
+  hi MatchParen   ctermfg=069 ctermbg=234 cterm=bold,reverse      gui=bold,reverse    guifg=#7194ff       guibg=#1c1c1c
 
-    hi Tabline      ctermfg=245 ctermbg=235 cterm=underline         gui=underline   guifg=#8a8a8a       guibg=#262626
-    hi TablineSel   ctermfg=250 ctermbg=234 cterm=bold              gui=bold        guifg=#bcbcbc       guibg=#1c1c1c
-    hi TablineFill  ctermfg=250 ctermbg=237 cterm=underline         gui=underline   guifg=#bcbcbc       guibg=#3a3a3a
+  hi Tabline      ctermfg=245 ctermbg=235 cterm=underline         gui=underline   guifg=#8a8a8a       guibg=#262626
+  hi TablineSel   ctermfg=250 ctermbg=234 cterm=bold              gui=bold        guifg=#bcbcbc       guibg=#1c1c1c
+  hi TablineFill  ctermfg=250 ctermbg=237 cterm=underline         gui=underline   guifg=#bcbcbc       guibg=#3a3a3a
 
-    hi Pmenu        ctermfg=250 ctermbg=235 cterm=none              gui=None        guifg=#bcbcbc       guibg=#262626
-    hi PmenuSel     ctermfg=117 ctermbg=234 cterm=underline         gui=underline   guifg=#87dfff       guibg=#1c1c1c
-    hi PmenuSbar    ctermfg=116 ctermbg=234 cterm=none              gui=None        guifg=#87dfdf       guibg=#1c1c1c
-    hi PmenuThumb   ctermfg=116 ctermbg=116 cterm=none              gui=None        guifg=#87dfdf       guibg=#87dfdf
+  hi Pmenu        ctermfg=250 ctermbg=235 cterm=none              gui=None        guifg=#bcbcbc       guibg=#262626
+  hi PmenuSel     ctermfg=117 ctermbg=234 cterm=underline         gui=underline   guifg=#87dfff       guibg=#1c1c1c
+  hi PmenuSbar    ctermfg=116 ctermbg=234 cterm=none              gui=None        guifg=#87dfdf       guibg=#1c1c1c
+  hi PmenuThumb   ctermfg=116 ctermbg=116 cterm=none              gui=None        guifg=#87dfdf       guibg=#87dfdf
 
-    hi SpellBad     ctermfg=198 ctermbg=234 cterm=underline         gui=underline   guifg=#ff0087       guibg=#1c1c1c
-    hi SpellCap     ctermfg=198 ctermbg=234 cterm=none              gui=None        guifg=#ff0087       guibg=#1c1c1c
-    hi SpellRare    ctermfg=198 ctermbg=234 cterm=none              gui=None        guifg=#ff0087       guibg=#1c1c1c
-    hi SpellLocal   ctermfg=198 ctermbg=234 cterm=none              gui=None        guifg=#ff0087       guibg=#1c1c1c
+  hi SpellBad     ctermfg=198 ctermbg=234 cterm=underline         gui=underline   guifg=#ff0087       guibg=#1c1c1c
+  hi SpellCap     ctermfg=198 ctermbg=234 cterm=none              gui=None        guifg=#ff0087       guibg=#1c1c1c
+  hi SpellRare    ctermfg=198 ctermbg=234 cterm=none              gui=None        guifg=#ff0087       guibg=#1c1c1c
+  hi SpellLocal   ctermfg=198 ctermbg=234 cterm=none              gui=None        guifg=#ff0087       guibg=#1c1c1c
 endif
 
 if version >= 703 " Vim 7.3 specific colors
-    hi ColorColumn ctermbg=235                                      gui=None        guibg=#262626
+  hi ColorColumn ctermbg=235                                      gui=None        guibg=#262626
 endif
 
 " syntax highlighting groups
