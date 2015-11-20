@@ -36,7 +36,7 @@ set nojoinspaces
 set textwidth=100
 set nrformats=
 set complete-=i
-set formatprg=par               " gq -> par, gw -> internal
+set formatprg=par\ -w100        " gq -> par, gw -> internal
 set formatoptions-=t            " don't auto-wrap non-commented text
 set formatoptions-=o            " don't auto-comment with o or O
 set formatoptions+=r            " auto-comment with Enter
