@@ -18,14 +18,14 @@ if &term =~ 'xterm\|screen\|builtin_gui'
   " Most modified keys are encoded as: CSI[codepoint];[modifier]u
   " See: http://www.leonerd.org.uk/hacks/fixterms for full spec.
   let s:keycodes = [
-        \  [ '<S-Space>'   , '[32;2u' , '<F25>' ],
-        \  [ '<C-S-Space>' , '[32;6u' , '<F27>' ],
-        \  [ '<S-CR>'      , '[13;2u' , '<F28>' ],
-        \  [ '<C-CR>'      , '[13;5u' , '<F29>' ],
-        \  [ '<C-,>'       , '[44;5u' , '<F30>' ],
-        \  [ '<C-.>'       , '[46;5u' , '<F31>' ],
-        \  [ '<M-Tab>'     , '[9;3u'  , '<F32>' ],
-        \  [ '<M-S-Tab>'   , '[1;3Z'  , '<F33>' ],
+        \  [ '<S-Space>'   , '[32;2u' , '<F13>' ],
+        \  [ '<C-S-Space>' , '[32;6u' , '<F14>' ],
+        \  [ '<S-CR>'      , '[13;2u' , '<F15>' ],
+        \  [ '<C-CR>'      , '[13;5u' , '<F16>' ],
+        \  [ '<C-,>'       , '[44;5u' , '<F17>' ],
+        \  [ '<C-.>'       , '[46;5u' , '<F18>' ],
+        \  [ '<M-Tab>'     , '[9;3u'  , '<F19>' ],
+        \  [ '<M-S-Tab>'   , '[1;3Z'  , '<F20>' ],
         \]
   " ····························· }}}1
   for [key, code, fnkey] in s:keycodes
