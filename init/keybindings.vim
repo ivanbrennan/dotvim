@@ -1,8 +1,9 @@
 " ::::::::: Keybindings :::::::::::::::::::
 
 " ··········· config ·········· {{{1
-" Use Space as mapleader, visible as '\'
-map <Space> <Leader>
+" Use Space as mapleader
+let mapleader = ' '
+nnoremap <Space> <Nop>
 
 " Timeout mappings fast and key codes faster
 set timeout timeoutlen=300 ttimeoutlen=100
