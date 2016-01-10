@@ -148,8 +148,8 @@ nnoremap  <Leader>?  ?\v
 vnoremap  <Leader>?  ?\v
 
 " substitute
-nnoremap <Leader>s  :%s/
-nnoremap <Leader>,s :s/
+nnoremap <Leader>,s :%s/
+nnoremap <Leader>s  :s/
 vnoremap <Leader>s  :s/
 
 " preserve flags
