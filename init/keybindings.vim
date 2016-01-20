@@ -182,6 +182,7 @@ noremap  <silent> <C-W>n       :vnew<CR>
 noremap  <silent> <C-W><C-N>   :vnew<CR>
 noremap  <silent> <C-W>]       :vertical stag<CR>
 noremap  <silent> <C-W><C-]>   :vertical stag<CR>
+noremap           <Leader>q    <C-W><C-Q>
 
 " ··········· display ········· {{{1
 noremap  <silent> <Leader>,m :call ToggleColorscheme()<CR>
