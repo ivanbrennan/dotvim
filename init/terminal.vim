@@ -6,8 +6,8 @@ if has('nvim')
   finish
 endif
 
-fun! SetKeyCode(key, code, fnkey)
-  execute 'set  '. a:fnkey .'='. a:code
+fun! SetKeyCode(key, escSeq, fnkey)
+  execute 'set  '. a:fnkey .'='. a:escSeq
   execute 'map  '. a:fnkey .' '. a:key
   execute 'map! '. a:fnkey .' '. a:key
 endf
@@ -28,8 +28,8 @@ if &term =~ 'xterm\|screen\|builtin_gui'
         \  [ '<M-S-Tab>'   , '[1;3Z'  , '<F20>' ],
         \]
   " ····························· }}}1
-  for [key, code, fnkey] in s:keycodes
-    call SetKeyCode( key, code, fnkey )
+  for [key, escSeq, fnkey] in s:keycodes
+    call SetKeyCode( key, escSeq, fnkey )
   endfor
 
   unlet s:keycodes
