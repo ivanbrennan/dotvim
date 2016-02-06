@@ -3,17 +3,17 @@
 " ··········· helpers ········· {{{1
 highlight! CursorLineClear guibg=NONE guifg=NONE gui=NONE ctermbg=NONE ctermfg=NONE cterm=NONE
 
-function! InitCursorVars()
+func! InitCursorVars()
   if !exists("w:cursorline_on")
     let w:cursorline_on = 0
   endif
-endfunction
+endf
 
-function! RestoreCrsr()
+func! RestoreCrsr()
   if line("'\"") > 1 && line("'\"") <= line("$")
     exe "normal! g`\""
   endif
-endfunction
+endf
 " ····························· }}}1
 
 " Gui cursor

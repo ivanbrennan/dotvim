@@ -6,7 +6,7 @@ if has('nvim')
   finish
 endif
 
-fun! SetKeyCode(key, escSeq, fnkey)
+func! SetKeyCode(key, escSeq, fnkey)
   execute 'set  '. a:fnkey .'='. a:escSeq
   execute 'map  '. a:fnkey .' '. a:key
   execute 'map! '. a:fnkey .' '. a:key
