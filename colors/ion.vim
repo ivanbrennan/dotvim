@@ -30,7 +30,7 @@ hi Folded       ctermfg=244 ctermbg=235                             gui=None    
 hi FoldColumn   ctermfg=244 ctermbg=234                             gui=None        guifg=#808080       guibg=#1c1c1c
 
 hi IncSearch    ctermfg=17  ctermbg=190 cterm=underline             gui=underline   guifg=#00005f       guibg=#e4e4e4
-hi Search       ctermfg=17  ctermbg=195 cterm=none                  gui=None        guifg=#00005f       guibg=#e4e4e4
+hi Search       ctermfg=17  ctermbg=12  cterm=none                  gui=None        guifg=#00005f       guibg=#e4e4e4
 
 hi ModeMsg      ctermfg=117 ctermbg=234 cterm=bold                  gui=bold        guifg=#87dfff       guibg=#1c1c1c
 hi MoreMsg      ctermfg=122 ctermbg=234 cterm=none                  gui=None        guifg=#87ffdf       guibg=#1c1c1c
