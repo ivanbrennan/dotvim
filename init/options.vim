@@ -33,10 +33,14 @@ set splitbelow
 " editing
 set backspace=indent,eol,start
 set nojoinspaces
-set textwidth=100
 set nrformats=
 set complete-=i
-set formatprg=par\ -w100        " gq -> par, gw -> internal
+
+" formatting
+let s:tw=90
+exe 'set textwidth='.s:tw
+exe 'set formatprg=par\ -w'.s:tw
+unlet s:tw
 set formatoptions-=t            " don't auto-wrap non-commented text
 set formatoptions-=o            " don't auto-comment with o or O
 set formatoptions+=r            " auto-comment with Enter
