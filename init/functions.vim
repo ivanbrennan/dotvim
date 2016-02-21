@@ -204,6 +204,27 @@ func! ReloadBuffers()
   echo 'reloaded!'
 endf
 
+" ··········· rspec ···················· {{{1
+func! ChangeAssignmentToLet(bang)
+  delete
+  normal! mz
+  call MoveAssignment()
+  call FormLet(a:bang)
+  normal! `z
+endf
+
+func! MoveAssignment()
+  call search('\v^\s*<let>|<context>|<describe>', 'b')
+  put
+  normal! ==
+endf
+
+func! FormLet(bang)
+  execute 'substitute/\v^\s+\zs'
+        \ '(\w+)%(\s*\=\s*)(.*\S)\s*$/'
+        \ 'let'.a:bang.'(:\1) { \2 }'
+endf
+
 " ··········· vmux ····················· {{{1
 func! Vmux()
   VmuxPrimary
