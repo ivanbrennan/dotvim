@@ -1,1 +1,1 @@
-command! -bang Let call ChangeAssignmentToLet('<bang>')
+command! -bang Let call RSpecLet('<bang>')

@@ -205,11 +205,13 @@ func! ReloadBuffers()
 endf
 
 " ··········· rspec ···················· {{{1
-func! ChangeAssignmentToLet(bang)
+func! RSpecLet(bang)
   delete
   normal! mz
+
   call MoveAssignment()
-  call FormLet(a:bang)
+  call ReplaceWithLet(a:bang)
+
   normal! `z
 endf
 
@@ -219,7 +221,7 @@ func! MoveAssignment()
   normal! ==
 endf
 
-func! FormLet(bang)
+func! ReplaceWithLet(bang)
   execute 'substitute/\v^\s+\zs'
         \ '(\w+)%(\s*\=\s*)(.*\S)\s*$/'
         \ 'let'.a:bang.'(:\1) { \2 }'
