@@ -222,9 +222,7 @@ func! MoveAssignment()
 endf
 
 func! ReplaceWithLet(bang)
-  execute 'substitute/\v^\s+\zs'
-        \ '(\w+)%(\s*\=\s*)(.*\S)\s*$/'
-        \ 'let'.a:bang.'(:\1) { \2 }'
+  execute 'substitute/\v^\s+\zs(\w+)%(\s*\=\s*)(.*\S)\s*$/let'.a:bang.'(:\1) { \2 }'
 endf
 
 " ··········· vmux ····················· {{{1
