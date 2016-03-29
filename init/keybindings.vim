@@ -214,6 +214,8 @@ nnoremap <silent> <Leader>,x :call Vtux()<CR>
 " ··········· git ············· {{{1
 noremap <silent> <Leader>g   :Gblame<CR>
 
+" ··········· ruby ············ {{{1
+noremap  <silent> <Leader>R     :w !ruby<CR>
 " ··········· rails ··········· {{{1
 nnoremap <silent> <Leader><Tab> :A<CR>
 nnoremap          <Leader>E     :Eschema 
