@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-runner'
+Plug 'daddye/soda.vim'
 Plug 'eiginn/netrw'
 Plug 'gabebw/vim-spec-runner',         { 'on': ['<Plug>RunFocusedSpec', '<Plug>RunCurrentSpecFile'] }
 Plug 'guns/xterm-color-table.vim'
