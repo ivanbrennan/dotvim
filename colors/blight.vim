@@ -27,10 +27,11 @@ let s:black  = { "gui": "#121212", "cterm": "233" }
 
 let s:pink   = { "gui": "#ffafaf", "cterm": "217" }
 let s:orange = { "gui": "#ff5f00", "cterm": "202" }
-let s:red    = { "gui": "#870000", "cterm": "88"  }
+let s:red    = { "gui": "#87005f", "cterm": "89"  }
 let s:maroon = { "gui": "#5f0000", "cterm": "52"  }
+let s:purple = { "gui": "#5f5faf", "cterm": "61"  }
 
-let s:blue   = { "gui": "#005faf", "cterm": "25"  }
+let s:blue   = { "gui": "#005f87", "cterm": "24"  }
 let s:indigo = { "gui": "#000087", "cterm": "18"  }
 
 let s:aqua   = { "gui": "#dfffff", "cterm": "195" }
@@ -59,7 +60,7 @@ if version >= 700
   call s:h("PmenuThumb",       { "bg": s:black })
   call s:h("PmenuSBar",        { "bg": s:grey_4 })
   call s:h("PmenuSel",         { "bg": s:aqua })
-  call s:h("ColorColumn",      { "bg": s:indigo })
+  call s:h("ColorColumn",      { "bg": s:grey_6 })
   call s:h("SpellBad",         { "sp": s:orange, "gui": "undercurl" })
   call s:h("SpellCap",         { "sp": s:blue, "gui": "undercurl" })
   call s:h("SpellRare",        { "sp": s:green, "gui": "undercurl" })
@@ -92,9 +93,9 @@ call s:h("Directory",    { "fg": s:red })
 call s:h("Title",        { "fg": s:blue, "gui": "bold", "cterm": "bold" })
 call s:h("ErrorMsg",     { "bg": s:pink })
 call s:h("DiffAdd",      { "bg": s:spring })
-call s:h("DiffChange",   { "bg": s:maroon })
-call s:h("DiffDelete",   { "fg": s:pink, "bg": s:maroon })
-call s:h("DiffText",     { "bg": s:maroon, "gui": "bold", "cterm": "bold" })
+call s:h("DiffChange",   { "bg": s:pink })
+call s:h("DiffDelete",   { "bg": s:pink })
+call s:h("DiffText",     { "bg": s:red, "gui": "bold", "cterm": "bold" })
 call s:h("FoldColumn",   { "fg": s:blue, "bg": s:grey_6 })
 hi! link WildMenu     IncSearch
 hi! link WarningMsg   ErrorMsg
@@ -108,24 +109,24 @@ hi! link SpecialKey   NonText
 call s:h("Delimiter",  { "fg": s:grey_2 })
 call s:h("Comment",    { "fg": s:grey_3, "gui": "italic" })
 call s:h("Underlined", { "fg": s:blue, "gui": "underline", "cterm": "underline" })
-call s:h("Type",       { "fg": s:blue })
+call s:h("Type",       { "fg": s:red })
 call s:h("String",     { "fg": s:indigo })
 call s:h("Keyword",    { "fg": s:red, "gui": "bold", "cterm": "bold" })
 call s:h("Todo",       { "fg": s:pink, "gui": "bold", "cterm": "bold" })
-call s:h("Function",   { "fg": s:blue })
+call s:h("Function",   { "fg": s:purple })
+call s:h("Statement",  { "fg": s:red })
+call s:h("Number",     { "fg": s:blue })
 hi! link Identifier  Function
-hi! link Statement   Type
-hi! link Constant    Directory
+call s:h("Define",   { "fg": s:red })
 hi! link Conditional Directory
-hi! link Number      Type
 hi! link Special     Constant
-hi! link PreProc     Constant
+call s:h("PreProc",     { "fg": s:red })
 hi! link Error       ErrorMsg
 
 " Highlights - C -------------------------------------------{{{2
-call s:h("cInclude",  { "fg": s:blue })
-call s:h("cIncluded", { "fg": s:orange })
-call s:h("cType",     { "fg": s:blue })
+hi! link cCustomFunc Function
+call s:h("cFormat",     { "fg": s:blue })
+call s:h("cSpecial",     { "fg": s:indigo })
 
 " Highlights - HTML ----------------------------------------{{{2
 hi! link htmlLink    Underlined
@@ -146,6 +147,7 @@ hi! link shCaseBar   Delimiter
 
 " Highlights - Ruby ----------------------------------------{{{2
 call s:h("rubyPseudoVariable",     { "fg": s:orange })
+call s:h("rubyConstant",     { "fg": s:blue })
 " hi! link rubyPseudoVariable Normal
 hi! link railsMethod        Normal
 hi! link parens             Normal
@@ -153,8 +155,8 @@ hi! link rubyOperator       Normal
 hi! link rubyKeywordAsMethod Directory
 hi! link rubyAccess         Directory
 hi! link rubyControl        Directory
-hi! link rubyBoolean        Type
-hi! link rubySymbol         Type
+call s:h("rubyBoolean",     { "fg": s:blue })
+call s:h("rubySymbol",      { "fg": s:blue })
 " Highlights - JavaScript ----------------------------------{{{2
 hi! link javaScriptValue   Constant
 hi! link javaScriptNull    Constant
