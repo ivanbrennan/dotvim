@@ -51,7 +51,7 @@ if version >= 700 " Vim 7.x specific colors
   hi CursorLine   ctermbg=235 cterm=none                          gui=None        guibg=#262626
   hi CursorColumn ctermbg=235 cterm=none                          gui=None        guibg=#262626
 
-  hi MatchParen   ctermfg=069 ctermbg=234 cterm=bold,reverse      gui=bold,reverse    guifg=#7194ff       guibg=#1c1c1c
+  hi MatchParen   ctermfg=069 ctermbg=237 cterm=reverse                           guifg=#7194ff       guibg=#1c1c1c
 
   hi Tabline      ctermfg=245 ctermbg=235 cterm=underline         gui=underline   guifg=#8a8a8a       guibg=#262626
   hi TablineSel   ctermfg=250 ctermbg=234 cterm=bold              gui=bold        guifg=#bcbcbc       guibg=#1c1c1c

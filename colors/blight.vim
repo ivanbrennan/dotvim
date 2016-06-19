@@ -43,6 +43,7 @@ let s:green_2          = { "gui": "#B1D631", "cterm": "148" }
 let s:green_1          = { "gui": "#296B18", "cterm": "22"  }
 let s:green_0          = { "gui": "#5F5F00", "cterm": "58"  }
 
+let s:cyan             = { "gui": "#00ffff", "cterm": "14"  }
 let s:tan              = { "gui": "#ECE1C8", "cterm": "230" }
 let s:brown            = { "gui": "#503D15", "cterm": "52"  }
 
@@ -59,7 +60,7 @@ let s:accent1    = s:blue_0
 let s:accent2    = s:green_1
 let s:accent3    = s:red_2
 let s:accent4    = s:brown
-let s:accent5    = s:blue_0
+let s:accent5    = s:cyan
 let s:normRed    = s:red_0
 let s:normGreen  = s:green_1
 let s:normBlue   = s:blue_0
@@ -84,7 +85,7 @@ endfunction
 if version >= 700
   call s:h("CursorLine",       { "bg": s:white_1 })
   call s:h("CursorLineNr",     { "fg": s:black_1 })
-  call s:h("MatchParen",       { "fg": s:green_1, "bg": s:grey_4, "gui": "bold" })
+  call s:h("MatchParen",       { "fg": s:green_1, "bg": s:accent5 })
   call s:h("Pmenu",            { "bg": s:white_1 })
   call s:h("PmenuThumb",       { "bg": s:black_1 })
   call s:h("PmenuSBar",        { "bg": s:grey_4 })
@@ -106,7 +107,7 @@ endif
 " Highlights - UI ------------------------------------------{{{2
 call s:h("Normal",       { "fg": s:black_1, "bg": s:white_2 })
 call s:h("NonText",      { "fg": s:grey_4 })
-call s:h("Cursor",       { "fg": s:white_2, "bg": s:blue_0 })
+call s:h("Cursor",       { "fg": s:white_2, "bg": s:grey_4 })
 call s:h("Visual",       { "bg": s:blue_2 })
 call s:h("IncSearch",    { "bg": s:blue_2, "gui": "bold", "cterm": "bold" })
 call s:h("Search",       { "bg": s:blue_2, "gui": "bold", "cterm": "bold" })
