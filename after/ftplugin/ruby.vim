@@ -1,6 +1,8 @@
 set omnifunc=rubycomplete#Complete
 set foldlevel=99
 let ruby_operators=1
+syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
+hi def link commonOperator Operator
 syn match parens /[(){}\[\]]/
 hi def link parens Delimiter
 " complete buffer loading can cause code execution

@@ -30,10 +30,11 @@ let s:black_0          = { "gui": "#000000", "cterm": "16"  }
 
 let s:red_3            = { "gui": "#0FAFAF", "cterm": "217" }
 let s:red_2            = { "gui": "#ff002b", "cterm": "196" }
-let s:red_1            = { "gui": "#AF0000", "cterm": "124" }
+let s:red              = { "gui": "#870000", "cterm": "88" }
 let s:red_0            = { "gui": "#63001C", "cterm": "52"  }
 
-let s:blue_3           = { "gui": "#FCFEFF", "cterm": "195" }
+let s:blue             = { "gui": "#005faf", "cterm": "25"  }
+let s:blue_3           = { "gui": "#FCFEFF", "cterm": "18" }
 let s:blue_2           = { "gui": "#E1F0F9", "cterm": "195" }
 let s:blue_1           = { "gui": "#1370f3", "cterm": "27" }
 let s:blue_0           = { "gui": "#005F87", "cterm": "24"  }
@@ -119,7 +120,7 @@ call s:h("TabLine",      { "fg": s:grey_4, "bg": s:white_1 })
 call s:h("TabLineSel",   { "fg": s:black_1, "bg": s:white_2 })
 call s:h("TabLineFill",  { "bg": s:white_0 })
 call s:h("Folded",       { "fg": s:grey_1, "bg": s:white_2 })
-call s:h("Directory",    { "fg": s:blue_0 })
+call s:h("Directory",    { "fg": s:red })
 call s:h("Title",        { "fg": s:blue_0, "gui": "bold", "cterm": "bold" })
 call s:h("ErrorMsg",     { "bg": s:red_3 })
 call s:h("DiffAdd",      { "bg": s:green_3 })
@@ -142,14 +143,16 @@ hi! link SpecialKey   NonText
 call s:h("Delimiter",  { "fg": s:grey_1 })
 call s:h("Comment",    { "fg": s:grey_3, "gui": "italic" })
 call s:h("Underlined", { "fg": s:blue_0, "gui": "underline", "cterm": "underline" })
-call s:h("Type",       { "fg": s:red_2 })
-call s:h("String",     { "fg": s:green_1 })
+call s:h("Type",       { "fg": s:blue_0 })
+call s:h("String",     { "fg": s:blue_3 })
 call s:h("Keyword",    { "fg": s:green_1, "gui": "bold", "cterm": "bold" })
 call s:h("Todo",       { "fg": s:red_3, "gui": "bold", "cterm": "bold" })
-call s:h("Function",   { "gui": "bold", "cterm": "bold" })
+call s:h("Function",   { "fg": s:blue })
 hi! link Identifier  Function
 hi! link Statement   Type
 hi! link Constant    Directory
+hi! link Operator    Directory
+hi! link Conditional Directory
 hi! link Number      Constant
 hi! link Special     Constant
 hi! link PreProc     Constant
@@ -177,6 +180,12 @@ hi! link mkdListItem  mkdDelimiter
 hi! link shOperator  Delimiter
 hi! link shCaseBar   Delimiter
 
+" Highlights - Ruby ----------------------------------------{{{2
+hi! link rubyPseudoVariable Normal
+hi! link railsMethod        Normal
+hi! link rubyAccess         Directory
+hi! link rubyControl        Directory
+call s:h("rubySymbol",     { "fg": s:blue_0 })
 " Highlights - JavaScript ----------------------------------{{{2
 hi! link javaScriptValue   Constant
 hi! link javaScriptNull    Constant
