@@ -14,7 +14,7 @@ call plug#begin('~/.vim/plugged')
 
 " ··········· plugins ········· {{{1
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'daddye/soda.vim'
 Plug 'eiginn/netrw'
