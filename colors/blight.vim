@@ -15,7 +15,6 @@ let s:cached_background = &background
 let g:colors_name = "blight"
 
 " Palette ----------------------------------------------{{{2
-" Colors -----------------------------------------------{{{3
 let s:white  = { "gui": "#ffffff", "cterm": "231" }
 let s:grey_6 = { "gui": "#eeeeee", "cterm": "255" }
 let s:grey_5 = { "gui": "#dadada", "cterm": "253" }
@@ -27,9 +26,9 @@ let s:black  = { "gui": "#121212", "cterm": "233" }
 
 let s:pink   = { "gui": "#ffafaf", "cterm": "217" }
 let s:orange = { "gui": "#ff5f00", "cterm": "202" }
-let s:red    = { "gui": "#87005f", "cterm": "89"  }
+let s:red    = { "gui": "#870000", "cterm": "88"  }
 let s:maroon = { "gui": "#5f0000", "cterm": "52"  }
-let s:purple = { "gui": "#5f5faf", "cterm": "61"  }
+let s:purple = { "gui": "#5f5f87", "cterm": "60"  }
 
 let s:blue   = { "gui": "#005f87", "cterm": "24"  }
 let s:indigo = { "gui": "#000087", "cterm": "18"  }
