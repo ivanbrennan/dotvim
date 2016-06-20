@@ -62,7 +62,7 @@ nnoremap Ó              :lolder<CR>
 nnoremap Ò              :lnewer<CR>
 
 noremap  <Leader><Space>    :pwd<CR>
-noremap  <silent> <Leader>. :call ReloadBuffers()<CR>
+noremap  <silent> <Leader><Bslash> :call ReloadBuffers()<CR>
 
 " Vinegar
 nnoremap - -
@@ -79,9 +79,6 @@ cnoremap <C-A>            <Home>
 cnoremap <C-B>            <Left>
 
 " ··········· positioning ····· {{{1
-" auto-indent whole file
-nnoremap <Leader>= gg=G``
-
 " push newline
 nnoremap <S-CR>   mzO<Esc>`z
 nnoremap <C-CR>   mzo<Esc>`z
@@ -187,6 +184,7 @@ noremap           <Leader>q    <C-W><C-Q>
 " ··········· display ········· {{{1
 noremap  <silent> <Leader>,m :call ToggleColorscheme()<CR>
 noremap  <silent> <Leader>[  :call SynHighlight()<CR>
+noremap  <silent> <Leader>.  :call StatusToggle()<CR>
 
 " folding
 noremap  <silent> <Leader>Z  :call FoldMethToggle()<CR>

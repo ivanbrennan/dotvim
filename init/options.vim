@@ -38,7 +38,8 @@ set complete-=i
 
 " formatting
 let s:tw=90
-exe 'set textwidth='.s:tw
+let &textwidth=s:tw
+let &colorcolumn=join(range(s:tw+1, s:tw+256),',')
 exe 'set formatprg=par\ -w'.s:tw
 unlet s:tw
 set formatoptions-=t            " don't auto-wrap non-commented text
@@ -81,6 +82,6 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " statusline
-set laststatus=1
+set laststatus=0
 set statusline=%t\ %y%m
 

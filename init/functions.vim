@@ -31,6 +31,15 @@ func! NumberToggle()
   end
 endf
 
+" ··········· status toggle ············ {{{1
+func! StatusToggle()
+  if &laststatus == 2
+    set laststatus=0
+  else
+    set laststatus=2
+  end
+endf
+
 " ··········· repositioning ············ {{{1
 func! Reposition()
   let target = float2nr(round(winheight(0) / 3.0))
