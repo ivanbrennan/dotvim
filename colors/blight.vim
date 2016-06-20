@@ -156,6 +156,22 @@ hi! link rubyAccess         Directory
 hi! link rubyControl        Directory
 call s:h("rubyBoolean",     { "fg": s:blue })
 call s:h("rubySymbol",      { "fg": s:blue })
+" Highlights - Vimscript -----------------------------------{{{2
+call s:h("vimContinue",      { "fg": s:red  })
+call s:h("vimCommand",       { "fg": s:red  })
+call s:h("vimFunction",      { "fg": s:purple })
+call s:h("vimFuncName",      { "fg": s:blue })
+call s:h("vimLet",           { "fg": s:blue })
+hi! link vimUserFunc  vimFuncName
+hi! link vimHighlight Normal
+hi! link vimGroup     Normal
+hi! link vimSyntax    Normal
+hi! link vimSynType   Normal
+hi! link vimVar       Normal
+hi! link vimOper      Operator
+hi! link vimFuncVar   Normal
+hi! link vimFuncSID   Function
+
 " Highlights - JavaScript ----------------------------------{{{2
 hi! link javaScriptValue   Constant
 hi! link javaScriptNull    Constant
