@@ -75,15 +75,16 @@ endif
 
 " Highlights - UI ------------------------------------------{{{2
 call s:h("Normal",       { "fg": s:black, "bg": s:white })
-call s:h("NonText",      { "fg": s:grey_4 })
+call s:h("NonText",      { "fg": s:grey_4, "bg": s:grey_6 })
+call s:h("LineNr",       { "fg": s:grey_4 })
 call s:h("Cursor",       { "fg": s:white, "bg": s:grey_4 })
 call s:h("Visual",       { "bg": s:aqua })
 call s:h("IncSearch",    { "bg": s:aqua, "gui": "bold", "cterm": "bold" })
 call s:h("Search",       { "bg": s:aqua, "gui": "bold", "cterm": "bold" })
-call s:h("StatusLine",   { "fg": s:black, "bg": s:grey_4 })
-call s:h("StatusLineNC", { "fg": s:white, "bg": s:grey_4 })
+call s:h("StatusLine",   { "fg": s:black, "bg": s:grey_5 })
+call s:h("StatusLineNC", { "fg": s:white, "bg": s:grey_5 })
 call s:h("SignColumn",   { "fg": s:grey_3, "bg": s:grey_6 })
-call s:h("VertSplit",    { "fg": s:grey_1, "bg": s:grey_4 })
+call s:h("VertSplit",    { "fg": s:grey_5, "bg": s:grey_5 })
 call s:h("TabLine",      { "fg": s:grey_4, "bg": s:grey_6 })
 call s:h("TabLineSel",   { "fg": s:black, "bg": s:white })
 call s:h("TabLineFill",  { "bg": s:grey_5 })
@@ -101,8 +102,7 @@ hi! link WarningMsg   ErrorMsg
 hi! link MoreMsg      Title
 hi! link Question     MoreMsg
 hi! link ModeMsg      MoreMsg
-hi! link LineNr       NonText
-hi! link SpecialKey   NonText
+hi! link SpecialKey   LineNr
 
 " Highlights - Generic Syntax ------------------------------{{{2
 call s:h("Delimiter",  { "fg": s:grey_2 })
