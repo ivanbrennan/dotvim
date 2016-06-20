@@ -83,8 +83,12 @@ endf
 " ··········· syntax ··················· {{{1
 func! SynStack()
   if exists("*synstack")
-    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    return map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
   endif
+endf
+
+func! SynHighlight()
+  exe 'verbose hi ' . SynStack()[-1]
 endf
 
 " ··········· statusline ··············· {{{1

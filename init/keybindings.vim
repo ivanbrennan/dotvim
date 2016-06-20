@@ -186,7 +186,7 @@ noremap           <Leader>q    <C-W><C-Q>
 
 " ··········· display ········· {{{1
 noremap  <silent> <Leader>,m :call ToggleColorscheme()<CR>
-noremap           <Leader>[  :call SynStack()<CR>
+noremap  <silent> <Leader>[  :call SynHighlight()<CR>
 
 " folding
 noremap  <silent> <Leader>Z  :call FoldMethToggle()<CR>
