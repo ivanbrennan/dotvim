@@ -164,17 +164,19 @@ call s:h("vimFuncName",      { "fg": s:blue })
 call s:h("vimLet",           { "fg": s:blue })
 call s:h("vimAutoCmd",       { "fg": s:blue })
 call s:h("vimAutoCmdSfxList", { "fg": s:red  })
-hi! link vimUserFunc  vimFuncName
-hi! link vimHighlight Normal
-hi! link vimGroup     Normal
-hi! link vimSyntax    Normal
-hi! link vimSynType   Normal
-hi! link vimAutoEvent Normal
-hi! link vimVar       Normal
-hi! link vimOption    Normal
-hi! link vimOper      Operator
-hi! link vimFuncVar   Normal
-hi! link vimFuncSID   Function
+hi! link vimUserFunc    vimFuncName
+hi! link vimUserCommand vimFuncName
+hi! link vimHighlight   Normal
+hi! link vimGroup       Normal
+hi! link vimSyntax      Normal
+hi! link vimSynType     Normal
+hi! link vimAutoEvent   Normal
+hi! link vimVar         Normal
+hi! link vimEnvvar      Normal
+hi! link vimOption      Normal
+hi! link vimOper        Operator
+hi! link vimFuncVar     Normal
+hi! link vimFuncSID     Function
 
 " Highlights - JavaScript ----------------------------------{{{2
 hi! link javaScriptValue   Constant
