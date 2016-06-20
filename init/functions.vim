@@ -88,7 +88,11 @@ func! SynStack()
 endf
 
 func! SynHighlight()
-  exe 'verbose hi ' . SynStack()[-1]
+  let stack = SynStack()
+
+  if len(stack) > 0
+    exe 'verbose hi ' . stack[-1]
+  endif
 endf
 
 " ··········· statusline ··············· {{{1
