@@ -46,6 +46,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby',              { 'for': 'ruby' }
 Plug 'vim-scripts/dbext.vim'
 Plug 'vim-scripts/hexHighlight.vim',   { 'on': 'HexHighlight' }
+Plug 'wellle/targets.vim'
 " ····························· }}}1
 
 call plug#end()
