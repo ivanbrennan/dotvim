@@ -54,7 +54,7 @@ endfunction
 " Highlights -----------------------------------------------{{{1
 " Highlights - Vim >= 7 ------------------------------------{{{2
 if version >= 700
-  call s:h("CursorLine",       { "bg": s:grey_6 })
+  call s:h("CursorLine",       { })
   call s:h("CursorLineNr",     { "fg": s:black })
   call s:h("MatchParen",       { "bg": s:aqua })
   call s:h("Pmenu",            { "bg": s:grey_6 })
