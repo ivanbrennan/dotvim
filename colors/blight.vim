@@ -31,7 +31,7 @@ let s:maroon = { "gui": "#5f0000", "cterm": "52"  }
 
 let s:blue   = { "gui": "#005f87", "cterm": "24"  }
 let s:indigo = { "gui": "#000087", "cterm": "18"  }
-let s:navy   = { "gui": "#00005f", "cterm": "17"  }
+let s:purple = { "gui": "#800080", "cterm": "5"  }
 
 let s:aqua   = { "gui": "#dfffff", "cterm": "195" }
 let s:spring = { "gui": "#afffaf", "cterm": "157" }
@@ -112,7 +112,7 @@ call s:h("Type",       { "fg": s:red })
 call s:h("String",     { "fg": s:indigo })
 call s:h("Keyword",    { "fg": s:red, "gui": "bold", "cterm": "bold" })
 call s:h("Todo",       { "fg": s:pink, "gui": "bold", "cterm": "bold" })
-call s:h("Function",   { "fg": s:navy })
+call s:h("Function",   { "fg": s:purple })
 call s:h("Statement",  { "fg": s:red })
 call s:h("Number",     { "fg": s:blue })
 call s:h("Boolean",    { "fg": s:blue })
@@ -160,7 +160,7 @@ call s:h("rubySymbol",      { "fg": s:blue })
 " Highlights - Vimscript -----------------------------------{{{2
 call s:h("vimContinue",      { "fg": s:red  })
 call s:h("vimCommand",       { "fg": s:red  })
-call s:h("vimFunction",      { "fg": s:navy })
+call s:h("vimFunction",      { "fg": s:purple })
 call s:h("vimFuncName",      { "fg": s:blue })
 call s:h("vimLet",           { "fg": s:blue })
 call s:h("vimAutoCmd",       { "fg": s:blue })
