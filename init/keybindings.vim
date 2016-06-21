@@ -111,6 +111,10 @@ nmap     <Leader>;  <Plug>Commentary
 omap     <Leader>;  <Plug>Commentary
 nmap     <Leader>;; <Plug>CommentaryLine
 
+" arg-wrap
+nnoremap <silent> <leader>) :ArgWrap<CR>
+nnoremap <silent> <leader>( :ArgWrap<CR>
+
 " jump around insert mode
 inoremap <C-B>      <C-O>b
 inoremap JK         <C-O>A
