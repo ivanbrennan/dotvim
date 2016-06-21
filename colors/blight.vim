@@ -146,8 +146,13 @@ hi! link cssClassName   Normal
 hi! link mkdListItem  mkdDelimiter
 
 " Highlights - Shell ---------------------------------------{{{2
-hi! link shOperator  Delimiter
-hi! link shCaseBar   Delimiter
+call s:h("shStatement", { "fg": s:blue })
+call s:h("shCmdSubRegion", { "fg": s:indigo })
+hi! link shCommandSub shCmdSubRegion
+hi! link shOperator   Delimiter
+hi! link shCaseBar    Delimiter
+hi! link shFunction   Function
+hi! link shDeref      Normal
 
 " Highlights - Ruby ----------------------------------------{{{2
 call s:h("rubyPseudoVariable",     { "fg": s:orange })
