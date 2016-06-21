@@ -109,6 +109,7 @@ call s:h("Delimiter",  { "fg": s:grey_2 })
 call s:h("Comment",    { "fg": s:grey_3, "gui": "italic" })
 call s:h("Underlined", { "fg": s:blue, "gui": "underline", "cterm": "underline" })
 call s:h("Type",       { "fg": s:red })
+call s:h("Constant",   { "fg": s:blue })
 call s:h("String",     { "fg": s:indigo })
 call s:h("Keyword",    { "fg": s:red, "gui": "bold", "cterm": "bold" })
 call s:h("Todo",       { "fg": s:pink, "gui": "bold", "cterm": "bold" })
@@ -148,14 +149,14 @@ hi! link shCaseBar   Delimiter
 
 " Highlights - Ruby ----------------------------------------{{{2
 call s:h("rubyPseudoVariable",     { "fg": s:orange })
-call s:h("rubyConstant",     { "fg": s:blue })
 " hi! link rubyPseudoVariable Normal
-hi! link railsMethod        Normal
-hi! link parens             Normal
-hi! link rubyOperator       Normal
+hi! link railsMethod         Normal
+hi! link parens              Normal
+hi! link rubyOperator        Normal
 hi! link rubyKeywordAsMethod Directory
-hi! link rubyAccess         Directory
-hi! link rubyControl        Directory
+hi! link rubyAccess          Directory
+hi! link rubyControl         Directory
+hi! link rubyConstant        Constant
 call s:h("rubySymbol",      { "fg": s:blue })
 " Highlights - Vimscript -----------------------------------{{{2
 call s:h("vimContinue",      { "fg": s:red  })
