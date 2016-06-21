@@ -28,10 +28,10 @@ let s:pink   = { "gui": "#ffafaf", "cterm": "217" }
 let s:orange = { "gui": "#ff5f00", "cterm": "202" }
 let s:red    = { "gui": "#870000", "cterm": "88"  }
 let s:maroon = { "gui": "#5f0000", "cterm": "52"  }
-let s:purple = { "gui": "#5f5f87", "cterm": "60"  }
 
 let s:blue   = { "gui": "#005f87", "cterm": "24"  }
 let s:indigo = { "gui": "#000087", "cterm": "18"  }
+let s:navy   = { "gui": "#00005f", "cterm": "17"  }
 
 let s:aqua   = { "gui": "#dfffff", "cterm": "195" }
 let s:spring = { "gui": "#afffaf", "cterm": "157" }
@@ -112,9 +112,10 @@ call s:h("Type",       { "fg": s:red })
 call s:h("String",     { "fg": s:indigo })
 call s:h("Keyword",    { "fg": s:red, "gui": "bold", "cterm": "bold" })
 call s:h("Todo",       { "fg": s:pink, "gui": "bold", "cterm": "bold" })
-call s:h("Function",   { "fg": s:purple })
+call s:h("Function",   { "fg": s:navy })
 call s:h("Statement",  { "fg": s:red })
 call s:h("Number",     { "fg": s:blue })
+call s:h("Boolean",    { "fg": s:blue })
 hi! link Identifier  Function
 call s:h("Define",   { "fg": s:red })
 hi! link Conditional Directory
@@ -124,6 +125,7 @@ hi! link Error       ErrorMsg
 
 " Highlights - C -------------------------------------------{{{2
 hi! link cCustomFunc Function
+hi! link cBoolean    Boolean
 call s:h("cFormat",     { "fg": s:blue })
 call s:h("cSpecial",     { "fg": s:indigo })
 
@@ -154,12 +156,11 @@ hi! link rubyOperator       Normal
 hi! link rubyKeywordAsMethod Directory
 hi! link rubyAccess         Directory
 hi! link rubyControl        Directory
-call s:h("rubyBoolean",     { "fg": s:blue })
 call s:h("rubySymbol",      { "fg": s:blue })
 " Highlights - Vimscript -----------------------------------{{{2
 call s:h("vimContinue",      { "fg": s:red  })
 call s:h("vimCommand",       { "fg": s:red  })
-call s:h("vimFunction",      { "fg": s:purple })
+call s:h("vimFunction",      { "fg": s:navy })
 call s:h("vimFuncName",      { "fg": s:blue })
 call s:h("vimLet",           { "fg": s:blue })
 call s:h("vimAutoCmd",       { "fg": s:blue })
