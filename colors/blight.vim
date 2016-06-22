@@ -91,7 +91,7 @@ call s:h("TabLine",      { "fg": s:grey_4, "bg": s:grey_6 })
 call s:h("TabLineSel",   { "fg": s:black, "bg": s:white })
 call s:h("TabLineFill",  { "bg": s:grey_5 })
 call s:h("Folded",       { "fg": s:grey_2, "bg": s:white })
-call s:h("Directory",    { "fg": s:red })
+call s:h("Directory",    { "fg": s:blue })
 call s:h("Title",        { "fg": s:blue, "gui": "bold", "cterm": "bold" })
 call s:h("ErrorMsg",     { "bg": s:pink })
 call s:h("DiffAdd",      { "bg": s:spring })
@@ -121,7 +121,7 @@ call s:h("Number",     { "fg": s:blue })
 call s:h("Boolean",    { "fg": s:blue })
 hi! link Identifier  Function
 call s:h("Define",   { "fg": s:red })
-hi! link Conditional Directory
+hi! link Conditional Type
 hi! link Special     Constant
 call s:h("PreProc",     { "fg": s:red })
 hi! link Error       ErrorMsg
@@ -160,12 +160,12 @@ call s:h("rubyPseudoVariable",     { "fg": s:orange })
 hi! link railsMethod         Normal
 hi! link parens              Normal
 hi! link rubyOperator        Normal
-hi! link rubyKeywordAsMethod Directory
-hi! link rubyAccess          Directory
-hi! link rubyControl         Directory
+hi! link rubyKeywordAsMethod Type
+hi! link rubyAccess          Type
+hi! link rubyControl         Type
 hi! link rubyConstant        Constant
 call s:h("rubySymbol",      { "fg": s:blue })
-" Highlights - Vimscript -----------------------------------{{{2
+" Highlights - Vim -----------------------------------------{{{2
 call s:h("vimContinue",      { "fg": s:red  })
 call s:h("vimCommand",       { "fg": s:red  })
 call s:h("vimFunction",      { "fg": s:purple })
@@ -186,6 +186,7 @@ hi! link vimOption      Normal
 hi! link vimOper        Operator
 hi! link vimFuncVar     Normal
 hi! link vimFuncSID     Function
+hi! link netrwSymLink   Function
 
 " Highlights - JavaScript ----------------------------------{{{2
 hi! link javaScriptValue   Constant
