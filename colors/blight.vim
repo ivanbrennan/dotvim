@@ -33,7 +33,7 @@ let s:maroon = { "gui": "#5f0000", "cterm": "52"  }
 
 let s:blue   = { "gui": "#005f87", "cterm": "24"  }
 let s:indigo = { "gui": "#00005f", "cterm": "17"  }
-let s:purple = { "gui": "#800080", "cterm": "5"  }
+let s:purple = { "gui": "#5f0087", "cterm": "54"  }
 
 let s:aqua   = { "gui": "#dfffff", "cterm": "195" }
 let s:spring = { "gui": "#afffaf", "cterm": "157" }
