@@ -33,7 +33,7 @@ let s:maroon = { "gui": "#5f0000", "cterm": "52"  }
 
 let s:blue   = { "gui": "#005f87", "cterm": "24"  }
 let s:indigo = { "gui": "#00005f", "cterm": "17"  }
-let s:purple = { "gui": "#5f0087", "cterm": "54"  }
+let s:purple = { "gui": "#5f5f87", "cterm": "60"  }
 
 let s:aqua   = { "gui": "#dfffff", "cterm": "195" }
 let s:spring = { "gui": "#afffaf", "cterm": "157" }
@@ -164,6 +164,7 @@ hi! link rubyKeywordAsMethod Type
 hi! link rubyAccess          Type
 hi! link rubyControl         Type
 hi! link rubyConstant        Constant
+hi! link rubySharpBang       Comment
 call s:h("rubySymbol",      { "fg": s:blue })
 " Highlights - Vim -----------------------------------------{{{2
 call s:h("vimContinue",      { "fg": s:red  })
