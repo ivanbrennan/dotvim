@@ -14,7 +14,7 @@ set history=500
 set hidden
 
 " tags
-set tags-=./tags    " don't just look in the current buffer's directory
+set tags-=./tags;   " don't just look in the current buffer's directory
 set tags+=./tags;~  " search for tags recursively upwards until ~
 set tags+=.git/tags " search for tags in .git
 
