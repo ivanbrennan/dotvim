@@ -9,7 +9,7 @@ nnoremap <Space> <Nop>
 set timeout timeoutlen=300 ttimeoutlen=100
 
 " source / edit vimrc
-nnoremap <silent> <C-.>      :source $MYVIMRC \| call RefreshUI()<CR>
+nnoremap <silent> <C-.>      :source $MYVIMRC<CR>
 nnoremap          <C-,>      :edit   $MYVIMRC<CR>
 nnoremap          <C-,>f     :edit   ~/.vim/init/functions.vim<CR>
 nnoremap          <C-,><C-F> :edit   ~/.vim/init/functions.vim<CR>

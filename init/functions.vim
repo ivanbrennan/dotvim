@@ -104,30 +104,6 @@ func! SynHighlight()
   endif
 endf
 
-" ··········· statusline ··············· {{{1
-func! RefreshUI()
-  if exists(':AirlineRefresh')
-    AirlineRefresh
-  else
-    redraw!
-    redrawstatus!
-  endif
-endf
-
-func! AirlineInit()
-  if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline#extensions#whitespace#enabled = 0
-  let g:airline_section_z = '%v : %l/%L (%n)'
-  let g:airline_theme='lateron'
-endf
-
-call AirlineInit()
-
 " ··········· colors ··················· {{{1
 func! ToggleBG()
   if exists("g:colors_name") | let cur_colo = g:colors_name | endif
