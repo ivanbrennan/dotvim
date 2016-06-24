@@ -24,11 +24,11 @@ Plug 'ivanbrennan/listical',           { 'on': ['<Plug>QfxListical', '<Plug>LocL
 Plug 'ivanbrennan/vmux'
 Plug 'jwhitley/vim-matchit'
 Plug 'kchmck/vim-coffee-script',       { 'for': 'coffee' }
+Plug 'mhinz/vim-grepper'
 Plug 'nelstrom/vim-qargs',             { 'on': 'Qargs' }
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'ngmy/vim-rubocop'
 Plug 'regedarek/ZoomWin'
-Plug 'rking/ag.vim'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary',           { 'on': ['<Plug>Commentary', '<Plug>CommentaryLine'] }

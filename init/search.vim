@@ -11,9 +11,9 @@ let g:ctrlp_open_new_file   = 'r'
 let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<C-_>'] }
 let g:ctrlp_switch_buffer   = 'e'
 
-" Ag
+" Grepper/Ag
+let g:grepper = { 'highlight': 1 }
 if executable('ag')
-  let g:ag_highlight       = 1
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 

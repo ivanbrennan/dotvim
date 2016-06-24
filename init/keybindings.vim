@@ -161,8 +161,7 @@ nnoremap &  :&&<CR>
 xnoremap &  :&&<CR>
 
 " Ag
-nnoremap <Leader>a  :Ag! 
-nnoremap <Leader>,a :LAg! 
+nnoremap <Leader>a  :Grepper<CR>
 
 " word under cursor
 noremap <silent> <Leader>* :set foldenable!<CR>
