@@ -12,7 +12,7 @@ let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<C-_>'] }
 let g:ctrlp_switch_buffer   = 'e'
 
 " Grepper/Ag
-let g:grepper = { 'highlight': 1 }
+let g:grepper = { 'highlight': 1, 'next_tool': '<Leader><Bslash>' }
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
