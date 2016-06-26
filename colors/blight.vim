@@ -26,6 +26,7 @@ let s:grey_2 = { "gui": "#444444", "cterm": "238" }
 let s:grey_1 = { "gui": "#262626", "cterm": "235" }
 
 let s:solar  = { "gui": "#eeeeee", "cterm": "230" }
+let s:yellow = { "gui": "#ffffaf", "cterm": "229" }
 let s:pink   = { "gui": "#ffafaf", "cterm": "217" }
 let s:orange = { "gui": "#ff5f00", "cterm": "202" }
 let s:red    = { "gui": "#870000", "cterm": "88"  }
@@ -80,9 +81,9 @@ call s:h("Normal",       { "fg": s:black, "bg": s:white })
 call s:h("NonText",      { "fg": s:grey_4, "bg": s:grey_6 })
 call s:h("LineNr",       { "fg": s:grey_4 })
 call s:h("Cursor",       { "fg": s:white, "bg": s:grey_4 })
-call s:h("Visual",       { "bg": s:aqua })
-call s:h("IncSearch",    { "bg": s:aqua, "gui": "bold", "cterm": "bold" })
-call s:h("Search",       { "bg": s:aqua, "gui": "bold", "cterm": "bold" })
+call s:h("Visual",       { "bg": s:solar })
+call s:h("IncSearch",    { "bg": s:yellow, "gui": "bold", "cterm": "bold" })
+call s:h("Search",       { "bg": s:solar, "gui": "bold", "cterm": "bold" })
 call s:h("StatusLine",   { "fg": s:black, "bg": s:grey_5 })
 call s:h("StatusLineNC", { "fg": s:grey_3, "bg": s:grey_5 })
 call s:h("SignColumn",   { "fg": s:grey_3, "bg": s:grey_6 })
