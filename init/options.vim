@@ -83,5 +83,5 @@ set listchars+=extends:»        " continues offscreen
 set listchars+=precedes:«       " precedes offscreen
 
 " statusline
-set laststatus=0
-set statusline=%f\ %M\ %h\ %w\ %=%l·%L\ 
+set laststatus=2
+set statusline=%f\ %M\ %h\ %w\ %=%l,%v\ ·\ %L\ 
