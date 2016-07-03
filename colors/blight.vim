@@ -25,8 +25,8 @@ let s:grey_3 = { "gui": "#949494", "cterm": "246" }
 let s:grey_2 = { "gui": "#444444", "cterm": "238" }
 let s:grey_1 = { "gui": "#262626", "cterm": "235" }
 
-let s:solar  = { "gui": "#eeeeee", "cterm": "230" }
-let s:yellow = { "gui": "#ffffaf", "cterm": "229" }
+let s:solar  = { "gui": "#ffffaf", "cterm": "229" }
+let s:yellow = { "gui": "#ffff5f", "cterm": "227" }
 let s:pink   = { "gui": "#ffafaf", "cterm": "217" }
 let s:orange = { "gui": "#ff5f00", "cterm": "202" }
 let s:red    = { "gui": "#870000", "cterm": "88"  }
