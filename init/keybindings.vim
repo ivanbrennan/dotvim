@@ -172,17 +172,19 @@ noremap <silent> <Leader>* :set foldenable!<CR>
 noremap           <C-W>O       <C-W>o
 nmap              <C-W>o       <Plug>ZoomWin
 nmap              <C-W><C-O>   <Plug>ZoomWin
-noremap           <C-W>p       <C-W><Bar>
-noremap           <C-W><C-P>   <C-W><Bar>
 noremap           <C-W>u       <C-W>_
 noremap           <C-W><C-U>   <C-W>_
 noremap           <C-W><Space> <C-W>=
 noremap           <C-W><C-@>   <C-W>=
-noremap  <silent> <C-W>n       :vnew<CR>
-noremap  <silent> <C-W><C-N>   :vnew<CR>
 noremap  <silent> <C-W>]       :vertical stag<CR>
 noremap  <silent> <C-W><C-]>   :vertical stag<CR>
 noremap           <Leader>q    <C-W><C-Q>
+
+" ··········· tabs ············ {{{1
+noremap           <C-W>n       gt
+noremap           <C-W><C-N>   gt
+noremap           <C-W>p       gT
+noremap           <C-W><C-P>   gT
 
 " ··········· display ········· {{{1
 noremap  <silent> <Leader>,m :call ToggleColorscheme()<CR>
