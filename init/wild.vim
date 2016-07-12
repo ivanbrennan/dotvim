@@ -17,3 +17,5 @@ set wildignore+=*.swp,*~,._*
 " OSX bullshit
 set wildignore+=*.DS_Store
 
+set wildignorecase
+
