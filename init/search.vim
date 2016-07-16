@@ -1,8 +1,8 @@
 " CtrlP
 let g:ctrlp_map             = '<Leader>o'
-nnoremap   <Leader>b        :CtrlPBuffer<CR>
-nnoremap   <Leader>k        :CtrlPQuickfix<CR>
-nnoremap   <Leader>m        :CtrlPMRU<CR>
+nnoremap   <Leader>b<Space> :CtrlPBuffer<CR>
+nnoremap   <Leader>bk       :CtrlPQuickfix<CR>
+nnoremap   <Leader>bm       :CtrlPMRU<CR>
 let g:ctrlp_by_filename     = 1
 let g:ctrlp_extensions      = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
                              \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']

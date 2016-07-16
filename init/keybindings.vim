@@ -43,8 +43,8 @@ nnoremap  <Leader>dl    :bdelete#<CR>
 
 " Buffer list
 nnoremap <S-Space>      :buffers<CR>
-nnoremap <M-Tab>        :bnext<CR>
-nnoremap <M-S-Tab>      :bprevious<CR>
+nnoremap <Leader>bn     :bnext<CR>
+nnoremap <Leader>bp     :bprevious<CR>
 nnoremap <Leader>l      <C-^>
 
 " Quickfix list (alt h/j/k/l)
