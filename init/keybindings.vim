@@ -32,10 +32,8 @@ nmap     <Leader>ee     :edit %%
 nnoremap <Leader>et     :tabedit 
 nnoremap <Leader>eh     :edit ~/
 
-nnoremap <Leader>w      :write 
-vnoremap <Leader>w      :write 
-nmap     <Leader>ww     :write %%
-vmap     <Leader>ww     :write %%
+nnoremap <Leader>fs     :write<CR>
+vnoremap <Leader>fs     :write<CR>
 nnoremap <Leader>wq     :wq 
 
 nnoremap  <Leader>dd    :bdelete<CR>
