@@ -98,7 +98,6 @@ inoremap <S-CR>     <C-O>O
 inoremap <C-CR>     <C-O>o
 
 " paste toggle
-noremap  <silent> <Leader>P <F8>
 set pastetoggle=<F8>
 
 " clipboard
