@@ -41,6 +41,7 @@ set complete-=i
 let s:tw=90
 let &textwidth=s:tw
 let &colorcolumn=join(range(s:tw+1, s:tw+256),',')
+call matchadd('ColorColumn', '\%>'.s:tw.'v', 100)
 exe 'set formatprg=par\ -w'.s:tw
 unlet s:tw
 set formatoptions-=t            " don't auto-wrap non-commented text
