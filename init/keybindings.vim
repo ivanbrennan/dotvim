@@ -43,6 +43,7 @@ nnoremap  <Leader>dl    :bdelete#<CR>
 nnoremap <S-Space>      :buffers<CR>
 nnoremap <Leader>bn     :bnext<CR>
 nnoremap <Leader>bp     :bprevious<CR>
+nnoremap <Leader>l      <C-^>
 nnoremap <Leader><Tab>  <C-^>
 
 " Quickfix list (alt h/j/k/l)
@@ -221,7 +222,7 @@ noremap <silent> <Leader>g   :Gblame<CR>
 " ··········· ruby ············ {{{1
 noremap  <silent> <Leader>R     :w !ruby<CR>
 " ··········· rails ··········· {{{1
-nnoremap <silent> <Leader>l  :A<CR>
+nnoremap <silent> <Leader>fa :A<CR>
 nnoremap          <Leader>E  :Eschema 
 nnoremap          <Leader>M  :Emigration 
 nnoremap          <Leader>es :Espec 
