@@ -43,7 +43,7 @@ nnoremap  <Leader>dl    :bdelete#<CR>
 nnoremap <S-Space>      :buffers<CR>
 nnoremap <Leader>bn     :bnext<CR>
 nnoremap <Leader>bp     :bprevious<CR>
-nnoremap <Leader>l      <C-^>
+nnoremap <Leader><Tab>  <C-^>
 
 " Quickfix list (alt h/j/k/l)
 nmap     <C-@>          <Plug>QfxListical
@@ -218,15 +218,15 @@ noremap <silent> <Leader>g   :Gblame<CR>
 " ··········· ruby ············ {{{1
 noremap  <silent> <Leader>R     :w !ruby<CR>
 " ··········· rails ··········· {{{1
-nnoremap <silent> <Leader><Tab> :A<CR>
-nnoremap          <Leader>E     :Eschema 
-nnoremap          <Leader>M     :Emigration 
-nnoremap          <Leader>es    :Espec 
-nnoremap          <Leader>ef    :edit spec/factories/
-nnoremap          <Leader>ec    :Econtroller 
-nnoremap          <Leader>em    :Emodel 
-nnoremap          <Leader>ev    :Eview 
-nnoremap          <Leader>eh    :Ehelper 
+nnoremap <silent> <Leader>l  :A<CR>
+nnoremap          <Leader>E  :Eschema 
+nnoremap          <Leader>M  :Emigration 
+nnoremap          <Leader>es :Espec 
+nnoremap          <Leader>ef :edit spec/factories/
+nnoremap          <Leader>ec :Econtroller 
+nnoremap          <Leader>em :Emodel 
+nnoremap          <Leader>ev :Eview 
+nnoremap          <Leader>eh :Ehelper 
 
 nnoremap <Leader>P Obinding.pry<Esc>0
 
