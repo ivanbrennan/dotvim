@@ -124,6 +124,9 @@ inoremap <C-_>      <Esc>viwg~gi
 " end of line
 noremap <Leader>4   $
 
+" hash-rocket
+inoremap <C-.> <Space>=><Space>
+
 " ··········· autocompletion ·· {{{1
 
 inoremap        <C-L>  <C-X><C-L>
