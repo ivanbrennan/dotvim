@@ -99,8 +99,9 @@ inoremap <C-CR>     <C-O>o
 set pastetoggle=<F8>
 
 " clipboard
-noremap  <Leader>i  "*
-noremap  <Leader>ii "*y$
+noremap  <Leader>y  "*y
+noremap  <Leader>ye "*y$
+noremap  <Leader>p  "*p
 
 " commentary
 xmap     <Leader>;  <Plug>Commentary
