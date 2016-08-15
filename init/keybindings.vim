@@ -142,7 +142,7 @@ noremap  `  '
 noremap  '  `
 
 " :nohlsearch
-noremap  <silent> <C-H> :nohlsearch<CR>
+noremap  <silent> <CR> :nohlsearch<CR>
 " lazy matchit
 map      <Leader>5  %
 
