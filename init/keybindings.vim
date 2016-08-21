@@ -141,6 +141,11 @@ inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<S-Tab>")
 noremap  `  '
 noremap  '  `
 
+" emacs taking over my life
+noremap  <C-S>  /
+noremap  <C-R>  ?
+nnoremap     U  <C-R>
+
 " :nohlsearch
 nnoremap  <silent> <Leader><CR> :nohlsearch<CR>
 " lazy matchit
