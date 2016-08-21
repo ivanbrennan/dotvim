@@ -25,7 +25,7 @@ nnoremap          <C-,><C-W> :edit   ~/.vim/init/wild.vim<CR>
 " ··········· buffers ········· {{{1
 cnoremap <expr>   %%    getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 
-nmap <silent> <Leader>- :tabedit %%<cr>
+nmap <silent> <Leader>- :tabedit %%<CR>
 
 nnoremap <Leader>e      :edit 
 nmap     <Leader>ee     :edit %%
@@ -110,8 +110,8 @@ omap     <Leader>;  <Plug>Commentary
 nmap     <Leader>;; <Plug>CommentaryLine
 
 " arg-wrap
-nnoremap <silent> <leader>) :ArgWrap<CR>
-nnoremap <silent> <leader>( :ArgWrap<CR>
+nnoremap <silent> <Leader>) :ArgWrap<CR>
+nnoremap <silent> <Leader>( :ArgWrap<CR>
 
 " jump around insert mode
 inoremap <C-B>      <C-O>b
