@@ -225,7 +225,7 @@ func! Vmux()
 endf
 
 func! Fifo()
-  let g:spec_runner_dispatcher = "silent !echo {command} > test_commands"
+  let g:spec_runner_dispatcher = "silent !echo clear > test_commands && echo {command} > test_commands"
   echo 'g:spec_runner_dispatcher = "' . g:spec_runner_dispatcher . '"'
 endf
 
