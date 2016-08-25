@@ -223,7 +223,7 @@ nmap     <Leader>,r          <Plug>RunMostRecentSpec
 noremap  <silent> <Leader>,f :VtrFocusRunner<CR>
 noremap  <silent> <Leader>,k :VtrKillRunner<CR>
 nnoremap <silent> <Leader>x  :call Vmux()<CR>
-nnoremap <silent> <Leader>,x :call Fifo()<CR>
+nnoremap <silent> <Leader>,x :call Vtux()<CR>
 
 " ··········· git ············· {{{1
 noremap <silent> <Leader>g   :Gblame<CR>
