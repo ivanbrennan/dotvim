@@ -90,6 +90,11 @@ nnoremap <silent> <C-J>    mZ:silent! move .+1<CR>==`Z
 vnoremap <silent> <C-J>    :<C-U>silent! '<,'>move '>+1<CR>gv=gv
 inoremap <silent> <C-Down> <Esc>:silent! move .+1<CR>==gi
 
+" emacs-like indentation
+vnoremap <Tab> =
+vnoremap     < <gv
+vnoremap     > >gv
+
 " ··········· editing ········· {{{1
 " spawn newline
 inoremap <S-CR>     <C-O>O
