@@ -30,6 +30,7 @@ Plug 'nelstrom/vim-visual-star-search'
 Plug 'ngmy/vim-rubocop'
 Plug 'regedarek/ZoomWin'
 Plug 'sjl/gundo.vim'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary',           { 'on': ['<Plug>Commentary', '<Plug>CommentaryLine'] }
 Plug 'tpope/vim-dispatch',             { 'on': 'Dispatch' }
