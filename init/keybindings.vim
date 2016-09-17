@@ -180,13 +180,10 @@ noremap <silent> <Leader>* :set foldenable!<CR>
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " ··········· splits ·········· {{{1
-noremap           <C-W>O       <C-W>o
-nmap              <C-W>o       <Plug>ZoomWin
-nmap              <C-W><C-O>   <Plug>ZoomWin
+nmap              <C-W><Space> <Plug>ZoomWin
+nmap              <C-W><C-@>   <Plug>ZoomWin
 noremap           <C-W>u       <C-W>_
 noremap           <C-W><C-U>   <C-W>_
-noremap           <C-W><Space> <C-W>=
-noremap           <C-W><C-@>   <C-W>=
 noremap  <silent> <C-W>]       :vertical stag<CR>
 noremap  <silent> <C-W><C-]>   :vertical stag<CR>
 noremap           <Leader>q    <C-W><C-Q>
