@@ -45,5 +45,11 @@ if &term =~ '^screen'
   set  <xDown>=[1;*B
   set <xRight>=[1;*C
   set  <xLeft>=[1;*D
+
+  " Fix true color in tmux
+  set t_8f=[38;2;%lu;%lu;%lum
+  set t_8b=[48;2;%lu;%lu;%lum
 endif
+
+set termguicolors
 
