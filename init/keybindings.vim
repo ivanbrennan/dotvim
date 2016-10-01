@@ -103,6 +103,9 @@ inoremap <C-CR>     <C-O>o
 " paste toggle
 set pastetoggle=<F8>
 
+" select last changed/yanked text
+nnoremap <Leader>V `[v`]
+
 " clipboard
 noremap  <Leader>y  "*y
 noremap  <Leader>ye "*y$
