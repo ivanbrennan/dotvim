@@ -100,6 +100,9 @@ vnoremap     > >gv
 inoremap <S-CR>     <C-O>O
 inoremap <C-CR>     <C-O>o
 
+" sensible Y
+nnoremap Y y$
+
 " paste toggle
 set pastetoggle=<F8>
 
