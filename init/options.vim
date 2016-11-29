@@ -75,7 +75,9 @@ set shiftwidth=2                " autoindent is two spaces
 set expandtab                   " convert tabs to spaces
 
 " characters
-set guifont=Sauce\ Code\ Powerline:h14
+if exists('&guifont')
+  set guifont=Sauce\ Code\ Powerline:h14
+endif
 set list                        " show invisible characters
 set listchars=""                " reset the listchars
 set listchars=tab:▸\            " tab
