@@ -33,7 +33,6 @@ nnoremap <Leader>et     :tabedit
 nnoremap <Leader>eh     :edit ~/
 
 nnoremap <Leader>fs     :write<CR>
-vnoremap <Leader>fs     :write<CR>
 nnoremap <Leader>wq     :wq 
 
 nnoremap  <Leader>dd    :bdelete<CR>
