@@ -6,8 +6,8 @@ set wildmode=list:longest,full
 set wildignore+=*.o,*.out,*.obj,*.rbc,*.rbo,*.class,.svn,*.gem
 " archives
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-" bundler and sass
-set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+" gems and sass
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.sass-cache/*
 " librarian-chef, vagrant, test-kitchen and Berkshelf
 set wildignore+=*/tmp/librarian/*,*/.vagrant/*,*/.kitchen/*,*/vendor/cookbooks/*
 " rails temporary asset caches
