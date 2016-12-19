@@ -17,7 +17,6 @@ set hidden
 set tags-=./tags    " don't just look in the current buffer's directory (vim)
 set tags-=./tags;   " don't just look in the current buffer's directory (nvim)
 set tags+=./tags;~  " search for tags recursively upwards until ~
-set tags^=.git/tags " search for tags in .git first
 
 " navigation
 set incsearch
