@@ -155,7 +155,8 @@ noremap  '  `
 " emacs taking over my life
 noremap  <C-S>  /
 noremap  <C-R>  ?
-nmap         U  <Plug>RepeatRedo
+nnoremap     U  <C-R>
+nmap <Leader>U <Plug>RepeatRedo
 
 " :nohlsearch
 nnoremap  <silent> <Leader><CR> :nohlsearch<CR>
