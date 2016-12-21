@@ -108,7 +108,8 @@ set pastetoggle=<F8>
 " select last changed/yanked text
 nnoremap <Leader>V `[v`]
 
-" clipboard
+" registers
+noremap  <Leader><C-R> "
 noremap  <Leader>y  "*y
 noremap  <Leader>ye "*y$
 noremap  <Leader>p  "*p
@@ -154,7 +155,7 @@ noremap  '  `
 " emacs taking over my life
 noremap  <C-S>  /
 noremap  <C-R>  ?
-nnoremap     U  <C-R>
+nmap         U  <Plug>RepeatRedo
 
 " :nohlsearch
 nnoremap  <silent> <Leader><CR> :nohlsearch<CR>
