@@ -177,6 +177,9 @@ vnoremap <Leader>s  :s/
 nnoremap &  :&&<CR>
 xnoremap &  :&&<CR>
 
+" fzf (reserved)
+" nnoremap <Leader><C-G> some-fzf-command
+
 " Ag
 nnoremap <Leader>a  :Grepper<CR>
 
