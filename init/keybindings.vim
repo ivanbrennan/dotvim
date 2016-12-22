@@ -6,7 +6,7 @@ let mapleader = ' '
 nnoremap <Space> <Nop>
 
 " Timeout mappings fast and key codes faster
-set timeout timeoutlen=300 ttimeoutlen=100
+set timeout timeoutlen=2000 ttimeoutlen=100
 
 " source / edit vimrc
 nnoremap <silent> <C-.>      :source $MYVIMRC<CR>
