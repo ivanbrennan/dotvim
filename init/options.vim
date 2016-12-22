@@ -35,6 +35,7 @@ set backspace=indent,eol,start
 set nojoinspaces
 set nrformats=
 set complete-=i
+set clipboard=unnamed  " default to the clipboard register
 
 " formatting
 let s:tw=90
