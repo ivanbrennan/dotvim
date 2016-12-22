@@ -109,7 +109,7 @@ set pastetoggle=<F8>
 nnoremap <Leader>V `[v`]
 
 " registers
-noremap  <Leader><C-R> "
+noremap           ' "
 noremap  <Leader>y  "*y
 noremap  <Leader>ye "*y$
 noremap  <Leader>p  "*p
