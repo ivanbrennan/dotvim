@@ -230,7 +230,7 @@ nnoremap <silent> <Leader>x  :call Vmux()<CR>
 nnoremap <silent> <Leader>,x :call Vtux()<CR>
 
 " ··········· git ············· {{{1
-noremap <silent> <Leader>g   :Gblame<CR>
+noremap <silent> <Leader>vb   :Gblame<CR>
 
 " ··········· ruby ············ {{{1
 noremap  <silent> <Leader>R     :w !ruby<CR>
