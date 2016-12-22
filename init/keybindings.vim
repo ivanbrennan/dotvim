@@ -150,7 +150,7 @@ inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<S-Tab>")
 " ··········· search ·········· {{{1
 " sensible marks
 noremap  `  '
-noremap  '  `
+noremap <Leader>g `
 
 " emacs taking over my life
 noremap  <C-S>  /
