@@ -28,10 +28,6 @@ Plug 'kchmck/vim-coffee-script',       { 'for': 'coffee' }
 Plug 'mhinz/vim-grepper'
 Plug 'nelstrom/vim-qargs',             { 'on': 'Qargs' }
 Plug 'nelstrom/vim-visual-star-search'
-if has('nvim')
-  Plug 'neovim/node-host'
-  Plug 'clojure-vim/nvim-parinfer.js'
-endif
 Plug 'ngmy/vim-rubocop'
 Plug 'regedarek/ZoomWin'
 Plug 'sjl/gundo.vim'
