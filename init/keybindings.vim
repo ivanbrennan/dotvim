@@ -153,6 +153,7 @@ noremap <Leader>g `
 
 " emacs taking over my life
 noremap  <C-S>  /
+inoremap <C-S>  <C-O>/
 noremap  <C-R>  ?
 nnoremap     U  <C-R>
 nmap <C-Bslash> <Plug>(RepeatRedo)
