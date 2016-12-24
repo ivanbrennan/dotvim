@@ -224,13 +224,9 @@ nnoremap <Leader><C-L>   zt<C-L>
 noremap <silent> zz      :call Reposition()<CR>
 
 " ··········· testing ········· {{{1
-nmap     <Leader>r           <Plug>RunFocusedSpec
-nmap     <Leader>t           <Plug>RunCurrentSpecFile
-nmap     <Leader>,r          <Plug>RunMostRecentSpec
-noremap  <silent> <Leader>,f :VtrFocusRunner<CR>
-noremap  <silent> <Leader>,k :VtrKillRunner<CR>
-nnoremap <silent> <Leader>x  :call Vmux()<CR>
-nnoremap <silent> <Leader>,x :call Vtux()<CR>
+nmap         t<CR>        <Plug>RunFocusedSpec
+nmap         T<CR>        <Plug>RunCurrentSpecFile
+nmap      <Leader>t       <Plug>RunMostRecentSpec
 
 " ··········· git ············· {{{1
 noremap <silent> <Leader>vb   :Gblame<CR>
