@@ -114,6 +114,9 @@ noremap  <Leader>y  "*y
 noremap  <Leader>ye "*y$
 noremap  <Leader>p  "*p
 
+" the abyss
+vnoremap <BS> "_d
+
 " commentary
 xmap     <Leader>;  <Plug>Commentary
 nmap     <Leader>;  <Plug>Commentary
