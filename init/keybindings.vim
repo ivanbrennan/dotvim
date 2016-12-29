@@ -46,6 +46,7 @@ nnoremap <Leader>l      <C-^>
 
 " Quickfix list (alt h/j/k/l)
 nmap     <C-@>          <Plug>QfxListical
+nmap     <C-Space>      <Plug>QfxListical
 nnoremap ∆              :cnext<CR>
 nnoremap ˚              :cprevious<CR>
 nnoremap ˙              :colder<CR>
