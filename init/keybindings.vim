@@ -147,6 +147,7 @@ inoremap <C-.> <Space>=><Space>
 inoremap        <C-L>  <C-X><C-L>
 inoremap        <C-]>  <C-X><C-]>
 inoremap        <C-@>  <C-X><C-O>
+inoremap    <C-Space>  <C-X><C-O>
 
 inoremap <expr> <Tab>   SuperTab("\<C-N>", "\<Tab>")
 inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<S-Tab>")
@@ -194,13 +195,14 @@ noremap <silent> <Leader>* :set foldenable!<CR>
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
 " ··········· splits ·········· {{{1
-nmap              <C-W><Space> <Plug>ZoomWin
-nmap              <C-W><C-@>   <Plug>ZoomWin
-noremap           <C-W>u       <C-W>_
-noremap           <C-W><C-U>   <C-W>_
-noremap  <silent> <C-W>]       :vertical stag<CR>
-noremap  <silent> <C-W><C-]>   :vertical stag<CR>
-noremap           <Leader>q    <C-W><C-Q>
+nmap              <C-W><Space>   <Plug>ZoomWin
+nmap              <C-W><C-@>     <Plug>ZoomWin
+nmap              <C-W><C-Space> <Plug>ZoomWin
+noremap           <C-W>u         <C-W>_
+noremap           <C-W><C-U>     <C-W>_
+noremap  <silent> <C-W>]         :vertical stag<CR>
+noremap  <silent> <C-W><C-]>     :vertical stag<CR>
+noremap           <Leader>q      <C-W><C-Q>
 
 " ··········· tabs ············ {{{1
 noremap           <C-W>n       gt
