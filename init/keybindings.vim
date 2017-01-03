@@ -187,7 +187,7 @@ xnoremap &  :&&<CR>
 " nnoremap <Leader><C-G> some-fzf-command
 
 " Ag
-nnoremap <Leader>a  :Grepper<CR>
+nnoremap <Leader><C-F> :Grepper<CR>
 
 " word under cursor
 noremap <silent> <Leader>* :set foldenable!<CR>
