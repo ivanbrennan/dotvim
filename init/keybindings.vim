@@ -39,10 +39,10 @@ nnoremap  <Leader>dd    :bdelete<CR>
 nnoremap  <Leader>dl    :bdelete#<CR>
 
 " Buffer list
-nnoremap <S-Space>      :buffers<CR>
-nnoremap <Leader>bn     :bnext<CR>
-nnoremap <Leader>bp     :bprevious<CR>
-nnoremap <Leader>l      <C-^>
+noremap  <Leader><Space> :buffers<CR>
+nnoremap <Leader>bn      :bnext<CR>
+nnoremap <Leader>bp      :bprevious<CR>
+nnoremap <Leader>l       <C-^>
 
 " Quickfix list (alt h/j/k/l)
 nmap     <C-@>          <Plug>QfxListical
@@ -59,7 +59,6 @@ nnoremap               :lprevious<CR>
 nnoremap Ó              :lolder<CR>
 nnoremap Ò              :lnewer<CR>
 
-noremap  <Leader><Space>    :pwd<CR>
 noremap  <silent> <Leader><Bslash> :call ReloadBuffers()<CR>
 
 " Vinegar
@@ -67,6 +66,7 @@ nnoremap - -
 nmap     <Leader>fj <Plug>VinegarUp
 
 " ··········· ex commands ····· {{{1
+noremap  <S-Space>        :
 nnoremap <Leader>1        :!
 noremap  <Leader>:        :<Up>
 nnoremap <Leader>h        :help 
