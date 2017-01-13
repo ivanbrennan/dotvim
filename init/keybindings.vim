@@ -194,6 +194,10 @@ noremap <silent> <Leader>* :set foldenable!<CR>
       \:let view=winsaveview()<CR>#*
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
+" ··········· movement ········ {{{1
+" first non-blank on previous line
+nnoremap <C-P> -
+
 " ··········· splits ·········· {{{1
 nmap              <C-W><Space>   <Plug>ZoomWin
 nmap              <C-W><C-@>     <Plug>ZoomWin
