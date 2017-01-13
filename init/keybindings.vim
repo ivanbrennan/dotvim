@@ -235,7 +235,7 @@ nmap         T<CR>        <Plug>RunCurrentSpecFile
 nmap      <Leader>t       <Plug>RunMostRecentSpec
 
 " ··········· git ············· {{{1
-noremap <silent> <Leader>vb   :Gblame<CR>
+noremap <silent> <Leader><C-V>  :Gblame<CR>
 
 " ··········· ruby ············ {{{1
 noremap  <silent> <Leader>R     :w !ruby<CR>
