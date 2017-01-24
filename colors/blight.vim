@@ -35,6 +35,7 @@ let s:maroon = { "gui": "#5f0000", "cterm": "52"  }
 let s:blue   = { "gui": "#005f87", "cterm": "24"  }
 let s:indigo = { "gui": "#00005f", "cterm": "17"  }
 let s:purple = { "gui": "#5f5f87", "cterm": "60"  }
+let s:visip  = { "gui": "#e7e9f3", "cterm": "195" }
 
 let s:aqua   = { "gui": "#dfffff", "cterm": "195" }
 let s:spring = { "gui": "#afffaf", "cterm": "157" }
@@ -81,7 +82,7 @@ call s:h("Normal",       { "fg": s:black, "bg": s:white })
 call s:h("NonText",      { "fg": s:grey_4, "bg": s:grey_6 })
 call s:h("LineNr",       { "fg": s:grey_4 })
 call s:h("Cursor",       { "fg": s:white, "bg": s:grey_4 })
-call s:h("Visual",       { "bg": s:aqua })
+call s:h("Visual",       { "bg": s:visip })
 call s:h("IncSearch",    { "bg": s:yellow, "gui": "bold", "cterm": "bold" })
 call s:h("Search",       { "bg": s:solar, "gui": "bold", "cterm": "bold" })
 call s:h("StatusLine",   { "fg": s:black, "bg": s:grey_5 })
