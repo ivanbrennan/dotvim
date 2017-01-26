@@ -23,6 +23,7 @@ Plug 'gabebw/vim-spec-runner',         { 'on': ['<Plug>RunFocusedSpec', '<Plug>R
 Plug 'guns/xterm-color-table.vim'
 Plug 'ivanbrennan/listical',           { 'on': ['<Plug>QfxListical', '<Plug>LocListical'] }
 Plug 'ivanbrennan/vmux'
+Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
 Plug 'jwhitley/vim-matchit'
 Plug 'kchmck/vim-coffee-script',       { 'for': 'coffee' }
 Plug 'mhinz/vim-grepper'
