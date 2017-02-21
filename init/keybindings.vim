@@ -63,13 +63,13 @@ noremap  <silent> <Leader><Bslash> :call ReloadBuffers()<CR>
 
 " Vinegar
 nnoremap - -
-nmap     <Leader>fj <Plug>VinegarUp
+nmap     <Leader>h  <Plug>VinegarUp
 
 " ··········· ex commands ····· {{{1
 noremap  <S-Space>        :
 nnoremap <Leader>1        :!
 noremap  <Leader>:        :<Up>
-nnoremap <Leader>h        :help 
+nnoremap <Leader>H        :help 
 
 cnoremap <C-P>            <Up>
 cnoremap <C-N>            <Down>
