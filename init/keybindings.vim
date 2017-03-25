@@ -197,6 +197,7 @@ noremap <silent> <Leader>* :set foldenable!<CR>
 " ··········· movement ········ {{{1
 " first non-blank on previous line
 nnoremap <C-P> -
+noremap <expr> 0 MoveToBol()
 
 " ··········· splits ·········· {{{1
 nmap              <C-W><Space>   <Plug>ZoomWin

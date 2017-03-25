@@ -52,6 +52,11 @@ func! Reposition()
   execute 'normal ' . movement
 endf
 
+" ··········· movement ················· {{{1
+func! MoveToBol()
+  return col('.') > 1 ? '0' : '^'
+endf
+
 " ··········· folding ·················· {{{1
 func! FoldMethToggle()
   if &foldmethod == 'marker'
