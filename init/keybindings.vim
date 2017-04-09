@@ -228,8 +228,8 @@ noremap  <silent> <Leader>,z :call FoldColToggle(4)<CR>
 nnoremap <silent> <Leader>]  :call ColorColToggle()<CR>
 
 " emacs redraws
-nnoremap <C-L>           zz<C-L>
-nnoremap <Leader><C-L>   zt<C-L>
+nnoremap <C-L>           zt<C-L>
+nnoremap <Leader><C-L>   zz<C-L>
 
 " reposition
 noremap <silent> zz      :call Reposition()<CR>
