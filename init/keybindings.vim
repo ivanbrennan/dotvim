@@ -82,12 +82,12 @@ nnoremap <S-CR>   mzO<Esc>`z
 nnoremap <C-CR>   mzo<Esc>`z
 
 " bubble up
-nnoremap <silent> <C-K>    mZ:silent! move .-2<CR>==`Z
-vnoremap <silent> <C-K>    :<C-U>silent! '<,'>move '<-2<CR>gv=gv
+nnoremap <silent> <C-Up>   mZ:silent! move .-2<CR>==`Z
+vnoremap <silent> <C-Up>   :<C-U>silent! '<,'>move '<-2<CR>gv=gv
 inoremap <silent> <C-Up>   <Esc>:silent! move .-2<CR>==gi
 " bubble down
-nnoremap <silent> <C-J>    mZ:silent! move .+1<CR>==`Z
-vnoremap <silent> <C-J>    :<C-U>silent! '<,'>move '>+1<CR>gv=gv
+nnoremap <silent> <C-Down> mZ:silent! move .+1<CR>==`Z
+vnoremap <silent> <C-Down> :<C-U>silent! '<,'>move '>+1<CR>gv=gv
 inoremap <silent> <C-Down> <Esc>:silent! move .+1<CR>==gi
 
 " emacs-like indentation
@@ -198,6 +198,10 @@ noremap <silent> <Leader>* :set foldenable!<CR>
 " first non-blank on previous line
 nnoremap <C-P> -
 noremap <expr> 0 MoveToBol()
+
+" scroll
+noremap <C-J> <C-E>
+noremap <C-K> <C-Y>
 
 " ··········· splits ·········· {{{1
 nmap              <C-W><Space>   <Plug>ZoomWin
