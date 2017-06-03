@@ -175,7 +175,7 @@ nnoremap  <Leader>?  ?\v
 vnoremap  <Leader>?  ?\v
 
 " substitute
-nnoremap <Leader>,s :%s/
+nnoremap <Leader>S  :%s/
 nnoremap <Leader>s  :s/
 vnoremap <Leader>s  :s/
 
@@ -212,6 +212,7 @@ noremap           <C-W><C-U>     <C-W>_
 noremap  <silent> <C-W>]         :vertical stag<CR>
 noremap  <silent> <C-W><C-]>     :vertical stag<CR>
 noremap           <Leader>q      <C-W><C-Q>
+noremap           <Leader>,      <C-W>p
 
 " ··········· tabs ············ {{{1
 noremap           <C-W>n       gt
@@ -220,13 +221,13 @@ noremap           <C-W>p       gT
 noremap           <C-W><C-P>   gT
 
 " ··········· display ········· {{{1
-noremap  <silent> <Leader>,m :call ToggleColorscheme()<CR>
+noremap  <silent> <Leader>`  :call ToggleColorscheme()<CR>
 noremap  <silent> <Leader>[  :call SynHighlight()<CR>
 noremap  <silent> <Leader>.  :call StatusToggle()<CR>
 
 " folding
 noremap  <silent> <Leader>Z  :call FoldMethToggle()<CR>
-noremap  <silent> <Leader>,z :call FoldColToggle(4)<CR>
+noremap  <silent> <Leader>z  :call FoldColToggle(4)<CR>
 
 " colour column
 nnoremap <silent> <Leader>]  :call ColorColToggle()<CR>
