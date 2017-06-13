@@ -51,5 +51,7 @@ if &term =~ '^screen'
   set t_8b=[48;2;%lu;%lu;%lum
 endif
 
-set termguicolors
+if has('termguicolors')
+  set termguicolors
+endif
 
