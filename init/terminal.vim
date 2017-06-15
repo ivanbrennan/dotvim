@@ -1,5 +1,9 @@
 " ::::::::: Terminal ::::::::::::::::::::::
 
+if has('termguicolors')
+  set termguicolors
+endif
+
 if has('nvim')
   " these hacks don't work in neovim, nor are they necessary if terminal is configured according to
   " the specification used by libtermkey/libtickit
@@ -49,9 +53,5 @@ if &term =~ '^screen'
   " Fix true color in tmux
   set t_8f=[38;2;%lu;%lu;%lum
   set t_8b=[48;2;%lu;%lu;%lum
-endif
-
-if has('termguicolors')
-  set termguicolors
 endif
 
