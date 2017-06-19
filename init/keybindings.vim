@@ -178,6 +178,7 @@ vnoremap  <Leader>?  ?\v
 nnoremap <Leader>S  :%s/
 nnoremap <Leader>s  :s/
 vnoremap <Leader>s  :s/
+nnoremap        c.  *Ncgn
 
 " preserve flags
 nnoremap &  :&&<CR>
