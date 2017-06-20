@@ -169,10 +169,12 @@ nnoremap  <silent> <Leader><CR> :nohlsearch<CR>
 map      <Leader>5  %
 
 " sane regexes
-nnoremap  <Leader>/  /\v
-vnoremap  <Leader>/  /\v
-nnoremap  <Leader>?  ?\v
-vnoremap  <Leader>?  ?\v
+nnoremap  /  /\v
+vnoremap  /  /\v
+nnoremap  ?  ?\v
+vnoremap  ?  ?\v
+nnoremap  <Leader>/  /
+nnoremap  <Leader>?  ?
 
 " substitute
 nnoremap <Leader>S  :%s/
