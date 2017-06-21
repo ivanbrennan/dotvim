@@ -7,3 +7,6 @@
 *** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/autoload/statusline.vim
 ** italics in the terminal
 *** https://youtu.be/n1cKtZfwOgQ
+** Command T
+*** fast on large repo
+*** fuzzy find help docs
