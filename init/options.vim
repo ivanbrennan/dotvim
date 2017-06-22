@@ -56,7 +56,7 @@ set title
 set nowrap
 set showtabline=1
 set fillchars=vert:│,fold:-
-set foldmethod=marker
+set foldmethod=indent
 set showcmd
 set noshowmode
 
