@@ -59,6 +59,7 @@ set fillchars=vert:│,fold:-
 set foldmethod=indent
 set showcmd
 set noshowmode
+set lazyredraw
 
 " notifications
 set shortmess+=I
