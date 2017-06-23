@@ -21,10 +21,15 @@ let s:black  = { "gui": "#121212", "cterm": "233" }
 let s:grey_7 = { "gui": "#f9f9f9", "cterm": "255" }
 let s:grey_6 = { "gui": "#eeeeee", "cterm": "255" }
 let s:grey_5 = { "gui": "#dadada", "cterm": "253" }
+let s:grey_x = { "gui": "#EFF2F1", "cterm": "253" }
 let s:grey_4 = { "gui": "#b2b2b2", "cterm": "249" }
 let s:grey_3 = { "gui": "#949494", "cterm": "246" }
 let s:grey_2 = { "gui": "#444444", "cterm": "238" }
 let s:grey_1 = { "gui": "#262626", "cterm": "235" }
+
+let s:nice_grey = { "gui": "#393E53", "cterm": "253" }
+let s:slate     = { "gui": "#666666", "cterm": "253" }
+let s:purpcoal  = { "gui": "#354668", "cterm": "253" }
 
 let s:solar  = { "gui": "#ffffdf", "cterm": "230" }
 let s:yellow = { "gui": "#ffffaf", "cterm": "229" }
@@ -86,13 +91,13 @@ call s:h("Cursor",       { "fg": s:white, "bg": s:grey_4 })
 call s:h("Visual",       { "bg": s:visip })
 call s:h("IncSearch",    { "bg": s:yellow, "gui": "bold", "cterm": "bold" })
 call s:h("Search",       { "bg": s:solar, "gui": "bold", "cterm": "bold" })
-call s:h("StatusLine",   { "fg": s:black, "bg": s:grey_5 })
-call s:h("StatusLineNC", { "fg": s:grey_3, "bg": s:grey_5 })
+call s:h("StatusLine",   { "fg": s:nice_grey, "bg": s:grey_x, "gui": "bold" })
+call s:h("StatusLineNC", { "fg": s:grey_3, "bg": s:grey_x })
 call s:h("SignColumn",   { "fg": s:grey_3, "bg": s:grey_6 })
 call s:h("VertSplit",    { "fg": s:grey_4, "bg": s:white })
 call s:h("TabLine",      { "fg": s:grey_4, "bg": s:grey_6 })
 call s:h("TabLineSel",   { "fg": s:black, "bg": s:white })
-call s:h("TabLineFill",  { "bg": s:grey_5 })
+call s:h("TabLineFill",  { "bg": s:grey_x })
 call s:h("Folded",       { "fg": s:grey_2, "bg": s:white })
 call s:h("Directory",    { "fg": s:blue })
 call s:h("Title",        { "fg": s:blue, "gui": "bold", "cterm": "bold" })
