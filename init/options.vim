@@ -57,6 +57,7 @@ set nowrap
 set showtabline=1
 set fillchars=vert:│,fold:-
 set foldmethod=indent
+set foldlevelstart=3
 set showcmd
 set noshowmode
 set lazyredraw
