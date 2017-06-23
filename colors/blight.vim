@@ -110,7 +110,7 @@ hi! link SpecialKey   LineNr
 
 " Highlights - Generic Syntax ------------------------------{{{2
 call s:h("Delimiter",  { "fg": s:grey_2 })
-call s:h("Comment",    { "fg": s:grey_3, "gui": "italic" })
+call s:h("Comment",    { "fg": s:grey_3, "gui": "italic", "cterm": "italic" })
 call s:h("Underlined", { "fg": s:blue, "gui": "underline", "cterm": "underline" })
 call s:h("Type",       { "fg": s:red })
 call s:h("Constant",   { "fg": s:blue })
