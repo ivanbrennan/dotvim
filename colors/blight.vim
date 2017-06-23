@@ -18,6 +18,7 @@ let g:colors_name = "blight"
 let s:white  = { "gui": "#ffffff", "cterm": "231" }
 let s:black  = { "gui": "#121212", "cterm": "233" }
 
+let s:grey_7 = { "gui": "#f9f9f9", "cterm": "255" }
 let s:grey_6 = { "gui": "#eeeeee", "cterm": "255" }
 let s:grey_5 = { "gui": "#dadada", "cterm": "253" }
 let s:grey_4 = { "gui": "#b2b2b2", "cterm": "249" }
@@ -56,7 +57,7 @@ endfunction
 " Highlights -----------------------------------------------{{{1
 " Highlights - Vim >= 7 ------------------------------------{{{2
 if version >= 700
-  call s:h("CursorLine",       { })
+  call s:h("CursorLine",       { "bg": s:grey_7 })
   call s:h("CursorLineNr",     { "fg": s:black })
   call s:h("MatchParen",       { "bg": s:aqua })
   call s:h("Pmenu",            { "bg": s:grey_6 })
