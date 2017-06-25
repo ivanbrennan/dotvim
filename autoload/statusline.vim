@@ -6,14 +6,14 @@ func! statusline#bufname() abort
   return statusline#current() ? bufname('%') : ''
 endf
 func! statusline#bufname_nc() abort
-  return statusline#current() ? '' : bufname('%')
+  return !statusline#current() ? bufname('%') : ''
 endf
 
 func! statusline#filetype() abort
-  return statusline#current() ? '[' . &ft . ']' : ''
+  return (statusline#current() && strlen(&ft)) ? '['.&ft.']' : ''
 endf
 func! statusline#filetype_nc() abort
-  return statusline#current() ? '' : '[' . &ft . ']'
+  return (!statusline#current() && strlen(&ft)) ? '['.&ft.']' : ''
 endf
 
 func! statusline#branch() abort
