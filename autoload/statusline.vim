@@ -1,4 +1,24 @@
-func! statusline#branch()
+func! statusline#bufname() abort
+  return statusline#current() ? bufname('%') : ''
+endf
+
+func! statusline#bufname_nc() abort
+  return statusline#current() ? '' : bufname('%')
+endf
+
+func! statusline#filetype() abort
+  return statusline#current() ? '[' . &ft . ']' : ''
+endf
+
+func! statusline#filetype_nc() abort
+  return statusline#current() ? '' : '[' . &ft . ']'
+endf
+
+func! statusline#current() abort
+  return bufnr('%') == g:actual_curbuf
+endf
+
+func! statusline#branch() abort
   let branch = fugitive#head()
   if empty(branch)
     return ''
@@ -48,4 +68,11 @@ func! statusline#update_highlight() abort
         \   'term': l:type_style,
         \   'gui':  l:type_style
         \ })
+
+  " StatusLineNC + italics
+  let l:bg_nc = pinnacle#extract_bg('StatusLineNC')
+  let l:fg_nc = pinnacle#extract_fg('StatusLineNC')
+  highlight clear StatusLineNC
+  execute 'highlight! StatusLineNC ' .
+        \ pinnacle#highlight({ 'bg': bg_nc, 'fg': fg_nc  })
 endf
