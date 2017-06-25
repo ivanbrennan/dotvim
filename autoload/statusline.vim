@@ -10,10 +10,17 @@ func! statusline#bufname_nc() abort
 endf
 
 func! statusline#filetype() abort
-  return (statusline#current() && strlen(&ft)) ? '['.&ft.']' : ''
+  return statusline#current() ? &filetype : ''
 endf
 func! statusline#filetype_nc() abort
-  return (!statusline#current() && strlen(&ft)) ? '['.&ft.']' : ''
+  return !statusline#current() ? &filetype : ''
+endf
+
+func! statusline#before_filetype() abort
+  return strlen(&filetype) ? '[' : ''
+endf
+func! statusline#after_filetype() abort
+  return strlen(&filetype) ? ']' : ''
 endf
 
 func! statusline#branch() abort
@@ -58,8 +65,17 @@ func! statusline#update_highlight() abort
         \   'gui':  l:name_style
         \ })
 
-  " StatusLine + type_style
+  " StatusLineNC + type_style
   execute 'highlight! User2 ' .
+        \ pinnacle#highlight({
+        \   'bg':   l:bg,
+        \   'fg':   pinnacle#extract_fg('StatusLineNC'),
+        \   'term': l:type_style,
+        \   'gui':  l:type_style
+        \ })
+
+  " StatusLine + type_style
+  execute 'highlight! User3 ' .
         \ pinnacle#highlight({
         \   'bg':   l:bg,
         \   'fg':   l:fg,
