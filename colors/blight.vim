@@ -26,7 +26,7 @@ let s:grey_3 = { "gui": "#949494", "cterm": "246" }
 let s:grey_2 = { "gui": "#444444", "cterm": "238" }
 let s:grey_1 = { "gui": "#262626", "cterm": "235" }
 
-let s:grey_x = { "gui": "#E1E1E1", "cterm": "253" }
+let s:grey_x = { "gui": "#ebebeb", "cterm": "253" }
 let s:grey_y = { "gui": "#c7c7c7", "cterm": "253" }
 let s:nice_grey = { "gui": "#393E53", "cterm": "253" }
 let s:slate     = { "gui": "#666666", "cterm": "253" }
@@ -96,7 +96,7 @@ call s:h("Search",       { "bg": s:solar, "gui": "bold", "cterm": "bold" })
 call s:h("StatusLine",   { "fg": s:nice_grey, "bg": s:grey_x })
 call s:h("StatusLineNC", { "fg": s:grey_3, "bg": s:grey_x })
 call s:h("SignColumn",   { "fg": s:grey_3, "bg": s:grey_6 })
-call s:h("VertSplit",    { "fg": s:grey_4, "bg": s:white })
+call s:h("VertSplit",    { "fg": s:grey_3, "bg": s:white })
 call s:h("TabLine",      { "fg": s:grey_4, "bg": s:paper, "gui": "italic" })
 call s:h("TabLineSel",   { "fg": s:grey_2, "bg": s:white, "gui": "italic" })
 call s:h("TabLineFill",  { "bg": s:paper })
