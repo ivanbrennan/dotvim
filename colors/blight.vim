@@ -21,15 +21,17 @@ let s:black  = { "gui": "#121212", "cterm": "233" }
 let s:grey_7 = { "gui": "#f9f9f9", "cterm": "255" }
 let s:grey_6 = { "gui": "#eeeeee", "cterm": "255" }
 let s:grey_5 = { "gui": "#dadada", "cterm": "253" }
-let s:grey_x = { "gui": "#EFF2F1", "cterm": "253" }
 let s:grey_4 = { "gui": "#b2b2b2", "cterm": "249" }
 let s:grey_3 = { "gui": "#949494", "cterm": "246" }
 let s:grey_2 = { "gui": "#444444", "cterm": "238" }
 let s:grey_1 = { "gui": "#262626", "cterm": "235" }
 
+let s:grey_x = { "gui": "#E1E1E1", "cterm": "253" }
+let s:grey_y = { "gui": "#c7c7c7", "cterm": "253" }
 let s:nice_grey = { "gui": "#393E53", "cterm": "253" }
 let s:slate     = { "gui": "#666666", "cterm": "253" }
 let s:purpcoal  = { "gui": "#354668", "cterm": "253" }
+let s:paper     = { "gui": "#f7f7f7", "cterm": "253" }
 
 let s:solar  = { "gui": "#ffffdf", "cterm": "230" }
 let s:yellow = { "gui": "#ffffaf", "cterm": "229" }
@@ -69,7 +71,7 @@ if version >= 700
   call s:h("PmenuThumb",       { "bg": s:black })
   call s:h("PmenuSBar",        { "bg": s:grey_4 })
   call s:h("PmenuSel",         { "bg": s:aqua })
-  call s:h("ColorColumn",      { "bg": s:grey_6 })
+  call s:h("ColorColumn",      { "bg": s:paper })
   call s:h("SpellBad",         { "sp": s:orange, "gui": "undercurl" })
   call s:h("SpellCap",         { "sp": s:blue, "gui": "undercurl" })
   call s:h("SpellRare",        { "sp": s:green, "gui": "undercurl" })
@@ -85,8 +87,8 @@ endif
 
 " Highlights - UI ------------------------------------------{{{2
 call s:h("Normal",       { "fg": s:black, "bg": s:white })
-call s:h("NonText",      { "fg": s:grey_4, "bg": s:grey_6 })
-call s:h("LineNr",       { "fg": s:grey_4 })
+call s:h("NonText",      { "fg": s:paper, "bg": s:paper })
+call s:h("LineNr",       { "fg": s:grey_y })
 call s:h("Cursor",       { "fg": s:white, "bg": s:grey_4 })
 call s:h("Visual",       { "bg": s:visip })
 call s:h("IncSearch",    { "bg": s:yellow, "gui": "bold", "cterm": "bold" })
@@ -95,9 +97,9 @@ call s:h("StatusLine",   { "fg": s:nice_grey, "bg": s:grey_x, "gui": "bold" })
 call s:h("StatusLineNC", { "fg": s:grey_3, "bg": s:grey_x })
 call s:h("SignColumn",   { "fg": s:grey_3, "bg": s:grey_6 })
 call s:h("VertSplit",    { "fg": s:grey_4, "bg": s:white })
-call s:h("TabLine",      { "fg": s:grey_4, "bg": s:grey_6 })
-call s:h("TabLineSel",   { "fg": s:black, "bg": s:white })
-call s:h("TabLineFill",  { "bg": s:grey_x })
+call s:h("TabLine",      { "fg": s:grey_4, "bg": s:paper, "gui": "italic" })
+call s:h("TabLineSel",   { "fg": s:grey_2, "bg": s:white, "gui": "italic" })
+call s:h("TabLineFill",  { "bg": s:paper })
 call s:h("Folded",       { "fg": s:grey_2, "bg": s:white })
 call s:h("Directory",    { "fg": s:blue })
 call s:h("Title",        { "fg": s:blue, "gui": "bold", "cterm": "bold" })

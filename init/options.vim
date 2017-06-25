@@ -84,8 +84,6 @@ set list                        " show invisible characters
 set listchars=""                " reset the listchars
 set listchars=tab:▸\            " tab
 set listchars+=trail:·          " trailing space
-set listchars+=extends:»        " continues offscreen
-set listchars+=precedes:«       " precedes offscreen
 
 " statusline
 set laststatus=2
