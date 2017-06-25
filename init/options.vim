@@ -84,7 +84,3 @@ set list                        " show invisible characters
 set listchars=""                " reset the listchars
 set listchars=tab:▸\            " tab
 set listchars+=trail:·          " trailing space
-
-" statusline
-set laststatus=2
-set statusline=%f\ %M\ %h\ %w\ %=%l/%L·%v\ 

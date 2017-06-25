@@ -17,6 +17,8 @@ nnoremap          <C-,>k     :edit   ~/.vim/init/keybindings.vim<CR>
 nnoremap          <C-,><C-K> :edit   ~/.vim/init/keybindings.vim<CR>
 nnoremap          <C-,>o     :edit   ~/.vim/init/options.vim<CR>
 nnoremap          <C-,><C-O> :edit   ~/.vim/init/options.vim<CR>
+nnoremap          <C-,>s     :edit   ~/.vim/init/statusline.vim<CR>
+nnoremap          <C-,><C-S> :edit   ~/.vim/init/statusline.vim<CR>
 nnoremap          <C-,>t     :edit   ~/.vim/init/terminal.vim<CR>
 nnoremap          <C-,><C-T> :edit   ~/.vim/init/terminal.vim<CR>
 nnoremap          <C-,>w     :edit   ~/.vim/init/wild.vim<CR>

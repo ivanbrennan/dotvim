@@ -49,6 +49,7 @@ Plug 'vim-ruby/vim-ruby',              { 'for': 'ruby' }
 Plug 'vim-scripts/dbext.vim'
 Plug 'vim-scripts/hexHighlight.vim',   { 'on': 'HexHighlight' }
 Plug 'wellle/targets.vim'
+Plug 'wincent/pinnacle'
 Plug 'wlangstroth/vim-racket'
 " ····························· }}}1
 
