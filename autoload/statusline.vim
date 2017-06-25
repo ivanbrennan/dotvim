@@ -66,11 +66,4 @@ func! statusline#update_highlight() abort
         \   'term': l:type_style,
         \   'gui':  l:type_style
         \ })
-
-  " StatusLineNC + italics
-  let l:bg_nc = pinnacle#extract_bg('StatusLineNC')
-  let l:fg_nc = pinnacle#extract_fg('StatusLineNC')
-  highlight clear StatusLineNC
-  execute 'highlight! StatusLineNC ' .
-        \ pinnacle#highlight({ 'bg': bg_nc, 'fg': fg_nc  })
 endf
