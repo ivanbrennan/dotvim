@@ -27,9 +27,9 @@ set statusline+=%=                             " left/right separator
 set statusline+=%{toupper(&fenc)}              " encoding
 set statusline+=%(\ \ %{statusline#branch()}%)
 set statusline+=\ \                            " spaces
-set statusline+=%l                             " line
+set statusline+=%l:                            " line:
 set statusline+=%#StatusLineNC#                " dim
-set statusline+=:%v                            " :column
+set statusline+=%v                             " column
 set statusline+=%*                             " reset highlight group
 set statusline+=\                              " space
 
