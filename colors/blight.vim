@@ -15,7 +15,7 @@ let s:cached_background = &background
 let g:colors_name = "blight"
 
 " Palette ----------------------------------------------{{{2
-let s:white  = { "gui": "#ffffff", "cterm": "231" }
+let s:white  = { "gui": "#fcfcfc", "cterm": "231" }
 let s:black  = { "gui": "#121212", "cterm": "233" }
 
 let s:grey_7 = { "gui": "#f9f9f9", "cterm": "255" }
@@ -26,12 +26,13 @@ let s:grey_3 = { "gui": "#949494", "cterm": "246" }
 let s:grey_2 = { "gui": "#444444", "cterm": "238" }
 let s:grey_1 = { "gui": "#262626", "cterm": "235" }
 
-let s:grey_x = { "gui": "#ebebeb", "cterm": "253" }
+let s:grey_x = { "gui": "#e7e7e7", "cterm": "253" }
 let s:grey_y = { "gui": "#c7c7c7", "cterm": "253" }
+let s:grey_z = { "gui": "#f2f2f2", "cterm": "253" }
 let s:nice_grey = { "gui": "#393E53", "cterm": "253" }
 let s:slate     = { "gui": "#666666", "cterm": "253" }
 let s:purpcoal  = { "gui": "#354668", "cterm": "253" }
-let s:paper     = { "gui": "#f7f7f7", "cterm": "253" }
+let s:paper     = { "gui": "#f5f5f5", "cterm": "253" }
 
 let s:solar  = { "gui": "#ffffdf", "cterm": "230" }
 let s:yellow = { "gui": "#ffffaf", "cterm": "229" }
