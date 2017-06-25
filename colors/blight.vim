@@ -15,9 +15,10 @@ let s:cached_background = &background
 let g:colors_name = "blight"
 
 " Palette ----------------------------------------------{{{2
-let s:white  = { "gui": "#fcfcfc", "cterm": "231" }
+let s:white  = { "gui": "#ffffff", "cterm": "231" }
 let s:black  = { "gui": "#121212", "cterm": "233" }
 
+let s:owhite = { "gui": "#fcfcfc", "cterm": "231" }
 let s:grey_7 = { "gui": "#f9f9f9", "cterm": "255" }
 let s:grey_6 = { "gui": "#eeeeee", "cterm": "255" }
 let s:grey_5 = { "gui": "#dadada", "cterm": "253" }
@@ -87,7 +88,7 @@ if version >= 700
 endif
 
 " Highlights - UI ------------------------------------------{{{2
-call s:h("Normal",       { "fg": s:black, "bg": s:white })
+call s:h("Normal",       { "fg": s:black, "bg": s:owhite })
 call s:h("NonText",      { "fg": s:paper, "bg": s:paper })
 call s:h("LineNr",       { "fg": s:grey_y })
 call s:h("Cursor",       { "fg": s:white, "bg": s:grey_4 })
@@ -97,11 +98,11 @@ call s:h("Search",       { "bg": s:solar, "gui": "bold", "cterm": "bold" })
 call s:h("StatusLine",   { "fg": s:nice_grey, "bg": s:grey_x })
 call s:h("StatusLineNC", { "fg": s:grey_3, "bg": s:grey_x })
 call s:h("SignColumn",   { "fg": s:grey_3, "bg": s:grey_6 })
-call s:h("VertSplit",    { "fg": s:grey_3, "bg": s:white })
+call s:h("VertSplit",    { "fg": s:grey_3, "bg": s:owhite })
 call s:h("TabLine",      { "fg": s:grey_4, "bg": s:paper, "gui": "italic" })
-call s:h("TabLineSel",   { "fg": s:grey_2, "bg": s:white, "gui": "italic" })
+call s:h("TabLineSel",   { "fg": s:grey_2, "bg": s:owhite, "gui": "italic" })
 call s:h("TabLineFill",  { "bg": s:paper })
-call s:h("Folded",       { "fg": s:grey_2, "bg": s:white })
+call s:h("Folded",       { "fg": s:grey_2, "bg": s:owhite })
 call s:h("Directory",    { "fg": s:blue })
 call s:h("Title",        { "fg": s:blue, "gui": "bold", "cterm": "bold" })
 call s:h("ErrorMsg",     { "bg": s:pink })
