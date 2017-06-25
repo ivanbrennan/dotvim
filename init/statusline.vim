@@ -18,7 +18,10 @@ set statusline+=\                              " space
 set statusline+=%{toupper(&fenc)}              " encoding
 set statusline+=%(\ \ %{statusline#branch()}%)
 set statusline+=\ \                            " spaces
-set statusline+=%l:%v                          " line:column
+set statusline+=%l                             " line
+set statusline+=%#StatusLineNC#                " User2 highlight group (column)
+set statusline+=:%v                            " :column
+set statusline+=%*                             " reset highlight group
 set statusline+=\                              " space
 
 augroup Statusline

@@ -1,7 +1,10 @@
+func! statusline#current() abort
+  return bufnr('%') == g:actual_curbuf
+endf
+
 func! statusline#bufname() abort
   return statusline#current() ? bufname('%') : ''
 endf
-
 func! statusline#bufname_nc() abort
   return statusline#current() ? '' : bufname('%')
 endf
@@ -9,13 +12,8 @@ endf
 func! statusline#filetype() abort
   return statusline#current() ? '[' . &ft . ']' : ''
 endf
-
 func! statusline#filetype_nc() abort
   return statusline#current() ? '' : '[' . &ft . ']'
-endf
-
-func! statusline#current() abort
-  return bufnr('%') == g:actual_curbuf
 endf
 
 func! statusline#branch() abort
