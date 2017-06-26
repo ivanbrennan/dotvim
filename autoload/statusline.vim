@@ -24,11 +24,11 @@ func! statusline#after_filetype() abort
 endf
 
 func! statusline#branch() abort
-  let branch = fugitive#head()
+  let l:branch = fugitive#head()
   if empty(branch)
     return ''
   else
-    return '(' . fugitive#head() . ')'
+    return '(' . l:branch . ')'
   endif
 endf
 
