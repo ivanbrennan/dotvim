@@ -1,5 +1,5 @@
 func! statusline#current() abort
-  return bufnr('%') == g:actual_curbuf
+  return exists('g:actual_curbuf') && bufnr('%') == g:actual_curbuf
 endf
 
 func! statusline#bufname() abort
