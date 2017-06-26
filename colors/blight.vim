@@ -38,6 +38,7 @@ let s:paper     = { "gui": "#f5f5f5", "cterm": "253" }
 let s:solar  = { "gui": "#ffffdf", "cterm": "230" }
 let s:yellow = { "gui": "#ffffaf", "cterm": "229" }
 let s:pink   = { "gui": "#fceff0", "cterm": "217" }
+let s:dpink  = { "gui": "#f2bdc2", "cterm": "217" }
 let s:orange = { "gui": "#ff5f00", "cterm": "202" }
 let s:red    = { "gui": "#870000", "cterm": "88"  }
 let s:maroon = { "gui": "#5f0000", "cterm": "52"  }
@@ -48,7 +49,7 @@ let s:purple = { "gui": "#5f5f87", "cterm": "60"  }
 let s:visip  = { "gui": "#e7e9f3", "cterm": "195" }
 
 let s:aqua   = { "gui": "#dfffff", "cterm": "195" }
-let s:spring = { "gui": "#afffaf", "cterm": "157" }
+let s:spring = { "gui": "#ebfded", "cterm": "157" }
 let s:green  = { "gui": "#005f00", "cterm": "22"  }
 
 " Utility Function -----------------------------------------{{{2
@@ -109,7 +110,7 @@ call s:h("ErrorMsg",     { "fg": s:red })
 call s:h("DiffAdd",      { "bg": s:spring })
 call s:h("DiffChange",   { "bg": s:pink })
 call s:h("DiffDelete",   { "bg": s:pink })
-call s:h("DiffText",     { "bg": s:red, "gui": "bold", "cterm": "bold" })
+call s:h("DiffText",     { "bg": s:dpink })
 call s:h("FoldColumn",   { "fg": s:blue, "bg": s:grey_6 })
 hi! link WildMenu     IncSearch
 hi! link WarningMsg   ErrorMsg
