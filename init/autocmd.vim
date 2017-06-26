@@ -2,7 +2,8 @@
 augroup VimrcGroup
   autocmd!
   autocmd BufWritePost $MYVIMRC,vimrc.local  source $MYVIMRC
-  autocmd BufWritePost ~/*{.,}vim/init/*.vim source $MYVIMRC
+  autocmd BufWritePost ~/*{.,}vim/init/*.vim source $MYVIMRC |
+        \ call statusline#update_highlight()
 augroup END
 
 " git
