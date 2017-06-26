@@ -1,80 +1,13 @@
-" ion.vim ۰ Vim color scheme
-" Author:  Ivan Brennan (ivan.brennan@gmail.com)
-" Version: 0.1
+" Maintainer: Ivan Brennan <ivan.brennan@gmail.com>
 
-" Initialize ۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰{{{1
-hi clear
-syntax reset
-let s:cached_background = &background
-let g:colors_name="ion"
+set background=dark
 
-" Utility Function ۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰{{{2
-func! s:h(group, style)
-  execute "highlight" a:group
-        \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg.gui   : "NONE")
-        \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg.gui   : "NONE")
-        \ "guisp="   (has_key(a:style, "sp")    ? a:style.sp.gui   : "NONE")
-        \ "gui="     (has_key(a:style, "gui")   ? a:style.gui      : "NONE")
-        \ "ctermfg=" (has_key(a:style, "fg")    ? a:style.fg.cterm : "NONE")
-        \ "ctermbg=" (has_key(a:style, "bg")    ? a:style.bg.cterm : "NONE")
-        \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm    : "NONE")
-endf
+if version > 580
+  hi clear
+  if exists("syntax_on") | syntax reset | endif
+endif
 
-" Palette ۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰{{{2
-let s:white  = { "gui": "#ffffff", "cterm": "231" }
-let s:black  = { "gui": "#121212", "cterm": "233" }
-
-let s:owhite = { "gui": "#fcfcfc", "cterm": "231" }
-let s:grey_7 = { "gui": "#f9f9f9", "cterm": "255" }
-let s:grey_6 = { "gui": "#eeeeee", "cterm": "255" }
-let s:grey_5 = { "gui": "#bbbbbb", "cterm": "253" }
-let s:grey_4 = { "gui": "#b2b2b2", "cterm": "249" }
-let s:grey_3 = { "gui": "#949494", "cterm": "246" }
-let s:grey_2 = { "gui": "#444444", "cterm": "238" }
-let s:grey_1 = { "gui": "#23272e", "cterm": "235" }
-let s:grey_0 = { "gui": "#282c34", "cterm": "234" }
-
-let s:grey_x = { "gui": "#e7e7e7", "cterm": "253" }
-let s:grey_y = { "gui": "#c7c7c7", "cterm": "253" }
-let s:grey_z = { "gui": "#f2f2f2", "cterm": "253" }
-let s:nice_grey = { "gui": "#393E53", "cterm": "253" }
-let s:slate     = { "gui": "#666666", "cterm": "253" }
-let s:purpcoal  = { "gui": "#354668", "cterm": "253" }
-let s:paper     = { "gui": "#f5f5f5", "cterm": "253" }
-
-let s:solar  = { "gui": "#ffffdf", "cterm": "230" }
-let s:yellow = { "gui": "#ffffaf", "cterm": "229" }
-let s:pink   = { "gui": "#ffafaf", "cterm": "217" }
-let s:orange = { "gui": "#ff5f00", "cterm": "202" }
-let s:red    = { "gui": "#870000", "cterm": "88"  }
-let s:maroon = { "gui": "#5f0000", "cterm": "52"  }
-
-let s:blue   = { "gui": "#005f87", "cterm": "24"  }
-let s:indigo = { "gui": "#00005f", "cterm": "17"  }
-let s:purple = { "gui": "#5f5f87", "cterm": "60"  }
-let s:visip  = { "gui": "#e7e9f3", "cterm": "195" }
-
-let s:aqua   = { "gui": "#dfffff", "cterm": "195" }
-let s:spring = { "gui": "#afffaf", "cterm": "157" }
-let s:green  = { "gui": "#005f00", "cterm": "22"  }
-
-" Highlights ۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰{{{1
-call s:h("CursorLine",       { "bg": s:grey_1 })
-call s:h("CursorLineNr",     { "fg": s:grey_5, "bg": s:grey_0 })
-call s:h("MatchParen",       { "bg": s:purple })
-" hi MatchParen ctermfg=069 ctermbg=237 cterm=reverse guifg=#7194ff guibg=#1c1c1c
-" call s:h("Pmenu",            { "bg": s:grey_6 })
-" call s:h("PmenuThumb",       { "bg": s:black })
-" call s:h("PmenuSBar",        { "bg": s:grey_4 })
-" call s:h("PmenuSel",         { "bg": s:aqua })
-" call s:h("ColorColumn",      { "bg": s:paper })
-" call s:h("SpellBad",         { "sp": s:orange, "gui": "undercurl" })
-" call s:h("SpellCap",         { "sp": s:blue, "gui": "undercurl" })
-" call s:h("SpellRare",        { "sp": s:green, "gui": "undercurl" })
-" call s:h("SpellLocal",       { "sp": s:maroon, "gui": "undercurl" })
-" hi! link CursorColumn	CursorLine
-
-  hi ColorColumn  ctermbg=235                                     gui=None        guibg=#23272e
+let g:colors_name="old-ion"
 
 hi Normal       ctermfg=250 ctermbg=234                             gui=None        guifg=#bcbcbc       guibg=#282c34
 hi LineNr       ctermfg=239 ctermbg=234                             gui=None        guifg=#4e4e4e       guibg=#282c34
@@ -115,8 +48,10 @@ hi SignColumn   ctermfg=214 ctermbg=235                             gui=None    
 hi WildMenu     ctermfg=075 ctermbg=235 cterm=bold                  gui=bold        guifg=#5fafff       guibg=#23272e
 
 if version >= 700 " Vim 7.x specific colors
+  hi CursorLine   ctermbg=235 cterm=none                          gui=None        guibg=#23272e
   hi CursorColumn ctermbg=235 cterm=none                          gui=None        guibg=#23272e
 
+  hi MatchParen   ctermfg=069 ctermbg=237 cterm=reverse                           guifg=#7194ff       guibg=#1c1c1c
 
   hi Tabline      ctermfg=245 ctermbg=235 cterm=underline         gui=underline   guifg=#8a8a8a       guibg=#23272e
   hi TablineSel   ctermfg=250 ctermbg=234 cterm=bold              gui=bold        guifg=#bcbcbc       guibg=#282c34
@@ -131,6 +66,11 @@ if version >= 700 " Vim 7.x specific colors
   hi SpellCap     ctermfg=198 ctermbg=234 cterm=none              gui=None        guifg=#ff0087       guibg=#282c34
   hi SpellRare    ctermfg=198 ctermbg=234 cterm=none              gui=None        guifg=#ff0087       guibg=#282c34
   hi SpellLocal   ctermfg=198 ctermbg=234 cterm=none              gui=None        guifg=#ff0087       guibg=#282c34
+endif
+
+if version >= 703 " Vim 7.3 specific colors
+  hi ColorColumn  ctermbg=235                                     gui=None        guibg=#23272e
+  hi CursorLineNr ctermfg=239 ctermbg=234                         gui=None        guifg=#bbbbbb       guibg=#282c34
 endif
 
 " syntax highlighting groups
@@ -149,7 +89,4 @@ hi Ignore     ctermfg=214 ctermbg=234                               gui=None    
 hi Todo       ctermfg=196 ctermbg=234                               gui=None        guifg=#ff0000       guibg=#282c34
 hi Exception  ctermfg=080 ctermbg=234 cterm=bold                    gui=bold        guifg=#5fdfdf       guibg=#282c34
 
-" Cleanup ۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰{{{1
-execute "set background=" . s:cached_background
-
-" vim: fdm=marker:sw=2:sts=2:et
+"vim: sw=4
