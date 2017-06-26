@@ -73,4 +73,13 @@ func! statusline#update_highlight() abort
         \   'term': l:type_style,
         \   'gui':  l:type_style
         \ })
+
+  " StatusLine + unconditional italics
+  execute 'highlight! User3 ' .
+        \ pinnacle#highlight({
+        \   'bg':   l:bg,
+        \   'fg':   l:fg,
+        \   'term': 'italic',
+        \   'gui':  'italic'
+        \ })
 endf

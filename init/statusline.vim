@@ -22,7 +22,7 @@ set statusline+=\                                " space
 set statusline+=%w                               " preview
 set statusline+=%M                               " modified
 
-set statusline+=%=                               " left/right separator
+set statusline+=%=                               " separator
 
 set statusline+=%{toupper(&fenc)}                " encoding
 set statusline+=%(\ \ %{statusline#branch()}%)   " branch
