@@ -48,6 +48,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby',              { 'for': 'ruby' }
 Plug 'vim-scripts/dbext.vim'
 Plug 'vim-scripts/hexHighlight.vim',   { 'on': 'HexHighlight' }
+Plug 'vim-scripts/Super-Shell-Indent', { 'for': 'sh' }
 Plug 'wellle/targets.vim'
 Plug 'wincent/pinnacle'
 Plug 'wlangstroth/vim-racket'
