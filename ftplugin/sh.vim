@@ -1,1 +1,1 @@
-set foldmethod=indent
+set foldmethod=syntax
