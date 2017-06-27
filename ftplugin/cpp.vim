@@ -1,2 +1,2 @@
-set listchars-=tab:▸\ 
-set listchars+=tab:\ \ 
+setlocal listchars-=tab:▸\ 
+setlocal listchars+=tab:\ \ 

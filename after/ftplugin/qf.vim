@@ -14,4 +14,4 @@ if exists('w:quickfix_title')
   setlocal statusline+=\                " space
 endif
 
-set colorcolumn=""
+setlocal colorcolumn=""

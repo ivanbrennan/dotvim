@@ -1,6 +1,6 @@
-set omnifunc=rubycomplete#Complete
-set foldmethod=indent
-set foldlevel=99
+setlocal omnifunc=rubycomplete#Complete
+setlocal foldmethod=indent
+setlocal foldlevel=99
 
 " complete buffer loading can cause code execution
 " turn this off if it's a concern
