@@ -10,3 +10,6 @@
 ** Command T
 *** fast on large repo
 *** fuzzy find help docs
+* folding
+** update folds : zx
+** correctly deal with compound-lists in shell files
