@@ -100,18 +100,21 @@ endf
 
 " ··········· syntax ··················· {{{1
 func! SynStack()
-  if exists("*synstack")
-    return map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-  endif
+  return map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endf
 
-func! SynHighlight()
-  let stack = SynStack()
+func! SynHighlights(offset)
+  let l:stack  = SynStack()
+  let l:offset = max([a:offset, -len(l:stack)])
 
-  if len(stack) > 0
-    exe 'verbose hi ' . stack[-1]
-  endif
+  for name in l:stack[l:offset:]
+    exe 'verbose hi ' . name
+  endfor
 endf
+
+command! -nargs=0 SynStack call SynStack()
+command! -nargs=0 SynHighlight call SynHighlight(-1)
+command! -nargs=1 SynHighlights call SynHighlights()
 
 " ··········· colors ··················· {{{1
 func! ToggleBG()

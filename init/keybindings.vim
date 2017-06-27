@@ -227,7 +227,7 @@ noremap           <C-W><C-P>   gT
 
 " ··········· display ········· {{{1
 noremap  <silent> <Leader>`  :call ToggleColorscheme()<CR>
-noremap  <silent> <Leader>[  :call SynHighlight()<CR>
+noremap  <silent> <Leader>[  :call SynHighlights(-1)<CR>
 noremap  <silent> <Leader>.  :call StatusToggle()<CR>
 
 " folding
