@@ -103,9 +103,10 @@ func! SynStack()
   return map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endf
 
-func! SynHighlights(offset)
+func! SynHighlights(...)
   let l:stack  = SynStack()
-  let l:offset = max([a:offset, -len(l:stack)])
+  let l:arg    = a:0 > 0 ? a:1 : 0
+  let l:offset = max([l:arg, -len(l:stack)])
 
   for name in l:stack[l:offset:]
     exe 'verbose hi ' . name
@@ -113,8 +114,8 @@ func! SynHighlights(offset)
 endf
 
 command! -nargs=0 SynStack call SynStack()
-command! -nargs=0 SynHighlight call SynHighlight(-1)
-command! -nargs=1 SynHighlights call SynHighlights()
+command! -nargs=0 SynHighlight call SynHighlights(-1)
+command! -nargs=? SynHighlights call SynHighlights(<args>)
 
 " ··········· colors ··················· {{{1
 func! ToggleBG()
