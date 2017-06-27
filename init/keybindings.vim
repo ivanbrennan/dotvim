@@ -231,7 +231,7 @@ noremap  <silent> <Leader>[  :call SynHighlight()<CR>
 noremap  <silent> <Leader>.  :call StatusToggle()<CR>
 
 " folding
-noremap  <silent> <Leader>Z  :call FoldMethToggle()<CR>
+noremap  <silent> <Leader>Z  :call FoldMethCycle()<CR>
 noremap  <silent> <Leader>z  :call FoldColToggle(4)<CR>
 
 " colour column

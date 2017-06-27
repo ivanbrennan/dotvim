@@ -1,4 +1,5 @@
 set omnifunc=rubycomplete#Complete
+set foldmethod=indent
 set foldlevel=99
 
 " complete buffer loading can cause code execution

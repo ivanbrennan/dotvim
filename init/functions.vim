@@ -58,15 +58,19 @@ func! MoveToBol()
 endf
 
 " ··········· folding ·················· {{{1
-func! FoldMethToggle()
-  if &foldmethod == 'marker'
-    set foldmethod=syntax
-    if &filetype == 'ruby'
-      let ruby_fold = 1
-    endif
-  else
+func! FoldMethCycle()
+  if &foldmethod == 'syntax'
+    set foldmethod=indent
+  elseif &foldmethod == 'indent'
     set foldmethod=marker
-    if exists('ruby_fold')
+  elseif &foldmethod == 'marker'
+    set foldmethod=syntax
+  endif
+
+  if &filetype == 'ruby'
+    if &foldmethod == 'syntax'
+      let ruby_fold = 1
+    elseif exists('ruby_fold')
       unlet ruby_fold
     endif
   endif
