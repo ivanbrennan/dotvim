@@ -68,7 +68,7 @@ endfunction
 " Highlights ···············································{{{1
 " UI ·······················································{{{2
 call s:h("Normal",         { "fg": s:black, "bg": s:owhite })
-call s:h("NonText",        { "fg": s:paper, "bg": s:paper })
+call s:h("NonText",        { "fg": s:grey_5, "bg": s:paper })
 
 call s:h("Cursor",         { "fg": s:white, "bg": s:grey_4 })
 call s:h("CursorLine",     { "bg": s:grey_7 })
