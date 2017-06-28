@@ -12,7 +12,7 @@ func! SetKeyCode(key, escSeq, fnkey)
   execute 'map! '. a:fnkey .' '. a:key
 endf
 
-if &term =~ 'xterm\|screen\|builtin_gui'
+if &term =~ 'xterm\|tmux\|screen\|builtin_gui'
   " ··········· keycodes ········ {{{1
   " Codes conform to libtermkey (now in libtickit) specification.
   " Most modified keys are encoded as: CSI[codepoint];[modifier]u
@@ -36,7 +36,7 @@ if &term =~ 'xterm\|screen\|builtin_gui'
 endif
 
 " extended mouse mode
-if &term =~ '^screen'
+if &term =~ '^\%(tmux\|screen\)'
   set ttymouse=xterm2
 
   " Fix behavior of modified arrows in tmux.
