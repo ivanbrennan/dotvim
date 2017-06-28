@@ -1,9 +1,5 @@
 " ::::::::: Terminal ::::::::::::::::::::::
 
-if has('termguicolors')
-  set termguicolors
-endif
-
 if has('nvim')
   " these hacks don't work in neovim, nor are they necessary if terminal is configured according to
   " the specification used by libtermkey/libtickit
