@@ -11,7 +11,6 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let s:cached_background = &background
 let g:colors_name = "blight"
 
 " Palette ··················································{{{2
@@ -249,8 +248,5 @@ hi! link helpSectionDelim    Comment
 hi! link helpHyperTextEntry  Statement
 hi! link helpHyperTextJump   Underlined
 hi! link helpURL             Underlined
-
-" Cleanup ··················································{{{1
-execute "set background=" . s:cached_background
 
 " vim: fdm=marker:sw=2:sts=2:et
