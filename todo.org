@@ -13,3 +13,7 @@
 * folding
 ** update folds : zx
 ** correctly deal with compound-lists in shell files
+* bind q to quit certain modes
+** help
+** quickfix
+** netrw
