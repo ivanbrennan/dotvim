@@ -66,10 +66,10 @@ function! s:h(group, style)
 endfunction
 
 " Highlights ···············································{{{1
-" UI ·······················································{{{2
+" Normal · (this affects 'background' so set it first) ·····{{{2
 call s:h("Normal",         { "fg": s:black, "bg": s:owhite })
-call s:h("NonText",        { "fg": s:grey_5, "bg": s:paper })
 
+" UI ·······················································{{{2
 call s:h("Cursor",         { "fg": s:white, "bg": s:grey_4 })
 call s:h("CursorLine",     { "bg": s:grey_7 })
 hi! link CursorColumn      CursorLine
@@ -91,6 +91,8 @@ call s:h("IncSearch",      { "bg": s:yellow, "gui": "bold", "cterm": "bold" })
 call s:h("Search",         { "bg": s:solar, "gui": "bold", "cterm": "bold" })
 call s:h("MatchParen",     { "bg": s:aqua })
 call s:h("Visual",         { "bg": s:visip })
+
+call s:h("NonText",        { "fg": s:grey_5, "bg": s:paper })
 
 call s:h("StatusLine",     { "fg": s:nice_grey, "bg": s:grey_x })
 call s:h("StatusLineNC",   { "fg": s:grey_3, "bg": s:grey_x })
