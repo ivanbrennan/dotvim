@@ -106,12 +106,13 @@ call s:h("PmenuSBar",      { "bg": s:grey_4 })
 call s:h("PmenuSel",       { "bg": s:aqua })
 hi! link WildMenu          IncSearch
 
+call s:h("ModeMsg",        { "fg": s:grey_3, "gui": "italic", "cterm": "italic" })
+
 call s:h("Directory",      { "fg": s:blue })
 
 call s:h("Title",          { "fg": s:blue, "gui": "bold", "cterm": "bold" })
 hi! link MoreMsg           Title
 hi! link Question          Title
-hi! link ModeMsg           Title
 hi! link ErrorMsg          Error
 hi! link WarningMsg        Error
 

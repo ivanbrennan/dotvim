@@ -60,7 +60,6 @@ set foldmethod=syntax
 set foldlevelstart=10
 set nofoldenable
 set showcmd
-set noshowmode
 set lazyredraw
 
 " notifications
