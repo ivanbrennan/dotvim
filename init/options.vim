@@ -55,7 +55,7 @@ set number
 set title
 set nowrap
 set showtabline=1
-set fillchars=vert:│,fold:۰
+set fillchars=vert:│
 set foldmethod=syntax
 set foldlevelstart=10
 set nofoldenable

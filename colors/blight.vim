@@ -83,7 +83,7 @@ call s:h("DiffChange",     { "bg": s:pink })
 call s:h("DiffDelete",     { "bg": s:pink })
 call s:h("DiffText",       { "bg": s:dpink })
 
-call s:h("Folded",         { "fg": s:grey_3, "gui": "italic", "cterm": "italic" })
+call s:h("Folded",         { "fg": s:grey_3 })
 call s:h("FoldColumn",     { "fg": s:blue, "bg": s:grey_6 })
 
 call s:h("IncSearch",      { "bg": s:yellow, "gui": "bold", "cterm": "bold" })
