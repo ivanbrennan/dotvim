@@ -40,7 +40,6 @@ if &term =~ '^\%(tmux\|screen\)'
   set ttymouse=xterm2
 
   " Fix behavior of modified arrows in tmux.
-  " TODO: Check whether this is necessary in neovim.
   set    <xUp>=[1;*A
   set  <xDown>=[1;*B
   set <xRight>=[1;*C
