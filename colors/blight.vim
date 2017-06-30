@@ -72,6 +72,7 @@ call s:h("Normal",         { "fg": s:black, "bg": s:owhite })
 call s:h("Cursor",         { "fg": s:white, "bg": s:grey_4 })
 call s:h("CursorLine",     { "bg": s:grey_7 })
 hi! link CursorColumn      CursorLine
+call s:h("QuickFixLine",   { "bg": s:grey_6 })
 
 call s:h("ColorColumn",    { "bg": s:paper })
 call s:h("CursorLineNr",   { "fg": s:black })
@@ -90,8 +91,10 @@ call s:h("IncSearch",      { "bg": s:yellow, "gui": "bold", "cterm": "bold" })
 call s:h("Search",         { "bg": s:solar, "gui": "bold", "cterm": "bold" })
 call s:h("MatchParen",     { "bg": s:aqua })
 call s:h("Visual",         { "bg": s:visip })
+call s:h("Substitute",     { "fg": s:lava, "gui": "underline", "cterm": "underline" })
 
-call s:h("NonText",        { "fg": s:grey_5, "bg": s:paper })
+call s:h("NonText",        { "fg": s:paper, "bg": s:paper })
+call s:h("Whitespace",     { "fg": s:grey_5, "bg": s:paper })
 
 call s:h("StatusLine",     { "fg": s:nice_grey, "bg": s:grey_x })
 call s:h("StatusLineNC",   { "fg": s:grey_3, "bg": s:grey_x })
