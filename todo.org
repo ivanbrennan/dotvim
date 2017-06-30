@@ -18,3 +18,4 @@
 ** help
 ** quickfix
 ** netrw
+* consider vim-test
