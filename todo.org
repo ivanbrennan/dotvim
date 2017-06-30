@@ -19,3 +19,4 @@
 ** quickfix
 ** netrw
 * consider vim-test
+* neovim-remote
