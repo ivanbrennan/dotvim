@@ -36,6 +36,9 @@ set nojoinspaces
 set nrformats=
 set complete-=i
 set clipboard=unnamed  " default to the clipboard register
+if exists('+inccommand')
+  set inccommand=nosplit  " nvim magic
+endif
 
 " formatting
 let s:tw=90
