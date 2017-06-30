@@ -27,24 +27,24 @@ nnoremap          <C-,><C-W> :edit   ~/.vim/init/wild.vim<CR>
 " ··········· buffers ········· {{{1
 cnoremap <expr>   %%    getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
 
-nmap <silent> <Leader>- :tabedit %%<CR>
+nmap <silent> <leader>- :tabedit %%<CR>
 
-nnoremap <Leader>e      :edit 
-nmap     <Leader>ee     :edit %%
-nnoremap <Leader>et     :tabedit 
-nnoremap <Leader>eh     :edit ~/
+nnoremap <leader>e      :edit 
+nmap     <leader>ee     :edit %%
+nnoremap <leader>et     :tabedit 
+nnoremap <leader>eh     :edit ~/
 
-nnoremap <Leader>fs     :write<CR>
-nnoremap <Leader>wq     :wq 
+nnoremap <leader>fs     :write<CR>
+nnoremap <leader>wq     :wq 
 
-nnoremap  <Leader>dd    :bdelete<CR>
-nnoremap  <Leader>dl    :bdelete#<CR>
+nnoremap  <leader>dd    :bdelete<CR>
+nnoremap  <leader>dl    :bdelete#<CR>
 
 " Buffer list
-noremap  <Leader><Space> :buffers<CR>
-nnoremap <Leader>bn      :bnext<CR>
-nnoremap <Leader>bp      :bprevious<CR>
-nnoremap <Leader>l       <C-^>
+noremap  <leader><Space> :buffers<CR>
+nnoremap <leader>bn      :bnext<CR>
+nnoremap <leader>bp      :bprevious<CR>
+nnoremap <leader>l       <C-^>
 
 " Quickfix list (alt h/j/k/l)
 nmap     <C-@>          <Plug>QfxListical
@@ -61,17 +61,17 @@ nnoremap <M-K>          :lprevious<CR>
 nnoremap <M-H>          :lolder<CR>
 nnoremap <M-L>          :lnewer<CR>
 
-noremap  <silent> <Leader><Bslash> :call ReloadBuffers()<CR>
+noremap  <silent> <leader><Bslash> :call ReloadBuffers()<CR>
 
 " Vinegar
 nnoremap - -
-nmap     <Leader>h  <Plug>VinegarUp
+nmap     <leader>h  <Plug>VinegarUp
 
 " ··········· ex commands ····· {{{1
 noremap  <S-Space>        :
-nnoremap <Leader>1        :!
-noremap  <Leader>:        :<Up>
-nnoremap <Leader>H        :help 
+nnoremap <leader>1        :!
+noremap  <leader>:        :<Up>
+nnoremap <leader>H        :help 
 
 cnoremap <C-P>            <Up>
 cnoremap <C-N>            <Down>
@@ -109,26 +109,26 @@ nnoremap Y y$
 set pastetoggle=<F8>
 
 " select last changed/yanked text
-nnoremap <Leader>V `[v`]
+nnoremap <leader>V `[v`]
 
 " registers
 noremap           ' "
-noremap  <Leader>y  "*y
-noremap  <Leader>ye "*y$
-noremap  <Leader>p  "*p
+noremap  <leader>y  "*y
+noremap  <leader>ye "*y$
+noremap  <leader>p  "*p
 
 " the abyss
 vnoremap <BS> "_d
 
 " commentary
-xmap     <Leader>;  <Plug>Commentary
-nmap     <Leader>;  <Plug>Commentary
-omap     <Leader>;  <Plug>Commentary
-nmap     <Leader>;; <Plug>CommentaryLine
+xmap     <leader>;  <Plug>Commentary
+nmap     <leader>;  <Plug>Commentary
+omap     <leader>;  <Plug>Commentary
+nmap     <leader>;; <Plug>CommentaryLine
 
 " arg-wrap
-nnoremap <silent> <Leader>) :ArgWrap<CR>
-nnoremap <silent> <Leader>( :ArgWrap<CR>
+nnoremap <silent> <leader>) :ArgWrap<CR>
+nnoremap <silent> <leader>( :ArgWrap<CR>
 
 " jump around insert mode
 inoremap <C-B>      <C-O>b
@@ -139,7 +139,7 @@ inoremap KJ         <C-O>I
 inoremap <C-_>      <Esc>viwg~gi
 
 " end of line
-noremap <Leader>4   $
+noremap <leader>4   $
 
 " hash-rocket
 inoremap <C-.> <Space>=><Space>
@@ -156,7 +156,7 @@ inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<S-Tab>")
 
 " ··········· search ·········· {{{1
 " marks
-noremap <Leader>g `
+noremap <leader>g `
 
 " emacs taking over my life
 noremap  <C-S>  /
@@ -166,22 +166,22 @@ nnoremap     U  <C-R>
 nmap <C-Bslash> <Plug>(RepeatRedo)
 
 " :nohlsearch
-nnoremap  <silent> <Leader><CR> :nohlsearch<CR>
+nnoremap  <silent> <leader><CR> :nohlsearch<CR>
 " lazy matchit
-map      <Leader>5  %
+map      <leader>5  %
 
 " sane regexes
 nnoremap  /  /\v
 vnoremap  /  /\v
 nnoremap  ?  ?\v
 vnoremap  ?  ?\v
-nnoremap  <Leader>/  /
-nnoremap  <Leader>?  ?
+nnoremap  <leader>/  /
+nnoremap  <leader>?  ?
 
 " substitute
-nnoremap <Leader>S  :%s/
-nnoremap <Leader>s  :s/
-vnoremap <Leader>s  :s/
+nnoremap <leader>S  :%s/
+nnoremap <leader>s  :s/
+vnoremap <leader>s  :s/
 nnoremap        c.  *Ncgn
 
 " preserve flags
@@ -189,13 +189,13 @@ nnoremap &  :&&<CR>
 xnoremap &  :&&<CR>
 
 " fzf (reserved)
-" nnoremap <Leader><C-G> some-fzf-command
+" nnoremap <leader><C-G> some-fzf-command
 
 " Ag
-nnoremap <Leader>a  :Grepper<CR>
+nnoremap <leader>a  :Grepper<CR>
 
 " word under cursor
-noremap <silent> <Leader>* :set foldenable!<CR>
+noremap <silent> <leader>* :set foldenable!<CR>
       \:let view=winsaveview()<CR>#*
       \:call winrestview(view)<CR>:set foldenable!<CR>
 
@@ -216,8 +216,8 @@ noremap           <C-W>u         <C-W>_
 noremap           <C-W><C-U>     <C-W>_
 noremap  <silent> <C-W>]         :vertical stag<CR>
 noremap  <silent> <C-W><C-]>     :vertical stag<CR>
-noremap           <Leader>q      <C-W><C-Q>
-noremap           <Leader>,      <C-W>p
+noremap           <leader>q      <C-W><C-Q>
+noremap           <leader>,      <C-W>p
 
 " ··········· tabs ············ {{{1
 noremap           <C-W>n       gt
@@ -226,16 +226,16 @@ noremap           <C-W>p       gT
 noremap           <C-W><C-P>   gT
 
 " ··········· display ········· {{{1
-noremap  <silent> <Leader>`  :call ToggleColorscheme()<CR>
-noremap  <silent> <Leader>[  :call SynHighlights(-1)<CR>
-noremap  <silent> <Leader>.  :call StatusToggle()<CR>
+noremap  <silent> <leader>`  :call ToggleColorscheme()<CR>
+noremap  <silent> <leader>[  :call SynHighlights(-1)<CR>
+noremap  <silent> <leader>.  :call StatusToggle()<CR>
 
 " folding
-noremap  <silent> <Leader>Z  :call FoldMethCycle()<CR>
-noremap  <silent> <Leader>z  :call FoldColToggle(4)<CR>
+noremap  <silent> <leader>Z  :call FoldMethCycle()<CR>
+noremap  <silent> <leader>z  :call FoldColToggle(4)<CR>
 
 " colour column
-nnoremap <silent> <Leader>]  :call ColorColToggle()<CR>
+nnoremap <silent> <leader>]  :call ColorColToggle()<CR>
 
 " emacs redraws
 nnoremap <C-L>       zz<C-L>
@@ -247,23 +247,23 @@ noremap <silent> zz      :call Reposition()<CR>
 " ··········· testing ········· {{{1
 nmap         t<CR>        <Plug>RunFocusedSpec
 nmap         T<CR>        <Plug>RunCurrentSpecFile
-nmap      <Leader>t       <Plug>RunMostRecentSpec
+nmap      <leader>t       <Plug>RunMostRecentSpec
 
 " ··········· git ············· {{{1
-noremap <silent> <Leader><C-V>  :Gblame<CR>
+noremap <silent> <leader><C-V>  :Gblame<CR>
 
 " ··········· ruby ············ {{{1
-noremap  <silent> <Leader>R     :w !ruby<CR>
+noremap  <silent> <leader>R     :w !ruby<CR>
 " ··········· rails ··········· {{{1
-nnoremap <silent> <Leader><Tab> :A<CR>
-nnoremap          <Leader>E     :Eschema 
-nnoremap          <Leader>M     :Emigration 
-nnoremap          <Leader>es    :Espec 
-nnoremap          <Leader>ef    :edit spec/factories/
-nnoremap          <Leader>ec    :Econtroller 
-nnoremap          <Leader>em    :Emodel 
-nnoremap          <Leader>ev    :Eview 
-nnoremap          <Leader>eh    :Ehelper 
+nnoremap <silent> <leader><Tab> :A<CR>
+nnoremap          <leader>E     :Eschema 
+nnoremap          <leader>M     :Emigration 
+nnoremap          <leader>es    :Espec 
+nnoremap          <leader>ef    :edit spec/factories/
+nnoremap          <leader>ec    :Econtroller 
+nnoremap          <leader>em    :Emodel 
+nnoremap          <leader>ev    :Eview 
+nnoremap          <leader>eh    :Ehelper 
 
-nnoremap <Leader>P Obinding.pry<Esc>0
+nnoremap <leader>P Obinding.pry<Esc>0
 
