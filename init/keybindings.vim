@@ -103,7 +103,7 @@ inoremap <S-CR>     <C-O>O
 inoremap <C-CR>     <C-O>o
 
 " sensible Y
-nmap Y y$
+nnoremap Y y$
 
 " paste toggle
 set pastetoggle=<F8>

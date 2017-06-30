@@ -26,7 +26,6 @@ Plug 'ivanbrennan/vmux'
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
 Plug 'jwhitley/vim-matchit'
 Plug 'kchmck/vim-coffee-script',       { 'for': 'coffee' }
-Plug 'machakann/vim-highlightedyank'
 Plug 'mhinz/vim-grepper'
 Plug 'nelstrom/vim-qargs',             { 'on': 'Qargs' }
 Plug 'nelstrom/vim-visual-star-search'
