@@ -49,17 +49,17 @@ nnoremap <Leader>l       <C-^>
 " Quickfix list (alt h/j/k/l)
 nmap     <C-@>          <Plug>QfxListical
 nmap     <C-Space>      <Plug>QfxListical
-nnoremap ∆              :cnext<CR>
-nnoremap ˚              :cprevious<CR>
-nnoremap ˙              :colder<CR>
-nnoremap ¬              :cnewer<CR>
+nnoremap <M-j>          :cnext<CR>
+nnoremap <M-k>          :cprevious<CR>
+nnoremap <M-h>          :colder<CR>
+nnoremap <M-l>          :cnewer<CR>
 
 " Location List (alt H/J/K/L)
 nmap     <C-S-Space>    <Plug>LocListical
-nnoremap Ô              :lnext<CR>
-nnoremap               :lprevious<CR>
-nnoremap Ó              :lolder<CR>
-nnoremap Ò              :lnewer<CR>
+nnoremap <M-J>          :lnext<CR>
+nnoremap <M-K>          :lprevious<CR>
+nnoremap <M-H>          :lolder<CR>
+nnoremap <M-L>          :lnewer<CR>
 
 noremap  <silent> <Leader><Bslash> :call ReloadBuffers()<CR>
 
