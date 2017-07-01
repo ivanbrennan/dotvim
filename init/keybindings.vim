@@ -125,7 +125,9 @@ inoremap JK         <End>
 inoremap KJ         <Home>
 
 " edit like you're emacs
-inoremap <C-D>      <Del>
+inoremap        <C-D> <Del>
+inoremap <expr> <C-T> TransposeChars()
+cnoremap <expr> <C-T> TransposeChars()
 
 " toggle case
 inoremap <C-_>      <Esc>viwg~gi

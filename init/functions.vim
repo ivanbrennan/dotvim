@@ -66,6 +66,40 @@ func! Reposition()
   execute 'normal ' . movement
 endf
 
+" ··········· transposition ············ {{{1
+func! TransposeChars()
+  let l:col  = CursorPos()
+  let l:line = CursorLine()
+
+  if l:col == 1
+    return ''
+  elseif l:col > len(l:line)
+    return TransposePrecedingChars(l:line, l:col)
+  else
+    return TransposeSurroundingChars(l:line, l:col)
+  endif
+endf
+
+func! CursorPos()
+  return mode() == 'c' ? getcmdpos() : col('.')
+endf
+
+func! CursorLine()
+  return mode() == 'c' ? getcmdline() : getline('.')
+endf
+
+func! TransposePrecedingChars(line, col)
+  if a:col > 2
+    return "\<BS>\<BS>" . a:line[ a:col-2 ] . a:line[ a:col-3 ]
+  else
+    return mode() == 'i' ? "\<C-G>U\<Left>" : "\<Left>"
+  end
+endf
+
+func! TransposeSurroundingChars(line, col)
+  return "\<BS>\<Del>" . a:line[ a:col-1 ] . a:line[ a:col-2 ]
+endf
+
 " ··········· movement ················· {{{1
 func! MoveToBol()
   return col('.') > 1 ? '0' : '^'
