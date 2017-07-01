@@ -24,7 +24,7 @@ elseif exists("b:current_syntax")
 	finish
 endif
 
-setlocal iskeyword+=-
+setl iskeyword+=-
 syntax case match
 
 syn keyword tmuxAction	any current none

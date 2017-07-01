@@ -1,17 +1,17 @@
 if exists('w:quickfix_title')
   " Adjust quickfix statusline to show the command that was run and total line count:
-  setlocal statusline=\                 " space
-  setlocal statusline+=%3*              " italics
-  setlocal statusline+=%{w:quickfix_title}
-  setlocal statusline+=%*               " reset highlight group
-  setlocal statusline+=\                " space
-  setlocal statusline+=%=               " separator
-  setlocal statusline+=%l               " line
-  setlocal statusline+=%#StatusLineNC#  " dim
-  setlocal statusline+=/                " literal '/'
-  setlocal statusline+=%*               " reset highlight group
-  setlocal statusline+=%L               " total lines
-  setlocal statusline+=\                " space
+  setl statusline=\                 " space
+  setl statusline+=%3*              " italics
+  setl statusline+=%{w:quickfix_title}
+  setl statusline+=%*               " reset highlight group
+  setl statusline+=\                " space
+  setl statusline+=%=               " separator
+  setl statusline+=%l               " line
+  setl statusline+=%#StatusLineNC#  " dim
+  setl statusline+=/                " literal '/'
+  setl statusline+=%*               " reset highlight group
+  setl statusline+=%L               " total lines
+  setl statusline+=\                " space
 endif
 
-setlocal colorcolumn=""
+setl colorcolumn=""

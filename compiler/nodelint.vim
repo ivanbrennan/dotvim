@@ -6,7 +6,7 @@ endif
 let current_compiler = 'nodelint'
 
 if exists(":CompilerSet") != 2
-	command -nargs=* CompilerSet setlocal <args>
+	command -nargs=* CompilerSet setl <args>
 endif
 
 if !exists('g:nodelint_onwrite')
@@ -63,9 +63,9 @@ if executable('nodelint')
   " use config file if any found, or default
   let s:config_option = s:config == '' ? '' : '--config\ ' . s:config
 
-  execute 'setlocal efm=%fline\ %l\ column\ %c\ Error:\ %m'
+  execute 'setl efm=%fline\ %l\ column\ %c\ Error:\ %m'
 
-  execute 'setlocal makeprg=nodelint\ %\ ' . s:config_option . '\ ' . s:nodelint_reporter_option
+  execute 'setl makeprg=nodelint\ %\ ' . s:config_option . '\ ' . s:nodelint_reporter_option
 
 endif
 
@@ -86,9 +86,9 @@ function! NodeLint(saved)
 
 	"shellpipe
     if has('win32') || has('win16') || has('win95') || has('win64')
-        setlocal sp=>%s
+        setl sp=>%s
     else
-        setlocal sp=>%s\ 2>&1
+        setl sp=>%s\ 2>&1
     endif
 
 	silent lmake
