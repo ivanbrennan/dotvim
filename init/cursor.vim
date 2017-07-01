@@ -1,6 +1,7 @@
 " ::::::::: Cursor ::::::::::::::::::::::::
 
 " ··········· helpers ········· {{{1
+" Do I still need/want this?
 highlight! CursorLineClear guibg=NONE guifg=NONE gui=NONE ctermbg=NONE ctermfg=NONE cterm=NONE
 
 func! InitCursorVars()
