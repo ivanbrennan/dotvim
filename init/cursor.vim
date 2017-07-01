@@ -39,7 +39,7 @@ elseif &term =~ 'tmux\|screen' && exists("$TMUX")
 endif
 
 " cursorline
-set cursorline
+setg cursorline
 let w:cursorline_on = 0
 
 augroup CursorGroup

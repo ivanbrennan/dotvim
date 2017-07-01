@@ -191,9 +191,9 @@ xnoremap &  :&&<CR>
 nnoremap <leader>a  :Grepper<CR>
 
 " word under cursor
-noremap <silent> <leader>* :set foldenable!<CR>
+noremap <silent> <leader>* :setl foldenable!<CR>
       \:let view=winsaveview()<CR>#*
-      \:call winrestview(view)<CR>:set foldenable!<CR>
+      \:call winrestview(view)<CR>:setl foldenable!<CR>
 
 " ··········· movement ········ {{{1
 " first non-blank on previous line

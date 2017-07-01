@@ -14,9 +14,9 @@ set history=500
 set hidden
 
 " tags
-set tags-=./tags    " don't just look in the current buffer's directory (vim)
-set tags-=./tags;   " don't just look in the current buffer's directory (nvim)
-set tags+=./tags;~  " search for tags recursively upwards until ~
+setg tags-=./tags    " don't just look in the current buffer's directory (vim)
+setg tags-=./tags;   " don't just look in the current buffer's directory (nvim)
+setg tags+=./tags;~  " search for tags recursively upwards until ~
 
 " navigation
 set incsearch
@@ -33,8 +33,8 @@ set splitbelow
 " editing
 set backspace=indent,eol,start
 set nojoinspaces
-set nrformats=
-set complete-=i
+setg nrformats=
+setg complete-=i
 set clipboard=unnamed  " default to the clipboard register
 if exists('+inccommand')
   set inccommand=nosplit  " nvim magic
@@ -42,26 +42,26 @@ endif
 
 " formatting
 let s:tw=90
-let &textwidth=s:tw
-let &colorcolumn=join(range(s:tw+1, s:tw+256),',')
+let &g:textwidth=s:tw
+let &g:colorcolumn=join(range(s:tw+1, s:tw+256),',')
 call matchadd('ColorColumn', '\%>'.s:tw.'v', 100)
-exe 'set formatprg=par\ -w'.s:tw
+exe 'setg formatprg=par\ -w'.s:tw
 unlet s:tw
-set formatoptions-=t            " don't auto-wrap non-commented text
-set formatoptions-=o            " don't auto-comment with o or O
-set formatoptions+=r            " auto-comment with Enter
-silent! set formatoptions+=j    " let J handle comments if supported
+setg formatoptions-=t            " don't auto-wrap non-commented text
+setg formatoptions-=o            " don't auto-comment with o or O
+setg formatoptions+=r            " auto-comment with Enter
+silent! setg formatoptions+=j    " let J handle comments if supported
 
 " appearance
-set synmaxcol=256
-set number
+setg synmaxcol=256
+setg number
 set title
-set nowrap
+setg nowrap
 set showtabline=1
 set fillchars=vert:│
-set foldmethod=syntax
+setg foldmethod=syntax
 set foldlevelstart=10
-set nofoldenable
+setg nofoldenable
 set showcmd
 set lazyredraw
 
@@ -74,18 +74,18 @@ set showmatch
 set matchtime=2
 
 " whitespace
-set tabstop=2                   " tab is two spaces
-set softtabstop=2               " softtab is two spaces
-set shiftwidth=2                " autoindent is two spaces
-set expandtab                   " convert tabs to spaces
+setg tabstop=2                   " tab is two spaces
+setg softtabstop=2               " softtab is two spaces
+setg shiftwidth=2                " autoindent is two spaces
+setg expandtab                   " convert tabs to spaces
 
 " characters
 if exists('&guifont')
   set guifont=Sauce\ Code\ Powerline:h14
 endif
-set list                        " show invisible characters
-set listchars=""                " reset the listchars
-set listchars=tab:▸\            " tab
-set listchars+=trail:·          " trailing space
-set listchars+=extends:»        " continues offscreen
-set listchars+=precedes:«       " precedes offscreen
+setg list                        " show invisible characters
+setg listchars=""                " reset the listchars
+setg listchars=tab:▸\            " tab
+setg listchars+=trail:·          " trailing space
+setg listchars+=extends:»        " continues offscreen
+setg listchars+=precedes:«       " precedes offscreen

@@ -39,9 +39,9 @@ endf
 " ··········· line numbers ············· {{{1
 func! NumberToggle()
   if &number == 0
-    set foldcolumn=0 number number?
+    setl foldcolumn=0 number number?
   else
-    set foldcolumn=1 nonumber number?
+    setl foldcolumn=1 nonumber number?
   end
 endf
 
@@ -108,11 +108,11 @@ endf
 " ··········· folding ·················· {{{1
 func! FoldMethCycle()
   if &foldmethod == 'syntax'
-    set foldmethod=indent
+    setl foldmethod=indent
   elseif &foldmethod == 'indent'
-    set foldmethod=marker
+    setl foldmethod=marker
   elseif &foldmethod == 'marker'
-    set foldmethod=syntax
+    setl foldmethod=syntax
   endif
 
   if &filetype == 'ruby'
@@ -135,17 +135,17 @@ func! FoldColToggle(fold_max)
 endf
 
 func! FoldColOn(fold_max)
-  let w:use_num  = &number==1
-  let w:use_rel  = &relativenumber==1
-  let w:fold_min = &foldcolumn
+  let w:use_num  = &l:number
+  let w:use_rel  = &l:relativenumber
+  let w:fold_min = &l:foldcolumn
 
-  set nonumber norelativenumber
-  let &foldcolumn = a:fold_max
+  setl nonumber norelativenumber
+  let &l:foldcolumn = a:fold_max
 endf
 
 func! FoldColOff()
-  let [ &number, &relativenumber ] = [ w:use_num, w:use_rel ]
-  let &foldcolumn = w:fold_min
+  let [ &l:number, &l:relativenumber ] = [ w:use_num, w:use_rel ]
+  let &l:foldcolumn = w:fold_min
 endf
 
 " ··········· syntax ··················· {{{1
@@ -197,11 +197,11 @@ func! TransparencyToggle(transpr)
 endf
 
 func! ColorColToggle()
-  if &colorcolumn == ""
-    let width = (&textwidth > 0) ? &textwidth : 80
-    let &colorcolumn=join(range(width+1, width+256),',')
+  if &l:colorcolumn == ""
+    let width = (&l:textwidth > 0) ? &l:textwidth : 80
+    let &l:colorcolumn=join(range(width+1, width+256),',')
   else
-    set colorcolumn=
+    setl colorcolumn=
   endif
 endf
 
