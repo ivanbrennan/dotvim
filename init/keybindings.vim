@@ -55,16 +55,19 @@ noremap  <silent> <leader><Bslash> :call ReloadBuffers()<CR>
 nnoremap - -
 nmap     <leader>h  <Plug>VinegarUp
 
-" ··········· ex commands ····· {{{1
+" ··········· command-line ···· {{{1
 noremap  <S-Space>        :
 nnoremap <leader>1        :!
 noremap  <leader>:        :<Up>
 nnoremap <leader>H        :help 
 
-cnoremap <C-P>            <Up>
-cnoremap <C-N>            <Down>
-cnoremap <C-A>            <Home>
-cnoremap <C-B>            <Left>
+cnoremap        <C-P> <Up>
+cnoremap        <C-N> <Down>
+cnoremap        <C-A> <Home>
+cnoremap        <C-B> <Left>
+cnoremap <expr> <C-D> getcmdpos() > len(getcmdline()) ? "\<C-D>" : "\<Del>"
+cnoremap <expr> <C-F> getcmdpos() > len(getcmdline()) ? "\<C-F>" : "\<Right>"
+cnoremap <expr> <C-T> TransposeChars()
 
 " ··········· positioning ····· {{{1
 " push newline
@@ -127,7 +130,6 @@ inoremap KJ         <Home>
 " edit like you're emacs
 inoremap        <C-D> <Del>
 inoremap <expr> <C-T> TransposeChars()
-cnoremap <expr> <C-T> TransposeChars()
 
 " toggle case
 inoremap <C-_>      <Esc>viwg~gi
