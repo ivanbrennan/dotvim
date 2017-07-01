@@ -60,6 +60,7 @@ noremap  <S-Space>        :
 nnoremap <leader>1        :!
 noremap  <leader>:        :<Up>
 nnoremap <leader>H        :help 
+nnoremap <leader><C-H>    "zyiw:help <C-R>z<C-Left>
 
 cnoremap        <C-P> <Up>
 cnoremap        <C-N> <Down>
