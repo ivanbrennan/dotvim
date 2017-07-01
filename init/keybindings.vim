@@ -119,9 +119,13 @@ nnoremap <silent> <leader>) :ArgWrap<CR>
 nnoremap <silent> <leader>( :ArgWrap<CR>
 
 " jump around insert mode
-inoremap <C-B>      <C-O>b
-inoremap JK         <C-O>A
-inoremap KJ         <C-O>I
+inoremap <C-B>      <C-G>U<Left>
+inoremap <C-F>      <C-G>U<Right>
+inoremap JK         <End>
+inoremap KJ         <Home>
+
+" edit like you're emacs
+inoremap <C-D>      <Del>
 
 " toggle case
 inoremap <C-_>      <Esc>viwg~gi
@@ -139,8 +143,8 @@ inoremap        <C-]>  <C-X><C-]>
 inoremap        <C-@>  <C-X><C-O>
 inoremap    <C-Space>  <C-X><C-O>
 
-inoremap <expr> <Tab>   SuperTab("\<C-N>", "\<Tab>")
-inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<S-Tab>")
+inoremap <expr> <Tab>   SuperTab("\<C-N>", "\<C-F>")
+inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<C-D>")
 
 " ··········· search ·········· {{{1
 " marks
@@ -205,6 +209,8 @@ noremap           <C-W><C-U>     <C-W>_
 noremap  <silent> <C-W>]         :vertical stag<CR>
 noremap  <silent> <C-W><C-]>     :vertical stag<CR>
 noremap           <leader>q      <C-W><C-Q>
+nnoremap          <C-D>          <C-W><C-Q>
+
 noremap           <leader>,      <C-W>p
 
 " ··········· tabs ············ {{{1
