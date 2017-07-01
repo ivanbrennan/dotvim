@@ -100,11 +100,6 @@ func! TransposeSurroundingChars(line, col)
   return "\<BS>\<Del>" . a:line[ a:col-1 ] . a:line[ a:col-2 ]
 endf
 
-" ··········· movement ················· {{{1
-func! MoveToBol()
-  return col('.') > 1 ? '0' : '^'
-endf
-
 " ··········· folding ·················· {{{1
 func! FoldMethCycle()
   if &foldmethod == 'syntax'

@@ -199,7 +199,6 @@ noremap <silent> <leader>* :setl foldenable!<CR>
 " ··········· movement ········ {{{1
 " first non-blank on previous line
 nnoremap <C-P> -
-noremap <expr> 0 MoveToBol()
 
 " scroll
 noremap <C-J> <C-E>
