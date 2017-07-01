@@ -9,7 +9,7 @@ nnoremap <Space> <Nop>
 set timeout timeoutlen=300 ttimeoutlen=100
 
 " source / edit vimrc
-nnoremap <silent> <leader>fr :source $MYVIMRC<CR>
+nnoremap <silent> <leader>f= :source $MYVIMRC<CR>
 nnoremap          <leader>f; :EditDotVim 
 
 " ··········· buffers ········· {{{1
