@@ -9,20 +9,8 @@ nnoremap <Space> <Nop>
 set timeout timeoutlen=300 ttimeoutlen=100
 
 " source / edit vimrc
-nnoremap <silent> <C-.>      :source $MYVIMRC<CR>
-nnoremap          <C-,>      :edit   $MYVIMRC<CR>
-nnoremap          <C-,>f     :edit   ~/.vim/init/functions.vim<CR>
-nnoremap          <C-,><C-F> :edit   ~/.vim/init/functions.vim<CR>
-nnoremap          <C-,>k     :edit   ~/.vim/init/keybindings.vim<CR>
-nnoremap          <C-,><C-K> :edit   ~/.vim/init/keybindings.vim<CR>
-nnoremap          <C-,>o     :edit   ~/.vim/init/options.vim<CR>
-nnoremap          <C-,><C-O> :edit   ~/.vim/init/options.vim<CR>
-nnoremap          <C-,>s     :edit   ~/.vim/init/statusline.vim<CR>
-nnoremap          <C-,><C-S> :edit   ~/.vim/init/statusline.vim<CR>
-nnoremap          <C-,>t     :edit   ~/.vim/init/terminal.vim<CR>
-nnoremap          <C-,><C-T> :edit   ~/.vim/init/terminal.vim<CR>
-nnoremap          <C-,>w     :edit   ~/.vim/init/wild.vim<CR>
-nnoremap          <C-,><C-W> :edit   ~/.vim/init/wild.vim<CR>
+nnoremap <silent> <leader>fr :source $MYVIMRC<CR>
+nnoremap          <leader>f; :EditDotVim 
 
 " ··········· buffers ········· {{{1
 cnoremap <expr>   %%    getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
