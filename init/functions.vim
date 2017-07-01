@@ -122,6 +122,8 @@ func! FoldMethCycle()
       unlet ruby_fold
     endif
   endif
+
+  set foldmethod?
 endf
 
 func! FoldColToggle(fold_max)
