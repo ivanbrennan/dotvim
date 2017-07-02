@@ -132,11 +132,12 @@ inoremap KJ         <Home>
 inoremap        <C-D> <Del>
 inoremap <expr> <C-T> TransposeChars()
 
+" + / -
+nnoremap +          <C-A>
+nnoremap -          <C-X>
+
 " toggle case
 inoremap <C-_>      <Esc>viwg~gi
-
-" end of line
-noremap <leader>4   $
 
 " hash-rocket
 inoremap <C-.> <Space>=><Space>
@@ -203,6 +204,8 @@ nnoremap <C-P> -
 " scroll
 noremap <C-J> <C-E>
 noremap <C-K> <C-Y>
+noremap <C-E> $
+noremap <C-A> 0
 
 " ··········· splits ·········· {{{1
 nmap              <C-W><Space>   <Plug>ZoomWin
@@ -236,8 +239,9 @@ noremap  <silent> <leader>z  :call FoldColToggle(4)<CR>
 nnoremap <silent> <leader>]  :call ColorColToggle()<CR>
 
 " emacs redraws
-nnoremap <C-L>       zz<C-L>
-nnoremap <C-U><C-L>  zt<C-L>
+nnoremap <C-L>         zz
+nnoremap <C-U><C-L>    zt
+nnoremap <leader><C-L> <C-L>
 
 " reposition
 noremap <silent> zz      :call Reposition()<CR>
