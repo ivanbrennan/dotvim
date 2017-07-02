@@ -153,6 +153,9 @@ func! SynHighlights(...)
   let l:arg    = a:0 > 0 ? a:1 : 0
   let l:offset = max([l:arg, -len(l:stack)])
 
+  exe 'echo expand("<cword>")'
+  exe 'echo " "'
+
   for name in l:stack[l:offset:]
     exe 'verbose hi ' . name
   endfor
