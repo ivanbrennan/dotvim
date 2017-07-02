@@ -24,6 +24,7 @@ setg statusline+=%M                               " modified
 
 setg statusline+=%=                               " separator
 
+setg statusline+=\                                " space
 setg statusline+=%{toupper(&fenc)}                " encoding
 setg statusline+=%(\ \ %{statusline#branch()}%)   " branch
 setg statusline+=\ \                              " spaces
