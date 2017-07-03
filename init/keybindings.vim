@@ -165,6 +165,8 @@ nmap <C-Bslash> <Plug>(RepeatRedo)
 
 " :nohlsearch
 nnoremap  <silent> <leader><CR> :nohlsearch<CR>
+nnoremap coh :<C-R>=eval(&hls) ? (v:hlsearch ? 'noh' : 'set nohls') : 'set hls'<CR><CR>
+
 " lazy matchit
 map      <leader>5  %
 
