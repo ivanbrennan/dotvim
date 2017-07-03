@@ -94,8 +94,9 @@ call s:h("MatchParen",     { "bg": s:aqua })
 call s:h("Visual",         { "bg": s:visip })
 call s:h("Substitute",     { "fg": s:lava, "gui": "underline", "cterm": "underline" })
 
-call s:h("NonText",        { "fg": s:paper, "bg": s:paper })
+call s:h("NonText",        { "fg": s:grey_5, "bg": s:paper })
 call s:h("Whitespace",     { "fg": s:grey_5, "bg": s:paper })
+call s:h("EndOfBuffer",    { "fg": s:paper, "bg": s:paper })
 
 call s:h("StatusLine",     { "fg": s:nice_grey, "bg": s:grey_x })
 call s:h("StatusLineNC",   { "fg": s:grey_3, "bg": s:grey_x })
