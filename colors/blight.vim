@@ -36,6 +36,7 @@ let s:paper     = { "gui": "#f5f5f5", "cterm": "253" }
 
 let s:solar  = { "gui": "#ffffdf", "cterm": "230" }
 let s:yellow = { "gui": "#ffffaf", "cterm": "229" }
+let s:sand   = { "gui": "#f8eec7", "cterm": "229" }
 let s:pink   = { "gui": "#fceff0", "cterm": "217" }
 let s:dpink  = { "gui": "#f2bdc2", "cterm": "217" }
 let s:orange = { "gui": "#ff5f00", "cterm": "202" }
@@ -87,8 +88,8 @@ call s:h("DiffText",       { "bg": s:dpink })
 call s:h("Folded",         { "fg": s:grey_3 })
 call s:h("FoldColumn",     { "fg": s:blue, "bg": s:grey_6 })
 
-call s:h("IncSearch",      { "bg": s:yellow, "gui": "bold", "cterm": "bold" })
-call s:h("Search",         { "bg": s:solar, "gui": "bold", "cterm": "bold" })
+call s:h("IncSearch",      { "bg": s:sand, "gui": "bold", "cterm": "bold" })
+call s:h("Search",         { "gui": "bold,underline", "cterm": "bold,underline" })
 call s:h("MatchParen",     { "bg": s:aqua })
 call s:h("Visual",         { "bg": s:visip })
 call s:h("Substitute",     { "fg": s:lava, "gui": "underline", "cterm": "underline" })

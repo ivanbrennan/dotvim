@@ -29,3 +29,5 @@ if executable('ag')
         \ --ignore "**/*.pyc"'
 endif
 
+" Loupe
+let g:LoupeCenterResults = 0

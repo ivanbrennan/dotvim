@@ -170,14 +170,6 @@ nnoremap coh :<C-R>=eval(&hls) ? (v:hlsearch ? 'noh' : 'set nohls') : 'set hls'<
 " lazy matchit
 map      <leader>5  %
 
-" sane regexes
-nnoremap  /  /\v
-vnoremap  /  /\v
-nnoremap  ?  ?\v
-vnoremap  ?  ?\v
-nnoremap  <leader>/  /
-nnoremap  <leader>?  ?
-
 " substitute
 nnoremap <leader>S  :%s/
 nnoremap <leader>s  :s/
