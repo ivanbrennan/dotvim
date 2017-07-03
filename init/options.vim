@@ -10,7 +10,7 @@ set backup
 set backupdir=~/.vim/backup
 set undofile
 set undodir=~/.vim/undo
-set history=500
+set history=1000
 set hidden
 
 " tags
