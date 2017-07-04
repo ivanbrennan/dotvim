@@ -1,5 +1,6 @@
 * vim-plug -> minpac
 * wincent configs
+** projectionist
 ** colorcolumn focus autocommands
 *** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/plugin/autocmds.vim#L14
 *** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/autoload/autocmds.vim
@@ -13,7 +14,7 @@
 *** fuzzy find help docs
 * folding
 ** update folds : zx
-** correctly deal with compound-lists in shell files
+** correctly deal with compound-lists in shell files : after/syntax/sh.vim
 * bind q to quit certain modes
 ** help
 ** quickfix
