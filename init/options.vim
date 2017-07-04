@@ -61,6 +61,7 @@ set showtabline=1
 set fillchars=vert:│
 set foldmethod=syntax
 set foldlevelstart=10
+set foldtext=MyFoldText()
 set nofoldenable
 set showcmd
 set lazyredraw

@@ -143,6 +143,13 @@ func! FoldColOff()
   let &l:foldcolumn = w:fold_min
 endf
 
+func! MyFoldText()
+  let l:text =  '+'
+  let l:text .= substitute(v:folddashes, '-', '·', 'g')
+  let l:text .= substitute(getline(v:foldstart), '^\S', ' &', '')
+  return l:text
+endf
+
 " ··········· syntax ··················· {{{1
 func! SynStack()
   return map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
