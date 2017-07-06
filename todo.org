@@ -16,6 +16,7 @@
 ** update folds : zx
 ** correctly deal with compound-lists in shell files : after/syntax/sh.vim
 * bind q to quit certain modes
+* C-s during search to goto next match
 ** help
 ** quickfix
 ** netrw
