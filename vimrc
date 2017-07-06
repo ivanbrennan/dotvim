@@ -31,6 +31,7 @@ Plug 'nelstrom/vim-qargs',             { 'on': 'Qargs' }
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'ngmy/vim-rubocop'
 Plug 'regedarek/ZoomWin'
+Plug 'scrooloose/nerdtree'
 Plug 'sjl/gundo.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-bundler'
