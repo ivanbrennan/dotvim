@@ -153,9 +153,6 @@ inoremap <expr> <Tab>   SuperTab("\<C-N>", "\<C-F>")
 inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<C-D>")
 
 " ··········· search ·········· {{{1
-" marks
-noremap <leader>g `
-
 " emacs taking over my life
 noremap  <C-S>  /
 inoremap <C-S>  <C-O>/
