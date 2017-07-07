@@ -89,21 +89,25 @@ func! CursorLine()
 endf
 
 func! TransposePrecedingChars(line, col)
-  let ppchar = encoding#pre_previous_char(a:line, a:col)
+  let ppchar = Literal(encoding#pre_previous_char(a:line, a:col))
 
   if ppchar == ''
     return mode() == 'i' ? "\<C-G>U\<Left>" : "\<Left>"
   endif
 
-  let pchar = encoding#previous_char(a:line, a:col)
+  let pchar = Literal(encoding#previous_char(a:line, a:col))
   return "\<BS>\<BS>" . pchar . ppchar
 endf
 
 func! TransposeSurroundingChars(line, col)
-  let pchar = encoding#previous_char(a:line, a:col)
-  let char  = encoding#char(a:line, a:col)
+  let pchar = Literal(encoding#previous_char(a:line, a:col))
+  let char  = Literal(encoding#char(a:line, a:col))
 
   return "\<BS>\<Del>" . char . pchar
+endf
+
+func! Literal(char)
+  return a:char == '	' ? "\<C-V>".a:char : a:char
 endf
 
 " ··········· folding ·················· {{{1
