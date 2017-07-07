@@ -188,6 +188,10 @@ noremap <silent> <leader>* :setl foldenable!<CR>
       \:let view=winsaveview()<CR>#*
       \:call winrestview(view)<CR>:setl foldenable!<CR>
 
+" tags
+nnoremap <C-.> <C-]>
+nnoremap <C-,> <C-T>
+
 " ··········· movement ········ {{{1
 " first non-blank on previous line
 nnoremap <C-P> -
