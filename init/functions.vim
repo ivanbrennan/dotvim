@@ -73,7 +73,7 @@ func! TransposeChars()
 
   if l:col == 1
     return ''
-  elseif l:col > len(l:line)
+  elseif encoding#eolp(l:line, l:col)
     return TransposePrecedingChars(l:line, l:col)
   else
     return TransposeSurroundingChars(l:line, l:col)
@@ -89,15 +89,21 @@ func! CursorLine()
 endf
 
 func! TransposePrecedingChars(line, col)
-  if a:col > 2
-    return "\<BS>\<BS>" . a:line[ a:col-2 ] . a:line[ a:col-3 ]
-  else
+  let ppchar = encoding#pre_previous_char(a:line, a:col)
+
+  if ppchar == ''
     return mode() == 'i' ? "\<C-G>U\<Left>" : "\<Left>"
-  end
+  endif
+
+  let pchar = encoding#previous_char(a:line, a:col)
+  return "\<BS>\<BS>" . pchar . ppchar
 endf
 
 func! TransposeSurroundingChars(line, col)
-  return "\<BS>\<Del>" . a:line[ a:col-1 ] . a:line[ a:col-2 ]
+  let pchar = encoding#previous_char(a:line, a:col)
+  let char  = encoding#char(a:line, a:col)
+
+  return "\<BS>\<Del>" . char . pchar
 endf
 
 " ··········· folding ·················· {{{1
