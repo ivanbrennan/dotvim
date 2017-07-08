@@ -193,7 +193,8 @@ nnoremap <C-.> <C-]>
 nnoremap <C-,> <C-T>
 
 " ··········· movement ········ {{{1
-" first non-blank on previous line
+" first non-blank on next/previous line
+nnoremap <C-N> +
 nnoremap <C-P> -
 
 " scroll
