@@ -160,6 +160,12 @@ noremap  <C-R>  ?
 nnoremap     U  <C-R>
 nmap <C-Bslash> <Plug>(RepeatRedo)
 
+cnoremap <expr> <C-Y> getcmdtype() == '/' ? "\<C-L>" : "\<C-Y>"
+if !has('nvim')
+  cnoremap <expr> <C-S> getcmdtype() == '/' ? "\<C-G>" : "\<C-S>"
+  cnoremap <expr> <C-H> getcmdtype() == '/' ? "\<C-T>" : "\<C-H>"
+endif
+
 " :nohlsearch
 nnoremap  <silent> <leader><CR> :nohlsearch<CR>
 nnoremap coh :<C-R>=eval(&hls) ? (v:hlsearch ? 'noh' : 'set nohls') : 'set hls'<CR><CR>
