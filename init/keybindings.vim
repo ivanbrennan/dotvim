@@ -229,8 +229,9 @@ noremap           <C-W>u         <C-W>_
 noremap           <C-W><C-U>     <C-W>_
 noremap           <leader>q      <C-W><C-Q>
 nnoremap          <C-D>          <C-W><C-Q>
-
 noremap           <leader>,      <C-W>p
+noremap           <C-W>y         <C-W>z
+noremap           <C-W><C-Y>     <C-W>z
 
 " ··········· tabs ············ {{{1
 noremap           <C-W>n       gt
