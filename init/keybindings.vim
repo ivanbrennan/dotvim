@@ -240,6 +240,9 @@ noremap  <silent> <leader>z  :call FoldColToggle(4)<CR>
 " colour column
 nnoremap <silent> <leader>]  :call ColorColToggle()<CR>
 
+" cursor column
+inoremap <expr> <C-\> ExprSideEffect('set cursorcolumn!')
+
 " emacs redraws
 nnoremap <C-L>         zz
 nnoremap <C-U><C-L>    zt

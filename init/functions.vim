@@ -258,6 +258,12 @@ func! SuperTab(complete, tab)
   return a:complete
 endf
 
+" ··········· expression helpers ······· {{{1
+func! ExprSideEffect(side_effect)
+  execute a:side_effect
+  return ''
+endf
+
 " ··········· git ······················ {{{1
 "Git branch
 func! GitBranch()
