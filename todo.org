@@ -17,6 +17,11 @@
 ** correctly deal with compound-lists in shell files : after/syntax/sh.vim
 * bind q to quit certain modes
 * C-s during search to goto next match
+** reconcile various bindings within / search
+*** C-L (use C-Y)
+**** make it start at current char? (map / h/)
+*** C-G (use C-S)
+*** C-T (use C-H)
 ** help
 ** quickfix
 ** netrw
