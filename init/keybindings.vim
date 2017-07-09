@@ -199,9 +199,16 @@ noremap <silent> <leader>* :setl foldenable!<CR>
       \:let view=winsaveview()<CR>#*
       \:call winrestview(view)<CR>:setl foldenable!<CR>
 
-" tags
-nnoremap <C-.> <C-]>
-nnoremap <C-,> <C-T>
+" tag, pop
+nmap  <C-.>  <Plug>(ArticulateTag)
+vmap  <C-.>  <Plug>(ArticulateTag)
+nmap  <C-,>  <Plug>(ArticulatePop)
+vmap  <C-,>  <Plug>(ArticulatePop)
+" tjump, tselect
+nmap  g.      <Plug>(ArticulateTjump)
+vmap  g.      <Plug>(ArticulateTjump)
+nmap  g<C-.>  <Plug>(ArticulateTselect)
+vmap  g<C-.>  <Plug>(ArticulateTselect)
 
 " ··········· movement ········ {{{1
 " first non-blank on next/previous line
@@ -220,8 +227,6 @@ nmap              <C-W><C-@>     <Plug>ZoomWin
 nmap              <C-W><C-Space> <Plug>ZoomWin
 noremap           <C-W>u         <C-W>_
 noremap           <C-W><C-U>     <C-W>_
-noremap  <silent> <C-W>]         :vertical stag<CR>
-noremap  <silent> <C-W><C-]>     :vertical stag<CR>
 noremap           <leader>q      <C-W><C-Q>
 nnoremap          <C-D>          <C-W><C-Q>
 
