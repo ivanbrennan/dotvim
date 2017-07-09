@@ -155,11 +155,16 @@ inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<C-D>")
 
 " ··········· search ·········· {{{1
 " emacs taking over my life
-noremap  <C-S>  /
-inoremap <C-S>  <C-O>/
-noremap  <C-R>  ?
-nnoremap     U  <C-R>
-nmap <C-Bslash> <Plug>(RepeatRedo)
+noremap       <C-S>  /
+inoremap      <C-S>  <C-O>/
+noremap       <C-R>  ?
+nnoremap          U  <C-R>
+nnoremap <C-X><C-U>  U
+nnoremap     <C-X>u  U
+
+" NOTE: repeat.vim will avoid mapping U to RepeatRedo because I have a custom U mapping.
+" If inconsistencies arise in repeat/undo/redo behavior, consider something like:
+" nmap <expr> U  exists('g:loaded_repeat') ? "\<Plug>(RepeatRedo)" : "\<C-R>"
 
 cnoremap <expr> <C-P> getcmdtype() == '/' ? "\<C-T>" : "\<Up>"
 cnoremap <expr> <C-N> getcmdtype() == '/' ? "\<C-G>" : "\<Down>"
