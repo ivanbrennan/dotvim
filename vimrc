@@ -51,7 +51,7 @@ Plug 'vim-scripts/hexHighlight.vim',   { 'on': 'HexHighlight' }
 Plug 'vim-scripts/Super-Shell-Indent', { 'for': 'sh' }
 Plug 'wellle/targets.vim'
 Plug 'wincent/pinnacle'
-Plug 'wincent/loupe'
+Plug 'ivanbrennan/loupe',              { 'branch': 'transient-hlsearch' }
 Plug 'wlangstroth/vim-racket'
 " ····························· }}}1
 
