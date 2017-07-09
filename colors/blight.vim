@@ -36,6 +36,7 @@ let s:paper     = { "gui": "#f5f5f5", "cterm": "253" }
 
 let s:solar  = { "gui": "#ffffdf", "cterm": "230" }
 let s:yellow = { "gui": "#ffffaf", "cterm": "229" }
+let s:lime   = { "gui": "#F2F9DB", "cterm": "229" }
 let s:sand   = { "gui": "#f8eec7", "cterm": "229" }
 let s:pink   = { "gui": "#fceff0", "cterm": "217" }
 let s:dpink  = { "gui": "#f2bdc2", "cterm": "217" }
