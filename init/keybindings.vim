@@ -62,8 +62,6 @@ noremap  <leader>:        :<Up>
 nnoremap <leader>H        :help 
 nnoremap <leader><C-H>    "zyiw:help <C-R>z<C-Left>
 
-cnoremap        <C-P> <Up>
-cnoremap        <C-N> <Down>
 cnoremap        <C-A> <Home>
 cnoremap        <C-B> <Left>
 cnoremap <expr> <C-D> getcmdpos() > len(getcmdline()) ? "\<C-D>" : "\<Del>"
@@ -160,10 +158,10 @@ noremap  <C-R>  ?
 nnoremap     U  <C-R>
 nmap <C-Bslash> <Plug>(RepeatRedo)
 
-cnoremap <expr> <C-Y> getcmdtype() == '/' ? "\<C-L>" : "\<C-Y>"
+cnoremap <expr> <C-P> getcmdtype() == '/' ? "\<C-T>" : "\<Up>"
+cnoremap <expr> <C-N> getcmdtype() == '/' ? "\<C-G>" : "\<Down>"
 cnoremap <expr> <C-S> getcmdtype() == '/' ? "\<C-G>" : "\<C-S>"
-cnoremap <expr> <C-N> getcmdtype() == '/' ? "\<C-G>" : "\<C-N>"
-cnoremap <expr> <C-P> getcmdtype() == '/' ? "\<C-T>" : "\<C-P>"
+cnoremap <expr> <C-Y> getcmdtype() == '/' ? "\<C-L>" : "\<C-Y>"
 
 " :nohlsearch
 nnoremap  <silent> <leader><CR> :nohlsearch<CR>
