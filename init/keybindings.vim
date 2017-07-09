@@ -161,10 +161,9 @@ nnoremap     U  <C-R>
 nmap <C-Bslash> <Plug>(RepeatRedo)
 
 cnoremap <expr> <C-Y> getcmdtype() == '/' ? "\<C-L>" : "\<C-Y>"
-if !has('nvim')
-  cnoremap <expr> <C-S> getcmdtype() == '/' ? "\<C-G>" : "\<C-S>"
-  cnoremap <expr> <C-H> getcmdtype() == '/' ? "\<C-T>" : "\<C-H>"
-endif
+cnoremap <expr> <C-S> getcmdtype() == '/' ? "\<C-G>" : "\<C-S>"
+cnoremap <expr> <C-N> getcmdtype() == '/' ? "\<C-G>" : "\<C-N>"
+cnoremap <expr> <C-P> getcmdtype() == '/' ? "\<C-T>" : "\<C-P>"
 
 " :nohlsearch
 nnoremap  <silent> <leader><CR> :nohlsearch<CR>
