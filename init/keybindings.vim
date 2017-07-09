@@ -63,9 +63,11 @@ nnoremap <leader>H        :help
 nnoremap <leader><C-H>    "zyiw:help <C-R>z<C-Left>
 
 cnoremap        <C-A> <Home>
+cnoremap   <C-X><C-A> <C-A>
 cnoremap        <C-B> <Left>
-cnoremap <expr> <C-D> getcmdpos() > len(getcmdline()) ? "\<C-D>" : "\<Del>"
-cnoremap <expr> <C-F> getcmdpos() > len(getcmdline()) ? "\<C-F>" : "\<Right>"
+cnoremap        <C-F> <Right>
+cnoremap   <C-X><C-F> <C-F>
+cnoremap <expr> <C-D> getcmdpos() > strlen(getcmdline()) ? "\<C-D>" : "\<Del>"
 cnoremap <expr> <C-T> TransposeChars()
 
 " ··········· positioning ····· {{{1
@@ -121,10 +123,11 @@ nnoremap <silent> <leader>) :ArgWrap<CR>
 nnoremap <silent> <leader>( :ArgWrap<CR>
 
 " jump around insert mode
-inoremap <C-B>      <C-G>U<Left>
-inoremap <C-F>      <C-G>U<Right>
-inoremap JK         <End>
-inoremap KJ         <Home>
+inoremap        <C-A> <Home>
+inoremap   <C-X><C-A> <C-A>
+inoremap        <C-B> <C-G>U<Left>
+inoremap        <C-F> <C-G>U<Right>
+inoremap        JK    <End>
 
 " edit like you're emacs
 inoremap        <C-D> <Del>
