@@ -68,7 +68,7 @@ cnoremap        <C-B> <Left>
 cnoremap        <C-F> <Right>
 cnoremap   <C-X><C-F> <C-F>
 cnoremap <expr> <C-D> getcmdpos() > strlen(getcmdline()) ? "\<C-D>" : "\<Del>"
-cnoremap <expr> <C-T> TransposeChars()
+cnoremap <expr> <C-T> transposition#new('c').transpose()
 
 " ··········· positioning ····· {{{1
 " push newline
@@ -131,7 +131,7 @@ inoremap        JK    <End>
 
 " edit like you're emacs
 inoremap        <C-D> <Del>
-inoremap <expr> <C-T> TransposeChars()
+inoremap <expr> <C-T> transposition#new('i').transpose()
 
 " + / -
 nnoremap +          <C-A>
