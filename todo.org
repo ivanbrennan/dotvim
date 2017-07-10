@@ -1,3 +1,4 @@
+* figure out what's up with my Escape key (delay, international characters, etc.)
 * vim-plug -> minpac
 * wincent configs
 ** projectionist
