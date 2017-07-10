@@ -26,12 +26,12 @@ if &term =~ 'xterm\|tmux\|screen\|builtin_gui'
         \  [ '<C-.>'       , '[46;5u' , '<F18>' ],
         \  [ '<M-Tab>'     , '[9;3u'  , '<F19>' ],
         \  [ '<M-S-Tab>'   , '[1;3Z'  , '<F20>' ],
-        \  [ '<M-j>'       , 'j'      , '<F21>' ],
-        \  [ '<M-k>'       , 'k'      , '<F22>' ],
-        \  [ '<M-l>'       , 'l'      , '<F23>' ],
-        \  [ '<M-h>'       , 'h'      , '<F24>' ],
-        \  [ '<M-J>'       , 'J'      , '<F25>' ],
-        \  [ '<M-K>'       , 'K'      , '<F26>' ],
+        \  [ '<M-j>'       , 'j'      , '<F21>' ], " these meta keys are causing problems
+        \  [ '<M-k>'       , 'k'      , '<F22>' ], " Esc from insert mode waits a moment for further input
+        \  [ '<M-l>'       , 'l'      , '<F23>' ], " if I start typing normal j,k,... commands,
+        \  [ '<M-h>'       , 'h'      , '<F24>' ], " unicode chars () are inserted.
+        \  [ '<M-J>'       , 'J'      , '<F25>' ], " Probably need to change the escSeq's to be non-typeable
+        \  [ '<M-K>'       , 'K'      , '<F26>' ], " and shorten the timeout length.
         \  [ '<M-L>'       , 'L'      , '<F27>' ],
         \  [ '<M-H>'       , 'H'      , '<F28>' ],
         \]
