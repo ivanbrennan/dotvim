@@ -1,6 +1,8 @@
 * figure out what's up with my Escape key (delay, international characters, etc.)
 * vim-plug -> minpac
 * wincent configs
+** loupe
+*** toggle to disable the timeout, something smart that extends it while using cgn to replace occurences
 ** projectionist
 ** colorcolumn focus autocommands
 *** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/plugin/autocmds.vim#L14
