@@ -66,50 +66,6 @@ func! Reposition()
   execute 'normal ' . movement
 endf
 
-" ··········· transposition ············ {{{1
-func! TransposeChars()
-  let l:col  = CursorPos()
-  let l:line = CursorLine()
-
-  if l:col == 1
-    return ''
-  elseif encoding#eolp(l:line, l:col)
-    return TransposePrecedingChars(l:line, l:col)
-  else
-    return TransposeSurroundingChars(l:line, l:col)
-  endif
-endf
-
-func! CursorPos()
-  return mode() == 'c' ? getcmdpos() : col('.')
-endf
-
-func! CursorLine()
-  return mode() == 'c' ? getcmdline() : getline('.')
-endf
-
-func! TransposePrecedingChars(line, col)
-  let ppchar = Literal(encoding#pre_previous_char(a:line, a:col))
-
-  if ppchar == ''
-    return mode() == 'i' ? "\<C-G>U\<Left>" : "\<Left>"
-  endif
-
-  let pchar = Literal(encoding#previous_char(a:line, a:col))
-  return "\<BS>\<BS>" . pchar . ppchar
-endf
-
-func! TransposeSurroundingChars(line, col)
-  let pchar = Literal(encoding#previous_char(a:line, a:col))
-  let char  = Literal(encoding#char(a:line, a:col))
-
-  return "\<BS>\<Del>" . char . pchar
-endf
-
-func! Literal(char)
-  return a:char == '	' ? "\<C-V>".a:char : a:char
-endf
-
 " ··········· folding ·················· {{{1
 func! FoldMethCycle()
   if &foldmethod == 'syntax'
