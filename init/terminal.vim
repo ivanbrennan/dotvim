@@ -35,14 +35,6 @@ if &term =~ 'xterm\|tmux\|screen\|builtin_gui'
         \  [ '<M-L>'       , 'L'      , '<F27>' ],
         \  [ '<M-H>'       , 'H'      , '<F28>' ],
         \]
-
-  " M-j, M-k, etc are causing problems.
-  " Esc from insert mode waits a moment for further input
-  " if I start typing normal j,k,... commands,
-  " unicode chars () are inserted.
-  " Probably need to change the escSeq's to be non-typeable
-  " and shorten the timeout length.
-
   " ····························· }}}1
   for [key, escSeq, fnkey] in s:keycodes
     call SetKeyCode( key, escSeq, fnkey )
