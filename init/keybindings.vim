@@ -123,7 +123,7 @@ nnoremap <silent> <leader>) :ArgWrap<CR>
 nnoremap <silent> <leader>( :ArgWrap<CR>
 
 " jump around insert mode
-inoremap        <C-A> <Home>
+inoremap <expr> <C-A> encoding#first_nonblankp(getline('.'), col('.')) ? "\<Home>" : "\<Esc>I"
 inoremap   <C-X><C-A> <C-A>
 inoremap        <C-B> <C-G>U<Left>
 inoremap        <C-F> <C-G>U<Right>

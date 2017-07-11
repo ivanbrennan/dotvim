@@ -16,3 +16,7 @@ endf
 func! encoding#char(line, col) abort
   return matchstr(a:line, '\%'.a:col.'c.')
 endf
+
+func! encoding#first_nonblankp(line, col) abort
+  return match(a:line, '^\s*\%'.a:col.'c\S') >= 0
+endf
