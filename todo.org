@@ -1,32 +1,52 @@
-* figure out what's up with my Escape key (delay, international characters, etc.)
-* vim-plug -> minpac
-* wincent configs
-** loupe
-*** toggle to disable the timeout, something smart that extends it while using cgn to replace occurences
-** projectionist
-** colorcolumn focus autocommands
-*** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/plugin/autocmds.vim#L14
-*** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/autoload/autocmds.vim
-** statusline
-*** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/plugin/statusline.vim
-*** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/autoload/statusline.vim
-** italics in the terminal
-*** https://youtu.be/n1cKtZfwOgQ
-** Command T
-*** fast on large repo
-*** fuzzy find help docs
-* folding
-** update folds : zx
-** correctly deal with compound-lists in shell files : after/syntax/sh.vim
-* bind q to quit certain modes
-* C-s during search to goto next match
-** reconcile various bindings within / search
-*** C-L (use C-Y)
-**** make it start at current char? (map / h/)
-*** C-G (use C-S)
-*** C-T (use C-H)
-** help
-** quickfix
-** netrw
-* consider vim-test
-* neovim-remote
+* Todo
+** vim-plug -> minpac
+** wincent configs
+*** loupe
+**** toggle to disable the timeout, something smart that extends it while using cgn to replace occurences
+*** projectionist
+*** colorcolumn focus autocommands
+**** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/plugin/autocmds.vim#L14
+**** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/autoload/autocmds.vim
+*** statusline
+**** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/plugin/statusline.vim
+**** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/autoload/statusline.vim
+*** italics in the terminal
+**** https://youtu.be/n1cKtZfwOgQ
+*** Command T
+**** fast on large repo
+**** fuzzy find help docs
+** folding
+*** update folds : zx
+*** correctly deal with compound-lists in shell files : after/syntax/sh.vim
+** bind q to quit certain modes
+** C-s during search to goto next match
+*** reconcile various bindings within / search
+**** C-L (use C-Y)
+***** make it start at current char? (map / h/)
+**** C-G (use C-S)
+**** C-T (use C-H)
+*** help
+*** quickfix
+*** netrw
+** consider vim-test
+** neovim-remote
+
+* Done
+** figure out what's up with my Escape key (delay, international characters, etc.)
+*** This started showing up when I configured iTerm to [[https://github.com/ivanbrennan/dotfiles/commit/df397385f72c4965bd2b80c18bd5bbe933ef5145][send +Esc for the left-option key]], in order to get Meta keys working in Neovim. This also meant [[https://github.com/ivanbrennan/dotvim/commit/d25ebca11429e118a308d6126cfdc18226cfb61b][changing the way I defined option-key bindings]] from hard-coding the special character macOS was sending, e.g.
+#+begin_src vimscript
+nnoremap ∆ :cnext<CR>
+#+end_src
+to a more universal form
+#+begin_src vimscript
+nnoremap <M-j> :cnext<CR>
+#+end_src
+That was enough to get Meta keys working in Neovim, but for Vim I had to configure it to recognize the escape sequences being sent by iTerm:
+#+begin_src vimscript
+set  <F21>=^[j
+map  <F21> <M-j>
+map! <F21> <M-j>
+#+end_src
+That put me at the mercy of ~ttimeoutlen~, which I had set to 100 milliseconds. When I hit ~esc j~ quickly from Insert mode, Vim recognized this as ~^[j~ (were I in Normal mode it would've mapped to ~<M-j>~).
+
+The solution was to [[https://github.com/ivanbrennan/dotvim/commit/e874f20b5d6379ad02fd2e3e6de7dd58c6a9df2c][reduce `ttimeoutlen` considerably]] (to 5 milliseconds).
