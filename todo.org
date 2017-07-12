@@ -16,7 +16,6 @@
 **** fast on large repo
 **** fuzzy find help docs
 ** folding
-*** update folds : zx
 *** correctly deal with compound-lists in shell files : after/syntax/sh.vim
 ** bind q to quit certain modes
 ** C-s during search to goto next match
@@ -50,3 +49,6 @@ map! <F21> <M-j>
 That put me at the mercy of ~ttimeoutlen~, which I had set to 100 milliseconds. When I hit ~esc j~ quickly from Insert mode, Vim recognized this as ~^[j~ (were I in Normal mode it would've mapped to ~<M-j>~).
 
 The solution was to [[https://github.com/ivanbrennan/dotvim/commit/e874f20b5d6379ad02fd2e3e6de7dd58c6a9df2c][reduce `ttimeoutlen` considerably]] (to 5 milliseconds).
+** recompute folds
+I've noticed that with 'foldmethod' set to syntax, folds don't automatically recompute as I edit the file. This is probably fine, as I'd rather not waste lots of cycles recomputing folds constantly, but I would like to manually trigger recomputing of folds from time to time. How can I do this?
+: zx
