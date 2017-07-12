@@ -16,7 +16,6 @@
 **** fast on large repo
 **** fuzzy find help docs
 ** folding
-*** correctly deal with compound-lists in shell files : after/syntax/sh.vim
 ** bind q to quit certain modes
 ** C-s during search to goto next match
 *** reconcile various bindings within / search
@@ -52,3 +51,208 @@ The solution was to [[https://github.com/ivanbrennan/dotvim/commit/e874f20b5d637
 ** recompute folds
 I've noticed that with 'foldmethod' set to syntax, folds don't automatically recompute as I edit the file. This is probably fine, as I'd rather not waste lots of cycles recomputing folds constantly, but I would like to manually trigger recomputing of folds from time to time. How can I do this?
 : zx
+
+** sh: { expression-group; } syntax recognition
+I recently discovered this construct in shell-scripting:
+#+begin_src sh
+{ # Prevent execution if this script was only partially downloaded
+  foo() {
+    :
+  }
+}
+#+end_src
+I've since found that in addition to providing I/O redirection en-masse, an ~{ expression-group; }~ can be a nice way of organizing code.
+
+Given a snippet like the example above, with 'foldmethod' set to ~syntax~, I want to be able to fold like so,
+#+begin_src sh
+{ # <- fold here
+  foo() { # <- and here
+    :
+  }
+}
+#+end_src
+** The root of the problem lies in the runtime file that defines shell syntax, ~$VIMRUNTIME/syntax/sh.vim~, but before tackling the main problem, set a couple variables that script looks for:
+#+begin_src vim
+let g:is_bash=1
+let g:sh_fold_enabled=1
+#+end_src
+The first, ~g:is_bash~ is self-explanatory. ~sh.vim~ checks for a few different shells, and some of the syntax definitions vary accordingly.
+
+The second, ~g:sh_fold_enabled~, should be a number from 0 to 7. It's treated as a bitmask that determines which syntax groups are defined with folding.
+#+begin_src
+ ┌────── if/do/for
+ │  ┌─── heredocs
+ │  │  ┌ functions
+ 2² 2¹ 2⁰
+(4)(2)(1)
+#+end_src
+To enable folds for functions and if/do/for constructs, you'd set it to 5 (i.e. 1+4). I've found that enabling folds for if/do/for leads to more folds than I want, and feels cluttered. And while I like the /idea/ of folding heredocs, in practice I prefer to just fold function definitions. Thus ~g:sh_fold_enabled=1~.
+
+To ensure that shell files always use syntax-based folding regardless what's in your vimrc, put the following in ~$HOME/.vim/ftplugin/sh.vim~
+#+begin_src vim
+setlocal foldmethod=syntax
+#+end_src
+
+Now to get Vim to recognize the ~{ expression-group; }~ and functions nested within it. Actually, Vim /already/ recognizes expression-groups, and has a ~shExpr~ syntax item defined:
+#+begin_src vim
+syn region shExpr transparent matchgroup=shExprRegion start="{" end="}" contains=@shExprList2 nextgroup=shSpecialNxt
+#+end_src
+There's a lot going on there, but the main things to focus on are ~contains=@shExprList2~ and the lack of any mention of folding. The ~contains~ argument specifies which syntax groups can nest within this one. It takes a comma-separated list of groups, but to avoid a lot of repetition, you can "cluster" a list of syntax groups under a single name and refer to it with a ~@~ prefix. So, ~contains=@shExprList2~ refers to a cluster defined earlier in the file,
+#+begin_src vim
+syn cluster shExprList2	contains=@shExprList1,@shCaseList,shTest
+#+end_src
+This in turn references the previously-defined ~shExprList1~
+#+begin_src vim
+syn cluster shExprList1 contains=shCharClass,shNumber,shOperator,shExSingleQuote,shExDoubleQuote,shSingleQuote,shDoubleQuote,shExpr,shDblBrace,shDeref,shDerefSimple,shCtrlSeq
+#+end_src
+None of the shell function syntax groups are included in the above clusters, so Vim won't recognize a shell function that's nested within an expression-group. Fortunately it's easy to add to an existing cluster:
+#+begin_src vim
+syn cluster shExprList2 add=shFunctionOne,shFunctionTwo,shFunctionThree,shFunctionFour
+#+end_src
+This is a safe modification to make because ~shExpr~ is the only syntax item that references ~shExprList2~.
+
+Vim now recognizes the nested functions, and with ~g:sh_fold_enabled~ set to 1 (or any odd number), you can fold them:
+#+begin_src vim
+{
++---  3 lines: foo() {
+}
+#+end_src
+
+To fold the command-group itself, redefine ~shExpr~, passing it the ~fold~ argument:
+#+begin_src vim
+syn region shExpr transparent matchgroup=shExprRegion start="{" end="}" contains=@shExprList2 nextgroup=shSpecialNxt fold
+#+end_src
+Like magic:
+#+begin_src vim
++--  5 lines: {
+#+end_src
+
+Now that you know what modifications you need to make, where do you put them?
+
+You don't want to modify the runtime file directly, as you'd lose your changes when updating. You could copy it to ~$HOME/.vim/syntax/sh.vim~ and modify that, but that would shadow the orignal file, since Vim only loads the first syntax file found (assuming it sets ~b:current_syntax~), and your /user/ runtime directory (~$HOME/.vim/~) is earlier in the ~runtimepath~ than ~$VIMRUNTIME~ is), so you'd lose the benefit of any future updates it receives.
+
+Instead, use put just the relevant modifications in ~$HOME/.vim/after/syntax/sh.vim~
+#+begin_src vim
+" Recognize functions nested within an { expression-group; }
+syn cluster shExprList2 add=shFunctionOne,shFunctionTwo,shFunctionThree,shFunctionFour
+
+" Allow { expression-list; } to fold
+syn region shExpr transparent matchgroup=shExprRegion start="{" end="}" contains=@shExprList2 nextgroup=shSpecialNxt fold
+#+end_src
+This will get sourced after ~$VIMRUNTIME/syntax/sh.vim~, applying just the necessary modifications to the syntax groups the original file defined.
+
+Ideally, these modifications could be merged into the original. I've emailed the following patches to the original file's maintainer, and hope to hear back.
+#+begin_src patch
+From fb65475d2449838fc3c84dc7c80512794bc99e71 Mon Sep 17 00:00:00 2001
+From: ivanbrennan <ivan.brennan@gmail.com>
+Date: Mon, 3 Jul 2017 13:21:17 -0400
+Subject: [PATCH 1/2] runtime sh syntax: { expression-list; } folding
+
+Add support for folding compound expressions, for example:
+
+  { # <- fold here
+    echo 'Inside a compound group'
+    echo 'doing more stuff...'
+  }
+---
+ runtime/doc/syntax.txt |  1 +
+ runtime/syntax/sh.vim  | 11 ++++++++++-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/runtime/doc/syntax.txt b/runtime/doc/syntax.txt
+index 6606524ab..022c3d117 100644
+--- a/runtime/doc/syntax.txt
++++ b/runtime/doc/syntax.txt
+@@ -2908,6 +2908,7 @@ The syntax/sh.vim file provides several levels of syntax-based folding: >
+ 	let g:sh_fold_enabled= 1     (enable function folding)
+ 	let g:sh_fold_enabled= 2     (enable heredoc folding)
+ 	let g:sh_fold_enabled= 4     (enable if/do/for folding)
++	let g:sh_fold_enabled= 8     (enable { expression-list; } folding)
+ >
+ then various syntax items (ie. HereDocuments and function bodies) become
+ syntax-foldable (see |:syn-fold|).  You also may add these together
+diff --git a/runtime/syntax/sh.vim b/runtime/syntax/sh.vim
+index f97299cde..7c6e12f5c 100644
+--- a/runtime/syntax/sh.vim
++++ b/runtime/syntax/sh.vim
+@@ -81,6 +81,9 @@ endif
+ if !exists("s:sh_fold_ifdofor")
+  let s:sh_fold_ifdofor  = and(g:sh_fold_enabled,4)
+ endif
++if !exists("s:sh_fold_expressions")
++ let s:sh_fold_expressions = and(g:sh_fold_enabled,8)
++endif
+ if g:sh_fold_enabled && &fdm == "manual"
+  " Given that	the	user provided g:sh_fold_enabled
+  " 	AND	g:sh_fold_enabled is manual (usual default)
+@@ -114,6 +117,11 @@ if s:sh_fold_ifdofor
+ else
+  com! -nargs=* ShFoldIfDoFor <args>
+ endif
++if s:sh_fold_expressions
++ com! -nargs=* ShFoldExpr <args> fold
++else
++ com! -nargs=* ShFoldExpr <args>
++endif
+ 
+ " sh syntax is case sensitive {{{1
+ syn case match
+@@ -213,7 +221,7 @@ syn match   shPattern	"\<\S\+\())\)\@="	contained contains=shExSingleQuote,shSin
+ 
+ " Subshells: {{{1
+ " ==========
+-syn region shExpr  transparent matchgroup=shExprRegion  start="{" end="}"		contains=@shExprList2 nextgroup=shSpecialNxt
++ShFoldExpr syn region shExpr  transparent matchgroup=shExprRegion  start="{" end="}"	contains=@shExprList2 nextgroup=shSpecialNxt
+ syn region shSubSh transparent matchgroup=shSubShRegion start="[^(]\zs(" end=")"	contains=@shSubShList nextgroup=shSpecialNxt
+ 
+ " Tests: {{{1
+@@ -711,6 +719,7 @@ endif
+ delc ShFoldFunctions
+ delc ShFoldHereDoc
+ delc ShFoldIfDoFor
++delc ShFoldExpr
+ 
+ " Set Current Syntax: {{{1
+ " ===================
+-- 
+2.11.1
+
+#+end_src
+#+begin_src patch
+From 1631f02d2dd84c3cf337e4d6f9a743710b315547 Mon Sep 17 00:00:00 2001
+From: ivanbrennan <ivan.brennan@gmail.com>
+Date: Mon, 3 Jul 2017 13:30:39 -0400
+Subject: [PATCH 2/2] sh.vim syntax: let shExpr contain shFunction
+
+Allow functions nested within a { expression-list; } to be recognized as
+such. For example,
+
+  { # Prevent execution if this script was only partially downloaded
+    foo() {
+      ...
+    }
+    bar() {
+      ...
+    }
+  }
+---
+ runtime/syntax/sh.vim | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/runtime/syntax/sh.vim b/runtime/syntax/sh.vim
+index 7c6e12f5c..ab1dc2df5 100644
+--- a/runtime/syntax/sh.vim
++++ b/runtime/syntax/sh.vim
+@@ -143,7 +143,7 @@ syn cluster shDerefList	contains=shDeref,shDerefSimple,shDerefVar,shDerefSpecial
+ syn cluster shDerefVarList	contains=shDerefOff,shDerefOp,shDerefVarArray,shDerefOpError
+ syn cluster shEchoList	contains=shArithmetic,shCommandSub,shDeref,shDerefSimple,shEscape,shExpr,shExSingleQuote,shExDoubleQuote,shSingleQuote,shDoubleQuote,shCtrlSeq,shEchoQuote
+ syn cluster shExprList1	contains=shCharClass,shNumber,shOperator,shExSingleQuote,shExDoubleQuote,shSingleQuote,shDoubleQuote,shExpr,shDblBrace,shDeref,shDerefSimple,shCtrlSeq
+-syn cluster shExprList2	contains=@shExprList1,@shCaseList,shTest
++syn cluster shExprList2	contains=@shExprList1,@shCaseList,shTest,shFunctionOne,shFunctionTwo,shFunctionThree,shFunctionFour
+ syn cluster shFunctionList	contains=@shCommandSubList,shCaseEsac,shColon,shCommandSub,shComment,shDo,shEcho,shExpr,shFor,shHereDoc,shIf,shOption,shHereString,shRedir,shSetList,shSource,shStatement,shVariable,shOperator,shCtrlSeq
+ if exists("b:is_kornshell") || exists("b:is_bash")
+  syn cluster shFunctionList	add=shRepeat
+-- 
+2.11.1
+
+#+end_src
