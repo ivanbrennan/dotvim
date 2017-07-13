@@ -71,7 +71,7 @@ Given a snippet like the example above, with 'foldmethod' set to ~syntax~, I wan
   }
 }
 #+end_src
-** The root of the problem lies in the runtime file that defines shell syntax, ~$VIMRUNTIME/syntax/sh.vim~, but before tackling the main problem, set a couple variables that script looks for:
+*** The root of the problem lies in the runtime file that defines shell syntax, ~$VIMRUNTIME/syntax/sh.vim~, but before tackling the main problem, set a couple variables that script looks for:
 #+begin_src vim
 let g:is_bash=1
 let g:sh_fold_enabled=1
