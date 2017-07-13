@@ -1,4 +1,4 @@
-nmap <buffer> h <Plug>VinegarUp
+nmap <buffer> u <Plug>VinegarUp
 
 if !exists('s:qkeys')
   let s:qkeys = map(split(execute('nmap q'), '\n'), 'split(v:val, "\\W\\+")[1]')
