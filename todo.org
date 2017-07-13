@@ -15,7 +15,6 @@
 *** Command T
 **** fast on large repo
 **** fuzzy find help docs
-** folding
 ** bind q to quit certain modes
 ** C-s during search to goto next match
 *** reconcile various bindings within / search
