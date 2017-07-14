@@ -109,7 +109,7 @@ endf
 
 func! SynHighlights(...)
   let l:stack  = SynStack()
-  let l:arg    = a:0 > 0 ? a:1 : 0
+  let l:arg    = a:0 ? a:1 : 0
   let l:offset = max([l:arg, -len(l:stack)])
 
   exe 'echo expand("<cword>")'

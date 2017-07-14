@@ -1,5 +1,5 @@
 func! dotvim#edit(...)
-  execute 'edit '. (a:0 > 0 ? dotvim#path(a:1) : resolve($MYVIMRC))
+  execute 'edit '. (a:0 ? dotvim#path(a:1) : resolve($MYVIMRC))
 endf
 
 func! dotvim#list(A,L,P)
@@ -10,5 +10,5 @@ endf
 
 func! dotvim#path(...)
   let l:dir = fnamemodify(resolve($MYVIMRC), ':h')
-  return (a:0 > 0) ? l:dir.'/'.a:1 : l:dir
+  return a:0 ? l:dir.'/'.a:1 : l:dir
 endf
