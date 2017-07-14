@@ -1,19 +1,5 @@
 " ::::::::: Functions :::::::::::::::::::::
 
-" ··········· vimrc ···················· {{{1
-func! EditDotVim(...)
-  execute 'edit '. (a:0 > 0 ? DotVim('init/'.a:1) : resolve($MYVIMRC))
-endf
-
-func! ListDotVimFiles(A,L,P)
-  return system("find ". DotVim('init/') ." -type f -name '*.vim' -exec basename -a {} +")
-endf
-
-func! DotVim(...)
-  let l:dir = fnamemodify(resolve($MYVIMRC), ':h')
-  return (a:0 > 0) ? l:dir.'/'.a:1 : l:dir
-endf
-
 " ··········· filetype ················· {{{1
 func! FileTypeToggle(num)
   if a:num > 0 || !exists("b:alt_ftype")

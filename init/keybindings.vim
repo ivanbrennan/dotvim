@@ -10,7 +10,8 @@ set timeout timeoutlen=300 ttimeoutlen=5
 
 " source / edit vimrc
 nnoremap <silent> <leader>f= :source $MYVIMRC<CR>
-nnoremap          <leader>f; :EditDotVim 
+nnoremap          <leader>f; :DotVim init/
+nnoremap       <leader>f<CR> :DotVim 
 
 " ··········· buffers ········· {{{1
 cnoremap <expr>   %%    getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
