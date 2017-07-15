@@ -1,1 +1,1 @@
-nnoremap <silent> <buffer> q :call bufwin#quit_window()<CR>
+nnoremap <buffer><silent> q :call bufwin#quit_window()<CR>
