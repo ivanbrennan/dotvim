@@ -34,8 +34,8 @@ syn cluster vimCommentGroup	contains=vimTodo,@Spell
 " See https://github.com/vim/vim/issues/124
 " and https://github.com/neovim/neovim/issues/5491
 " Remove this once the update has merged into Neovim
-" (https://github.com/neovim/neovim/pull/6948)
-syn match   vimCommand contained	"\<z[-+^.=]\="
+" (https://github.com/neovim/neovim/pull/6976)
+syn match   vimCommand contained	"\<z[-+^.=]\=\>"
 " ### end FIX vimCommand ###
 syn keyword vimOnlyCommand contained	fix[del] op[en] sh[ell] P[rint]
 syn keyword vimStdPlugin contained	DiffOrig Man N[ext] S TOhtml XMLent XMLns
