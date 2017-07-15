@@ -21,7 +21,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'FooSoft/vim-argwrap'
 Plug 'gabebw/vim-spec-runner',         { 'on': ['<Plug>RunFocusedSpec', '<Plug>RunCurrentSpecFile'] }
 Plug 'guns/xterm-color-table.vim'
-Plug 'ivanbrennan/listical',           { 'on': ['<Plug>QfxListical', '<Plug>LocListical'] }
+Plug 'ivanbrennan/listical',           { 'on': ['<Plug>QfxListical', '<Plug>LocListical'], 'for': 'qf' }
 Plug 'ivanbrennan/vmux'
 Plug 'ivanbrennan/articulate'
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
