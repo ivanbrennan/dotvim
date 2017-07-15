@@ -2,8 +2,7 @@
 
 " ··········· config ·········· {{{1
 " Use Space as mapleader
-let mapleader = ' '
-nnoremap <Space> <Nop>
+map <Space> <Leader>
 
 " Timeout mappings fast and key codes faster
 set timeout timeoutlen=300 ttimeoutlen=5
