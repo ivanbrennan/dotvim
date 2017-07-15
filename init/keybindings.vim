@@ -118,6 +118,9 @@ nmap     <leader>;  <Plug>Commentary
 omap     <leader>;  <Plug>Commentary
 nmap     <leader>;; <Plug>CommentaryLine
 
+" start new undo-group for <C-U>
+inoremap <C-U> <C-G>u<C-U>
+
 " arg-wrap
 nnoremap <silent> <leader>) :ArgWrap<CR>
 nnoremap <silent> <leader>( :ArgWrap<CR>
