@@ -51,9 +51,8 @@ nnoremap <M-L>          :lnewer<CR>
 
 noremap  <silent> <leader><Bslash> :call ReloadBuffers()<CR>
 
-" Vinegar
-nnoremap - -
-nmap     <leader>u  <Plug>VinegarUp
+" Dirvish
+nmap   <leader>u  <Plug>(dirvish_up)
 
 " ··········· command-line ···· {{{1
 noremap  <S-Space>        :

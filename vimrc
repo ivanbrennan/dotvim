@@ -25,6 +25,7 @@ Plug 'ivanbrennan/listical',           { 'on': ['<Plug>QfxListical', '<Plug>LocL
 Plug 'ivanbrennan/vmux'
 Plug 'ivanbrennan/articulate'
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
+Plug 'justinmk/vim-dirvish'
 Plug 'jwhitley/vim-matchit'
 Plug 'kchmck/vim-coffee-script',       { 'for': 'coffee' }
 Plug 'mhinz/vim-grepper'
