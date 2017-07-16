@@ -4,21 +4,16 @@ let s:vimrc_dir = fnamemodify(s:vimrc, ':h')
 let s:sub_paths = [
       \ 'after',
       \ 'autoload',
-      \ 'backup',
       \ 'colors',
       \ 'compiler',
       \ 'ftdetect',
       \ 'ftplugin',
       \ 'indent',
-      \ 'info',
       \ 'init',
-      \ 'init.vim',
       \ 'plugged',
-      \ 'plugshot',
       \ 'syntax',
       \ 'tmp',
       \ 'todo.org',
-      \ 'undo',
       \ 'view',
       \ 'vimrc'
       \]
