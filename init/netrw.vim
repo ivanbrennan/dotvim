@@ -1,3 +1,6 @@
+" don't need it. using dirvish
+let g:loaded_netrwPlugin = 1
+
 " Netrw & Vinegar
 let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_hide=1              " hide hidden files
