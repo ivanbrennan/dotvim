@@ -244,17 +244,16 @@ noremap           <C-W>p       gT
 noremap           <C-W><C-P>   gT
 
 " ··········· display ········· {{{1
-noremap  <silent> <leader>`  :call ToggleColorscheme()<CR>
+noremap  <silent> <leader>`  :call optcycle#colorscheme()<CR>
 noremap  <silent> <leader>[  :call SynHighlights(-1)<CR>
-noremap  <silent> <leader>.  :call StatusToggle()<CR>
 
 " folding
 nnoremap zz za
-noremap  <silent> <leader>Z  :call FoldMethCycle()<CR>
-noremap  <silent> <leader>z  :call FoldColToggle(4)<CR>
+noremap  <silent> <leader>z  :call optcycle#foldmethod()<CR>
+noremap  <silent> <leader>Z  :call optcycle#foldcolumn(4)<CR>
 
 " colour column
-nnoremap <silent> <leader>]  :call ColorColToggle()<CR>
+nnoremap <silent> <leader>]  :call optcycle#colorcolumn()<CR>
 
 " cursor column
 vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv

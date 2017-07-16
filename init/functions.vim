@@ -1,88 +1,6 @@
 " ::::::::: Functions :::::::::::::::::::::
 
-" ··········· filetype ················· {{{1
-func! FileTypeToggle(num)
-  if a:num > 0 || !exists("b:alt_ftype")
-    let b:alt_ftype = &filetype
-    let   &filetype = input("enter FileType: ")
-  else
-    let     new_alt = &filetype
-    let   &filetype = b:alt_ftype
-    let b:alt_ftype = new_alt
-  end
-endf
-
-func! HTMLTypeToggle()
-  if exists("b:alt_ftype")
-    let &filetype = b:alt_ftype
-    unlet b:alt_ftype
-  else
-    let b:alt_ftype = &filetype
-    set filetype=html
-  end
-endf
-
-" ··········· line numbers ············· {{{1
-func! NumberToggle()
-  if &number == 0
-    setl foldcolumn=0 number number?
-  else
-    setl foldcolumn=1 nonumber number?
-  end
-endf
-
-" ··········· status toggle ············ {{{1
-func! StatusToggle()
-  if &laststatus == 2
-    set laststatus=0
-  else
-    set laststatus=2
-  end
-endf
-
 " ··········· folding ·················· {{{1
-func! FoldMethCycle()
-  if &foldmethod == 'syntax'
-    setl foldmethod=indent
-  elseif &foldmethod == 'indent'
-    setl foldmethod=marker
-  elseif &foldmethod == 'marker'
-    setl foldmethod=syntax
-  endif
-
-  if &filetype == 'ruby'
-    if &foldmethod == 'syntax'
-      let ruby_fold = 1
-    elseif exists('ruby_fold')
-      unlet ruby_fold
-    endif
-  endif
-
-  set foldmethod?
-endf
-
-func! FoldColToggle(fold_max)
-  if &foldcolumn < a:fold_max
-    call FoldColOn(a:fold_max)
-  else
-    call FoldColOff()
-  endif
-endf
-
-func! FoldColOn(fold_max)
-  let w:use_num  = &l:number
-  let w:use_rel  = &l:relativenumber
-  let w:fold_min = &l:foldcolumn
-
-  setl nonumber norelativenumber
-  let &l:foldcolumn = a:fold_max
-endf
-
-func! FoldColOff()
-  let [ &l:number, &l:relativenumber ] = [ w:use_num, w:use_rel ]
-  let &l:foldcolumn = w:fold_min
-endf
-
 func! MyFoldText()
   let l:text =  '+'
   let l:text .= substitute(v:folddashes, '-', '·', 'g')
@@ -111,44 +29,6 @@ endf
 command! -nargs=0 SynStack call SynStack()
 command! -nargs=0 SynHighlight call SynHighlights(-1)
 command! -nargs=? SynHighlights call SynHighlights(<args>)
-
-" ··········· colors ··················· {{{1
-func! ToggleBG()
-  if exists("g:colors_name") | let cur_colo = g:colors_name | endif
-
-  if &background=='dark' | set background=light
-  else                   | set background=dark | endif
-
-  if !exists("g:colors_name") && exists("cur_colo")
-    let g:colors_name = cur_colo
-  endif
-endf
-
-func! ToggleColorscheme()
-  if exists("g:colors_name")
-    if g:colors_name == 'ion' | colorscheme blight
-    else                      | colorscheme ion | endif
-  endif
-endf
-
-func! TransparencyToggle(transpr)
-  if exists("g:transparency_memo")
-    let &transparency = g:transparency_memo
-    unlet g:transparency_memo
-  else
-    let g:transparency_memo = &transparency
-    let &transparency=a:transpr
-  end
-endf
-
-func! ColorColToggle()
-  if &l:colorcolumn == ""
-    let width = (&l:textwidth > 0) ? &l:textwidth : 80
-    let &l:colorcolumn=join(range(width+1, width+256),',')
-  else
-    setl colorcolumn=
-  endif
-endf
 
 " ··········· braces ··················· {{{1
 func! NextTextObject(motion)
