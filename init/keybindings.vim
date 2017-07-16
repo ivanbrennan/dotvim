@@ -247,6 +247,7 @@ noremap  <silent> <leader>[  :call SynHighlights(-1)<CR>
 noremap  <silent> <leader>.  :call StatusToggle()<CR>
 
 " folding
+nnoremap zz za
 noremap  <silent> <leader>Z  :call FoldMethCycle()<CR>
 noremap  <silent> <leader>z  :call FoldColToggle(4)<CR>
 
