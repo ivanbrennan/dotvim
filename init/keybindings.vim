@@ -35,15 +35,15 @@ nnoremap <leader>bp      :bprevious<CR>
 nnoremap <leader>l       <C-^>
 
 " Quickfix list (alt h/j/k/l)
-nmap     <C-@>          <Plug>QfxListical
-nmap     <C-Space>      <Plug>QfxListical
+nmap     <C-@>          <Plug>(listical_quickfix)
+nmap     <C-Space>      <Plug>(listical_quickfix)
 nnoremap <M-j>          :cnext<CR>
 nnoremap <M-k>          :cprevious<CR>
 nnoremap <M-h>          :colder<CR>
 nnoremap <M-l>          :cnewer<CR>
 
 " Location List (alt H/J/K/L)
-nmap     <C-S-Space>    <Plug>LocListical
+nmap     <C-S-Space>    <Plug>(listical_loclist)
 nnoremap <M-J>          :lnext<CR>
 nnoremap <M-K>          :lprevious<CR>
 nnoremap <M-H>          :lolder<CR>
