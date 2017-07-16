@@ -244,22 +244,6 @@ func! ReplaceWithLet(bang)
   execute 'substitute/\v^\s+\zs(\w+)%(\s*\=\s*)(.*\S)\s*$/let'.a:bang.'(:\1) { \2 }'
 endf
 
-" ··········· vmux ····················· {{{1
-func! Vmux()
-  VmuxPrimary
-  let g:spec_runner_dispatcher = "call system(\"tmux send -t " . g:vmux_primary . " C-L '{command}' ENTER\")"
-endf
-
-func! Vtux()
-  let g:spec_runner_dispatcher = "VtrSendCommand! {command}"
-  echo 'g:spec_runner_dispatcher = "' . g:spec_runner_dispatcher . '"'
-endf
-
-func! Fifo()
-  let g:spec_runner_dispatcher = "silent !echo clear > test_commands && echo {command} > test_commands"
-  echo 'g:spec_runner_dispatcher = "' . g:spec_runner_dispatcher . '"'
-endf
-
 " ··········· keyboard ················· {{{1
 func! Keyboard(type)
   if a:type == "workman"
