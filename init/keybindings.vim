@@ -145,8 +145,10 @@ inoremap <C-_>      <Esc>viwg~gi
 " hash-rocket
 inoremap <C-.> <Space>=><Space>
 
-" ··········· autocompletion ·· {{{1
+" ··········· shell ··········· {{{1
+nnoremap    <leader>i  <C-Z>
 
+" ··········· autocompletion ·· {{{1
 inoremap        <C-L>  <C-X><C-L>
 inoremap        <C-]>  <C-X><C-]>
 inoremap        <C-@>  <C-X><C-O>
