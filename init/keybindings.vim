@@ -265,9 +265,6 @@ nnoremap <C-L>         zz
 nnoremap <C-U><C-L>    zt
 nnoremap <leader><C-L> <C-L>
 
-" reposition
-noremap <silent> zz      :call Reposition()<CR>
-
 " ··········· testing ········· {{{1
 nmap         t<CR>        <Plug>RunFocusedSpec
 nmap         T<CR>        <Plug>RunCurrentSpecFile

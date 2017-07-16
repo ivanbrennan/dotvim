@@ -40,18 +40,6 @@ func! StatusToggle()
   end
 endf
 
-" ··········· repositioning ············ {{{1
-func! Reposition()
-  let target = float2nr(round(winheight(0) / 3.0))
-  let diff   = winline() - target
-  if diff > 0
-    let movement = diff . ''
-  else
-    let movement = -diff . ''
-  endif
-  execute 'normal ' . movement
-endf
-
 " ··········· folding ·················· {{{1
 func! FoldMethCycle()
   if &foldmethod == 'syntax'
