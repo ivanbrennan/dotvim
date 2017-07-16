@@ -45,7 +45,6 @@ Plug 'tpope/vim-rbenv',                { 'on': 'Rbenv' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby',              { 'for': 'ruby' }
 Plug 'vim-scripts/dbext.vim'
 Plug 'vim-scripts/hexHighlight.vim',   { 'on': 'HexHighlight' }
