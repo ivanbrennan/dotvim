@@ -5,7 +5,7 @@
 map <Space> <Leader>
 
 " Timeout mappings fast and key codes faster
-set timeout timeoutlen=300 ttimeoutlen=5
+set timeout timeoutlen=1000 ttimeoutlen=5
 
 " source / edit vimrc
 nnoremap <silent> <leader>f= :source $MYVIMRC<CR>
