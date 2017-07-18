@@ -8,7 +8,7 @@ map <Space> <Leader>
 set timeout timeoutlen=1000 ttimeoutlen=5
 
 " source / edit vimrc
-nnoremap <silent> <leader>f= :source $MYVIMRC<CR>
+nnoremap <silent> <leader>f= :DotVimReload<CR>
 nnoremap          <leader>f; :DotVim init/
 nnoremap       <leader>f<CR> :DotVim 
 
