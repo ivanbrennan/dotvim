@@ -9,9 +9,9 @@ func! dotvim#path(subpath)
   return s:vimrc_dir . '/' . a:subpath
 endf
 
-func! dotvim#list(ArgLead, CmdLine, CursorPos)
-  return map(globpath(s:vimrc_dir, a:ArgLead.'*', 0, 1), s:subpath_map)
+func! dotvim#list(arglead, _cmdline, _cursorpos)
+  return map(globpath(s:vimrc_dir, a:arglead.'*', 0, 1), s:relative_path)
 endf
 
-let s:subpath_map = { k,v -> fnamemodify(v,':p')[(s:leading_len):] }
-let s:leading_len = len(s:vimrc_dir) + 1
+let s:relative_path = { _idx, val -> fnamemodify(val,':p')[(s:prefix_len):] }
+let s:prefix_len = len(s:vimrc_dir) + 1
