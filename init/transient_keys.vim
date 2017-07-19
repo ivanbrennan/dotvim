@@ -18,43 +18,23 @@ endfor
 
 " ·· resize panes ············· {{{1
 if has('nvim') " TODO: get this working in normal Vim (ctrl-arrows acting weird)
-  func! IsEdgeWin(direction_key)
-    let orig = winnr()
-    silent! execute 'wincmd' a:direction_key
-    let is_edge = winnr() == orig
-    silent! execute orig 'wincmd w'
-    return is_edge
-  endf
+  call submode#enter_with('resize', 'n', 's', '<C-W><C-Up>',    ':ResizeUp<CR>')
+  call submode#enter_with('resize', 'n', 's', '<C-W><C-Down>',  ':ResizeDown<CR>')
+  call submode#enter_with('resize', 'n', 's', '<C-W><C-Right>', ':ResizeRight<CR>')
+  call submode#enter_with('resize', 'n', 's', '<C-W><C-Left>',  ':ResizeLeft<CR>')
 
-  func! ResizeWin(direction)
-    if a:direction == 'up'
-      execute 'resize' IsEdgeWin('j') ? '+1' : '-1'
-    elseif a:direction == 'down'
-      execute 'resize' IsEdgeWin('j') ? '-1' : '+1'
-    elseif a:direction == 'left'
-      execute 'vertical resize' IsEdgeWin('l') ? '+1' : '-1'
-    else
-      execute 'vertical resize' IsEdgeWin('l') ? '-1' : '+1'
-    end
-  endf
-
-  call submode#enter_with('resize', 'n', '', '<C-W><C-Up>',    ':call ResizeWin("up")<CR>')
-  call submode#enter_with('resize', 'n', '', '<C-W><C-Down>',  ':call ResizeWin("down")<CR>')
-  call submode#enter_with('resize', 'n', '', '<C-W><C-Left>',  ':call ResizeWin("left")<CR>')
-  call submode#enter_with('resize', 'n', '', '<C-W><C-Right>', ':call ResizeWin("right")<CR>')
-
-  call submode#map('resize', 'n', '', '<C-Up>',    ':call ResizeWin("up")<CR>')
-  call submode#map('resize', 'n', '', '<C-Down>',  ':call ResizeWin("down")<CR>')
-  call submode#map('resize', 'n', '', '<C-Left>',  ':call ResizeWin("left")<CR>')
-  call submode#map('resize', 'n', '', '<C-Right>', ':call ResizeWin("right")<CR>')
+  call submode#map('resize', 'n', 's', '<C-Up>',    ':ResizeUp<CR>')
+  call submode#map('resize', 'n', 's', '<C-Down>',  ':ResizeDown<CR>')
+  call submode#map('resize', 'n', 's', '<C-Right>', ':ResizeRight<CR>')
+  call submode#map('resize', 'n', 's', '<C-Left>',  ':ResizeLeft<CR>')
 else
-  call submode#enter_with('resize', 'n', '', '<C-W>+', '<C-W>+')
-  call submode#enter_with('resize', 'n', '', '<C-W>-', '<C-W>-')
-  call submode#enter_with('resize', 'n', '', '<C-W>>', '<C-W>>')
-  call submode#enter_with('resize', 'n', '', '<C-W><', '<C-W><')
+  call submode#enter_with('resize', 'n', 's', '<C-W>+', ':ResizeUp<CR>')
+  call submode#enter_with('resize', 'n', 's', '<C-W>-', ':ResizeDown<CR>')
+  call submode#enter_with('resize', 'n', 's', '<C-W>>', ':ResizeRight<CR>')
+  call submode#enter_with('resize', 'n', 's', '<C-W><', ':ResizeLeft<CR>')
 
-  call submode#map('resize', 'n', '', '+', '<C-W>+')
-  call submode#map('resize', 'n', '', '-', '<C-W>-')
-  call submode#map('resize', 'n', '', '>', '<C-W>>')
-  call submode#map('resize', 'n', '', '<', '<C-W><')
+  call submode#map('resize', 'n', 's', '+', ':ResizeUp<CR>')
+  call submode#map('resize', 'n', 's', '-', ':ResizeDown<CR>')
+  call submode#map('resize', 'n', 's', '>', ':ResizeRight<CR>')
+  call submode#map('resize', 'n', 's', '<', ':ResizeLeft<CR>')
 endif
