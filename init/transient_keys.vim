@@ -18,7 +18,7 @@ for key in ['<C-J>', '<C-K>', '<C-H>', '<C-L>']
 endfor
 
 " ·· resize panes ············· {{{1
-if has('nvim') " TODO: get this working in normal Vim (ctrl-arrows acting weird)
+if has('nvim') " Vim arrow keys refuse to stay in submode
   call submode#enter_with('resize', 'n', 's', '<C-W><C-Up>',    ':ResizeUp<CR>')
   call submode#enter_with('resize', 'n', 's', '<C-W><C-Down>',  ':ResizeDown<CR>')
   call submode#enter_with('resize', 'n', 's', '<C-W><C-Right>', ':ResizeRight<CR>')
@@ -28,16 +28,6 @@ if has('nvim') " TODO: get this working in normal Vim (ctrl-arrows acting weird)
   call submode#map('resize', 'n', 's', '<C-Down>',  ':ResizeDown<CR>')
   call submode#map('resize', 'n', 's', '<C-Right>', ':ResizeRight<CR>')
   call submode#map('resize', 'n', 's', '<C-Left>',  ':ResizeLeft<CR>')
-else
-  call submode#enter_with('resize', 'n', 's', '<C-W>+', ':ResizeUp<CR>')
-  call submode#enter_with('resize', 'n', 's', '<C-W>-', ':ResizeDown<CR>')
-  call submode#enter_with('resize', 'n', 's', '<C-W>>', ':ResizeRight<CR>')
-  call submode#enter_with('resize', 'n', 's', '<C-W><', ':ResizeLeft<CR>')
-
-  call submode#map('resize', 'n', 's', '+', ':ResizeUp<CR>')
-  call submode#map('resize', 'n', 's', '-', ':ResizeDown<CR>')
-  call submode#map('resize', 'n', 's', '>', ':ResizeRight<CR>')
-  call submode#map('resize', 'n', 's', '<', ':ResizeLeft<CR>')
 endif
 
 call submode#enter_with('resize-hjkl', 'n', '', '<C-W>.')
