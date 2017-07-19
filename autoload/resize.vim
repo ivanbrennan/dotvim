@@ -1,17 +1,9 @@
 func! resize#horizontal(n)
-  if a:n == 1
-    execute 'resize' s:is_bottom_edge() ? '+1' : '-1'
-  else
-    execute 'resize' s:is_bottom_edge() ? '-1' : '+1'
-  endif
+  execute printf('resize %+d', s:is_bottom_edge() ? -a:n : a:n)
 endf
 
 func! resize#vertical(n)
-  if a:n == 1
-    execute 'vertical resize' s:is_right_edge() ? '-1' : '+1'
-  else
-    execute 'vertical resize' s:is_right_edge() ? '+1' : '-1'
-  end
+  execute printf('vertical resize %+d', s:is_right_edge() ? -a:n : a:n)
 endf
 
 func! s:is_bottom_edge()
