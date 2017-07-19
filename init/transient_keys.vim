@@ -1,3 +1,4 @@
+let g:submode_timeout_len = 1500
 let g:submode_keep_leaving_key = 1
 
 " ·· navigate wrapped lines ··· {{{1
@@ -38,3 +39,9 @@ else
   call submode#map('resize', 'n', 's', '>', ':ResizeRight<CR>')
   call submode#map('resize', 'n', 's', '<', ':ResizeLeft<CR>')
 endif
+
+call submode#enter_with('resize-hjkl', 'n', '', '<C-W>.')
+call submode#map('resize-hjkl', 'n', 's', 'k',    ':ResizeUp<CR>')
+call submode#map('resize-hjkl', 'n', 's', 'j',  ':ResizeDown<CR>')
+call submode#map('resize-hjkl', 'n', 's', 'l', ':ResizeRight<CR>')
+call submode#map('resize-hjkl', 'n', 's', 'h',  ':ResizeLeft<CR>')
