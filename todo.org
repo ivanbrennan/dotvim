@@ -1,4 +1,5 @@
 * Todo
+** fix tw in gitcommits `gq`
 ** vim-plug -> minpac
 ** wincent configs
 *** loupe
