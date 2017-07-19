@@ -227,6 +227,7 @@ noremap <C-A> 0
 nmap              <C-W><Space>   <Plug>ZoomWin
 nmap              <C-W><C-@>     <Plug>ZoomWin
 nmap              <C-W><C-Space> <Plug>ZoomWin
+nmap              <leader>.      <Plug>ZoomWin
 noremap           <C-W>u         <C-W>_
 noremap           <C-W><C-U>     <C-W>_
 noremap           <leader>q      <C-W><C-Q>
