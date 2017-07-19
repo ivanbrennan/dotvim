@@ -1,45 +1,60 @@
+let g:submode_keep_leaving_key = 1
+
 " ·· navigate wrapped lines ··· {{{1
-" link
-map <SID>g_  <Nop>
+call submode#enter_with('wrapido', 'n', '', 'gj', 'gj')
+call submode#enter_with('wrapido', 'n', '', 'gk', 'gk')
 
-" initiate
-map gj  gj<SID>g_
-map gk  gk<SID>g_
+call submode#map('wrapido', 'n', '', 'j', 'gj')
+call submode#map('wrapido', 'n', '', 'k', 'gk')
 
-" continue
-noremap <script> <SID>g_j  gj<SID>g_
-noremap <script> <SID>g_k  gk<SID>g_
-noremap <script> <SID>g_h   h<SID>g_
-noremap <script> <SID>g_l   l<SID>g_
+call submode#map('wrapido', 'n', '', 'h', 'h')
+call submode#map('wrapido', 'n', '', 'l', 'l')
 
-" ·· navigate window splits ··· {{{1
-" link
-map <SID>wn_  <Nop>
+" ·· navigate panes ··········· {{{1
+for key in ['<C-J>', '<C-K>', '<C-H>', '<C-L>']
+  call submode#enter_with('panes', 'n', '', '<C-W>'.key, '<C-W>'.key)
+  call submode#map('panes', 'n', '', key, '<C-W>'.key)
+endfor
 
-" initiate
-map <C-W>j  <C-W>j<SID>wn_
-map <C-W>k  <C-W>k<SID>wn_
-map <C-W>h  <C-W>h<SID>wn_
-map <C-W>l  <C-W>l<SID>wn_
+" ·· resize panes ············· {{{1
+if has('nvim') " TODO: get this working in normal Vim (ctrl-arrows acting weird)
+  func! IsEdgeWin(direction_key)
+    let orig = winnr()
+    silent! execute 'wincmd' a:direction_key
+    let is_edge = winnr() == orig
+    silent! execute orig 'wincmd w'
+    return is_edge
+  endf
 
-" continue
-noremap <script> <SID>wn_j  <C-W>j<SID>wn_
-noremap <script> <SID>wn_k  <C-W>k<SID>wn_
-noremap <script> <SID>wn_h  <C-W>h<SID>wn_
-noremap <script> <SID>wn_l  <C-W>l<SID>wn_
+  func! ResizeWin(direction)
+    if a:direction == 'up'
+      execute 'resize' IsEdgeWin('j') ? '+1' : '-1'
+    elseif a:direction == 'down'
+      execute 'resize' IsEdgeWin('j') ? '-1' : '+1'
+    elseif a:direction == 'left'
+      execute 'vertical resize' IsEdgeWin('l') ? '+1' : '-1'
+    else
+      execute 'vertical resize' IsEdgeWin('l') ? '-1' : '+1'
+    end
+  endf
 
-" ·· resize window splits ····· {{{1
-" link
-map <SID>ws_  <Nop>
+  call submode#enter_with('resize', 'n', '', '<C-W><C-Up>',    ':call ResizeWin("up")<CR>')
+  call submode#enter_with('resize', 'n', '', '<C-W><C-Down>',  ':call ResizeWin("down")<CR>')
+  call submode#enter_with('resize', 'n', '', '<C-W><C-Left>',  ':call ResizeWin("left")<CR>')
+  call submode#enter_with('resize', 'n', '', '<C-W><C-Right>', ':call ResizeWin("right")<CR>')
 
-" initiate
-map <C-W>+        <C-W>+<SID>ws_
-map <C-W>-        <C-W>-<SID>ws_
-map <C-W><lt>  <C-W><lt><SID>ws_
-map <C-W>>        <C-W>><SID>ws_
+  call submode#map('resize', 'n', '', '<C-Up>',    ':call ResizeWin("up")<CR>')
+  call submode#map('resize', 'n', '', '<C-Down>',  ':call ResizeWin("down")<CR>')
+  call submode#map('resize', 'n', '', '<C-Left>',  ':call ResizeWin("left")<CR>')
+  call submode#map('resize', 'n', '', '<C-Right>', ':call ResizeWin("right")<CR>')
+else
+  call submode#enter_with('resize', 'n', '', '<C-W>+', '<C-W>+')
+  call submode#enter_with('resize', 'n', '', '<C-W>-', '<C-W>-')
+  call submode#enter_with('resize', 'n', '', '<C-W>>', '<C-W>>')
+  call submode#enter_with('resize', 'n', '', '<C-W><', '<C-W><')
 
-" continue
-noremap <script> <SID>ws_+        <C-W>+<SID>ws_
-noremap <script> <SID>ws_-        <C-W>-<SID>ws_
-noremap <script> <SID>ws_<lt>  <C-W><lt><SID>ws_
-noremap <script> <SID>ws_>        <C-W>><SID>ws_
+  call submode#map('resize', 'n', '', '+', '<C-W>+')
+  call submode#map('resize', 'n', '', '-', '<C-W>-')
+  call submode#map('resize', 'n', '', '>', '<C-W>>')
+  call submode#map('resize', 'n', '', '<', '<C-W><')
+endif

@@ -27,6 +27,7 @@ Plug 'ivanbrennan/articulate'
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
 Plug 'justinmk/vim-dirvish'
 Plug 'jwhitley/vim-matchit'
+Plug 'kana/vim-submode'
 Plug 'kchmck/vim-coffee-script',       { 'for': 'coffee' }
 Plug 'mhinz/vim-grepper'
 Plug 'nelstrom/vim-visual-star-search'
