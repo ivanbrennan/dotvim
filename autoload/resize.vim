@@ -1,35 +1,32 @@
 func! resize#horizontal(n)
-  execute printf('resize %+d', s:is_bottom_edge() ? -a:n : a:n)
+  execute printf('resize %+d', s:horizontal_should_invert() ? -a:n : a:n)
 endf
 
 func! resize#vertical(n)
-  execute printf('vertical resize %+d', s:is_right_edge() ? -a:n : a:n)
+  execute printf('vertical resize %+d', s:vertical_should_invert() ? -a:n : a:n)
 endf
 
-func! s:is_bottom_edge()
+func! s:horizontal_should_invert()
   let orig_nr = winnr()
 
   silent! wincmd j
-  let below_nr = winnr()
+  let is_bottom_window = winnr() == orig_nr
 
-  " check whether it's also the top-edge
   silent! 2 wincmd k
-  let above_nr = winnr()
+  let has_window_above = winnr() != orig_nr
   silent! execute orig_nr 'wincmd w'
 
-  " don't invert resize operations if just one window tall,
-  " otherwise resizing "down" will increase command-line height,
-  " like dragging the statusline upwards.
-  return orig_nr == below_nr && orig_nr != above_nr
+  " Don't invert resize commands if there's no window above. Doing so
+  " would cause counter-intuitive resizing of the command-line area.
+  return is_bottom_window && has_window_above
 endf
 
-func! s:is_right_edge()
+func! s:vertical_should_invert()
   let orig_nr = winnr()
 
   silent! wincmd l
-  let right_nr = winnr()
-  let is_edge = winnr() == orig_nr
-
+  let is_rightmost_window = winnr() == orig_nr
   silent! execute orig_nr 'wincmd w'
-  return right_nr == orig_nr
+
+  return is_rightmost_window
 endf
