@@ -13,7 +13,7 @@ nnoremap          <leader>f; :DotVim init/
 nnoremap       <leader>f<CR> :DotVim 
 
 " ··········· buffers ········· {{{1
-cnoremap <expr>   %%    getcmdtype() == ':' ? fnameescape(expand('%:h')).'/' : '%%'
+cnoremap <expr>   %%    getcmdtype() == ':' ? fnameescape(expand('%:~:.:h')).'/' : '%%'
 
 nnoremap <leader>e      :edit 
 nmap     <leader>ee     :edit %%
