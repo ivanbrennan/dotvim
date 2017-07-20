@@ -64,7 +64,7 @@ call plug#end()
 
 syntax enable
 
-runtime! init/**.vim
+runtime! init/*.vim
 
 silent! source ~/.vimrc.local
 
