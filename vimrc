@@ -22,9 +22,9 @@ Plug 'FooSoft/vim-argwrap'
 Plug 'gabebw/vim-spec-runner',         { 'on': ['<Plug>RunFocusedSpec', '<Plug>RunCurrentSpecFile'] }
 Plug 'guns/xterm-color-table.vim'
 Plug 'ivanbrennan/listical',           { 'on': ['<Plug>(listical_quickfix)', '<Plug>(listical_loclist)'], 'for': 'qf' }
-Plug 'ivanbrennan/vmux'
 Plug 'ivanbrennan/articulate'
 Plug 'ivanbrennan/vernier'
+Plug 'ivanbrennan/vmux'
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
 Plug 'justinmk/vim-dirvish'
 Plug 'jwhitley/vim-matchit'
