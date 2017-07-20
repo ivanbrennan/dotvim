@@ -23,7 +23,7 @@ Plug 'gabebw/vim-spec-runner',         { 'on': ['<Plug>RunFocusedSpec', '<Plug>R
 Plug 'guns/xterm-color-table.vim'
 Plug 'ivanbrennan/listical',           { 'on': ['<Plug>(listical_quickfix)', '<Plug>(listical_loclist)'], 'for': 'qf' }
 Plug 'ivanbrennan/articulate'
-Plug 'ivanbrennan/vernier',            { 'on': ['VernierUp', 'VernierDown', 'VernierLeft', 'VernierRight'] }
+Plug 'ivanbrennan/caliper',            { 'on': ['CaliperUp', 'CaliperDown', 'CaliperLeft', 'CaliperRight'] }
 Plug 'ivanbrennan/vmux'
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
 Plug 'justinmk/vim-dirvish'

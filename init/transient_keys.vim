@@ -19,19 +19,19 @@ endfor
 
 " ·· resize panes ············· {{{1
 if has('nvim') " Vim arrow keys refuse to stay in submode
-  call submode#enter_with('resize', 'n', 's', '<C-W><C-Up>',    ':VernierUp<CR>')
-  call submode#enter_with('resize', 'n', 's', '<C-W><C-Down>',  ':VernierDown<CR>')
-  call submode#enter_with('resize', 'n', 's', '<C-W><C-Right>', ':VernierRight<CR>')
-  call submode#enter_with('resize', 'n', 's', '<C-W><C-Left>',  ':VernierLeft<CR>')
+  call submode#enter_with('resize', 'n', 's', '<C-W><C-Up>',    ':CaliperUp<CR>')
+  call submode#enter_with('resize', 'n', 's', '<C-W><C-Down>',  ':CaliperDown<CR>')
+  call submode#enter_with('resize', 'n', 's', '<C-W><C-Right>', ':CaliperRight<CR>')
+  call submode#enter_with('resize', 'n', 's', '<C-W><C-Left>',  ':CaliperLeft<CR>')
 
-  call submode#map('resize', 'n', 's', '<C-Up>',    ':VernierUp<CR>')
-  call submode#map('resize', 'n', 's', '<C-Down>',  ':VernierDown<CR>')
-  call submode#map('resize', 'n', 's', '<C-Right>', ':VernierRight<CR>')
-  call submode#map('resize', 'n', 's', '<C-Left>',  ':VernierLeft<CR>')
+  call submode#map('resize', 'n', 's', '<C-Up>',    ':CaliperUp<CR>')
+  call submode#map('resize', 'n', 's', '<C-Down>',  ':CaliperDown<CR>')
+  call submode#map('resize', 'n', 's', '<C-Right>', ':CaliperRight<CR>')
+  call submode#map('resize', 'n', 's', '<C-Left>',  ':CaliperLeft<CR>')
 endif
 
 call submode#enter_with('resize-hjkl', 'n', '', '<C-W>.')
-call submode#map('resize-hjkl', 'n', 's', 'k',    ':VernierUp<CR>')
-call submode#map('resize-hjkl', 'n', 's', 'j',  ':VernierDown<CR>')
-call submode#map('resize-hjkl', 'n', 's', 'l', ':VernierRight<CR>')
-call submode#map('resize-hjkl', 'n', 's', 'h',  ':VernierLeft<CR>')
+call submode#map('resize-hjkl', 'n', 's', 'k',    ':CaliperUp<CR>')
+call submode#map('resize-hjkl', 'n', 's', 'j',  ':CaliperDown<CR>')
+call submode#map('resize-hjkl', 'n', 's', 'l', ':CaliperRight<CR>')
+call submode#map('resize-hjkl', 'n', 's', 'h',  ':CaliperLeft<CR>')
