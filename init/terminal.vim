@@ -58,6 +58,3 @@ if &term =~ '^\%(tmux\|screen\)'
   set t_8b=[48;2;%lu;%lu;%lum
 endif
 
-" bracketed-paste
-" enable this once (if) I can reproduce the problem it's trying to solve
-" execute 'source' fnameescape(expand('<sfile>:p:h')).'/terminal/bracketed-paste.vim'
