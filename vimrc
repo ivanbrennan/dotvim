@@ -24,6 +24,7 @@ Plug 'guns/xterm-color-table.vim'
 Plug 'ivanbrennan/listical',           { 'on': ['<Plug>(listical_quickfix)', '<Plug>(listical_loclist)'], 'for': 'qf' }
 Plug 'ivanbrennan/vmux'
 Plug 'ivanbrennan/articulate'
+Plug 'ivanbrennan/vernier'
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
 Plug 'justinmk/vim-dirvish'
 Plug 'jwhitley/vim-matchit'
