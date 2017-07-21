@@ -12,10 +12,19 @@ call submode#map('wrapido', 'n', '', 'h', 'h')
 call submode#map('wrapido', 'n', '', 'l', 'l')
 
 " ·· navigate panes ··········· {{{1
-for key in ['<C-J>', '<C-K>', '<C-H>', '<C-L>']
-  call submode#enter_with('panes', 'n', '', '<C-W>'.key, '<C-W>'.key)
-  call submode#map('panes', 'n', '', key, '<C-W>'.key)
-endfor
+ map <SID>wn_  <Nop>
+
+ " initiate
+ map <C-W><C-J>  <C-W><C-J><SID>wn_
+ map <C-W><C-K>  <C-W><C-K><SID>wn_
+ map <C-W><C-H>  <C-W><C-H><SID>wn_
+ map <C-W><C-L>  <C-W><C-L><SID>wn_
+
+ " continue
+ noremap <script> <SID>wn_<C-J>  <C-W><C-J><SID>wn_
+ noremap <script> <SID>wn_<C-K>  <C-W><C-K><SID>wn_
+ noremap <script> <SID>wn_<C-H>  <C-W><C-H><SID>wn_
+ noremap <script> <SID>wn_<C-L>  <C-W><C-L><SID>wn_
 
 " ·· resize panes ············· {{{1
 if has('nvim') " Vim arrow keys refuse to stay in submode
