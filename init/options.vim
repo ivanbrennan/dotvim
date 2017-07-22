@@ -41,16 +41,17 @@ if exists('+inccommand')
 endif
 
 " formatting
-let s:tw=90
-let &g:textwidth=s:tw
-let &g:colorcolumn=join(range(s:tw+1, s:tw+256),',')
-call matchadd('ColorColumn', '\%>'.s:tw.'v.', 100)
-exe 'setg formatprg=par\ -w'.s:tw
-unlet s:tw
+let g:colorcolumn_start=90
+call matchadd('ColorColumn', '\%>'.g:colorcolumn_start.'v.', 128)
 set formatoptions-=t            " don't auto-wrap non-commented text
 set formatoptions-=o            " don't auto-comment with o or O
 set formatoptions+=r            " auto-comment with Enter
 silent! set formatoptions+=j    " let J handle comments if supported
+
+augroup Formatting
+  autocmd!
+  autocmd FileType * execute 'setl formatprg=par\ -w'.(&textwidth > 0 ? &textwidth : g:colorcolumn_start)
+augroup END
 
 " appearance
 set synmaxcol=256

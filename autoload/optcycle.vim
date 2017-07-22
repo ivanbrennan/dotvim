@@ -59,7 +59,7 @@ endf
 
 func! optcycle#colorcolumn()
   if &l:colorcolumn == ""
-    let width = (&l:textwidth > 0) ? &l:textwidth : 80
+    let width = (&l:textwidth > 0) ? &l:textwidth : g:colorcolumn_start
     let &l:colorcolumn=join(range(width+1, width+256),',')
   else
     setl colorcolumn=
