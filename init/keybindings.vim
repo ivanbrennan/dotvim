@@ -164,6 +164,12 @@ nnoremap          U  <C-R>
 nnoremap <C-X><C-U>  U
 nnoremap     <C-X>u  U
 
+" un-magic
+nmap   <leader>/  <Plug>(LoupeUnMagicForwardSearch)
+nmap   <leader>?  <Plug>(LoupeUnMagicBackwardSearch)
+xmap   <leader>/  <Plug>(LoupeUnMagicForwardSearch)
+xmap   <leader>?  <Plug>(LoupeUnMagicBackwardSearch)
+
 " NOTE: repeat.vim will avoid mapping U to RepeatRedo because I have a custom U mapping.
 " If inconsistencies arise in repeat/undo/redo behavior, consider something like:
 " nmap <expr> U  exists('g:loaded_repeat') ? "\<Plug>(RepeatRedo)" : "\<C-R>"

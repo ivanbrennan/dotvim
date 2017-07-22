@@ -32,3 +32,4 @@ endif
 " Loupe
 let g:LoupeCenterResults = 0
 let g:LoupeHlSearchTimeout = 1000
+let g:LoupeVeryMagic = 0
