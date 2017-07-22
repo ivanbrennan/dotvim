@@ -1,5 +1,4 @@
 * Todo
-** fix tw in gitcommits `gq`
 ** ruby indentation of multiline method chain (can you align the dots?)
 ** vim-plug -> minpac
 ** wincent configs
@@ -257,3 +256,5 @@ index 7c6e12f5c..ab1dc2df5 100644
 #+end_src
 ** italics in the terminal
 *** https://youtu.be/n1cKtZfwOgQ
+** fix tw in gitcommits `gq`
+*** see commit 7fbd337de1a854a014b05648c713cb8e12068cdb
