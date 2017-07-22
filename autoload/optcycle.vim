@@ -58,11 +58,16 @@ func! optcycle#colorscheme()
 endf
 
 func! optcycle#colorcolumn()
-  if &l:colorcolumn == ""
-    let width = (&l:textwidth > 0) ? &l:textwidth : g:colorcolumn_start
-    let &l:colorcolumn=join(range(width+1, width+256),',')
+  let width = ColorColumnStart()
+
+  if &colorcolumn != ''
+    set colorcolumn=
+    let w:long_line_highlight = matchadd('ColorColumn', '\%>'.width.'v.', 128)
+  elseif exists('w:long_line_highlight')
+    call matchdelete(w:long_line_highlight)
+    unlet w:long_line_highlight
   else
-    setl colorcolumn=
+    let &colorcolumn=join(range(width+1, width+256),',')
   endif
 endf
 

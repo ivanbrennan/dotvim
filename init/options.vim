@@ -41,16 +41,19 @@ if exists('+inccommand')
 endif
 
 " formatting
-let g:colorcolumn_start=90
-call matchadd('ColorColumn', '\%>'.g:colorcolumn_start.'v.', 128)
 set formatoptions-=t            " don't auto-wrap non-commented text
 set formatoptions-=o            " don't auto-comment with o or O
 set formatoptions+=r            " auto-comment with Enter
 silent! set formatoptions+=j    " let J handle comments if supported
 
+let g:colorcolumn_start=90
+func! ColorColumnStart()
+  return &textwidth > 0 ? &textwidth : g:colorcolumn_start
+endf
+
 augroup Formatting
   autocmd!
-  autocmd FileType * execute 'setl formatprg=par\ -w'.(&textwidth > 0 ? &textwidth : g:colorcolumn_start)
+  autocmd FileType * execute 'setl formatprg=par\ -w'.ColorColumnStart()
 augroup END
 
 " appearance
