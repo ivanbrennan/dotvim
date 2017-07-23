@@ -43,7 +43,9 @@ func! s:is_comment(pos)
 endf
 
 func! s:align_range(minline, maxline, col)
-  execute a:minline.','.a:maxline 'left' a:col - 1
+  if a:minline <= a:maxline
+    execute a:minline.','.a:maxline 'left' a:col - 1
+  endif
 endf
 
 func! s:align_method_chain_down()

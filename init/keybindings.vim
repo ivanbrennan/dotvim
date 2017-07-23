@@ -279,6 +279,8 @@ noremap <silent>            gs  :Gstatus<CR>
 
 " ··········· ruby ············ {{{1
 noremap  <silent> <leader>R     :w !ruby<CR>
+nmap     <silent> <leader>=     <Plug>(vimruby_align_method_chain)
+xmap     <silent> <leader>=     <Plug>(vimruby_align_method_chain)
 " ··········· rails ··········· {{{1
 nnoremap <silent> <leader><Tab> :A<CR>
 nnoremap          <leader>E     :Eschema 
