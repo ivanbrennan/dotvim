@@ -12,29 +12,29 @@ func! s:has_leading_dot_operator()
 endf
 
 func! s:align_method_chain_up()
-  let [dot_line, dot_col] = s:chainhead()
+  let [dot_line, dot_col] = s:chainstart()
   if dot_line
     call s:align_range(dot_line + 1, line('.'), dot_col)
   endif
 endf
 
-func! s:chainhead()
+func! s:chainstart()
   let before_line = '\%<'. line('.') .'l'
-  let dot = s:backsearch_chainhead(before_line, '')
+  let dot = s:backsearch_chainstart(before_line, '')
 
   while dot[0] && s:is_comment(dot)
     let before_col = '\%<'. dot[1] .'c'
-    let dot = s:backsearch_chainhead(before_line, before_col)
+    let dot = s:backsearch_chainstart(before_line, before_col)
   endwhile
 
   return dot
 endf
 
-func! s:backsearch_chainhead(line_anchor, col_anchor)
-  return searchpos(s:chainhead_regex(a:line_anchor, a:col_anchor), 'bWn') " backwards, no-wrap, no-move
+func! s:backsearch_chainstart(line_anchor, col_anchor)
+  return searchpos(s:chainstart_regex(a:line_anchor, a:col_anchor), 'bWn') " backwards, no-wrap, no-move
 endf
 
-func! s:chainhead_regex(line, col)
+func! s:chainstart_regex(line, col)
   return '^\s*[^[:blank:].].*' . a:line . a:col . '\zs\.\ze\K'
 endf
 
