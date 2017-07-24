@@ -12,9 +12,15 @@ let ruby_operators=1
 syn match parens /[(){}\[\]]/
 hi def link parens Delimiter
 
-nnoremap <silent> <Plug>(vimruby_align_method_chain) :<C-U>call vimruby#align_method_chain()<CR>
-xnoremap <silent> <Plug>(vimruby_align_method_chain) :<C-U>call vimruby#align_method_chain()<CR>
-
 inoreabbrev <buffer> erb <% %><C-O>F<Space>
 inoreabbrev <buffer> erp <%= %><C-O>F<Space>
 inoreabbrev <buffer> erc <%# %><C-O>F<Space>
+
+noremap <buffer><silent> <leader>R   :w !ruby<CR>
+
+" realign
+nmap <buffer>               co.  <Plug>(realign_toggle_electric_dot)
+imap <buffer><silent>     <M-.>  <Plug>(realign_toggle_electric_dot)
+nmap <buffer><silent> <leader>=  <Plug>(realign_method_chain)
+xmap <buffer><silent> <leader>=  <Plug>(realign_method_chain)
+imap <buffer><silent>     <M-=>  <Plug>(realign_method_chain)
