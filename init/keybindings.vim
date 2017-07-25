@@ -19,6 +19,7 @@ nnoremap <leader>e      :edit
 nmap     <leader>ee     :edit %%
 nnoremap <leader>et     :tabedit 
 nnoremap <leader>eh     :edit ~/
+nnoremap <leader>eo     :edit **/
 
 nnoremap <leader>fs     :write<CR>
 nnoremap <leader>wq     :wq 
