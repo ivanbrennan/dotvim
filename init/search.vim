@@ -10,10 +10,6 @@ let g:ctrlp_match_window    = 'max:18'
 let g:ctrlp_open_new_file   = 'r'
 let g:ctrlp_prompt_mappings = { 'PrtClearCache()': ['<C-_>'] }
 let g:ctrlp_switch_buffer   = 'e'
-let g:ctrlp_custom_ignore   = {
-  \ 'dir':  '\v((\.(git|hg|svn|yardoc|github|bundle))|(public|images|system|data|log|tmp))$',
-  \ 'file': '\v\.(exe|so|dll|dat)$'
-  \ }
 
 " Grepper/Ag
 let g:grepper = { 'highlight': 1, 'next_tool': '<Leader><Bslash>' }
@@ -26,7 +22,17 @@ if executable('ag')
         \ --ignore .github
         \ --ignore .bundle
         \ --ignore .DS_Store
-        \ --ignore "**/*.pyc"'
+        \ --ignore public
+        \ --ignore images
+        \ --ignore system
+        \ --ignore data
+        \ --ignore log
+        \ --ignore vcr_cassettes
+        \ --ignore "*.pyc"
+        \ --ignore "*.exe"
+        \ --ignore "*.so"
+        \ --ignore "*.dll"
+        \ --ignore "*.dat"'
 endif
 
 " Loupe
