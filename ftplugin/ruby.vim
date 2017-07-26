@@ -24,3 +24,12 @@ imap <buffer><silent>     <M-.>  <Plug>(realign_toggle_electric_dot)
 nmap <buffer><silent> <leader>=  <Plug>(realign_method_chain)
 xmap <buffer><silent> <leader>=  <Plug>(realign_method_chain)
 imap <buffer><silent>     <M-=>  <Plug>(realign_method_chain)
+
+" somehow, <C-R><C-W> correctly recognizes trailing ! and ? at the end of
+" method names, despite those characters not being included in 'iskeyword'
+nmap <buffer><silent>     <Plug>(ArticulateTag)  :tag     <C-R><C-W><CR>
+xmap <buffer><silent>     <Plug>(ArticulateTag)  :tag     <C-R><C-W><CR>
+nmap <buffer><silent>   <Plug>(ArticulateTjump)  :tjump   <C-R><C-W><CR>
+xmap <buffer><silent>   <Plug>(ArticulateTjump)  :tjump   <C-R><C-W><CR>
+nmap <buffer><silent> <Plug>(ArticulateTselect)  :tselect <C-R><C-W><CR>
+xmap <buffer><silent> <Plug>(ArticulateTselect)  :tselect <C-R><C-W><CR>
