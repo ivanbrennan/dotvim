@@ -267,8 +267,8 @@ For some reason, the behavior of command-line mode's ~<C-R><C-W>~ differs from t
 #+begin_src vimscript
 nnoremap <buffer><silent>  <C-]> :tag     <C-R><C-W><CR>
 xnoremap <buffer><silent>  <C-]> :tag     <C-R><C-W><CR>
-nnoremap <buffer><silent>     g] :tjump   <C-R><C-W><CR>
-xnoremap <buffer><silent>     g] :tjump   <C-R><C-W><CR>
-nnoremap <buffer><silent> g<C-]> :tselect <C-R><C-W><CR>
-xnoremap <buffer><silent> g<C-]> :tselect <C-R><C-W><CR>
+nnoremap <buffer><silent>     g] :tselect <C-R><C-W><CR>
+xnoremap <buffer><silent>     g] :tselect <C-R><C-W><CR>
+nnoremap <buffer><silent> g<C-]> :tjump   <C-R><C-W><CR>
+xnoremap <buffer><silent> g<C-]> :tjump   <C-R><C-W><CR>
 #+end_src
