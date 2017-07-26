@@ -266,9 +266,6 @@ nnoremap <buffer><silent> <C-]> :tag <C-R><C-W><CR>
 For some reason, the behavior of command-line mode's ~<C-R><C-W>~ differs from that of ~expand('<cword>')~. It's not clear from the documentation whether it's intentional or not, but ~<C-R><C-W>~ includes the trailing ! or ? character despite it not being a keyword character. So leave the ~'iskeyword'~ option alone and instead, place these mappings in ~/.vim/ftplugin/ruby.vim:
 #+begin_src vimscript
 nnoremap <buffer><silent>  <C-]> :tag     <C-R><C-W><CR>
-xnoremap <buffer><silent>  <C-]> :tag     <C-R><C-W><CR>
 nnoremap <buffer><silent>     g] :tselect <C-R><C-W><CR>
-xnoremap <buffer><silent>     g] :tselect <C-R><C-W><CR>
 nnoremap <buffer><silent> g<C-]> :tjump   <C-R><C-W><CR>
-xnoremap <buffer><silent> g<C-]> :tjump   <C-R><C-W><CR>
 #+end_src
