@@ -11,10 +11,8 @@
 *** statusline
 **** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/plugin/statusline.vim
 **** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/autoload/statusline.vim
-*** Command T
-**** fast on large repo
-**** fuzzy find help docs
-** bind q to quit certain modes
+** fzf
+*** handle space like ivy does
 ** C-s during search to goto next match
 *** reconcile various bindings within / search
 **** C-L (use C-Y)
@@ -258,3 +256,4 @@ index 7c6e12f5c..ab1dc2df5 100644
 *** https://youtu.be/n1cKtZfwOgQ
 ** fix tw in gitcommits `gq`
 *** see commit 7fbd337de1a854a014b05648c713cb8e12068cdb
+** bind q to quit certain modes
