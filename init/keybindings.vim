@@ -210,14 +210,14 @@ noremap <silent> <leader>* :setl foldenable!<CR>
 
 " tag, pop
 nmap  <C-.>  <Plug>(ArticulateTag)
-vmap  <C-.>  <Plug>(ArticulateTag)
+xmap  <C-.>  <Plug>(ArticulateTag)
 nmap  <C-,>  <Plug>(ArticulatePop)
-vmap  <C-,>  <Plug>(ArticulatePop)
+xmap  <C-,>  <Plug>(ArticulatePop)
 " tjump, tselect
 nmap  g.      <Plug>(ArticulateTjump)
-vmap  g.      <Plug>(ArticulateTjump)
+xmap  g.      <Plug>(ArticulateTjump)
 nmap  g<C-.>  <Plug>(ArticulateTselect)
-vmap  g<C-.>  <Plug>(ArticulateTselect)
+xmap  g<C-.>  <Plug>(ArticulateTselect)
 
 " ··········· movement ········ {{{1
 " first non-blank on next/previous line
