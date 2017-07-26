@@ -257,3 +257,18 @@ index 7c6e12f5c..ab1dc2df5 100644
 ** fix tw in gitcommits `gq`
 *** see commit 7fbd337de1a854a014b05648c713cb8e12068cdb
 ** bind q to quit certain modes
+** Ruby tag lookups with ! and ? suffixes
+Ruby allows method names to end in ! and ? characters. If I use command-line mode to search for such a method's tag (i.e. ~:tag mymethod!~), Vim finds it correctly, but if I try to use the ~<C-]>~ normal-mode command (jump to the tag for the word under cursor), Vim omits the trailing punctuation char from its tag search. How can I fix this?
+*** I initially tried ~set iskeyword+=!~, but this causes other problems, such as including a leading ! in tag lookups. Instead, I found a surpisingly simple workaround.
+#+begin_src vimscript
+nnoremap <buffer><silent> <C-]> :tag <C-R><C-W><CR>
+#+end_src
+For some reason, the behavior of command-line mode's ~<C-R><C-W>~ differs from that of ~expand('<cword>')~. It's not clear from the documentation whether it's intentional or not, but ~<C-R><C-W>~ includes the trailing ! or ? character despite it not being a keyword character. So leave the ~'iskeyword'~ option alone and instead, place these mappings in ~/.vim/ftplugin/ruby.vim:
+#+begin_src vimscript
+nnoremap <buffer><silent>  <C-]> :tag     <C-R><C-W><CR>
+xnoremap <buffer><silent>  <C-]> :tag     <C-R><C-W><CR>
+nnoremap <buffer><silent>     g] :tjump   <C-R><C-W><CR>
+xnoremap <buffer><silent>     g] :tjump   <C-R><C-W><CR>
+nnoremap <buffer><silent> g<C-]> :tselect <C-R><C-W><CR>
+xnoremap <buffer><silent> g<C-]> :tselect <C-R><C-W><CR>
+#+end_src
