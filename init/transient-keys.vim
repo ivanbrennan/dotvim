@@ -12,7 +12,9 @@ call submode#map('wrapido', 'n', '', 'h', 'h')
 call submode#map('wrapido', 'n', '', 'l', 'l')
 
 " ·· navigate panes ··········· {{{1
- map <SID>wn_  <Nop>
+ map  <SID>wn_ <Nop>
+ nmap <SID>wn_ <Esc>
+ vmap <SID>wn_ <Esc>gv
 
  " initiate
  map <C-W><C-J>  <C-W><C-J><SID>wn_
