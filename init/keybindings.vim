@@ -213,11 +213,8 @@ nmap  <C-.>  <Plug>(ArticulateTag)
 xmap  <C-.>  <Plug>(ArticulateTag)
 nmap  <C-,>  <Plug>(ArticulatePop)
 xmap  <C-,>  <Plug>(ArticulatePop)
-" tjump, tselect
-nmap  g.      <Plug>(ArticulateTjump)
-xmap  g.      <Plug>(ArticulateTjump)
-nmap  g<C-.>  <Plug>(ArticulateTselect)
-xmap  g<C-.>  <Plug>(ArticulateTselect)
+nmap  g.     <Plug>(ArticulateTjump)
+xmap  g.     <Plug>(ArticulateTjump)
 
 " ··········· movement ········ {{{1
 " first non-blank on next/previous line
