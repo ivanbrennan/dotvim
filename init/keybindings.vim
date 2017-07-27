@@ -55,7 +55,7 @@ nmap   <leader>u  <Plug>(dirvish_up)
 
 " ··········· command-line ···· {{{1
 noremap  <S-Space>        :
-noremap  <leader>v        :
+noremap  <leader>c        :
 nnoremap <leader>1        :!
 noremap  <leader>:        :<Up>
 nnoremap <leader>h        :help 
