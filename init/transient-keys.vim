@@ -39,6 +39,7 @@ if has('nvim') " Vim arrow keys refuse to stay in submode
   call submode#map('resize', 'n', 's', '<C-Down>',  ':CaliperDown<CR>')
   call submode#map('resize', 'n', 's', '<C-Right>', ':CaliperRight<CR>')
   call submode#map('resize', 'n', 's', '<C-Left>',  ':CaliperLeft<CR>')
+  call submode#map('resize', 'n', 's', '=',         '<C-W>=')
 endif
 
 call submode#enter_with('resize-hjkl', 'n', '', '<C-W>.')
@@ -46,3 +47,4 @@ call submode#map('resize-hjkl', 'n', 's', 'k',    ':CaliperUp<CR>')
 call submode#map('resize-hjkl', 'n', 's', 'j',  ':CaliperDown<CR>')
 call submode#map('resize-hjkl', 'n', 's', 'l', ':CaliperRight<CR>')
 call submode#map('resize-hjkl', 'n', 's', 'h',  ':CaliperLeft<CR>')
+call submode#map('resize-hjkl', 'n', 's', '=',  '<C-W>=')
