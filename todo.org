@@ -259,15 +259,17 @@ index 7c6e12f5c..ab1dc2df5 100644
 ** bind q to quit certain modes
 ** Ruby tag lookups with ! and ? suffixes
 Ruby allows method names to end in ! and ? characters. If I use command-line mode to search for such a method's tag (i.e. ~:tag mymethod!~), Vim finds it correctly, but if I try to use the ~<C-]>~ normal-mode command (jump to the tag for the word under cursor), Vim omits the trailing punctuation char from its tag search. How can I fix this?
-*** I initially tried ~set iskeyword+=!~, but this causes other problems, such as including a leading ! in tag lookups. Instead, a better workaround is:
+*** I initially tried ~set iskeyword+=!~, but this causes other problems, such as including a leading ! in tag lookups.
+Instead, a better workaround is to put the following in ~/.vim/ftplugin/ruby.vim:
 #+begin_src vimscript
 nnoremap <buffer><silent>  <C-]> :<C-U>exe v:count1."tag <Plug><cword>"<CR>
 nnoremap <buffer><silent>     g] :<C-U>tselect <Plug><cword><CR>
 nnoremap <buffer><silent> g<C-]> :<C-U>tjump <Plug><cword><CR>
 #+end_src
-This makes use of the ~<Plug><cword>~ mapping that vim-ruby provides to correcly identify the Ruby cursor identifier.
+This makes use of a ~<Plug><cword>~ mapping provided by vim-ruby (and included in Vim's runtime files by default) provides to correctly identify the Ruby cursor identifierr.
 See:
 https://github.com/vim-ruby/vim-ruby/commit/deb3490a0ecca3d2163863bb49e5a3adff875387
 https://github.com/vim-ruby/vim-ruby/commit/2322c368736156413b7fac9f13521ed0e851fe70
 https://github.com/vim-ruby/vim-ruby/commit/37ab22005b44605c1c5385d6551644c49199b691
 https://github.com/vim-ruby/vim-ruby/blob/master/ftplugin/ruby.vim
+https://github.com/vim/vim/blob/master/runtime/ftplugin/ruby.vim
