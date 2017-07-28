@@ -1,5 +1,4 @@
 * Todo
-** ruby indentation of multiline method chain (can you align the dots?)
 ** vim-plug -> minpac
 ** wincent configs
 *** loupe
@@ -273,3 +272,5 @@ https://github.com/vim-ruby/vim-ruby/commit/2322c368736156413b7fac9f13521ed0e851
 https://github.com/vim-ruby/vim-ruby/commit/37ab22005b44605c1c5385d6551644c49199b691
 https://github.com/vim-ruby/vim-ruby/blob/master/ftplugin/ruby.vim
 https://github.com/vim/vim/blob/master/runtime/ftplugin/ruby.vim
+** ruby indentation of multiline method chain (can you align the dots?)
+*** realign.vim (in progress)
