@@ -88,6 +88,12 @@ vnoremap <Tab> =
 vnoremap     < <gv
 vnoremap     > >gv
 
+" alignment
+nmap     ga  <Plug>(EasyAlign)
+xmap     ga  <Plug>(EasyAlign)
+nnoremap gA  ga
+xnoremap gA  ga
+
 " ··········· editing ········· {{{1
 " spawn newline
 inoremap <S-CR>     <C-O>O

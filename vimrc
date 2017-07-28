@@ -27,6 +27,7 @@ Plug 'ivanbrennan/caliper',            { 'on': ['CaliperUp', 'CaliperDown', 'Cal
 Plug 'ivanbrennan/vmux'
 Plug 'ivanbrennan/realign',            { 'on': ['<Plug>(realign_method_chain)', '<Plug>(realign_electric_dot)', '<Plug>(realign_toggle_electric_dot)'], 'for': 'ruby' }
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
+Plug 'junegunn/vim-easy-align',        { 'on': ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)'] }
 Plug 'justinmk/vim-dirvish'
 Plug 'jwhitley/vim-matchit'
 Plug 'kana/vim-submode'
