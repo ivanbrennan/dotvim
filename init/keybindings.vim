@@ -103,10 +103,7 @@ set pastetoggle=<F8>
 nnoremap <leader>V `[v`]
 
 " registers
-noremap           ' "
-noremap  <leader>y  "*y
-noremap  <leader>ye "*y$
-noremap  <leader>p  "*p
+noremap  ' "
 
 " the abyss
 vnoremap <BS> "_d
