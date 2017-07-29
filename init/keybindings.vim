@@ -57,6 +57,7 @@ nmap   <leader>u  <Plug>(dirvish_up)
 noremap  <S-Space>        :
 noremap  <leader>v        :
 noremap  <leader>c        :
+noremap  <leader>x        :
 nnoremap <leader>1        :!
 noremap  <leader>:        :<Up>
 nnoremap <leader>h        :help 
