@@ -259,6 +259,7 @@ noremap  <silent> <leader>[  :call SynHighlights(-1)<CR>
 " folding
 noremap  <silent> <leader>z  :call optcycle#foldmethod()<CR>
 noremap  <silent> <leader>Z  :call optcycle#foldcolumn(4)<CR>
+nnoremap                 z.  za
 
 " colour column
 nnoremap <silent> <leader>]  :call optcycle#colorcolumn()<CR>
