@@ -16,13 +16,19 @@
 *** reconcile various bindings within / search
 **** C-L (use C-Y)
 ***** make it start at current char? (map / h/)
-**** C-G (use C-S)
-**** C-T (use C-H)
+**** C-G (use C-N)
+**** C-T (use C-P)
 *** help
 *** quickfix
 *** netrw
 ** consider vim-test
 ** neovim-remote
+
+* Readlist
+** fzf
+** EasyAlign
+** minpac
+** vim-plug
 
 * Done
 ** figure out what's up with my Escape key (delay, international characters, etc.)
