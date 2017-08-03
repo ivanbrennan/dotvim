@@ -57,6 +57,7 @@ Plug 'vim-scripts/Super-Shell-Indent', { 'for': 'sh' }
 Plug 'wellle/targets.vim'
 Plug 'wincent/pinnacle'
 Plug 'ivanbrennan/loupe',              { 'branch': 'toggle-magic-string' }
+Plug 'wannesm/wmgraphviz.vim',         { 'for': 'dot' }
 Plug 'wlangstroth/vim-racket'
 " ····························· }}}1
 
