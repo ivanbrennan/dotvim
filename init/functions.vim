@@ -55,7 +55,7 @@ func! SuperTab(complete, tab)
   endif
 
   " group of non-whitespace characters before cursor
-  let prefix = expand(matchstr(line[0:col], '\S*$'))
+  let prefix = expand(matchstr(line[0:col], '\S*$'), 1)
 
   " complete filename if finishing a path
   if prefix =~ '^[~/.]' | return "\<c-x>\<c-f>" | endif
