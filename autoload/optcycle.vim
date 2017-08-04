@@ -53,7 +53,7 @@ endf
 " ··········· colors ··················· {{{1
 func! optcycle#colorscheme()
   if exists("g:colors_name")
-    execute 'colorscheme' (g:colors_name == 'ion') ? 'blight' : 'ion'
+    execute 'colorscheme' (g:colors_name == 'ion') ? 'blight' : 'nord'
   endif
 endf
 
