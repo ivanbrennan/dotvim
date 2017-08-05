@@ -18,8 +18,9 @@ let s:nord_vim_version="0.6.0"
 set background=dark
 
 let s:nord00_gui = "#232A38"
-let s:nord0_gui = "#2E3440"
-let s:nord1_gui = "#3B4252"
+let s:nord0_gui  = "#2E3440"
+let s:nord01_gui = "#313845"
+let s:nord1_gui  = "#3B4252"
 let s:nord2_gui = "#434C5E"
 let s:nord3_gui = "#4C566A"
 let s:nord4_gui = "#D8DEE9"
@@ -90,7 +91,7 @@ call s:hi("Underline", "", "", "", "", "underline", "")
 "+--- Editor ---+
 call s:hi("ColorColumn", "", s:nord1_gui, "NONE", s:nord1_term, "", "")
 call s:hi("Cursor", s:nord0_gui, s:nord4_gui, "", "NONE", "", "")
-call s:hi("CursorLine", "", s:nord1_gui, "NONE", s:nord1_term, "NONE", "")
+call s:hi("CursorLine", "", s:nord01_gui, "NONE", s:nord1_term, "NONE", "")
 call s:hi("iCursor", s:nord0_gui, s:nord4_gui, "", "NONE", "", "")
 call s:hi("LineNr", s:nord3_gui, s:nord0_gui, s:nord3_term, "NONE", "", "")
 call s:hi("MatchParen", s:nord0_gui, s:nord8_gui, s:nord1_term, s:nord8_term, "", "")
