@@ -17,6 +17,7 @@ let g:colors_name = "nord"
 let s:nord_vim_version="0.6.0"
 set background=dark
 
+let s:nord00_gui = "#232A38"
 let s:nord0_gui = "#2E3440"
 let s:nord1_gui = "#3B4252"
 let s:nord2_gui = "#434C5E"
@@ -127,8 +128,8 @@ call s:hi("ErrorMsg", s:nord4_gui, s:nord11_gui, "NONE", s:nord11_term, "", "")
 call s:hi("ModeMsg", s:nord4_gui, "", "", "", "", "")
 call s:hi("MoreMsg", s:nord4_gui, "", "", "", "", "")
 call s:hi("Question", s:nord4_gui, "", "NONE", "", "", "")
-call s:hi("StatusLine", s:nord4_gui, s:nord0_gui, s:nord8_term, s:nord1_term, "NONE", "")
-call s:hi("StatusLineNC", s:nord4_gui, s:nord0_gui, s:nord8_term, "NONE", "NONE", "")
+call s:hi("StatusLine", s:nord4_gui, s:nord00_gui, s:nord8_term, s:nord1_term, "NONE", "")
+call s:hi("StatusLineNC", s:nord3_gui, s:nord00_gui, s:nord8_term, "NONE", "NONE", "")
 call s:hi("WarningMsg", s:nord0_gui, s:nord13_gui, s:nord1_term, s:nord13_term, "", "")
 call s:hi("WildMenu", s:nord8_gui, s:nord3_gui, s:nord8_term, s:nord3_term, "", "")
 
@@ -143,7 +144,7 @@ call s:hi("TabLineSel", s:nord8_gui, s:nord3_gui, s:nord8_term, s:nord3_term, "N
 
 "+--- Window ---+
 call s:hi("Title", s:nord4_gui, "", "NONE", "", "NONE", "")
-call s:hi("VertSplit", s:nord2_gui, s:nord1_gui, s:nord3_term, s:nord1_term, "NONE", "")
+call s:hi("VertSplit", s:nord2_gui, s:nord0_gui, s:nord3_term, "NONE", "NONE", "")
 
 "+----------------------+
 "+ Language Base Groups +
