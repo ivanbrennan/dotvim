@@ -161,6 +161,7 @@ inoremap    <C-Space>  <C-X><C-O>
 
 inoremap <expr> <Tab>   SuperTab("\<C-N>", "\<C-F>")
 inoremap <expr> <S-Tab> SuperTab("\<C-P>", "\<C-D>")
+inoremap <expr> <Esc>   pumvisible() ? "<C-e>" : "<Esc>"
 
 " ··········· search ·········· {{{1
 " emacs taking over my life
