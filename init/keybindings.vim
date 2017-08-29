@@ -181,10 +181,15 @@ xmap   <leader>?  <Plug>(LoupeUnMagicBackwardSearch)
 " If inconsistencies arise in repeat/undo/redo behavior, consider something like:
 " nmap <expr> U  exists('g:loaded_repeat') ? "\<Plug>(RepeatRedo)" : "\<C-R>"
 
-cnoremap <expr> <C-P> getcmdtype() == '/' ? "\<C-T>" : "\<Up>"
-cnoremap <expr> <C-N> getcmdtype() == '/' ? "\<C-G>" : "\<Down>"
-cnoremap <expr> <C-S> getcmdtype() == '/' ? "\<C-G>" : "\<C-S>"
-cnoremap <expr> <C-Y> getcmdtype() == '/' ? "\<C-L>" : "\<C-Y>"
+fun! IsSearch()
+  let cmdtype = getcmdtype()
+  return cmdtype == '/' || cmdtype == '?'
+endf
+
+cnoremap <expr> <C-P> IsSearch() ? "\<C-T>" : "\<Up>"
+cnoremap <expr> <C-N> IsSearch() ? "\<C-G>" : "\<Down>"
+cnoremap <expr> <C-S> IsSearch() ? "\<C-G>" : "\<C-S>"
+cnoremap <expr> <C-Y> IsSearch() ? "\<C-L>" : "\<C-Y>"
 
 " :nohlsearch
 nnoremap  <silent> <leader><CR> :nohlsearch<CR>
