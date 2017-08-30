@@ -1,6 +1,6 @@
 " CtrlP
 let g:ctrlp_map             = '<Leader>o'
-nnoremap   <Leader>bb       :CtrlPBuffer<CR>
+nnoremap   <Leader>L        :CtrlPBuffer<CR>
 nnoremap   <Leader>bk       :CtrlPQuickfix<CR>
 nnoremap   <Leader>bm       :CtrlPMRU<CR>
 let g:ctrlp_by_filename     = 1
