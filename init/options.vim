@@ -46,7 +46,7 @@ set formatoptions-=o            " don't auto-comment with o or O
 set formatoptions+=r            " auto-comment with Enter
 silent! set formatoptions+=j    " let J handle comments if supported
 
-let g:colorcolumn_start=90
+let g:colorcolumn_start=100
 func! ColorColumnStart()
   return &textwidth > 0 ? &textwidth : g:colorcolumn_start
 endf
