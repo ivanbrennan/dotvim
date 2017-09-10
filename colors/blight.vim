@@ -17,8 +17,7 @@ let g:colors_name = "blight"
 let s:white  = { "gui": "#ffffff", "cterm": "231" }
 let s:black  = { "gui": "#121212", "cterm": "233" }
 
-let s:owhite = { "gui": "#f7f7f7", "cterm": "231" }
-let s:grey_7 = { "gui": "#f5f5f5", "cterm": "255" }
+let s:owhite = { "gui": "#f7f8f8", "cterm": "231" }
 let s:grey_6 = { "gui": "#eeeeee", "cterm": "255" }
 let s:grey_5 = { "gui": "#dadada", "cterm": "253" }
 let s:grey_4 = { "gui": "#b2b2b2", "cterm": "249" }
@@ -32,7 +31,7 @@ let s:grey_z = { "gui": "#f2f2f2", "cterm": "253" }
 let s:nice_grey = { "gui": "#393E53", "cterm": "253" }
 let s:slate     = { "gui": "#666666", "cterm": "253" }
 let s:purpcoal  = { "gui": "#354668", "cterm": "253" }
-let s:paper     = { "gui": "#f5f5f5", "cterm": "253" }
+let s:paper     = { "gui": "#f5f5f6", "cterm": "253" }
 
 let s:solar  = { "gui": "#ffffdf", "cterm": "230" }
 let s:yellow = { "gui": "#ffffaf", "cterm": "229" }
@@ -72,7 +71,7 @@ call s:h("Normal",         { "fg": s:black, "bg": s:owhite })
 
 " UI ·······················································{{{2
 call s:h("Cursor",         { "fg": s:white, "bg": s:grey_4 })
-call s:h("CursorLine",     { "bg": s:grey_7 })
+call s:h("CursorLine",     { "bg": s:paper })
 hi! link CursorColumn      CursorLine
 call s:h("QuickFixLine",   { "bg": s:grey_6 })
 
