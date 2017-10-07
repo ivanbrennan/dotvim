@@ -35,7 +35,7 @@ set backspace=indent,eol,start
 set nojoinspaces
 set nrformats=
 set complete-=i
-set clipboard=unnamed  " default to the clipboard register
+set clipboard=unnamedplus " default to the clipboard register
 if exists('+inccommand')
   set inccommand=nosplit  " nvim magic
 endif
