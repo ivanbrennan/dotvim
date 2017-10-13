@@ -29,9 +29,9 @@ set guicursor+=sm:block-blinkon0
 if has("nvim")
   " it all just works!
 elseif &term =~ 'xterm'
-  let &t_SI="\<Esc>]1337;CursorShape=1\x7"
-  let &t_SR="\<Esc>]1337;CursorShape=2\x7"
-  let &t_EI="\<Esc>]1337;CursorShape=0\x7"
+  " let &t_SI="\<Esc>]1337;CursorShape=1\x7"
+  " let &t_SR="\<Esc>]1337;CursorShape=2\x7"
+  " let &t_EI="\<Esc>]1337;CursorShape=0\x7"
 elseif &term =~ 'tmux\|screen' && exists("$TMUX")
   let &t_SI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_SR="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
