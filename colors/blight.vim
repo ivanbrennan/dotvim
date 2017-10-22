@@ -17,7 +17,7 @@ let g:colors_name = "blight"
 let s:white  = { "gui": "#ffffff", "cterm": "231" }
 let s:black  = { "gui": "#121212", "cterm": "233" }
 
-let s:owhite = { "gui": "#f7f8f8", "cterm": "231" }
+let s:owhite = { "gui": "#fcfcfc", "cterm": "231" }
 let s:grey_6 = { "gui": "#eeeeee", "cterm": "255" }
 let s:grey_5 = { "gui": "#dadada", "cterm": "253" }
 let s:grey_4 = { "gui": "#b2b2b2", "cterm": "249" }
