@@ -21,6 +21,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'FooSoft/vim-argwrap'
 Plug 'gabebw/vim-spec-runner',         { 'on': ['<Plug>RunFocusedSpec', '<Plug>RunCurrentSpecFile'] }
 Plug 'guns/xterm-color-table.vim'
+Plug 'itchyny/vim-haskell-indent',     { 'for': 'haskell' }
 Plug 'ivanbrennan/listical',           { 'on': ['<Plug>(listical_quickfix)', '<Plug>(listical_loclist)'], 'for': 'qf' }
 Plug 'ivanbrennan/articulate'
 Plug 'ivanbrennan/caliper',            { 'on': ['CaliperUp', 'CaliperDown', 'CaliperLeft', 'CaliperRight'] }
