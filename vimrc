@@ -36,7 +36,6 @@ Plug 'kchmck/vim-coffee-script',       { 'for': 'coffee' }
 Plug 'mhinz/vim-grepper'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'ngmy/vim-rubocop'
-Plug 'rakr/vim-one'
 Plug 'regedarek/ZoomWin'
 Plug 'sjl/gundo.vim'
 Plug 'tommcdo/vim-exchange'
