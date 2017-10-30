@@ -3,10 +3,13 @@ func! statusline#current() abort
 endf
 
 func! statusline#bufname() abort
-  return statusline#current() ? bufname('%') : ''
+  return statusline#current() ? s:relative_bufname() : ''
 endf
 func! statusline#bufname_nc() abort
-  return !statusline#current() ? bufname('%') : ''
+  return !statusline#current() ? s:relative_bufname() : ''
+endf
+func! s:relative_bufname() abort
+  return fnamemodify(bufname('%'), ':.')
 endf
 
 func! statusline#filetype() abort
