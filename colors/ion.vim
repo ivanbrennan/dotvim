@@ -130,7 +130,7 @@ call s:hi("WildMenu", s:ion8_gui, s:ion3_gui, s:ion8_term, s:ion3_term, "", "")
 
 "+--- Search ---+
 call s:hi("IncSearch", s:ion1_gui, s:ion8_gui, s:ion1_term, s:ion8_term, "underline", "")
-call s:hi("Search", s:ion1_gui, s:ion3_gui, s:ion1_term, s:ion3_term, "NONE", "")
+call s:hi("Search", s:ion6_gui, s:ion3_gui, s:ion6_term, s:ion3_term, "NONE", "")
 
 "+--- Tabs ---+
 call s:hi("TabLine", s:ion4_gui, s:ion1_gui, "NONE", s:ion1_term, "NONE", "")
