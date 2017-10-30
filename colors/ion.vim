@@ -170,7 +170,7 @@ call s:hi("StorageClass", s:ion9_gui, "", s:ion9_term, "", "", "")
 call s:hi("String", s:ion14_gui, "", s:ion14_term, "", "", "")
 call s:hi("Structure", s:ion9_gui, "", s:ion9_term, "", "", "")
 call s:hi("Tag", s:ion4_gui, "", "", "", "", "")
-call s:hi("Todo", s:ion13_gui, "", s:ion13_term, "NONE", "", "")
+call s:hi("Todo", s:ion13_gui, "NONE", s:ion13_term, "NONE", "", "")
 call s:hi("Type", s:ion9_gui, "", s:ion9_term, "", "NONE", "")
 call s:hi("Typedef", s:ion9_gui, "", s:ion9_term, "", "", "")
 hi! link Macro Define
