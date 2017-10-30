@@ -83,12 +83,12 @@ call s:hi("Italic", "", "", "", "", "italic", "")
 call s:hi("Underline", "", "", "", "", "underline", "")
 
 "+--- Editor ---+
-call s:hi("ColorColumn", "", s:ion1_gui, "NONE", s:ion1_term, "", "")
+call s:hi("ColorColumn", "", s:ion01_gui, "NONE", s:ion1_term, "", "")
 call s:hi("Cursor", s:ion0_gui, s:ion4_gui, "", "NONE", "", "")
 call s:hi("CursorLine", "", s:ion01_gui, "NONE", s:ion1_term, "NONE", "")
 call s:hi("iCursor", s:ion0_gui, s:ion4_gui, "", "NONE", "", "")
 call s:hi("LineNr", s:ion3_gui, s:ion0_gui, s:ion3_term, "NONE", "", "")
-call s:hi("MatchParen", s:ion0_gui, s:ion8_gui, s:ion1_term, s:ion8_term, "", "")
+call s:hi("MatchParen", s:ion0_gui, s:ion9_gui, s:ion1_term, s:ion9_term, "", "")
 call s:hi("NonText", s:ion2_gui, "", s:ion3_term, "", "", "")
 call s:hi("Normal", s:ion4_gui, s:ion0_gui, "NONE", "NONE", "", "")
 call s:hi("PMenu", s:ion4_gui, s:ion2_gui, "NONE", s:ion1_term, "NONE", "")
@@ -118,7 +118,7 @@ call s:hi("SignColumn", s:ion1_gui, s:ion0_gui, s:ion1_term, "NONE", "", "")
 call s:hi("Directory", s:ion8_gui, "", s:ion8_term, "NONE", "", "")
 
 "+--- Prompt/Status ---+
-call s:hi("EndOfBuffer", s:ion1_gui, "", s:ion1_term, "NONE", "", "")
+call s:hi("EndOfBuffer", s:ion0_gui, s:ion0_gui, s:ion1_term, "NONE", "", "")
 call s:hi("ErrorMsg", s:ion4_gui, s:ion11_gui, "NONE", s:ion11_term, "", "")
 call s:hi("ModeMsg", s:ion4_gui, "", "", "", "", "")
 call s:hi("MoreMsg", s:ion4_gui, "", "", "", "", "")
@@ -130,7 +130,7 @@ call s:hi("WildMenu", s:ion8_gui, s:ion3_gui, s:ion8_term, s:ion3_term, "", "")
 
 "+--- Search ---+
 call s:hi("IncSearch", s:ion1_gui, s:ion8_gui, s:ion1_term, s:ion8_term, "underline", "")
-call s:hi("Search", s:ion1_gui, s:ion8_gui, s:ion1_term, s:ion8_term, "NONE", "")
+call s:hi("Search", s:ion1_gui, s:ion3_gui, s:ion1_term, s:ion3_term, "NONE", "")
 
 "+--- Tabs ---+
 call s:hi("TabLine", s:ion4_gui, s:ion1_gui, "NONE", s:ion1_term, "NONE", "")
