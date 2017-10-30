@@ -124,6 +124,9 @@ nmap     <leader>;; <Plug>CommentaryLine
 " start new undo-group for <C-U>
 inoremap <C-U> <C-G>u<C-U>
 
+" surround
+nmap   <leader>90 ys$)
+
 " arg-wrap
 nnoremap <silent> <leader>) :ArgWrap<CR>
 nnoremap <silent> <leader>( :ArgWrap<CR>
