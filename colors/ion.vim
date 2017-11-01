@@ -12,11 +12,11 @@ let s:ion_vim_version="0.6.0"
 set background=dark
 
 let s:ion00_gui = "#232A38"
-let s:ion0_gui  = "#2E3440"
-let s:ion01_gui = "#313845"
-let s:ion1_gui  = "#3B4252"
-let s:ion2_gui = "#434C5E"
-let s:ion3_gui = "#4C566A"
+let s:ion0_gui  = "#1F2D3B"
+let s:ion01_gui = "#213040"
+let s:ion1_gui  = "#233343"
+let s:ion2_gui = "#2C3B4C"
+let s:ion3_gui = "#36495E"
 let s:ion4_gui = "#D8DEE9"
 let s:ion5_gui = "#E5E9F0"
 let s:ion6_gui = "#ECEFF4"
@@ -146,7 +146,7 @@ call s:hi("VertSplit", s:ion2_gui, s:ion0_gui, s:ion3_term, "NONE", "NONE", "")
 "+----------------------+
 call s:hi("Boolean", s:ion9_gui, "", s:ion9_term, "", "", "")
 call s:hi("Character", s:ion14_gui, "", s:ion14_term, "", "", "")
-call s:hi("Comment", s:ion9_gui, "", s:ion9_term, "", "italic", "")
+call s:hi("Comment", s:ion3_gui, "", s:ion9_term, "", "italic", "")
 call s:hi("Conditional", s:ion9_gui, "", s:ion9_term, "", "", "")
 call s:hi("Constant", s:ion4_gui, "", "NONE", "", "", "")
 call s:hi("Define", s:ion9_gui, "", s:ion9_term, "", "", "")
