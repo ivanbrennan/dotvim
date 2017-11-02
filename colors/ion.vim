@@ -146,7 +146,7 @@ call s:hi("VertSplit", s:ion2_gui, s:ion0_gui, s:ion3_term, "NONE", "NONE", "")
 "+----------------------+
 call s:hi("Boolean", s:ion9_gui, "", s:ion9_term, "", "", "")
 call s:hi("Character", s:ion14_gui, "", s:ion14_term, "", "", "")
-call s:hi("Comment", s:ion3_gui, "", s:ion9_term, "", "italic", "")
+call s:hi("Comment", s:ion7_gui, "", s:ion9_term, "", "italic", "")
 call s:hi("Conditional", s:ion9_gui, "", s:ion9_term, "", "", "")
 call s:hi("Constant", s:ion4_gui, "", "NONE", "", "", "")
 call s:hi("Define", s:ion9_gui, "", s:ion9_term, "", "", "")
