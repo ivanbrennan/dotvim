@@ -35,6 +35,10 @@ let s:nord12_gui = "#D08770"
 let s:nord13_gui = "#EBCB8B"
 let s:nord14_gui = "#A3BE8C"
 let s:nord15_gui = "#B48EAD"
+let s:oxblood = "#391017"
+let s:lava = "#B40020"
+let s:moss = "#00351A"
+let s:slate = "#2C313D"
 
 let s:nord1_term = "0"
 let s:nord3_term = "8"
@@ -124,7 +128,7 @@ call s:hi("SignColumn", s:nord1_gui, s:nord0_gui, s:nord1_term, "NONE", "", "")
 call s:hi("Directory", s:nord8_gui, "", s:nord8_term, "NONE", "", "")
 
 "+--- Prompt/Status ---+
-call s:hi("EndOfBuffer", s:nord1_gui, "", s:nord1_term, "NONE", "", "")
+call s:hi("EndOfBuffer", s:slate, s:slate, s:nord1_term, "NONE", "", "")
 call s:hi("ErrorMsg", s:nord4_gui, s:nord11_gui, "NONE", s:nord11_term, "", "")
 call s:hi("ModeMsg", s:nord4_gui, "", "", "", "", "")
 call s:hi("MoreMsg", s:nord4_gui, "", "", "", "", "")
@@ -240,10 +244,10 @@ call s:hi("diffChanged", s:nord13_gui, "", s:nord13_term, "", "", "")
 call s:hi("diffNewFile", s:nord8_gui, "", s:nord8_term, "", "", "")
 call s:hi("diffOldFile", s:nord7_gui, "", s:nord7_term, "", "", "")
 call s:hi("diffRemoved", s:nord11_gui, "", s:nord11_term, "", "", "")
-call s:hi("DiffAdd", s:nord14_gui, "", s:nord14_term, "", "", "")
-call s:hi("DiffChange", s:nord13_gui, "", s:nord13_term, "", "", "")
-call s:hi("DiffDelete", s:nord11_gui, "", s:nord11_term, "", "", "")
-call s:hi("DiffText", s:nord4_gui, "", "NONE", "", "", "")
+call s:hi("DiffAdd", "", s:moss, s:nord14_term, "", "", "")
+call s:hi("DiffChange", "", s:oxblood, s:nord13_term, "", "", "")
+call s:hi("DiffDelete", s:slate, s:slate, s:nord11_term, "", "", "")
+call s:hi("DiffText", s:nord4_gui, s:lava, "NONE", "", "", "")
 
 call s:hi("gitconfigVariable", s:nord7_gui, "", s:nord7_term, "", "", "")
 
