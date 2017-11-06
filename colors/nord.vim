@@ -55,7 +55,7 @@ let s:nord14_term = "2"
 let s:nord15_term = "5"
 
 if !exists('g:nord_italic_comments')
-  let g:nord_italic_comments = 0
+  let g:nord_italic_comments = 1
 endif
 
 function! s:hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
