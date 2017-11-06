@@ -72,7 +72,6 @@ set lazyredraw
 
 " notifications
 set shortmess+=I
-set visualbell
 
 " matching
 set showmatch
