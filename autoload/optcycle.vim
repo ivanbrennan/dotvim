@@ -7,6 +7,15 @@ func! optcycle#number()
   end
 endf
 
+" ··········· sign column ·············· {{{1
+func! optcycle#signcolumn()
+  if &signcolumn == 'auto'
+    set signcolumn=no
+  else
+    set signcolumn=auto
+  end
+endf
+
 " ··········· folding ·················· {{{1
 func! optcycle#foldmethod()
   if &foldmethod == 'syntax'

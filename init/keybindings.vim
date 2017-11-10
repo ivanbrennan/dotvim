@@ -194,7 +194,6 @@ cnoremap <expr> <C-S> IsSearch() ? "\<C-G>" : "\<C-S>"
 cnoremap <expr> <C-Y> IsSearch() ? "\<C-L>" : "\<C-Y>"
 
 " :nohlsearch
-nnoremap  <silent> <leader><CR> :nohlsearch<CR>
 nnoremap coh :<C-R>=eval(&hls) ? (v:hlsearch ? 'noh' : 'set nohls') : 'set hls'<CR><CR>
 
 " lazy matchit
@@ -274,6 +273,9 @@ nnoremap <silent> <leader>]  :call optcycle#colorcolumn()<CR>
 " cursor column
 vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv
 inoremap <expr>   <C-Bslash> ExprSideEffect('set cursorcolumn!')
+
+" sign column
+nnoremap <silent> <leader><CR> :call optcycle#signcolumn()<CR>
 
 " emacs redraws
 nnoremap <C-L>         zz
