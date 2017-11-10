@@ -14,6 +14,7 @@ func! optcycle#signcolumn()
   else
     set signcolumn=auto
   end
+  set signcolumn?
 endf
 
 " ··········· folding ·················· {{{1
