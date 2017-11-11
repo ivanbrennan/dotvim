@@ -1,4 +1,22 @@
 * Todo
+** haskell
+*** try ghc-mod
+*** try hindent
+*** try hscope
+*** generate a hoogle database
+*** try apply-refact
+*** try hasktags
+**** https://github.com/begriffs/haskell-vim-now/blob/96bf144d4bcd0ca99671d750bec10f4debc790a9/scripts/setup_haskell.hs#L281
+*** try codex
+**** https://github.com/begriffs/haskell-vim-now/blob/96bf144d4bcd0ca99671d750bec10f4debc790a9/vimrc.haskell#L57
+*** try pointfree
+*** try pointfull
+*** try git-hscope
+**** https://github.com/begriffs/haskell-vim-now/blob/master/git-hscope
+*** general vimrc
+**** https://github.com/begriffs/haskell-vim-now/blob/master/vimrc.haskell
+**** https://github.com/begriffs/haskell-vim-now/blob/master/.vimrc
+*** why does intero-vim break indent folding?
 ** vim-plug -> minpac
 ** wincent configs
 *** loupe
