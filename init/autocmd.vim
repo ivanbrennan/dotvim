@@ -9,3 +9,10 @@ augroup Preview
   autocmd!
   autocmd BufWinEnter * if &previewwindow | nnoremap <nowait><buffer> q <C-W>q| endif
 augroup END
+
+" haskell
+augroup HaskellIntero
+  autocmd!
+  au FileType haskell nnoremap K :InteroType<CR>
+  autocmd BufWritePost *.hs InteroReload
+augroup END
