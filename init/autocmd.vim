@@ -13,6 +13,5 @@ augroup END
 " haskell
 augroup HaskellIntero
   autocmd!
-  au FileType haskell nnoremap K :InteroType<CR>
-  autocmd BufWritePost *.hs InteroReload
+  autocmd BufWritePost *.hs silent! InteroReload
 augroup END
