@@ -39,6 +39,8 @@ let s:oxblood = "#391017"
 let s:lava = "#B40020"
 let s:moss = "#00351A"
 let s:slate = "#2C313D"
+let s:shale = "#282D39"
+let s:darkstone = "#252A35"
 
 let s:nord1_term = "0"
 let s:nord3_term = "8"
@@ -95,12 +97,12 @@ call s:hi("Underline", "", "", "", "", "underline", "")
 "+--- Editor ---+
 call s:hi("ColorColumn", "", s:nord1_gui, "NONE", s:nord1_term, "", "")
 call s:hi("Cursor", s:nord0_gui, s:nord4_gui, "", "NONE", "", "")
-call s:hi("CursorLine", "", s:nord01_gui, "NONE", s:nord1_term, "NONE", "")
+call s:hi("CursorLine", "", s:slate, "NONE", s:nord1_term, "NONE", "")
 call s:hi("iCursor", s:nord0_gui, s:nord4_gui, "", "NONE", "", "")
-call s:hi("LineNr", s:nord3_gui, s:nord0_gui, s:nord3_term, "NONE", "", "")
+call s:hi("LineNr", s:nord2_gui, s:shale, s:nord3_term, "NONE", "", "")
 call s:hi("MatchParen", s:nord0_gui, s:nord8_gui, s:nord1_term, s:nord8_term, "", "")
 call s:hi("NonText", s:nord2_gui, "", s:nord3_term, "", "", "")
-call s:hi("Normal", s:nord4_gui, s:nord0_gui, "NONE", "NONE", "", "")
+call s:hi("Normal", s:nord4_gui, s:shale, "NONE", "NONE", "", "")
 call s:hi("PMenu", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", "")
 call s:hi("PmenuSbar", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "", "")
 call s:hi("PMenuSel", s:nord8_gui, s:nord3_gui, s:nord8_term, s:nord3_term, "", "")
@@ -119,7 +121,7 @@ call s:hi("healthWarning", s:nord13_gui, s:nord1_gui, s:nord13_term, s:nord1_ter
 
 "+--- Gutter ---+
 call s:hi("CursorColumn", "", s:nord1_gui, "NONE", s:nord1_term, "", "")
-call s:hi("CursorLineNr", s:nord3_gui, s:nord0_gui, "NONE", "", "", "")
+call s:hi("CursorLineNr", s:nord3_gui, s:shale, "NONE", "", "", "")
 call s:hi("Folded", s:nord3_gui, s:nord1_gui, s:nord3_term, s:nord1_term, "bold", "")
 call s:hi("FoldColumn", s:nord3_gui, s:nord0_gui, s:nord3_term, "NONE", "", "")
 call s:hi("SignColumn", s:nord1_gui, s:nord0_gui, s:nord1_term, "NONE", "", "")
@@ -128,7 +130,7 @@ call s:hi("SignColumn", s:nord1_gui, s:nord0_gui, s:nord1_term, "NONE", "", "")
 call s:hi("Directory", s:nord8_gui, "", s:nord8_term, "NONE", "", "")
 
 "+--- Prompt/Status ---+
-call s:hi("EndOfBuffer", s:slate, s:slate, s:nord1_term, "NONE", "", "")
+call s:hi("EndOfBuffer", s:darkstone, s:darkstone, s:nord1_term, "NONE", "", "")
 call s:hi("ErrorMsg", s:nord4_gui, s:nord11_gui, "NONE", s:nord11_term, "", "")
 call s:hi("ModeMsg", s:nord4_gui, "", "", "", "", "")
 call s:hi("MoreMsg", s:nord4_gui, "", "", "", "", "")
@@ -165,7 +167,7 @@ call s:hi("Exception", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Float", s:nord15_gui, "", s:nord15_term, "", "", "")
 call s:hi("Function", s:nord8_gui, "", s:nord8_term, "", "", "")
 call s:hi("Identifier", s:nord4_gui, "", "NONE", "", "NONE", "")
-call s:hi("Include", s:nord9_gui, "", s:nord9_term, "", "", "")
+call s:hi("Include", s:nord15_gui, "", s:nord15_term, "", "", "")
 call s:hi("Keyword", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Label", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Number", s:nord15_gui, "", s:nord15_term, "", "", "")
@@ -178,7 +180,7 @@ call s:hi("SpecialComment", s:nord8_gui, "", s:nord8_term, "", "italic", "")
 call s:hi("Statement", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("StorageClass", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("String", s:nord14_gui, "", s:nord14_term, "", "", "")
-call s:hi("Structure", s:nord9_gui, "", s:nord9_term, "", "", "")
+call s:hi("Structure", s:nord8_gui, "", s:nord8_term, "", "", "")
 call s:hi("Tag", s:nord4_gui, "", "", "", "", "")
 call s:hi("Todo", s:nord13_gui, "NONE", s:nord13_term, "NONE", "", "")
 call s:hi("Type", s:nord9_gui, "", s:nord9_term, "", "NONE", "")
