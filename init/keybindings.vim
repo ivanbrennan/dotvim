@@ -205,6 +205,9 @@ nnoremap <leader>s  :s/
 vnoremap <leader>s  :s/
 nnoremap        c.  *Ncgn
 
+" global
+nnoremap <leader>g  :g/
+
 " preserve flags
 nnoremap &  :&&<CR>
 xnoremap &  :&&<CR>
