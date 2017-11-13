@@ -2,8 +2,6 @@
 ** haskell
 *** try ghc-mod
 *** try hindent
-*** try hscope
-**** read :h cscope
 *** generate a hoogle database
 *** try apply-refact
 *** try hasktags
