@@ -3,6 +3,8 @@ set cscopeprg=hscope
 set cscopetag
 " set csto=1 " search codex tags first
 
+nmap <buffer><silent> <Plug>(ArticulateTjump) :<C-U>cs find c <C-R>=expand("<cword>")<CR><CR>
+
 if exists(':InteroType')
   nnoremap K :InteroType<CR>
 endif
