@@ -9,3 +9,5 @@ if exists('g:loaded_vimrc_after_hook') || &cp
   finish
 endif
 let g:loaded_vimrc_after_hook = 1
+
+runtime! init/*.vim
