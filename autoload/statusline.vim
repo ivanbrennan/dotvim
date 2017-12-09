@@ -47,6 +47,7 @@ endf
 func! statusline#update_highlight() abort
   let l:bg = pinnacle#extract_bg('StatusLine')
   let l:fg = pinnacle#extract_fg('StatusLine')
+  let l:colors = filter({'bg': l:bg, 'fg': l:fg}, 'v:val != ""')
 
   if &modified
     let l:name_style = 'bold,italic'
@@ -57,29 +58,18 @@ func! statusline#update_highlight() abort
   endif
 
   " StatusLine + name_style
-  execute 'highlight! User1 ' .
-        \ pinnacle#highlight({
-        \   'bg':   l:bg,
-        \   'fg':   l:fg,
-        \   'term': l:name_style,
-        \   'gui':  l:name_style
-        \ })
+  call s:highlight('User1', l:colors, l:name_style)
 
   " StatusLine + type_style
-  execute 'highlight! User2 ' .
-        \ pinnacle#highlight({
-        \   'bg':   l:bg,
-        \   'fg':   l:fg,
-        \   'term': l:type_style,
-        \   'gui':  l:type_style
-        \ })
+  call s:highlight('User2', l:colors, l:type_style)
 
   " StatusLine + unconditional italics
-  execute 'highlight! User3 ' .
-        \ pinnacle#highlight({
-        \   'bg':   l:bg,
-        \   'fg':   l:fg,
-        \   'term': 'italic',
-        \   'gui':  'italic'
-        \ })
+  call s:highlight('User3', l:colors, 'italic')
+endf
+
+func! s:highlight(group, colors, style) abort
+  let l:dict = extend(a:colors, {'term': a:style})
+  let l:spec = pinnacle#highlight(l:dict)
+
+  execute 'highlight!' a:group l:spec
 endf
