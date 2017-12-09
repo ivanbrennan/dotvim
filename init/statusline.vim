@@ -1,5 +1,3 @@
-set laststatus=2
-
 setg statusline=\                                 " space
 
 setg statusline+=%1*                              " User1 highlight group (filename)
