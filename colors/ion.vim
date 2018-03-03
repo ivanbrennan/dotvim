@@ -1,186 +1,180 @@
-" ion colorscheme
+" ion.vim ۰ Vim color scheme
+" Author:  Ivan Brennan (ivan.brennan@gmail.com)
+" Version: 0.1
 
-if version > 580
-  hi clear
-  if exists("syntax_on")
-    syntax reset
-  endif
-endif
+" Initialize ۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰{{{1
+hi clear
+syntax reset
 
-let g:colors_name = "ion"
-let s:ion_vim_version="0.6.0"
+let g:colors_name="ion"
 set background=dark
 
-let s:ion00_gui = "#232A38"
-let s:ion0_gui  = "#1F2D3B"
-let s:ion01_gui = "#213040"
-let s:ion1_gui  = "#233343"
-let s:ion2_gui = "#2C3B4C"
-let s:ion3_gui = "#36495E"
-let s:ion4_gui = "#D8DEE9"
-let s:ion5_gui = "#E5E9F0"
-let s:ion6_gui = "#ECEFF4"
-let s:ion7_gui = "#8FBCBB"
-let s:ion8_gui = "#88C0D0"
-let s:ion9_gui = "#81A1C1"
-let s:ion10_gui = "#5E81AC"
-let s:ion11_gui = "#BF616A"
-let s:ion12_gui = "#D08770"
-let s:ion13_gui = "#EBCB8B"
-let s:ion14_gui = "#A3BE8C"
-let s:ion15_gui = "#B48EAD"
+function! s:hi(group, style)
+  execute "highlight" a:group
+        \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg.gui   : "NONE")
+        \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg.gui   : "NONE")
+        \ "guisp="   (has_key(a:style, "sp")    ? a:style.sp.gui   : "NONE")
+        \ "gui="     (has_key(a:style, "gui")   ? a:style.gui      : "NONE")
+        \ "ctermfg=" (has_key(a:style, "fg")    ? a:style.fg.cterm : "NONE")
+        \ "ctermbg=" (has_key(a:style, "bg")    ? a:style.bg.cterm : "NONE")
+        \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm    : "NONE")
+endf
 
-let s:ion1_term = "0"
-let s:ion3_term = "8"
-let s:ion5_term = "7"
-let s:ion6_term = "15"
-let s:ion7_term = "14"
-let s:ion8_term = "6"
-let s:ion9_term = "4"
-let s:ion10_term = "12"
-let s:ion11_term = "1"
-let s:ion12_term = "11"
-let s:ion13_term = "3"
-let s:ion14_term = "2"
-let s:ion15_term = "5"
+" Palette ۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰{{{1
+let s:white    = { "gui": "#eceaf6", "cterm": "217" }
+let s:grey_13  = { "gui": "#eceff4", "cterm":  "15" }
+let s:grey_12  = { "gui": "#e5e9f0", "cterm":   "7" }
+let s:grey_11  = { "gui": "#d5d7e0", "cterm": "253" }
+let s:grey_10  = { "gui": "#cecfd8", "cterm": "253" }
+let s:grey_09  = { "gui": "#9ca7bd", "cterm": "253" }
+let s:grey_08  = { "gui": "#7887a8", "cterm":   "8" }
+let s:grey_07  = { "gui": "#64718c", "cterm":   "8" }
+let s:grey_06  = { "gui": "#434C5E", "cterm": "249" }
+let s:grey_05  = { "gui": "#3d4451", "cterm": "249" }
+let s:grey_04  = { "gui": "#282c34", "cterm": "236" }
+let s:grey_03  = { "gui": "#252930", "cterm": "238" }
+let s:grey_02  = { "gui": "#23272e", "cterm": "235" }
+let s:grey_01  = { "gui": "#23262b", "cterm": "234" }
+let s:grey_00  = { "gui": "#21242b", "cterm": "235" }
+let s:black    = { "gui": "#181e26", "cterm": "233" }
 
-if !exists('g:ion_italic_comments')
-  let g:ion_italic_comments = 1
-endif
+let s:blue_4   = { "gui": "#afdfff", "cterm":  "88" }
+let s:blue_3   = { "gui": "#b3dbf1", "cterm": "253" }
+let s:blue_2   = { "gui": "#52a9ea", "cterm":  "24" }
+let s:blue_1   = { "gui": "#5E81AC", "cterm":  "12" }
+let s:blue_0   = { "gui": "#005f87", "cterm":  "24" }
+let s:cyan_5   = { "gui": "#97c6c5", "cterm":  "14" }
+let s:cyan_4   = { "gui": "#88C0D0", "cterm":   "6" }
+let s:cyan_3   = { "gui": "#34d5de", "cterm": "159" }
+let s:cyan_2   = { "gui": "#26A6A6", "cterm": "159" }
+let s:cyan_1   = { "gui": "#5790a8", "cterm":  "22" }
+let s:cyan_0   = { "gui": "#48778b", "cterm":  "22" }
+let s:green_3  = { "gui": "#afffaf", "cterm": "157" }
+let s:green_2  = { "gui": "#a3be8c", "cterm":   "2" }
+let s:green_1  = { "gui": "#89be74", "cterm":  "22" }
+let s:green_0  = { "gui": "#00351A", "cterm": "100" }
+let s:lime_2   = { "gui": "#ced564", "cterm":  "88" }
+let s:lime_1   = { "gui": "#d0d587", "cterm":  "88" }
+let s:lime_0   = { "gui": "#d0d587", "cterm":  "88" }
+let s:sand_0   = { "gui": "#ebcb8b", "cterm":   "3" }
+let s:orange_0 = { "gui": "#f8bb39", "cterm": "202" }
+let s:red_2    = { "gui": "#dd3d4c", "cterm":   "1" }
+let s:red_1    = { "gui": "#B40020", "cterm": "100" }
+let s:red_0    = { "gui": "#391017", "cterm": "100" }
+let s:purple_0 = { "gui": "#ba93b3", "cterm":   "5" }
 
-function! s:hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
-  let l:attr = a:attr
-  if g:ion_italic_comments == 0 && l:attr ==? 'italic'
-    let l:attr= 'NONE'
-  endif
+let s:slate_3 = { "gui": "#81A1C1", "cterm":   "4" }
+let s:slate_2 = { "gui": "#2C313D", "cterm": "100" }
+let s:slate_1 = { "gui": "#282D39", "cterm": "100" }
+let s:slate_0 = { "gui": "#252A35", "cterm": "100" }
 
-  if a:guifg != ""
-    exec "hi " . a:group . " guifg=" . a:guifg
-  endif
-  if a:guibg != ""
-    exec "hi " . a:group . " guibg=" . a:guibg
-  endif
-  if a:ctermfg != ""
-    exec "hi " . a:group . " ctermfg=" . a:ctermfg
-  endif
-  if a:ctermbg != ""
-    exec "hi " . a:group . " ctermbg=" . a:ctermbg
-  endif
-  if a:attr != ""
-    exec "hi " . a:group . " gui=" . l:attr . " cterm=" . l:attr
-  endif
-  if a:guisp != ""
-    exec "hi " . a:group . " guisp=" . a:guisp
-  endif
-endfunction
+" Highlights ۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰{{{1
+call s:hi("Bold",      { "gui": "bold", "cterm": "bold" })
+call s:hi("Italic",    { "gui": "italic", "cterm": "italic" })
+call s:hi("Underline", { "gui": "underline", "cterm": "underline" })
 
-"+---------------+
-"+ UI Components +
-"+---------------+
-"+--- Attributes ---+
-call s:hi("Bold", "", "", "", "", "bold", "")
-call s:hi("Italic", "", "", "", "", "italic", "")
-call s:hi("Underline", "", "", "", "", "underline", "")
+call s:hi("Normal",      { "bg": s:grey_04, "fg": s:grey_11 })
+call s:hi("ColorColumn", { "bg": s:grey_02 })
+call s:hi("Cursor",      { "bg": s:grey_11 })
+call s:hi("CursorLine",  { "bg": s:grey_03 })
+hi! link CursorColumn	CursorLine
 
-"+--- Editor ---+
-call s:hi("ColorColumn", "", s:ion01_gui, "NONE", s:ion1_term, "", "")
-call s:hi("Cursor", s:ion0_gui, s:ion4_gui, "", "NONE", "", "")
-call s:hi("CursorLine", "", s:ion01_gui, "NONE", s:ion1_term, "NONE", "")
-call s:hi("iCursor", s:ion0_gui, s:ion4_gui, "", "NONE", "", "")
-call s:hi("LineNr", s:ion3_gui, s:ion0_gui, s:ion3_term, "NONE", "", "")
-call s:hi("MatchParen", s:ion0_gui, s:ion9_gui, s:ion1_term, s:ion9_term, "", "")
-call s:hi("NonText", s:ion2_gui, "", s:ion3_term, "", "", "")
-call s:hi("Normal", s:ion4_gui, s:ion0_gui, "NONE", "NONE", "", "")
-call s:hi("PMenu", s:ion4_gui, s:ion2_gui, "NONE", s:ion1_term, "NONE", "")
-call s:hi("PmenuSbar", s:ion4_gui, s:ion2_gui, "NONE", s:ion1_term, "", "")
-call s:hi("PMenuSel", s:ion8_gui, s:ion3_gui, s:ion8_term, s:ion3_term, "", "")
-call s:hi("PmenuThumb", s:ion8_gui, s:ion3_gui, "NONE", s:ion3_term, "", "")
-call s:hi("SpecialKey", s:ion3_gui, "", s:ion3_term, "", "", "")
-call s:hi("SpellBad", "", s:ion0_gui, "", "NONE", "undercurl", s:ion11_gui)
-call s:hi("SpellCap", "", s:ion0_gui, "", "NONE", "undercurl", s:ion13_gui)
-call s:hi("SpellLocal", "", s:ion0_gui, "", "NONE", "undercurl", s:ion5_gui)
-call s:hi("SpellRare", "", s:ion0_gui, "", "NONE", "undercurl", s:ion6_gui)
-call s:hi("Visual", "", s:ion2_gui, "", s:ion1_term, "", "")
-call s:hi("VisualNOS", "", s:ion2_gui, "", s:ion1_term, "", "")
+" Editor ····۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰{{{1
+call s:hi("iCursor",    { "bg": s:grey_11 })
+call s:hi("LineNr",     { "bg": s:grey_04, "fg": s:grey_06 })
+call s:hi("MatchParen", { "fg": s:blue_4, "gui": "bold", "cterm": "bold" })
+call s:hi("NonText",    { "fg": s:grey_06 })
+call s:hi("PMenu",      { "bg": s:grey_01, "fg": s:grey_11 })
+call s:hi("PmenuSbar",  { "bg": s:grey_01 })
+call s:hi("PMenuSel",   { "bg": s:grey_03, "fg": s:blue_3, "gui": "bold", "cterm": "bold" })
+call s:hi("PmenuThumb", { "bg": s:blue_0 })
+
+call s:hi("SpecialKey", { "fg": s:grey_06 })
+call s:hi("SpellBad",   { "fg": s:red_2, "sp": s:red_2, "gui": "undercurl", "cterm": "undercurl" })
+call s:hi("SpellCap",   { "fg": s:red_2, "sp": s:sand_0, "gui": "undercurl", "cterm": "undercurl" })
+call s:hi("SpellLocal", { "fg": s:grey_12, "sp": s:grey_12, "gui": "undercurl", "cterm": "undercurl" })
+call s:hi("SpellRare",  { "fg": s:grey_13, "sp": s:grey_13, "gui": "undercurl", "cterm": "undercurl" })
+call s:hi("Visual",     { "bg": s:grey_05 })
+call s:hi("VisualNOS",  { "bg": s:grey_05 })
+
 "+- Neovim Support -+
-call s:hi("healthError", s:ion11_gui, s:ion1_gui, s:ion11_term, s:ion1_term, "", "")
-call s:hi("healthSuccess", s:ion14_gui, s:ion1_gui, s:ion14_term, s:ion1_term, "", "")
-call s:hi("healthWarning", s:ion13_gui, s:ion1_gui, s:ion13_term, s:ion1_term, "", "")
+call s:hi("healthError",   { "bg": s:grey_02, "fg": s:red_2 })
+call s:hi("healthSuccess", { "bg": s:grey_02, "fg": s:green_2 })
+call s:hi("healthWarning", { "bg": s:grey_02, "fg": s:sand_0 })
 
 "+--- Gutter ---+
-call s:hi("CursorColumn", "", s:ion1_gui, "NONE", s:ion1_term, "", "")
-call s:hi("CursorLineNr", s:ion3_gui, s:ion0_gui, "NONE", "", "", "")
-call s:hi("Folded", s:ion3_gui, s:ion1_gui, s:ion3_term, s:ion1_term, "bold", "")
-call s:hi("FoldColumn", s:ion3_gui, s:ion0_gui, s:ion3_term, "NONE", "", "")
-call s:hi("SignColumn", s:ion1_gui, s:ion0_gui, s:ion1_term, "NONE", "", "")
+call s:hi("CursorLineNr", { "fg": s:grey_08 })
+call s:hi("Folded",       { "bg": s:slate_2, "fg": s:grey_07 })
+call s:hi("FoldColumn",   { "bg": s:grey_04, "fg": s:grey_06 })
+call s:hi("SignColumn",   { "bg": s:grey_04, "fg": s:grey_02 })
 
 "+--- Navigation ---+
-call s:hi("Directory", s:ion8_gui, "", s:ion8_term, "NONE", "", "")
+call s:hi("Directory", { "fg": s:cyan_3 })
 
 "+--- Prompt/Status ---+
-call s:hi("EndOfBuffer", s:ion0_gui, s:ion0_gui, s:ion1_term, "NONE", "", "")
-call s:hi("ErrorMsg", s:ion4_gui, s:ion11_gui, "NONE", s:ion11_term, "", "")
-call s:hi("ModeMsg", s:ion4_gui, "", "", "", "", "")
-call s:hi("MoreMsg", s:ion4_gui, "", "", "", "", "")
-call s:hi("Question", s:ion4_gui, "", "NONE", "", "", "")
-call s:hi("StatusLine", s:ion4_gui, s:ion00_gui, s:ion8_term, s:ion1_term, "NONE", "")
-call s:hi("StatusLineNC", s:ion3_gui, s:ion00_gui, s:ion8_term, "NONE", "NONE", "")
-call s:hi("WarningMsg", s:ion0_gui, s:ion13_gui, s:ion1_term, s:ion13_term, "", "")
-call s:hi("WildMenu", s:ion8_gui, s:ion3_gui, s:ion8_term, s:ion3_term, "", "")
+call s:hi("EndOfBuffer",  { "bg": s:grey_02, "fg": s:grey_02 })
+call s:hi("ErrorMsg",     { "fg": s:orange_0 })
+call s:hi("ModeMsg",      { "fg": s:grey_11 })
+call s:hi("MoreMsg",      { "fg": s:white })
+call s:hi("Question",     { "fg": s:sand_0 })
+call s:hi("StatusLine",   { "bg": s:grey_00, "fg": s:grey_11 })
+call s:hi("StatusLineNC", { "bg": s:grey_00, "fg": s:grey_06 })
+call s:hi("WarningMsg",   { "fg": s:sand_0 })
+call s:hi("WildMenu",     { "bg": s:grey_03, "fg": s:blue_3, "gui": "bold", "cterm": "bold" })
 
 "+--- Search ---+
-call s:hi("IncSearch", s:ion1_gui, s:ion8_gui, s:ion1_term, s:ion8_term, "underline", "")
-call s:hi("Search", s:ion6_gui, s:ion3_gui, s:ion6_term, s:ion3_term, "NONE", "")
+call s:hi("IncSearch", { "bg": s:cyan_1, "fg": s:grey_00 })
+call s:hi("Search",    { "bg": s:grey_06 })
 
 "+--- Tabs ---+
-call s:hi("TabLine", s:ion4_gui, s:ion1_gui, "NONE", s:ion1_term, "NONE", "")
-call s:hi("TabLineFill", s:ion4_gui, s:ion1_gui, "NONE", s:ion1_term, "NONE", "")
-call s:hi("TabLineSel", s:ion8_gui, s:ion3_gui, s:ion8_term, s:ion3_term, "NONE", "")
+call s:hi("TabLine",     { "bg": s:grey_02, "fg": s:grey_11 })
+call s:hi("TabLineFill", { "bg": s:grey_02 })
+call s:hi("TabLineSel",  { "bg": s:grey_04, "fg": s:grey_11, "gui": "bold", "cterm": "bold" })
 
 "+--- Window ---+
-call s:hi("Title", s:ion4_gui, "", "NONE", "", "NONE", "")
-call s:hi("VertSplit", s:ion2_gui, s:ion0_gui, s:ion3_term, "NONE", "NONE", "")
+call s:hi("Title",     { "fg": s:white })
+call s:hi("VertSplit", { "bg": s:grey_00, "fg": s:grey_06 })
 
 "+----------------------+
 "+ Language Base Groups +
 "+----------------------+
-call s:hi("Boolean", s:ion9_gui, "", s:ion9_term, "", "", "")
-call s:hi("Character", s:ion14_gui, "", s:ion14_term, "", "", "")
-call s:hi("Comment", s:ion7_gui, "", s:ion9_term, "", "italic", "")
-call s:hi("Conditional", s:ion9_gui, "", s:ion9_term, "", "", "")
-call s:hi("Constant", s:ion4_gui, "", "NONE", "", "", "")
-call s:hi("Define", s:ion9_gui, "", s:ion9_term, "", "", "")
-call s:hi("Delimiter", s:ion6_gui, "", s:ion6_term, "", "", "")
-call s:hi("Exception", s:ion9_gui, "", s:ion9_term, "", "", "")
-call s:hi("Float", s:ion15_gui, "", s:ion15_term, "", "", "")
-call s:hi("Function", s:ion8_gui, "", s:ion8_term, "", "", "")
-call s:hi("Identifier", s:ion4_gui, "", "NONE", "", "NONE", "")
-call s:hi("Include", s:ion9_gui, "", s:ion9_term, "", "", "")
-call s:hi("Keyword", s:ion9_gui, "", s:ion9_term, "", "", "")
-call s:hi("Label", s:ion9_gui, "", s:ion9_term, "", "", "")
-call s:hi("Number", s:ion15_gui, "", s:ion15_term, "", "", "")
-call s:hi("Operator", s:ion9_gui, "", s:ion9_term, "", "NONE", "")
-call s:hi("PreProc", s:ion9_gui, "", s:ion9_term, "", "NONE", "")
-call s:hi("Repeat", s:ion9_gui, "", s:ion9_term, "", "", "")
-call s:hi("Special", s:ion4_gui, "", "NONE", "", "", "")
-call s:hi("SpecialChar", s:ion13_gui, "", s:ion13_term, "", "", "")
-call s:hi("SpecialComment", s:ion8_gui, "", s:ion8_term, "", "italic", "")
-call s:hi("Statement", s:ion9_gui, "", s:ion9_term, "", "", "")
-call s:hi("StorageClass", s:ion9_gui, "", s:ion9_term, "", "", "")
-call s:hi("String", s:ion14_gui, "", s:ion14_term, "", "", "")
-call s:hi("Structure", s:ion9_gui, "", s:ion9_term, "", "", "")
-call s:hi("Tag", s:ion4_gui, "", "", "", "", "")
-call s:hi("Todo", s:ion13_gui, "NONE", s:ion13_term, "NONE", "", "")
-call s:hi("Type", s:ion9_gui, "", s:ion9_term, "", "NONE", "")
-call s:hi("Typedef", s:ion9_gui, "", s:ion9_term, "", "", "")
+call s:hi("Boolean",        { "fg": s:lime_1 })
+call s:hi("Character",      { "fg": s:green_3 })
+call s:hi("Comment",        { "fg": s:cyan_0, "gui": "italic", "cterm": "italic" })
+call s:hi("Conditional",    { "fg": s:slate_3 })
+call s:hi("Constant",       { "fg": s:cyan_5 })
+call s:hi("Define",         { "fg": s:slate_3 })
+call s:hi("Delimiter",      { "fg": s:grey_09 })
+call s:hi("Exception",      { "fg": s:slate_3 })
+call s:hi("Float",          { "fg": s:purple_0 })
+call s:hi("Function",       { "fg": s:cyan_4 })
+call s:hi("Identifier",     { "fg": s:grey_11 })
+call s:hi("Include",        { "fg": s:slate_3 })
+call s:hi("Keyword",        { "fg": s:slate_3 })
+call s:hi("Label",          { "fg": s:slate_3 })
+call s:hi("Number",         { "fg": s:purple_0 })
+call s:hi("Operator",       { "fg": s:slate_3 })
+call s:hi("PreProc",        { "fg": s:slate_3 })
+call s:hi("Repeat",         { "fg": s:slate_3 })
+call s:hi("Special",        { "fg": s:grey_11 })
+call s:hi("SpecialChar",    { "fg": s:sand_0 })
+call s:hi("SpecialComment", { "fg": s:cyan_4, "gui": "italic", "cterm": "italic" })
+call s:hi("Statement",      { "fg": s:slate_3 })
+call s:hi("StorageClass",   { "fg": s:slate_3 })
+call s:hi("String",         { "fg": s:green_1 })
+call s:hi("Structure",      { "fg": s:slate_3 })
+call s:hi("Tag",            { "fg": s:grey_11 })
+call s:hi("Todo",           { "fg": s:orange_0 })
+call s:hi("Type",           { "fg": s:slate_3 })
+call s:hi("Typedef",        { "fg": s:slate_3 })
 hi! link Macro Define
 hi! link PreCondit PreProc
 
 "+-----------+
 "+ Languages +
 "+-----------+
-call s:hi("awkCharClass", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("awkPatterns", s:ion9_gui, "", s:ion9_term, "", "bold", "")
+call s:hi("awkCharClass", { "fg": s:cyan_5 })
+call s:hi("awkPatterns",  { "fg": s:slate_3, "gui": "bold", "cterm": "bold" })
 hi! link awkArrayElement Identifier
 hi! link awkBoolLogic Keyword
 hi! link awkBrktRegExp SpecialChar
@@ -196,7 +190,7 @@ hi! link awkSpecialCharacter SpecialChar
 hi! link awkSpecialPrintf SpecialChar
 hi! link awkVariables Identifier
 
-call s:hi("cIncluded", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("cIncluded", { "fg": s:cyan_5 })
 hi! link cOperator Operator
 hi! link cPreCondit PreCondit
 
@@ -204,10 +198,10 @@ hi! link csPreCondit PreCondit
 hi! link csType Type
 hi! link csXmlTag SpecialComment
 
-call s:hi("cssAttributeSelector", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("cssDefinition", s:ion7_gui, "", s:ion7_term, "", "NONE", "")
-call s:hi("cssIdentifier", s:ion7_gui, "", s:ion7_term, "", "underline", "")
-call s:hi("cssStringQ", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("cssAttributeSelector", { "fg": s:cyan_5 })
+call s:hi("cssDefinition",        { "fg": s:cyan_5 })
+call s:hi("cssIdentifier",        { "fg": s:cyan_5, "gui": "underline", "cterm": "underline" })
+call s:hi("cssStringQ",           { "fg": s:cyan_5 })
 hi! link cssAttr Keyword
 hi! link cssBraces Delimiter
 hi! link cssClassName cssDefinition
@@ -217,35 +211,41 @@ hi! link cssPseudoClass cssDefinition
 hi! link cssPseudoClassId cssPseudoClass
 hi! link cssVendor Keyword
 
-call s:hi("dosiniHeader", s:ion8_gui, "", s:ion8_term, "", "", "")
+call s:hi("dosiniHeader", { "fg": s:cyan_4 })
 hi! link dosiniLabel Type
 
-call s:hi("dtBooleanKey", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("dtExecKey", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("dtLocaleKey", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("dtNumericKey", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("dtTypeKey", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("dtBooleanKey", { "fg": s:cyan_5 })
+call s:hi("dtExecKey",    { "fg": s:cyan_5 })
+call s:hi("dtLocaleKey",  { "fg": s:cyan_5 })
+call s:hi("dtNumericKey", { "fg": s:cyan_5 })
+call s:hi("dtTypeKey",    { "fg": s:cyan_5 })
 hi! link dtDelim Delimiter
 hi! link dtLocaleValue Keyword
 hi! link dtTypeValue Keyword
 
-call s:hi("diffAdded", s:ion14_gui, "", s:ion14_term, "", "", "")
-call s:hi("diffChanged", s:ion13_gui, "", s:ion13_term, "", "", "")
-call s:hi("diffNewFile", s:ion8_gui, "", s:ion8_term, "", "", "")
-call s:hi("diffOldFile", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("diffRemoved", s:ion11_gui, "", s:ion11_term, "", "", "")
-call s:hi("DiffAdd", s:ion14_gui, "", s:ion14_term, "", "", "")
-call s:hi("DiffChange", s:ion13_gui, "", s:ion13_term, "", "", "")
-call s:hi("DiffDelete", s:ion11_gui, "", s:ion11_term, "", "", "")
-call s:hi("DiffText", s:ion4_gui, "", "NONE", "", "", "")
+call s:hi("diffAdded",   { "fg": s:green_2 })
+call s:hi("diffChanged", { "fg": s:sand_0 })
+call s:hi("diffNewFile", { "fg": s:cyan_4 })
+call s:hi("diffOldFile", { "fg": s:cyan_5 })
+call s:hi("diffRemoved", { "fg": s:red_2 })
+call s:hi("DiffAdd",     { "bg": s:green_0 })
+call s:hi("DiffChange",  { "bg": s:red_0 })
+call s:hi("DiffDelete",  { "bg": s:slate_2, "fg": s:slate_2 })
+call s:hi("DiffText",    { "bg": s:red_1, "fg": s:grey_11 })
 
-call s:hi("gitconfigVariable", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("gitconfigVariable", { "fg": s:cyan_5 })
 
-call s:hi("goBuiltins", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("goBuiltins", { "fg": s:cyan_5 })
 hi! link goConstants Keyword
 
-call s:hi("htmlArg", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("htmlLink", s:ion4_gui, "", "", "", "NONE", "NONE")
+call s:hi("helpCommand", { "fg": s:grey_09 })
+call s:hi("helpHeader",  { "fg": s:grey_10, "gui": "bold", "cterm": "bold" })
+call s:hi("helpHyperTextJump", { "fg": s:cyan_3 })
+hi! link helpExample helpCommand
+hi! link helpHyperTextEntry helpHeader
+
+call s:hi("htmlArg",  { "fg": s:cyan_5 })
+call s:hi("htmlLink", { "fg": s:grey_11 })
 hi! link htmlBold Bold
 hi! link htmlEndTag htmlTag
 hi! link htmlItalic Italic
@@ -253,15 +253,15 @@ hi! link htmlSpecialChar SpecialChar
 hi! link htmlTag Keyword
 hi! link htmlTagN htmlTag
 
-call s:hi("javaDocTags", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("javaDocTags", { "fg": s:cyan_5 })
 hi! link javaCommentTitle Comment
 hi! link javaScriptBraces Delimiter
 hi! link javaScriptIdentifier Keyword
 hi! link javaScriptNumber Number
 
-call s:hi("jsonKeyword", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("jsonKeyword", { "fg": s:cyan_5 })
 
-call s:hi("lessClass", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("lessClass", { "fg": s:cyan_5 })
 hi! link lessAmpersand Keyword
 hi! link lessCssAttribute Delimiter
 hi! link lessFunction Function
@@ -275,15 +275,15 @@ hi! link lispFunc Function
 
 hi! link luaFunc Function
 
-call s:hi("markdownBlockquote", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("markdownCode", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("markdownCodeDelimiter", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("markdownFootnote", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("markdownId", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("markdownIdDeclaration", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("markdownH1", s:ion8_gui, "", s:ion8_term, "", "", "")
-call s:hi("markdownLinkText", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("markdownUrl", s:ion4_gui, "", "NONE", "", "NONE", "")
+call s:hi("markdownBlockquote",    { "fg": s:cyan_5 })
+call s:hi("markdownCode",          { "fg": s:cyan_5 })
+call s:hi("markdownCodeDelimiter", { "fg": s:cyan_5 })
+call s:hi("markdownFootnote",      { "fg": s:cyan_5 })
+call s:hi("markdownId",            { "fg": s:cyan_5 })
+call s:hi("markdownIdDeclaration", { "fg": s:cyan_5 })
+call s:hi("markdownH1",            { "fg": s:cyan_4 })
+call s:hi("markdownLinkText",      { "fg": s:cyan_5 })
+call s:hi("markdownUrl",           { "fg": s:grey_11 })
 hi! link markdownFootnoteDefinition markdownFootnote
 hi! link markdownH2 markdownH1
 hi! link markdownH3 markdownH1
@@ -297,32 +297,34 @@ hi! link markdownListMarker Keyword
 hi! link markdownRule Keyword
 hi! link markdownHeadingDelimiter Keyword
 
-call s:hi("perlPackageDecl", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("perlPackageDecl", { "fg": s:cyan_5 })
 
-call s:hi("phpClasses", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("phpDocTags", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("phpClasses", { "fg": s:cyan_5 })
+call s:hi("phpDocTags", { "fg": s:cyan_5 })
 hi! link phpDocCustomTags phpDocTags
 hi! link phpMemberSelector Keyword
 
-call s:hi("podCmdText", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("podVerbatimLine", s:ion4_gui, "", "NONE", "", "", "")
+call s:hi("podCmdText",      { "fg": s:cyan_5 })
+call s:hi("podVerbatimLine", { "fg": s:grey_11 })
 hi! link podFormat Keyword
 
 hi! link pythonBuiltin Type
 hi! link pythonEscape SpecialChar
 
-call s:hi("rubyConstant", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("rubySymbol", s:ion6_gui, "", s:ion6_term, "", "bold", "")
+call s:hi("rubySymbol", { "fg": s:grey_11, "gui": "bold", "cterm": "bold" })
+hi! link rubyArrayDelimiter Delimiter
 hi! link rubyAttribute Identifier
 hi! link rubyBlockParameterList Operator
+hi! link rubyConstant Constant
+hi! link rubyCurlyBlockDelimiter Delimiter
 hi! link rubyInterpolationDelimiter Keyword
 hi! link rubyKeywordAsMethod Function
 hi! link rubyLocalVariableOrMethod Function
 hi! link rubyPseudoVariable Keyword
 hi! link rubyRegexp SpecialChar
 
-call s:hi("sassClass", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("sassId", s:ion7_gui, "", s:ion7_term, "", "underline", "")
+call s:hi("sassClass", { "fg": s:cyan_5 })
+call s:hi("sassId",    { "fg": s:cyan_5, "gui": "underline", "cterm": "underline" })
 hi! link sassAmpersand Keyword
 hi! link sassClassChar Delimiter
 hi! link sassControl Keyword
@@ -345,16 +347,16 @@ hi! link shDerefVar Identifier
 hi! link sqlKeyword Keyword
 hi! link sqlSpecial Keyword
 
-call s:hi("vimAugroup", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("vimMapRhs", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("vimNotation", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("vimAugroup",  { "fg": s:cyan_5 })
+call s:hi("vimMapRhs",   { "fg": s:cyan_5 })
+call s:hi("vimNotation", { "fg": s:cyan_5 })
 hi! link vimFunc Function
 hi! link vimFunction Function
 hi! link vimUserFunc Function
 
-call s:hi("xmlAttrib", s:ion7_gui, "", s:ion7_term, "", "", "")
-call s:hi("xmlCdataStart", s:ion3_gui, "", s:ion3_term, "", "bold", "")
-call s:hi("xmlNamespace", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("xmlAttrib",     { "fg": s:cyan_5 })
+call s:hi("xmlCdataStart", { "fg": s:grey_06, "gui": "bold", "cterm": "bold" })
+call s:hi("xmlNamespace",  { "fg": s:cyan_5 })
 hi! link xmlAttribPunct Delimiter
 hi! link xmlCdata Comment
 hi! link xmlCdataCdata xmlCdataStart
@@ -363,7 +365,7 @@ hi! link xmlEndTag xmlTagName
 hi! link xmlProcessingDelim Keyword
 hi! link xmlTagName Keyword
 
-call s:hi("yamlBlockMappingKey", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("yamlBlockMappingKey", { "fg": s:cyan_5 })
 hi! link yamlBool Keyword
 hi! link yamlDocumentStart Keyword
 
@@ -373,23 +375,23 @@ hi! link yamlDocumentStart Keyword
 "+--- UI ---+
 " ALE
 " > w0rp/ale
-call s:hi("ALEWarningSign", s:ion13_gui, "", s:ion13_term, "", "", "")
-call s:hi("ALEErrorSign" , s:ion11_gui, "", s:ion11_term, "", "", "")
+call s:hi("ALEWarningSign", { "fg": s:sand_0 })
+call s:hi("ALEErrorSign",   { "fg": s:red_2 })
 
 " GitGutter
 " > airblade/vim-gitgutter
-call s:hi("GitGutterAdd", s:ion14_gui, "", s:ion14_term, "", "", "")
-call s:hi("GitGutterChange", s:ion13_gui, "", s:ion13_term, "", "", "")
-call s:hi("GitGutterChangeDelete", s:ion11_gui, "", s:ion11_term, "", "", "")
-call s:hi("GitGutterDelete", s:ion11_gui, "", s:ion11_term, "", "", "")
+call s:hi("GitGutterAdd",          { "fg": s:green_2 })
+call s:hi("GitGutterChange",       { "fg": s:sand_0 })
+call s:hi("GitGutterChangeDelete", { "fg": s:red_2 })
+call s:hi("GitGutterDelete",       { "fg": s:red_2 })
 
 " davidhalter/jedi-vim
-call s:hi("jediFunction", s:ion4_gui, s:ion3_gui, "", s:ion3_term, "", "")
-call s:hi("jediFat", s:ion8_gui, s:ion3_gui, s:ion8_term, s:ion3_term, "bold,underline", "")
+call s:hi("jediFunction", { "bg": s:grey_06, "fg": s:grey_11 })
+call s:hi("jediFat",      { "bg": s:grey_06, "fg": s:cyan_4, "gui": "bold,underline", "cterm": "bold,underline" })
 
 " NERDTree
 " > scrooloose/nerdtree
-call s:hi("NERDTreeExecFile", s:ion7_gui, "", s:ion7_term, "", "", "")
+call s:hi("NERDTreeExecFile", { "fg": s:cyan_5 })
 hi! link NERDTreeDirSlash Keyword
 hi! link NERDTreeHelp Comment
 
@@ -401,10 +403,12 @@ hi! link CtrlPBufferHid Normal
 "+--- Languages ---+
 " JavaScript
 " > pangloss/vim-javascript
-call s:hi("jsGlobalNodeObjects", s:ion8_gui, "", s:ion8_term, "", "italic", "")
+call s:hi("jsGlobalNodeObjects", { "fg": s:cyan_4, "gui": "italic", "cterm": "italic" })
 hi! link jsBrackets Delimiter
 hi! link jsFuncCall Function
 hi! link jsFuncParens Delimiter
 hi! link jsNoise Delimiter
 hi! link jsPrototype Keyword
 hi! link jsRegexpString SpecialChar
+
+" vim: fdm=marker:sw=2:sts=2:et

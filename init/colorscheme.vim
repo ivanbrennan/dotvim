@@ -8,6 +8,6 @@ if !exists('g:colors_name')
   if $THEME == 'light'
     colorscheme blight
   else
-    colorscheme nord
+    colorscheme ion
   endif
 endif
