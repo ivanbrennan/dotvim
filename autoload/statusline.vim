@@ -69,7 +69,24 @@ endf
 
 func! s:highlight(group, colors, style) abort
   let l:dict = extend(a:colors, {'term': a:style})
-  let l:spec = pinnacle#highlight(l:dict)
+  let l:spec = s:spec(l:dict)
 
   execute 'highlight!' a:group l:spec
 endf
+
+let s:prefix=has('gui') || has('termguicolors') ? 'gui' : 'cterm'
+
+function! s:spec(highlight) abort
+  let l:result=[]
+  if has_key(a:highlight, 'bg')
+    call insert(l:result, s:prefix . 'bg=' . a:highlight['bg'])
+  endif
+  if has_key(a:highlight, 'fg')
+    call insert(l:result, s:prefix . 'fg=' . a:highlight['fg'])
+  endif
+  if has_key(a:highlight, 'term')
+    call insert(l:result, 'gui='   . a:highlight['term'])
+    call insert(l:result, 'cterm=' . a:highlight['term'])
+  endif
+  return join(l:result, ' ')
+endfunction
