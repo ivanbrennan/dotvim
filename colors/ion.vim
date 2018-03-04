@@ -74,7 +74,7 @@ call s:hi("Normal",      { "bg": s:grey_04, "fg": s:grey_12 })
 call s:hi("ColorColumn", { "bg": s:grey_02 })
 call s:hi("Cursor",      { "bg": s:grey_12 })
 call s:hi("CursorLine",  { "bg": s:grey_03 })
-hi! link CursorColumn	CursorLine
+hi! link CursorColumn CursorLine
 
 " Editor ····۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰۰{{{1
 call s:hi("iCursor",    { "bg": s:grey_12 })
