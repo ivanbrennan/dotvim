@@ -55,7 +55,7 @@ let s:green_3  = { "gui": "#afffaf", "cterm": "157" }
 let s:green_2  = { "gui": "#a3be8c", "cterm":   "2" }
 let s:green_1  = { "gui": "#89be74", "cterm":  "22" }
 let s:green_0  = { "gui": "#00351A", "cterm": "100" }
-let s:lime_2   = { "gui": "#ced564", "cterm":  "88" }
+let s:lime_2   = { "gui": "#b8e068", "cterm":   "2" }
 let s:lime_1   = { "gui": "#d0d587", "cterm":  "88" }
 let s:lime_0   = { "gui": "#d0d587", "cterm":  "88" }
 let s:sand_0   = { "gui": "#ebcb8b", "cterm":   "3" }
@@ -110,10 +110,10 @@ call s:hi("Directory", { "fg": s:cyan_3 })
 
 "+--- Prompt/Status ---+
 call s:hi("EndOfBuffer",  { "bg": s:grey_02, "fg": s:grey_02 })
-call s:hi("ErrorMsg",     { "fg": s:orange_0 })
+call s:hi("ErrorMsg",     { "fg": s:lime_2 })
 call s:hi("ModeMsg",      { "fg": s:grey_12 })
-call s:hi("MoreMsg",      { "fg": s:white })
-call s:hi("Question",     { "fg": s:sand_0 })
+call s:hi("MoreMsg",      { "fg": s:grey_11, "gui": "bold", "cterm": "bold" })
+call s:hi("Question",     { "fg": s:blue_2, "gui": "bold", "cterm": "bold" })
 call s:hi("StatusLine",   { "bg": s:grey_00, "fg": s:grey_12 })
 call s:hi("StatusLineNC", { "bg": s:grey_00, "fg": s:grey_07 })
 call s:hi("WarningMsg",   { "fg": s:sand_0 })
