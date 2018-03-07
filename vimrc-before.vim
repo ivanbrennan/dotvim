@@ -41,7 +41,6 @@ Plug 'tpope/vim-rbenv',                { 'on': 'Rbenv' }
 Plug 'vim-ruby/vim-ruby',              { 'for': 'ruby' }
 Plug 'vim-scripts/Super-Shell-Indent', { 'for': 'sh' }
 Plug 'wellle/targets.vim'
-Plug 'ivanbrennan/loupe',              { 'branch': 'toggle-magic-string' }
 Plug 'wannesm/wmgraphviz.vim',         { 'for': 'dot' }
 Plug 'wlangstroth/vim-racket'
 
