@@ -29,7 +29,6 @@ Plug 'ivanbrennan/vmux'
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
 Plug 'junegunn/vim-easy-align',        { 'on': ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)'] }
 Plug 'justinmk/vim-dirvish'
-Plug 'jwhitley/vim-matchit'
 Plug 'mhinz/vim-grepper'
 Plug 'regedarek/ZoomWin'
 Plug 'sjl/gundo.vim'
