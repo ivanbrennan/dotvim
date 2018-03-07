@@ -31,7 +31,6 @@ Plug 'junegunn/vim-easy-align',        { 'on': ['<Plug>(EasyAlign)', '<Plug>(Liv
 Plug 'justinmk/vim-dirvish'
 Plug 'mhinz/vim-grepper'
 Plug 'regedarek/ZoomWin'
-Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary',           { 'on': ['<Plug>Commentary', '<Plug>CommentaryLine'] }
 Plug 'tpope/vim-eunuch',               { 'on': ['Chmod', 'Delete', 'Find', 'Locate', 'Mkdir', 'Move', 'Remove', 'Rename', 'SudoEdit', 'SudoWrite', 'Unlink', 'Wall'] }
