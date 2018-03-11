@@ -110,10 +110,11 @@ let s:TYPE = {
 let s:loaded = get(s:, 'loaded', {})
 let s:triggers = get(s:, 'triggers', {})
 
-function! plug#begin(...)
+function! plug#begin(...) " plug#begin('~/.vim/plugged')  [NOTE]
+  " decide where plugins will be installed  [NOTE]
   if a:0 > 0
     let s:plug_home_org = a:1
-    let home = s:path(fnamemodify(expand(a:1), ':p'))
+    let home = s:path(fnamemodify(expand(a:1), ':p')) " '/home/ivan/.vim/plugged'  [NOTE]
   elseif exists('g:plug_home')
     let home = s:path(g:plug_home)
   elseif !empty(&rtp)
@@ -130,7 +131,7 @@ function! plug#begin(...)
   let g:plugs_order = []
   let s:triggers = {}
 
-  call s:define_commands()
+  call s:define_commands() " e.g. PlugInstall, PlugUpdate, ...  [NOTE]
   return 1
 endfunction
 
@@ -199,11 +200,13 @@ function! plug#end()
   endif
 
   if exists('#PlugLOD')
+    " start fresh  [NOTE]
     augroup PlugLOD
       autocmd!
     augroup END
     augroup! PlugLOD
   endif
+  " Load On Demand  [NOTE]
   let lod = { 'ft': {}, 'map': {}, 'cmd': {} }
 
   if exists('g:did_load_filetypes')
@@ -214,6 +217,7 @@ function! plug#end()
       continue
     endif
     let plug = g:plugs[name]
+    " eager-loaded  [NOTE]
     if get(s:loaded, name, 0) || !has_key(plug, 'on') && !has_key(plug, 'for')
       let s:loaded[name] = 1
       continue
@@ -224,15 +228,15 @@ function! plug#end()
       for cmd in s:to_a(plug.on)
         if cmd =~? '^<Plug>.\+'
           if empty(mapcheck(cmd)) && empty(mapcheck(cmd, 'i'))
-            call s:assoc(lod.map, cmd, name)
+            call s:assoc(lod.map, cmd, name) " { 'ft': {}, 'map: { '<Plug>Commentary': ['vim-commentary'] }, 'cmd': {} }  [NOTE]
           endif
-          call add(s:triggers[name].map, cmd)
+          call add(s:triggers[name].map, cmd) " { 'vim-commentary': { 'map': ['<Plug>Commentary'], 'cmd': [] } }  [NOTE]
         elseif cmd =~# '^[A-Z]'
           let cmd = substitute(cmd, '!*$', '', '')
-          if exists(':'.cmd) != 2
-            call s:assoc(lod.cmd, cmd, name)
+          if exists(':'.cmd) != 2  " matches prefix of one or more commands
+            call s:assoc(lod.cmd, cmd, name) " { 'ft': {}, 'map': {}, 'cmd: { 'Loc': ['vim-eunuch'] } }  [NOTE]
           endif
-          call add(s:triggers[name].cmd, cmd)
+          call add(s:triggers[name].cmd, cmd) " { 'vim-eunuch': { 'map': [], 'cmd': ['Loc'] } }  [NOTE]
         else
           call s:err('Invalid `on` option: '.cmd.
           \ '. Should start with an uppercase letter or `<Plug>`.')
@@ -243,33 +247,41 @@ function! plug#end()
     if has_key(plug, 'for')
       let types = s:to_a(plug.for)
       if !empty(types)
-        augroup filetypedetect
-        call s:source(s:rtp(plug), 'ftdetect/**/*.vim', 'after/ftdetect/**/*.vim')
+        augroup filetypedetect " wrap ftdetect autocommands in their own group  [NOTE]
+        call s:source(s:rtp(plug), 'ftdetect/**/*.vim', 'after/ftdetect/**/*.vim') " source autocmd definitions  [NOTE]
         augroup END
       endif
       for type in types
-        call s:assoc(lod.ft, type, name)
+        call s:assoc(lod.ft, type, name) " { 'ft': { 'ruby': ['vim-ruby'] }, 'map': {}, 'cmd: {} }  [NOTE]
       endfor
     endif
   endfor
 
+  " 'Loc', ['vim-eunuch', 'vim-locator']  [NOTE]
   for [cmd, names] in items(lod.cmd)
+    " command! -nargs=* -range -bang -complete=file Loc call s:lod_cmd('Loc', "<bang>", <line1>, <line2>, <q-args>, ['vim-eunuch', 'vim-locator'])  [NOTE]
     execute printf(
     \ 'command! -nargs=* -range -bang -complete=file %s call s:lod_cmd(%s, "<bang>", <line1>, <line2>, <q-args>, %s)',
     \ cmd, string(cmd), string(names))
   endfor
 
+  " '<Plug>Commentary', ['vim-commentary', 'vim-bright-comments']  [NOTE]
   for [map, names] in items(lod.map)
     for [mode, map_prefix, key_prefix] in
           \ [['i', '<C-O>', ''], ['n', '', ''], ['v', '', 'gv'], ['o', '', '']]
+      " inoremap <silent> <Plug><Commentary> <C-O>:<C-U>call <SID>lod_map('<Plug><Commentary>', ['vim-commentary', 'vim-bright-comments'], 0, '')<CR>  [NOTE]
+      " vnoremap <silent> <Plug><Commentary>      :<C-U>call <SID>lod_map('<Plug><Commentary>', ['vim-commentary', 'vim-bright-comments'], 1, 'gv')<CR>  [NOTE]
       execute printf(
       \ '%snoremap <silent> %s %s:<C-U>call <SID>lod_map(%s, %s, %s, "%s")<CR>',
       \ mode, map, map_prefix, string(map), string(names), mode != 'i', key_prefix)
     endfor
   endfor
 
+  " 'ruby', ['vim-ruby', 'vim-rbenv']  [NOTE]
   for [ft, names] in items(lod.ft)
+    " wrap setfiletype autocommands in their own group  [NOTE]
     augroup PlugLOD
+      " autocmd FileType ruby call <SID>lod_ft('ruby', ['vim-ruby', 'vim-rbenv'])
       execute printf('autocmd FileType %s call <SID>lod_ft(%s, %s)',
             \ ft, string(ft), string(names))
     augroup END
@@ -304,6 +316,7 @@ function! s:trim(str)
   return substitute(a:str, '[\/]\+$', '', '')
 endfunction
 
+" s:version_requirement([2, 3, 6], [1, 8, 7])  [NOTE]
 function! s:version_requirement(val, min)
   for idx in range(0, len(a:min) - 1)
     let v = get(a:val, idx, 0)
@@ -398,7 +411,14 @@ function! s:reorg_rtp()
   endif
 
   " &rtp is modified from outside
+  " :set rtp+=~/foo/bar
+  " :setf ruby
   if exists('s:prtp') && s:prtp !=# &rtp
+    " set rtp-=/home/ivan/.vim/plugged/splitjoin.vim/
+    " set rtp-=/home/ivan/.vim/plugged/vim-tmux-runner/
+    " set rtp-=/home/ivan/.vim/plugged/ctrlp.vim/
+    " set rtp-=/home/ivan/.vim/plugged/vmux/
+    " set rtp-=/home/ivan/.vim/plugged/vim-grepper/
     call s:remove_rtp()
     unlet! s:middle
   endif
@@ -418,8 +438,11 @@ function! s:reorg_rtp()
   endif
 endfunction
 
+" s:doautocmd('fugitive_commit', 'BufDelete', 'COMMIT_EDITMSG')
 function! s:doautocmd(...)
+  " '#fugitive_commit#BufDelete#COMMIT_EDITMSG'  [NOTE]
   if exists('#'.join(a:000, '#'))
+    " doautocmd '<nomodeline>' fugitive_commit BufDelete COMMIT_EDITMSG
     execute 'doautocmd' ((v:version > 703 || has('patch442')) ? '<nomodeline>' : '') join(a:000)
   endif
 endfunction
@@ -476,28 +499,32 @@ function! s:remove_triggers(name)
   call remove(s:triggers, a:name)
 endfunction
 
+" s:lod(['vim-ruby'], ['plugin', 'after/plugin'], 'syntax/ruby.vim', 'after/syntax/ruby.vim')  [NOTE]
 function! s:lod(names, types, ...)
   for name in a:names
     call s:remove_triggers(name)
     let s:loaded[name] = 1
   endfor
-  call s:reorg_rtp()
+  call s:reorg_rtp() " update rtp to pick up newly-activated plugins  [NOTE]
 
   for name in a:names
-    let rtp = s:rtp(g:plugs[name])
+    let rtp = s:rtp(g:plugs[name]) " /home/ivan/.vim/plugged/vim-ruby/  [NOTE]
     for dir in a:types
       call s:source(rtp, dir.'/**/*.vim')
     endfor
     if a:0
       if !s:source(rtp, a:1) && !empty(s:glob(rtp, a:2))
+        " runtime syntax/ruby.vim  [NOTE]
         execute 'runtime' a:1
       endif
+      " source /home/ivan/.vim/plugged/vim-ruby/after/syntax/ruby.vim  [NOTE]
       call s:source(rtp, a:2)
     endif
     call s:doautocmd('User', name)
   endfor
 endfunction
 
+" autocmd FileType ruby call <SID>lod_ft('ruby', ['vim-ruby', 'vim-rbenv'])
 function! s:lod_ft(pat, names)
   let syn = 'syntax/'.a:pat.'.vim'
   call s:lod(a:names, ['plugin', 'after/plugin'], syn, 'after/'.syn)
@@ -506,15 +533,21 @@ function! s:lod_ft(pat, names)
   call s:doautocmd('filetypeindent', 'FileType')
 endfunction
 
+" command! -nargs=* -range -bang -complete=file Loc call s:lod_cmd('Loc', "<bang>", <line1>, <line2>, <q-args>, ['vim-eunuch', 'vim-locator'])  [NOTE]
 function! s:lod_cmd(cmd, bang, l1, l2, args, names)
   call s:lod(a:names, ['ftdetect', 'after/ftdetect', 'plugin', 'after/plugin'])
   call s:dobufread(a:names)
   execute printf('%s%s%s %s', (a:l1 == a:l2 ? '' : (a:l1.','.a:l2)), a:cmd, a:bang, a:args)
 endfunction
 
+" inoremap <silent> <Plug><Commentary> <C-O>:<C-U>call <SID>lod_map('<Plug><Commentary>', ['vim-commentary', 'vim-bright-comments'], 0, '')<CR>  [NOTE]
+" vnoremap <silent> <Plug><Commentary>      :<C-U>call <SID>lod_map('<Plug><Commentary>', ['vim-commentary', 'vim-bright-comments'], 1, 'gv')<CR>  [NOTE]
 function! s:lod_map(map, names, with_prefix, prefix)
+  " load the plugin(s)  [NOTE]
   call s:lod(a:names, ['ftdetect', 'after/ftdetect', 'plugin', 'after/plugin'])
   call s:dobufread(a:names)
+
+  " capture typeahead  [NOTE]
   let extra = ''
   while 1
     let c = getchar(0)
@@ -524,6 +557,7 @@ function! s:lod_map(map, names, with_prefix, prefix)
     let extra .= nr2char(c)
   endwhile
 
+  " reconstruct and feed input stream
   if a:with_prefix
     let prefix = v:count ? v:count : ''
     let prefix .= '"'.v:register.a:prefix
