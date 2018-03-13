@@ -26,6 +26,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gabebw/vim-spec-runner',         { 'on': ['<Plug>RunFocusedSpec', '<Plug>RunCurrentSpecFile'] }
 Plug 'ivanbrennan/listical',           { 'on': ['<Plug>(listical_quickfix)', '<Plug>(listical_loclist)'], 'for': 'qf' }
 Plug 'ivanbrennan/vmux'
+Plug 'ivanbrennan/optcycle',           { 'on': ['<Plug>(optcycle_colorscheme)', '<Plug>(optcycle_number)', '<Plug>(optcycle_foldcolumn)', '<Plug>(optcycle_foldmethod)', '<Plug>(optcycle_colorcolumn)'] }
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
 Plug 'junegunn/vim-easy-align',        { 'on': ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)'] }
 Plug 'justinmk/vim-dirvish'

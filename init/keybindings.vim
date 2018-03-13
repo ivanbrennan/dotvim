@@ -33,9 +33,12 @@ nmap <C-W>.    <Plug>ZoomWin
 nmap <leader>. <Plug>ZoomWin
 
 " ··········· display ········· {{{1
-noremap <silent> <leader>` :call optcycle#colorscheme()<CR>
+nmap    <silent> <leader>` <Plug>(optcycle_colorscheme)
 noremap <silent> <leader>[ :call SynHighlights(-1)<CR>
 
 " folding
-noremap <silent> <leader>z :call optcycle#foldmethod()<CR>
-noremap <silent> <leader>Z :call optcycle#foldcolumn(4)<CR>
+nmap    <silent> <leader>z <Plug>(optcycle_foldmethod)
+nmap    <silent> <leader>Z <Plug>(optcycle_foldcolumn)
+
+nmap    <silent> <leader>fn <Plug>(optcycle_number)
+nmap    <silent> <leader>fc <Plug>(optcycle_colorcolumn)
