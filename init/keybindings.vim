@@ -260,23 +260,21 @@ noremap           <C-W>p       gT
 noremap           <C-W><C-P>   gT
 
 " ··········· display ········· {{{1
-noremap  <silent> <leader>`  :call optcycle#colorscheme()<CR>
+nmap     <silent> <leader>` <Plug>(optcycle_colorscheme)
 noremap  <silent> <leader>[  :call SynHighlights(-1)<CR>
 
 " folding
-noremap  <silent> <leader>z  :call optcycle#foldmethod()<CR>
-noremap  <silent> <leader>Z  :call optcycle#foldcolumn(4)<CR>
+nmap     <silent> <leader>z <Plug>(optcycle_foldmethod)
+nmap     <silent> <leader>Z <Plug>(optcycle_foldcolumn)
 nnoremap                 z.  za
 
 " colour column
-nnoremap <silent> <leader>]  :call optcycle#colorcolumn()<CR>
+nmap     <silent> <leader>fc <Plug>(optcycle_colorcolumn)
+nmap     <silent> <leader>fn <Plug>(optcycle_number)
 
 " cursor column
 vnoremap <silent> <C-Bslash> :<C-U>set cursorcolumn!<CR>gv
 inoremap <expr>   <C-Bslash> ExprSideEffect('set cursorcolumn!')
-
-" sign column
-nnoremap <silent> <leader><CR> :call optcycle#signcolumn()<CR>
 
 " emacs redraws
 nnoremap <C-L>         zz

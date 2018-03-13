@@ -6,3 +6,12 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 let g:dirvish_mode = ':sort r /[^\/]$/'
 
 let g:dbext_map_prefix = '<Leader>S'
+
+let g:optcycle_config = {
+\   'colorscheme': [
+\     { 'colorscheme': 'root' },
+\     { 'colorscheme': 'moot' },
+\     { 'colorscheme': 'ion' },
+\     { 'colorscheme': 'blight' }
+\   ]
+\ }

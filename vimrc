@@ -23,6 +23,7 @@ Plug 'gabebw/vim-spec-runner',         { 'on': ['<Plug>RunFocusedSpec', '<Plug>R
 Plug 'guns/xterm-color-table.vim'
 Plug 'itchyny/vim-haskell-indent',     { 'for': 'haskell' }
 Plug 'ivanbrennan/listical',           { 'on': ['<Plug>(listical_quickfix)', '<Plug>(listical_loclist)'], 'for': 'qf' }
+Plug 'ivanbrennan/optcycle',           { 'on': ['<Plug>(optcycle_colorscheme)', '<Plug>(optcycle_number)', '<Plug>(optcycle_foldcolumn)', '<Plug>(optcycle_foldmethod)', '<Plug>(optcycle_colorcolumn)'] }
 Plug 'ivanbrennan/articulate'
 Plug 'ivanbrennan/caliper',            { 'on': ['CaliperUp', 'CaliperDown', 'CaliperLeft', 'CaliperRight'] }
 Plug 'ivanbrennan/vmux'
