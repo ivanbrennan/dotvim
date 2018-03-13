@@ -34,21 +34,23 @@ func! s:choices(opt)
   return get(conf, a:opt, s:defaults[a:opt])
 endf
 
-func! s:index(opt)
-  let s:indices[a:opt] = get(s:indices, a:opt, 0)
-  return s:indices[a:opt]
+func! s:indices(scope)
+  let indices = get(a:scope, 'optcycle_indices', {})
+  let a:scope['optcycle_indices'] = indices
+  return indices
 endf
-let s:indices = {}
 
-func! s:rotate_choices(opt)
+func! s:rotate_choices(scope, opt)
   let choices = s:choices(a:opt)
-  let i = (s:index(a:opt) + 1) % len(choices)
-  let s:indices[a:opt] = i
+  let indices = s:indices(a:scope)
+  let o = get(indices, a:opt, 0)
+  let i = (o + 1) % len(choices)
+  let indices[a:opt] = i
   return choices[i]
 endf
 
-func! s:rotate(opt)
-  let choice = s:rotate_choices(a:opt)
+func! s:rotate(scope, opt)
+  let choice = s:rotate_choices(a:scope, a:opt)
   for [option, value] in items(choice)
     exec 'let &l:'.option '=' value
   endfor
@@ -58,21 +60,21 @@ endf
 " -- autoload functions
 
 func! optcycle#colorscheme()
-  let choice = s:rotate_choices('colorscheme')
+  let choice = s:rotate_choices(s:, 'colorscheme')
   exec 'colorscheme' choice['colorscheme']
   redrawstatus | colorscheme
 endf
 
 func! optcycle#number()
-  call s:rotate('number')
+  call s:rotate(w:, 'number')
 endf
 
 func! optcycle#foldcolumn()
-  call s:rotate('foldcolumn')
+  call s:rotate(w:, 'foldcolumn')
 endf
 
 func! optcycle#foldmethod()
-  let choice = s:rotate_choices('foldmethod')
+  let choice = s:rotate_choices(w:, 'foldmethod')
   let &l:foldmethod = choice['foldmethod']
   call s:update_ruby_fold(choice)
   set foldmethod?
@@ -94,7 +96,7 @@ func! optcycle#colorcolumn()
     unlet w:long_line_highlight
   endif
 
-  let choice = s:rotate_choices('colorcolumn')
+  let choice = s:rotate_choices(w:, 'colorcolumn')
   let &colorcolumn = s:colorcolumn_spec(choice['colorcolumn'])
   let long_line_spec = s:long_line_spec(choice['long_line'])
   if long_line_spec != ''
