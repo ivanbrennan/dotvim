@@ -4,12 +4,6 @@ xmap     ga  <Plug>(EasyAlign)
 nnoremap gA  ga
 xnoremap gA  ga
 
-" commentary
-xmap <leader>;  <Plug>Commentary
-nmap <leader>;  <Plug>Commentary
-omap <leader>;  <Plug>Commentary
-nmap <leader>;; <Plug>CommentaryLine
-
 " a little emacs
 inoremap <expr> <C-A> encoding#first_nonblankp(getline('.'), col('.')) ? "\<Home>" : "\<Esc>I"
 inoremap <expr> <C-T> transposition#transpose('i')
