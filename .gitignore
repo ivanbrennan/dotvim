@@ -1,8 +1,8 @@
-backup/
-plugged/
-tmp/
-undo/
-view/
-.netrwhist
-info
-vimrc.local
+/backup/
+/tmp/
+/undo/
+/view/
+/.netrwhist
+/info
+/vimrc.local
+miscpack/

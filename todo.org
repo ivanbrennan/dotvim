@@ -28,7 +28,6 @@
 ** fzf
 ** EasyAlign
 ** minpac
-** vim-plug
 
 * Done
 ** figure out what's up with my Escape key (delay, international characters, etc.)
