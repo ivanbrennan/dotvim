@@ -1,6 +1,3 @@
-" Dirvish
-nmap <leader>u <Plug>(dirvish_up)
-
 " EasyAlign
 nmap     ga  <Plug>(EasyAlign)
 xmap     ga  <Plug>(EasyAlign)
