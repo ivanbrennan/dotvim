@@ -24,20 +24,14 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gabebw/vim-spec-runner',         { 'on': ['<Plug>RunFocusedSpec', '<Plug>RunCurrentSpecFile'] }
-Plug 'ivanbrennan/listical',           { 'on': ['<Plug>(listical_quickfix)', '<Plug>(listical_loclist)'], 'for': 'qf' }
 Plug 'ivanbrennan/vmux'
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
-Plug 'junegunn/vim-easy-align',        { 'on': ['<Plug>(EasyAlign)', '<Plug>(LiveEasyAlign)'] }
 Plug 'mhinz/vim-grepper'
 Plug 'regedarek/ZoomWin'
 Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-eunuch',               { 'on': ['Chmod', 'Delete', 'Find', 'Locate', 'Mkdir', 'Move', 'Remove', 'Rename', 'SudoEdit', 'SudoWrite', 'Unlink', 'Wall'] }
-Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rbenv',                { 'on': 'Rbenv' }
-Plug 'vim-ruby/vim-ruby',              { 'for': 'ruby' }
-Plug 'vim-scripts/Super-Shell-Indent', { 'for': 'sh' }
 Plug 'wellle/targets.vim'
 Plug 'wannesm/wmgraphviz.vim',         { 'for': 'dot' }
 Plug 'wlangstroth/vim-racket'

@@ -1,9 +1,3 @@
-" EasyAlign
-nmap     ga  <Plug>(EasyAlign)
-xmap     ga  <Plug>(EasyAlign)
-nnoremap gA  ga
-xnoremap gA  ga
-
 " a little emacs
 inoremap <expr> <C-A> encoding#first_nonblankp(getline('.'), col('.')) ? "\<Home>" : "\<Esc>I"
 inoremap <expr> <C-T> transposition#transpose('i')
