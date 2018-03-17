@@ -1,5 +1,5 @@
 " CtrlP
-let g:ctrlp_map             = '<Leader>O'
+let g:ctrlp_map             = '<Leader>fo'
 nnoremap   <Leader>L        :CtrlPBuffer<CR>
 nnoremap   <Leader>bk       :CtrlPQuickfix<CR>
 nnoremap   <Leader>bm       :CtrlPMRU<CR>
