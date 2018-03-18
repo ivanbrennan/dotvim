@@ -18,18 +18,23 @@ You can quickly check the order various things were loaded in from the shell:
 outfile=$(mktemp) &&
   vim -c "set nomore | redir! > $outfile" \
       -c 'scriptnames | redir END | quit' &&
-  grep 'vimrc\|netrw\|coherent' $outfile &&
+  grep 'vimrc\|fugitive\|netrw' $outfile &&
   rm $outfile && unset outfile
 ```
 
-I've extracted most of my customizations to plugins, and group those plugins using Vim 8's `package` feature. Any order-dependent configuration that must happen upfront belongs in `vimrc`, since that loads first. Keeping this file to the bare minimum makes it easier to share across systems.
+I've extracted most of my customizations to plugins, and group those plugins using Vim 8's `package` feature.
+Any order-dependent configuration that must happen upfront belongs in `vimrc`, since that loads first.
+Keeping this file to the bare minimum makes it easier to share across systems.
 
-For example, on NixOS, I can derive vimrc on its own and bake a vim package-set into the system-wide vim configuration to manage plugins. On Ubuntu and macOS I can use a tool like minpac. Since the NixOS vimrc derivation only uses the vimrc file, there's no need to maintain separate branches for different OS's, even if I want to commit minpac to version control, as long as I don't pollute vimrc itself.
+For example, on NixOS, I have a nix derivation that [plucks the vimrc from this repo](https://github.com/ivanbrennan/nixbox/commit/15982480b1ce019bb19ec145868734826ff5c700).
+I [bake that and a vim package-set](https://github.com/ivanbrennan/nixbox/blob/15982480b1ce019bb19ec145868734826ff5c700/environment/vim/packages.nix#L166-L179) into the system-wide vim configuration.
+On Ubuntu and macOS I'll use a tool like [minpac](https://github.com/k-takata/minpac).
+Since the NixOS vimrc derivation only uses the vimrc itself, there's no need to maintain separate branches for the different OS's, even if I want to commit minpac configuration to version control, so long as I don't pollute vimrc.
 
 I could add hook to vimrc:
 ``` vim
 silent! source ~/.vim/init_minpac.vim
 ```
-and commit minpac configuration here without affecting my NixOS configuration.
-This probably unecessary though, since minpac only needs to be loaded when installing/upgrading packages, since Vim itself handles loading via `'packpath'`.
+This is probably unecessary though, since minpac only needs to be loaded when installing/upgrading packages.
+The actual loading of packages is handled natively by Vim (see `:help 'packpath'`).
 It's probaly best to commit minpac initialization (and a declarative list of packages/plugins) to a file that can be sourced manually as needed, with no direct ties to vimrc.
