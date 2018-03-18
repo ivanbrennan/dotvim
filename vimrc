@@ -14,5 +14,4 @@ let g:loaded_netrwPlugin = 1
 nmap <C-W>.    <Plug>ZoomWin
 nmap <leader>. <Plug>ZoomWin
 
-runtime! init/*.vim
 silent! source ~/.vim/vimrc.local
