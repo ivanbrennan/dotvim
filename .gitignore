@@ -1,3 +1,10 @@
+# I've extracted my autoloads and plugins into Vim packages,
+# so they no longer live within the ~/.vim directory.
+# For developing/testing plugins, it's nice to be able to symlink
+# them into ~/.vim/{autoload,plugin} without affecting this repo.
+/autoload/
+/plugin/
+
 /backup/
 /tmp/
 /undo/
