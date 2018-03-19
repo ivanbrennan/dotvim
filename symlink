@@ -52,6 +52,8 @@ run_stow() {
 
   for arg in "${@:3}"; do
     case "$arg" in
+      -nv|-vn)
+        local dryrun=1 verbose=1 ;;
       -n|--no)
         local dryrun=1 ;;
       -v|--verbose)
