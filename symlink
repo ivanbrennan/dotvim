@@ -1,18 +1,141 @@
 #!/usr/bin/env bash
 
-set -eu
+set -e
+shopt -s nullglob extglob
 
-repo=${DOTFILES/%dotfiles/dotvim}
+declare -r  DOTVIM=${DOTFILES/%dotfiles/dotvim}
+declare -ra STOWABLE_SUBDIRS=( autoload
+                               plugin )
 
-if [[ ! -d $repo ]]; then
-  echo "No vim repo to symlink"
-  exit 1
-fi
+usage() {
+  local src=${BASH_SOURCE[0]} \
+        subdirs="$(intersperse ',' ${STOWABLE_SUBDIRS[@]})"
 
-if [[ -d ~/.vim ]] && [[ ! -L ~/.vim ]]; then
-  backup=~/.vim.$(date +%s)
-  echo "Backing up existing ~/.vim to $backup"
-  mv ~/.vim $backup
-fi
+  log 'Usage'
+  printf '  %s dotvim\t\t%ssymlink ~/.vim to this repo%s\n' $src $(tput sitm) $(tput sgr0)
+  printf '  %s plug   NAME [-nv] \t%ssymlink {%s} to a local plugin NAME%s\n' $src $(tput sitm) "$subdirs" $(tput sgr0)
+  printf '  %s replug NAME [-nv] \t%srelink {%s} to a local plugin NAME%s\n' $src $(tput sitm) "$subdirs" $(tput sgr0)
+  printf '  %s unplug NAME [-nv] \t%sunlink {%s} from a local plugin NAME%s\n' $src $(tput sitm) "$subdirs" $(tput sgr0)
+}
 
-ln -svnf $repo ~/.vim
+link_dotvim() {
+  if [[ ! -d $DOTVIM ]]; then
+    log 'Error' 'No vim repo to symlink'
+    exit 1
+  fi
+
+  if [[ -d ~/.vim ]] && [[ ! -L ~/.vim ]]; then
+    local -r backup=~/.vim.$(date +%s)
+    log 'Info' "Backing up existing ~/.vim to $backup"
+    mv ~/.vim $backup
+  fi
+
+  ln -svnf $DOTVIM ~/.vim
+}
+
+link_plugin() {
+  run_stow --stow "$@"
+}
+
+unlink_plugin() {
+  run_stow --delete "$@"
+}
+
+relink_plugin() {
+  run_stow --restow "$@"
+}
+
+run_stow() {
+  assert_stow_installed
+
+  local -r operation=$1 name=$2
+
+  for arg in "${@:3}"; do
+    case "$arg" in
+      -n|--no)
+        local dryrun=1 ;;
+      -v|--verbose)
+        local verbose=1 ;;
+      *)
+        usage
+        exit 1 ;;
+    esac
+  done
+
+  if [ -z $name ]; then
+    log 'Error' 'Missing NAME argument' && usage
+    exit 1
+  fi
+
+  local -a found=( $(find $HOME/Development/code \
+                          -type d -name $name \
+                          -exec readlink -f {} +) )
+
+  if (( ${#found[@]} < 1 )); then
+    log 'Error' "Unable to locate plugin \"$name\""
+    exit 1
+  elif (( ${#found[@]} > 1 )); then
+    log 'Error' "Found multiple directories matching \"$name\""
+    for d in ${found[@]}; do echo $d; done
+    exit 1
+  fi
+
+  local -r projectpath=${found[0]}
+
+  if [ "$operation" == '--stow' ] && ! stowable_contents $projectpath; then
+    log 'WARN' "Nothing to link in {$(intersperse ',' ${STOWABLE_SUBDIRS[@]})}"
+    exit 1
+  fi
+
+  local -r parent_dir=${projectpath%/*} \
+           target_dir=$(readlink -f $DOTVIM) \
+           stowable="($(intersperse '|' ${STOWABLE_SUBDIRS[@]}))"
+
+  stow --dir=$parent_dir \
+       --target=$target_dir \
+       --ignore="^(?!$stowable).+" \
+       --verbose=${verbose:-0} \
+       ${dryrun+--no} \
+       $operation \
+       $name && log 'Success' "operation complete"
+}
+
+assert_stow_installed() {
+  if ! command -v stow >/dev/null; then
+    log 'Error' 'This command requires stow'
+    echo https://www.gnu.org/software/stow
+    exit 1
+  fi
+}
+
+stowable_contents() {
+  local -r projectpath=$1 \
+           glob="@($(intersperse '|' ${STOWABLE_SUBDIRS[@]}))"
+
+  compgen -G "$projectpath/$glob" >/dev/null
+}
+
+intersperse() {
+  local IFS="$1"
+  shift
+  echo "$*"
+}
+
+log() {
+  local title=$1 msg=$2
+  printf '%s%s%s: %s\n' $(tput bold) "$title" $(tput sgr0) "$msg"
+}
+
+case $1 in
+  dotvim)
+    link_dotvim ;;
+  plug)
+    link_plugin "${@:2}" ;;
+  unplug)
+    unlink_plugin "${@:2}" ;;
+  replug)
+    relink_plugin "${@:2}" ;;
+  *)
+    usage
+    exit 1 ;;
+esac
