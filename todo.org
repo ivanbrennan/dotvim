@@ -12,12 +12,8 @@
 **** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/autoload/statusline.vim
 ** fzf
 *** handle space like ivy does
-** C-s during search to goto next match
-*** reconcile various bindings within / search
 **** C-L (use C-Y)
 ***** make it start at current char? (map / h/)
-**** C-G (use C-N)
-**** C-T (use C-P)
 *** help
 *** quickfix
 *** netrw
