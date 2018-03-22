@@ -64,9 +64,6 @@ Plug 'wlangstroth/vim-racket'
 
 if has('nvim')
   Plug 'neovimhaskell/haskell-vim',    { 'for': 'haskell' }
-
-  Plug 'neomake/neomake',              { 'for': 'haskell' }
-  Plug 'parsonsmatt/intero-neovim',    { 'for': 'haskell' }
 endif
 " ····························· }}}1
 
