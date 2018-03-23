@@ -30,6 +30,7 @@ Plug 'ivanbrennan/listical',           { 'on': ['<Plug>(listical_quickfix)', '<P
 Plug 'ivanbrennan/optcycle',           { 'on': ['<Plug>(optcycle_colorscheme)', '<Plug>(optcycle_number)', '<Plug>(optcycle_foldcolumn)', '<Plug>(optcycle_foldmethod)', '<Plug>(optcycle_colorcolumn)'] }
 Plug 'ivanbrennan/articulate'
 Plug 'ivanbrennan/caliper',            { 'on': ['CaliperUp', 'CaliperDown', 'CaliperLeft', 'CaliperRight'] }
+Plug 'ivanbrennan/vmacs'
 Plug 'ivanbrennan/vmux'
 Plug 'ivanbrennan/realign',            { 'on': ['<Plug>(realign_method_chain)', '<Plug>(realign_electric_dot)', '<Plug>(realign_toggle_electric_dot)'], 'for': 'ruby' }
 Plug 'jelera/vim-javascript-syntax',   { 'for': 'javascript' }
