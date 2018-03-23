@@ -9,9 +9,8 @@ nnoremap <Space> <Nop>
 set timeout timeoutlen=1000 ttimeoutlen=5
 
 " source / edit vimrc
-nnoremap <silent> <leader>f= :DotVimReload<CR>
-nnoremap          <leader>f; :DotVim init/
-nnoremap       <leader>f<CR> :DotVim 
+nmap     <leader>vv     <Plug>(edot_source) 
+nmap     <leader>vo     <Plug>(edot_edit) 
 
 " ··········· buffers ········· {{{1
 nnoremap <leader>o      :edit <C-R>=fnameescape(expand('%:~:.:h')).'/'<CR>
