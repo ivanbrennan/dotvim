@@ -22,6 +22,7 @@ Plug 'FooSoft/vim-argwrap'
 Plug 'gabebw/vim-spec-runner',         { 'on': ['<Plug>RunFocusedSpec', '<Plug>RunCurrentSpecFile'] }
 Plug 'guns/xterm-color-table.vim'
 Plug 'itchyny/vim-haskell-indent',     { 'for': 'haskell' }
+Plug 'ivanbrennan/iota'
 Plug 'ivanbrennan/listical',           { 'on': ['<Plug>(listical_quickfix)', '<Plug>(listical_loclist)'], 'for': 'qf' }
 Plug 'ivanbrennan/optcycle',           { 'on': ['<Plug>(optcycle_colorscheme)', '<Plug>(optcycle_number)', '<Plug>(optcycle_foldcolumn)', '<Plug>(optcycle_foldmethod)', '<Plug>(optcycle_colorcolumn)'] }
 Plug 'ivanbrennan/articulate'
