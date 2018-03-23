@@ -22,6 +22,7 @@ Plug 'FooSoft/vim-argwrap'
 Plug 'gabebw/vim-spec-runner',         { 'on': ['<Plug>RunFocusedSpec', '<Plug>RunCurrentSpecFile'] }
 Plug 'guns/xterm-color-table.vim'
 Plug 'itchyny/vim-haskell-indent',     { 'for': 'haskell' }
+Plug 'ivanbrennan/bstack'
 Plug 'ivanbrennan/coot'
 Plug 'ivanbrennan/iota'
 Plug 'ivanbrennan/mline'
