@@ -4,7 +4,8 @@ set -e
 shopt -s nullglob extglob
 
 declare -r  DOTVIM=${DOTFILES/%dotfiles/dotvim}
-declare -ra STOWABLE_SUBDIRS=( autoload
+declare -ra STOWABLE_SUBDIRS=( after
+                               autoload
                                colors
                                plugin )
 
