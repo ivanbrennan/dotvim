@@ -1,4 +1,5 @@
 * Todo
+** after/pack
 ** vim-plug -> minpac
 ** wincent configs
 *** loupe
