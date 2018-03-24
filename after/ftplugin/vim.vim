@@ -1,9 +1,9 @@
 setl iskeyword-=#
 
-nmap <buffer><silent> <Plug>(ArticulateTag)   :<C-U>exe v:count1."tag <C-R>=Vimcword()<CR>"<CR>
-nmap <buffer><silent> <Plug>(ArticulateTjump) :<C-U>tjump <C-R>=Vimcword()<CR><CR>
+nmap <buffer><silent> <Plug>(ArticulateTag)   :<C-U>exe v:count1."tag <C-R>=<SID>vimcword()<CR>"<CR>
+nmap <buffer><silent> <Plug>(ArticulateTjump) :<C-U>tjump <C-R>=<SID>vimcword()<CR><CR>
 
-func! Vimcword()
+func! s:vimcword()
   let l:orig=&l:iskeyword
   setlocal iskeyword+=#
 
