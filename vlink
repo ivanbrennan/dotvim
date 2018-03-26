@@ -4,6 +4,7 @@ set -e
 shopt -s nullglob extglob
 
 declare -r  DOTVIM=${DOTFILES/%dotfiles/dotvim}
+declare -r  VIM_PLUGINS_DIR=$HOME/Development/code/vim-plugins
 declare -ra STOWABLE_SUBDIRS=( after
                                autoload
                                colors
@@ -71,20 +72,15 @@ run_stow() {
     exit 1
   fi
 
-  local -a found=( $(find $HOME/Development/code \
-                          -type d -name $name \
-                          -exec readlink -f {} +) )
+  local -r projectpath=$VIM_PLUGINS_DIR/$name
 
-  if (( ${#found[@]} < 1 )); then
+  if [ ! -d $projectpath ]; then
     log 'Error' "Unable to locate plugin \"$name\""
     exit 1
-  elif (( ${#found[@]} > 1 )); then
-    log 'Error' "Found multiple directories matching \"$name\""
-    for d in ${found[@]}; do echo $d; done
+  elif [ ! -r $projectpath ]; then
+    log 'Error' "Unable to read plugin \"$name\""
     exit 1
   fi
-
-  local -r projectpath=${found[0]}
 
   if [ "$operation" == '--stow' ] && ! stowable_contents $projectpath; then
     log 'WARN' "Nothing to link in {$(intersperse ',' ${STOWABLE_SUBDIRS[@]})}"

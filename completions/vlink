@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+_vlink () {
+    local pluginsDir=$HOME/Development/code/vim-plugins
+    case $COMP_CWORD in
+        1)
+            COMPREPLY=( $(compgen -W "plug replug unplug" -- "$2") ) ;;
+        2)
+            local IFS=$'\n'
+           COMPREPLY=( $(cd "$pluginsDir" && compgen -d -- "$2") ) ;;
+    esac
+}
+
+complete -F _vlink vlink
