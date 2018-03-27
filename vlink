@@ -3,37 +3,58 @@
 set -e
 shopt -s nullglob extglob
 
-declare -r  DOTVIM=${DOTFILES/%dotfiles/dotvim}
-declare -r  VIM_PLUGINS_DIR=$HOME/Development/code/vim-plugins
+declare -r  DOTVIM=${DOTVIM:-$HOME/.vim}
+declare -r  VIM_PLUGINS_DIR=${VIM_PLUGINS_DIR:-$HOME/Development/code/vim-plugins}
 declare -ra STOWABLE_SUBDIRS=( after
                                autoload
                                colors
                                plugin )
 
 usage() {
-  local src=${BASH_SOURCE[0]} \
-        subdirs="$(intersperse ',' ${STOWABLE_SUBDIRS[@]})"
+    local src=${BASH_SOURCE[0]} \
+          subdirs="$(intercalate ',' ${STOWABLE_SUBDIRS[@]})"
 
-  log 'Usage'
-  printf '  %s dotvim\t\t%ssymlink ~/.vim to this repo%s\n' $src $(tput sitm) $(tput sgr0)
-  printf '  %s plug   NAME [-nv] \t%ssymlink {%s} to a local plugin NAME%s\n' $src $(tput sitm) "$subdirs" $(tput sgr0)
-  printf '  %s replug NAME [-nv] \t%srelink {%s} to a local plugin NAME%s\n' $src $(tput sitm) "$subdirs" $(tput sgr0)
-  printf '  %s unplug NAME [-nv] \t%sunlink {%s} from a local plugin NAME%s\n' $src $(tput sitm) "$subdirs" $(tput sgr0)
+    log 'Usage'
+    printf '  %s dotvim TARGET\t\t%ssymlink ~/.vim to %sTARGET\n' $src $(tput sitm) $(tput sgr0)
+    printf '  %s plug   NAME [-nv] \t%ssymlink {%s} to a local plugin %sNAME\n' $src $(tput sitm) "$subdirs" $(tput sgr0)
+    printf '  %s replug NAME [-nv] \t%srelink {%s} to a local plugin %sNAME\n' $src $(tput sitm) "$subdirs" $(tput sgr0)
+    printf '  %s unplug NAME [-nv] \t%sunlink {%s} from a local plugin %sNAME\n' $src $(tput sitm) "$subdirs" $(tput sgr0)
+}
+
+main() {
+    assert_configured_dir 'user Vim' 'DOTVIM'
+    assert_configured_dir 'Vim plugins source' 'VIM_PLUGINS_DIR'
+
+    case $1 in
+        dotvim)
+            link_dotvim "$2" ;;
+        plug)
+            link_plugin "${@:2}" ;;
+        unplug)
+            unlink_plugin "${@:2}" ;;
+        replug)
+            relink_plugin "${@:2}" ;;
+        *)
+            usage
+            exit 1 ;;
+    esac
 }
 
 link_dotvim() {
-  if [[ ! -d $DOTVIM ]]; then
-    log 'Error' 'No vim repo to symlink'
-    exit 1
-  fi
+    local target=$1
 
-  if [[ -d ~/.vim ]] && [[ ! -L ~/.vim ]]; then
-    local -r backup=~/.vim.$(date +%s)
-    log 'Info' "Backing up existing ~/.vim to $backup"
-    mv ~/.vim $backup
-  fi
+    if [ ! -d "$target" ]; then
+        log 'Error' "$target is not a directory we can symlink to."
+        exit 1
+    fi
 
-  ln -svnf $DOTVIM ~/.vim
+    if [ -d ~/.vim ] && [ ! -L ~/.vim ]; then
+        local -r backup=~/.vim.$(date +%s)
+        log 'Info' "Backing up existing ~/.vim to $backup"
+        mv ~/.vim $backup
+    fi
+
+    ln -svnf $target ~/.vim
 }
 
 link_plugin() {
@@ -77,19 +98,16 @@ run_stow() {
   if [ ! -d $projectpath ]; then
     log 'Error' "Unable to locate plugin \"$name\""
     exit 1
-  elif [ ! -r $projectpath ]; then
-    log 'Error' "Unable to read plugin \"$name\""
-    exit 1
   fi
 
   if [ "$operation" == '--stow' ] && ! stowable_contents $projectpath; then
-    log 'WARN' "Nothing to link in {$(intersperse ',' ${STOWABLE_SUBDIRS[@]})}"
+    log 'WARN' "Nothing to link in {$(intercalate ',' ${STOWABLE_SUBDIRS[@]})}"
     exit 1
   fi
 
   local -r parent_dir=${projectpath%/*} \
            target_dir=$(readlink -f $DOTVIM) \
-           stowable="($(intersperse '|' ${STOWABLE_SUBDIRS[@]}))"
+           stowable="($(intercalate '|' ${STOWABLE_SUBDIRS[@]}))"
 
   stow --dir=$parent_dir \
        --target=$target_dir \
@@ -110,12 +128,12 @@ assert_stow_installed() {
 
 stowable_contents() {
   local -r projectpath=$1 \
-           glob="@($(intersperse '|' ${STOWABLE_SUBDIRS[@]}))"
+           glob="@($(intercalate '|' ${STOWABLE_SUBDIRS[@]}))"
 
   compgen -G "$projectpath/$glob" >/dev/null
 }
 
-intersperse() {
+intercalate() {
   local IFS="$1"
   shift
   echo "$*"
@@ -126,16 +144,14 @@ log() {
   printf '%s%s%s: %s\n' $(tput bold) "$title" $(tput sgr0) "$msg"
 }
 
-case $1 in
-  dotvim)
-    link_dotvim ;;
-  plug)
-    link_plugin "${@:2}" ;;
-  unplug)
-    unlink_plugin "${@:2}" ;;
-  replug)
-    relink_plugin "${@:2}" ;;
-  *)
-    usage
-    exit 1 ;;
-esac
+assert_configured_dir() {
+    local name=$1 var=$2
+
+    if [ ! -d "${!var}" ]; then
+        log 'Error' "No $name directory found at ${!var}"
+        echo "Set a \$$var environment variable to specify a location."
+        exit 1
+    fi
+}
+
+main "$@"

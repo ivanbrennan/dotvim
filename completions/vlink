@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
 
 _vlink () {
-    local pluginsDir=$HOME/Development/code/vim-plugins
+    local word=$2 \
+          prev=$3 \
+          pluginsDir=${VIM_PLUGINS_DIR:-$HOME/Development/code/vim-plugins}
+
     case $COMP_CWORD in
         1)
-            COMPREPLY=( $(compgen -W "plug replug unplug" -- "$2") ) ;;
+            COMPREPLY=( $(compgen -W "dotvim plug replug unplug" -- "$word") ) ;;
         2)
-            local IFS=$'\n'
-           COMPREPLY=( $(cd "$pluginsDir" && compgen -d -- "$2") ) ;;
+            case $prev in
+                plug|replug|unplug)
+                    local IFS=$'\n'
+                    COMPREPLY=( $(cd "$pluginsDir" && compgen -d -- "$word") ) ;;
+            esac
     esac
 }
 
-complete -F _vlink vlink
+complete -o dirnames -F _vlink vlink
