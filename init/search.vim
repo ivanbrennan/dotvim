@@ -1,3 +1,6 @@
+" Ag
+nnoremap <leader>c :Grepper<CR>
+
 " CtrlP
 let g:ctrlp_map             = '<Leader>fo'
 nnoremap   <Leader>L        :CtrlPBuffer<CR>
