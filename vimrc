@@ -14,8 +14,4 @@ let g:vimsyn_folding = "f"   " fold vim functions
 let g:vimsyn_noerror = 1     " vim.vim sometimes gets it wrong
 let g:fugitive_no_maps = 1   " leave me free to remap <C-R>
 
-" don't let ZoomWin clobber <C-W>o
-nmap <C-W>.    <Plug>ZoomWin
-nmap <leader>. <Plug>ZoomWin
-
 silent! source ~/.vim/vimrc.local
