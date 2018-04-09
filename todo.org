@@ -2,8 +2,6 @@
 ** after/pack
 ** vim-plug -> minpac
 ** wincent configs
-*** loupe
-**** toggle to disable the timeout, something smart that extends it while using cgn to replace occurences
 *** projectionist
 *** colorcolumn focus autocommands
 **** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/plugin/autocmds.vim#L14
@@ -11,13 +9,10 @@
 *** statusline
 **** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/plugin/statusline.vim
 **** https://github.com/wincent/wincent/blob/2aa44544fe9e8fc466fea42391e66fff3583054c/roles/dotfiles/files/.vim/autoload/statusline.vim
-** fzf
-*** handle space like ivy does
-**** C-L (use C-Y)
-***** make it start at current char? (map / h/)
+*** C-L (use C-Y)
+**** make it start at current char? (map / h/)
 *** help
 *** quickfix
-*** netrw
 ** consider vim-test
 ** neovim-remote
 
