@@ -51,22 +51,43 @@ noremap  <silent> <leader><Bslash> :call ReloadBuffers()<CR>
 " Dirvish
 nmap   <leader>u  <Plug>(dirvish_up)
 
-" ··········· command-line ···· {{{1
-noremap  <S-Space>        :
-noremap  <leader>v        :
-noremap  <leader>c        :
-noremap  <leader>x        :
-nnoremap <leader>1        :!
-noremap  <leader>:        :<Up>
-nnoremap <leader>h        :help 
-nnoremap <leader><C-H>    :help <C-R><C-W>
+" precise jump to mark
+nnoremap <M-'>  `
+" free up semicolon for cmdline
+nnoremap '      ;
 
-cnoremap        <C-A> <Home>
-cnoremap   <C-X><C-A> <C-A>
-cnoremap        <C-B> <Left>
-cnoremap        <C-F> <Right>
-cnoremap   <C-X><C-F> <C-F>
-cnoremap <expr> <C-D> getcmdpos() > strlen(getcmdline()) ? "\<C-D>" : "\<Del>"
+" ··········· command-line ···· {{{1
+noremap  ;              :
+noremap  <leader>x      :
+nnoremap <leader>1      :!
+nnoremap <leader>h      :help 
+nnoremap <leader><C-H>  :help <C-R><C-W>
+
+func! CmdlineUpOr(key)
+  return CmdlineFirstChar() ? "\<Up>" : a:key
+endf
+
+func! CmdlineFirstChar()
+  if getcmdtype() == ':'
+    " first column, or first column following "'<,'>" visual range
+    return getcmdpos() == 1 || (getcmdpos() == 6 && getcmdline() == "'<,'>")
+  else
+    return 0
+  endif
+endf
+
+cnoremap <expr> :       CmdlineUpOr(':')
+cnoremap <expr> ;       CmdlineUpOr(';')
+
+cnoremap <C-A>          <Home>
+cnoremap <C-X><C-A>     <C-A>
+cnoremap <C-B>          <Left>
+cnoremap <C-F>          <Right>
+cnoremap <C-X><C-F>     <C-F>
+cnoremap <C-@>          <lt>leader>
+cnoremap <C-Space>      <lt>leader>
+
+cnoremap <expr> <C-D>   getcmdpos() > strlen(getcmdline()) ? "\<C-D>" : "\<Del>"
 cnoremap <expr> <C-T> transposition#transpose('c')
 
 " ··········· positioning ····· {{{1
@@ -107,9 +128,6 @@ set pastetoggle=<F8>
 
 " select last changed/yanked text
 nnoremap <leader>V `[v`]
-
-" registers
-noremap  ' "
 
 " the abyss
 vnoremap <BS> "_d
@@ -248,7 +266,7 @@ noremap           <C-W>u         <C-W>_
 noremap           <C-W><C-U>     <C-W>_
 noremap           <leader>q      <C-W><C-Q>
 nnoremap          <C-D>          <C-W><C-Q>
-noremap           <leader>,      <C-W>p
+noremap           <leader>,      <C-W><C-W>
 noremap           <C-W>y         <C-W>z
 noremap           <C-W><C-Y>     <C-W>z
 
