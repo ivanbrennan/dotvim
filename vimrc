@@ -14,4 +14,18 @@ let g:vimsyn_folding = "f"   " fold vim functions
 let g:vimsyn_noerror = 1     " vim.vim sometimes gets it wrong
 let g:fugitive_no_maps = 1   " leave me free to remap <C-R>
 
+" Ensure haskell files use haskell-vim syntax file rather than the Haskell
+" syntax file included in Vim's runtime. This must be set up before Vim loads
+" $VIMRUNTIME/filetype.vim
+if !exists("did_load_filetypes")
+  augroup filetypedetect
+    au! BufRead,BufNewFile *.hs packadd haskell-vim | call SourceHaskellSyntax()
+  augroup END
+
+  func! SourceHaskellSyntax() abort
+    let v = globpath(&packpath, 'pack/core/opt/haskell-vim/syntax/haskell.vim')
+    exec "silent! source" v
+  endf
+endif
+
 silent! source ~/.vim/vimrc.local
