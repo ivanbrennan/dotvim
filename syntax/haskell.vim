@@ -1,0 +1,1 @@
+/run/current-system/sw/share/vim-plugins/haskell-vim/syntax/haskell.vim
