@@ -1,3 +1,10 @@
+provide a convenient way to access different quoting behavior in grepper, so we can automatically quote most of the time, but still have flexibility.
+maybe:
+- map gh :help 
+  map gl <C-^>
+  map <leader>l <C-W>l
+  map <leader>h <C-W>h
+
 * Todo
 ** after/pack
 ** vim-plug -> minpac
