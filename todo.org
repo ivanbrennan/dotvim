@@ -16,6 +16,11 @@
 ** consider vim-test
 ** neovim-remote
 
+* interesting keys
+** gn / gN
+** hijack
+*** gh gm go
+
 * Readlist
 ** fzf
 ** EasyAlign
