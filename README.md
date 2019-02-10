@@ -38,3 +38,12 @@ silent! source ~/.vim/init_minpac.vim
 This is probably unecessary though, since minpac only needs to be loaded when installing/upgrading packages.
 The actual loading of packages is handled natively by Vim (see `:help 'packpath'`).
 It's probaly best to commit minpac initialization (and a declarative list of packages/plugins) to a file that can be sourced manually as needed, with no direct ties to vimrc.
+
+## Fix Syntax Plugins
+
+See: https://github.com/NixOS/nixpkgs/issues/39364
+
+```sh
+find /run/current-system/sw/share/vim-plugins/*/syntax/*.vim \
+    -exec ln -s {} ~/.vim/syntax/ \;
+```
